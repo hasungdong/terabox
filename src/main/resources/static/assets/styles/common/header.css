@@ -1,0 +1,152 @@
+@charset "UTF-8";
+body {
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.5;
+  margin: 0;
+  overflow: auto;
+  overflow-y: scroll;
+  font-size: 15px;
+  color: #444;
+  font-family: NanumBarunGothic, Dotum, "돋움", sans-serif;
+}
+
+#header {
+  background-color: #000;
+  width: 100%;
+  position: relative;
+  border-bottom: solid 0.5px #888;
+}
+#header > .left-link {
+  position: relative;
+  margin-left: 25rem;
+  width: 13.5rem;
+  top: 15px;
+  text-decoration: none;
+}
+#header > .left-link > .header-vip {
+  color: #888888;
+  font-size: 0.85rem;
+  text-decoration-line: none;
+}
+#header > .left-link > .header-membership {
+  color: #888888;
+  font-size: 0.85rem;
+  text-decoration-line: none;
+  margin-left: 1.5rem;
+}
+#header > .left-link > .header-support {
+  font-size: 0.85rem;
+  color: #888888;
+  text-decoration-line: none;
+  margin-left: 1.5rem;
+}
+#header > .right-link {
+  position: absolute;
+  right: 25rem;
+  top: 15px;
+}
+#header > .right-link > .header-login {
+  color: #888888;
+  font-size: 0.85rem;
+  margin-right: 1.5rem;
+  text-decoration-line: none;
+}
+#header > .right-link > .header-register {
+  color: #888888;
+  font-size: 0.85rem;
+  margin-right: 1.5rem;
+  text-decoration-line: none;
+}
+#header > .right-link > .header-fast-buy {
+  color: #888888;
+  font-size: 0.85rem;
+  text-decoration-line: none;
+}
+#header > .link-area {
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+#header > .link-area > .header-main-page {
+  display: flex;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+}
+#header > .link-area > .header-site-map {
+  color: white;
+  font-size: 1.5rem;
+  position: relative;
+  right: 19rem;
+}
+#header > .link-area > .header-search {
+  color: white;
+  font-size: 1.2rem;
+  margin-top: 0.2rem;
+  position: relative;
+  right: 18rem;
+}
+#header > .link-area > .header-movie {
+  text-decoration-line: none;
+  color: white;
+  position: relative;
+  right: 12rem;
+}
+#header > .link-area > .header-buy-ticket {
+  text-decoration-line: none;
+  color: white;
+  position: relative;
+  right: 9rem;
+}
+#header > .link-area > .header-cinema {
+  text-decoration-line: none;
+  color: white;
+  position: relative;
+  right: 6rem;
+}
+#header > .link-area > .header-main-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  left: 2rem;
+  top: -1rem;
+}
+#header > .link-area > .header-event {
+  text-decoration-line: none;
+  color: white;
+  position: relative;
+  left: 7rem;
+}
+#header > .link-area > .header-store {
+  text-decoration-line: none;
+  color: white;
+  position: relative;
+  left: 10.5rem;
+}
+#header > .link-area > .header-benefits {
+  text-decoration-line: none;
+  color: white;
+  position: relative;
+  left: 14rem;
+}
+#header > .link-area > .header-timetable > .header-timetable-img {
+  width: 2.5rem;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+  position: relative;
+  left: 19.5rem;
+}
+#header > .link-area > .header-my-megabox {
+  margin-left: 1rem;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+  position: relative;
+  left: 19.5rem;
+}
+#header > .link-area > .header-my-megabox > .header-my-megabox-img {
+  width: 1.2rem;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+}
+
+/*# sourceMappingURL=header.css.map */

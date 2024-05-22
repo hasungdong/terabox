@@ -1,0 +1,573 @@
+@charset "UTF-8";
+@import "../common/header";
+@import "../common/common.notHome";
+
+*{
+  box-sizing: border-box;
+}
+
+p{
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  unicode-bidi: isolate;
+}
+
+a{
+  background-color: transparent;
+}
+
+div{
+  display: block;
+  unicode-bidi: isolate;
+}
+
+body{
+  overflow: auto;
+  overflow-y: scroll;
+  letter-spacing: 0;
+  line-height: 1.5;
+  font-size: 15px;
+  color: #444;
+  font-weight: 400;
+  font-family: NanumBarunGothic, Dotum, '돋움', sans-serif;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  .button{
+    display: inline-block;
+    height: 36px;
+    margin: 0;
+    padding: 0 15px;
+    text-align: center;
+    line-height: 34px;
+    color: #503396;
+    font-weight: 400;
+    border-radius: 4px;
+    font-family: NanumBarunGothic, Dotum, '돋움', sans-serif;
+    text-decoration: none;
+    border: 1px solid #503396;
+    vertical-align: middle;
+    background-color: #fff;
+    cursor: pointer;
+  }
+
+  form {
+
+    #container {
+      //margin: 0 auto;
+        padding-top: 2.5rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+
+        > * {
+          width: calc(1100px + 19.8rem);
+          padding: 0 9.9rem;
+        }
+
+
+
+      > .mt70{
+        margin-top: -10px !important;
+
+
+        >.right{
+          display: flex;
+          flex-direction: row;
+          > h3.tit{
+            margin: 0;
+            font-size: 1.8em;
+            font-weight: 400;
+            color: #503396;
+          }
+
+          >.spring{
+            flex-grow: 1;
+          }
+          >a{
+            color: #444;
+            display: inline-block;
+
+          }
+          >a:link{
+            color: #444;
+            text-decoration: none;
+          }
+
+
+        }
+      }
+
+      > .AffiliateEvent {
+        width: 100%;
+        background-color: #f8f8fa;
+        height: 25.125rem;
+        padding-top: 2.5rem;
+        padding-left: 25.1rem;
+        padding-right: 25.1rem;
+        margin-bottom: 4.375rem;
+        position: relative;
+
+        > .title-bar {
+          padding-bottom: 1.25rem;
+          font-size: 1.525rem;
+          color: #503396;
+          line-height: 1.1;
+          display: flex;
+          flex-direction: row;
+
+          > .spring {
+            flex-grow: 1;
+          }
+
+          > .swiper-bar-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            > .swiper-bar-box {
+              display: flex;
+              flex-direction: row;
+
+              > .swiper-bar {
+                display: block;
+                width: 1.875rem;
+                height: 0.125rem;
+                border-radius: 0;
+                background-color: #fff;
+
+                &.point {
+                  background-color: #503396;
+                }
+              }
+            }
+
+            > img {
+              width: 0.75rem;
+              height: 0.95rem;
+              margin-left: 0.575rem;
+
+              color: #503396;
+
+              &.play {
+                width: 0.5rem;
+                height: 0.8rem;
+              }
+
+              &.pause{
+                width: 0.5rem;
+                height: 0.8rem;
+                display: none;
+              }
+            }
+
+            > .text {
+
+              font-size: 0.975rem;
+              font-weight: 400;
+              margin-left: 1.3rem;
+            }
+          }
+        }
+        > .event-box {
+          display: flex;
+          flex-direction: row;
+          gap: 2.625rem;
+
+          width: 1150px;
+          height: 277.6px;
+          position: relative;
+          overflow: hidden;
+
+          > .event {
+            position: absolute;
+            transition-duration: 600ms;
+            transition-property: left, right;
+
+            > img {
+              width: 33.125rem;
+              height: 15.3125rem;
+
+              border-radius: 0.625rem;
+            }
+
+            > .text-box {
+              display: flex;
+              flex-direction: row;
+              color: black;
+
+              margin-top: 0.9375rem;
+
+              > .text {
+                font-size: 0.95rem;
+                font-weight: 700;
+
+                overflow: hidden;
+                display: inline-block;
+                max-width: 100%;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+              }
+
+              > .spring {
+                flex-grow: 1;
+              }
+
+              > .duration {
+                font-size: 0.83rem;
+                color:#444;
+              }
+            }
+          }
+        }
+
+        > [type="button"] {
+          display: block;
+          position: absolute;
+          z-index: 2;
+          top: 50%;
+          width: 50px;
+          height: 50px;
+          margin: 0;
+          padding: 0;
+          border: 0;
+          font-size: 0;
+          line-height: 0;
+          border-radius: 100%;
+          box-shadow: 4px 4px 10px 0 rgba(45, 45, 45, .3);
+          background-size: 28px;
+          background-color: white;
+          background-position: center;
+          background-repeat: no-repeat;
+          cursor: pointer;
+
+          &.left {
+            transform: translate(-50%, -25px);
+            background-image: url("../../images/common/left.png");
+          }
+
+          &.right {
+            left: calc(25.1rem + 1081px);
+            transform: translate(0, -25px);
+            background-image: url("../../images/common/right.png");
+          }
+        }
+      }
+
+      > .tit{
+        font-size: 1.8666em;
+        font-weight: 500;
+        letter-spacing: -1px;
+        line-height: 1.1;
+        color: #222;
+        padding-bottom: 1.5rem;
+      }
+
+      >.tab-list{
+        padding-bottom: 2.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+
+        >.topMenu{ /* 위에 메뉴들 ul 태그*/
+          list-style: none;
+          //position: fixed;
+          width: 100%;
+          display: flex;
+          //align-items: center;
+          //justify-content: center;
+          //flex-direction: row;
+          padding: 0;
+
+          >.on{ /*li 태그들*/
+            width: 20%;
+
+            >.a{ /*링크 태그들*/
+              position: relative;
+              display: block;
+              width: 100%;
+              padding: 14px 0;
+              text-align: center;
+              color: #222;
+              font-size: 1.00rem;
+              text-decoration: none;
+              border: 0.04rem solid #dedede;
+              font-weight: 450;
+
+            }
+
+
+
+          }
+
+
+
+
+        }
+
+      }
+      >.movie-list-util { /*영화관 검색 있는곳 묶음*/
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        overflow: hidden;
+        margin-bottom: -1.5rem;
+        margin-top: 40px !important;
+
+
+      }
+      >.movie-list{ /*영화 리스트 묶음*/
+         display: flex;
+         flex-direction: column;
+
+
+        >.list{ /*그 밑에 ol 태그*/
+          padding: 0;
+          margin: 0 0 0 -40px;
+
+
+
+
+          >.img{
+
+            overflow: hidden;
+            position: relative;
+            float: left;
+            width: 245px;
+            height: 364px;
+            border: 1px solid #e4e4e4;
+            padding: 0;
+            background-color: #fff;
+            border-radius: 0.5rem;
+            margin: 0 0 60px 40px;
+
+            //overflow: hidden;
+            //position: relative;
+            //float: left;
+            //width: 230px;
+            //height: 450px;
+            //padding: 0;
+            //margin: 0 0 60px 60px;
+            //background-color: #fff;
+
+
+            //&.first{
+            //  margin-left: 0;
+            //
+            //}
+
+            >.movie-list-info{
+
+              //>.rank{
+              //  position: absolute;
+              //  left: 0;
+              //  top: 0;
+              //  width: 230px;
+              //  height: 150px;
+              //  padding: 8px 0 0 10px;
+              //  line-height: 1.1;
+              //  font-size: 2em;
+              //  font-style: italic;
+              //  font-family: Roboto, Dotum, '돋움', sans-serif;
+              //  font-weight: 300;
+              //  color: #fff;
+              //  text-shadow: 2px 2px 2px rgba(0, 0, 0, .8);
+              //  background: url(https://img.megabox.co.kr/static/pc/images/movie/bg-movie-list-rank.png) no-repeat 0 0;
+              //
+              //}
+
+              >.poster{ /*영화 사진*/
+                width: 230px;
+                height: 331px;
+                overflow: hidden;
+                position: relative;
+                float: left;
+                margin: 0 0 0 0px;
+                padding: 0;
+                background-color: #fff;
+                border-radius: 0.5rem;
+
+              }
+
+              >.screen-type2{
+
+                >.logo2 {
+                }
+
+
+              }
+
+              >.movie-score{
+                >.wrap{
+                  background-color: #503396;
+                }
+
+              }
+
+            }
+
+            >.tit-area{ /*묶음자리*/
+              position: relative;
+              width: 100%;
+              //margin: 15px 0 0 0;
+              padding: 0 0 0 30px;
+              line-height: 25px;
+
+
+
+              >.movie-grad-all { /*   전체 사용가 넣을 자리*/
+
+              }
+
+              >.movie-grad-all{
+                height: 100%;
+                background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/ALL_46x46.png);
+                background-size: 23px 23px;
+                background-repeat: no-repeat;
+                position: absolute;
+                left: 0;
+                width: 100%;
+                top: 90%;
+              }
+
+
+              >.title{ //영화 이름 넣는 자리
+                //overflow: hidden;
+                display: block;
+                width: 100%;
+                //white-space: nowrap;
+                //text-overflow: ellipsis;
+                //padding: 15px 0 0 1px;
+                //font-size: 1.7em;
+                //font-weight: 400;
+                //margin : 0;
+                overflow: hidden;
+                height: 60px;
+                margin: 0 0 10px 0;
+                padding: 20px 17px 0px 0px;
+                line-height: 1.3;
+                font-weight: 700;
+                color: #222;
+
+
+              }
+            }
+
+            >.rate-date{
+              overflow: hidden;
+              padding: 10px 0 0 0;
+
+              >.rate{ //예매율
+                margin: 0 7px 0 0;
+                display: block;
+                position: relative;
+                float: left;
+                font-weight: 600;
+                text-align: center;
+                padding: 0px 35px 30px 30px;
+                font-size: .8667em;
+                line-height: 1.1;
+                color: #666;
+              }
+
+            }
+
+            >.btn-util{
+              overflow: hidden;
+              position: absolute;
+              left: 0;
+              bottom: 0;
+              width: 100%;
+              height: 36px;
+
+              >.button.btn-like{ //좋아요 버튼
+                float: left;
+                width: 72px;
+
+                padding: 0 5px;
+                font-size: .8667em;
+                border-color: #ebebeb;
+                margin-right: 5px;
+
+                >.fa-regular{
+                  font-size: 1rem;
+                }
+              }
+
+              >.button.btn-like > span { //좋아요 버튼
+                font-size: 1.2em;
+              }
+              >.Ticketing-container{ /*예매하기 버튼*/
+
+                >.button {
+                  width: 74px;
+                  margin-left: 5px;
+
+                }
+                >.button.purple{
+                  color: #fff;
+                  line-height: 36px;
+                  border: 0;
+                  background: #503396;
+                }
+
+                >.button.purple.ticketing{
+                  margin-left: 0;
+                  width: 74px;
+                }
+
+                >.button.purple.img{   //Dolby 버튼
+                  display: inline-block;
+                  height: 36px;
+                  margin: 0;
+                  padding: 0 15px;
+                  text-align: center;
+                  line-height: 34px;
+                  color: #ffffff;
+                  font-weight: 400;
+                  border-radius: 4px;
+                  font-family: NanumBarunGothic, Dotum, '돋움', sans-serif;
+                  text-decoration: none;
+                  border: 1px solid #503396;
+                  vertical-align: middle;
+                  background-color: #503396;
+                  cursor: pointer;
+
+                  > .img {
+                    display: inline-block;
+                    padding-top: 7px;
+                    border: 0;
+                  }
+
+                }
+
+
+              }
+
+
+            }
+
+
+          }
+
+
+
+
+        }
+      }
+    }
+
+
+
+
+
+
+  }
+}

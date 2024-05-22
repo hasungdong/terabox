@@ -1,0 +1,114 @@
+@charset "UTF-8";
+
+._obj-message-cover {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #212121a0;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  transition: opacity 250ms;
+  z-index: 10;
+
+  &.-visible {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+._obj-message {
+  background-color: #503396;
+  top: calc(50% + 0.25rem);
+  left: 50%;
+  //min-width: 15rem;
+  min-width: 400px;
+  //border-radius: 0.25rem;
+  box-shadow: 0 0 1rem 0.0625rem #21212160;
+  opacity: 0;
+  pointer-events: none;
+  overflow: hidden;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  transition-duration: 250ms;
+  transition-property: top, opacity;
+  z-index: 11;
+
+  &.-visible {
+    top: 50%;
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  > .title-bar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 15px 20px;
+
+
+    > .__title {
+      background-color: #503396;
+      color: #ffffff;
+      line-height: 15px;
+      font-size: 18px;
+    }
+
+    > .spring{
+      flex-grow: 1;
+    }
+
+    > button{
+      width: 16px;
+      height: 15px;
+
+      background: url("../../images/common/cancel.png") no-repeat center;
+      border: 0;
+      cursor: pointer;
+    }
+  }
+
+  > .__content {
+    background-color: #ffffff;
+    line-height: 1.5;
+    padding: 20px 20px 0 20px;
+
+    > .__button-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      background-color: #ffffff;
+      padding: 15px 0 20px 0;
+
+
+      > .__button {
+        border: none;
+        cursor: pointer;
+        font: inherit;
+        margin: initial;
+        padding-block: initial;
+        padding-inline: initial;
+        outline: none;
+        user-select: none;
+        border-radius: 4px;
+        padding: 0 15px;
+
+        color: #fff;
+        line-height: 36px;
+        border: 0;
+        background: #503396;
+
+        &:hover {
+          background-color: darken(#351f67, 2.5%);
+        }
+
+        &:active {
+          background-color: darken(#351f67, 5%);
+        }
+      }
+    }
+  }
+}

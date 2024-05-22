@@ -1,0 +1,96 @@
+.time-schedule {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  height: 40px;
+  border: 1px solid #d8d9db;
+  border-top: 1px solid #555;
+}
+.time-schedule .btn-pre {
+  height: 39px;
+  width: 30px;
+  border: 0 !important;
+  background-color: transparent !important;
+  float: left;
+  cursor: pointer;
+}
+.time-schedule .date-list {
+  width: 980px;
+  overflow: hidden;
+  float: left;
+}
+.time-schedule .date-list .year-area {
+  position: absolute;
+  z-index: 1;
+  opacity: 1;
+  left: 30px;
+}
+.time-schedule .date-list .year-area .year {
+  border: 1px solid #d8d9db;
+  border-radius: 15px;
+  background-color: #fff;
+  margin-top: -10px;
+  top: 0;
+  height: 20px;
+  width: 70px;
+  text-align: center;
+  line-height: 18px;
+  font-weight: 300;
+  font-size: 0.8667rem;
+}
+.time-schedule .date-list .date-area {
+  height: 39px;
+  float: left;
+}
+.time-schedule .date-list .date-area button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent !important;
+  float: left;
+  height: inherit;
+  width: 70px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  font-size: 0.8667em;
+  font-weight: 400;
+  cursor: pointer;
+}
+.time-schedule .date-list .date-area button:hover {
+  border-bottom: 2px solid #503396;
+}
+.time-schedule .date-list .date-area button:focus {
+  border-bottom: 2px solid #503396;
+}
+.time-schedule .date-list .date-area em {
+  position: relative;
+  padding: 0 9px 0 0;
+  font-style: normal;
+}
+.time-schedule .date-list .date-area em .date {
+  display: inline-block;
+  font-size: 17px;
+  font-weight: 100;
+}
+.time-schedule .date-list .date-area em::after {
+  content: "";
+  position: absolute;
+  right: 3px;
+  top: 8px;
+  display: block;
+  width: 3px;
+  height: 3px;
+  background-color: #888;
+}
+.time-schedule .date-list .date-area .week {
+  vertical-align: bottom;
+}
+.time-schedule .date-list .date-area .sat {
+  color: #3b5fcb;
+}
+.time-schedule .date-list .date-area .holi {
+  color: #e81002;
+}
+
+/*# sourceMappingURL=timeSchedule.css.map */

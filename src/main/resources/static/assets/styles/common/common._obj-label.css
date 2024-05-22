@@ -1,0 +1,15 @@
+._obj-label {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  justify-content: flex-start;
+}
+._obj-label:hover > .__text {
+  color: #424242;
+}
+._obj-label:focus-within > .__text {
+  color: #3498db;
+}
+
+/*# sourceMappingURL=common._obj-label.css.map */

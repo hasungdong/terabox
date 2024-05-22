@@ -1,0 +1,122 @@
+@charset "UTF-8";
+
+.movie-choice {
+  width: 270px;
+  height: 529px;
+  padding: 0 20px 17px 20px;
+  border-right: 1px solid #d8d9db;
+
+  .all-list, {
+    width: 100%;
+    height: 320px;
+    margin-top: 15px;
+    overflow-y: scroll;
+    max-height: 320px;
+
+    .btn {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      text-align: left;
+
+      font-size: 12px;
+      width: 100%;
+      margin: 0;
+      border: 0;
+      background-color: transparent;
+      height: 35px;
+
+      &:focus {
+        color: #fff;
+        background-color: #666;
+      }
+
+      > img {
+        margin-right: 3px;
+      }
+
+      > i {
+        color: lighten(#8888, 20%);
+        margin-left: auto;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .curation {
+    width: 100%;
+    height: 320px;
+    margin-top: 15px;
+    overflow-y: auto;
+    max-height: 320px;
+
+    .btn {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      text-align: left;
+
+      font-size: 12px;
+      width: 100%;
+      margin: 0;
+      border: 0;
+      background-color: transparent;
+      height: 35px;
+
+      &:focus {
+        color: #fff;
+        background-color: #666;
+      }
+
+      > img {
+        margin-right: 3px;
+      }
+
+      > i {
+        color: lighten(#8888, 20%);
+        margin-left: auto;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .choice-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    height: 90px;
+    margin: 10px 0 0 0;
+
+    .bg {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-end;
+
+      border: 1px solid #ebebeb;
+      width: 63px;
+      height: 90px;
+      margin-left: 20px;
+      background: url("https://img.megabox.co.kr/static/pc/images/reserve/bg-empty-cell.png");
+    }
+
+    .bg:first-child {
+      margin-left: 0;
+    }
+
+    .del {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 18px;
+      height: 18px;
+      border: 0;
+      background-color: #666;
+      color: #ffffff;
+    }
+  }
+}
+

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://kit.fontawesome.com/dc541573c0.js" crossorigin="anonymous"></script>
+  <link rel="icon" th:href="@{/assets/images/common/favicon.ico}">
+  <link rel = "stylesheet" th:href="@{/assets/styles/common/common.css}">
+  <link rel="stylesheet" th:href="@{/assets/styles/event/pastEvent.css}">
+  <script defer th:src="@{/assets/scripts/common.js}"></script>
+</head>
+<body>
+<th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
+
+<div class="container">
+  <div class="page-util">
+    <div class="inner">
+      <div class="location">
+        <span>home</span>
+        <a class="icon"></a>
+        <a href="/static" class="event">이벤트</a>
+        <a class="icon"></a>
+        <a href="/static" class="last-event">지난 이벤트</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="inner">
+      <h2 class="title">지난 이벤트</h2>
+      <ul class="dot">
+        <li>▪ 응모하신 이벤트의 당첨 여부는 당첨자발표의
+          <button type="button" class="event-check">
+            <strong class="bold-button-text">나의 응모결과 확인</strong>
+          </button>
+          을 통해 확인할 수 있습니다.
+      </li>
+      </ul>
+      <div class="board">
+        <p class="count">
+          <strong>전체
+            <b>11,857</b>
+            건
+          </strong>
+        </p>
+        <div class="board-search">
+          <input type="text" title="검색어를 입력해 주세요." placeholder="검색어를 입력해 주세요." class="input-text">
+          <button type="button">
+            검색
+          </button>
+        </div>
+      </div>
+      <div class="event-list">
+        <div class="inner">
+          <div class="event-list">
+            <ul>
+              <li>
+                <a href="/static" class="event-button">
+                  <p class="theater">극장</p>
+                  <p class="img">
+                    <img src="https://img.megabox.co.kr/SharedImg/event/2024/02/08/xsYwZjB0JYKr1CfeAgTIPu604JyzWPxl.jpg"></p>
+                  <p class="title"> [김포한강신도시]버터구이 패키지 판매</p>
+                  <p class="date"> 2024.02.08 ~ 2024.12.31 </p>
+                </a>
+              </li>
+              <li>
+                <a href="/static" class="event-button">
+                  <p class="theater">극장</p>
+                  <p class="img">
+                    <img src="https://img.megabox.co.kr/SharedImg/event/2023/10/19/xXusySkGvIXIPzTCb1XDCKvOE5jSNJai.jpg" alt="[대전유성] 붕어빵 찾으시나요?"></p>
+                  <p class="title"> [대전유성] 붕어빵 찾으시나요?</p>
+                  <p class="date"> 2023.10.16 ~ 2024.12.31 </p>
+                </a>
+              </li>
+              <li>
+                <a href="/static" class="event-button">
+                  <p class="theater">극장</p>
+                  <p class="img">
+                    <img src="https://img.megabox.co.kr/SharedImg/event/2023/09/15/H5Gp79G35D7EGI79myLrHbvhMyvCXVfG.jpg" alt="[목동] 달콤 고소 믹스팝콘 출시!"></p>
+                  <p class="title"> [목동] 달콤 고소 믹스팝콘 출시!</p>
+                  <p class="date"> 2023.09.04 ~ 2024.12.31 </p>
+                </a>
+              </li>
+              <li>
+                <a href="/static" class="event-button">
+                  <p class="theater">극장</p>
+                  <p class="img">
+                    <img src="https://img.megabox.co.kr/SharedImg/event/2023/10/15/i7ZcTF7gHYY7Ux2rsBQNSEwWzo3ZtV38.jpg" alt="[북대구(칠곡)] 외부주차장 이용시 영화 할인"></p>
+                  <p class="title">[북대구(칠곡)] 외부주차장 이용시 영화 할인
+                  </p>
+                  <p class="date"> 2023.10.02 ~ 2024.12.31 </p>
+                </a>
+              </li>
+              <li>
+                <a href="/static" class="event-button">
+                  <p class="theater">극장</p>
+                  <p class="img">
+                    <img src="https://img.megabox.co.kr/SharedImg/event/2023/10/06/Xn0xz8Llv3rZ2WyIWqEhOGebMgrdF1N5.jpg" alt="[수도권서부지역] 뿌링잇 어니언 맛?! 시즈닝 콤보 런칭!"></p>
+                  <p class="title">[수도권서부지역] 뿌링잇 어니언 맛?! 시즈닝 콤보 런칭!
+                  </p>
+                  <p class="date"> 2023.10.06 ~ 2024.12.31 </p>
+                </a>
+              </li>
+              <li>
+                <a href="/static" class="event-button">
+                  <p class="theater">극장</p>
+                  <p class="img">
+                    <img src="https://img.megabox.co.kr/SharedImg/event/2024/02/22/1A3kwYoa65xbDKTLryZ8lW5gNQSFab9O.jpg" alt="[의정부민락] 초특급 최저가 영화 관람"></p>
+                  <p class="title">[의정부민락] 초특급 최저가 영화 관람
+                  </p>
+                  <p class="date"> 2023.02.09 ~ 2024.12.31 </p>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="board-move">
+            <button class="btn">더보기
+              <i class="move-btn"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>

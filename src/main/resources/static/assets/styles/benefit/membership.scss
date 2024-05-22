@@ -1,0 +1,274 @@
+@charset "UTF-8";
+
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+@import "../common/header";
+@import "../common/common.notHome";
+
+
+#main{
+  padding-top: 2.5rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+
+  > *{
+    width: 1100px;
+    margin: 0 25.1rem 0 25.1rem;
+  }
+
+  > .title2{
+    font-size: 1.75rem;
+    font-weight: 500;
+    padding-bottom: 1.6rem;
+    line-height: 1.1;
+    letter-spacing: 0;
+    color: #222222;
+
+  }
+
+  > nav {
+    > .tab{
+      display: flex;
+      flex-direction: row;
+
+      > .item{
+        border: 0.06rem solid #ebebeb;
+        border-bottom-color: #503396;
+
+        width: calc(100% - 4 * 0.6rem);
+        height: 2.56rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        &.on{
+          border-color: #503396;
+          border-bottom: none;
+
+          .link{
+            color: #503396;
+          }
+        }
+
+        > .link{
+          font-size: 1.0175rem;
+          letter-spacing: 0;
+          font-weight: 400;
+          line-height: 2.5rem;
+          color: #222;
+        }
+
+      }
+    }
+  }
+
+  > .introduction{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    padding-top: 4.375rem;
+    padding-bottom: 1.25rem;
+    color: #503396;
+
+    > .text1{
+      font-weight: 300;
+      font-size: 4.375rem;
+      line-height: 3.9375rem;
+    }
+
+    > .text2{
+      font-weight: 600;
+      font-size: 4.375rem;
+      line-height: 3.9375rem;
+
+      padding-bottom: 1.125rem;
+    }
+
+    > .text3{
+      font-size: 1.15rem;
+
+      padding-bottom: 1rem;
+    }
+
+    > img{
+      width: 20.25rem;
+      height: 13.255rem;
+    }
+
+    + .title3{
+      padding-top: 1.875rem;
+
+    }
+  }
+
+  > .guide-benefit-box{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 2.5rem;
+
+    > .guide-benefit{
+      height: 13.125rem;
+
+      padding: 1.8rem 3rem 2rem 3.2rem;
+      box-sizing: border-box;
+      box-shadow: 4px 4px 20px rgba(0, 0, 0, .05);
+
+      border-radius: 0.625rem;
+
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+
+      gap: 1.75rem;
+
+      > img{
+        width: 6.875rem;
+        height: 6.875rem;
+
+        margin-left: 0.35rem;
+      }
+
+      > .text-container{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+
+        > .title4{
+          font-size: 1.1725rem;
+          font-weight: 500;
+
+          margin-top: 1rem;
+          margin-bottom: 1rem;
+
+        }
+
+        > .text-box{
+          margin-bottom: 1.5rem;
+          font-size: 0.9625rem;
+          font-weight: 400;
+          line-height: 1.2rem;
+        }
+
+        > .button{
+          padding: 0.6rem 0.9rem;
+
+          &.purple{
+            color: #ffffff;
+            border-radius: 0.25rem;
+            background-color: #503396;
+
+            display: inline;
+
+            &:hover{
+              background-color: #351f67;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  > .table-box{
+    > table{
+      width: 100%;
+      > thead{
+        > tr{
+          > th{
+            background-color: #fcfcfc;
+            //border-top: #666666;
+
+            font-weight: 600;
+
+            height: 2.8rem;
+
+            &.one{
+              width: 22.7%;
+            }
+
+            &.two{
+              width: 22.7%;
+            }
+          }
+        }
+      }
+
+      > tbody{
+        > tr{
+          th{
+            font-weight: 400;
+            //  안하니까 알아서 굵어짐, th 특성인듯
+          }
+
+          td{
+            height: 3.7rem;
+          }
+        }
+      }
+    }
+  }
+
+
+  > .title4{
+  }
+
+  > dl{
+    padding-top: 0.65rem;
+    line-height: 1.5rem;
+    color: #444;
+
+    > dt{
+      padding-left: 0.5rem;
+
+      position: relative;
+
+      &::before{
+        position: absolute;
+        top: 9px;
+        left: 0;
+        width: 3px;
+        height: 3px;
+        border-radius: 3px;
+        background-color: #444;
+        content: "";
+      }
+    }
+
+    > dd {
+      padding-left: 0.5rem;
+
+      &.caution{
+        color: #777;
+      }
+    }
+  }
+
+  .title3{
+    font-size: 1.28rem;
+    font-weight: 400;
+    color: #503396;
+    padding-top: 2.5rem;
+    padding-bottom: 1.2rem;
+    line-height: 1.3rem;
+  }
+
+  .title4{
+    font-size: 1.125rem;
+    margin-top: 1.25rem;
+  }
+}
+
+dl, dt, dd {
+  margin: 0;
+  padding: 0;
+}
+
+
+
+

@@ -1,0 +1,179 @@
+@charset "UTF-8";
+
+body {
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.5;
+  margin: 0;
+  overflow: auto;
+  overflow-y: scroll;
+  font-size: 13px;
+  color: #666666;
+  font-family: NanumBarunGothic, Dotum, '돋움', sans-serif;
+}
+
+#header {
+  letter-spacing: -0.08rem;
+  background-color: #000;
+  width: 100%;
+  border-bottom: solid 0.5px #888;
+
+  > .left-link {
+    position: relative;
+    margin-left: 25rem;
+    top: 15px;
+    text-decoration: none;
+
+    > .header-vip {
+      color: #888888;
+      font-size: 13px;
+      text-decoration-line: none;
+    }
+
+    > .header-membership {
+      color: #888888;
+      font-size: 13px;
+      text-decoration-line: none;
+      margin-left: 20px;
+    }
+
+    > .header-support {
+      font-size: 13px;
+      color: #888888;
+      text-decoration-line: none;
+      margin-left: 20px;
+    }
+  }
+
+  > .right-link {
+    position: absolute;
+    right: 25rem;
+    top: 15px;
+
+    > .header-login {
+      color: #888888;
+      font-size: 13px;
+      margin-right: 20px;
+      text-decoration-line: none;
+    }
+
+    > .header-register {
+      color: #888888;
+      font-size: 13px;
+      margin-right: 20px;
+      text-decoration-line: none;
+    }
+
+    > .header-fast-buy {
+      color: #888888;
+      font-size: 13px;
+      text-decoration-line: none;
+    }
+  }
+
+  > .link-area {
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    //gap: 3rem;
+    //padding-left: 26rem;
+    //padding-right: 26rem;
+
+    > .header-main-page {
+      height: 47px;
+      display: flex;
+      filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+    }
+
+    > .header-site-map {
+      //margin-right: 1rem;
+      color: white;
+      font-size: 1.5rem;
+      position: relative;
+      right: 20rem;
+    }
+
+    > .header-search {
+      color: white;
+      font-size: 1.2rem;
+      margin-top: 0.2rem;
+      position: relative;
+      right: 18.7rem;
+    }
+
+    > .header-movie {
+      text-decoration-line: none;
+      color: white;
+      position: relative;
+      right: 12.5rem;
+    }
+
+    > .header-buy-ticket {
+      text-decoration-line: none;
+      color: white;
+      position: relative;
+      right: 8.5rem;
+    }
+
+    > .header-cinema {
+      text-decoration-line: none;
+      color: white;
+      position: relative;
+      right: 4.7rem;
+    }
+
+    > .header-main-page {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      left: 2rem;
+      top: -1rem;
+    }
+
+    > .header-event {
+      text-decoration-line: none;
+      color: white;
+      position: relative;
+      left: 7.5rem;
+    }
+
+    > .header-store {
+      text-decoration-line: none;
+      color: white;
+      position: relative;
+      left: 11.7rem;
+    }
+
+    > .header-benefits {
+      text-decoration-line: none;
+      color: white;
+      position: relative;
+      left: 15.7rem;
+    }
+
+    > .header-timetable {
+      > .header-timetable-img {
+        width: 2.2rem;
+        filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+        position: relative;
+        left: 20.25rem;
+      }
+    }
+
+    > .header-my-megabox {
+      margin-left: 1rem;
+      filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+      position: relative;
+      left: 20.2rem;
+
+      > .header-my-megabox-img {
+        width: 1.1rem;
+        filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+      }
+    }
+  }
+}

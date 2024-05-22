@@ -1,0 +1,419 @@
+@charset "UTF-8";
+@import "../common/header";
+
+@import "../common/common.notHome";
+
+* {
+  box-sizing: border-box;
+}
+
+h2{
+  display: block;
+  font-size: 1.5em;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+  unicode-bidi: isolate;
+}
+
+h1, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+strong {
+  font-weight: 700;
+}
+
+em {
+  font-style: normal;
+}
+
+P {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  unicode-bidi: isolate;
+  font-weight: 400;
+  width: 470px;
+  margin-top: 0;
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+  letter-spacing: -.5px;
+  font-weight: 400;
+  text-transform: none;
+  font-size: 1em;
+  line-height: 1.15;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  letter-spacing: 0;
+  line-height: 1.5;
+  font-size: 15px;
+  color: #444;
+  font-size: 1rem;
+  font-weight: 400;
+  font-family: NanumBarunGothic, Dotum, '돋움', sans-serif;
+
+  > .container {
+    width: 100%;
+    min-width: 1100px;
+    min-height: 100%;
+    margin: -92px 0 -200px 0;
+    padding: 92px 0 300px 0;
+
+    > .page-util {
+      display: block;
+      position: static;
+      width: 100%;
+      height: 42px;
+      background-color: #f8f8fa;
+    }
+  }
+}
+
+.inner {
+  width: 1100px;
+  margin: 0 auto;
+}
+
+body > .container > {
+  .page-util > .inner > .location {
+    float: left;
+    height: 42px;
+
+    > {
+
+
+      a {
+        display: block;
+        position: relative;
+        float: left;
+        height: 42px;
+        margin: 0 0 0 15px;
+        padding: 0;
+        line-height: 46px;
+        color: #666;
+        text-decoration: none;
+      }
+
+      .icon {
+        top: 0;
+        width: 5px;
+        height: 42px;
+        background: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-location-arr.png) no-repeat left center;
+      }
+    }
+  }
+
+  .content {
+    padding: 40px 0 0 0;
+
+    > .inner > {
+      margin: 0;
+      padding: 0;
+      .title {
+        font-size: 1.8666em;
+        font-weight: 470;
+        letter-spacing: -1px;
+        line-height: 1.1;
+        color: #222;
+        margin: 0 0 0.3rem 0;
+      }
+
+      ul > li {
+        position: relative;
+
+      }
+
+      .event-list > .inner
+      > {
+        .box-store-view {
+
+          ::before{
+            content: '';
+            display: block;
+            position: absolute;
+            left: 479px;
+            top: 0;
+            width: 1px;
+            height: 100%;
+            background-color: #d8d9db;
+          }
+
+          overflow: hidden;
+          position: relative;
+          margin: 10px 0 0 0;
+          border-top: 1px solid #555;
+          border-bottom: 1px solid #d8d9db;
+
+
+
+          >.left{
+            float: left;
+            width: 250px;
+            padding: 0 0 30px 0;
+
+            > .img{
+              display: table;
+              table-layout: fixed;
+              width: 100%;
+
+              > p{
+                display: table-cell;
+                height: 400px;
+                text-align: center;
+                vertical-align: middle;
+
+               > img{
+                 max-width: 400px;
+                 max-height: 400px;
+
+               }
+              }
+            }
+          }
+
+          > .right{
+            float: left;
+            width: calc(100% - 480px);
+            padding: 15px 0 30px 40px;
+
+            > .goods-info{
+              > .line {
+                display: table;
+                table-layout: fixed;
+                width: 100%;
+
+
+                > .tit {
+                  display: table-cell;
+                  width: 100px;
+                  padding-top: 15px;
+                  color: #222;
+                  vertical-align: top;
+
+                  > .line32 {
+                    line-height: 32px;
+                  }
+                }
+                > .cont {
+                  display: table-cell;
+                  width: calc(100% - 100px);
+                  padding-top: 15px;
+                  vertical-align: top;
+
+                  > .txt.min{
+                    font-size: 14px;
+                    display: block;
+                    color: #ccc;
+
+                  }
+
+                  > .a-link {
+                    color: #01738b;
+                    text-decoration: underline;
+                  }
+
+                  > .store_alert {
+                    margin-top: 5px;
+                    color: #e81002;
+                    font-size: .9333em;
+                    width: 470px;
+
+                  }
+                }
+              }
+            }
+
+            > .type { /* 버튼 부분 옆에 글자 전체로 잡는 부분*/
+              margin: 15px 0 0 15rem;
+              border-top: 1px solid #ebebeb;
+              width: 580px;
+              > .receipt {
+                > .line {
+                  display: flex;
+                  flex-direction: row;
+                  table-layout: fixed;
+                  width: 100%;
+
+                  > .tit {
+                    //display: table-cell;
+                    width: 100px;
+                    padding-top: 20px;
+                    color: #222;
+                    vertical-align: top;
+
+                     > .line32 {  /*수량/금액*/
+                       line-height: 32px;
+                     }
+                  }
+
+                  > .cont{ /*버튼 전체로 잡는 부분*/
+                    overflow: hidden;
+                    //display: table-cell;
+                    width: calc(100% - 100px);
+                    padding-top: 20px;
+                    vertical-align: top;
+                    display:flex;
+                    flex-direction: row;
+
+                    > .minus{
+
+                      > .ico-minus{
+                        width: 13px;
+                        height: 13px;
+                        background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-minus.png);
+                      }
+
+                    }
+
+                    > .input-text {
+                      display: block;
+                      float: left;
+                      width: 42px;
+                      text-align: center;
+                      color: #aaa;
+                      background-color: #f7f8f9;
+                      border: 1px solid #ccc;
+                      border-width: 1px 0;
+                      outline: none;
+                    //  추가하라고 해서 한거 outline:none;
+                    }
+
+                    > .plus {
+
+                      > .fa-plus {
+                        width: 13px;
+                        height: 13px;
+                        background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-plus.png);
+                      }
+                    }
+
+
+
+                    > .btn {
+                      display: block;
+                      float: left;
+                      width: 32px;
+                      height: 32px;
+                      margin: 0;
+                      padding: 0;
+                      border: 1px solid #ccc;
+                      background-color: #fff;
+
+                    }
+
+                    > .spring {
+                      padding-left: 15rem;
+
+                      > .money {
+                        float: right;
+                        color: #351f66;
+                        line-height: 32px;
+
+                        > em{
+                          float: left;
+                          font-family: Roboto;
+                          font-weight: 500;
+                          font-size: 2em;
+                        }
+                        > span {
+                          float: left;
+                          margin-left: 3px;
+                          font-size: 1.3333em;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+
+            }
+
+            > .btn-group{
+              overflow: hidden;
+              margin: 20px 0 0 15rem;
+              padding: 20px 0 0 0;
+              border-top: 1px solid #ebebeb;
+              width: 580px;
+              text-align: center;
+
+              > .button.large{
+                height: 46px;
+                padding: 5px 0 0 0;
+              }
+
+
+              > .button{
+                float: left;
+                width: calc(50% - 5px);
+                margin: 0;
+                display: inline-block;
+                height: 36px;
+                line-height: 34px;
+                color: #503396;
+                font-weight: 400;
+                border-radius: 4px;
+                text-decoration: none;
+                border: 1px solid #503396;
+                vertical-align: middle;
+                background-color: #fff;
+                cursor: pointer;
+              }
+              > .button.purple{
+                float: right;
+                background: #503396;
+                color: #ffff;
+              }
+            }
+          }
+          border-top: 1px solid #333;
+        }
+
+        .board-move {   /* 밑에 구매 후 취소 버튼 */
+          position: relative;
+          padding: 25px 0 0 0;
+
+          > .btn {
+            display: block;
+            width: 100%;
+            padding-left: 1rem;
+            text-align: left;
+            border-radius: 0.3rem;
+            height: 40px;
+            border: 1.3px solid #d5d5d5;
+            background-color: transparent;
+
+            > i {
+              margin-left: 6px;
+              width: 12px;
+              height: 7px;
+              background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-btn-more-arr.png);
+              overflow: hidden;
+              display: inline-block;
+              padding: 0;
+              font-size: 0;
+              line-height: 0;
+              vertical-align: middle;
+              background-position: 0 0;
+              background-repeat: no-repeat;
+            }
+          }
+        }
+      }
+    }
+  }
+}

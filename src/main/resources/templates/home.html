@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MEET PLAY SHARE, 메가박스</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/home/index.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/common/common.css}">
+    <link rel="icon" th:href="@{/assets/images/common/favicon.ico}">
+    <script defer type="text/javascript" th:src="@{/assets/scripts/header.js}"></script>
+    <script defer type="text/javascript" th:src="@{/assets/scripts/common.js}"></script>
+    <script src="https://kit.fontawesome.com/d88fee1042.js" crossorigin="anonymous"></script>
+</head>
+<body style="overflow-x: hidden">
+<th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
+<main id="main">
+    <div class="main-container">
+        <div class="main-boxOffice">
+            <button class="button-buxo" type="button">박스오피스</button>
+        </div>
+        <div class="main-other-movie">
+            <a class="other-movie" href="#">더 많은 영화보기
+                <i class="fa-solid fa-plus"></i>
+            </a>
+        </div>
+        <div class="main-movie-list">
+            <div class="first-list">
+                <img class="poster"
+                     src="https://img.megabox.co.kr/SharedImg/2024/04/24/4Kukr9DeYIjfEzRWDvCNU82dwZA8XpEM_420.jpg"
+                     alt="">
+                <div class="first-list-ba">
+                    <button class="like">
+                        <i class="fa-regular fa-heart"></i>
+                        2.3k
+                    </button>
+                    <a class="main-buy-ticket" href="#">
+                        <button class="list-button">
+                            예매
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <div class="two-list">
+                <img class="poster"
+                     src="https://img.megabox.co.kr/SharedImg/2024/04/19/YnEMLm0u5cpeQchnehHVsmuTxYGpiO2g_420.jpg"
+                     alt="">
+                <div class="two-list-ba">
+                    <button class="like">
+                        <i class="fa-regular fa-heart"></i>
+                        2.3k
+                    </button>
+                    <a class="main-buy-ticket" href="#">
+                        <button class="list-button">
+                            예매
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <div class="three-list">
+                <img class="poster"
+                     src="https://img.megabox.co.kr/SharedImg/2024/05/08/cX8phxKCguMyNw84pHjLVxlc1Kn8p9mE_420.jpg"
+                     alt="">
+                <div class="three-list-ba">
+                    <button class="like">
+                        <i class="fa-regular fa-heart"></i>
+                        543
+                    </button>
+                    <a class="main-buy-ticket" href="#">
+                        <button class="list-button">
+                            예매
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <div class="four-list">
+                <img class="poster"
+                     src="https://img.megabox.co.kr/SharedImg/2024/04/24/iO4PyZtOtzlUlQWH0XYiauBPO1lnY5c7_420.jpg"
+                     alt="">
+                <div class="four-list-ba">
+                    <button class="like">
+                        <i class="fa-regular fa-heart"></i>
+                        319
+                    </button>
+                    <a class="main-buy-ticket" href="#">
+                        <button class="list-button">
+                            예매
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <form class="list-form">
+            <label class="search-label">
+                <input class="search-input" type="text" placeholder="영화명을 입력해주세요">
+                <button class="search-button">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </label>
+            <div class="list-time">
+                <a href="">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    상영시간표
+                </a>
+            </div>
+            <div class="list-boxo">
+                <a href="">
+                    <i class="fa-solid fa-film"></i>
+                    박스오피스
+                </a>
+            </div>
+            <div class="list-fast-buy">
+                <a href="">
+                    <i class="fa-solid fa-ticket"></i>
+                    빠른예매
+                </a>
+            </div>
+        </form>
+        <div class="moving-mouse">
+            <img src="https://www.megabox.co.kr/static/pc/images/common/ico/ico-mouse.png" alt="">
+        </div>
+        <div class="main-benefit-container">
+            <div class="wrap">
+                <div class="wrap-color"></div>
+                <div class="wrap-color2"></div>
+                <div class="wrap-benefit">
+                    <h2>혜택</h2>
+                    <a class="event-button-link" href="#">
+                        <img th:src="@{/assets/images/home/plusButton.png}" alt="">
+                    </a>
+                </div>
+                <div class="event-box wrap-benefit-condition">
+                    <a class="event wrap-benefit-condition-link-container">
+                        <img class="img"
+                             src="https://img.megabox.co.kr/SharedImg/BnftMng/2024/04/09/1dNBy6KM5IXppDafoWm7tsgwFrC1lcBC.jpg"
+                             alt="">
+                        <img class="img"
+                             src="https://img.megabox.co.kr/SharedImg/BnftMng/2024/04/09/1dNBy6KM5IXppDafoWm7tsgwFrC1lcBC.jpg"
+                             alt="">
+                        <img class="img"
+                             src="https://img.megabox.co.kr/SharedImg/BnftMng/2024/04/09/1dNBy6KM5IXppDafoWm7tsgwFrC1lcBC.jpg"
+                             alt="">
+                        <img class="img"
+                             src="https://img.megabox.co.kr/SharedImg/BnftMng/2024/04/09/1dNBy6KM5IXppDafoWm7tsgwFrC1lcBC.jpg"
+                             alt="">
+                        <img class="img"
+                             src="https://img.megabox.co.kr/SharedImg/BnftMng/2024/04/09/1dNBy6KM5IXppDafoWm7tsgwFrC1lcBC.jpg"
+                             alt="">
+                        <img class="img2" th:src="@{/assets/images/home/gold.jpg}" alt="">
+                        <img class="img2" th:src="@{/assets/images/home/gold.jpg}" alt="">
+                        <img class="img2" th:src="@{/assets/images/home/gold.jpg}" alt="">
+                        <img class="img2" th:src="@{/assets/images/home/gold.jpg}" alt="">
+                        <img class="img2" th:src="@{/assets/images/home/gold.jpg}" alt="">
+                    </a>
+                    <div class="swiper-bar-container"> <!-- 넘김 바-->
+                        <div class="swiper-bar-box">
+                            <span class="swiper-bar point"></span>
+                            <span class="swiper-bar"></span>
+                            <span class="swiper-bar"></span>
+                            <span class="swiper-bar"></span>
+                            <span class="swiper-bar"></span>
+                        </div>
+                        <img class="less" th:src="@{/assets/images/common/less.png}" alt="">
+                        <img class="more" th:src="@{/assets/images/common/more.png}" alt="">
+                        <img class="play" th:src="@{/assets/images/home/auto-play.png}" alt="">
+                        <img class="pause" th:src="@{/assets/images/common/pause.png}" alt="">
+                        <span class="current-page text">1 / 8</span>
+                        <!--                현재 페이지 / 전체 페이지-->
+                    </div>
+                </div>
+                <div class="wrap-banner">
+                    <div class="warp-banner-container">
+                        <div class="ad-first">
+                            <a class="link" href="#">
+                                <img class="img" th:src="@{/assets/images/home/ad1.png}" alt="">
+                            </a>
+                        </div>
+                        <div class="ad-two">
+                            <a class="link" href="">
+                                <img class="img" th:src="@{/assets/images/home/ad2.jpg}" alt="">
+                            </a>
+                        </div>
+                        <div class="ad-three">
+                            <a class="link" href="">
+                                <img class="img" th:src="@{/assets/images/home/ad3.png}" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-link">
+                    <div class="cell-vip">
+                        <a class="link" href="">
+                            <img class="img" th:src="@{/assets/images/home/cell-vip.png}" alt="">
+                        </a>
+                    </div>
+                    <div class="cell-membership">
+                        <a class="link" href="">
+                            <img class="img" th:src="@{/assets/images/home/cell-membership.png}" alt="">
+                        </a>
+                    </div>
+                    <div class="cell-card">
+                        <a class="link" href="">
+                            <img class="img" th:src="@{/assets/images/home/cell-card.png}" alt="">
+                        </a>
+                    </div>
+                    <div class="cell-event">
+                        <a class="link" href="">
+                            <img class="img" th:src="@{/assets/images/home/cell-event.png}" alt="">
+                        </a>
+                    </div>
+                    <div class="cell-store">
+                        <a class="link" href="">
+                            <img class="img" th:src="@{/assets/images/home/cell-store.png}" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="menu-link-name">
+                    <span class="span1"><a class="a1" href="">VIP LOUNGE</a></span>
+                    <span class="span2"><a class="a2" href="">멤버십</a></span>
+                    <span class="span3"><a class="a3" href="">할인카드안내</a></span>
+                    <span class="span4"><a class="a4" href="">이벤트</a></span>
+                    <span class="span5"><a class="a5" href="">스토어</a></span>
+                </div>
+            </div>
+            <!--            <div>큐레이션 여기다할까?</div>-->
+        </div>
+        <div class="information-container"> <!-- 메가박스 안내 컨테이너 -->
+            <div class="information-wrap">
+                <div class="information-title"> <!-- 메가박스 안내 제목-->
+                    <h2>메가박스 안내</h2>
+                </div>
+                <div class="information-link-button">
+                    <div class="information-box1">
+                        <a href="">
+                            <img class="gray" th:src="@{/assets/images/home/box1gray.png}" alt="">
+                            <img class="color" th:src="@{/assets/images/home/box1color.png}" alt="">
+                        </a>
+                    </div>
+                    <div class="information-box2">
+                        <a href="">
+                            <img class="gray" th:src="@{/assets/images/home/box2gray.png}" alt="">
+                            <img class="color" th:src="@{/assets/images/home/box2color.png}" alt="">
+                        </a>
+                    </div>
+                    <div class="information-box3">
+                        <a href="">
+                            <img class="gray" th:src="@{/assets/images/home/box3gray.png}" alt="">
+                            <img class="color" th:src="@{/assets/images/home/box3color.png}" alt="">
+                        </a>
+                    </div>
+                    <div class="information-box4">
+                        <a href="">
+                            <img class="gray" th:src="@{/assets/images/home/box4gray.png}" alt="">
+                            <img class="color" th:src="@{/assets/images/home/box4color.png}" alt="">
+                        </a>
+                    </div>
+                    <div class="information-box5">
+                        <a href="">
+                            <img class="gray" th:src="@{/assets/images/home/box5gray.png}" alt="">
+                            <img class="color" th:src="@{/assets/images/home/box5color.png}" alt="">
+                        </a>
+                    </div>
+                    <div class="information-box6">
+                        <a href="">
+                            <img class="gray" th:src="@{/assets/images/home/box6gray.png}" alt="">
+                            <img class="color" th:src="@{/assets/images/home/box6color.png}" alt="">
+                        </a>
+                    </div>
+                    <button class="button-left" type="button">
+                        <img th:src="@{/assets/images/home/left-button.png}" alt="">
+                    </button>
+                    <button class="button-right" type="button">
+                        <img th:src="@{/assets/images/home/right-button.png}" alt="">
+                    </button>
+                </div>
+                <div class="text-container">
+                    <div class="text">
+                        <span class="span1">지점</span>
+                        <a class="a1" href="">[김포한강신도시]</a>
+                        <a class="span3" href="">[김포한강신도시] 지하주차장 공사 안내 (5월 13일 ~ 30일, 11일간)</a>
+                        <span class="span4">2024.05.10</span>
+                        <a class="a2" href="">더보기
+                            <img th:src="@{/assets/images/home/miniplus.png}" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="user-help-container">
+                    <div class="user-help">
+                        <div class="service">
+                            <a href="">
+                                <i class="fa-solid fa-headset"></i>
+                                <span>고객센터</span>
+                            </a>
+                        </div>
+                        <div class="question">
+                            <a href="">
+                                <i class="fa-solid fa-circle-question"></i>
+                                <span>자주 묻는 질문</span>
+                            </a>
+                        </div>
+                        <div class="one-question">
+                            <a href="">
+                                <i class="fa-solid fa-comments"></i>
+                                <span>1:1 문의</span>
+                            </a>
+                        </div>
+                        <div class="together">
+                            <a href="">
+                                <i class="fa-solid fa-people-group"></i>
+                                <span>단체/대관문</span>
+                            </a>
+                        </div>
+                        <div class="forget-item">
+                            <a href="">
+                                <i class="fa-solid fa-box-open"></i>
+                                <span>분실문 문의/접수</span>
+                            </a>
+                        </div>
+                        <div class="the-beauty">
+                            <a href="">
+                                <i class="fa-solid fa-couch"></i>
+                                <span>더 부티크 프라이빗 대관예매</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="foot-ad-container">
+                    <div class="foot-ad">
+                        <a href="">
+                            <img th:src="@{/assets/images/home/footAd.jpeg}" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

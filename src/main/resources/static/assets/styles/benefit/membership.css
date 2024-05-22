@@ -1,0 +1,430 @@
+@charset "UTF-8";
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+body {
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.5;
+  margin: 0;
+  overflow: auto;
+  overflow-y: scroll;
+  font-size: 13px;
+  color: #666666;
+  font-family: NanumBarunGothic, Dotum, "돋움", sans-serif;
+}
+
+#header {
+  letter-spacing: -0.08rem;
+  background-color: #000;
+  width: 100%;
+  border-bottom: solid 0.5px #888;
+}
+#header > .left-link {
+  position: relative;
+  margin-left: 25rem;
+  top: 15px;
+  text-decoration: none;
+}
+#header > .left-link > .header-vip {
+  color: #888888;
+  font-size: 13px;
+  text-decoration-line: none;
+}
+#header > .left-link > .header-membership {
+  color: #888888;
+  font-size: 13px;
+  text-decoration-line: none;
+  margin-left: 20px;
+}
+#header > .left-link > .header-support {
+  font-size: 13px;
+  color: #888888;
+  text-decoration-line: none;
+  margin-left: 20px;
+}
+#header > .right-link {
+  position: absolute;
+  right: 25rem;
+  top: 15px;
+}
+#header > .right-link > .header-login {
+  color: #888888;
+  font-size: 13px;
+  margin-right: 20px;
+  text-decoration-line: none;
+}
+#header > .right-link > .header-register {
+  color: #888888;
+  font-size: 13px;
+  margin-right: 20px;
+  text-decoration-line: none;
+}
+#header > .right-link > .header-fast-buy {
+  color: #888888;
+  font-size: 13px;
+  text-decoration-line: none;
+}
+#header > .link-area {
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+}
+#header > .link-area > .header-main-page {
+  height: 47px;
+  display: flex;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+}
+#header > .link-area > .header-site-map {
+  color: white;
+  font-size: 1.5rem;
+  position: relative;
+  right: 20rem;
+}
+#header > .link-area > .header-search {
+  color: white;
+  font-size: 1.2rem;
+  margin-top: 0.2rem;
+  position: relative;
+  right: 18.7rem;
+}
+#header > .link-area > .header-movie {
+  text-decoration-line: none;
+  color: white;
+  position: relative;
+  right: 12.5rem;
+}
+#header > .link-area > .header-buy-ticket {
+  text-decoration-line: none;
+  color: white;
+  position: relative;
+  right: 8.5rem;
+}
+#header > .link-area > .header-cinema {
+  text-decoration-line: none;
+  color: white;
+  position: relative;
+  right: 4.7rem;
+}
+#header > .link-area > .header-main-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  left: 2rem;
+  top: -1rem;
+}
+#header > .link-area > .header-event {
+  text-decoration-line: none;
+  color: white;
+  position: relative;
+  left: 7.5rem;
+}
+#header > .link-area > .header-store {
+  text-decoration-line: none;
+  color: white;
+  position: relative;
+  left: 11.7rem;
+}
+#header > .link-area > .header-benefits {
+  text-decoration-line: none;
+  color: white;
+  position: relative;
+  left: 15.7rem;
+}
+#header > .link-area > .header-timetable > .header-timetable-img {
+  width: 2.2rem;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+  position: relative;
+  left: 20.25rem;
+}
+#header > .link-area > .header-my-megabox {
+  margin-left: 1rem;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+  position: relative;
+  left: 20.2rem;
+}
+#header > .link-area > .header-my-megabox > .header-my-megabox-img {
+  width: 1.1rem;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+}
+
+#header {
+  background-color: #ffffff;
+  color: #666666;
+}
+#header > .link-area {
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+}
+#header > .link-area > .header-site-map {
+  color: black;
+  font-size: 1.5rem;
+  position: relative;
+  right: 20rem;
+}
+#header > .link-area > .header-search {
+  color: black;
+  font-size: 1.2rem;
+  margin-top: 0.2rem;
+  position: relative;
+  right: 18.7rem;
+}
+#header > .link-area > .header-movie {
+  text-decoration-line: none;
+  color: black;
+  position: relative;
+  right: 12.5rem;
+}
+#header > .link-area > .header-buy-ticket {
+  text-decoration-line: none;
+  color: black;
+  position: relative;
+  right: 8.5rem;
+}
+#header > .link-area > .header-cinema {
+  text-decoration-line: none;
+  color: black;
+  position: relative;
+  right: 4.7rem;
+}
+#header > .link-area > .header-main-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  left: 2rem;
+  top: -1rem;
+}
+#header > .link-area > .header-event {
+  text-decoration-line: none;
+  color: black;
+  position: relative;
+  left: 7.5rem;
+}
+#header > .link-area > .header-store {
+  text-decoration-line: none;
+  color: black;
+  position: relative;
+  left: 11.7rem;
+}
+#header > .link-area > .header-benefits {
+  text-decoration-line: none;
+  color: black;
+  position: relative;
+  left: 15.7rem;
+}
+#header > .link-area > .header-timetable > .header-timetable-img {
+  width: 2.2rem;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+  position: relative;
+  left: 20.25rem;
+}
+#header > .link-area > .header-my-megabox {
+  margin-left: 1rem;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+  position: relative;
+  left: 20.2rem;
+}
+#header > .link-area > .header-my-megabox > .header-my-megabox-img {
+  width: 1.1rem;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+}
+
+#main {
+  padding-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+#main > * {
+  width: 1100px;
+  margin: 0 25.1rem 0 25.1rem;
+}
+#main > .title2 {
+  font-size: 1.75rem;
+  font-weight: 500;
+  padding-bottom: 1.6rem;
+  line-height: 1.1;
+  letter-spacing: 0;
+  color: #222222;
+}
+#main > nav > .tab {
+  display: flex;
+  flex-direction: row;
+}
+#main > nav > .tab > .item {
+  border: 0.06rem solid #ebebeb;
+  border-bottom-color: #503396;
+  width: calc(100% - 2.4rem);
+  height: 2.56rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#main > nav > .tab > .item.on {
+  border-color: #503396;
+  border-bottom: none;
+}
+#main > nav > .tab > .item.on .link {
+  color: #503396;
+}
+#main > nav > .tab > .item > .link {
+  font-size: 1.0175rem;
+  letter-spacing: 0;
+  font-weight: 400;
+  line-height: 2.5rem;
+  color: #222;
+}
+#main > .introduction {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 4.375rem;
+  padding-bottom: 1.25rem;
+  color: #503396;
+}
+#main > .introduction > .text1 {
+  font-weight: 300;
+  font-size: 4.375rem;
+  line-height: 3.9375rem;
+}
+#main > .introduction > .text2 {
+  font-weight: 600;
+  font-size: 4.375rem;
+  line-height: 3.9375rem;
+  padding-bottom: 1.125rem;
+}
+#main > .introduction > .text3 {
+  font-size: 1.15rem;
+  padding-bottom: 1rem;
+}
+#main > .introduction > img {
+  width: 20.25rem;
+  height: 13.255rem;
+}
+#main > .introduction + .title3 {
+  padding-top: 1.875rem;
+}
+#main > .guide-benefit-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+#main > .guide-benefit-box > .guide-benefit {
+  height: 13.125rem;
+  padding: 1.8rem 3rem 2rem 3.2rem;
+  box-sizing: border-box;
+  box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 0.625rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 1.75rem;
+}
+#main > .guide-benefit-box > .guide-benefit > img {
+  width: 6.875rem;
+  height: 6.875rem;
+  margin-left: 0.35rem;
+}
+#main > .guide-benefit-box > .guide-benefit > .text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+#main > .guide-benefit-box > .guide-benefit > .text-container > .title4 {
+  font-size: 1.1725rem;
+  font-weight: 500;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+#main > .guide-benefit-box > .guide-benefit > .text-container > .text-box {
+  margin-bottom: 1.5rem;
+  font-size: 0.9625rem;
+  font-weight: 400;
+  line-height: 1.2rem;
+}
+#main > .guide-benefit-box > .guide-benefit > .text-container > .button {
+  padding: 0.6rem 0.9rem;
+}
+#main > .guide-benefit-box > .guide-benefit > .text-container > .button.purple {
+  color: #ffffff;
+  border-radius: 0.25rem;
+  background-color: #503396;
+  display: inline;
+}
+#main > .guide-benefit-box > .guide-benefit > .text-container > .button.purple:hover {
+  background-color: #351f67;
+}
+#main > .table-box > table {
+  width: 100%;
+}
+#main > .table-box > table > thead > tr > th {
+  background-color: #fcfcfc;
+  font-weight: 600;
+  height: 2.8rem;
+}
+#main > .table-box > table > thead > tr > th.one {
+  width: 22.7%;
+}
+#main > .table-box > table > thead > tr > th.two {
+  width: 22.7%;
+}
+#main > .table-box > table > tbody > tr th {
+  font-weight: 400;
+}
+#main > .table-box > table > tbody > tr td {
+  height: 3.7rem;
+}
+#main > dl {
+  padding-top: 0.65rem;
+  line-height: 1.5rem;
+  color: #444;
+}
+#main > dl > dt {
+  padding-left: 0.5rem;
+  position: relative;
+}
+#main > dl > dt::before {
+  position: absolute;
+  top: 9px;
+  left: 0;
+  width: 3px;
+  height: 3px;
+  border-radius: 3px;
+  background-color: #444;
+  content: "";
+}
+#main > dl > dd {
+  padding-left: 0.5rem;
+}
+#main > dl > dd.caution {
+  color: #777;
+}
+#main .title3 {
+  font-size: 1.28rem;
+  font-weight: 400;
+  color: #503396;
+  padding-top: 2.5rem;
+  padding-bottom: 1.2rem;
+  line-height: 1.3rem;
+}
+#main .title4 {
+  font-size: 1.125rem;
+  margin-top: 1.25rem;
+}
+
+dl, dt, dd {
+  margin: 0;
+  padding: 0;
+}
+
+/*# sourceMappingURL=membership.css.map */

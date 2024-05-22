@@ -1,0 +1,377 @@
+@charset "UTF-8";
+@import "../common/header";
+@import "../common/common.notHome";
+
+
+html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.5;
+  margin: 0;
+  overflow: auto;
+  overflow-y: scroll;
+  font-size: 15px;
+  color: #444;
+  font-family: NanumBarunGothic, Dotum, '돋움', sans-serif;
+  background-color: #f5f5f5;
+
+  * {
+    box-sizing: border-box;
+  }
+
+
+  > .body-wrap {
+    width: 100%;
+    height: 100%;
+
+    > .member-wrap {
+      width: 710px;
+      min-height: 100%;
+      margin: 0 auto;
+      padding: 80px 100px;
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+
+
+      > .h1 {
+        overflow: hidden;
+        display: block;
+        margin: 0;
+        padding: 0 0 70px 0;
+      }
+
+      > .col-wrap {
+        overflow: hidden;
+
+        > .col {
+          display: block;
+
+          > .step-member {
+            overflow: hidden;
+            position: relative;
+            margin: 0 0 40px 0;
+            padding: 0;
+
+            > ol {
+              list-style-type: none;
+              margin: 0;
+              padding: 0;
+              display: flex;
+              flex-direction: row;
+              justify-content: flex-start;
+              border-bottom: 1px solid #888;
+              color: #888;
+              padding-left: 25px;
+
+              > li:first-child {
+                margin-left: 0;
+              }
+
+              > li {
+                float: left;
+                margin: 0 0 0 46px;
+                //margin-left: 0;
+                padding: 0;
+                text-align: center;
+                font-size: 0.9333em;
+
+                > .step.on {
+                  border-bottom: 2px solid #503396;
+                  color: #503396;
+                }
+              }
+            }
+          }
+
+          > .page-info-txt {
+            padding: 0 0 20px 0;
+            line-height: 1.1;
+
+            > strong {
+              display: block;
+              padding: 0 0 10px 0;
+              font-size: 1.4666em;
+              color: #222;
+              font-weight: 400;
+            }
+            > span {
+              display: block;
+            }
+          }
+
+          > .member-rule-agree {
+            display: block;
+
+            > .all-check {
+              margin: 0;
+              padding: 0 0 15px 0;
+              font-size: 1.2em;
+              color: #222;
+              border-bottom: 1px solid #ebebeb;
+
+              > #checkAll {
+                width: 16px;
+                height: 16px;
+                vertical-align: middle;
+              }
+              > label {
+                display: inline-block;
+                vertical-align: middle;
+                cursor: pointer;
+              }
+            }
+
+            > .block {
+              padding: 30px 0 0 0;
+
+              > .check {
+                margin: 0;
+                padding: 0 0 15px 0;
+
+                > #checkUtilClau {
+                  width: 16px;
+                  height: 16px;
+                  vertical-align: middle;
+                }
+                > .must {
+                 color: #503396;
+                }
+                > label {
+                  display: inline-block;
+                  vertical-align: middle;
+                  cursor: pointer;
+                }
+              }
+
+              > .scroll {
+                overflow: hidden;
+                overflow-y: scroll;
+                height: 130px;
+                padding: 20px;
+                border: 1px solid #d8d9db;
+                font-size: 14px !important;
+              }
+            }
+
+            > .block {
+              padding: 30px 0 0 0;
+
+              > .block2 {
+                padding: 30px 0 0 0;
+
+                > .chk {
+                  margin: 0;
+                  padding: 0 0 15px 0;
+
+                  > input {
+                    margin: 0;
+                    font-family: inherit;
+                    font-size: 1em;
+                    line-height: 1.15;
+                  }
+
+                  > #chkPersonInfo {
+                    width: 16px;
+                    height: 16px;
+                    vertical-align: middle;
+
+                    box-sizing: border-box;
+                    padding: 0;
+                  }
+
+                  > label {
+                    display: inline-block;
+                    vertical-align: middle;
+                    cursor: pointer;
+                  }
+
+                  > .must {
+                    color: #503396;
+                  }
+                }
+
+                > .scroll {
+                  overflow: hidden;
+                  overflow-y: scroll;
+                  height: 130px;
+                  padding: 20px;
+                  border: 1px solid #d8d9db;
+                  font-size: 14px !important;
+                }
+              }
+
+
+              > .block4 {
+                padding: 30px 0 0 0;
+
+                > .chk {
+                  margin: 0;
+                  padding: 0 0 15px 0;
+
+                  > #chkMarketInfo {
+                    width: 16px;
+                    height: 16px;
+                    vertical-align: middle;
+                  }
+
+                  > label {
+                    display: inline-block;
+                    vertical-align: middle;
+                    cursor: pointer;
+
+                  }
+                }
+
+                > .scroll {
+                  overflow: hidden;
+                  overflow-y: scroll;
+                  height: 130px;
+                  padding: 20px;
+                  border: 1px solid #d8d9db;
+                  font-size: 14px !important;
+                }
+              }
+
+              > .block5 {
+                padding: 30px 0 0 0;
+
+                > .chk {
+                  margin: 0;
+                  padding: 0 0 15px 0;
+
+                  > #chkLcinfoInfo {
+                    width: 16px;
+                    height: 16px;
+                    vertical-align: middle;
+                  }
+
+                  > label {
+                    display: inline-block;
+                    vertical-align: middle;
+                    cursor: pointer;
+
+                  }
+                }
+
+                > .scroll {
+                  overflow: hidden;
+                  overflow-y: scroll;
+                  height: 130px;
+                  padding: 20px;
+                  border: 1px solid #d8d9db;
+                  font-size: 14px !important;
+                }
+              }
+            }
+          }
+
+          > .button-member-bottom {
+            padding: 40px 0 0 0;
+            text-align: center;
+
+            > .large {
+              line-height: 46px;
+            }
+
+            > .purple {
+              border: 0;
+              color: #fff;
+              background: #503396;
+            }
+
+            > .button {
+              display: inline-block;
+              margin: 0;
+              text-align: center;
+              border-radius: 4px;
+              font-family: NanumBarunGothic, Dotum, '돋움', sans-serif;
+              vertical-align: middle;
+              text-decoration: none;
+              width: 200px;
+              color: #fff;
+              //padding: 5px;
+              padding: 0;
+              font-size: 20px;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.step {
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  padding: 0 0 15px 0;
+  font-size: 0.9333em;
+  letter-spacing: 0;
+
+}
+
+em {
+  font-style: normal;
+}
+
+dl {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  unicode-bidi: isolate;
+  margin: 0;
+  padding: 0;
+}
+
+dt {
+  margin: 0;
+  padding: 0;
+}
+
+dd {
+  margin: 0;
+  padding: 0;
+}
+
+.block {
+  padding: 30px 0 0 0;
+
+  > .chk {
+    margin: 0;
+    padding: 0 0 15px 0;
+
+    > .must {
+      color: #503396;
+    }
+    > label {
+      display: inline-block;
+      vertical-align: middle;
+      cursor: pointer;
+    }
+  }
+
+  > .scroll {
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 130px;
+    padding: 20px;
+    border: 1px solid #d8d9db;
+    font-size: 14px !important;
+  }
+}
+

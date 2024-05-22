@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>헤더</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/common/header.css}">
+</head>
+<body>
+<header id="header" th:fragment="header">
+    <div class="left-link">
+        <a class="header-vip" href="../benefit/vipLounge" target="_self" rel="vipLoungeLink">VIP LOUNGE</a>
+        <a class="header-membership" href="/benefit/membership" target="_self" rel="membershipLink">멤버십</a>
+        <a class="header-support" href="#" target="_self">고객센터</a>
+    </div>
+    <div class="right-link">
+        <a class="header-login" href="#" rel="showLogin">로그인</a>
+        <a class="header-register" th:href="@{/register/register}" rel="showRegister">회원가입</a>
+        <a class="header-fast-buy" href="../booking/reserve" rel="reserveLink">빠른예매</a>
+    </div>
+    <div class="link-area">
+        <a class="header-site-map" href="#" title="사이트맵">
+            <i class="fa-solid fa-bars"></i>
+        </a>
+        <a class="header-search" href="#" title="검색">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </a>
+        <a class="header-movie" href="../movie/allMovie" rel="movieLink">영화</a>
+        <a class="header-buy-ticket" href="../booking/reserve" rel="reserveLink">예매</a>
+        <a class="header-cinema" href="../theater/list" rel="theaterLink">극장</a>
+        <a class="header-main-page" href="../home">
+            <h1>
+                <img src="https://img.megabox.co.kr/static/pc/images/common/ci/logo_new2.png" alt="">
+            </h1>
+        </a>
+        <a class="header-event" href="../event/proceedingEvent" rel="eventLink">이벤트</a>
+        <a class="header-store" href="../store">스토어</a>
+        <a class="header-benefits" href="../benefit/membership" rel="membershipLink">혜택</a>
+        <a class="header-timetable" href="#" title="상영시간표">
+            <img class="header-timetable-img" src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-schedule.png" alt="">
+        </a>
+        <a class="header-my-megabox" href="#" title="나의 메가박스">
+            <img class="header-my-megabox-img" src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-mymega-white.png" alt="">
+        </a>
+    </div>
+</header>
+</body>
+</html>

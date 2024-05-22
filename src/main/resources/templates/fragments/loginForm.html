@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<form class="login" id="loginForm" th:fragment="loginForm">
+    <div class="title-bar">
+        <h3 class="__title">로그인</h3>
+        <div class="spring"></div>
+        <button type="button" rel="loginCancel"></button>
+    </div>
+    <div class="content">
+        <div class="forLogin">
+            <label class="_obj-label" rel="emailLabel">
+                <input required autocomplete="email" class="_obj-input __field" title="이메일" maxlength="50" minlength="5"
+                       name="email"
+                       placeholder="이메일" spellcheck="false" type="email" >
+                <!--        th:attrappend="data-regex=${userRegex.email.expression}"-->
+            </label>
+            <label class="_obj-label" rel="passwordLabel">
+                <input required autocomplete="current-password" class="_obj-input __field" title="비밀번호" maxlength="50"
+                       minlength="5"
+                       name="password" placeholder="비밀번호" spellcheck="false"
+                       type="password" >
+                <!--         th:attrappend="data-regex=${userRegex.password.expression}"-->
+            </label>
+            <!--        틀렸을 때 띄울 알림-->
+            <div class="alert"></div>
+            <!--        이거 할까말까 고민중...-->
+            <label class="_obj-check-label">
+                <input name="remember" type="checkbox">
+                <span class="__box"></span>
+                <span class="__text">아이디 저장</span>
+            </label>
+            <button class="_obj-button" type="submit" disabled>
+                <span class="__text">로그인</span>
+            </button>
+            <ul class="menu">
+                <li class="item">
+                    <a class="link" href="#">ID/PW 찾기</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="#">회원가입</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="#">비회원 예매확인</a>
+                </li>
+            </ul>
+            <div class="sns-login">
+                <!-- <a href="javaScript:void(0)" lnkgTy="FACEBOOK" title="페이스북으로 로그인 선택"><img src="../../../static/pc/images/member/ico-facebook.png"  alt="페이스북">페이스북으로 로그인</a>-->
+                <a href="javaScript:void(0)" lnkgty="NAVER" title="네이버로 로그인 선택">
+                    <img src="/assets/images/login/naver.png" alt="네이버">
+                </a>
+                <a href="javaScript:void(0)" lnkgty="KAKAO" title="카카오톡으로 로그인 선택">
+                    <img src="/assets/images/login/kakao.png" alt="카카오톡">
+                </a>
+                <a href="javaScript:void(0)" lnkgty="PAYCO" title="페이코로 로그인 선택">
+                    <img src="/assets/images/login/payco.png" alt="페이코">
+                </a>
+            </div>
+        </div>
+        <div class="spring"></div>
+        <div class="ad-box">
+            <img src="/assets/images/common/favicon.ico" alt="">
+        </div>
+    </div>
+</form>
+</html>

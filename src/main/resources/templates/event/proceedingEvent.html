@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>진행중인 이벤트</title>
+    <link rel="stylesheet" href="">
+    <script src="https://kit.fontawesome.com/dc541573c0.js" crossorigin="anonymous"></script>
+    <link rel="icon" th:href="@{/assets/images/common/favicon.ico}">
+    <link rel="stylesheet" th:href="@{/assets/styles/event/proceedingEvent.css}">
+    <link rel="stylesheet" th:href="@{/assets/styles/common/common.css}">
+    <script defer th:src="@{/assets/scripts/header.js}"></script>
+    <script defer th:src="@{/assets/scripts/common.js}"></script>
+</head>
+<body>
+<th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
+
+<form>
+    <div id="container">
+        <h2 class="tit">진행중인 이벤트</h2>
+        <nav class="tab-list">
+            <ul class="topMenu">
+                <li class="on">
+                    <a class="a" href="/movie">메가Pick</a>
+                </li>
+                <li class="on">
+                    <a class="a" href="/movie">영화</a>
+                </li>
+                <li class="on">
+                    <a class="a" href="/movie">극장</a>
+                </li>
+                <li class="on">
+                    <a class="a" href="/movie">제휴/할인</a>
+                </li>
+                <li class="on">
+                    <a class="a" href="/movie">시사회/무대인사</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="AffiliateEvent">
+            <div class="title-bar">
+                <span>추천 이벤트 </span>
+                <div class="spring"></div>
+                <div class="swiper-bar-container">
+                    <div class="swiper-bar-box">
+                        <span class="swiper-bar"></span>
+                        <span class="swiper-bar"></span>
+                        <span class="swiper-bar"></span>
+                        <span class="swiper-bar"></span>
+                        <span class="swiper-bar"></span>
+                        <span class="swiper-bar"></span>
+                        <span class="swiper-bar"></span>
+                        <span class="swiper-bar"></span>
+                    </div>
+                    <img class="less" src="/assets/images/common/less.png" alt="">
+                    <img class="more" th:src="@{/assets/images/common/more.png}" alt="">
+                    <img class="play" th:src="@{/assets/images/common/play.png}" alt="">
+                    <img class="pause" th:src="@{/assets/images/common/pause.png}"/>
+                    <span class="current-page text">1 / 8</span>
+                    <!--                현재 페이지 / 전체 페이지-->
+                </div>
+            </div>
+            <div class="event-box">
+                <a href="#" class="event">
+                    <img src="https://img.megabox.co.kr/SharedImg/event/2023/08/30/KpW5X2KPkHXO19gdVvbpfwM3rJNkCYLr.jpg"
+                         alt="[톡학생증 x  메가박스] 톡학생증 발급받고 톡똑한 영화관람!">
+                    <div class="text-box">
+                        <span class="text">[프로모션][굿즈] &lt;가필드 더 무비&gt; 콤보 론칭</span>
+                        <div class="spring"></div>
+                        <span class="duration">2024.05.13~2024.05.31</span>
+                    </div>
+                </a>
+                <a href="#" class="event">
+                    <img src="https://img.megabox.co.kr/SharedImg/event/2024/04/12/qfioOXyBqkT6vw3KervMYAgsb7zOzeOu.jpg"
+                         alt="[신한카드] 신한 Deep Dream 이용하고 혜택받자!">
+                    <div class="text-box">
+                        <span class="text">[프로모션][굿즈] &lt;극장판하이큐!! 쓰레기장의 결전&gt; 콤보 론칭</span>
+                        <div class="spring"></div>
+                        <span class="duration">2024.05.15~2024.06.30</span>
+                    </div>
+                </a>
+                <a href="#" class="event">
+                    <img src="" alt="" class="temp">
+                    <div class="text-box">
+                        <span class="text">&lt;가필드 더 무비&gt; 굿즈패키지 런칭</span>
+                        <div class="spring"></div>
+                        <span class="duration">2024.05.11~2024.05.31</span>
+                    </div>
+                </a>
+                <a href="#" class="event">
+                    <img src="" alt="" class="temp">
+                    <div class="text-box">
+                        <span class="text">메가박스 오리지널 티켓 Re.24 &lt;쇼생크 탈출&gt;</span>
+                        <div class="spring"></div>
+                        <span class="duration">2024.05.07~2024.06.07</span>
+                    </div>
+                </a>
+                <a href="#" class="event">
+                    <img src="" alt="" class="temp">
+                    <div class="text-box">
+                        <span class="text">&lt;혹성탈출:새로운 시대&gt; 굿즈패키지 런칭</span>
+                        <div class="spring"></div>
+                        <span class="duration">2024.05.02~2024.05.31</span>
+                    </div>
+                </a>
+                <a href="#" class="event">
+                    <img src="" alt="" class="temp">
+                    <div class="text-box">
+                        <span class="text">메가박스 오리지널 티켓 No.109 &lt;범죄도시4&gt;</span>
+                        <div class="spring"></div>
+                        <span class="duration">2024.04.24~2024.05.24</span>
+                    </div>
+                </a>
+                <a href="#" class="event">
+                    <img src="" alt="" class="temp">
+                    <div class="text-box">
+                        <span class="text">4월에는 시리즈4 영화 필관하자!</span>
+                        <div class="spring"></div>
+                        <span class="duration">2024.04.10~2024.05.19</span>
+                    </div>
+                </a>
+                <a href="#" class="event">
+                    <img src="" alt="" class="temp">
+                    <div class="text-box">
+                        <span class="text">메가박스 오리지널 티켓 No.108 &lt;골드핑거&gt;</span>
+                        <div class="spring"></div>
+                        <span class="duration">2024.04.13~2024.05.12</span>
+                    </div>
+                </a>
+            </div>
+            <button class="left swiper" type="button"></button>
+            <button class="right swiper" type="button"></button>
+        </div>
+        <div class="tit-util mt70">
+            <div class="right">
+                <h3 class="tit">메가Pick</h3>
+                <div class="spring"></div>
+                <a href="" title="더보기">더보기
+                    <i class="fa-solid fa-chevron-right" style="color: #c2c2c2;"></i></a>
+            </div>
+        </div>
+        <div class="movie-list-util">
+        </div>
+        <div class="movie-list m15">
+            <ul class="list">
+                <li class="img">
+                    <div class="movie-list-info">
+                        <p class="rank"></p>
+                        <img src="https://img.megabox.co.kr/SharedImg/event/2024/05/09/x4Q2ytFOusJ8Ux3uHoMh610IBVyGdRPc.jpg"
+                             alt="[프로모션][굿즈]<극장판하이큐!! 쓰레기장의 결전> 콤보 론칭">
+                    </div>
+                    <!--제목 -->
+                    <div class="tit-area">
+                        <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
+                            [프로모션][굿즈] &lt;극장판하이큐!! 쓰레기장의 결전&gt; 콤보 론칭
+                        </p>
+                    </div>
+                    <div class="rate-date">
+                        <span class="rate">2024.05.15~ 2024.06.30</span>
+                    </div>
+                </li>
+                <li class="img">
+                    <div class="movie-list-info">
+                        <p class="rank"></p>
+                        <img src="https://img.megabox.co.kr/SharedImg/event/2024/05/09/x4Q2ytFOusJ8Ux3uHoMh610IBVyGdRPc.jpg"
+                             alt="[프로모션][굿즈] <극장판하이큐!! 쓰레기장의 결전> 콤보 론칭">
+                    </div>
+                    <!--제목 -->
+                    <div class="tit-area">
+                        <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
+                            [프로모션][굿즈] &lt;극장판하이큐!! 쓰레기장의 결전&gt; 콤보 론칭
+                        </p>
+                    </div>
+                    <div class="rate-date">
+                        <span class="rate">2024.05.15~ 2024.06.30</span>
+                    </div>
+                </li>
+                <li class="img">
+                    <div class="movie-list-info">
+                        <p class="rank"></p>
+                        <img src="https://img.megabox.co.kr/SharedImg/event/2024/05/09/x4Q2ytFOusJ8Ux3uHoMh610IBVyGdRPc.jpg"
+                             alt="[프로모션][굿즈] <극장판하이큐!! 쓰레기장의 결전> 콤보 론칭">
+                    </div>
+                    <!--제목 -->
+                    <div class="tit-area">
+                        <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
+                            [프로모션][굿즈] &lt;극장판하이큐!! 쓰레기장의 결전&gt; 콤보 론칭
+                        </p>
+                    </div>
+                    <div class="rate-date">
+                        <span class="rate">2024.05.15~ 2024.06.30</span>
+                    </div>
+                </li>
+                <li class="img">
+                    <div class="movie-list-info">
+                        <p class="rank"></p>
+                        <img src="https://img.megabox.co.kr/SharedImg/event/2024/05/09/x4Q2ytFOusJ8Ux3uHoMh610IBVyGdRPc.jpg"
+                             alt="[프로모션][굿즈] <극장판하이큐!! 쓰레기장의 결전> 콤보 론칭">
+                    </div>
+                    <!--제목 -->
+                    <div class="tit-area">
+                        <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
+                            [프로모션][굿즈] &lt;극장판하이큐!! 쓰레기장의 결전&gt; 콤보 론칭
+                        </p>
+                    </div>
+                    <div class="rate-date">
+                        <span class="rate">2024.05.15~ 2024.06.30</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="tit-util mt70">
+            <div class="right">
+                <h3 class="tit">영화</h3>
+                <div class="spring"></div>
+                <a href="" title="더보기">더보기
+                    <i class="fa-solid fa-chevron-right" style="color: #c2c2c2;"></i></a>
+            </div>
+        </div>
+        <div class="movie-list-util">
+        </div>
+        <div class="movie-list m15">
+            <ul class="list">
+                <li class="img">
+                    <div class="movie-list-info">
+                        <p class="rank"></p>
+                        <img src="https://img.megabox.co.kr/SharedImg/event/2024/05/09/x4Q2ytFOusJ8Ux3uHoMh610IBVyGdRPc.jpg"
+                             alt="[프로모션][굿즈]<극장판하이큐!! 쓰레기장의 결전> 콤보 론칭">
+                    </div>
+                    <!--제목 -->
+                    <div class="tit-area">
+                        <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
+                            [프로모션][굿즈] &lt;극장판하이큐!! 쓰레기장의 결전&gt; 콤보 론칭
+                        </p>
+                    </div>
+                    <div class="rate-date">
+                        <span class="rate">2024.05.15~ 2024.06.30</span>
+                    </div>
+                </li>
+                <li class="img">
+                    <div class="movie-list-info">
+                        <p class="rank"></p>
+                        <img src="https://img.megabox.co.kr/SharedImg/event/2024/05/09/x4Q2ytFOusJ8Ux3uHoMh610IBVyGdRPc.jpg"
+                             alt="[프로모션][굿즈] <극장판하이큐!! 쓰레기장의 결전> 콤보 론칭">
+                    </div>
+                    <!--제목 -->
+                    <div class="tit-area">
+                        <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
+                            [프로모션][굿즈] &lt;극장판하이큐!! 쓰레기장의 결전&gt; 콤보 론칭
+                        </p>
+                    </div>
+                    <div class="rate-date">
+                        <span class="rate">2024.05.15~ 2024.06.30</span>
+                    </div>
+                </li>
+                <li class="img">
+                    <div class="movie-list-info">
+                        <p class="rank"></p>
+                        <img src="https://img.megabox.co.kr/SharedImg/event/2024/05/09/x4Q2ytFOusJ8Ux3uHoMh610IBVyGdRPc.jpg"
+                             alt="[프로모션][굿즈] <극장판하이큐!! 쓰레기장의 결전> 콤보 론칭">
+                    </div>
+                    <!--제목 -->
+                    <div class="tit-area">
+                        <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
+                            [프로모션][굿즈] &lt;극장판하이큐!! 쓰레기장의 결전&gt; 콤보 론칭
+                        </p>
+                    </div>
+                    <div class="rate-date">
+                        <span class="rate">2024.05.15~ 2024.06.30</span>
+                    </div>
+                </li>
+                <li class="img">
+                    <div class="movie-list-info">
+                        <p class="rank"></p>
+                        <img src="https://img.megabox.co.kr/SharedImg/event/2024/05/09/x4Q2ytFOusJ8Ux3uHoMh610IBVyGdRPc.jpg"
+                             alt="[프로모션][굿즈] <극장판하이큐!! 쓰레기장의 결전> 콤보 론칭">
+                    </div>
+                    <!--제목 -->
+                    <div class="tit-area">
+                        <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
+                            [프로모션][굿즈] &lt;극장판하이큐!! 쓰레기장의 결전&gt; 콤보 론칭
+                        </p>
+                    </div>
+                    <div class="rate-date">
+                        <span class="rate">2024.05.15~ 2024.06.30</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="tit-util mt70">
+            <div class="right">
+                <h3 class="tit">극장</h3>
+                <div class="spring"></div>
+                <a href="" title="더보기">더보기
+                    <i class="fa-solid fa-chevron-right" style="color: #c2c2c2;"></i></a>
+            </div>
+        </div>
+        <div class="movie-list-util">
+        </div>
+        <div class="movie-list m15">
+            <ul class="list">
+                <li class="img">
+                    <div class="movie-list-info">
+                        <p class="rank"></p>
+                        <img src="https://img.megabox.co.kr/SharedImg/event/2024/05/09/x4Q2ytFOusJ8Ux3uHoMh610IBVyGdRPc.jpg"
+                             alt="[프로모션][굿즈]<극장판하이큐!! 쓰레기장의 결전> 콤보 론칭">
+                    </div>
+                    <!--제목 -->
+                    <div class="tit-area">
+                        <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
+                            [프로모션][굿즈] &lt;극장판하이큐!! 쓰레기장의 결전&gt; 콤보 론칭
+                        </p>
+                    </div>
+                    <div class="rate-date">
+                        <span class="rate">2024.05.15~ 2024.06.30</span>
+                    </div>
+                </li>
+                <li class="img">
+                    <div class="movie-list-info">
+                        <p class="rank"></p>
+                        <img src="https://img.megabox.co.kr/SharedImg/event/2024/05/09/x4Q2ytFOusJ8Ux3uHoMh610IBVyGdRPc.jpg"
+                             alt="[프로모션][굿즈] <극장판하이큐!! 쓰레기장의 결전> 콤보 론칭">
+                    </div>
+                    <!--제목 -->
+                    <div class="tit-area">
+                        <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
+                            [프로모션][굿즈] &lt;극장판하이큐!! 쓰레기장의 결전&gt; 콤보 론칭
+                        </p>
+                    </div>
+                    <div class="rate-date">
+                        <span class="rate">2024.05.15~ 2024.06.30</span>
+                    </div>
+                </li>
+                <li class="img">
+                    <div class="movie-list-info">
+                        <p class="rank"></p>
+                        <img src="https://img.megabox.co.kr/SharedImg/event/2024/05/09/x4Q2ytFOusJ8Ux3uHoMh610IBVyGdRPc.jpg"
+                             alt="[프로모션][굿즈] <극장판하이큐!! 쓰레기장의 결전> 콤보 론칭">
+                    </div>
+                    <!--제목 -->
+                    <div class="tit-area">
+                        <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
+                            [프로모션][굿즈] &lt;극장판하이큐!! 쓰레기장의 결전&gt; 콤보 론칭
+                        </p>
+                    </div>
+                    <div class="rate-date">
+                        <span class="rate">2024.05.15~ 2024.06.30</span>
+                    </div>
+                </li>
+                <li class="img">
+                    <div class="movie-list-info">
+                        <p class="rank"></p>
+                        <img src="https://img.megabox.co.kr/SharedImg/event/2024/05/09/x4Q2ytFOusJ8Ux3uHoMh610IBVyGdRPc.jpg"
+                             alt="[프로모션][굿즈] <극장판하이큐!! 쓰레기장의 결전> 콤보 론칭">
+                    </div>
+                    <!--제목 -->
+                    <div class="tit-area">
+                        <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
+                            [프로모션][굿즈] &lt;극장판하이큐!! 쓰레기장의 결전&gt; 콤보 론칭
+                        </p>
+                    </div>
+                    <div class="rate-date">
+                        <span class="rate">2024.05.15~ 2024.06.30</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="tit-util mt70">
+            <div class="right">
+                <h3 class="tit">제휴/할인</h3>
+                <div class="spring"></div>
+                <a href="" title="더보기">더보기
+                    <i class="fa-solid fa-chevron-right" style="color: #c2c2c2;"></i></a>
+            </div>
+        </div>
+        <div class="movie-list-util">
+        </div>
+        <div class="movie-list m15">
+            <ul class="list">
+                <li class="img">
+                    <div class="movie-list-info">
+                        <p class="rank"></p>
+                        <img src="https://img.megabox.co.kr/SharedImg/event/2024/05/09/x4Q2ytFOusJ8Ux3uHoMh610IBVyGdRPc.jpg"
+                             alt="[프로모션][굿즈]<극장판하이큐!! 쓰레기장의 결전> 콤보 론칭">
+                    </div>
+                    <!--제목 -->
+                    <div class="tit-area">
+                        <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
+                            [프로모션][굿즈] &lt;극장판하이큐!! 쓰레기장의 결전&gt; 콤보 론칭
+                        </p>
+                    </div>
+                    <div class="rate-date">
+                        <span class="rate">2024.05.15~ 2024.06.30</span>
+                    </div>
+                </li>
+                <li class="img">
+                    <div class="movie-list-info">
+                        <p class="rank"></p>
+                        <img src="https://img.megabox.co.kr/SharedImg/event/2024/05/09/x4Q2ytFOusJ8Ux3uHoMh610IBVyGdRPc.jpg"
+                             alt="[프로모션][굿즈] <극장판하이큐!! 쓰레기장의 결전> 콤보 론칭">
+                    </div>
+                    <!--제목 -->
+                    <div class="tit-area">
+                        <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
+                            [프로모션][굿즈] &lt;극장판하이큐!! 쓰레기장의 결전&gt; 콤보 론칭
+                        </p>
+                    </div>
+                    <div class="rate-date">
+                        <span class="rate">2024.05.15~ 2024.06.30</span>
+                    </div>
+                </li>
+                <li class="img">
+                    <div class="movie-list-info">
+                        <p class="rank"></p>
+                        <img src="https://img.megabox.co.kr/SharedImg/event/2024/05/09/x4Q2ytFOusJ8Ux3uHoMh610IBVyGdRPc.jpg"
+                             alt="[프로모션][굿즈] <극장판하이큐!! 쓰레기장의 결전> 콤보 론칭">
+                    </div>
+                    <!--제목 -->
+                    <div class="tit-area">
+                        <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
+                            [프로모션][굿즈] &lt;극장판하이큐!! 쓰레기장의 결전&gt; 콤보 론칭
+                        </p>
+                    </div>
+                    <div class="rate-date">
+                        <span class="rate">2024.05.15~ 2024.06.30</span>
+                    </div>
+                </li>
+                <li class="img">
+                    <div class="movie-list-info">
+                        <p class="rank"></p>
+                        <img src="https://img.megabox.co.kr/SharedImg/event/2024/05/09/x4Q2ytFOusJ8Ux3uHoMh610IBVyGdRPc.jpg"
+                             alt="[프로모션][굿즈] <극장판하이큐!! 쓰레기장의 결전> 콤보 론칭">
+                    </div>
+                    <!--제목 -->
+                    <div class="tit-area">
+                        <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
+                            [프로모션][굿즈] &lt;극장판하이큐!! 쓰레기장의 결전&gt; 콤보 론칭
+                        </p>
+                    </div>
+                    <div class="rate-date">
+                        <span class="rate">2024.05.15~ 2024.06.30</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="tit-util mt70">
+            <div class="right">
+                <h3 class="tit">시사회/무대인사</h3>
+                <div class="spring"></div>
+                <a href="" title="더보기">더보기
+                    <i class="fa-solid fa-chevron-right" style="color: #c2c2c2;"></i></a>
+            </div>
+        </div>
+        <div class="movie-list-util">
+        </div>
+        <div class="movie-list m15">
+            <ul class="list">
+                <li class="img">
+                    <div class="movie-list-info">
+                        <p class="rank"></p>
+                        <img src="https://img.megabox.co.kr/SharedImg/event/2024/05/09/x4Q2ytFOusJ8Ux3uHoMh610IBVyGdRPc.jpg"
+                             alt="[프로모션][굿즈]<극장판하이큐!! 쓰레기장의 결전> 콤보 론칭">
+                    </div>
+                    <!--제목 -->
+                    <div class="tit-area">
+                        <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
+                            [프로모션][굿즈] &lt;극장판하이큐!! 쓰레기장의 결전&gt; 콤보 론칭
+                        </p>
+                    </div>
+                    <div class="rate-date">
+                        <span class="rate">2024.05.15~ 2024.06.30</span>
+                    </div>
+                </li>
+                <li class="img">
+                    <div class="movie-list-info">
+                        <p class="rank"></p>
+                        <img src="https://img.megabox.co.kr/SharedImg/event/2024/05/09/x4Q2ytFOusJ8Ux3uHoMh610IBVyGdRPc.jpg"
+                             alt="[프로모션][굿즈] <극장판하이큐!! 쓰레기장의 결전> 콤보 론칭">
+                    </div>
+                    <!--제목 -->
+                    <div class="tit-area">
+                        <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
+                            [프로모션][굿즈] &lt;극장판하이큐!! 쓰레기장의 결전&gt; 콤보 론칭
+                        </p>
+                    </div>
+                    <div class="rate-date">
+                        <span class="rate">2024.05.15~ 2024.06.30</span>
+                    </div>
+                </li>
+                <li class="img">
+                    <div class="movie-list-info">
+                        <p class="rank"></p>
+                        <img src="https://img.megabox.co.kr/SharedImg/event/2024/05/09/x4Q2ytFOusJ8Ux3uHoMh610IBVyGdRPc.jpg"
+                             alt="[프로모션][굿즈] <극장판하이큐!! 쓰레기장의 결전> 콤보 론칭">
+                    </div>
+                    <!--제목 -->
+                    <div class="tit-area">
+                        <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
+                            [프로모션][굿즈] &lt;극장판하이큐!! 쓰레기장의 결전&gt; 콤보 론칭
+                        </p>
+                    </div>
+                    <div class="rate-date">
+                        <span class="rate">2024.05.15~ 2024.06.30</span>
+                    </div>
+                </li>
+                <li class="img">
+                    <div class="movie-list-info">
+                        <p class="rank"></p>
+                        <img src="https://img.megabox.co.kr/SharedImg/event/2024/05/09/x4Q2ytFOusJ8Ux3uHoMh610IBVyGdRPc.jpg"
+                             alt="[프로모션][굿즈] <극장판하이큐!! 쓰레기장의 결전> 콤보 론칭">
+                    </div>
+                    <!--제목 -->
+                    <div class="tit-area">
+                        <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
+                            [프로모션][굿즈] &lt;극장판하이큐!! 쓰레기장의 결전&gt; 콤보 론칭
+                        </p>
+                    </div>
+                    <div class="rate-date">
+                        <span class="rate">2024.05.15~ 2024.06.30</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+
+    </div>
+</form>
+
+</body>
+</html>

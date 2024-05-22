@@ -1,0 +1,66 @@
+@charset "UTF-8";
+@import "common._obj-dialog";
+@import "common._obj-cover";
+@import "common._obj-message";
+@import "common.login";
+@import "common._obj-label";
+@import "common._obj-check-label";
+
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+body {
+  cursor: default;
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-size: 0.96rem;
+  font-weight: 400;
+  line-height: 1;
+  margin: 0;
+}
+
+a:link, a:visited{
+  text-decoration: none;
+
+  &:hover{
+    text-decoration: none;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font: inherit;
+  margin-block: initial;
+  margin-inline: initial;
+}
+
+ol, ul {
+  list-style-type: none;
+  margin-block: initial;
+  margin-inline: initial;
+  padding-inline: initial;
+}
+
+table{
+  border-collapse: collapse;
+  text-align: center;
+
+  th{
+    border: 1px #d9d9d9 solid;
+
+    &:first-child{
+      border-left: 0;
+    }
+  }
+
+  td{
+    border: 1px #d9d9d9 solid;
+
+    &:last-child{
+      border-right: 0;
+    }
+  }
+}
+
+button[type="submit"][disabled]{
+  cursor: default !important;
+  background-color: #e0e0e0 !important;
+  border-color: #e0e0e0 !important;
+}

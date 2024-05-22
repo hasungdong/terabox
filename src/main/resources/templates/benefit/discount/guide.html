@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>제목 미정</title>
+    <link rel="icon" th:href="@{/assets/images/common/favicon.ico}">
+    <link rel="stylesheet" th:href="@{/assets/styles/common/common.css}">
+    <link rel="stylesheet" th:href="@{/assets/styles/benefit/discount/guide.css}">
+    <script src="https://kit.fontawesome.com/d88fee1042.js" crossorigin="anonymous"></script>
+    <script defer th:src="@{/assets/scripts/common.js}"></script>
+</head>
+<body>
+<th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
+<main id="main">
+    <h2 class="title2">제휴할인</h2>
+    <div class="AffiliateEvent">
+        <div class="title-bar">
+            <span>VIP 회원님을 위한 특별한 이벤트!!</span>
+            <div class="spring"></div>
+            <div class="swiper-bar-container">
+                <div class="swiper-bar-box">
+                    <span class="swiper-bar point"></span>
+                    <span class="swiper-bar"></span>
+                    <span class="swiper-bar"></span>
+                    <span class="swiper-bar"></span>
+                    <span class="swiper-bar"></span>
+                    <span class="swiper-bar"></span>
+                    <span class="swiper-bar"></span>
+                    <span class="swiper-bar"></span>
+                </div>
+                <img th:src="@{/assets/images/common/less.png}" alt="">
+                <img th:src="@{/assets/images/common/more.png}" alt="">
+                <img class="play" th:src="@{/assets/images/common/play.png}" alt="">
+                <!--                <img th:src="@{/assets/images/pause.png}" alt="">-->
+                <span class="text">1 / 8</span>
+                <!--                현재 페이지 / 전체 페이지-->
+            </div>
+        </div>
+        <div class="event-box">
+            <a href="#" class="event">
+                <img th:src="@{/assets/images/common/favicon.ico}" alt="" class="temp">
+                <div class="text-box">
+                    <span class="text">[프로모션][굿즈] &lt;가필드 더 무비&gt; 콤보 론칭</span>
+                    <div class="spring"></div>
+                    <span class="duration">2024.05.13~2024.05.31</span>
+                </div>
+            </a>
+            <a href="#" class="event">
+                <img th:src="@{/assets/images/common/favicon.ico}" alt="" class="temp">
+                <div class="text-box">
+                    <span class="text">[프로모션][굿즈] &lt;극장판하이큐!! 쓰레기장의 결전&gt; 콤보 론칭</span>
+                    <div class="spring"></div>
+                    <span class="duration">2024.05.15~2024.06.30</span>
+                </div>
+            </a>
+            <!--            <a href="#" class="event">-->
+            <!--                <img src="" alt="" class="temp">-->
+            <!--                <div class="text-box">-->
+            <!--                    <span class="text">&lt;가필드 더 무비&gt; 굿즈패키지 런칭</span>-->
+            <!--                    <div class="spring"></div>-->
+            <!--                    <span class="duration">2024.05.11~2024.05.31</span>-->
+            <!--                </div>-->
+            <!--            </a>-->
+            <!--            <a href="#" class="event">-->
+            <!--                <img src="" alt="" class="temp">-->
+            <!--                <div class="text-box">-->
+            <!--                    <span class="text">메가박스 오리지널 티켓 Re.24 &lt;쇼생크 탈출&gt;</span>-->
+            <!--                    <div class="spring"></div>-->
+            <!--                    <span class="duration">2024.05.07~2024.06.07</span>-->
+            <!--                </div>-->
+            <!--            </a>-->
+            <!--            <a href="#" class="event">-->
+            <!--                <img src="" alt="" class="temp">-->
+            <!--                <div class="text-box">-->
+            <!--                    <span class="text">&lt;혹성탈출:새로운 시대&gt; 굿즈패키지 런칭</span>-->
+            <!--                    <div class="spring"></div>-->
+            <!--                    <span class="duration">2024.05.02~2024.05.31</span>-->
+            <!--                </div>-->
+            <!--            </a>-->
+            <!--            <a href="#" class="event">-->
+            <!--                <img src="" alt="" class="temp">-->
+            <!--                <div class="text-box">-->
+            <!--                    <span class="text">메가박스 오리지널 티켓 No.109 &lt;범죄도시4&gt;</span>-->
+            <!--                    <div class="spring"></div>-->
+            <!--                    <span class="duration">2024.04.24~2024.05.24</span>-->
+            <!--                </div>-->
+            <!--            </a>-->
+            <!--            <a href="#" class="event">-->
+            <!--                <img src="" alt="" class="temp">-->
+            <!--                <div class="text-box">-->
+            <!--                    <span class="text">4월에는 시리즈4 영화 필관하자!</span>-->
+            <!--                    <div class="spring"></div>-->
+            <!--                    <span class="duration">2024.04.10~2024.05.19</span>-->
+            <!--                </div>-->
+            <!--            </a>-->
+            <!--            <a href="#" class="event">-->
+            <!--                <img src="" alt="" class="temp">-->
+            <!--                <div class="text-box">-->
+            <!--                    <span class="text">메가박스 오리지널 티켓 No.108 &lt;골드핑거&gt;</span>-->
+            <!--                    <div class="spring"></div>-->
+            <!--                    <span class="duration">2024.04.13~2024.05.12</span>-->
+            <!--                </div>-->
+            <!--            </a>-->
+            <button class="left" type="button"></button>
+            <button class="right" type="button"></button>
+        </div>
+        <!--//benefit-vip-selection2 end -->
+    </div>
+    <nav>
+        <ul class="tab">
+            <li class="item on">
+                <a class="link" th:href="@{./guide}">할인안내</a>
+            </li>
+            <li class="item">
+                <a class="link" th:href="@{./lounge}">미정</a>
+            </li>
+            <li class="item">
+                <a class="link" th:href="@{./lounge}">미정</a>
+            </li>
+            <li class="item">
+                <a class="link" th:href="@{./lounge}">미정</a>
+            </li>
+            <li class="item">
+                <a class="link" th:href="@{./lounge}">미정</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="searchAndSelect-box">
+        <!-- search-card -->
+        <div class="search-card">
+            <div class="text-box">
+                <span class="title">더욱 알뜰하게 메가박스를 즐기는 방법!</span>
+                <span class="text">소지하고 계신 카드를 검색해 보세요. 할인 및 혜택정보를 빠르게 확인할 수 있어요.</span>
+            </div>
+            <div class="spring"></div>
+            <div class="search-area">
+                <input type="text" placeholder="카드명을 검색해보세요." title="카드명 입력" class="input" name="searchStr"
+                       id="searchTxt">
+                <button type="button" class="button" id="btnCardSearch">검색</button>
+            </div>
+        </div>
+        <!--// search-card -->
+
+        <!-- select-group -->
+        <div class="select-group">
+            <div class="first-line">
+                <div class="box">
+                    <div class="title-box">
+                        <span class="title">통신사</span>
+                        <div class="spring"></div>
+                        <a class="link" href="#" title="통신사 전체보기">
+                            전체보기 <img th:src="@{/assets/images/common/more.png}" alt="">
+                        </a>
+                    </div>
+                    <div class="number" id="ckc01cnt">3</div>
+                    <div class="select-box">
+                        <select title="통신사 선택" id="sbxTelecom" class="selectpicker" tabindex="-98">
+                            <option class="bs-title-option" value=""></option>
+                            <option>통신사 선택</option>
+                            <option value="TCLGU">LGU＋</option>
+                            <option value="TCSKT">SKT</option>
+                            <option value="TCKT">KT</option>
+                        </select>
+<!--                        여기 버튼에 class open있는거 없는거 모양 다름-->
+                        <button type="button" class="button open" title="통신사 선택">
+                            <div class="select-fake">통신사 선택</div>
+                            <div class="angleBelow"></div>
+                        </button>
+<!--                        option-box에다가 open이 적혀있으면 보임-->
+                        <div class="option-box" style="overflow-y: auto;">
+                            <ul class="dropdown-menu inner">
+                                <li>
+                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
+                                       aria-selected="false">
+                                        <span class="text">통신사 선택</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
+                                       aria-selected="false">
+                                        <span class="text">LGU＋</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
+                                       aria-selected="false">
+                                        <span class="text">SKT</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
+                                       aria-selected="false">
+                                        <span class="text">KT</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="title-box">
+                        <span class="title">신용카드</span>
+                        <div class="spring"></div>
+                        <a class="link" href="#" title="신용카드 전체보기">
+                            전체보기 <img th:src="@{/assets/images/common/more.png}" alt="">
+                        </a>
+                    </div>
+                    <div class="number" id="ckc02cnt">284</div>
+                    <div class="select-box">
+                        <select title="카드 선택" id="sbxCredit" name="sbxCredit" class="selectpicker" tabindex="-98">
+                            <option class="bs-title-option" value=""></option>
+                            <option>카드 선택</option>
+                            <option value="CPCT00">메가박스카드</option>
+                            <option value="CPCT01">삼성카드</option>
+                            <option value="CPCT02">현대카드</option>
+                            <option value="CPCT03">신한카드</option>
+                            <option value="CPCT04">비씨카드</option>
+                            <option value="CPCT05">KB국민카드</option>
+                            <option value="CPCT06">우리카드</option>
+                            <option value="CPCT07">하나카드</option>
+                            <option value="CPCT09">NH농협카드</option>
+                            <option value="CPCT10">씨티카드</option>
+                            <option value="CPCT11">IBK기업은행</option>
+                            <option value="CPCT15">SC제일은행</option>
+                            <option value="CPCT99">기타</option>
+                        </select>
+                        <button type="button" class="button" title="카드 선택">
+                            <div class="select-fake">카드 선택</div>
+                            <div class="angleBelow"></div>
+                        </button>
+                        <!--                        option-box에다가 open이 적혀있으면 보임-->
+                        <div class="option-box" role="combobox"
+                             style="max-height: 302px; overflow: hidden; min-width: 132px">
+                            <ul class="dropdown-menu inner ">
+                                <li>
+                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
+                                       aria-selected="false">
+                                        <span class="text">카드 선택</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
+                                       aria-selected="false">
+                                        <span class="text">메가박스카드</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
+                                       aria-selected="false">
+                                        <span class="text">삼성카드</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
+                                       aria-selected="false">
+                                        <span class="text">현대카드</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
+                                       aria-selected="false">
+                                        <span class="text">신한카드</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
+                                       aria-selected="false">
+                                        <span class="text">비씨카드</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
+                                       aria-selected="false">
+                                        <span class="text">KB국민카드</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
+                                       aria-selected="false"><span class="text">우리카드</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
+                                       aria-selected="false">
+                                        <span class="text">하나카드</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
+                                       aria-selected="false">
+                                        <span class="text">NH농협카드</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
+                                       aria-selected="false">
+                                        <span class="text">씨티카드</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
+                                       aria-selected="false">
+                                        <span class="text">IBK기업은행</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
+                                       aria-selected="false">
+                                        <span class="text">SC제일은행</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
+                                       aria-selected="false">
+                                        <span class="text">기타</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="title-box">
+                        <span class="title">포인트/기타제휴</span>
+                        <div class="spring"></div>
+                        <a class="link" href="#" title="포인트 기타제휴 전체보기">
+                            전체보기 <img th:src="@{/assets/images/common/more.png}" alt="">
+                        </a>
+                    </div>
+                    <div class="number" id="ckc03cnt">14</div>
+                    <div class="select-box">
+                        <select title="포인트/기타제휴 선택" id="sbxPoint" class="selectpicker" tabindex="-98">
+                            <option class="bs-title-option" value=""></option>
+                            <option>포인트/기타제휴 선택</option>
+                            <option value="CPCT99">기타</option>
+                        </select>
+                        <button type="button" class="button" title="포인트/기타제휴 선택">
+                            <div class="select-fake">포인트/기타제휴 선택</div>
+                            <div class="angleBelow"></div>
+                        </button>
+                        <!--                        option-box에다가 open이 적혀있으면 보임-->
+                        <div class="option-box open" role="combobox" style="overflow: hidden;">
+                            <ul class="dropdown-menu inner ">
+                                <li>
+                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
+                                       aria-selected="false">
+                                        <span class="text">포인트/기타제휴 선택</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
+                                       aria-selected="false">
+                                        <span class="text">기타</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="second-line">
+                <div class="box">
+                    <span class="title">상품권/관람권</span>
+                    <div class="spring"></div>
+                    <a class="link" href="#" title="상품권 관람권 전체보기">
+                        전체보기
+                        <img th:src="@{/assets/images/common/more.png}" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!--// select-group -->
+    </div>
+</main>
+</body>
+</html>

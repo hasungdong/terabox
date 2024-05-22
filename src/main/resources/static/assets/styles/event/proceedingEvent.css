@@ -1,0 +1,637 @@
+@charset "UTF-8";
+body {
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.5;
+  margin: 0;
+  overflow: auto;
+  overflow-y: scroll;
+  font-size: 13px;
+  color: #666666;
+  font-family: NanumBarunGothic, Dotum, "돋움", sans-serif;
+}
+
+#header {
+  letter-spacing: -0.08rem;
+  background-color: #000;
+  width: 100%;
+  border-bottom: solid 0.5px #888;
+}
+#header > .left-link {
+  position: relative;
+  margin-left: 25rem;
+  top: 15px;
+  text-decoration: none;
+}
+#header > .left-link > .header-vip {
+  color: #888888;
+  font-size: 13px;
+  text-decoration-line: none;
+}
+#header > .left-link > .header-membership {
+  color: #888888;
+  font-size: 13px;
+  text-decoration-line: none;
+  margin-left: 20px;
+}
+#header > .left-link > .header-support {
+  font-size: 13px;
+  color: #888888;
+  text-decoration-line: none;
+  margin-left: 20px;
+}
+#header > .right-link {
+  position: absolute;
+  right: 25rem;
+  top: 15px;
+}
+#header > .right-link > .header-login {
+  color: #888888;
+  font-size: 13px;
+  margin-right: 20px;
+  text-decoration-line: none;
+}
+#header > .right-link > .header-register {
+  color: #888888;
+  font-size: 13px;
+  margin-right: 20px;
+  text-decoration-line: none;
+}
+#header > .right-link > .header-fast-buy {
+  color: #888888;
+  font-size: 13px;
+  text-decoration-line: none;
+}
+#header > .link-area {
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+}
+#header > .link-area > .header-main-page {
+  height: 47px;
+  display: flex;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+}
+#header > .link-area > .header-site-map {
+  color: white;
+  font-size: 1.5rem;
+  position: relative;
+  right: 20rem;
+}
+#header > .link-area > .header-search {
+  color: white;
+  font-size: 1.2rem;
+  margin-top: 0.2rem;
+  position: relative;
+  right: 18.7rem;
+}
+#header > .link-area > .header-movie {
+  text-decoration-line: none;
+  color: white;
+  position: relative;
+  right: 12.5rem;
+}
+#header > .link-area > .header-buy-ticket {
+  text-decoration-line: none;
+  color: white;
+  position: relative;
+  right: 8.5rem;
+}
+#header > .link-area > .header-cinema {
+  text-decoration-line: none;
+  color: white;
+  position: relative;
+  right: 4.7rem;
+}
+#header > .link-area > .header-main-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  left: 2rem;
+  top: -1rem;
+}
+#header > .link-area > .header-event {
+  text-decoration-line: none;
+  color: white;
+  position: relative;
+  left: 7.5rem;
+}
+#header > .link-area > .header-store {
+  text-decoration-line: none;
+  color: white;
+  position: relative;
+  left: 11.7rem;
+}
+#header > .link-area > .header-benefits {
+  text-decoration-line: none;
+  color: white;
+  position: relative;
+  left: 15.7rem;
+}
+#header > .link-area > .header-timetable > .header-timetable-img {
+  width: 2.2rem;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+  position: relative;
+  left: 20.25rem;
+}
+#header > .link-area > .header-my-megabox {
+  margin-left: 1rem;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+  position: relative;
+  left: 20.2rem;
+}
+#header > .link-area > .header-my-megabox > .header-my-megabox-img {
+  width: 1.1rem;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+}
+
+#header {
+  background-color: #ffffff;
+  color: #666666;
+}
+#header > .link-area {
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+}
+#header > .link-area > .header-site-map {
+  color: black;
+  font-size: 1.5rem;
+  position: relative;
+  right: 20rem;
+}
+#header > .link-area > .header-search {
+  color: black;
+  font-size: 1.2rem;
+  margin-top: 0.2rem;
+  position: relative;
+  right: 18.7rem;
+}
+#header > .link-area > .header-movie {
+  text-decoration-line: none;
+  color: black;
+  position: relative;
+  right: 12.5rem;
+}
+#header > .link-area > .header-buy-ticket {
+  text-decoration-line: none;
+  color: black;
+  position: relative;
+  right: 8.5rem;
+}
+#header > .link-area > .header-cinema {
+  text-decoration-line: none;
+  color: black;
+  position: relative;
+  right: 4.7rem;
+}
+#header > .link-area > .header-main-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  left: 2rem;
+  top: -1rem;
+}
+#header > .link-area > .header-event {
+  text-decoration-line: none;
+  color: black;
+  position: relative;
+  left: 7.5rem;
+}
+#header > .link-area > .header-store {
+  text-decoration-line: none;
+  color: black;
+  position: relative;
+  left: 11.7rem;
+}
+#header > .link-area > .header-benefits {
+  text-decoration-line: none;
+  color: black;
+  position: relative;
+  left: 15.7rem;
+}
+#header > .link-area > .header-timetable > .header-timetable-img {
+  width: 2.2rem;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+  position: relative;
+  left: 20.25rem;
+}
+#header > .link-area > .header-my-megabox {
+  margin-left: 1rem;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+  position: relative;
+  left: 20.2rem;
+}
+#header > .link-area > .header-my-megabox > .header-my-megabox-img {
+  width: 1.1rem;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+p {
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  unicode-bidi: isolate;
+}
+
+a {
+  background-color: transparent;
+}
+
+div {
+  display: block;
+  unicode-bidi: isolate;
+}
+
+body {
+  overflow: auto;
+  overflow-y: scroll;
+  letter-spacing: 0;
+  line-height: 1.5;
+  font-size: 15px;
+  color: #444;
+  font-weight: 400;
+  font-family: NanumBarunGothic, Dotum, "돋움", sans-serif;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body .button {
+  display: inline-block;
+  height: 36px;
+  margin: 0;
+  padding: 0 15px;
+  text-align: center;
+  line-height: 34px;
+  color: #503396;
+  font-weight: 400;
+  border-radius: 4px;
+  font-family: NanumBarunGothic, Dotum, "돋움", sans-serif;
+  text-decoration: none;
+  border: 1px solid #503396;
+  vertical-align: middle;
+  background-color: #fff;
+  cursor: pointer;
+}
+body form #container {
+  padding-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+body form #container > * {
+  width: calc(1100px + 19.8rem);
+  padding: 0 9.9rem;
+}
+body form #container > .mt70 {
+  margin-top: -10px !important;
+}
+body form #container > .mt70 > .right {
+  display: flex;
+  flex-direction: row;
+}
+body form #container > .mt70 > .right > h3.tit {
+  margin: 0;
+  font-size: 1.8em;
+  font-weight: 400;
+  color: #503396;
+}
+body form #container > .mt70 > .right > .spring {
+  flex-grow: 1;
+}
+body form #container > .mt70 > .right > a {
+  color: #444;
+  display: inline-block;
+}
+body form #container > .mt70 > .right > a:link {
+  color: #444;
+  text-decoration: none;
+}
+body form #container > .AffiliateEvent {
+  width: 100%;
+  background-color: #f8f8fa;
+  height: 25.125rem;
+  padding-top: 2.5rem;
+  padding-left: 25.1rem;
+  padding-right: 25.1rem;
+  margin-bottom: 4.375rem;
+  position: relative;
+}
+body form #container > .AffiliateEvent > .title-bar {
+  padding-bottom: 1.25rem;
+  font-size: 1.525rem;
+  color: #503396;
+  line-height: 1.1;
+  display: flex;
+  flex-direction: row;
+}
+body form #container > .AffiliateEvent > .title-bar > .spring {
+  flex-grow: 1;
+}
+body form #container > .AffiliateEvent > .title-bar > .swiper-bar-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+body form #container > .AffiliateEvent > .title-bar > .swiper-bar-container > .swiper-bar-box {
+  display: flex;
+  flex-direction: row;
+}
+body form #container > .AffiliateEvent > .title-bar > .swiper-bar-container > .swiper-bar-box > .swiper-bar {
+  display: block;
+  width: 1.875rem;
+  height: 0.125rem;
+  border-radius: 0;
+  background-color: #fff;
+}
+body form #container > .AffiliateEvent > .title-bar > .swiper-bar-container > .swiper-bar-box > .swiper-bar.point {
+  background-color: #503396;
+}
+body form #container > .AffiliateEvent > .title-bar > .swiper-bar-container > img {
+  width: 0.75rem;
+  height: 0.95rem;
+  margin-left: 0.575rem;
+  color: #503396;
+}
+body form #container > .AffiliateEvent > .title-bar > .swiper-bar-container > img.play {
+  width: 0.5rem;
+  height: 0.8rem;
+}
+body form #container > .AffiliateEvent > .title-bar > .swiper-bar-container > img.pause {
+  width: 0.5rem;
+  height: 0.8rem;
+  display: none;
+}
+body form #container > .AffiliateEvent > .title-bar > .swiper-bar-container > .text {
+  font-size: 0.975rem;
+  font-weight: 400;
+  margin-left: 1.3rem;
+}
+body form #container > .AffiliateEvent > .event-box {
+  display: flex;
+  flex-direction: row;
+  gap: 2.625rem;
+  width: 1150px;
+  height: 277.6px;
+  position: relative;
+  overflow: hidden;
+}
+body form #container > .AffiliateEvent > .event-box > .event {
+  position: absolute;
+  transition-duration: 600ms;
+  transition-property: left, right;
+}
+body form #container > .AffiliateEvent > .event-box > .event > img {
+  width: 33.125rem;
+  height: 15.3125rem;
+  border-radius: 0.625rem;
+}
+body form #container > .AffiliateEvent > .event-box > .event > .text-box {
+  display: flex;
+  flex-direction: row;
+  color: black;
+  margin-top: 0.9375rem;
+}
+body form #container > .AffiliateEvent > .event-box > .event > .text-box > .text {
+  font-size: 0.95rem;
+  font-weight: 700;
+  overflow: hidden;
+  display: inline-block;
+  max-width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+body form #container > .AffiliateEvent > .event-box > .event > .text-box > .spring {
+  flex-grow: 1;
+}
+body form #container > .AffiliateEvent > .event-box > .event > .text-box > .duration {
+  font-size: 0.83rem;
+  color: #444;
+}
+body form #container > .AffiliateEvent > [type=button] {
+  display: block;
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  width: 50px;
+  height: 50px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 0;
+  line-height: 0;
+  border-radius: 100%;
+  box-shadow: 4px 4px 10px 0 rgba(45, 45, 45, 0.3);
+  background-size: 28px;
+  background-color: white;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+body form #container > .AffiliateEvent > [type=button].left {
+  transform: translate(-50%, -25px);
+  background-image: url("../../images/common/left.png");
+}
+body form #container > .AffiliateEvent > [type=button].right {
+  left: calc(25.1rem + 1081px);
+  transform: translate(0, -25px);
+  background-image: url("../../images/common/right.png");
+}
+body form #container > .tit {
+  font-size: 1.8666em;
+  font-weight: 500;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  color: #222;
+  padding-bottom: 1.5rem;
+}
+body form #container > .tab-list {
+  padding-bottom: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+body form #container > .tab-list > .topMenu { /* 위에 메뉴들 ul 태그*/
+  list-style: none;
+  width: 100%;
+  display: flex;
+  padding: 0;
+}
+body form #container > .tab-list > .topMenu > .on { /*li 태그들*/
+  width: 20%;
+}
+body form #container > .tab-list > .topMenu > .on > .a { /*링크 태그들*/
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 14px 0;
+  text-align: center;
+  color: #222;
+  font-size: 1rem;
+  text-decoration: none;
+  border: 0.04rem solid #dedede;
+  font-weight: 450;
+}
+body form #container > .movie-list-util { /*영화관 검색 있는곳 묶음*/
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  overflow: hidden;
+  margin-bottom: -1.5rem;
+  margin-top: 40px !important;
+}
+body form #container > .movie-list { /*영화 리스트 묶음*/
+  display: flex;
+  flex-direction: column;
+}
+body form #container > .movie-list > .list { /*그 밑에 ol 태그*/
+  padding: 0;
+  margin: 0 0 0 -40px;
+}
+body form #container > .movie-list > .list > .img {
+  overflow: hidden;
+  position: relative;
+  float: left;
+  width: 245px;
+  height: 364px;
+  border: 1px solid #e4e4e4;
+  padding: 0;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  margin: 0 0 60px 40px;
+}
+body form #container > .movie-list > .list > .img > .movie-list-info > .poster { /*영화 사진*/
+  width: 230px;
+  height: 331px;
+  overflow: hidden;
+  position: relative;
+  float: left;
+  margin: 0 0 0 0px;
+  padding: 0;
+  background-color: #fff;
+  border-radius: 0.5rem;
+}
+body form #container > .movie-list > .list > .img > .movie-list-info > .movie-score > .wrap {
+  background-color: #503396;
+}
+body form #container > .movie-list > .list > .img > .tit-area { /*묶음자리*/
+  position: relative;
+  width: 100%;
+  padding: 0 0 0 30px;
+  line-height: 25px;
+}
+body form #container > .movie-list > .list > .img > .tit-area > .movie-grad-all { /*   전체 사용가 넣을 자리*/ }
+body form #container > .movie-list > .list > .img > .tit-area > .movie-grad-all {
+  height: 100%;
+  background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/ALL_46x46.png);
+  background-size: 23px 23px;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 90%;
+}
+body form #container > .movie-list > .list > .img > .tit-area > .title {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  height: 60px;
+  margin: 0 0 10px 0;
+  padding: 20px 17px 0px 0px;
+  line-height: 1.3;
+  font-weight: 700;
+  color: #222;
+}
+body form #container > .movie-list > .list > .img > .rate-date {
+  overflow: hidden;
+  padding: 10px 0 0 0;
+}
+body form #container > .movie-list > .list > .img > .rate-date > .rate {
+  margin: 0 7px 0 0;
+  display: block;
+  position: relative;
+  float: left;
+  font-weight: 600;
+  text-align: center;
+  padding: 0px 35px 30px 30px;
+  font-size: 0.8667em;
+  line-height: 1.1;
+  color: #666;
+}
+body form #container > .movie-list > .list > .img > .btn-util {
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 36px;
+}
+body form #container > .movie-list > .list > .img > .btn-util > .button.btn-like {
+  float: left;
+  width: 72px;
+  padding: 0 5px;
+  font-size: 0.8667em;
+  border-color: #ebebeb;
+  margin-right: 5px;
+}
+body form #container > .movie-list > .list > .img > .btn-util > .button.btn-like > .fa-regular {
+  font-size: 1rem;
+}
+body form #container > .movie-list > .list > .img > .btn-util > .button.btn-like > span {
+  font-size: 1.2em;
+}
+body form #container > .movie-list > .list > .img > .btn-util > .Ticketing-container { /*예매하기 버튼*/ }
+body form #container > .movie-list > .list > .img > .btn-util > .Ticketing-container > .button {
+  width: 74px;
+  margin-left: 5px;
+}
+body form #container > .movie-list > .list > .img > .btn-util > .Ticketing-container > .button.purple {
+  color: #fff;
+  line-height: 36px;
+  border: 0;
+  background: #503396;
+}
+body form #container > .movie-list > .list > .img > .btn-util > .Ticketing-container > .button.purple.ticketing {
+  margin-left: 0;
+  width: 74px;
+}
+body form #container > .movie-list > .list > .img > .btn-util > .Ticketing-container > .button.purple.img {
+  display: inline-block;
+  height: 36px;
+  margin: 0;
+  padding: 0 15px;
+  text-align: center;
+  line-height: 34px;
+  color: #ffffff;
+  font-weight: 400;
+  border-radius: 4px;
+  font-family: NanumBarunGothic, Dotum, "돋움", sans-serif;
+  text-decoration: none;
+  border: 1px solid #503396;
+  vertical-align: middle;
+  background-color: #503396;
+  cursor: pointer;
+}
+body form #container > .movie-list > .list > .img > .btn-util > .Ticketing-container > .button.purple.img > .img {
+  display: inline-block;
+  padding-top: 7px;
+  border: 0;
+}
+
+/*# sourceMappingURL=proceedingEvent.css.map */

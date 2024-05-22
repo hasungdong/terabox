@@ -1,0 +1,495 @@
+@charset "UTF-8";
+body {
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.5;
+  margin: 0;
+  overflow: auto;
+  overflow-y: scroll;
+  font-size: 13px;
+  color: #666666;
+  font-family: NanumBarunGothic, Dotum, "돋움", sans-serif;
+}
+
+#header {
+  letter-spacing: -0.08rem;
+  background-color: #000;
+  width: 100%;
+  border-bottom: solid 0.5px #888;
+}
+#header > .left-link {
+  position: relative;
+  margin-left: 25rem;
+  top: 15px;
+  text-decoration: none;
+}
+#header > .left-link > .header-vip {
+  color: #888888;
+  font-size: 13px;
+  text-decoration-line: none;
+}
+#header > .left-link > .header-membership {
+  color: #888888;
+  font-size: 13px;
+  text-decoration-line: none;
+  margin-left: 20px;
+}
+#header > .left-link > .header-support {
+  font-size: 13px;
+  color: #888888;
+  text-decoration-line: none;
+  margin-left: 20px;
+}
+#header > .right-link {
+  position: absolute;
+  right: 25rem;
+  top: 15px;
+}
+#header > .right-link > .header-login {
+  color: #888888;
+  font-size: 13px;
+  margin-right: 20px;
+  text-decoration-line: none;
+}
+#header > .right-link > .header-register {
+  color: #888888;
+  font-size: 13px;
+  margin-right: 20px;
+  text-decoration-line: none;
+}
+#header > .right-link > .header-fast-buy {
+  color: #888888;
+  font-size: 13px;
+  text-decoration-line: none;
+}
+#header > .link-area {
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+}
+#header > .link-area > .header-main-page {
+  height: 47px;
+  display: flex;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+}
+#header > .link-area > .header-site-map {
+  color: white;
+  font-size: 1.5rem;
+  position: relative;
+  right: 20rem;
+}
+#header > .link-area > .header-search {
+  color: white;
+  font-size: 1.2rem;
+  margin-top: 0.2rem;
+  position: relative;
+  right: 18.7rem;
+}
+#header > .link-area > .header-movie {
+  text-decoration-line: none;
+  color: white;
+  position: relative;
+  right: 12.5rem;
+}
+#header > .link-area > .header-buy-ticket {
+  text-decoration-line: none;
+  color: white;
+  position: relative;
+  right: 8.5rem;
+}
+#header > .link-area > .header-cinema {
+  text-decoration-line: none;
+  color: white;
+  position: relative;
+  right: 4.7rem;
+}
+#header > .link-area > .header-main-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  left: 2rem;
+  top: -1rem;
+}
+#header > .link-area > .header-event {
+  text-decoration-line: none;
+  color: white;
+  position: relative;
+  left: 7.5rem;
+}
+#header > .link-area > .header-store {
+  text-decoration-line: none;
+  color: white;
+  position: relative;
+  left: 11.7rem;
+}
+#header > .link-area > .header-benefits {
+  text-decoration-line: none;
+  color: white;
+  position: relative;
+  left: 15.7rem;
+}
+#header > .link-area > .header-timetable > .header-timetable-img {
+  width: 2.2rem;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+  position: relative;
+  left: 20.25rem;
+}
+#header > .link-area > .header-my-megabox {
+  margin-left: 1rem;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+  position: relative;
+  left: 20.2rem;
+}
+#header > .link-area > .header-my-megabox > .header-my-megabox-img {
+  width: 1.1rem;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+}
+
+#header {
+  background-color: #ffffff;
+  color: #666666;
+}
+#header > .link-area {
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+}
+#header > .link-area > .header-site-map {
+  color: black;
+  font-size: 1.5rem;
+  position: relative;
+  right: 20rem;
+}
+#header > .link-area > .header-search {
+  color: black;
+  font-size: 1.2rem;
+  margin-top: 0.2rem;
+  position: relative;
+  right: 18.7rem;
+}
+#header > .link-area > .header-movie {
+  text-decoration-line: none;
+  color: black;
+  position: relative;
+  right: 12.5rem;
+}
+#header > .link-area > .header-buy-ticket {
+  text-decoration-line: none;
+  color: black;
+  position: relative;
+  right: 8.5rem;
+}
+#header > .link-area > .header-cinema {
+  text-decoration-line: none;
+  color: black;
+  position: relative;
+  right: 4.7rem;
+}
+#header > .link-area > .header-main-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  left: 2rem;
+  top: -1rem;
+}
+#header > .link-area > .header-event {
+  text-decoration-line: none;
+  color: black;
+  position: relative;
+  left: 7.5rem;
+}
+#header > .link-area > .header-store {
+  text-decoration-line: none;
+  color: black;
+  position: relative;
+  left: 11.7rem;
+}
+#header > .link-area > .header-benefits {
+  text-decoration-line: none;
+  color: black;
+  position: relative;
+  left: 15.7rem;
+}
+#header > .link-area > .header-timetable > .header-timetable-img {
+  width: 2.2rem;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+  position: relative;
+  left: 20.25rem;
+}
+#header > .link-area > .header-my-megabox {
+  margin-left: 1rem;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+  position: relative;
+  left: 20.2rem;
+}
+#header > .link-area > .header-my-megabox > .header-my-megabox-img {
+  width: 1.1rem;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+strong {
+  font-weight: 700;
+}
+
+button {
+  cursor: pointer;
+  letter-spacing: -0.5px;
+  font-weight: 400;
+  text-transform: none;
+  font-size: 1em;
+  line-height: 1.15;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow: auto;
+  overflow-y: scroll;
+  letter-spacing: 0;
+  line-height: 1.5;
+  font-size: 15px;
+  color: #444;
+  font-weight: 400;
+}
+body > .container {
+  width: 100%;
+  min-width: 1100px;
+  min-height: 100%;
+  margin: -92px 0 -200px 0;
+  padding: 92px 0 300px 0;
+}
+body > .container > .page-util {
+  display: block;
+  position: static;
+  width: 100%;
+  height: 42px;
+  background-color: #f8f8fa;
+}
+
+.inner {
+  width: 1100px;
+  margin: 0 auto;
+}
+
+body > .container > .page-util > .inner > .location {
+  float: left;
+  height: 42px;
+}
+body > .container > .page-util > .inner > .location > span {
+  background: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-location-home.png) no-repeat center;
+  overflow: hidden;
+  display: block;
+  float: left;
+  width: 13px;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  text-indent: -9999px;
+}
+body > .container > .page-util > .inner > .location > a {
+  display: block;
+  position: relative;
+  float: left;
+  height: 42px;
+  margin: 0 0 0 15px;
+  padding: 0;
+  line-height: 46px;
+  color: #666;
+  text-decoration: none;
+}
+body > .container > .page-util > .inner > .location > .icon {
+  top: 0;
+  width: 5px;
+  height: 42px;
+  background: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-location-arr.png) no-repeat left center;
+}
+body > .container > .content {
+  padding: 40px 0 0 0;
+}
+body > .container > .content > .inner > .title {
+  padding: 0 0 26px 0;
+  font-size: 1.8666em;
+  font-weight: 400;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  color: #222;
+}
+body > .container > .content > .inner > ul > li {
+  position: relative;
+}
+body > .container > .content > .inner > ul > li > .event-check {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+}
+body > .container > .content > .inner > ul > li > .event-check > .bold-button-text {
+  color: #01738b;
+  font-weight: 700;
+}
+body > .container > .content > .inner > .board {
+  display: flex;
+  justify-content: space-between;
+}
+body > .container > .content > .inner > .board > .count > strong > b {
+  color: #01738b;
+}
+body > .container > .content > .inner > .board > .board-search {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  width: 230px;
+  height: 36px;
+  margin: 0;
+  padding: 0 31px 0 0;
+  border: 1px solid #d8d9db;
+  border-radius: 3px;
+}
+body > .container > .content > .inner > .board > .board-search > .input-text {
+  display: block;
+  width: 100%;
+  height: 34px;
+  border: 0;
+  margin-left: 10px;
+}
+body > .container > .content > .inner > .board > .board-search > button {
+  position: absolute;
+  right: 1px;
+  top: 1px;
+  overflow: hidden;
+  width: 30px;
+  height: 32px;
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+  line-height: 0;
+  border: 0;
+  background: #fff url(https://img.megabox.co.kr/static/pc/images/common/btn/btn-search-input.png) no-repeat center;
+}
+body > .container > .content > .inner > .event-list > .inner > .event-list {
+  border-top: 1px solid #333;
+}
+body > .container > .content > .inner > .event-list > .inner > .event-list > ul {
+  margin: 0;
+}
+body > .container > .content > .inner > .event-list > .inner > .event-list > ul > li {
+  position: relative;
+  float: none;
+  width: 100%;
+  margin: 0;
+  padding: 20px 120px 20px 0;
+  border-bottom: 1px solid #ebebeb;
+}
+body > .container > .content > .inner > .event-list > .inner > .event-list > ul > li > a {
+  color: #444;
+  overflow: hidden;
+  display: block;
+  position: relative;
+  min-height: 100px;
+  padding: 0 0 0 130px;
+  border: 0;
+  border-radius: 0;
+  text-decoration: none;
+}
+body > .container > .content > .inner > .event-list > .inner > .event-list > ul > li > a > .theater {
+  overflow: hidden;
+  display: block;
+  position: static;
+  right: inherit;
+  top: inherit;
+  z-index: 2;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  color: #01738b;
+  line-height: 1.5;
+  font-size: 1em;
+  background-color: transparent;
+}
+body > .container > .content > .inner > .event-list > .inner > .event-list > ul > li > a:hover {
+  text-decoration: underline;
+}
+body > .container > .content > .inner > .event-list > .inner > .event-list > ul > li > a > .img {
+  position: absolute;
+  left: 10px;
+  top: 0;
+  width: 100px;
+  height: 100px;
+  margin: 0;
+  font-size: 0;
+  line-height: 0;
+  border: 0;
+}
+body > .container > .content > .inner > .event-list > .inner > .event-list > ul > li > a > .img > img {
+  width: 100%;
+  height: 100%;
+}
+body > .container > .content > .inner > .event-list > .inner > .event-list > ul > li > a > .title {
+  height: auto;
+  padding: 5px 0 0 0;
+  font-size: 1.2em;
+  color: #222;
+  margin: 0;
+  font-weight: 700;
+}
+body > .container > .content > .inner > .event-list > .inner > .event-list > ul > li > a > .date {
+  position: absolute;
+  left: 130px;
+  bottom: 0;
+  padding: 10px 0 0 0;
+  font-size: 0.8667em;
+  line-height: 1.1;
+}
+body > .container > .content > .inner > .event-list > .inner > .board-move {
+  position: relative;
+  padding: 40px 0 0 0;
+}
+body > .container > .content > .inner > .event-list > .inner > .board-move > .btn {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  height: 40px;
+  border: 1px solid #eaeaea;
+  background-color: transparent;
+  color: #666;
+}
+body > .container > .content > .inner > .event-list > .inner > .board-move > .btn:hover {
+  border: 1px solid #000000;
+}
+body > .container > .content > .inner > .event-list > .inner > .board-move > .btn > i {
+  margin-left: 6px;
+  width: 12px;
+  height: 7px;
+  background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-btn-more-arr.png);
+  overflow: hidden;
+  display: inline-block;
+  padding: 0;
+  font-size: 0;
+  line-height: 0;
+  vertical-align: middle;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+}
+
+/*# sourceMappingURL=pastEvent.css.map */
