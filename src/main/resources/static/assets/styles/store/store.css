@@ -509,6 +509,9 @@ body form #container > .movie-list > .list > .img {
   border-radius: 0.5rem;
   margin: 0 0 60px 40px;
 }
+body form #container > .movie-list > .list > .img:hover {
+  border: 1px solid #503396;
+}
 body form #container > .movie-list > .list > .img > .movie-list-info {
   width: 230px;
   height: 230px;

@@ -6,15 +6,11 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>제목 미정</title>
-    <link rel="icon" th:href="@{/assets/images/common/favicon.ico}">
-    <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/common/common.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/benefit/membership.css}">
-    <script src="https://kit.fontawesome.com/d88fee1042.js" crossorigin="anonymous"></script>
-    <script defer th:src="@{/assets/scripts/common.js}"></script>
+    <th:block th:replace="~{fragments/common/common.html :: commonHead}"></th:block>
 </head>
 <body>
 <th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
-
 <main id="main">
     <h2 class="title2">메가박스 멤버십</h2>
     <nav>
@@ -81,7 +77,7 @@
                 <div class="text-box">
                     <span>VIP 회원을 위한 <br> 더 특별한 추가혜택!</span>
                 </div>
-                <a class="button purple" href="#">VIP LOUNGE 안내</a>
+                <a class="button purple" href="/benefit/vipLounge">VIP LOUNGE 안내</a>
             </div>
         </div>
         <div class="guide-benefit">

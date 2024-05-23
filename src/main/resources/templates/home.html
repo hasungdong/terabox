@@ -7,11 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MEET PLAY SHARE, 메가박스</title>
     <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/home/index.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/common/common.css}">
-    <link rel="icon" th:href="@{/assets/images/common/favicon.ico}">
-    <script defer type="text/javascript" th:src="@{/assets/scripts/header.js}"></script>
-    <script defer type="text/javascript" th:src="@{/assets/scripts/common.js}"></script>
-    <script src="https://kit.fontawesome.com/d88fee1042.js" crossorigin="anonymous"></script>
+    <th:block th:replace="~{fragments/common/common.html :: commonHead}"></th:block>
 </head>
 <body style="overflow-x: hidden">
 <th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
@@ -190,27 +186,27 @@
                 </div>
                 <div class="menu-link">
                     <div class="cell-vip">
-                        <a class="link" href="">
+                        <a class="link" href="/benefit/vipLounge">
                             <img class="img" th:src="@{/assets/images/home/cell-vip.png}" alt="">
                         </a>
                     </div>
                     <div class="cell-membership">
-                        <a class="link" href="">
+                        <a class="link" href="/benefit/membership">
                             <img class="img" th:src="@{/assets/images/home/cell-membership.png}" alt="">
                         </a>
                     </div>
                     <div class="cell-card">
-                        <a class="link" href="">
+                        <a class="link" href="/benefit/discount/guide">
                             <img class="img" th:src="@{/assets/images/home/cell-card.png}" alt="">
                         </a>
                     </div>
                     <div class="cell-event">
-                        <a class="link" href="">
+                        <a class="link" href="/event/proceedingEvent">
                             <img class="img" th:src="@{/assets/images/home/cell-event.png}" alt="">
                         </a>
                     </div>
                     <div class="cell-store">
-                        <a class="link" href="">
+                        <a class="link" href="/store/store">
                             <img class="img" th:src="@{/assets/images/home/cell-store.png}" alt="">
                         </a>
                     </div>

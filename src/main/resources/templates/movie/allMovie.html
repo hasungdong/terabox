@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <title>전체영화</title>
     <link rel="stylesheet" href="">
-    <script src="https://kit.fontawesome.com/dc541573c0.js" crossorigin="anonymous"></script>
-    <link rel="icon" th:href="@{/assets/images/common/favicon.ico}">
     <link rel="stylesheet" th:href="@{/assets/styles/movie/allMovie.css}">
-    <link rel="stylesheet" th:href="@{/assets/styles/common/common.css}">
-    <script defer th:src="@{/assets/scripts/common.js}"></script>
+    <th:block th:replace="~{fragments/common/common.html :: commonHead}"></th:block>
 </head>
 <body>
 <th:block th:replace="~{fragments/common/common.html :: common}"></th:block>

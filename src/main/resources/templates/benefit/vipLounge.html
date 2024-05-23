@@ -6,15 +6,11 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>제목 미정</title>
-    <link rel="icon" th:href="@{/assets/images/common/favicon.ico}">
-    <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/common/common.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/benefit/vipLounge.css}">
-    <script src="https://kit.fontawesome.com/d88fee1042.js" crossorigin="anonymous"></script>
-    <script defer th:src="@{/assets/scripts/common.js}"></script>
+    <th:block th:replace="~{fragments/common/common.html :: commonHead}"></th:block>
 </head>
 <body>
 <th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
-
 <main id="main">
     <h2 class="title2">메가박스 멤버십</h2>
     <nav>
@@ -31,7 +27,7 @@
     <div class="checkLevel">
         <span class="title">MEGABOX <span class="bold">VIP</span></span>
         <span class="text">메가박스의 더 많은 혜택을 누릴 수 있는 방법! 로그인 후 메가박스 등급을 확인하세요.</span>
-        <a href="#" class="link">로그인</a>
+        <a href="#" class="link" rel="showLogin">로그인</a>
     </div>
     <div class="lounge-benefit-box">
         <div class="title-bar">

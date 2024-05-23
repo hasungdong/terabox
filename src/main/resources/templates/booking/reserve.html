@@ -6,12 +6,8 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>MEET PLAY SHARE, 메가박스</title>
-  <link rel="icon" th:href="@{/assets/images/common/favicon.ico}">
-  <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/common/common.css}">
   <link rel="stylesheet" th:href="@{/assets/styles/booking/main.css}">
-  <script src="https://kit.fontawesome.com/39b115ab30.js" crossorigin="anonymous"></script>
-<!--  <script th:src="@{/assets/scripts/reserve.js}"></script>-->
-  <script defer th:src="@{/assets/scripts/common.js}"></script>
+  <th:block th:replace="~{fragments/common/common.html :: commonHead}"></th:block>
 </head>
 <body>
 <th:block th:replace="~{fragments/common/common.html :: common}"></th:block>

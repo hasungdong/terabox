@@ -312,18 +312,9 @@ body{
               text-decoration: none;
               border: 0.04rem solid #dedede;
               font-weight: 450;
-
             }
-
-
-
           }
-
-
-
-
         }
-
       }
       >.movie-list-util { /*영화관 검색 있는곳 묶음*/
         display: flex;
@@ -332,20 +323,15 @@ body{
         overflow: hidden;
         margin-bottom: -1.5rem;
         margin-top: 40px !important;
-
-
       }
+
       >.movie-list{ /*영화 리스트 묶음*/
          display: flex;
          flex-direction: column;
 
-
         >.list{ /*그 밑에 ol 태그*/
           padding: 0;
           margin: 0 0 0 -40px;
-
-
-
 
           >.img{
             overflow: hidden;
@@ -359,6 +345,9 @@ body{
             border-radius: 0.5rem;
             margin: 0 0 60px 40px;
 
+            &:hover{
+              border: 1px solid #503396;
+            }
 
             >.movie-list-info{
               width: 230px;
@@ -368,7 +357,6 @@ body{
                 width: 243px;
                 height: 243px;
                 background-color: #dedddd;
-
               }
 
               >.poster{ /*영화 사진*/
@@ -381,17 +369,13 @@ body{
                 padding: 0;
                 background-color: #fff;
                 border-radius: 0.5rem;
-
               }
-
 
               >.movie-score{
                 >.wrap{
                   background-color: #503396;
                 }
-
               }
-
             }
 
             >.tit-area{ /*묶음자리*/
@@ -399,9 +383,6 @@ body{
               width: 100%;
               padding: 0 0 0 30px;
               line-height: 25px;
-
-
-
 
               >.title{ //영화 이름 넣는 자리
                 display: block;
@@ -411,8 +392,6 @@ body{
                 line-height: 1.3;
                 font-weight: 650;
                 color: #222;
-
-
               }
             }
 
@@ -526,29 +505,12 @@ body{
                     padding-top: 7px;
                     border: 0;
                   }
-
                 }
-
-
               }
-
-
             }
-
-
           }
-
-
-
-
         }
       }
     }
-
-
-
-
-
-
   }
 }

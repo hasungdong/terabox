@@ -17,7 +17,8 @@ if (document.querySelector('span.swiper-bar') !== null) {
         swiperBars[currentPage - 1].classList.remove('point');
         events.forEach(event => {
             event.style.left = `calc(${event.style.left} + (50%)`;
-            if (event.style.left === `calc(50% * ${events.length - 1})`) {
+            let leftEventValue = 50 * (events.length - 1) + '%';
+            if (event.style.left === `calc(${leftEventValue})`) {
                 event.style.left = 'calc(-50%)';
             }
             if (event.style.left !== 'calc(0%)' &&
@@ -45,8 +46,9 @@ if (document.querySelector('span.swiper-bar') !== null) {
     const rightMoveEvent = () => {
         swiperBars[currentPage - 1].classList.remove('point');
         events.forEach(event => {
-            event.style.left = `calc(${event.style.left} - (50%)`;
-            if (event.style.left === 'calc(-50% * 2)') {
+            event.style.left = `calc((-50%) + ${event.style.left}`;
+            if (event.style.left === 'calc(-100%)') {
+                // -50% * 2 = -100%
                 event.style.left = `calc(50% * ${events.length - 2})`;
             }
             if (event.style.left !== 'calc(0%)' &&
@@ -59,11 +61,11 @@ if (document.querySelector('span.swiper-bar') !== null) {
             }
         });
         currentPage++;
-        if (currentPage > 8) {
+        if (currentPage > events.length) {
             currentPage = 1;
         }
         page.innerText = `${currentPage} / ${events.length}`;
-        if (currentPage + 1 > 9) {
+        if (currentPage + 1 > events.length + 1) {
             swiperBars[0].classList.add('point');
         } else {
             swiperBars[currentPage - 1].classList.add('point');
@@ -79,6 +81,10 @@ if (document.querySelector('span.swiper-bar') !== null) {
         swiperBars[0].classList.add('point');
         for (const event of events) {
             event.style.left = `calc((50%) * ${i})`;
+            let leftEventValue = 50 * (events.length - 1) + '%';
+            if (event.style.left === `calc(${leftEventValue})`) {
+                event.style.left = 'calc(-50%)';
+            }
             i++;
             if (event.style.left !== `calc(0%)` &&
                 event.style.left !== `calc(50%)`) {
