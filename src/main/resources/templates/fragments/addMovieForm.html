@@ -25,15 +25,18 @@
         </label>
         <label class="_obj-label">
             <span class="__text">영화 개봉일</span>
-            <input class="_obj-input __field" type="text" name="releaseDate">
+            <input class="_obj-input __field" type="datetime-local" name="releaseDate">
         </label>
         <label class="_obj-label">
             <span class="__text">영화 러닝타임</span>
-            <input class="_obj-input __field" type="text" name="playing_time">
+            <input class="_obj-input __field" type="time" name="playingTime">
         </label>
         <label class="_obj-label">
             <span class="__text">영화 단독 개봉 여부</span>
-            <input class="_obj-input __field" type="checkbox" name="is_single">
+            <input class="_obj-input __field" type="checkbox" name="isSingle">
+            <input class="_obj-input __field" type="hidden" name="_isSingle" value="on">
+<!--            스프링은 on을 받으면 true로 변경한다.
+근데 이건 _ 있어서 false로 변경됨-->
         </label>
         <div class="spring"></div>
         <button type="submit">추가하기</button>
