@@ -1,26 +1,27 @@
 @charset "UTF-8";
+
 @import "../common/header";
 @import "../common/common.notHome";
 
-* {
+*{
   box-sizing: border-box;
 }
 
-body {
+body{
   overflow: auto;
   overflow-y: scroll;
   letter-spacing: 0;
-  line-height: 1.5;
+  line-height: 1;
   font-size: 15px;
   color: #444;
   font-weight: 400;
-  font-family: NanumBarunGothic, Dotum, '돋움', sans-serif;
+  font-family: sans-serif, NanumBarunGothic, Dotum, '돋움';
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
 
-  .button {
+  .button{
     display: inline-block;
     height: 36px;
     margin: 0;
@@ -30,7 +31,7 @@ body {
     color: #503396;
     font-weight: 400;
     border-radius: 4px;
-    font-family: NanumBarunGothic, Dotum, '돋움', sans-serif;
+    font-family: sans-serif, NanumBarunGothic, Dotum, '돋움';
     text-decoration: none;
     border: 1px solid #503396;
     vertical-align: middle;
@@ -44,9 +45,8 @@ body {
     #container {
       width: 1100px;
       margin: 0 auto;
-
       > .tit {
-        padding: 2.5rem 0 26px 0;
+        padding: 0 0 0 0;
         font-size: 1.8666em;
         font-weight: 500;
         letter-spacing: -1px;
@@ -54,13 +54,13 @@ body {
         color: #222;
       }
 
-      > .tab-list {
+      >.tab-list{
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: row;
 
-        > .topMenu { /* 위에 메뉴들 ul 태그*/
+        >.topMenu{ /* 위에 메뉴들 ul 태그*/
           list-style: none;
           //position: fixed;
           width: 100%;
@@ -71,10 +71,10 @@ body {
 
           padding: 0;
 
-          > .on { /*li 태그들*/
+          >.on{ /*li 태그들*/
             width: 20%;
 
-            > .a { /*링크 태그들*/
+            >.a{ /*링크 태그들*/
               position: relative;
               display: block;
               width: 100%;
@@ -89,14 +89,16 @@ body {
             }
 
 
+
           }
+
+
 
 
         }
 
       }
-
-      > .movie-list-util { /*영화관 검색 있는곳 묶음*/
+      >.movie-list-util{ /*영화관 검색 있는곳 묶음*/
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -104,12 +106,12 @@ body {
         margin-bottom: 15px;
         margin-top: 40px !important;
 
-        > .onairBtnContainer {
+        >.onairBtnContainer{
           float: left;
           margin-left: 10px;
           padding: 10px 0 0 0;
 
-          > .onairBtn {
+          >.onairBtn {
             display: block;
             padding: 0 0 0 30px;
             background: url(https://img.megabox.co.kr/static/pc/images/common/btn/btn-on-air.png) no-repeat 0 2px;
@@ -119,7 +121,7 @@ body {
           }
         }
 
-        > .movie-search {
+        >.movie-search{
           position: relative;
           float: right;
           width: 230px;
@@ -129,7 +131,7 @@ body {
           border: 1px solid #d8d9db;
           border-radius: 3px;
 
-          > .input-text {
+          >.input-text{
             display: block;
             width: 100%;
             height: 34px;
@@ -143,7 +145,7 @@ body {
             font-size: 1rem;
           }
 
-          > .btn-search-input {
+          >.btn-search-input{
             position: absolute;
             right: 1px;
             top: 1px;
@@ -161,11 +163,12 @@ body {
         }
 
 
+
       }
 
-      > .movie-list { /*영화 리스트 묶음*/
+      >.movie-list{ /*영화 리스트 묶음*/
 
-        > .board-move {
+        >.board-move {
           //position: relative;
           padding: 40px 0 0 0;
 
@@ -201,11 +204,13 @@ body {
         }
 
 
-        > .list { /*그 밑에 ol 태그*/
+
+
+        >.list{ /*그 밑에 ol 태그*/
           margin-left: -60px;
           padding: 0;
 
-          > .img {
+          >.img{
             overflow: hidden;
             position: relative;
             float: left;
@@ -216,10 +221,10 @@ body {
             background-color: #fff;
 
 
-            > .movie-list-info {
+            >.movie-list-info{
               position: relative;
 
-              > .rank {
+              >.rank{
                 z-index: 2;
                 position: absolute;
                 left: 0;
@@ -230,7 +235,7 @@ body {
                 line-height: 1.1;
                 font-size: 2em;
                 font-style: italic;
-                font-family: Roboto, Dotum, '돋움', sans-serif;
+                font-family: sans-serif, Roboto, Dotum, '돋움';
                 font-weight: 300;
                 color: #fff;
                 text-shadow: 2px 2px 2px rgba(0, 0, 0, .8);
@@ -238,7 +243,7 @@ body {
 
               }
 
-              > .poster { /*영화 사진*/
+              >.poster{ /*영화 사진*/
                 width: 230px;
                 height: 331px;
                 overflow: hidden;
@@ -251,9 +256,9 @@ body {
 
               }
 
-              > .movie-score {
+              >.movie-score{
 
-                > .wrap {
+                >.wrap{
                   width: 230px;
                   height: 331px;
                   position: relative;
@@ -261,21 +266,21 @@ body {
                   padding: 25px;
 
 
-                  &:hover {
+                  &:hover{
                     background-color: rgba(0, 0, 0, .8);
                     border-radius: 0.5rem;
 
-                    > .summary {
+                    >.summary{
                       display: block;
                       color: white;
+
 
 
                     }
 
 
                   }
-
-                  > .summary {
+                  >.summary{
                     position: absolute; //absolute 줄려면 조상중에 있어야함 position: relative;
                     overflow: hidden;
                     width: 180px;
@@ -283,7 +288,9 @@ body {
                     display: none;
 
 
+
                   }
+
 
 
                 }
@@ -293,7 +300,7 @@ body {
 
             }
 
-            > .tit-area { /*묶음자리*/
+            >.tit-area{ /*묶음자리*/
               position: relative;
               width: 100%;
               margin: 15px 0 0 0;
@@ -301,7 +308,8 @@ body {
               line-height: 25px;
 
 
-              > .movie-grad-all {
+
+              >.movie-grad-all{
                 height: 100%;
                 background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/ALL_46x46.png);
                 background-size: 23px 23px;
@@ -313,7 +321,7 @@ body {
               }
 
 
-              > .title { //영화 이름 넣는 자리
+              >.title{ //영화 이름 넣는 자리
                 overflow: hidden;
                 display: block;
                 width: 100%;
@@ -322,18 +330,19 @@ body {
                 padding: 0 0 0 1px;
                 font-size: 1.7em;
                 font-weight: 400;
-                margin: 0;
+                margin : 0;
 
 
               }
             }
 
-            > .rate-date {
+            >.rate-date{
               overflow: hidden;
               padding: 10px 0 0 0;
+              font-size: 0.9rem;
+              font-family: sans-serif;
 
-              > .rate { //예매율
-                margin: 0 7px 0 0;
+              >.rate{ //예매율
                 padding: 0 8px 0 0;
                 display: block;
                 position: relative;
@@ -341,13 +350,13 @@ body {
                 font-weight: 600;
               }
 
-              > .rate::after {
+              >.rate::after{
                 padding-left: 5px;
-                content: "|";
+                content:"|";
                 color: #c9c9c9;
               }
 
-              > .date { //개봉일
+              >.date{//개봉일
                 display: block;
                 position: relative;
                 float: left;
@@ -358,7 +367,7 @@ body {
 
             }
 
-            > .btn-util {
+            >.btn-util{
               overflow: hidden;
               position: absolute;
               left: 0;
@@ -366,7 +375,7 @@ body {
               width: 100%;
               height: 36px;
 
-              > .button.btn-like { //좋아요 버튼
+              >.button.btn-like{ //좋아요 버튼
                 float: left;
                 width: 72px;
 
@@ -375,36 +384,34 @@ body {
                 border-color: #ebebeb;
                 margin-right: 5px;
 
-                > .fa-regular {
+                >.fa-regular{
                   font-size: 1rem;
                 }
               }
 
-              > .button.btn-like > span { //좋아요 버튼
+              >.button.btn-like > span { //좋아요 버튼
                 font-size: 1.2em;
               }
+              >.Ticketing-container{ /*예매하기 버튼*/
 
-              > .Ticketing-container { /*예매하기 버튼*/
-
-                > .button {
+                >.button {
                   width: 74px;
                   margin-left: 5px;
 
                 }
-
-                > .button.purple {
+                >.button.purple{
                   color: #fff;
                   line-height: 36px;
                   border: 0;
                   background: #503396;
                 }
 
-                > .button.purple.ticketing {
+                >.button.purple.ticketing{
                   margin-left: 0;
                   width: 74px;
                 }
 
-                > .button.purple.img { //Dolby 버튼
+                >.button.purple.img{   //Dolby 버튼
                   display: inline-block;
                   height: 36px;
                   margin: 0;
@@ -414,7 +421,7 @@ body {
                   color: #ffffff;
                   font-weight: 400;
                   border-radius: 4px;
-                  font-family: NanumBarunGothic, Dotum, '돋움', sans-serif;
+                  font-family: sans-serif, NanumBarunGothic, Dotum, '돋움';
                   text-decoration: none;
                   border: 1px solid #503396;
                   vertical-align: middle;
@@ -439,12 +446,18 @@ body {
           }
 
 
+
+
         }
 
 
       }
 
     }
+
+
+
+
 
 
   }

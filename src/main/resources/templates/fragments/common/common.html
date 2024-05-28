@@ -6,6 +6,10 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <th:block th:fragment="adminCommonHead">
+        <link rel="stylesheet" th:href="@{/assets/styles/common/admin/adminCommon.css}">
+        <script defer type="text/javascript" th:src="@{/assets/scripts/adminAside.js}"></script>
+    </th:block>
     <th:block th:fragment="commonHead">
         <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/common/common.css}">
         <link rel="icon" th:href="@{/assets/images/common/favicon.ico}">
@@ -15,8 +19,12 @@
     </th:block>
 </head>
 <body>
+<th:block th:fragment="adminCommonBody">
+    <div th:replace="~{fragments/admin/adminAside.html :: adminAside}"></div>
+    <div th:replace="~{fragments/admin/addMovieForm.html :: addMovieForm}"></div>
+    <div th:replace="~{fragments/admin/addProductForm.html :: addProductForm}"></div>
+</th:block>
 <th:block th:fragment="common">
-
     <div th:replace="~{fragments/loading.html :: loading}"></div>
     <div th:replace="~{fragments/loginForm.html :: loginForm}"></div>
     <div th:replace="~{fragments/cover.html :: cover}"></div>

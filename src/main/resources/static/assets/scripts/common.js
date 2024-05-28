@@ -2,6 +2,44 @@ const header = document.querySelector('.header-main-page');
 const loginCancelButton = document.querySelector('[rel="loginCancel"]');
 const alertCover = document.getElementById('alertCover');
 
+
+if (document.querySelector('[rel="showLoginAlert"]') !== null){
+    // 로그인이 안되어있다면 << 나중에 이 조건도 코딩해야됨
+    const loginAlertButtons = document.querySelectorAll('[rel="showLoginAlert"]');
+    loginAlertButtons.forEach(loginAlertButton => loginAlertButton.onclick = () => {
+        new MessageObj({
+            title: '알림',
+            content: '로그인 후 이용가능한 서비스입니다 <br> 로그인하시겠습니까?',
+            buttons: [
+                {text: '취소', onclick: instance => {
+                    instance.hide();
+                    alertCover.hide();
+                    }},
+                {text: '확인', onclick: instance => {
+                    instance.hide();
+                    showLogin();
+                    alertCover.hide();
+                    }}
+            ]
+        }).show();
+        // document.querySelector('._obj-message.-visible') 이건 왜 안되징
+        document.querySelector('._obj-message').querySelector('.title-bar').style.boxSizing = 'border-box';
+        document.querySelector('._obj-message').querySelector('.title-bar').style.width = '300px';
+        document.querySelector('._obj-message').querySelector('.__content').style.boxSizing = 'border-box';
+        document.querySelector('._obj-message').querySelector('.__content').style.width = '300px';
+        document.querySelector('._obj-message').querySelector('.__button:first-child').style.backgroundColor = '#ffffff';
+        document.querySelector('._obj-message').querySelector('.__button:first-child').style.color = '#503396';
+        alertCover.show(() => {
+            console.log(document.querySelector('._obj-message.-visible').style.width);
+            document.querySelector('._obj-message.-visible').hide();
+            alertCover.hide();
+        });
+
+    })
+
+//     로그인이 되어있다면 관리자 페이지로 이동
+}
+
 if (document.querySelector('span.swiper-bar') !== null) {
     const leftSwiperButton = document.querySelector('button.left.swiper');
     const rightSwiperButton = document.querySelector('button.right.swiper');
@@ -16,15 +54,15 @@ if (document.querySelector('span.swiper-bar') !== null) {
     const leftMoveEvent = () => {
         swiperBars[currentPage - 1].classList.remove('point');
         events.forEach(event => {
-            event.style.left = `calc(${event.style.left} + (50%)`;
-            let leftEventValue = 50 * (events.length - 1) + '%';
+            event.style.left = `calc(${event.style.left} + (51.5%)`;
+            let leftEventValue = 51.5 * (events.length - 1) + '%';
             if (event.style.left === `calc(${leftEventValue})`) {
-                event.style.left = 'calc(-50%)';
+                event.style.left = 'calc(-51.5%)';
             }
             if (event.style.left !== 'calc(0%)' &&
-                event.style.left !== 'calc(50%)' &&
-                event.style.left !== 'calc(-50%)' &&
-                event.style.left !== 'calc(100%)') {
+                event.style.left !== 'calc(51.5%)' &&
+                event.style.left !== 'calc(-51.5%)' &&
+                event.style.left !== 'calc(103%)') {
                 event.style.display = 'none';
             } else {
                 event.style.display = 'block';
@@ -46,15 +84,15 @@ if (document.querySelector('span.swiper-bar') !== null) {
     const rightMoveEvent = () => {
         swiperBars[currentPage - 1].classList.remove('point');
         events.forEach(event => {
-            event.style.left = `calc((-50%) + ${event.style.left}`;
-            if (event.style.left === 'calc(-100%)') {
-                // -50% * 2 = -100%
-                event.style.left = `calc(50% * ${events.length - 2})`;
+            event.style.left = `calc((-51.5%) + ${event.style.left}`;
+            if (event.style.left === 'calc(-103%)') {
+                // -51.5% * 2 = -100%
+                event.style.left = `calc(51.5% * ${events.length - 2})`;
             }
             if (event.style.left !== 'calc(0%)' &&
-                event.style.left !== 'calc(50%)' &&
-                event.style.left !== 'calc(-50%)' &&
-                event.style.left !== 'calc(100%)') {
+                event.style.left !== 'calc(51.5%)' &&
+                event.style.left !== 'calc(-51.5%)' &&
+                event.style.left !== 'calc(103%)') {
                 event.style.display = 'none';
             } else {
                 event.style.display = 'block';
@@ -80,18 +118,21 @@ if (document.querySelector('span.swiper-bar') !== null) {
         page.innerText = `${currentPage} / ${events.length}`;
         swiperBars[0].classList.add('point');
         for (const event of events) {
-            event.style.left = `calc((50%) * ${i})`;
+            event.style.left = `calc((51.5%) * ${i})`;
             let leftEventValue = 50 * (events.length - 1) + '%';
             if (event.style.left === `calc(${leftEventValue})`) {
-                event.style.left = 'calc(-50%)';
+                event.style.left = 'calc(-51.5%)';
             }
             i++;
             if (event.style.left !== `calc(0%)` &&
-                event.style.left !== `calc(50%)`) {
+                event.style.left !== `calc(51.5%)` &&
+                event.style.left !== 'calc(-51.5%)' &&
+                event.style.left !== 'calc(103%)') {
                 event.style.display = 'none';
             } else {
                 event.style.display = 'block';
             }
+
             lessButton.onclick = () => {
                 leftMoveEvent();
             }
@@ -106,13 +147,13 @@ if (document.querySelector('span.swiper-bar') !== null) {
             }
         }
         events.forEach(event => {
-            if (event.style.left === `calc(50% * ${events.length - 1})`) {
-                event.style.left = 'calc(-50%)';
+            if (event.style.left === `calc(51.5% * ${events.length - 1})`) {
+                event.style.left = 'calc(-51.5%)';
             }
             if (event.style.left !== 'calc(0%)' &&
-                event.style.left !== 'calc(50%)' &&
-                event.style.left !== 'calc(-50%)' &&
-                event.style.left !== 'calc(100%)') {
+                event.style.left !== 'calc(51.5%)' &&
+                event.style.left !== 'calc(-51.5%)' &&
+                event.style.left !== 'calc(103%)') {
                 event.style.display = 'none';
             } else {
                 event.style.display = 'block';
@@ -445,6 +486,7 @@ loginForm.onsubmit = e => {
             alertCover.hide();
         }).show();
         if (document.querySelector('._obj-message') !== null) {
+            document.querySelector('._obj-message').style.width = '400px';
             const alertCancelButton = document.querySelector('[rel="alertCancel"]');
             alertCancelButton.onclick = () => {
                 alertCover.hide();
@@ -455,8 +497,7 @@ loginForm.onsubmit = e => {
     }
 }
 
-
-// 여기 이거 대신 html 바꿨음
+// 로그인 화면에서 이메일이나 비밀번호 값에 변경이 있을 때, 둘 중 하나라도 비어있으면 제출 버튼이 비활성화된다.
 loginForm.email.oninput = () => {
     if (loginForm.email.value === '' ||
         loginForm.password.value === '') {
@@ -484,6 +525,7 @@ alertCover.show = (onclick) => {
     alertCover.onclick = onclick;
     alertCover.classList.add(HTMLElement.VISIBLE_CLASS_NAME);
 }
+
 
 
 

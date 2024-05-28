@@ -10,7 +10,7 @@ body {
   overflow-y: scroll;
   font-size: 15px;
   color: #444;
-  font-family: NanumBarunGothic, Dotum, '돋움', sans-serif;
+  font-family: sans-serif, NanumBarunGothic, Dotum, '돋움';
 }
 
 #main {
@@ -53,7 +53,6 @@ body {
       position: relative;
       left: 31rem;
       bottom: 1rem;
-
 
       > .other-movie {
         text-decoration-line: none;
@@ -374,6 +373,7 @@ body {
             > .swiper-bar-box {
               display: flex;
               flex-direction: row;
+              width: 190px;
 
               > .swiper-bar {
                 display: block;
@@ -394,6 +394,7 @@ body {
               margin-left: 0.575rem;
 
               color: #503396;
+              cursor: pointer;
 
               &.play {
                 width: 0.5rem;

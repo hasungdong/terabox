@@ -16,10 +16,10 @@
 }
 
 ._obj-message {
+  background-color: #503396;
   top: calc(50% + 0.25rem);
   left: 50%;
-  min-width: 15rem;
-  border-radius: 0.25rem;
+  min-width: 300px;
   box-shadow: 0 0 1rem 0.0625rem rgba(33, 33, 33, 0.3764705882);
   opacity: 0;
   pointer-events: none;
@@ -35,45 +35,66 @@
   opacity: 1;
   pointer-events: all;
 }
-._obj-message > .__title {
-  background-color: #212121;
+._obj-message > .title-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 15px 20px;
+}
+._obj-message > .title-bar > .__title {
+  background-color: #503396;
   color: #ffffff;
-  padding: 0.75rem 1rem;
+  line-height: 15px;
+  font-size: 18px;
+}
+._obj-message > .title-bar > .spring {
+  flex-grow: 1;
+}
+._obj-message > .title-bar > button {
+  width: 16px;
+  height: 15px;
+  background: url("../../images/common/cancel.png") no-repeat center;
+  border: 0;
+  cursor: pointer;
 }
 ._obj-message > .__content {
   background-color: #ffffff;
-  line-height: 1.25;
-  padding: 0.75rem 1rem;
+  line-height: 1.5;
+  padding: 20px 20px 0 20px;
 }
-._obj-message > .__button-container {
-  border-top: 0.0625rem solid #eeeeee;
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-._obj-message > .__button-container > .__button {
+._obj-message > .__content > .__button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   background-color: #ffffff;
-  border: none;
+  padding: 15px 0 20px 0;
+}
+._obj-message > .__content > .__button-container > .__button {
   cursor: pointer;
   font: inherit;
-  margin: initial;
   padding-block: initial;
   padding-inline: initial;
   outline: none;
   user-select: none;
-  padding: 0.5rem;
+  border-radius: 4px;
+  padding: 0 15px;
+  border: 1px solid #503396;
+  margin: 0 3px;
+  color: #fff;
+  line-height: 36px;
+  background: #503396;
 }
-._obj-message > .__button-container > .__button:hover {
-  background-color: #f9f9f9;
+._obj-message > .__content > .__button-container > .__button:hover {
+  background-color: #301c5d;
 }
-._obj-message > .__button-container > .__button:active {
-  background-color: #f2f2f2;
+._obj-message > .__content > .__button-container > .__button:active {
+  background-color: #2b1953;
 }
-._obj-message > .__button-container > .__button:focus {
-  text-decoration: underline;
-}
-._obj-message > .__button-container > .__button + .__button {
-  border-left: 0.0625rem solid #e0e0e0;
+._obj-message > .__content > .__button-container > .__button.cancel {
+  background-color: #ffffff;
+  color: #503396;
 }
 
 /*# sourceMappingURL=common._obj-message.css.map */

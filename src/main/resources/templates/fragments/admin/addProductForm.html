@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<form class="form" id="addProductForm" th:fragment="addProductForm">
+    <h3 class="title">스토어 상품 추가</h3>
+    <div class="content">
+        <label class="_obj-label">
+            <span class="__text">상품 이름</span>
+            <input autofocus required class="_obj-input __field" type="text" name="name" maxlength="100" minlength="1">
+        </label>
+        <label class="_obj-label thumbnail" rel="thumbnailLabel">
+            <input hidden accept="image/*" name="thumbnail" type="file">
+            <span class="__text">상품 이미지</span>
+            <span class="image-wrapper">
+                <span class="empty">상품 이미지를 선택해 주세요.</span>
+                <img alt="" class="image" src="">
+            </span>
+        </label>
+        <label class="_obj-label">
+            <span class="__text">상품 가격</span>
+            <input class="_obj-input __field" type="text" name="price">
+        </label>
+        <label class="_obj-label">
+            <span class="__text">상품 개수</span>
+            <input class="_obj-input __field" type="text" name="quantity">
+        </label>
+        <div class="spring"></div>
+        <button type="submit">추가하기</button>
+        <button type="button" rel="hideAddProductForm">취소</button>
+    </div>
+</form>
+</body>
+</html>
