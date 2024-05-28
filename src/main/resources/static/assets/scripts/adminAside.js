@@ -50,6 +50,24 @@ addMovieFormHideButtons.forEach(addMovieFormHideButton => addMovieFormHideButton
 addMovieForm.onsubmit = e => {
     e.preventDefault();
 //     나중에 채워야댐
+    const xhr = new XMLHttpRequest();
+    const formData = new FormData();
+    formData.append('name', addMovieForm['name'].value);
+    formData.append('releaseDate', addMovieForm['releaseDate'].value);
+    formData.append('playingTime', addMovieForm['playingTime'].value);
+    formData.append('thumbnail', addMovieForm['thumbnail'].value);
+    formData.append('isSingle', addMovieForm['isSingle'].value);
+    xhr.onreadystatechange = function(){
+        if (xhr.readyState !== XMLHttpRequest.DONE){
+            return;
+        }
+        if (xhr.status < 200 || xhr.status >= 300){
+            MessageObj.createSimpleOk('오류', '알 수 없는 이유로 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.').show();
+            return;
+        }
+    }
+    xhr.open('POST', '/admin/addMovie');
+    xhr.send(formData);
 }
 
 addProductFormShowButtons.forEach(addProductFormShowButton => addProductFormShowButton.onclick = () => {
