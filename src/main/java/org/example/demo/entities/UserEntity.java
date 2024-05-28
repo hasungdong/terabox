@@ -18,4 +18,5 @@ public class UserEntity {
     private LocalDateTime createdAt;
     private int point;
     private int mileage;
+    private int abc;
 }
