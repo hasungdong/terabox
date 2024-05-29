@@ -35,6 +35,9 @@
   gap: 0.5rem;
   justify-content: flex-start;
 }
+.form > .content > .title > input {
+  font-size: 12px;
+}
 .form > .content > .thumbnail > .image-wrapper {
   align-items: stretch;
   display: flex;
@@ -59,8 +62,11 @@
   border-radius: 0.25rem;
   cursor: pointer;
   display: none;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
+}
+.form > .content > label > span > span.text {
+  font-size: 12px;
 }
 .form > .content > .spring {
   flex-grow: 1;
