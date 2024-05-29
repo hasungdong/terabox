@@ -15,4 +15,10 @@ public class AdminController {
     public String postAddMovie(){
         return null;
     }
+
+    @PostMapping(value = "/addProduct", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public String postAddProduct(){
+        return null;
+    }
 }

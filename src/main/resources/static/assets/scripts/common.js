@@ -446,6 +446,28 @@ class MessageObj {
     }
 }
 
+class LabelObj {
+    element;
+
+    constructor(element) {
+        this.element = element;
+    }
+
+    isValid() {
+        return !this.element.classList.contains(HTMLElement.INVALID_CLASS_NAME);
+    }
+
+    setValid(b) {
+        if (b === true){
+            this.element.classList.remove(HTMLElement.INVALID_CLASS_NAME);
+        }
+        if (b === false){
+            this.element.classList.add(HTMLElement.INVALID_CLASS_NAME);
+        }
+        return this;
+    }
+}
+
 HTMLElement.INVALID_CLASS_NAME = '-invalid';
 HTMLElement.VISIBLE_CLASS_NAME = '-visible';
 
@@ -467,6 +489,32 @@ HTMLElement.prototype.hide = function () {
 HTMLElement.prototype.show = function () {
     this.classList.add(HTMLElement.VISIBLE_CLASS_NAME);
     return this;
+}
+
+HTMLInputElement.prototype.tests = function () {
+    if (typeof this.dataset.regex !== 'string'){
+        // 정규식이 없는 상태라는 뜻
+        // 정규식이 없으면 검사할게 없으니 무조건 안전한 값이므로 true를 반환
+        return true;
+    }
+    if (typeof this._regExp === 'undefined'){
+        this._regExp = new RegExp(this.dataset.regex);
+    }
+    return this._regExp.test(this.value);
+}
+
+HTMLTextAreaElement.prototype.tests = function () {
+    if (typeof this.dataset.regex !== 'string'){
+        return true;
+    }
+    if (typeof this._regExp === 'undefined'){
+        this._regExp = new RegExp(this.dataset.regex);
+    }
+    return this._regExp.test(this.value);
+}
+
+HTMLElement.prototype.isEnabled = function () {
+    return !this.hasAttribute('disabled');
 }
 
 loginCancelButton.onclick = () => {

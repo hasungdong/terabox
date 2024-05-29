@@ -45,6 +45,12 @@
     gap: 0.5rem;
     justify-content: flex-start;
 
+    > .title{
+      > input{
+        font-size: 12px;
+      }
+    }
+
     > .thumbnail {
       > .image-wrapper {
         align-items: stretch;
@@ -76,6 +82,10 @@
           object-position: center;
         }
       }
+    }
+
+    > label > span > span.text{
+      font-size: 12px;
     }
 
     > .spring{

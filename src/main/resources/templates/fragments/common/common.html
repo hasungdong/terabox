@@ -9,6 +9,8 @@
     <th:block th:fragment="adminCommonHead">
         <link rel="stylesheet" th:href="@{/assets/styles/common/admin/adminCommon.css}">
         <script defer type="text/javascript" th:src="@{/assets/scripts/adminAside.js}"></script>
+        <script defer type="text/javascript" th:src="@{/assets/scripts/addMovie.js}"></script>
+        <script defer type="text/javascript" th:src="@{/assets/scripts/addProduct.js}"></script>
     </th:block>
     <th:block th:fragment="commonHead">
         <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/common/common.css}">
@@ -23,6 +25,7 @@
     <div th:replace="~{fragments/admin/adminAside.html :: adminAside}"></div>
     <div th:replace="~{fragments/admin/addMovieForm.html :: addMovieForm}"></div>
     <div th:replace="~{fragments/admin/addProductForm.html :: addProductForm}"></div>
+    <div th:replace="~{fragments/admin/deleteMovieForm.html :: deleteMovieForm}"></div>
 </th:block>
 <th:block th:fragment="common">
     <div th:replace="~{fragments/loading.html :: loading}"></div>
