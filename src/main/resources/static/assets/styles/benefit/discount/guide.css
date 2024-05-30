@@ -934,7 +934,7 @@ li {
 #main > .AffiliateEvent > .event-box > .event > .text-box > .text {
   overflow: hidden;
   display: inline-block;
-  max-width: 100%;
+  width: 360px;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
