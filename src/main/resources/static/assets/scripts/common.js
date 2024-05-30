@@ -134,16 +134,57 @@ if (document.querySelector('span.swiper-bar') !== null) {
             }
 
             lessButton.onclick = () => {
+                // 화면이 넘어가는 중에 버튼 또 누르는거 방지
+                lessButton.disable();
+                leftSwiperButton.disable();
+                moreButton.disable();
+                rightSwiperButton.disable();
                 leftMoveEvent();
+                const showAgain = setTimeout(() => {
+                    lessButton.enable();
+                    leftSwiperButton.enable();
+                    moreButton.enable();
+                    rightSwiperButton.enable();
+                }, 600);
             }
             leftSwiperButton.onclick = () => {
+                lessButton.disable();
+                leftSwiperButton.disable();
+                moreButton.disable();
+                rightSwiperButton.disable();
                 leftMoveEvent();
+                const showAgain = setTimeout(() => {
+                    lessButton.enable();
+                    leftSwiperButton.enable();
+                    moreButton.enable();
+                    rightSwiperButton.enable();
+                }, 600);
             }
             moreButton.onclick = () => {
+                lessButton.disable();
+                leftSwiperButton.disable();
+                moreButton.disable();
+                rightSwiperButton.disable();
                 rightMoveEvent();
+                const showAgain = setTimeout(() => {
+                    lessButton.enable();
+                    leftSwiperButton.enable();
+                    moreButton.enable();
+                    rightSwiperButton.enable();
+                }, 600);
             }
             rightSwiperButton.onclick = () => {
+                lessButton.disable();
+                leftSwiperButton.disable();
+                moreButton.disable();
+                rightSwiperButton.disable();
                 rightMoveEvent();
+                const showAgain = setTimeout(() => {
+                    lessButton.enable();
+                    leftSwiperButton.enable();
+                    moreButton.enable();
+                    rightSwiperButton.enable();
+                }, 600);
             }
         }
         events.forEach(event => {
