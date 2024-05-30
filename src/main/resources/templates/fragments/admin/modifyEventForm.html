@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<form class="form" id="modifyEventForm" th:fragment="modifyEventForm" th:with="movieRegex = ${T(org.example.demo.regexes.MovieRegex)}">
+    <h3 class="title">이벤트 수정</h3>
+    <div class="content">
+        <label class="_obj-label title" rel="titleLabel">
+            <span class="__text">이벤트 제목</span>
+            <!--            <input autofocus required class="_obj-input __field" type="text" name="name" maxlength="100" minlength="1" spellcheck="false" th:attrappend="data-regex=${movieRegex.name.expression}">-->
+            <input autofocus required class="_obj-input __field" type="text" name="title" maxlength="100" minlength="1" spellcheck="false">
+            <img th:src="@{/assets/images/common/search.png}" alt="">
+            <span class="__warning">올바른 제목을 입력해 주세요.</span>
+        </label>
+        <div class="spring"></div>
+        <button type="button" rel="hideModifyEventForm">취소</button>
+    </div>
+</form>
+</body>
+</html>

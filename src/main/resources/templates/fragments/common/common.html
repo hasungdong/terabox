@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <th:block th:fragment="adminCommonHead">
+        <link rel="stylesheet" th:href="@{/assets/styles/common/admin/adminCommon.css}">
+        <script defer type="text/javascript" th:src="@{/assets/scripts/adminAside.js}"></script>
+        <script defer type="text/javascript" th:src="@{/assets/scripts/addMovie.js}"></script>
+        <script defer type="text/javascript" th:src="@{/assets/scripts/addProduct.js}"></script>
+    </th:block>
+    <th:block th:fragment="commonHead">
+        <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/common/common.css}">
+        <link rel="icon" th:href="@{/assets/images/common/favicon.ico}">
+        <script defer type="text/javascript" th:src="@{/assets/scripts/header.js}"></script>
+        <script defer type="text/javascript" th:src="@{/assets/scripts/common.js}"></script>
+        <script src="https://kit.fontawesome.com/d88fee1042.js" crossorigin="anonymous"></script>
+    </th:block>
+</head>
+<body>
+<th:block th:fragment="adminCommonBody">
+    <div th:replace="~{fragments/admin/adminAside.html :: adminAside}"></div>
+    <div th:replace="~{fragments/admin/addMovieForm.html :: addMovieForm}"></div>
+    <div th:replace="~{fragments/admin/addProductForm.html :: addProductForm}"></div>
+    <div th:replace="~{fragments/admin/addEventForm.html :: addEventForm}"></div>
+    <div th:replace="~{fragments/admin/deleteMovieForm.html :: deleteMovieForm}"></div>
+    <div th:replace="~{fragments/admin/deleteProductForm.html :: deleteProductForm}"></div>
+    <div th:replace="~{fragments/admin/deleteEventForm.html :: deleteEventForm}"></div>
+    <div th:replace="~{fragments/admin/modifyMovieForm.html :: modifyMovieForm}"></div>
+    <div th:replace="~{fragments/admin/modifyProductForm.html :: modifyProductForm}"></div>
+    <div th:replace="~{fragments/admin/modifyEventForm.html :: modifyEventForm}"></div>
+</th:block>
+<th:block th:fragment="common">
+    <div th:replace="~{fragments/loading.html :: loading}"></div>
+    <div th:replace="~{fragments/loginForm.html :: loginForm}"></div>
+    <div th:replace="~{fragments/cover.html :: cover}"></div>
+    <div th:replace="~{fragments/alertCover.html :: alertCover}"></div>
+    <div th:replace="~{fragments/header.html :: header}"></div>
+</th:block>
+</body>
+</html>

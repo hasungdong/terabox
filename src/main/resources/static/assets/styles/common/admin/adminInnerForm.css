@@ -1,0 +1,109 @@
+.form {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  justify-content: flex-start;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 800px;
+  background-color: #ffffff;
+  border: #000000 solid 1px;
+  border-radius: 1rem;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 10;
+}
+.form.-visible {
+  opacity: 1;
+  pointer-events: all;
+}
+.form > .title {
+  padding: 2rem;
+  text-align: center;
+  border-bottom: #5e5e5e solid 0.06rem;
+}
+.form > .content {
+  height: 100%;
+  padding: 1rem;
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: flex-start;
+}
+.form > .content > .title {
+  position: relative;
+}
+.form > .content > .title > input {
+  font-size: 12px;
+}
+.form > .content > .title > img {
+  position: absolute;
+  right: 0;
+  bottom: 0.25rem;
+  border: #666666 solid 1px;
+  background-color: #ffffff;
+  border-radius: 0 0.25rem 0.25rem 0;
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+}
+.form > .content > .thumbnail > .image-wrapper {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.form > .content > .thumbnail > .image-wrapper > .empty {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background-color: #f5f5f5;
+  border-radius: 0.25rem;
+  color: #757575;
+  cursor: pointer;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.form > .content > .thumbnail > .image-wrapper > .image {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: none;
+  object-fit: cover;
+  object-position: center;
+}
+.form > .content > label > span > span.text {
+  font-size: 12px;
+}
+.form > .content > .spring {
+  flex-grow: 1;
+}
+.form > .content > button {
+  background-color: #545454;
+  border: none;
+  border-radius: 0.25rem;
+  box-sizing: border-box;
+  color: #f5f5f5;
+  cursor: pointer;
+  padding: 0.625rem;
+  transition: background-color 125ms ease;
+  user-select: none;
+  white-space: nowrap;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  justify-content: center;
+}
+.form > .content > button:hover {
+  background-color: #3b3b3b;
+}
+
+/*# sourceMappingURL=adminInnerForm.css.map */

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<form class="form" id="modifyProductForm" th:fragment="modifyProductForm">
+    <h3 class="title">스토어 상품 수정</h3>
+    <div class="content">
+        <label class="_obj-label title" rel="nameLabel">
+            <span class="__text">상품 이름</span>
+            <input autofocus required class="_obj-input __field" type="text" name="name" maxlength="100" minlength="1">
+            <img th:src="@{/assets/images/common/search.png}" alt="">
+            <span class="__warning">올바른 이름을 입력해 주세요.</span>
+        </label>
+        <div class="spring"></div>
+        <button type="button" rel="hideModifyProductForm">취소</button>
+    </div>
+</form>
+</body>
+</html>
