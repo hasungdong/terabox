@@ -11,4 +11,20 @@
         INSERT INTO `terabox`.`movies` (`title`, `release_date`, `playing_time`, `grade`, `view`, `is_single`, `thumbnail`, `thumbnail_file_name`, `thumbnail_content_type`)
         VALUES (#{title}, #{releaseDate}, #{playingTime}, #{grade}, #{view}, #{isSingle}, #{thumbnail}, #{thumbnailFileName}, #{thumbnailContentType})
     </insert>
+    <insert id="insertProduct"
+            useGeneratedKeys="true"
+            keyColumn="index"
+            keyProperty="index"
+            parameterType="com.terabox.demo.entities.ProductEntity">
+        INSERT INTO `terabox`.`products` (`name`, `price`, `quantity`, `thumbnail`, `thumbnail_file_name`, `thumbnail_content_type`)
+        VALUES (#{name}, #{price}, #{quantity}, #{thumbnail}, #{thumbnailFileName}, #{thumbnailContentType})
+    </insert>
+    <insert id="insertEvent"
+            useGeneratedKeys="true"
+            keyColumn="index"
+            keyProperty="index"
+            parameterType="com.terabox.demo.entities.EventEntity">
+        INSERT INTO `terabox`.`events` (`title`, `start_date`, `end_date`, `discount_rate`, `thumbnail`, `thumbnail_file_name`, `thumbnail_content_type`)
+        VALUES (#{title}, #{startDate}, #{endDate}, #{discountRate}, #{thumbnail}, #{thumbnailFileName}, #{thumbnailContentType})
+    </insert>
 </mapper>

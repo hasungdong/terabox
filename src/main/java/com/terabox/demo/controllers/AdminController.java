@@ -1,5 +1,7 @@
 package com.terabox.demo.controllers;
 
+import com.terabox.demo.entities.EventEntity;
+import com.terabox.demo.entities.ProductEntity;
 import com.terabox.demo.results.Result;
 import lombok.RequiredArgsConstructor;
 import com.terabox.demo.entities.MovieEntity;
@@ -37,7 +39,27 @@ public class AdminController {
 
     @PostMapping(value = "/addProduct", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String postAddProduct(){
-        return null;
+    public String postAddProduct(@RequestParam("_thumbnail") MultipartFile thumbnail,
+                                 ProductEntity product) throws IOException {
+        product.setThumbnail(thumbnail.getBytes());
+        product.setThumbnailFileName(thumbnail.getName());
+        product.setThumbnailContentType(thumbnail.getContentType());
+        Result result = this.adminService.addProduct(product);
+        JSONObject responseObject = new JSONObject();
+        responseObject.put("result", result.name().toLowerCase());
+        return responseObject.toString();
+    }
+
+    @PostMapping(value = "/addEvent", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public String postAddEvent(@RequestParam("_thumbnail") MultipartFile thumbnail,
+                                 EventEntity event) throws IOException {
+        event.setThumbnail(thumbnail.getBytes());
+        event.setThumbnailFileName(thumbnail.getName());
+        event.setThumbnailContentType(thumbnail.getContentType());
+        Result result = this.adminService.addEvent(event);
+        JSONObject responseObject = new JSONObject();
+        responseObject.put("result", result.name().toLowerCase());
+        return responseObject.toString();
     }
 }

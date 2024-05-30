@@ -42,20 +42,27 @@ addProductForm.onsubmit = e => {
         return;
     }
 
-    // __warning 문구 중에 하나라도 보이고 있는게 있으면 제출을 막겠다.
-    const warnings = document.querySelectorAll('.__warning');
-    console.log(warnings);
-    if (warnings.some(warning => warning.style.maxHeight === '2rem')){
-        // 여기서 알림같은거 안해줘도 화면에 warning 뜬 부분 빨간 표시 때문에 사용자가 알아먹을 수 있음
+    if (!addProductForm.nameLabel.isValid() ||
+    !addProductForm.thumbnailLabel.isValid() ||
+    !addProductForm.priceLabel.isValid() ||
+    !addProductForm.quantityLabel.isValid()){
         return;
     }
+
+    // // __warning 문구 중에 하나라도 보이고 있는게 있으면 제출을 막겠다.
+    // const warnings = document.querySelectorAll('.__warning');
+    // console.log(warnings);
+    // if (warnings.some(warning => warning.style.maxHeight === '2rem')){
+    //     // 여기서 알림같은거 안해줘도 화면에 warning 뜬 부분 빨간 표시 때문에 사용자가 알아먹을 수 있음
+    //     return;
+    // }
 
     const xhr = new XMLHttpRequest();
     const formData = new FormData();
     formData.append('name', addProductForm['name'].value);
     formData.append('price', addProductForm['price'].value);
     formData.append('quantity', addProductForm['quantity'].value);
-    formData.append('thumbnail', addProductForm['thumbnail'].files[0]);
+    formData.append('_thumbnail', addProductForm['thumbnail'].files[0]);
     xhr.onreadystatechange = function(){
         if (xhr.readyState !== XMLHttpRequest.DONE){
             return;
@@ -67,7 +74,7 @@ addProductForm.onsubmit = e => {
         const responseObject = JSON.parse(xhr.responseText);
         const [dTitle, dContent, dOnclick] = {
             failure: ['경고', '알 수 없는 이유로 상품을 등록하지 못하였습니다. 잠시 후 다시 시도해주세요.'],
-            failure_duplicate_movie: ['경고', '이미 등록된 상품입니다.', () => addProductForm['name'].focus()],
+            failure_duplicate: ['경고', '이미 등록된 상품입니다.', () => addProductForm['name'].focus()],
             success: ['알림', '상품을 성공적으로 등록하였습니다.']
         }[responseObject.result] || ['경고', '서버가 알 수 없는 응답을 반환하였습니다. 잠시 후 다시 시도해주세요.'];
         MessageObj.createSimpleOk(dTitle, dContent, dOnclick).show();

@@ -9,14 +9,12 @@
 </head>
 <body>
 <form class="form" id="addEventForm" th:fragment="addEventForm"
-      th:with="movieRegex = ${T(com.terabox.demo.regexes.MovieRegex)}">
+      th:with="eventRegex = ${T(com.terabox.demo.regexes.EventRegex)}">
     <h3 class="title">이벤트 추가</h3>
     <div class="content">
         <label class="_obj-label title" rel="titleLabel">
             <span class="__text">이벤트 제목</span>
-            <!--            <input autofocus required class="_obj-input __field" type="text" name="name" maxlength="100" minlength="1" placeholder="이벤트 제목(숫자, 영어 대소문자, 완성 한글, 공백 1자 이상 100자 이하)" spellcheck="false" th:attrappend="data-regex=${movieRegex.name.expression}">-->
-            <input autofocus required class="_obj-input __field" type="text" name="title" maxlength="100" minlength="1"
-                   placeholder="숫자, 영어 대소문자, 완성 한글, 공백, 1자 이상 100자 이하" spellcheck="false">
+            <input autofocus required class="_obj-input __field" type="text" name="name" maxlength="100" minlength="1" placeholder="이벤트 제목(숫자, 영어 대소문자, 완성 한글, 공백 1자 이상 100자 이하)" spellcheck="false" th:attrappend="data-regex=${eventRegex.title.expression}">
             <span class="__warning">올바른 제목을 입력해 주세요.</span>
         </label>
         <label class="_obj-label thumbnail" rel="thumbnailLabel">
@@ -27,17 +25,17 @@
                 <img alt="" class="image" src="">
             </span>
         </label>
-        <label class="_obj-label" rel="releaseDateLabel">
+        <label class="_obj-label" rel="startDateLabel">
             <span class="__text">이벤트 시작일</span>
             <input class="_obj-input __field" type="date" name="startDate">
             <span class="__warning">올바른 날짜를 입력해 주세요.</span>
         </label>
-        <label class="_obj-label" rel="playingTimeLabel">
+        <label class="_obj-label" rel="endDateLabel">
             <span class="__text">이벤트 종료일</span>
             <input class="_obj-input __field" type="date" name="endDate">
             <span class="__warning">올바른 날짜를 입력해 주세요.</span>
         </label>
-        <label class="_obj-label" rel="isSingleLabel">
+        <label class="_obj-label" rel="discountRateLabel">
             <span class="__text">가격 할인율</span>
             <input class="_obj-input __field" type="number" name="discountRate" placeholder="(%)">
             <span class="__warning">올바른 값을 입력해 주세요.</span>

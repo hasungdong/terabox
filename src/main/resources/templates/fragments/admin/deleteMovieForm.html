@@ -8,12 +8,12 @@
     <title>Document</title>
 </head>
 <body>
-<form class="form" id="deleteMovieForm" th:fragment="deleteMovieForm">
+<form class="form" id="deleteMovieForm" th:fragment="deleteMovieForm" th:with="movieRegex = ${T(com.terabox.demo.regexes.MovieRegex)}">
     <h3 class="title">영화 삭제</h3>
     <div class="content">
         <label class="_obj-label title" rel="nameLabel">
             <span class="__text">영화 제목</span>
-            <input autofocus required class="_obj-input __field" type="text" name="title" maxlength="100" minlength="1">
+            <input autofocus required class="_obj-input __field" type="text" name="title" maxlength="100" minlength="1" th:attrappend="data-regex=${movieRegex.title.expression}">
             <img th:src="@{/assets/images/common/search.png}" alt="">
             <span class="__warning">올바른 이름을 입력해 주세요.</span>
         </label>

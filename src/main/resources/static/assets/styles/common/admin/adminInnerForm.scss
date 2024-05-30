@@ -52,17 +52,27 @@
         font-size: 12px;
       }
 
-      > img{
+      > button[type="submit"]{
         position: absolute;
         right: 0;
         bottom: 0.25rem;
         border: #666666 solid 1px;
-        background-color: #ffffff;
         border-radius: 0 0.25rem 0.25rem 0;
-        // input 태그 radius랑 값을 맞춘다
         width: 34px;
         height: 34px;
-        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+
+        > img{
+          background-color: #ffffff;
+          // input 태그 radius랑 값을 맞춘다
+          border-radius: 0 0.25rem 0.25rem 0;
+          width: 32px;
+          height: 32px;
+          cursor: pointer;
+        }
       }
     }
 

@@ -12,8 +12,10 @@ import java.time.LocalDateTime;
 public class EventEntity {
     private int index;
     private byte[] thumbnail;
-    private LocalDateTime name;
+    private String  title;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
-    private LocalDateTime discountRate;
+    private int discountRate;
+    private String thumbnailFileName;
+    private String thumbnailContentType;
 }

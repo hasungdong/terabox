@@ -13,4 +13,6 @@ public class ProductEntity {
     private int price;
     private int quantity;
     private byte[] thumbnail;
+    private String thumbnailFileName;
+    private String thumbnailContentType;
 }
