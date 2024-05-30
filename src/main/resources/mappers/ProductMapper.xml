@@ -12,6 +12,7 @@
                `thumbnail_content_type` AS `thumbnailContentType`
         FROM `terabox`.`products`
         WHERE `name` = #{name}
+        LIMIT 1
     </select>
 
 

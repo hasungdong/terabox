@@ -31,5 +31,6 @@
                `thumbnail_content_type` AS `thumbnailContentType`
         FROM `terabox`.`movies`
         WHERE `index` = #{index}
+        LIMIT 1
     </select>
 </mapper>

@@ -2,6 +2,18 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.terabox.demo.mappers">
-
+<mapper namespace="com.terabox.demo.mappers.EventMapper">
+    <select id="selectEventByTitle" resultType="com.terabox.demo.entities.EventEntity">
+        SELECT `index` AS `index`,
+               `title` AS `title`,
+               `start_date` AS `startDate`,
+               `end_date` AS `endDate`,
+               `discount_rate` AS `discountRate`,
+               `thumbnail` AS `thumbnail`,
+               `thumbnail_file_name` AS `thumbnailFileName`,
+               `thumbnail_content_type` AS `thumbnailContentType`
+        FROM `terabox`.`events`
+        WHERE `title` = #{title}
+        LIMIT 1
+    </select>
 </mapper>

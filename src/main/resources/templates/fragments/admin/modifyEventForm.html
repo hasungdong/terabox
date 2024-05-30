@@ -14,7 +14,9 @@
         <label class="_obj-label title" rel="titleLabel">
             <span class="__text">이벤트 제목</span>
             <input autofocus required class="_obj-input __field" type="text" name="name" maxlength="100" minlength="1" spellcheck="false" th:attrappend="data-regex=${eventRegex.title.expression}">
-            <img th:src="@{/assets/images/common/search.png}" alt="">
+            <button type="submit">
+                <img th:src="@{/assets/images/common/search.png}" alt="">
+            </button>
             <span class="__warning">올바른 제목을 입력해 주세요.</span>
         </label>
         <div class="spring"></div>

@@ -2,6 +2,7 @@ package com.terabox.demo.services;
 
 import com.terabox.demo.entities.EventEntity;
 import com.terabox.demo.entities.ProductEntity;
+import com.terabox.demo.mappers.EventMapper;
 import com.terabox.demo.mappers.ProductMapper;
 import lombok.RequiredArgsConstructor;
 import com.terabox.demo.entities.MovieEntity;
@@ -17,6 +18,7 @@ public class AdminService {
     private final AdminMapper adminMapper;
     private final MovieMapper movieMapper;
     private final ProductMapper productMapper;
+    private final EventMapper eventMapper;
 
     public Result addMovie(MovieEntity movie){
         if (movie == null ||
@@ -57,7 +59,10 @@ public class AdminService {
             return CommonResult.FAILURE;
         }
 //        이름이 같으면 같은 이벤트
-        EventEntity dbEntity;
+        EventEntity dbEvent = this.eventMapper.selectEventByTitle(event.getTitle());
+        if (dbEvent != null){
+            return CommonResult.FAILURE_DUPLICATE;
+        }
         return this.adminMapper.insertEvent(event) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 }

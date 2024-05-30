@@ -8,15 +8,69 @@
     <title>Document</title>
 </head>
 <body>
-<form class="form" id="deleteEventForm" th:fragment="deleteEventForm" th:with="eventRegex = ${T(com.terabox.demo.regexes.EventRegex)}">
+<form class="form" id="deleteEventForm" th:fragment="deleteEventForm"
+      th:with="eventRegex = ${T(com.terabox.demo.regexes.EventRegex)}">
     <h3 class="title">이벤트 삭제</h3>
     <div class="content">
         <label class="_obj-label title" rel="titleLabel">
             <span class="__text">이벤트 제목</span>
-            <input autofocus required class="_obj-input __field" type="text" name="name" maxlength="100" minlength="1" spellcheck="false" th:attrappend="data-regex=${eventRegex.title.expression}">
-            <img th:src="@{/assets/images/common/search.png}" alt="">
+            <input autofocus required class="_obj-input __field" type="text" name="name" maxlength="100" minlength="1"
+                   spellcheck="false" th:attrappend="data-regex=${eventRegex.title.expression}">
+            <button type="submit">
+                <img th:src="@{/assets/images/common/search.png}" alt="">
+            </button>
             <span class="__warning">올바른 제목을 입력해 주세요.</span>
         </label>
+        <ul>
+            <li>
+                <img class="img" src="" alt="">
+                <span class="text-box">
+                    <span class="text">극장판 하이큐!! 쓰레기장의 결전</span>
+                    <span class="spring"></span>
+                    <span class="movie-info">
+                        <span class="playing-time">플레이타임 <br> 01:59:00</span>
+                        <span class="reservation-rate">예매율 <br> 28.1%</span>
+                        <span class="release-date">개봉일 <br> 2024.05.15</span>
+                    </span>
+                </span>
+            </li>
+            <li>
+                <img class="img" src="" alt="">
+                <span class="text-box">
+                    <span class="text title">극장판 하이큐!! 쓰레기장의 결전</span>
+                    <span class="spring"></span>
+                    <span class="movie-info">
+                        <span class="playing-time">플레이타임 <br> 01:59:00</span>
+                        <span class="reservation-rate">예매율 <br> 28.1%</span>
+                        <span class="release-date">개봉일 <br> 2024.05.15</span>
+                    </span>
+                </span>
+            </li>
+            <li>
+                <img class="img" src="" alt="">
+                <span class="text-box">
+                    <span class="text title">극장판 하이큐!! 쓰레기장의 결전</span>
+                    <span class="spring"></span>
+                    <span class="movie-info">
+                        <span class="playing-time">플레이타임 <br> 01:59:00</span>
+                        <span class="reservation-rate">예매율 <br> 28.1%</span>
+                        <span class="release-date">개봉일 <br> 2024.05.15</span>
+                    </span>
+                </span>
+            </li>
+            <li>
+                <img class="img" src="" alt="">
+                <span class="text-box">
+                    <span class="text title">극장판 하이큐!! 쓰레기장의 결전</span>
+                    <span class="spring"></span>
+                    <span class="movie-info">
+                        <span class="playing-time">플레이타임 <br> 01:59:00</span>
+                        <span class="reservation-rate">예매율 <br> 28.1%</span>
+                        <span class="release-date">개봉일 <br> 2024.05.15</span>
+                    </span>
+                </span>
+            </li>
+        </ul>
         <div class="spring"></div>
         <button type="button" rel="hideDeleteEventForm">취소</button>
     </div>

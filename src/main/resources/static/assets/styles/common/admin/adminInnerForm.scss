@@ -113,6 +113,66 @@
       font-size: 12px;
     }
 
+    > ul {
+      min-height: 131px;
+      max-height: 521px;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+
+      border: #666666 solid 1px;
+      border-bottom: none;
+
+      > li{
+        height: 130px;
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        border-bottom: #666666 solid 1px;
+
+        > .img{
+          width: 30%;
+        }
+
+        > .text-box{
+          flex-grow: 1;
+          display: flex;
+          flex-direction: column;
+          padding: 1rem 0.5rem;
+          width: 264px;
+
+          > .text{
+            font-size: 1.5rem;
+            max-height: 24px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+          }
+
+          >.spring{
+            flex-grow: 1;
+          }
+
+          > .movie-info{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            > .playing-time{
+              width: 40%;
+            }
+
+            > .reservation-rate{
+              width: 28%;
+            }
+            > .release-date{
+              flex-grow: 1;
+            }
+          }
+        }
+      }
+    }
+
     > .spring{
       flex-grow: 1;
     }
