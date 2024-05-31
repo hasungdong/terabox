@@ -113,68 +113,68 @@
       font-size: 12px;
     }
 
-    > ul {
-      min-height: 131px;
-      max-height: 521px;
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
+    > .result-box{
+      flex-grow: 1;
 
-      border: #666666 solid 1px;
-      border-bottom: none;
-
-      > li{
-        height: 130px;
+      > ul {
+        min-height: 131px;
+        max-height: 521px;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: stretch;
-        border-bottom: #666666 solid 1px;
 
-        > .img{
-          width: 30%;
-        }
+        border: #666666 solid 1px;
+        border-bottom: none;
 
-        > .text-box{
-          flex-grow: 1;
+        > li{
+          height: 130px;
           display: flex;
-          flex-direction: column;
-          padding: 1rem 0.5rem;
-          width: 264px;
+          flex-direction: row;
+          align-items: stretch;
+          border-bottom: #666666 solid 1px;
 
-          > .text{
-            font-size: 1.5rem;
-            max-height: 24px;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            white-space: nowrap;
+          > .img{
+            width: 30%;
           }
 
-          >.spring{
+          > .text-box{
             flex-grow: 1;
-          }
-
-          > .movie-info{
             display: flex;
-            flex-direction: row;
-            align-items: center;
+            flex-direction: column;
+            padding: 1rem 0.5rem;
+            width: 264px;
 
-            > .playing-time{
-              width: 40%;
+            > .text{
+              font-size: 1.5rem;
+              max-height: 24px;
+              text-overflow: ellipsis;
+              overflow: hidden;
+              white-space: nowrap;
             }
 
-            > .reservation-rate{
-              width: 28%;
-            }
-            > .release-date{
+            >.spring{
               flex-grow: 1;
+            }
+
+            > .movie-info{
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+
+              > .playing-time{
+                width: 40%;
+              }
+
+              > .reservation-rate{
+                width: 28%;
+              }
+              > .release-date{
+                flex-grow: 1;
+              }
             }
           }
         }
       }
-    }
-
-    > .spring{
-      flex-grow: 1;
     }
 
     > button{

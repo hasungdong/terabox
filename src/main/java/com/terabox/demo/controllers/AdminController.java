@@ -9,10 +9,7 @@ import com.terabox.demo.services.AdminService;
 import org.json.JSONObject;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -62,4 +59,15 @@ public class AdminController {
         responseObject.put("result", result.name().toLowerCase());
         return responseObject.toString();
     }
+
+    @DeleteMapping(value = "/deleteEvent", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public String deleteAddEvent(@RequestParam("title") String title) throws IOException {
+        Result result = this.adminService.deleteEvent(title);
+        JSONObject responseObject = new JSONObject();
+        responseObject.put("result", result.name().toLowerCase());
+        return responseObject.toString();
+    }
+
+
 }

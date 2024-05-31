@@ -73,7 +73,7 @@ addProductForm.onsubmit = e => {
         }
         const responseObject = JSON.parse(xhr.responseText);
         const [dTitle, dContent, dOnclick] = {
-            failure: ['경고', '알 수 없는 이유로 상품을 등록하지 못하였습니다. 잠시 후 다시 시도해주세요.'],
+            failure: ['경고', '알 수 없는 이유로 상품을 등록하지 못하였습니다. 잠시 후 다시 시도해 주세요.'],
             failure_duplicate: ['경고', '이미 등록된 상품입니다.', () => addProductForm['name'].focus()],
             success: ['알림', '상품을 성공적으로 등록하였습니다.']
         }[responseObject.result] || ['경고', '서버가 알 수 없는 응답을 반환하였습니다. 잠시 후 다시 시도해주세요.'];

@@ -45,10 +45,14 @@ public class AdminService {
                 product.getName().length() < 1 || product.getName().length() > 100){
             return CommonResult.FAILURE;
         }
-//        이름이 같으면 같은 상품
-        ProductEntity dbProduct = this.productMapper.selectProductByName(product.getName());
-        if (dbProduct != null){
-            return CommonResult.FAILURE_DUPLICATE;
+//        이름과 가격이 같으면 같은 상품
+        ProductEntity[] dbProducts = this.productMapper.selectProductsByName(product.getName());
+        if (dbProducts != null){
+            for (ProductEntity dbProduct : dbProducts) {
+                if (dbProduct.getPrice() == product.getPrice()){
+                    return CommonResult.FAILURE_DUPLICATE;
+                }
+            }
         }
         return this.adminMapper.insertProduct(product) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
@@ -58,11 +62,46 @@ public class AdminService {
             event.getTitle().length() < 1 || event.getTitle().length() > 100){
             return CommonResult.FAILURE;
         }
-//        이름이 같으면 같은 이벤트
-        EventEntity dbEvent = this.eventMapper.selectEventByTitle(event.getTitle());
-        if (dbEvent != null){
-            return CommonResult.FAILURE_DUPLICATE;
+//        이름이 시작일이 같으면 같은 이벤트
+        EventEntity[] dbEvents = this.eventMapper.selectEventsByTitle(event.getTitle());
+        if (dbEvents != null){
+            for (EventEntity dbEvent : dbEvents) {
+                if (dbEvent.getStartDate().equals(event.getStartDate())){
+                    return CommonResult.FAILURE_DUPLICATE;
+                }
+            }
         }
         return this.adminMapper.insertEvent(event) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
+    }
+
+    public Result modifyMovie(String title){
+        return null;
+    }
+
+    public Result modifyProduct(String name){
+        return null;
+    }
+
+    public Result modifyEvent(String title){
+        return null;
+    }
+
+    public Result deleteMovie(String title){
+        return null;
+    }
+
+    public Result deleteProduct(String name){
+        return null;
+    }
+
+    public Result deleteEvent(String title){
+        if (title == null || title.length() < 1 || title.length() > 100){
+            return CommonResult.FAILURE;
+        }
+        EventEntity[] dbEvents = this.eventMapper.selectEventsByTitle(title);
+        if (dbEvents == null){
+
+        }
+        return null;
     }
 }

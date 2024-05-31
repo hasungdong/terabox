@@ -6,5 +6,5 @@ import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface ProductMapper {
-    ProductEntity selectProductByName(@Param("name") String name);
+    ProductEntity[] selectProductsByName(@Param("name") String name);
 }

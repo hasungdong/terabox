@@ -157,7 +157,10 @@
 .form > .content > label > span > span.text {
   font-size: 12px;
 }
-.form > .content > ul {
+.form > .content > .result-box {
+  flex-grow: 1;
+}
+.form > .content > .result-box > ul {
   min-height: 131px;
   max-height: 521px;
   display: flex;
@@ -166,48 +169,45 @@
   border: #666666 solid 1px;
   border-bottom: none;
 }
-.form > .content > ul > li {
+.form > .content > .result-box > ul > li {
   height: 130px;
   display: flex;
   flex-direction: row;
   align-items: stretch;
   border-bottom: #666666 solid 1px;
 }
-.form > .content > ul > li > .img {
+.form > .content > .result-box > ul > li > .img {
   width: 30%;
 }
-.form > .content > ul > li > .text-box {
+.form > .content > .result-box > ul > li > .text-box {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   padding: 1rem 0.5rem;
   width: 264px;
 }
-.form > .content > ul > li > .text-box > .text {
+.form > .content > .result-box > ul > li > .text-box > .text {
   font-size: 1.5rem;
   max-height: 24px;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
-.form > .content > ul > li > .text-box > .spring {
+.form > .content > .result-box > ul > li > .text-box > .spring {
   flex-grow: 1;
 }
-.form > .content > ul > li > .text-box > .movie-info {
+.form > .content > .result-box > ul > li > .text-box > .movie-info {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-.form > .content > ul > li > .text-box > .movie-info > .playing-time {
+.form > .content > .result-box > ul > li > .text-box > .movie-info > .playing-time {
   width: 40%;
 }
-.form > .content > ul > li > .text-box > .movie-info > .reservation-rate {
+.form > .content > .result-box > ul > li > .text-box > .movie-info > .reservation-rate {
   width: 28%;
 }
-.form > .content > ul > li > .text-box > .movie-info > .release-date {
-  flex-grow: 1;
-}
-.form > .content > .spring {
+.form > .content > .result-box > ul > li > .text-box > .movie-info > .release-date {
   flex-grow: 1;
 }
 .form > .content > button {
