@@ -25,7 +25,7 @@ deleteEventForm.onsubmit = e => {
                 break;
             case 'success':
                 const responseArray = responseObject['events'];
-                divResult.innerHTML = '';
+                deleteEventForm.divResult.innerHTML = '';
                 if (responseArray.length === 0){
                     return;
                 }
@@ -53,8 +53,8 @@ deleteEventForm.onsubmit = e => {
                     li.querySelector('.img').setAttribute('src', `/event/image?index=${responseArrayElement['index']}`);
                     ul.append(li);
                 }
-                divResult.append(ul);
-                const lis = divResult.querySelectorAll('li');
+                deleteEventForm.divResult.append(ul);
+                const lis = deleteEventForm.divResult.querySelectorAll('li');
                 lis.forEach(li => li.onclick = () => {
                     if (!confirm('이 이벤트를 삭제하시겠습니까?')){
                         return;

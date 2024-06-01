@@ -4,7 +4,6 @@ deleteMovieForm.onsubmit = e => {
     e.preventDefault();
 
     deleteMovieForm.titleLabel = new LabelObj(deleteMovieForm.querySelector('[rel="titleLabel"]'));
-    console.log(deleteMovieForm.titleLabel);
     deleteMovieForm.titleLabel.setValid(deleteMovieForm['title'].tests());
     if (!deleteMovieForm.titleLabel.isValid()){
         return;
