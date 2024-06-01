@@ -1,4 +1,3 @@
-const header = document.querySelector('.header-main-page');
 const loginCancelButton = document.querySelector('[rel="loginCancel"]');
 const alertCover = document.getElementById('alertCover');
 
@@ -395,6 +394,9 @@ if (document.querySelector('span.swiper-bar') !== null) {
         }
     }
 }
+
+
+
 
 class MessageObj {
     static cover = null;

@@ -1,3 +1,4 @@
+const headerImg = document.querySelector('.header-main-page');
 const cover = document.getElementById('cover');
 const loginForm = document.getElementById('loginForm');
 const loading = document.getElementById('loading');
@@ -18,6 +19,13 @@ const eventLink = document.getElementById('eventLink-mini');
 
 const headerBenefits = document.getElementById('header-benefits');
 const membershipLink = document.getElementById('membershipLink-mini');
+
+
+// 헤더 이미지 색깔 조정하는거
+if (!(location.href.slice(-5) === '/home' ||
+    location.href.slice(-6) === '/home#')) {
+    headerImg.style.filter = 'none';
+}
 
 
 document.querySelectorAll('[rel="showLogin"]').forEach(loginButton => loginButton.onclick = () => {
