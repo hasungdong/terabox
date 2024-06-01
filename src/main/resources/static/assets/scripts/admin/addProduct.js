@@ -67,6 +67,7 @@ addProductForm.onsubmit = e => {
         if (xhr.readyState !== XMLHttpRequest.DONE){
             return;
         }
+        loading.hide();
         if (xhr.status < 200 || xhr.status >= 300){
             MessageObj.createSimpleOk('오류', '알 수 없는 이유로 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.').show();
             return;
@@ -81,4 +82,5 @@ addProductForm.onsubmit = e => {
     }
     xhr.open('POST', '/admin/addProduct');
     xhr.send(formData);
+    loading.show();
 }

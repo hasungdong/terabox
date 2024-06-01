@@ -11,7 +11,7 @@
 <form class="form" id="modifyMovieForm" th:fragment="modifyMovieForm" th:with="movieRegex = ${T(com.terabox.demo.regexes.MovieRegex)}">
     <h3 class="title">영화 수정</h3>
     <div class="content">
-        <label class="_obj-label title" rel="nameLabel">
+        <label class="_obj-label title" rel="titleLabel">
             <span class="__text">영화 제목</span>
             <input autofocus required class="_obj-input __field" type="text" name="name" maxlength="100" minlength="1" th:attrappend="data-regex=${movieRegex.title.expression}">
             <button type="submit">

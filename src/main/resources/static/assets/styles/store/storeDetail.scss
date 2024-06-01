@@ -1,19 +1,18 @@
 @charset "UTF-8";
 @import "../common/header";
-
 @import "../common/common.notHome";
 
 * {
   box-sizing: border-box;
 }
 
-h2{
+h2 {
   display: block;
   font-size: 1.5em;
   margin-block-start: 0.83em;
   margin-block-end: 0.83em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
   font-weight: bold;
   unicode-bidi: isolate;
 }
@@ -34,12 +33,11 @@ P {
   display: block;
   margin-block-start: 1em;
   margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
   unicode-bidi: isolate;
   font-weight: 400;
   width: 470px;
-  margin-top: 0;
   margin: 0;
 }
 
@@ -64,7 +62,7 @@ body {
   font-size: 15px;
   color: #444;
   font-weight: 400;
-  font-family: sans-serif, NanumBarunGothic, Dotum, '돋움';
+  font-family: NanumBarunGothic, Dotum, '돋움', sans-serif;
 
   > .container {
     width: 100%;
@@ -92,6 +90,18 @@ body > .container > {
   .page-util > .inner > .location {
     float: left;
     height: 42px;
+
+    span {
+      background: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-location-home.png) no-repeat center;
+      overflow: hidden;
+      display: block;
+      float: left;
+      width: 13px;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      text-indent: -9999px;
+    }
 
     > {
 
@@ -123,6 +133,7 @@ body > .container > {
     > .inner > {
       margin: 0;
       padding: 0;
+
       .title {
         font-size: 1.8666em;
         font-weight: 470;
@@ -139,9 +150,60 @@ body > .container > {
 
       .event-list > .inner
       > {
+
+        .dotList02.bottomBar1 {
+          display: none;
+
+          ul {
+            margin-left: 2rem;
+            list-style: initial;
+            margin-bottom: 0;
+            padding-top: 1rem;
+
+            li {
+              position: relative;
+              font-size: 14px;
+              margin-top: 8px;
+              line-height: 21px;
+              padding-left: 10px;
+
+            }
+
+          }
+
+          &.-visible {
+            display: block;
+          }
+        }
+
+        .dotList02.bottomBar2 {
+          display: none;
+
+          ul {
+            margin-left: 2rem;
+            list-style: initial;
+            margin-bottom: 0;
+            padding-top: 1rem;
+
+            li {
+              position: relative;
+              font-size: 14px;
+              margin-top: 8px;
+              line-height: 21px;
+              padding-left: 10px;
+
+            }
+
+          }
+
+           &.-visible {
+            display: block;
+          }
+        }
+
         .box-store-view {
 
-          ::before{
+          ::before {
             content: '';
             display: block;
             position: absolute;
@@ -159,38 +221,37 @@ body > .container > {
           border-bottom: 1px solid #d8d9db;
 
 
-
-          >.left{
+          > .left {
             float: left;
             width: 250px;
             padding: 0 0 30px 0;
 
-            > .img{
+            > .img {
               display: table;
               table-layout: fixed;
               width: 100%;
 
-              > p{
+              > p {
                 display: table-cell;
                 height: 400px;
                 text-align: center;
                 vertical-align: middle;
 
-               > img{
-                 max-width: 400px;
-                 max-height: 400px;
+                > img {
+                  max-width: 400px;
+                  max-height: 400px;
 
-               }
+                }
               }
             }
           }
 
-          > .right{
+          > .right {
             float: left;
             width: calc(100% - 480px);
             padding: 15px 0 30px 40px;
 
-            > .goods-info{
+            > .goods-info {
               > .line {
                 display: table;
                 table-layout: fixed;
@@ -208,13 +269,14 @@ body > .container > {
                     line-height: 32px;
                   }
                 }
+
                 > .cont {
                   display: table-cell;
                   width: calc(100% - 100px);
                   padding-top: 15px;
                   vertical-align: top;
 
-                  > .txt.min{
+                  > .txt.min {
                     font-size: 14px;
                     display: block;
                     color: #ccc;
@@ -240,7 +302,8 @@ body > .container > {
             > .type { /* 버튼 부분 옆에 글자 전체로 잡는 부분*/
               margin: 15px 0 0 15rem;
               border-top: 1px solid #ebebeb;
-              width: 580px;
+              width: 570px;
+
               > .receipt {
                 > .line {
                   display: flex;
@@ -255,23 +318,23 @@ body > .container > {
                     color: #222;
                     vertical-align: top;
 
-                     > .line32 {  /*수량/금액*/
-                       line-height: 32px;
-                     }
+                    > .line32 { /*수량/금액*/
+                      line-height: 32px;
+                    }
                   }
 
-                  > .cont{ /*버튼 전체로 잡는 부분*/
+                  > .cont { /*버튼 전체로 잡는 부분*/
                     overflow: hidden;
                     //display: table-cell;
-                    width: calc(100% - 100px);
+                    flex-grow: 1;
                     padding-top: 20px;
                     vertical-align: top;
-                    display:flex;
+                    display: flex;
                     flex-direction: row;
 
-                    > .minus{
+                    > .minus {
 
-                      > .ico-minus{
+                      > .ico-minus {
                         width: 13px;
                         height: 13px;
                         background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-minus.png);
@@ -286,10 +349,9 @@ body > .container > {
                       text-align: center;
                       color: #aaa;
                       background-color: #f7f8f9;
-                      border: 1px solid #ccc;
+                      border: solid #ccc;
                       border-width: 1px 0;
                       outline: none;
-                    //  추가하라고 해서 한거 outline:none;
                     }
 
                     > .plus {
@@ -300,7 +362,6 @@ body > .container > {
                         background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-plus.png);
                       }
                     }
-
 
 
                     > .btn {
@@ -316,24 +377,25 @@ body > .container > {
                     }
 
                     > .spring {
-                      padding-left: 15rem;
+                      flex-grow: 1;
+                    }
 
-                      > .money {
-                        float: right;
-                        color: #351f66;
-                        line-height: 32px;
+                    > .money {
+                      float: right;
+                      color: #351f66;
+                      line-height: 32px;
 
-                        > em{
-                          float: left;
-                          font-family: Roboto;
-                          font-weight: 500;
-                          font-size: 2em;
-                        }
-                        > span {
-                          float: left;
-                          margin-left: 3px;
-                          font-size: 1.3333em;
-                        }
+                      > em {
+                        float: left;
+                        font-family: Roboto;
+                        font-weight: 500;
+                        font-size: 2em;
+                      }
+
+                      > span {
+                        float: left;
+                        margin-left: 3px;
+                        font-size: 1.3333em;
                       }
                     }
                   }
@@ -342,21 +404,21 @@ body > .container > {
 
             }
 
-            > .btn-group{
+            > .btn-group {
               overflow: hidden;
               margin: 20px 0 0 15rem;
               padding: 20px 0 0 0;
               border-top: 1px solid #ebebeb;
-              width: 580px;
+              width: 570px;
               text-align: center;
 
-              > .button.large{
+              > .button.large {
                 height: 46px;
                 padding: 5px 0 0 0;
               }
 
 
-              > .button{
+              > .button {
                 float: left;
                 width: calc(50% - 5px);
                 margin: 0;
@@ -372,21 +434,23 @@ body > .container > {
                 background-color: #fff;
                 cursor: pointer;
               }
-              > .button.purple{
+
+              > .button.purple {
                 float: right;
                 background: #503396;
                 color: #ffff;
               }
             }
           }
+
           border-top: 1px solid #333;
         }
 
-        .board-move {   /* 밑에 구매 후 취소 버튼 */
+        .board-move { /* 밑에 구매 후 취소 버튼 */
           position: relative;
           padding: 25px 0 0 0;
 
-          > .btn {
+          > .btn1 {
             display: block;
             width: 100%;
             padding-left: 1rem;
@@ -395,6 +459,7 @@ body > .container > {
             height: 40px;
             border: 1.3px solid #d5d5d5;
             background-color: transparent;
+
 
             > i {
               margin-left: 6px;
@@ -411,7 +476,38 @@ body > .container > {
               background-repeat: no-repeat;
             }
           }
+
+          > .btn2 {
+            display: block;
+            width: 100%;
+            padding-left: 1rem;
+            text-align: left;
+            border-radius: 0.3rem;
+            height: 40px;
+            border: 1.3px solid #d5d5d5;
+            background-color: transparent;
+
+
+            > i {
+              margin-left: 6px;
+              width: 12px;
+              height: 7px;
+              background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-btn-more-arr.png);
+              overflow: hidden;
+              display: inline-block;
+              padding: 0;
+              font-size: 0;
+              line-height: 0;
+              vertical-align: middle;
+              background-position: 0 0;
+              background-repeat: no-repeat;
+            }
+          }
+
+
         }
+
+
       }
     }
   }

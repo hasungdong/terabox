@@ -12,14 +12,23 @@
         <script defer type="text/javascript" th:src="@{/assets/scripts/admin/addMovie.js}"></script>
         <script defer type="text/javascript" th:src="@{/assets/scripts/admin/addProduct.js}"></script>
         <script defer type="text/javascript" th:src="@{/assets/scripts/admin/addEvent.js}"></script>
+        <script defer type="text/javascript" th:src="@{/assets/scripts/admin/deleteMovie.js}"></script>
+        <script defer type="text/javascript" th:src="@{/assets/scripts/admin/deleteProduct.js}"></script>
         <script defer type="text/javascript" th:src="@{/assets/scripts/admin/deleteEvent.js}"></script>
-
+        <script defer type="text/javascript" th:src="@{/assets/scripts/admin/modifyMovie.js}"></script>
+        <script defer type="text/javascript" th:src="@{/assets/scripts/admin/modifyProduct.js}"></script>
+        <script defer type="text/javascript" th:src="@{/assets/scripts/admin/modifyEvent.js}"></script>
     </th:block>
     <th:block th:fragment="commonHead">
         <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/common/common.css}">
         <link rel="icon" th:href="@{/assets/images/common/favicon.ico}">
         <script defer type="text/javascript" th:src="@{/assets/scripts/header.js}"></script>
         <script defer type="text/javascript" th:src="@{/assets/scripts/common.js}"></script>
+        <script src="https://kit.fontawesome.com/d88fee1042.js" crossorigin="anonymous"></script>
+    </th:block>
+    <th:block th:fragment="commonHeadNoHeader">
+        <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/common/common.css}">
+        <link rel="icon" th:href="@{/assets/images/common/favicon.ico}">
         <script src="https://kit.fontawesome.com/d88fee1042.js" crossorigin="anonymous"></script>
     </th:block>
 </head>

@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface EventMapper {
+
+    EventEntity selectEventByIndex(@Param("index") int index);
     EventEntity[] selectEventsByTitle(@Param("title") String title);
 
     int selectEventsCountBySearch(SearchDto searchDto);

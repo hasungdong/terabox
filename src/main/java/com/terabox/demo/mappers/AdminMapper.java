@@ -4,6 +4,7 @@ import com.terabox.demo.entities.EventEntity;
 import com.terabox.demo.entities.ProductEntity;
 import org.apache.ibatis.annotations.Mapper;
 import com.terabox.demo.entities.MovieEntity;
+import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface AdminMapper {
@@ -19,9 +20,9 @@ public interface AdminMapper {
 
     int updateEvent(EventEntity event);
 
-    int deleteMovie(MovieEntity movie);
+    int deleteMovieByIndex(@Param("index") int index);
 
-    int deleteProduct(ProductEntity product);
+    int deleteProductByIndex(@Param("index") int index);
 
-    int deleteEvent(EventEntity event);
+    int deleteEventByIndex(@Param("index") int index);
 }

@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @EqualsAndHashCode
 public class SearchDto {
-    private String title;
+    private String keyword;
 
     private int countPerPage = 4; // 한 페이지 당 보여줄 게시글 수
     private int requestPage;    // 요청한 페이지 번호

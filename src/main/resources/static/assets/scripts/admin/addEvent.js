@@ -61,10 +61,12 @@ addEventForm.onsubmit = e => {
     formData.append('startDate', addEventForm['startDate'].value);
     formData.append('endDate', addEventForm['endDate'].value);
     formData.append('discountRate', addEventForm['discountRate'].value);
+
     xhr.onreadystatechange = function(){
         if (xhr.readyState !== XMLHttpRequest.DONE){
             return;
         }
+        loading.hide();
         if (xhr.status < 200 || xhr.status >= 300){
             MessageObj.createSimpleOk('오류', '알 수 없는 이유로 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.').show();
             return;
@@ -79,4 +81,5 @@ addEventForm.onsubmit = e => {
     }
     xhr.open('POST', '/admin/addEvent');
     xhr.send(formData);
+    loading.show();
 }

@@ -846,22 +846,141 @@ li {
   box-sizing: border-box;
 }
 
-p {
-  color: #551A8B;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0;
-  margin-inline-end: 0;
-  unicode-bidi: isolate;
+em {
+  font-style: normal;
 }
 
-a {
-  background-color: transparent;
+h2 {
+  display: block;
+  font-size: 1.5em;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  font-weight: bold;
+  unicode-bidi: isolate;
 }
 
 div {
   display: block;
   unicode-bidi: isolate;
+  justify-content: center;
+}
+
+caption {
+  display: table-caption;
+  text-align: -webkit-center;
+  unicode-bidi: isolate;
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  font-size: 0;
+  line-height: 0;
+  opacity: 0;
+}
+
+colgroup {
+  display: table-column-group;
+  unicode-bidi: isolate;
+}
+
+p.price {
+  margin-top: 0.1rem;
+}
+
+select {
+  height: 36px;
+  padding-left: 4px;
+  border-color: #ccc;
+  border-radius: 4px;
+  font-family: NanumBarunGothic, Dotum, "돋움", sans-serif;
+  text-transform: none;
+  margin: 0;
+  line-height: 1.15;
+}
+
+tr {
+  display: table-row;
+  vertical-align: inherit;
+  unicode-bidi: isolate;
+  border-color: inherit;
+}
+
+th {
+  display: table-cell;
+  vertical-align: inherit;
+  font-weight: bold;
+  unicode-bidi: isolate;
+}
+
+col {
+  display: table-column;
+  unicode-bidi: isolate;
+}
+
+table {
+  display: table;
+  box-sizing: border-box;
+  text-indent: initial;
+  unicode-bidi: isolate;
+  border-spacing: 2px;
+  width: 100%;
+  margin: 0;
+  border: 0;
+  table-layout: fixed;
+  border-collapse: collapse;
+  empty-cells: show;
+}
+
+tbody {
+  display: table-row-group;
+  vertical-align: middle;
+  unicode-bidi: isolate;
+  border-color: inherit;
+}
+
+h3 {
+  margin: 0;
+  padding: 30px 0 15px 0;
+  font-size: 1.6em;
+  font-weight: 480;
+  color: #503396;
+  line-height: 1.1;
+}
+
+strong {
+  font-weight: 700;
+}
+
+a:link {
+  color: #444;
+  text-decoration: none;
+}
+
+iconset {
+  overflow: hidden;
+  display: inline-block;
+  margin: -1px 0 0 0;
+  padding: 0;
+  font-size: 0;
+  line-height: 0;
+  vertical-align: middle;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+}
+
+button {
+  cursor: pointer;
+  letter-spacing: -0.5px;
+  font-weight: 400;
+  text-transform: none;
+  font-size: 1em;
+  line-height: 1.15;
+}
+
+a {
+  color: #444;
+  background-color: transparent;
 }
 
 body {
@@ -872,52 +991,72 @@ body {
   font-size: 15px;
   color: #444;
   font-weight: 400;
-  font-family: sans-serif, NanumBarunGothic, Dotum, "돋움";
+  font-family: NanumBarunGothic, Dotum, "돋움", sans-serif;
+}
+body > .container {
   width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
+  min-width: 1100px;
+  min-height: 100%;
+  margin: -92px 0 -200px 0;
+  padding: 92px 0 300px 0;
 }
-body .button {
-  display: inline-block;
-  height: 36px;
-  margin: 0;
-  padding: 0 15px;
-  text-align: center;
-  line-height: 34px;
-  color: #503396;
-  font-weight: 400;
-  border-radius: 4px;
-  font-family: sans-serif, NanumBarunGothic, Dotum, "돋움";
-  text-decoration: none;
-  border: 1px solid #503396;
-  vertical-align: middle;
-  background-color: #fff;
-  cursor: pointer;
-}
-body form #container {
-  padding-top: 2.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-}
-body form #container > * {
-  width: calc(1100px + 19.8rem);
-  padding: 0 9.9rem;
-}
-body form #container > .page-util {
+body > .container > .page-util {
   display: block;
   position: static;
   width: 100%;
   height: 42px;
   background-color: #f8f8fa;
 }
-body form #container > .page-util > .inner > .location {
+
+.inner {
+  width: 1100px;
+  margin: 0 auto;
+}
+.inner > .btn-group {
+  overflow: hidden;
+  margin: 20px 0 0 25rem;
+  padding: 20px 0 0 0;
+  width: 360px;
+  text-align: center;
+}
+.inner > .btn-group > .button.large {
+  height: 46px;
+  width: 11rem;
+  padding: 5px 0 0 0;
+}
+.inner > .btn-group > .button.large:hover {
+  background: #f6f6ff;
+}
+.inner > .btn-group > .button {
+  float: left;
+  width: calc(50% - 5px);
+  margin: 0;
+  display: inline-block;
+  height: 36px;
+  line-height: 34px;
+  color: #503396;
+  font-weight: 400;
+  border-radius: 4px;
+  text-decoration: none;
+  border: 1px solid #503396;
+  vertical-align: middle;
+  background-color: #fff;
+  cursor: pointer;
+}
+.inner > .btn-group > .button.purple {
+  float: right;
+  background: #503396;
+  color: white;
+}
+.inner > .btn-group > .button.purple:hover {
+  background: #3c2a6c;
+}
+
+body > .container > .page-util > .inner > .location {
   float: left;
   height: 42px;
 }
-body form #container > .page-util > .inner > .location span {
+body > .container > .page-util > .inner > .location > span {
   background: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-location-home.png) no-repeat center;
   overflow: hidden;
   display: block;
@@ -928,7 +1067,7 @@ body form #container > .page-util > .inner > .location span {
   padding: 0;
   text-indent: -9999px;
 }
-body form #container > .page-util > .inner > .location > a {
+body > .container > .page-util > .inner > .location > a {
   display: block;
   position: relative;
   float: left;
@@ -939,362 +1078,264 @@ body form #container > .page-util > .inner > .location > a {
   color: #666;
   text-decoration: none;
 }
-body form #container > .page-util > .inner > .location .icon {
+body > .container > .page-util > .inner > .location > .icon {
   top: 0;
   width: 5px;
   height: 42px;
   background: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-location-arr.png) no-repeat left center;
 }
-body form #container > .mt70 {
-  margin-top: -10px !important;
+body > .container > .content {
+  padding: 40px 0 0 0;
 }
-body form #container > .mt70 > .right {
-  display: flex;
-  flex-direction: row;
-}
-body form #container > .mt70 > .right > h3.tit {
-  margin: 0;
-  font-size: 1.8em;
-  font-weight: 400;
-  color: #503396;
-}
-body form #container > .mt70 > .right > .spring {
-  flex-grow: 1;
-}
-body form #container > .mt70 > .right > a {
-  color: #444;
-  display: inline-block;
-}
-body form #container > .mt70 > .right > a:link {
-  color: #444;
-  text-decoration: none;
-}
-body form #container > .AffiliateEvent > .store-main > p {
-  margin: 0;
-  padding: 0;
-}
-body form #container > .AffiliateEvent > .store-main > .best-goods {
-  float: left;
-  width: 270px;
-  height: 300px;
-}
-body form #container > .AffiliateEvent > .store-main > .best-goods > a > .slogun {
-  font-size: 2.1em;
-  line-height: 1.1;
-  font-weight: 500;
-}
-body form #container > .AffiliateEvent > .store-main > .best-goods > a > .slogun > .font-gblue {
-  margin: 0;
-  color: #01738b !important;
-}
-body form #container > .AffiliateEvent > .store-main > .best-goods > a > .slogun > .font-purple {
-  padding-top: 10px;
-  margin: 0;
-}
-body form #container > .AffiliateEvent > .store-main > .best-goods > a > .goods {
-  padding-top: 20px;
-}
-body form #container > .AffiliateEvent > .store-main > .best-goods > a > .goods > .name {
-  font-size: 1.2em;
-  font-weight: 500;
-  color: #222;
-  margin-bottom: 0.5rem;
-}
-body form #container > .AffiliateEvent > .store-main > .best-goods > a > .goods > .txt {
-  overflow: hidden;
-  color: #444;
-  margin: 0 0 0.5rem 0;
-  font-size: 1rem;
-}
-body form #container > .AffiliateEvent > .store-main > .best-goods > a > .price {
-  display: flex;
-}
-body form #container > .AffiliateEvent > .store-main > .best-goods > a > .price > .sale {
-  font-size: 1.5rem;
-  line-height: 29px;
-  color: #351f66;
-  font-weight: 400.24;
-  font-style: inherit;
-  margin: 0;
-}
-body form #container > .AffiliateEvent > .store-main > .best-goods > a > .price > .sale > em {
-  font-style: normal;
-}
-body form #container > .AffiliateEvent > .store-main > .best-goods > a > .price > .original {
-  color: #444444;
-  float: left;
-  margin: 0 0 0 10px;
-  padding: 4px 0 0 0;
-  line-height: 18px;
-  text-decoration: line-through;
-}
-body form #container > .AffiliateEvent > .store-main > .best-goods > a > .price > .original > em {
-  font-style: normal;
-}
-body form #container > .AffiliateEvent > .event-box {
-  display: flex;
-  flex-direction: row;
-  gap: 2.625rem;
-  position: relative;
-}
-body form #container > .AffiliateEvent > .event-box > .event > img { /*팝콘 사진*/
-  width: 300px;
-  height: 300px;
-  border-radius: 0.625rem;
-}
-body form #container > .AffiliateEvent > .event-box > .event > .text-box {
-  display: flex;
-  flex-direction: row;
-  color: black;
-  margin-top: 0.9375rem;
-}
-body form #container > .AffiliateEvent > .event-box > .event > .text-box > .text {
-  font-size: 0.95rem;
-  font-weight: 700;
-  overflow: hidden;
-  display: inline-block;
-  max-width: 100%;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-body form #container > .AffiliateEvent > .event-box > .event > .text-box > .spring {
-  flex-grow: 1;
-}
-body form #container > .AffiliateEvent > .event-box > .event > .text-box > .duration {
-  font-size: 0.83rem;
-  color: #444;
-}
-body form #container > .AffiliateEvent > .event-box > [type=button] {
-  display: block;
-  position: absolute;
-  z-index: 2;
-  top: 50%;
-  width: 50px;
-  height: 50px;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 0;
-  line-height: 0;
-  border-radius: 100%;
-  box-shadow: 4px 4px 10px 0 rgba(45, 45, 45, 0.3);
-  background-size: 28px;
-  background-color: white;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-body form #container > .AffiliateEvent > .event-box > [type=button].left {
-  transform: translate(-50%, -100%);
-  background-image: url("../../images/common/left.png");
-}
-body form #container > .AffiliateEvent > .event-box > [type=button].right {
-  right: 0;
-  transform: translate(50%, -100%);
-  background-image: url("../../images/common/right.png");
-}
-body form #container > .tit {
+body > .container > .content > .inner > .title {
   font-size: 1.8666em;
-  font-weight: 500;
+  font-weight: 470;
   letter-spacing: -1px;
   line-height: 1.1;
   color: #222;
-  padding-bottom: 1.5rem;
+  margin: 0 0 0.3rem 0;
 }
-body form #container > .tab-list {
-  padding-bottom: 2.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
+body > .container > .content > .inner > ul > li {
+  position: relative;
 }
-body form #container > .tab-list > .topMenu { /* 위에 메뉴들 ul 태그*/
+body > .container > .content > .inner > .event-list > .inner > .payment-final {
+  overflow: hidden;
+  margin: 0;
+  padding: 10px;
+  color: #fff;
+  border-radius: 10px;
+  background-color: #333;
+}
+body > .container > .content > .inner > .event-list > .inner > .payment-final > .select-kakao-info {
+  display: none;
+}
+body > .container > .content > .inner > .event-list > .inner > .payment-final > .select-kakao-info > .dash-list {
   list-style: none;
-  width: 100%;
-  display: flex;
-  padding: 0;
 }
-body form #container > .tab-list > .topMenu > .on { /*li 태그들*/
-  width: 60%;
-}
-body form #container > .tab-list > .topMenu > .on > .a { /*링크 태그들*/
-  position: relative;
+body > .container > .content > .inner > .event-list > .inner > .payment-final > .select-kakao-info.-visible {
   display: block;
-  width: 100%;
-  padding: 14px 0;
-  text-align: center;
-  color: #222;
-  font-size: 1rem;
-  text-decoration: none;
-  border: 0.04rem solid #dedede;
-  font-weight: 450;
 }
-body form #container > .movie-list-util {
+body > .container > .content > .inner > .event-list > .inner > .payment-final > .calc {
+  gap: 2.5rem;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  overflow: hidden;
-  margin-bottom: -1.5rem;
-  margin-top: 40px !important;
-}
-body form #container > .movie-list { /*영화 리스트 묶음*/
-  display: flex;
-  flex-direction: column;
-}
-body form #container > .movie-list > .list { /*그 밑에 ol 태그*/
-  padding: 0;
-  margin: 0 0 0 -40px;
-}
-body form #container > .movie-list > .list > .img {
-  overflow: hidden;
-  position: relative;
-  float: left;
-  width: 245px;
-  height: 435px;
-  border: 1px solid #e4e4e4;
-  padding: 0;
-  background-color: #fff;
-  border-radius: 0.5rem;
-  margin: 0 0 60px 40px;
-}
-body form #container > .movie-list > .list > .img:hover {
-  border: 1px solid #503396;
-}
-body form #container > .movie-list > .list > .img > a > .movie-list-info {
-  width: 230px;
-  height: 230px;
-}
-body form #container > .movie-list > .list > .img > a > .movie-list-info > img {
-  width: 243px;
-  height: 243px;
-  background-color: #dedddd;
-}
-body form #container > .movie-list > .list > .img > a > .movie-list-info > .poster { /*영화 사진*/
-  width: 230px;
-  height: 331px;
-  overflow: hidden;
-  position: relative;
-  float: left;
-  margin: 0 0 0 0;
-  padding: 0;
-  background-color: #fff;
-  border-radius: 0.5rem;
-}
-body form #container > .movie-list > .list > .img > a > .movie-list-info > .movie-score > .wrap {
-  background-color: #503396;
-}
-body form #container > .movie-list > .list > .img > a > .tit-area { /*묶음자리*/
-  position: relative;
-  width: 100%;
-  padding: 0 0 0 30px;
-  line-height: 25px;
-}
-body form #container > .movie-list > .list > .img > a > .tit-area > .title {
-  display: block;
-  width: 100%;
-  overflow: hidden;
-  padding: 20px 17px 0 15px;
-  line-height: 1.3;
-  font-weight: 650;
-  color: #222;
-}
-body form #container > .movie-list > .list > .img > a > .rate-date {
-  overflow: hidden;
-  padding: 10px 0 0 0;
-}
-body form #container > .movie-list > .list > .img > a > .rate-date > .rate {
-  margin: 0 7px 0 30px;
-  display: block;
-  position: relative;
-  float: left;
+  align-items: center;
   text-align: center;
-  padding: 8px 35px 25px 30px;
-  font-size: 0.86rem;
-  border-bottom: 1px solid #e4e4e4;
-  line-height: 1.1;
-  color: #666;
+  justify-content: center;
 }
-body form #container > .movie-list > .list > .img > a > .price {
-  position: relative;
-  line-height: 1.1;
-  padding: 18px 0 0 20px;
+body > .container > .content > .inner > .event-list > .inner > .payment-final > .calc > .cell.sale > .txt {
+  padding: 0 2rem 0 2rem;
+  margin-bottom: 0.3rem;
 }
-body form #container > .movie-list > .list > .img > a > .price > .sale {
-  font-weight: 700;
-  margin: 1.1rem 0 0 1rem;
-  color: #503396;
-  font-size: 0.9rem;
+body > .container > .content > .inner > .event-list > .inner > .payment-final > .calc > .cell.real > .price > .N {
+  color: #339eb2;
+}
+body > .container > .content > .inner > .event-list > .inner > .payment-final > .calc > .ico-circle-minus {
+  width: 24px;
+  height: 24px;
+  background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-circle-minus.png);
+}
+body > .container > .content > .inner > .event-list > .inner > .payment-final > .calc > .ico-circle-equal {
+  width: 24px;
+  height: 24px;
+  background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-circle-equal.png);
+}
+body > .container > .content > .inner > .event-list > .inner > .payment-final > .calc > .cell.all {
+  display: inline-block;
+  min-width: 180px;
   vertical-align: middle;
 }
-body form #container > .movie-list > .list > .img > a > .price > .sale > em {
-  font-style: normal;
-  font-size: 1.6em;
-  font-weight: 400;
-  vertical-align: middle;
+body > .container > .content > .inner > .event-list > .inner > .payment-final > .calc > .cell > .txt { /*총 상품금액*/
+  color: #c4c4c4;
+  margin-bottom: 0.2rem;
 }
-body form #container > .movie-list > .list > .img > a > .price > .sale > span {
-  font-style: normal;
-  font-size: 1.6em;
-  font-weight: 400;
-  vertical-align: middle;
-}
-body form #container > .movie-list > .list > .img > a > .btn-util {
+body > .container > .content > .inner > .event-list > .inner > .payment-final > .calc > .cell > .price {
   overflow: hidden;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 36px;
 }
-body form #container > .movie-list > .list > .img > a > .btn-util > .button.btn-like {
-  float: left;
-  width: 72px;
-  padding: 0 5px;
-  font-size: 0.8667em;
-  border-color: #ebebeb;
-  margin-right: 5px;
+body > .container > .content > .inner > .event-list > .inner > .payment-final > .calc > .cell > .price > em {
+  display: inline-block;
+  font-size: 1.6em;
+  font-family: Roboto;
+  line-height: 24px;
+  vertical-align: top;
+  font-weight: 700;
 }
-body form #container > .movie-list > .list > .img > a > .btn-util > .button.btn-like > .fa-regular {
-  font-size: 1rem;
+body > .container > .content > .inner > .event-list > .inner > .payment-final > .choice {
+  text-align: center;
+  border-top: 1px solid #434343;
 }
-body form #container > .movie-list > .list > .img > a > .btn-util > .button.btn-like > span {
+body > .container > .content > .inner > .event-list > .inner > .payment-final > .choice > .inbox {
+  padding-top: 0.5rem;
+  gap: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+body > .container > .content > .inner > .event-list > .inner > .payment-final > .choice > .inbox > .txt { /*총 상품금액*/
+  color: #c4c4c4;
+}
+body > .container > .content > .inner > .event-list > .inner > .payment-final > .choice > .inbox > .cell > .x-small {
+  height: 30px;
+  font-size: 14px;
+}
+body > .container > .content > .inner > .event-list > .inner > .payment-final > .select-card {
+  display: none;
+}
+body > .container > .content > .inner > .event-list > .inner > .payment-final > .select-card.-visible {
+  display: block;
+}
+body > .container > .content > .inner > .event-list > .inner > .table-wrap { /* 주문 상품 정보*/
+  position: relative;
+  border-top: 1px solid #555;
+}
+body > .container > .content > .inner > .event-list > .inner > .table-wrap > .board-list > tbody > tr > th {
+  text-align: left;
+  font-weight: 400;
+  height: 45px;
+  padding: 10px;
+  border: solid #eaeaea;
+  border-width: 0 0 1px 0;
+}
+body > .container > .content > .inner > .event-list > .inner > .table-wrap > .board-list > tbody > tr > th > .goods-info {
+  padding: 10px;
+  border-width: 0 0 1px 0;
+}
+body > .container > .content > .inner > .event-list > .inner > .table-wrap > .board-list > tbody > tr > th > .goods-info > .bundle {
+  margin-top: 5px;
+}
+body > .container > .content > .inner > .event-list > .inner > .table-wrap > .board-list > tbody > tr > th > .goods-info > .name {
+  padding: 0 0 0 0;
+  margin: 0;
   font-size: 1.2em;
 }
-body form #container > .movie-list > .list > .img > a > .btn-util > .Ticketing-container { /*예매하기 버튼*/ }
-body form #container > .movie-list > .list > .img > a > .btn-util > .Ticketing-container > .button {
-  width: 74px;
-  margin-left: 5px;
-}
-body form #container > .movie-list > .list > .img > a > .btn-util > .Ticketing-container > .button.purple {
-  color: #fff;
-  line-height: 36px;
-  border: 0;
-  background: #503396;
-}
-body form #container > .movie-list > .list > .img > a > .btn-util > .Ticketing-container > .button.purple.ticketing {
-  margin-left: 0;
-  width: 74px;
-}
-body form #container > .movie-list > .list > .img > a > .btn-util > .Ticketing-container > .button.purple.img {
-  display: inline-block;
-  height: 36px;
-  margin: 0;
-  padding: 0 15px;
+body > .container > .content > .inner > .event-list > .inner > .table-wrap > .board-list > tbody > tr > td {
+  height: 45px;
+  padding: 10px;
+  border: solid #eaeaea;
+  border-width: 0 0 1px 0;
   text-align: center;
-  line-height: 34px;
-  color: #ffffff;
-  font-weight: 400;
-  border-radius: 4px;
-  font-family: sans-serif, NanumBarunGothic, Dotum, "돋움";
-  text-decoration: none;
-  border: 1px solid #503396;
-  vertical-align: middle;
-  background-color: #503396;
-  cursor: pointer;
 }
-body form #container > .movie-list > .list > .img > a > .btn-util > .Ticketing-container > .button.purple.img > .img {
+body > .container > .content > .inner > .event-list > .inner > .table-wrap > .board-list > tbody > tr > td > .a-link {
+  color: #01738b;
+  text-decoration: underline;
+}
+body > .container > .content > .inner > .event-list > .inner > .table-wrap > .board-list > tbody > tr > td > .goods-info > .price {
+  margin: 0 4px 0 0;
+  color: #503396;
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: 1.4666em;
+  vertical-align: middle;
+}
+body > .container > .content > .inner > .event-list > .inner > .table-wrap > .board-list > tbody > tr > td > .goods-info > .img {
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  font-size: 0;
+  line-height: 0;
+}
+body > .container > .content > .inner > .event-list > .inner > .table-wrap > .board-list > tbody > tr > td > .goods-info > .img > a:link {
+  color: #444;
+  text-decoration: none;
+}
+body > .container > .content > .inner > .event-list > .inner > .table-wrap > .board-list > tbody > tr > td > .goods-info > .img > a:link > img {
+  width: 100%;
+  height: 100%;
+}
+body > .container > .content > .inner > .event-list > .inner > .table-wrap > .board-list > thead > tr > th {
+  height: 45px;
+  padding: 3px 10px;
+  color: #222;
+  border: solid #eaeaea;
+  border-width: 0 0 1px 0;
+  background-color: #f2f4f5;
+}
+body > .container > .content > .inner > .event-list > .inner > .table-wrap > .board-list > thead > tr > th > .mt10 {
+  margin-top: 10px !important;
+}
+body > .container > .content > .inner > .event-list > .inner > .table-wrap > .board-list > thead > tr > th > .mt10 > .font-gblue {
+  color: #01738b !important;
+}
+body > .container > .content > .inner > .event-list > .inner .board-move { /* 밑에 구매 후 취소 버튼 */
+  position: relative;
+  padding: 25px 0 0 0;
+}
+body > .container > .content > .inner > .event-list > .inner .board-move > dt {
+  padding-bottom: 10px;
+}
+body > .container > .content > .inner > .event-list > .inner .board-move > dt > .bg-chk {
   display: inline-block;
-  padding-top: 7px;
-  border: 0;
+  position: relative;
+  /*체크버튼 누르는 부분 */
+}
+body > .container > .content > .inner > .event-list > .inner .board-move > dt > .bg-chk [type=checkbox] {
+  position: absolute;
+  left: -99999px;
+}
+body > .container > .content > .inner > .event-list > .inner .board-move > dt > .bg-chk > label {
+  font-size: 18px;
+  color: #222;
+  font-weight: 900;
+  position: relative;
+  padding: 0 0 0 34px;
+  line-height: 28px;
+}
+body > .container > .content > .inner > .event-list > .inner .board-move > dt > .bg-chk label:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 28px;
+  height: 28px;
+  margin: -14px 0 0 0;
+  cursor: pointer;
+  background: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-checkbox.png) no-repeat 0 0;
+}
+body > .container > .content > .inner > .event-list > .inner .board-move > dt > .bg-chk input[type=checkbox]:hover + label:before {
+  background-position: -56px 0;
+}
+body > .container > .content > .inner > .event-list > .inner .board-move > dt > .bg-chk input[type=checkbox]:checked + label:before {
+  background-position: -28px 0;
+}
+body > .container > .content > .inner > .event-list > .inner .board-move > dt > .bg-chk input[type=checkbox]:checked:hover + label:before {
+  background-position: -28px 0;
+}
+body > .container > .content > .inner > .event-list > .inner .board-move > dt > .bg-chk input[type=checkbox][disabled] + label:before {
+  background-position: -84px 0;
+}
+body > .container > .content > .inner > .event-list > .inner .board-move > dt > .bg-chk input[type=checkbox][disabled]:hover + label:before {
+  background-position: -84px 0;
+}
+body > .container > .content > .inner > .event-list > .inner .board-move > dt > .bg-chk input[type=checkbox][disabled]:checked + label:before {
+  background-position: right 0;
+}
+body > .container > .content > .inner > .event-list > .inner .board-move > .btn {
+  display: block;
+  width: 100%;
+  padding-left: 1rem;
+  text-align: left;
+  border-radius: 0.3rem;
+  height: 40px;
+  border: 1.3px solid #d5d5d5;
+  background-color: transparent;
+}
+body > .container > .content > .inner > .event-list > .inner .board-move > .btn > a {
+  position: absolute;
+  display: block;
+  top: 38px;
+  right: 19px;
+  line-height: 15px;
+  font-size: 14px;
+  color: #444;
+  text-decoration: underline;
+}
+body > .container > .content > .inner > .event-list > .inner > .board-move.more {
+  display: none;
+}
+body > .container > .content > .inner > .event-list > .inner > .board-move.more.-visible {
+  display: block;
 }
 
-/*# sourceMappingURL=store.css.map */
+/*# sourceMappingURL=order.css.map */

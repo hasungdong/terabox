@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.terabox.demo.mappers.StoreMapper">
+    <select id="selectProductsByName" resultType="com.terabox.demo.entities.ProductEntity">
+        SELECT `index`                  AS `index`,
+               `name`                   AS `name`,
+               `price`                  AS `price`,
+               `quantity`               AS `quantity`,
+               `thumbnail`              AS `thumbnail`,
+               `thumbnail_file_name`    AS `thumbnailFileName`,
+               `thumbnail_content_type` AS `thumbnailContentType`
+        FROM `terabox`.`products`
+        WHERE `name` = #{name}
+    </select>
+    <select id="selectProductByIndex" resultType="com.terabox.demo.entities.ProductEntity">
+        SELECT `index`                  AS `index`,
+               `name`                   AS `name`,
+               `price`                  AS `price`,
+               `quantity`               AS `quantity`,
+               `thumbnail`              AS `thumbnail`,
+               `thumbnail_file_name`    AS `thumbnailFileName`,
+               `thumbnail_content_type` AS `thumbnailContentType`
+        FROM `terabox`.`products`
+        WHERE `index` = #{index}
+        LIMIT 1
+    </select>
+    <select id="selectProductsCountBySearch" parameterType="com.terabox.demo.dtos.SearchDto" resultType="_int">
+        SELECT COUNT(0) AS `count`
+        FROM `terabox`.`products` AS `product`
+        WHERE (REPLACE(`name`, ' ', '') LIKE CONCAT('%', REPLACE(#{keyword}, ' ', ''), '%'))
+        ORDER BY product.`index` DESC
+    </select>
+    <select id="selectProductsBySearch" parameterType="com.terabox.demo.dtos.SearchDto" resultType="com.terabox.demo.entities.ProductEntity">
+        SELECT `index`                  AS `index`,
+               `name`                   AS `name`,
+               `price`                  AS `price`,
+               `quantity`               AS `quantity`,
+               `thumbnail`              AS `thumbnail`,
+               `thumbnail_file_name`    AS `thumbnailFileName`,
+               `thumbnail_content_type` AS `thumbnailContentType`
+        FROM `terabox`.`products` AS `product`
+        WHERE (REPLACE(`name`, ' ', '') LIKE CONCAT('%', REPLACE(#{keyword}, ' ', ''), '%'))
+        ORDER BY product.`index` DESC
+        LIMIT #{countPerPage} OFFSET #{offset}
+    </select>
+
+
+</mapper>

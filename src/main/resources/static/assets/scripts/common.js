@@ -396,12 +396,6 @@ if (document.querySelector('span.swiper-bar') !== null) {
     }
 }
 
-
-if (!(location.href.slice(-5) === '/home' ||
-    location.href.slice(-6) === '/home#')) {
-    header.style.filter = 'none';
-}
-
 class MessageObj {
     static cover = null;
     static stack = [];

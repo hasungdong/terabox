@@ -3,7 +3,7 @@ package com.terabox.demo.services;
 import com.terabox.demo.entities.EventEntity;
 import com.terabox.demo.entities.ProductEntity;
 import com.terabox.demo.mappers.EventMapper;
-import com.terabox.demo.mappers.ProductMapper;
+import com.terabox.demo.mappers.StoreMapper;
 import lombok.RequiredArgsConstructor;
 import com.terabox.demo.entities.MovieEntity;
 import com.terabox.demo.mappers.AdminMapper;
@@ -11,13 +11,15 @@ import com.terabox.demo.mappers.MovieMapper;
 import com.terabox.demo.results.CommonResult;
 import com.terabox.demo.results.Result;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class AdminService {
     private final AdminMapper adminMapper;
     private final MovieMapper movieMapper;
-    private final ProductMapper productMapper;
+    private final StoreMapper storeMapper;
     private final EventMapper eventMapper;
 
     public Result addMovie(MovieEntity movie){
@@ -46,7 +48,7 @@ public class AdminService {
             return CommonResult.FAILURE;
         }
 //        이름과 가격이 같으면 같은 상품
-        ProductEntity[] dbProducts = this.productMapper.selectProductsByName(product.getName());
+        ProductEntity[] dbProducts = this.storeMapper.selectProductsByName(product.getName());
         if (dbProducts != null){
             for (ProductEntity dbProduct : dbProducts) {
                 if (dbProduct.getPrice() == product.getPrice()){
@@ -74,34 +76,48 @@ public class AdminService {
         return this.adminMapper.insertEvent(event) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 
-    public Result modifyMovie(String title){
+    public Result modifyMovie(MovieEntity movie){
         return null;
     }
 
-    public Result modifyProduct(String name){
+    public Result modifyProduct(ProductEntity product){
         return null;
     }
 
-    public Result modifyEvent(String title){
+    public Result modifyEvent(EventEntity event){
         return null;
     }
 
-    public Result deleteMovie(String title){
-        return null;
-    }
-
-    public Result deleteProduct(String name){
-        return null;
-    }
-
-    public Result deleteEvent(String title){
-        if (title == null || title.length() < 1 || title.length() > 100){
+    public Result deleteMovie(int index){
+        if (index < 1){
             return CommonResult.FAILURE;
         }
-        EventEntity[] dbEvents = this.eventMapper.selectEventsByTitle(title);
-        if (dbEvents == null){
-
+        MovieEntity dbMovie = this.movieMapper.selectMovieByIndex(index);
+        if (dbMovie == null){
+            return CommonResult.FAILURE;
         }
-        return null;
+        return this.adminMapper.deleteMovieByIndex(index) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
+    }
+
+    public Result deleteProduct(int index){
+        if (index < 1){
+            return CommonResult.FAILURE;
+        }
+        ProductEntity dbProduct = this.storeMapper.selectProductByIndex(index);
+        if (dbProduct == null){
+            return CommonResult.FAILURE;
+        }
+        return this.adminMapper.deleteProductByIndex(index) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
+    }
+
+    public Result deleteEvent(int index){
+        if (index < 1){
+            return CommonResult.FAILURE;
+        }
+        EventEntity dbEvent = this.eventMapper.selectEventByIndex(index);
+        if (dbEvent == null){
+            return CommonResult.FAILURE;
+        }
+        return this.adminMapper.deleteEventByIndex(index) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 }

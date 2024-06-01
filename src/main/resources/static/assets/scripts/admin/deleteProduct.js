@@ -1,11 +1,11 @@
-deleteEventForm.divResult = deleteEventForm.querySelector('.result-box');
+deleteProductForm.divResult = deleteProductForm.querySelector('.result-box');
 
-deleteEventForm.onsubmit = e => {
+deleteProductForm.onsubmit = e => {
     e.preventDefault();
 
-    deleteEventForm.titleLabel = new LabelObj(deleteEventForm.querySelector('[rel="titleLabel"]'));
-    deleteEventForm.titleLabel.setValid(deleteEventForm['title'].tests());
-    if (!deleteEventForm.titleLabel.isValid()){
+    deleteProductForm.nameLabel = new LabelObj(deleteProductForm.querySelector('[rel="nameLabel"]'));
+    deleteProductForm.nameLabel.setValid(deleteProductForm['name'].tests());
+    if (!deleteProductForm.nameLabel.isValid()){
         return;
     }
     const xhr = new XMLHttpRequest();
@@ -24,9 +24,10 @@ deleteEventForm.onsubmit = e => {
                 MessageObj.createSimpleOk('경고', '알 수 없는 이유로 검색에 실패했습니다. 잠시 후 다시 시도해 주세요.').show();
                 break;
             case 'success':
-                const responseArray = responseObject['events'];
-                divResult.innerHTML = '';
+                const responseArray = responseObject['products'];
+                deleteProductForm.divResult.innerHTML = '';
                 if (responseArray.length === 0){
+                    alert('3');
                     return;
                 }
                 const ul = new DOMParser().parseFromString(`
@@ -39,27 +40,26 @@ deleteEventForm.onsubmit = e => {
                 <input type="hidden" name="index" value="${responseArrayElement['index']}">
                 <img class="img" src="" alt="">
                 <span class="text-box">
-                    <span class="text">${responseArrayElement['title']}</span>
+                    <span class="text">${responseArrayElement['name']}</span>
                     <span class="spring"></span>
                     <span class="info">
-                        <span class="discount-rate">할인율<br>${responseArrayElement['discountRate']}</span>
-                        <span class="start-date">시작일<br>${responseArrayElement['startDate']}</span>
-                        <span class="end-date">종료일<br>${responseArrayElement['endDate']}</span>
+                        <span class="playing-time">가격<br> ${responseArrayElement['price']}</span>
+                        <span class="reservation-rate">수량<br> ${responseArrayElement['quantity']}</span>
                     </span>
                 </span>
             </li>
         </ul>
             `, 'text/html').querySelector('li');
-                    li.querySelector('.img').setAttribute('src', `/event/image?index=${responseArrayElement['index']}`);
+                    li.querySelector('.img').setAttribute('src', `/store/image?index=${responseArrayElement['index']}`);
                     ul.append(li);
                 }
-                divResult.append(ul);
-                const lis = divResult.querySelectorAll('li');
+
+                deleteProductForm.divResult.append(ul);
+                const lis = deleteProductForm.divResult.querySelectorAll('li');
                 lis.forEach(li => li.onclick = () => {
-                    if (!confirm('이 이벤트를 삭제하시겠습니까?')){
+                    if (!confirm('이 상품을 삭제하시겠습니까?')){
                         return;
                     }
-                    alert('얍');
                     const xhr = new XMLHttpRequest();
                     const formData = new FormData();
                     formData.append('index', li.querySelector('[name="index"]').value);
@@ -74,12 +74,12 @@ deleteEventForm.onsubmit = e => {
                         }
                         const responseObject = JSON.parse(xhr.responseText);
                         const [dTitle, dContent, dOnclick] = {
-                            failure: ['경고', '알 수 없는 이유로 이벤트를 삭제하지 못하였습니다. 잠시 후 다시 시도해 주세요.'],
-                            success: ['알림', '이벤트를 성공적으로 삭제하였습니다.']
+                            failure: ['경고', '알 수 없는 이유로 상품을 삭제하지 못하였습니다. 잠시 후 다시 시도해 주세요.'],
+                            success: ['알림', '상품을 성공적으로 삭제하였습니다.']
                         }[responseObject.result] || ['경고', '서버가 알 수 없는 응답을 반환하였습니다. 잠시 후 다시 시도해 주세요.'];
                         MessageObj.createSimpleOk(dTitle, dContent, dOnclick).show();
                     }
-                    xhr.open('DELETE', '/admin/deleteEvent');
+                    xhr.open('DELETE', '/admin/deleteProduct');
                     xhr.send(formData);
                     loading.show();
                 })
@@ -89,7 +89,7 @@ deleteEventForm.onsubmit = e => {
                 return;
         }
     }
-    xhr.open('GET', `/event/search?keyword=${deleteEventForm['title'].value}`);
+    xhr.open('GET', `/store/search?keyword=${deleteProductForm['name'].value}`);
     xhr.send();
     loading.show();
 }

@@ -8,9 +8,17 @@
 </head>
 <body>
 <th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
-
 <form>
   <div id="container">
+    <div class="page-util">
+      <div class="inner">
+        <div class="location">
+          <span>home</span>
+          <a class="icon"></a>
+          <a th:href="@{/store/store}" class="event">스토어</a>
+        </div>
+      </div>
+    </div>
     <h2 class="tit">스토어</h2>
     <div class="tab-list">
       <ul class="topMenu">
@@ -32,12 +40,11 @@
       <div class="store-main">
         <!-- best-goods -->
         <div class="best-goods">
-          <a href="" title="러브콤보패키지 상세보기">
+          <a th:href="@{/store/storeDetail}" title="러브콤보패키지 상세보기">
             <div class="slogun">
               <p class="font-gblue">소중한 분들과 함께</p>
               <p class="font-purple">즐거운 관람되세요~</p>
             </div>
-
             <div class="goods">
               <p class="name">러브콤보패키지</p>
               <p class="txt">2인관람권 + 러브콤보 [팝콘(L)1 + 탄산음료(R)2]</p>
@@ -55,8 +62,9 @@
           </a>
         </div>
       </div>
+
       <div class="event-box">
-        <a href="#" class="event">
+        <a th:href="@{/store/storeDetail}" class="event">
           <img src="https://img.megabox.co.kr/SharedImg/store/2020/12/29/ZVX4FRDP8NLYto5HL0gAtxr6u4ZCmwOP_280.png" alt="">
         </a>
       </div>
@@ -74,6 +82,7 @@
     <div class="movie-list m15">
       <ul class="list">
         <li class="img">
+          <a th:href="@{/store/storeDetail}">
           <div class="movie-list-info">
             <img src="https://img.megabox.co.kr/SharedImg/store/2020/12/29/rxCDUuqHT9RostRRQYeu1mr1knFyHxWr_280.png" alt="더 부티크 전용관람권">
           </div>
@@ -94,72 +103,79 @@
             <p class="ea">
             </p>
           </div>
+          </a>
         </li>
         <li class="img">
-          <div class="movie-list-info">
-            <img src="https://img.megabox.co.kr/SharedImg/store/2020/12/29/rxCDUuqHT9RostRRQYeu1mr1knFyHxWr_280.png" alt="더 부티크 전용관람권" >
-          </div>
-          <!--제목 -->
-          <div class="tit-area">
-            <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
-              [프로모션][굿즈]
-            </p>
-          </div>
-          <div class="rate-date">
-            <span class="rate">2024.05.15~ 2024.06.30</span>
-          </div>
-          <div class="price">
-            <p class="sale">
-              <em>13,000</em>
-              <span>원</span>
-            </p>
-            <p class="ea">
-            </p>
-          </div>
+          <a th:href="@{/store/storeDetail}">
+            <div class="movie-list-info">
+              <img src="https://img.megabox.co.kr/SharedImg/store/2020/12/29/rxCDUuqHT9RostRRQYeu1mr1knFyHxWr_280.png" alt="더 부티크 전용관람권">
+            </div>
+            <!--제목 -->
+            <div class="tit-area">
+              <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
+                [프로모션]
+              </p>
+            </div>
+            <div class="rate-date">
+              <span class="rate">더 부티끄 전용관람관</span>
+            </div>
+            <div class="price">
+              <p class="sale">
+                <em>13,000</em>
+                <span>원</span>
+              </p>
+              <p class="ea">
+              </p>
+            </div>
+          </a>
         </li>
         <li class="img">
-          <div class="movie-list-info">
-            <img src="https://img.megabox.co.kr/SharedImg/event/2024/05/09/x4Q2ytFOusJ8Ux3uHoMh610IBVyGdRPc.jpg" alt="[프로모션][굿즈] <극장판하이큐!! 쓰레기장의 결전> 콤보 론칭">
-          </div>
-          <!--제목 -->
-          <div class="tit-area">
-            <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
-              [프로모션][굿즈]
-            </p>
-          </div>
-          <div class="rate-date">
-            <span class="rate">2024.05.15~ 2024.06.30</span>
-          </div>
-          <div class="price">
-            <p class="sale">
-              <em>13,000</em>
-              <span>원</span>
-            </p>
-            <p class="ea">
-            </p>
-          </div>
+          <a th:href="@{/store/storeDetail}">
+            <div class="movie-list-info">
+              <img src="https://img.megabox.co.kr/SharedImg/store/2020/12/29/rxCDUuqHT9RostRRQYeu1mr1knFyHxWr_280.png" alt="더 부티크 전용관람권">
+            </div>
+            <!--제목 -->
+            <div class="tit-area">
+              <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
+                [프로모션]
+              </p>
+            </div>
+            <div class="rate-date">
+              <span class="rate">더 부티끄 전용관람관</span>
+            </div>
+            <div class="price">
+              <p class="sale">
+                <em>13,000</em>
+                <span>원</span>
+              </p>
+              <p class="ea">
+              </p>
+            </div>
+          </a>
         </li>
         <li class="img">
-          <div class="movie-list-info">
-            <img src="https://img.megabox.co.kr/SharedImg/event/2024/05/09/x4Q2ytFOusJ8Ux3uHoMh610IBVyGdRPc.jpg" alt="[프로모션][굿즈] <극장판하이큐!! 쓰레기장의 결전> 콤보 론칭">
-          </div>
-          <!--제목 -->
-          <div class="tit-area">
-            <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
-              [프로모션][굿즈]
-            </p>
-          </div>
-          <div class="rate-date">
-            <span class="rate">2024.05.15~ 2024.06.30</span>
-          </div>
-          <div class="price">
-            <p class="sale">
-              <em>13,000</em>
-              <span>원</span>
-            </p>
-            <p class="ea">
-            </p>
-          </div>
+          <a th:href="@{/store/storeDetail}">
+            <div class="movie-list-info">
+              <img src="https://img.megabox.co.kr/SharedImg/store/2020/12/29/rxCDUuqHT9RostRRQYeu1mr1knFyHxWr_280.png" alt="더 부티크 전용관람권">
+            </div>
+            <!--제목 -->
+            <div class="tit-area">
+              <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
+                [프로모션]
+              </p>
+            </div>
+            <div class="rate-date">
+              <span class="rate">더 부티끄 전용관람관</span>
+            </div>
+            <div class="price">
+              <p class="sale">
+                <em>13,000</em>
+                <span>원</span>
+              </p>
+              <p class="ea">
+              </p>
+            </div>
+          </a>
         </li>
       </ul>
     </div>
@@ -171,97 +187,103 @@
           <i class="fa-solid fa-chevron-right" style="color: #c2c2c2;"></i></a>
       </div>
     </div>
-    <div class="movie-list-util">
-    </div>
     <div class="movie-list m15">
       <ul class="list">
         <li class="img">
-          <div class="movie-list-info">
-            <img src="https://img.megabox.co.kr/SharedImg/store/2020/12/29/rxCDUuqHT9RostRRQYeu1mr1knFyHxWr_280.png" alt="더 부티크 전용관람권">
-          </div>
-          <!--제목 -->
-          <div class="tit-area">
-            <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
-              [프로모션][굿즈]
-            </p>
-          </div>
-          <div class="rate-date">
-            <span class="rate">2024.05.15~ 2024.06.30</span>
-          </div>
-          <div class="price">
-            <p class="sale">
-              <em>13,000</em>
-              <span>원</span>
-            </p>
-            <p class="ea">
-            </p>
-          </div>
+          <a th:href="@{/store/storeDetail}">
+            <div class="movie-list-info">
+              <img src="https://img.megabox.co.kr/SharedImg/store/2020/12/29/rxCDUuqHT9RostRRQYeu1mr1knFyHxWr_280.png" alt="더 부티크 전용관람권">
+            </div>
+            <!--제목 -->
+            <div class="tit-area">
+              <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
+                [프로모션]
+              </p>
+            </div>
+            <div class="rate-date">
+              <span class="rate">더 부티끄 전용관람관</span>
+            </div>
+            <div class="price">
+              <p class="sale">
+                <em>13,000</em>
+                <span>원</span>
+              </p>
+              <p class="ea">
+              </p>
+            </div>
+          </a>
         </li>
         <li class="img">
-          <div class="movie-list-info">
-            <img src="https://img.megabox.co.kr/SharedImg/store/2020/12/29/rxCDUuqHT9RostRRQYeu1mr1knFyHxWr_280.png" alt="더 부티크 전용관람권">
-          </div>
-          <!--제목 -->
-          <div class="tit-area">
-            <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
-              [프로모션][굿즈]
-            </p>
-          </div>
-          <div class="rate-date">
-            <span class="rate">2024.05.15~ 2024.06.30</span>
-          </div>
-          <div class="price">
-            <p class="sale">
-              <em>13,000</em>
-              <span>원</span>
-            </p>
-            <p class="ea">
-            </p>
-          </div>
+          <a th:href="@{/store/storeDetail}">
+            <div class="movie-list-info">
+              <img src="https://img.megabox.co.kr/SharedImg/store/2020/12/29/rxCDUuqHT9RostRRQYeu1mr1knFyHxWr_280.png" alt="더 부티크 전용관람권">
+            </div>
+            <!--제목 -->
+            <div class="tit-area">
+              <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
+                [프로모션]
+              </p>
+            </div>
+            <div class="rate-date">
+              <span class="rate">더 부티끄 전용관람관</span>
+            </div>
+            <div class="price">
+              <p class="sale">
+                <em>13,000</em>
+                <span>원</span>
+              </p>
+              <p class="ea">
+              </p>
+            </div>
+          </a>
         </li>
         <li class="img">
-          <div class="movie-list-info">
-            <img src="https://img.megabox.co.kr/SharedImg/event/2024/05/09/x4Q2ytFOusJ8Ux3uHoMh610IBVyGdRPc.jpg" alt="[프로모션][굿즈] <극장판하이큐!! 쓰레기장의 결전> 콤보 론칭">
-          </div>
-          <!--제목 -->
-          <div class="tit-area">
-            <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
-              [프로모션][굿즈]
-            </p>
-          </div>
-          <div class="rate-date">
-            <span class="rate">2024.05.15~ 2024.06.30</span>
-          </div>
-          <div class="price">
-            <p class="sale">
-              <em>13,000</em>
-              <span>원</span>
-            </p>
-            <p class="ea">
-            </p>
-          </div>
+          <a th:href="@{/store/storeDetail}">
+            <div class="movie-list-info">
+              <img src="https://img.megabox.co.kr/SharedImg/store/2020/12/29/rxCDUuqHT9RostRRQYeu1mr1knFyHxWr_280.png" alt="더 부티크 전용관람권">
+            </div>
+            <!--제목 -->
+            <div class="tit-area">
+              <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
+                [프로모션]
+              </p>
+            </div>
+            <div class="rate-date">
+              <span class="rate">더 부티끄 전용관람관</span>
+            </div>
+            <div class="price">
+              <p class="sale">
+                <em>13,000</em>
+                <span>원</span>
+              </p>
+              <p class="ea">
+              </p>
+            </div>
+          </a>
         </li>
         <li class="img">
-          <div class="movie-list-info">
-            <img src="https://img.megabox.co.kr/SharedImg/event/2024/05/09/x4Q2ytFOusJ8Ux3uHoMh610IBVyGdRPc.jpg" alt="[프로모션][굿즈] <극장판하이큐!! 쓰레기장의 결전> 콤보 론칭">
-          </div>
-          <!--제목 -->
-          <div class="tit-area">
-            <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
-              [프로모션][굿즈]
-            </p>
-          </div>
-          <div class="rate-date">
-            <span class="rate">2024.05.15~ 2024.06.30</span>
-          </div>
-          <div class="price">
-            <p class="sale">
-              <em>13,000</em>
-              <span>원</span>
-            </p>
-            <p class="ea">
-            </p>
-          </div>
+          <a th:href="@{/store/storeDetail}">
+            <div class="movie-list-info">
+              <img src="https://img.megabox.co.kr/SharedImg/store/2020/12/29/rxCDUuqHT9RostRRQYeu1mr1knFyHxWr_280.png" alt="더 부티크 전용관람권">
+            </div>
+            <!--제목 -->
+            <div class="tit-area">
+              <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
+                [프로모션]
+              </p>
+            </div>
+            <div class="rate-date">
+              <span class="rate">더 부티끄 전용관람관</span>
+            </div>
+            <div class="price">
+              <p class="sale">
+                <em>13,000</em>
+                <span>원</span>
+              </p>
+              <p class="ea">
+              </p>
+            </div>
+          </a>
         </li>
       </ul>
     </div>
@@ -273,97 +295,103 @@
           <i class="fa-solid fa-chevron-right" style="color: #c2c2c2;"></i></a>
       </div>
     </div>
-    <div class="movie-list-util">
-    </div>
     <div class="movie-list m15">
       <ul class="list">
         <li class="img">
-          <div class="movie-list-info">
-            <img src="https://img.megabox.co.kr/SharedImg/event/2024/05/09/x4Q2ytFOusJ8Ux3uHoMh610IBVyGdRPc.jpg" alt="[프로모션][굿즈]<극장판하이큐!! 쓰레기장의 결전> 콤보 론칭">
-          </div>
-          <!--제목 -->
-          <div class="tit-area">
-            <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
-              [프로모션][굿즈]
-            </p>
-          </div>
-          <div class="rate-date">
-            <span class="rate">2024.05.15~ 2024.06.30</span>
-          </div>
-          <div class="price">
-            <p class="sale">
-              <em>13,000</em>
-              <span>원</span>
-            </p>
-            <p class="ea">
-            </p>
-          </div>
+          <a th:href="@{/store/storeDetail}">
+            <div class="movie-list-info">
+              <img src="https://img.megabox.co.kr/SharedImg/store/2020/12/29/rxCDUuqHT9RostRRQYeu1mr1knFyHxWr_280.png" alt="더 부티크 전용관람권">
+            </div>
+            <!--제목 -->
+            <div class="tit-area">
+              <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
+                [프로모션]
+              </p>
+            </div>
+            <div class="rate-date">
+              <span class="rate">더 부티끄 전용관람관</span>
+            </div>
+            <div class="price">
+              <p class="sale">
+                <em>13,000</em>
+                <span>원</span>
+              </p>
+              <p class="ea">
+              </p>
+            </div>
+          </a>
         </li>
         <li class="img">
-          <div class="movie-list-info">
-            <img src="https://img.megabox.co.kr/SharedImg/event/2024/05/09/x4Q2ytFOusJ8Ux3uHoMh610IBVyGdRPc.jpg" alt="[프로모션][굿즈] <극장판하이큐!! 쓰레기장의 결전> 콤보 론칭">
-          </div>
-          <!--제목 -->
-          <div class="tit-area">
-            <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
-              [프로모션][굿즈]
-            </p>
-          </div>
-          <div class="rate-date">
-            <span class="rate">2024.05.15~ 2024.06.30</span>
-          </div>
-          <div class="price">
-            <p class="sale">
-              <em>13,000</em>
-              <span>원</span>
-            </p>
-            <p class="ea">
-            </p>
-          </div>
+          <a th:href="@{/store/storeDetail}">
+            <div class="movie-list-info">
+              <img src="https://img.megabox.co.kr/SharedImg/store/2020/12/29/rxCDUuqHT9RostRRQYeu1mr1knFyHxWr_280.png" alt="더 부티크 전용관람권">
+            </div>
+            <!--제목 -->
+            <div class="tit-area">
+              <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
+                [프로모션]
+              </p>
+            </div>
+            <div class="rate-date">
+              <span class="rate">더 부티끄 전용관람관</span>
+            </div>
+            <div class="price">
+              <p class="sale">
+                <em>13,000</em>
+                <span>원</span>
+              </p>
+              <p class="ea">
+              </p>
+            </div>
+          </a>
         </li>
         <li class="img">
-          <div class="movie-list-info">
-            <img src="https://img.megabox.co.kr/SharedImg/event/2024/05/09/x4Q2ytFOusJ8Ux3uHoMh610IBVyGdRPc.jpg" alt="[프로모션][굿즈] <극장판하이큐!! 쓰레기장의 결전> 콤보 론칭">
-          </div>
-          <!--제목 -->
-          <div class="tit-area">
-            <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
-              [프로모션][굿즈]
-            </p>
-          </div>
-          <div class="rate-date">
-            <span class="rate">2024.05.15~ 2024.06.30</span>
-          </div>
-          <div class="price">
-            <p class="sale">
-              <em>13,000</em>
-              <span>원</span>
-            </p>
-            <p class="ea">
-            </p>
-          </div>
+          <a th:href="@{/store/storeDetail}">
+            <div class="movie-list-info">
+              <img src="https://img.megabox.co.kr/SharedImg/store/2020/12/29/rxCDUuqHT9RostRRQYeu1mr1knFyHxWr_280.png" alt="더 부티크 전용관람권">
+            </div>
+            <!--제목 -->
+            <div class="tit-area">
+              <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
+                [프로모션]
+              </p>
+            </div>
+            <div class="rate-date">
+              <span class="rate">더 부티끄 전용관람관</span>
+            </div>
+            <div class="price">
+              <p class="sale">
+                <em>13,000</em>
+                <span>원</span>
+              </p>
+              <p class="ea">
+              </p>
+            </div>
+          </a>
         </li>
         <li class="img">
-          <div class="movie-list-info">
-            <img src="https://img.megabox.co.kr/SharedImg/event/2024/05/09/x4Q2ytFOusJ8Ux3uHoMh610IBVyGdRPc.jpg" alt="[프로모션][굿즈] <극장판하이큐!! 쓰레기장의 결전> 콤보 론칭">
-          </div>
-          <!--제목 -->
-          <div class="tit-area">
-            <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
-              [프로모션][굿즈]
-            </p>
-          </div>
-          <div class="rate-date">
-            <span class="rate">2024.05.15~ 2024.06.30</span>
-          </div>
-          <div class="price">
-            <p class="sale">
-              <em>13,000</em>
-              <span>원</span>
-            </p>
-            <p class="ea">
-            </p>
-          </div>
+          <a th:href="@{/store/storeDetail}">
+            <div class="movie-list-info">
+              <img src="https://img.megabox.co.kr/SharedImg/store/2020/12/29/rxCDUuqHT9RostRRQYeu1mr1knFyHxWr_280.png" alt="더 부티크 전용관람권">
+            </div>
+            <!--제목 -->
+            <div class="tit-area">
+              <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
+                [프로모션]
+              </p>
+            </div>
+            <div class="rate-date">
+              <span class="rate">더 부티끄 전용관람관</span>
+            </div>
+            <div class="price">
+              <p class="sale">
+                <em>13,000</em>
+                <span>원</span>
+              </p>
+              <p class="ea">
+              </p>
+            </div>
+          </a>
         </li>
       </ul>
     </div>

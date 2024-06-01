@@ -8,6 +8,7 @@ import lombok.Setter;
 @Setter
 @EqualsAndHashCode(of = "name")
 public class ProductEntity {
+    private int index;
     private String name;
     private int price;
     private int quantity;

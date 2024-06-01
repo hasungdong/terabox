@@ -11,7 +11,7 @@
 <form class="form" id="deleteMovieForm" th:fragment="deleteMovieForm" th:with="movieRegex = ${T(com.terabox.demo.regexes.MovieRegex)}">
     <h3 class="title">영화 삭제</h3>
     <div class="content">
-        <label class="_obj-label title" rel="nameLabel">
+        <label class="_obj-label title" rel="titleLabel">
             <span class="__text">영화 제목</span>
             <input autofocus required class="_obj-input __field" type="text" name="title" maxlength="100" minlength="1" th:attrappend="data-regex=${movieRegex.title.expression}">
             <button type="submit">
@@ -19,7 +19,7 @@
             </button>
             <span class="__warning">올바른 이름을 입력해 주세요.</span>
         </label>
-        <div class="spring"></div>
+        <div class="result-box"></div>
         <button type="button" rel="hideDeleteMovieForm">취소</button>
     </div>
 </form>

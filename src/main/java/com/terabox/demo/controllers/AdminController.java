@@ -60,14 +60,30 @@ public class AdminController {
         return responseObject.toString();
     }
 
-    @DeleteMapping(value = "/deleteEvent", produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(value = "/deleteMovie", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String deleteAddEvent(@RequestParam("title") String title) throws IOException {
-        Result result = this.adminService.deleteEvent(title);
+    public String deleteAddMovie(@RequestParam("index") int index) {
+        Result result = this.adminService.deleteMovie(index);
         JSONObject responseObject = new JSONObject();
         responseObject.put("result", result.name().toLowerCase());
         return responseObject.toString();
     }
 
+    @DeleteMapping(value = "/deleteProduct", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public String deleteAddProduct(@RequestParam("index") int index) {
+        Result result = this.adminService.deleteProduct(index);
+        JSONObject responseObject = new JSONObject();
+        responseObject.put("result", result.name().toLowerCase());
+        return responseObject.toString();
+    }
 
+    @DeleteMapping(value = "/deleteEvent", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public String deleteAddEvent(@RequestParam("index") int index) {
+        Result result = this.adminService.deleteEvent(index);
+        JSONObject responseObject = new JSONObject();
+        responseObject.put("result", result.name().toLowerCase());
+        return responseObject.toString();
+    }
 }

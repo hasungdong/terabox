@@ -27,4 +27,23 @@
         INSERT INTO `terabox`.`events` (`title`, `start_date`, `end_date`, `discount_rate`, `thumbnail`, `thumbnail_file_name`, `thumbnail_content_type`)
         VALUES (#{title}, #{startDate}, #{endDate}, #{discountRate}, #{thumbnail}, #{thumbnailFileName}, #{thumbnailContentType})
     </insert>
+
+    <delete id="deleteMovieByIndex">
+        DELETE
+        FROM `terabox`.`movies`
+        WHERE `index` = #{index}
+        LIMIT 1
+    </delete>
+    <delete id="deleteProductByIndex">
+        DELETE
+        FROM `terabox`.`products`
+        WHERE `index` = #{index}
+        LIMIT 1
+    </delete>
+    <delete id="deleteEventByIndex">
+        DELETE
+        FROM `terabox`.`events`
+        WHERE `index` = #{index}
+        LIMIT 1
+    </delete>
 </mapper>

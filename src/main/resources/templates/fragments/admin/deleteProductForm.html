@@ -13,13 +13,13 @@
     <div class="content">
         <label class="_obj-label title" rel="nameLabel">
             <span class="__text">상품 이름</span>
-            <input autofocus required class="_obj-input __field" type="text" name="name" maxlength="100" minlength="1" th:attrappend="data-regex=${productRegex.proName.expression}">
+            <input autofocus required class="_obj-input __field" type="text" name="name" maxlength="100" minlength="1" spellcheck="false" th:attrappend="data-regex=${productRegex.proName.expression}">
             <button type="submit">
                 <img th:src="@{/assets/images/common/search.png}" alt="">
             </button>
             <span class="__warning">올바른 이름을 입력해 주세요.</span>
         </label>
-        <div class="spring"></div>
+        <div class="result-box"></div>
         <button type="button" rel="hideDeleteProductForm">취소</button>
     </div>
 </form>
