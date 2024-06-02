@@ -2,7 +2,7 @@ const loginCancelButton = document.querySelector('[rel="loginCancel"]');
 const alertCover = document.getElementById('alertCover');
 
 
-if (document.querySelector('[rel="showLoginAlert"]') !== null){
+if (document.querySelector('[rel="showLoginAlert"]') !== null) {
     // 로그인이 안되어있다면 << 나중에 이 조건도 코딩해야됨
     const loginAlertButtons = document.querySelectorAll('[rel="showLoginAlert"]');
     loginAlertButtons.forEach(loginAlertButton => loginAlertButton.onclick = () => {
@@ -10,15 +10,19 @@ if (document.querySelector('[rel="showLoginAlert"]') !== null){
             title: '알림',
             content: '로그인 후 이용가능한 서비스입니다 <br> 로그인하시겠습니까?',
             buttons: [
-                {text: '취소', onclick: instance => {
-                    instance.hide();
-                    alertCover.hide();
-                    }},
-                {text: '확인', onclick: instance => {
-                    instance.hide();
-                    showLogin();
-                    alertCover.hide();
-                    }}
+                {
+                    text: '취소', onclick: instance => {
+                        instance.hide();
+                        alertCover.hide();
+                    }
+                },
+                {
+                    text: '확인', onclick: instance => {
+                        instance.hide();
+                        showLogin();
+                        alertCover.hide();
+                    }
+                }
             ]
         }).show();
         // document.querySelector('._obj-message.-visible') 이건 왜 안되징
@@ -225,19 +229,19 @@ if (document.querySelector('span.swiper-bar') !== null) {
             }
             if (img.style.top === 'calc(0%)') {
                 img.style.opacity = '1';
-            }else if(img.style.top === 'calc(25%)'){
+            } else if (img.style.top === 'calc(25%)') {
                 img.style.display = 'none';
                 img.style.opacity = '0';
                 setTimeout(function () {
                     img.style.display = 'block';
                 }, 300);
-            } else if(img.style.top === 'calc(-25%)'){
+            } else if (img.style.top === 'calc(-25%)') {
                 img.style.display = 'none';
                 img.style.opacity = '0';
                 setTimeout(function () {
                     img.style.display = 'block';
                 }, 300);
-            }else {
+            } else {
                 img.style.display = 'none';
                 img.style.opacity = '0';
             }
@@ -253,19 +257,19 @@ if (document.querySelector('span.swiper-bar') !== null) {
             }
             if (imgTwo.style.left === 'calc(0% + 300px)') {
                 imgTwo.style.opacity = '1';
-            } else if(imgTwo.style.left === 'calc(25% + 300px)') {
+            } else if (imgTwo.style.left === 'calc(25% + 300px)') {
                 imgTwo.style.display = 'none';
                 imgTwo.style.opacity = '0';
                 setTimeout(function () {
                     imgTwo.style.display = 'block';
                 }, 300);
-            } else if(imgTwo.style.left === 'calc(-25% + 300px)') {
+            } else if (imgTwo.style.left === 'calc(-25% + 300px)') {
                 imgTwo.style.display = 'none';
                 imgTwo.style.opacity = '0';
                 setTimeout(function () {
                     imgTwo.style.display = 'block';
                 }, 300);
-            }else {
+            } else {
                 imgTwo.style.display = 'none';
                 imgTwo.style.opacity = '0';
             }
@@ -281,13 +285,13 @@ if (document.querySelector('span.swiper-bar') !== null) {
                 }
                 if (img.style.top === 'calc(0%)') {
                     img.style.opacity = '1';
-                }else if(img.style.top === 'calc(25%)'){
+                } else if (img.style.top === 'calc(25%)') {
                     img.style.display = 'block';
                     img.style.opacity = '0';
-                } else if (img.style.top === 'calc(-25%)'){
+                } else if (img.style.top === 'calc(-25%)') {
                     img.style.display = 'block';
                     img.style.opacity = '0';
-                }else {
+                } else {
                     img.style.display = 'none';
                     img.style.opacity = '0';
                 }
@@ -300,13 +304,13 @@ if (document.querySelector('span.swiper-bar') !== null) {
                 }
                 if (imgTwo.style.left === 'calc(0% + 300px)') {
                     imgTwo.style.opacity = '1';
-                } else if(imgTwo.style.left === 'calc(25% + 300px)') {
+                } else if (imgTwo.style.left === 'calc(25% + 300px)') {
                     imgTwo.style.opacity = '0';
                     imgTwo.style.display = 'block';
-                } else if(imgTwo.style.left === 'calc(-25% + 300px)') {
+                } else if (imgTwo.style.left === 'calc(-25% + 300px)') {
                     imgTwo.style.opacity = '0';
                     imgTwo.style.display = 'block';
-                }else {
+                } else {
                     imgTwo.style.display = 'none';
                     imgTwo.style.opacity = '0';
                 }
@@ -333,13 +337,13 @@ if (document.querySelector('span.swiper-bar') !== null) {
                 }
                 if (img.style.top === 'calc(0%)') {
                     img.style.opacity = '1';
-                }else if(img.style.top === 'calc(25%)'){
+                } else if (img.style.top === 'calc(25%)') {
                     img.style.display = 'block';
                     img.style.opacity = '0';
                 } else if (img.style.top === 'calc(-25%)') {
                     img.style.display = 'block';
                     img.style.opacity = '0';
-                }else {
+                } else {
                     img.style.display = 'none';
                     img.style.opacity = '0';
                 }
@@ -347,19 +351,19 @@ if (document.querySelector('span.swiper-bar') !== null) {
             imgTwos.forEach(imgTwo => {
                 imgTwo.style.left = `calc(${imgTwo.style.left} - 25%)`;
                 // if (imgTwo.style.left === `calc((-25% * ${imgTwos.length - 1}) + 300px)`) {
-                    // 여기 -100% 적으면 먹는데 이렇게 적으면 안먹음 ㅠㅠ...
+                // 여기 -100% 적으면 먹는데 이렇게 적으면 안먹음 ㅠㅠ...
                 if (imgTwo.style.left === `calc(-50% + 300px)`) {
                     imgTwo.style.left = `calc(300px + 25% * ${imgTwos.length - 2})`;
                 }
                 if (imgTwo.style.left === 'calc(0% + 300px)') {
                     imgTwo.style.opacity = '1';
-                } else if(imgTwo.style.left === 'calc(25% + 300px)') {
+                } else if (imgTwo.style.left === 'calc(25% + 300px)') {
                     imgTwo.style.opacity = '0';
                     imgTwo.style.display = 'block';
-                } else if(imgTwo.style.left === 'calc(-25% + 300px)') {
+                } else if (imgTwo.style.left === 'calc(-25% + 300px)') {
                     imgTwo.style.opacity = '0';
                     imgTwo.style.display = 'block';
-                }else {
+                } else {
                     imgTwo.style.display = 'none';
                     imgTwo.style.opacity = '0';
                 }
@@ -394,8 +398,6 @@ if (document.querySelector('span.swiper-bar') !== null) {
         }
     }
 }
-
-
 
 
 class MessageObj {
@@ -495,10 +497,10 @@ class LabelObj {
     }
 
     setValid(b) {
-        if (b === true){
+        if (b === true) {
             this.element.classList.remove(HTMLElement.INVALID_CLASS_NAME);
         }
-        if (b === false){
+        if (b === false) {
             this.element.classList.add(HTMLElement.INVALID_CLASS_NAME);
         }
         return this;
@@ -529,22 +531,22 @@ HTMLElement.prototype.show = function () {
 }
 
 HTMLInputElement.prototype.tests = function () {
-    if (typeof this.dataset.regex !== 'string'){
+    if (typeof this.dataset.regex !== 'string') {
         // 정규식이 없는 상태라는 뜻
         // 정규식이 없으면 검사할게 없으니 무조건 안전한 값이므로 true를 반환
         return true;
     }
-    if (typeof this._regExp === 'undefined'){
+    if (typeof this._regExp === 'undefined') {
         this._regExp = new RegExp(this.dataset.regex);
     }
     return this._regExp.test(this.value);
 }
 
 HTMLTextAreaElement.prototype.tests = function () {
-    if (typeof this.dataset.regex !== 'string'){
+    if (typeof this.dataset.regex !== 'string') {
         return true;
     }
-    if (typeof this._regExp === 'undefined'){
+    if (typeof this._regExp === 'undefined') {
         this._regExp = new RegExp(this.dataset.regex);
     }
     return this._regExp.test(this.value);

@@ -61,4 +61,6 @@ public class MovieController {
                 .contentType(MediaType.parseMediaType(movie.getThumbnailContentType()))
                 .body(thumbnail);
     }
+
+
 }

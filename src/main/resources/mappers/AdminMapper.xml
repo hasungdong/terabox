@@ -16,8 +16,8 @@
             keyColumn="index"
             keyProperty="index"
             parameterType="com.terabox.demo.entities.ProductEntity">
-        INSERT INTO `terabox`.`products` (`name`, `price`, `quantity`, `thumbnail`, `thumbnail_file_name`, `thumbnail_content_type`)
-        VALUES (#{name}, #{price}, #{quantity}, #{thumbnail}, #{thumbnailFileName}, #{thumbnailContentType})
+        INSERT INTO `terabox`.`products` (`name`, `price`, `quantity`, `thumbnail`, `thumbnail_file_name`, `thumbnail_content_type`, `type`)
+        VALUES (#{name}, #{price}, #{quantity}, #{thumbnail}, #{thumbnailFileName}, #{thumbnailContentType}, #{type})
     </insert>
     <insert id="insertEvent"
             useGeneratedKeys="true"
@@ -27,6 +27,45 @@
         INSERT INTO `terabox`.`events` (`title`, `start_date`, `end_date`, `discount_rate`, `thumbnail`, `thumbnail_file_name`, `thumbnail_content_type`)
         VALUES (#{title}, #{startDate}, #{endDate}, #{discountRate}, #{thumbnail}, #{thumbnailFileName}, #{thumbnailContentType})
     </insert>
+
+    <update id="updateMovie" parameterType="com.terabox.demo.entities.MovieEntity">
+        UPDATE `terabox`.`movies`
+        SET `title`                  = #{title},
+            `release_date`           = #{releaseDate},
+            `playing_time`           = #{playingTime},
+            `grade`                  = #{grade},
+            `view`                   = #{view},
+            `is_single`              = #{isSingle},
+            `thumbnail`              = #{thumbnail},
+            `thumbnail_file_name`    = #{thumbnailFileName},
+            `thumbnail_content_type` = #{thumbnailContentType}
+        WHERE BINARY `title` = #{title}
+        AND BINARY `release_date` = #{releaseDate}
+    </update>
+    <update id="updateProduct" parameterType="com.terabox.demo.entities.ProductEntity">
+        UPDATE `terabox`.`products`
+        SET `name`                   = #{name},
+            `price`                  = #{price},
+            `quantity`               = #{quantity},
+            `thumbnail`              = #{thumbnail},
+            `thumbnail_file_name`    = #{thumbnailFileName},
+            `thumbnail_content_type` = #{thumbnailContentType},
+            `type`                   = #{type}
+        WHERE BINARY `name` = #{name}
+        AND BINARY `price` = #{price}
+    </update>
+    <update id="updateEvent" parameterType="com.terabox.demo.entities.EventEntity">
+        UPDATE `terabox`.`events`
+        SET `title`                  = #{title},
+            `start_date`             = #{startDate},
+            `end_date`               = #{endDate},
+            `discount_rate`          = #{discountRate},
+            `thumbnail`              = #{thumbnail},
+            `thumbnail_file_name`    = #{thumbnailFileName},
+            `thumbnail_content_type` = #{thumbnailContentType}
+        WHERE BINARY `title` = #{title}
+        AND BINARY `start_date` = #{startDate}
+    </update>
 
     <delete id="deleteMovieByIndex">
         DELETE

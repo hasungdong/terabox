@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.terabox.demo.entities.MovieEntity;
 import org.apache.ibatis.annotations.Param;
 
+//adminMapper가 따로 있는 이유는 insert update delete를 관리자만 다룰 수 있기 때문에 다른 곳에선 admin용 기능에 접근 못하게 하려고 만들었음
 @Mapper
 public interface AdminMapper {
     int insertMovie(MovieEntity movie);

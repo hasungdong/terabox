@@ -21,9 +21,9 @@ public class AdminController {
 
     private final AdminService adminService;
 
-    @PostMapping(value = "/addMovie", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/movie", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String postAddMovie(@RequestParam("_thumbnail") MultipartFile thumbnail,
+    public String postMovie(@RequestParam("_thumbnail") MultipartFile thumbnail,
                                MovieEntity movie) throws IOException {
         movie.setThumbnail(thumbnail.getBytes());
         movie.setThumbnailFileName(thumbnail.getName());
@@ -34,9 +34,9 @@ public class AdminController {
         return responseObject.toString();
     }
 
-    @PostMapping(value = "/addProduct", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/product", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String postAddProduct(@RequestParam("_thumbnail") MultipartFile thumbnail,
+    public String postProduct(@RequestParam("_thumbnail") MultipartFile thumbnail,
                                  ProductEntity product) throws IOException {
         product.setThumbnail(thumbnail.getBytes());
         product.setThumbnailFileName(thumbnail.getName());
@@ -47,9 +47,9 @@ public class AdminController {
         return responseObject.toString();
     }
 
-    @PostMapping(value = "/addEvent", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/event", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String postAddEvent(@RequestParam("_thumbnail") MultipartFile thumbnail,
+    public String postEvent(@RequestParam("_thumbnail") MultipartFile thumbnail,
                                  EventEntity event) throws IOException {
         event.setThumbnail(thumbnail.getBytes());
         event.setThumbnailFileName(thumbnail.getName());
@@ -60,27 +60,54 @@ public class AdminController {
         return responseObject.toString();
     }
 
-    @DeleteMapping(value = "/deleteMovie", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PatchMapping(value = "/movie", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String deleteAddMovie(@RequestParam("index") int index) {
+    public String patchMovie(MovieEntity movie){
+        Result result = this.adminService.patchMovie(movie);
+        JSONObject responseObject = new JSONObject();
+        responseObject.put("result", result.name().toLowerCase());
+        return responseObject.toString();
+    }
+
+    @PatchMapping(value = "/product", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public String patchProduct(ProductEntity product){
+        Result result = this.adminService.patchProduct(product);
+        JSONObject responseObject = new JSONObject();
+        responseObject.put("result", result.name().toLowerCase());
+        return responseObject.toString();
+    }
+
+    @PatchMapping(value = "/event", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public String patchEvent(EventEntity event){
+        Result result = this.adminService.patchEvent(event);
+        JSONObject responseObject = new JSONObject();
+        responseObject.put("result", result.name().toLowerCase());
+        return responseObject.toString();
+    }
+
+    @DeleteMapping(value = "/movie", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public String deleteMovie(@RequestParam("index") int index) {
         Result result = this.adminService.deleteMovie(index);
         JSONObject responseObject = new JSONObject();
         responseObject.put("result", result.name().toLowerCase());
         return responseObject.toString();
     }
 
-    @DeleteMapping(value = "/deleteProduct", produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(value = "/product", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String deleteAddProduct(@RequestParam("index") int index) {
+    public String deleteProduct(@RequestParam("index") int index) {
         Result result = this.adminService.deleteProduct(index);
         JSONObject responseObject = new JSONObject();
         responseObject.put("result", result.name().toLowerCase());
         return responseObject.toString();
     }
 
-    @DeleteMapping(value = "/deleteEvent", produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(value = "/event", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String deleteAddEvent(@RequestParam("index") int index) {
+    public String deleteEvent(@RequestParam("index") int index) {
         Result result = this.adminService.deleteEvent(index);
         JSONObject responseObject = new JSONObject();
         responseObject.put("result", result.name().toLowerCase());

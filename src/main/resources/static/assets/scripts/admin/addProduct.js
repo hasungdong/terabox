@@ -80,7 +80,7 @@ addProductForm.onsubmit = e => {
         }[responseObject.result] || ['경고', '서버가 알 수 없는 응답을 반환하였습니다. 잠시 후 다시 시도해주세요.'];
         MessageObj.createSimpleOk(dTitle, dContent, dOnclick).show();
     }
-    xhr.open('POST', '/admin/addProduct');
+    xhr.open('POST', '/admin/product');
     xhr.send(formData);
     loading.show();
 }

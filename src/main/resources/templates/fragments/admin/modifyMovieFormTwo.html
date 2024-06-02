@@ -8,8 +8,8 @@
     <title>Document</title>
 </head>
 <body>
-<form class="form" id="addMovieForm" th:fragment="addMovieForm" th:with="movieRegex = ${T(com.terabox.demo.regexes.MovieRegex)}">
-    <h3 class="title">영화 추가</h3>
+<form class="form" id="modifyMovieFormTwo" th:fragment="modifyMovieFormTwo" th:with="movieRegex = ${T(com.terabox.demo.regexes.MovieRegex)}">
+    <h3 class="title">영화 수정</h3>
     <div class="content">
         <label class="_obj-label title" rel="titleLabel">
             <span class="__text">영화 제목</span>
@@ -37,7 +37,6 @@
                 <input class="_obj-input __field" type="number" name="second" placeholder="초" spellcheck="false">
                 <span class="text">영화 길이는 1 ~ 2시간 사이입니다.</span>
             </span>
-
             <span class="__warning">올바른 시간을 입력해 주세요.</span>
         </label>
         <label class="_obj-label" rel="isSingleLabel">

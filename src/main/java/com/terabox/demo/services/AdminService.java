@@ -56,6 +56,7 @@ public class AdminService {
                 }
             }
         }
+        product.setType("ticket");
         return this.adminMapper.insertProduct(product) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 
@@ -76,16 +77,38 @@ public class AdminService {
         return this.adminMapper.insertEvent(event) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 
-    public Result modifyMovie(MovieEntity movie){
-        return null;
+    public Result patchMovie(MovieEntity movie){
+        if (movie.getIndex() < 1){
+            return CommonResult.FAILURE;
+        }
+        MovieEntity dbMovie = this.movieMapper.selectMovieByIndex(movie.getIndex());
+        if (dbMovie == null){
+            return CommonResult.FAILURE;
+        }
+        return this.adminMapper.updateMovie(movie) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 
-    public Result modifyProduct(ProductEntity product){
-        return null;
+    public Result patchProduct(ProductEntity product){
+        if (product.getIndex() < 1){
+            return CommonResult.FAILURE;
+        }
+        MovieEntity dbMovie = this.movieMapper.selectMovieByIndex(product.getIndex());
+        if (dbMovie == null){
+            return CommonResult.FAILURE;
+        }
+        product.setType("ticket");
+        return this.adminMapper.updateProduct(product) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 
-    public Result modifyEvent(EventEntity event){
-        return null;
+    public Result patchEvent(EventEntity event){
+        if (event.getIndex() < 1){
+            return CommonResult.FAILURE;
+        }
+        MovieEntity dbMovie = this.movieMapper.selectMovieByIndex(event.getIndex());
+        if (dbMovie == null){
+            return CommonResult.FAILURE;
+        }
+        return this.adminMapper.updateEvent(event) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 
     public Result deleteMovie(int index){
