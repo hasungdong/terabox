@@ -57,14 +57,6 @@ addMovieForm.onsubmit = e => {
     !addMovieForm.isSingleLabel.isValid()){
         return;
     }
-    // // __warning 문구 중에 하나라도 보이고 있는게 있으면 제출을 막겠다.
-    // const warningsArray = [];
-    // const warnings = document.querySelectorAll('.__warning');
-    // warnings.forEach(warning => warningsArray.push(warning));
-    // if (warningsArray.some(warning => warning.style.maxHeight === '2rem')){
-    //     // 여기서 알림같은거 안해줘도 화면에 warning 뜬 부분 빨간 표시 때문에 사용자가 알아먹을 수 있음
-    //     return;
-    // }
 
     const xhr = new XMLHttpRequest();
     const formData = new FormData();
@@ -75,7 +67,7 @@ addMovieForm.onsubmit = e => {
         addMovieForm['hour'].value.padStart(2, '0') + ':' +
         addMovieForm['minute'].value.padStart(2, '0') + ':' +
     addMovieForm['second'].value.padStart(2, '0'));
-    formData.append('isSingle', addMovieForm['isSingle'].value);
+    formData.append('single', addMovieForm['isSingle'].checked);
     xhr.onreadystatechange = function(){
         if (xhr.readyState !== XMLHttpRequest.DONE){
             return;

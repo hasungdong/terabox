@@ -8,8 +8,8 @@
             keyColumn="index"
             keyProperty="index"
             parameterType="com.terabox.demo.entities.MovieEntity">
-        INSERT INTO `terabox`.`movies` (`title`, `release_date`, `playing_time`, `grade`, `view`, `is_single`, `thumbnail`, `thumbnail_file_name`, `thumbnail_content_type`)
-        VALUES (#{title}, #{releaseDate}, #{playingTime}, #{grade}, #{view}, #{isSingle}, #{thumbnail}, #{thumbnailFileName}, #{thumbnailContentType})
+        INSERT INTO `terabox`.`movies` (`title`, `release_date`, `playing_time`, `grade`, `view`, `is_single`, `thumbnail`, `thumbnail_file_name`, `thumbnail_content_type`, `age_limit`, `dimension_type`)
+        VALUES (#{title}, #{releaseDate}, #{playingTime}, #{grade}, #{view}, #{isSingle}, #{thumbnail}, #{thumbnailFileName}, #{thumbnailContentType}, #{ageLimit}, #{dimensionType})
     </insert>
     <insert id="insertProduct"
             useGeneratedKeys="true"
@@ -38,9 +38,11 @@
             `is_single`              = #{isSingle},
             `thumbnail`              = #{thumbnail},
             `thumbnail_file_name`    = #{thumbnailFileName},
-            `thumbnail_content_type` = #{thumbnailContentType}
+            `thumbnail_content_type` = #{thumbnailContentType},
+            `age_limit`              = #{ageLimit},
+            `dimension_type`         = #{dimensionType}
         WHERE BINARY `title` = #{title}
-        AND BINARY `release_date` = #{releaseDate}
+          AND BINARY `release_date` = #{releaseDate}
     </update>
     <update id="updateProduct" parameterType="com.terabox.demo.entities.ProductEntity">
         UPDATE `terabox`.`products`

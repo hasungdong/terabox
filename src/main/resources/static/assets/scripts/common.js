@@ -37,6 +37,11 @@ if (document.querySelector('[rel="showLoginAlert"]') !== null) {
             document.querySelector('._obj-message.-visible').hide();
             alertCover.hide();
         });
+        const alertCancelButton = document.querySelector('[rel="alertCancel"]');
+        alertCancelButton.onclick = () => {
+            alertCover.hide();
+            document.querySelector('._obj-message').hide();
+        }
 
     })
 
@@ -574,11 +579,6 @@ loginForm.onsubmit = e => {
         }).show();
         if (document.querySelector('._obj-message') !== null) {
             document.querySelector('._obj-message').style.width = '400px';
-            const alertCancelButton = document.querySelector('[rel="alertCancel"]');
-            alertCancelButton.onclick = () => {
-                alertCover.hide();
-                document.querySelector('._obj-message').hide();
-            }
         }
         return;
     }

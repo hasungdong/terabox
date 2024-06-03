@@ -26,7 +26,7 @@ public class AdminController {
     public String postMovie(@RequestParam("_thumbnail") MultipartFile thumbnail,
                                MovieEntity movie) throws IOException {
         movie.setThumbnail(thumbnail.getBytes());
-        movie.setThumbnailFileName(thumbnail.getName());
+        movie.setThumbnailFileName(thumbnail.getOriginalFilename());
         movie.setThumbnailContentType(thumbnail.getContentType());
         Result result = this.adminService.addMovie(movie);
         JSONObject responseObject = new JSONObject();
@@ -62,7 +62,11 @@ public class AdminController {
 
     @PatchMapping(value = "/movie", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String patchMovie(MovieEntity movie){
+    public String patchMovie(@RequestParam("_thumbnail") MultipartFile thumbnail,
+                             MovieEntity movie) throws IOException {
+        movie.setThumbnail(thumbnail.getBytes());
+        movie.setThumbnailFileName(thumbnail.getOriginalFilename());
+        movie.setThumbnailContentType(thumbnail.getContentType());
         Result result = this.adminService.patchMovie(movie);
         JSONObject responseObject = new JSONObject();
         responseObject.put("result", result.name().toLowerCase());

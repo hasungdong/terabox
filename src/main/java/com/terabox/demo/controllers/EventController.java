@@ -2,10 +2,8 @@ package com.terabox.demo.controllers;
 
 import com.terabox.demo.dtos.SearchDto;
 import com.terabox.demo.entities.EventEntity;
-import com.terabox.demo.results.CommonResult;
 import com.terabox.demo.services.EventService;
 import lombok.RequiredArgsConstructor;
-import org.json.JSONObject;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping(value = "event")
 @RequiredArgsConstructor
-public class EventController {
+public class EventController extends AbstractGeneralController{
     private final EventService eventService;
 
     @GetMapping(value = "/proceedingEvent", produces = MediaType.TEXT_HTML_VALUE)
@@ -36,15 +34,16 @@ public class EventController {
                             SearchDto searchDto){
         searchDto.setRequestPage(page);
         EventEntity[] events = this.eventService.getEvents(searchDto);
-        JSONObject responseObject = new JSONObject();
-        responseObject.put("search", searchDto);
-        responseObject.put("events", events);
-        if (events == null){
-            responseObject.put("result", CommonResult.FAILURE.name().toLowerCase());
-        } else {
-            responseObject.put("result", CommonResult.SUCCESS.name().toLowerCase());
-        }
-        return responseObject.toString();
+        return this.parseResponse(searchDto, events, "events").toString();
+//        JSONObject responseObject = new JSONObject();
+//        responseObject.put("search", searchDto);
+//        responseObject.put("events", events);
+//        if (events == null){
+//            responseObject.put("result", CommonResult.FAILURE.name().toLowerCase());
+//        } else {
+//            responseObject.put("result", CommonResult.SUCCESS.name().toLowerCase());
+//        }
+//        return responseObject.toString();
     }
 
     @GetMapping(value = "/image")

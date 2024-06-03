@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Arrays;
 
 @Getter
 @Setter
@@ -23,4 +24,24 @@ public class MovieEntity {
     private float grade;
     private int view;
     private boolean isSingle;
+    private int ageLimit;
+    private String dimensionType;
+
+    @Override
+    public String toString() {
+        return "MovieEntity{" +
+                "index=" + index +
+                ", title='" + title + '\'' +
+                ", releaseDate=" + releaseDate +
+                ", playingTime=" + playingTime +
+                ", thumbnail=" + Arrays.toString(thumbnail) +
+                ", thumbnailFileName='" + thumbnailFileName + '\'' +
+                ", thumbnailContentType='" + thumbnailContentType + '\'' +
+                ", grade=" + grade +
+                ", view=" + view +
+                ", isSingle=" + isSingle +
+                ", ageLimit=" + ageLimit +
+                ", dimensionType='" + dimensionType + '\'' +
+                '}';
+    }
 }

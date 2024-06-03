@@ -112,12 +112,13 @@
 }
 .form > .content > .result-box > ul > li > .img {
   width: 30%;
+  object-fit: cover;
 }
 .form > .content > .result-box > ul > li > .text-box {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  padding: 1rem 0.5rem;
+  padding: 1rem 0 1rem 0.5rem;
   width: 264px;
 }
 .form > .content > .result-box > ul > li > .text-box > .text {
@@ -130,18 +131,28 @@
 .form > .content > .result-box > ul > li > .text-box > .spring {
   flex-grow: 1;
 }
-.form > .content > .result-box > ul > li > .text-box > .movie-info {
+.form > .content > .result-box > ul > li > .text-box > .info {
   display: flex;
   flex-direction: row;
   align-items: center;
+  text-align: center;
 }
-.form > .content > .result-box > ul > li > .text-box > .movie-info > .playing-time {
+.form > .content > .result-box > ul > li > .text-box > .info > .playing-time {
   width: 40%;
 }
-.form > .content > .result-box > ul > li > .text-box > .movie-info > .reservation-rate {
+.form > .content > .result-box > ul > li > .text-box > .info > .reservation-rate {
   width: 28%;
 }
-.form > .content > .result-box > ul > li > .text-box > .movie-info > .release-date {
+.form > .content > .result-box > ul > li > .text-box > .info > .release-date {
+  flex-grow: 1;
+}
+.form > .content > .result-box > ul > li > .text-box > .info > .discount-rate {
+  width: 25%;
+}
+.form > .content > .result-box > ul > li > .text-box > .info > .start-date {
+  width: 37.5%;
+}
+.form > .content > .result-box > ul > li > .text-box > .info > .end-date {
   flex-grow: 1;
 }
 .form > .content > button {

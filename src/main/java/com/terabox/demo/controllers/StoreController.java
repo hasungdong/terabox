@@ -2,10 +2,8 @@ package com.terabox.demo.controllers;
 
 import com.terabox.demo.dtos.SearchDto;
 import com.terabox.demo.entities.ProductEntity;
-import com.terabox.demo.results.CommonResult;
 import com.terabox.demo.services.StoreService;
 import lombok.RequiredArgsConstructor;
-import org.json.JSONObject;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,11 +15,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping(value = "store")
 @RequiredArgsConstructor
-public class StoreController {
+public class StoreController extends AbstractGeneralController {
     private final StoreService storeService;
 
     @GetMapping(value = "store", produces = MediaType.TEXT_HTML_VALUE)
-    public String getIndex(){
+    public String getStore(){
+//        db에 있는 product 4개 가져오기
+//
         return "store/store";
     }
 
@@ -46,15 +46,17 @@ public class StoreController {
                             SearchDto searchDto){
         searchDto.setRequestPage(page);
         ProductEntity[] products = this.storeService.getProducts(searchDto);
-        JSONObject responseObject = new JSONObject();
-        responseObject.put("search", searchDto);
-        responseObject.put("products", products);
-        if (products == null){
-            responseObject.put("result", CommonResult.FAILURE.name().toLowerCase());
-        } else {
-            responseObject.put("result", CommonResult.SUCCESS.name().toLowerCase());
-        }
-        return responseObject.toString();
+        return this.parseResponse(searchDto, products, "products").toString();
+
+//        JSONObject responseObject = new JSONObject();
+//        responseObject.put("search", searchDto);
+//        responseObject.put("products", products);
+//        if (products == null){
+//            responseObject.put("result", CommonResult.FAILURE.name().toLowerCase());
+//        } else {
+//            responseObject.put("result", CommonResult.SUCCESS.name().toLowerCase());
+//        }
+//        return responseObject.toString();
     }
 
     @GetMapping(value = "/image")

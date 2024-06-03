@@ -39,6 +39,8 @@ public class AdminService {
         }
         movie.setView(0);
         movie.setGrade(0);
+        movie.setAgeLimit(0);
+        movie.setDimensionType("2D");
         return this.adminMapper.insertMovie(movie) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 
@@ -79,13 +81,28 @@ public class AdminService {
 
     public Result patchMovie(MovieEntity movie){
         if (movie.getIndex() < 1){
+            System.out.println(1);
             return CommonResult.FAILURE;
         }
         MovieEntity dbMovie = this.movieMapper.selectMovieByIndex(movie.getIndex());
         if (dbMovie == null){
+            System.out.println(2);
             return CommonResult.FAILURE;
         }
-        return this.adminMapper.updateMovie(movie) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
+        dbMovie.setTitle(movie.getTitle());
+        dbMovie.setReleaseDate(movie.getReleaseDate());
+        dbMovie.setPlayingTime(movie.getPlayingTime());
+        dbMovie.setThumbnail(movie.getThumbnail());
+        dbMovie.setThumbnailFileName(movie.getThumbnailFileName());
+        dbMovie.setThumbnailContentType(movie.getThumbnailContentType());
+        dbMovie.setGrade(movie.getGrade());
+        dbMovie.setView(movie.getView());
+        dbMovie.setSingle(movie.isSingle());
+//        dbMovie.setAgeLimit(movie.getAgeLimit());
+//        dbMovie.setDimensionType(movie.getDimensionType());
+        dbMovie.setAgeLimit(0);
+        dbMovie.setDimensionType("3D");
+        return this.adminMapper.updateMovie(dbMovie) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 
     public Result patchProduct(ProductEntity product){
