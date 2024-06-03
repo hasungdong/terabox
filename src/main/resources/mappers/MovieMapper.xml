@@ -13,22 +13,26 @@
                `view` AS `view`,
                `is_single` AS `isSingle`,
                `thumbnail_file_name` AS `thumbnailFileName`,
-               `thumbnail_content_type` AS `thumbnailContentType`
+               `thumbnail_content_type` AS `thumbnailContentType`,
+               `age_limit`              AS `ageLimit`,
+               `dimension_type`         AS `dimensionType`
         FROM `terabox`.`movies`
         WHERE `title` = #{title}
     </select>
 
     <select id="selectMovieByIndex" resultType="com.terabox.demo.entities.MovieEntity">
-        SELECT `index` AS `index`,
-               `title` AS `title`,
-               `release_date` AS `releaseDate`,
-               `playing_time` AS `playingTime`,
-               `thumbnail` AS `thumbnail`,
-               `grade` AS `grade`,
-               `view` AS `view`,
-               `is_single` AS `isSingle`,
-               `thumbnail_file_name` AS `thumbnailFileName`,
-               `thumbnail_content_type` AS `thumbnailContentType`
+        SELECT `index`                  AS `index`,
+               `title`                  AS `title`,
+               `release_date`           AS `releaseDate`,
+               `playing_time`           AS `playingTime`,
+               `thumbnail`              AS `thumbnail`,
+               `grade`                  AS `grade`,
+               `view`                   AS `view`,
+               `is_single`              AS `isSingle`,
+               `thumbnail_file_name`    AS `thumbnailFileName`,
+               `thumbnail_content_type` AS `thumbnailContentType`,
+               `age_limit`              AS `ageLimit`,
+               `dimension_type`         AS `dimensionType`
         FROM `terabox`.`movies`
         WHERE `index` = #{index}
         LIMIT 1
@@ -42,16 +46,18 @@
     </select>
 
     <select id="selectMoviesBySearch" parameterType="com.terabox.demo.dtos.SearchDto" resultType="com.terabox.demo.entities.MovieEntity">
-        SELECT `index` AS `index`,
-               `title` AS `title`,
-               `release_date` AS `releaseDate`,
-               `playing_time` AS `playingTime`,
-               `thumbnail` AS `thumbnail`,
-               `grade` AS `grade`,
-               `view` AS `view`,
-               `is_single` AS `isSingle`,
-               `thumbnail_file_name` AS `thumbnailFileName`,
-               `thumbnail_content_type` AS `thumbnailContentType`
+        SELECT `index`                  AS `index`,
+               `title`                  AS `title`,
+               `release_date`           AS `releaseDate`,
+               `playing_time`           AS `playingTime`,
+               `thumbnail`              AS `thumbnail`,
+               `grade`                  AS `grade`,
+               `view`                   AS `view`,
+               `is_single`              AS `isSingle`,
+               `thumbnail_file_name`    AS `thumbnailFileName`,
+               `thumbnail_content_type` AS `thumbnailContentType`,
+               `age_limit`              AS `ageLimit`,
+               `dimension_type`         AS `dimensionType`
         FROM `terabox`.`movies` AS `movie`
         WHERE (REPLACE(`title`, ' ', '') LIKE CONCAT('%', REPLACE(#{keyword}, ' ', ''), '%'))
         ORDER BY movie.`index` DESC

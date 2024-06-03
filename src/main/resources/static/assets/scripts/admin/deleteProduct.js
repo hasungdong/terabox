@@ -8,6 +8,7 @@ deleteProductForm.onsubmit = e => {
     if (!deleteProductForm.nameLabel.isValid()){
         return;
     }
+    // 이름에 맞는 상품들 검색해오는 xhr 요청
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function(){
         if (xhr.readyState !== XMLHttpRequest.DONE){
@@ -53,7 +54,6 @@ deleteProductForm.onsubmit = e => {
                     li.querySelector('.img').setAttribute('src', `/store/image?index=${responseArrayElement['index']}`);
                     ul.append(li);
                 }
-
                 deleteProductForm.divResult.append(ul);
                 const lis = deleteProductForm.divResult.querySelectorAll('li');
                 lis.forEach(li => li.onclick = () => {
@@ -69,6 +69,7 @@ deleteProductForm.onsubmit = e => {
                             {
                                 text: '확인', onclick: instance => {
                                     instance.hide();
+                                    // 선택한거 삭제하는 xhr 요청
                                     const xhr = new XMLHttpRequest();
                                     const formData = new FormData();
                                     formData.append('index', li.querySelector('[name="index"]').value);

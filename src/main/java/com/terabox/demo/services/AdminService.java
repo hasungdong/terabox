@@ -81,23 +81,26 @@ public class AdminService {
 
     public Result patchMovie(MovieEntity movie){
         if (movie.getIndex() < 1){
-            System.out.println(1);
             return CommonResult.FAILURE;
         }
         MovieEntity dbMovie = this.movieMapper.selectMovieByIndex(movie.getIndex());
         if (dbMovie == null){
-            System.out.println(2);
             return CommonResult.FAILURE;
         }
         dbMovie.setTitle(movie.getTitle());
         dbMovie.setReleaseDate(movie.getReleaseDate());
         dbMovie.setPlayingTime(movie.getPlayingTime());
-        dbMovie.setThumbnail(movie.getThumbnail());
-        dbMovie.setThumbnailFileName(movie.getThumbnailFileName());
-        dbMovie.setThumbnailContentType(movie.getThumbnailContentType());
+        if (movie.getThumbnail().length == 0){
+
+        }else {
+            dbMovie.setThumbnail(movie.getThumbnail());
+            dbMovie.setThumbnailFileName(movie.getThumbnailFileName());
+            dbMovie.setThumbnailContentType(movie.getThumbnailContentType());
+        }
         dbMovie.setGrade(movie.getGrade());
         dbMovie.setView(movie.getView());
         dbMovie.setSingle(movie.isSingle());
+//        이거 추가하는 form에 안만들어놔서 나중에 바꿔야됨
 //        dbMovie.setAgeLimit(movie.getAgeLimit());
 //        dbMovie.setDimensionType(movie.getDimensionType());
         dbMovie.setAgeLimit(0);
@@ -109,23 +112,44 @@ public class AdminService {
         if (product.getIndex() < 1){
             return CommonResult.FAILURE;
         }
-        MovieEntity dbMovie = this.movieMapper.selectMovieByIndex(product.getIndex());
-        if (dbMovie == null){
+        ProductEntity dbProduct = this.storeMapper.selectProductByIndex(product.getIndex());
+        if (dbProduct == null){
             return CommonResult.FAILURE;
         }
-        product.setType("ticket");
-        return this.adminMapper.updateProduct(product) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
+        dbProduct.setName(product.getName());
+        dbProduct.setPrice(product.getPrice());
+        dbProduct.setQuantity(product.getQuantity());
+        if (product.getThumbnail().length == 0){
+
+        }else {
+            dbProduct.setThumbnail(product.getThumbnail());
+            dbProduct.setThumbnailFileName(product.getThumbnailFileName());
+            dbProduct.setThumbnailContentType(product.getThumbnailContentType());
+        }
+        dbProduct.setType("ticket");
+        return this.adminMapper.updateProduct(dbProduct) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 
     public Result patchEvent(EventEntity event){
         if (event.getIndex() < 1){
             return CommonResult.FAILURE;
         }
-        MovieEntity dbMovie = this.movieMapper.selectMovieByIndex(event.getIndex());
-        if (dbMovie == null){
+        EventEntity dbEvent = this.eventMapper.selectEventByIndex(event.getIndex());
+        if (dbEvent == null){
             return CommonResult.FAILURE;
         }
-        return this.adminMapper.updateEvent(event) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
+        dbEvent.setTitle(event.getTitle());
+        dbEvent.setStartDate(event.getStartDate());
+        dbEvent.setEndDate(event.getEndDate());
+        dbEvent.setDiscountRate(event.getDiscountRate());
+        if (event.getThumbnail().length == 0){
+
+        }else {
+            dbEvent.setThumbnail(event.getThumbnail());
+            dbEvent.setThumbnailFileName(event.getThumbnailFileName());
+            dbEvent.setThumbnailContentType(event.getThumbnailContentType());
+        }
+        return this.adminMapper.updateEvent(dbEvent) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 
     public Result deleteMovie(int index){

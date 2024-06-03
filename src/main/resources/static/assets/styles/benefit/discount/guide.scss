@@ -10,11 +10,10 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: stretch;
+  align-items: center;
 
   > * {
     width: 1100px;
-    padding: 0 25.1rem;
   }
 
   > .title2 {
@@ -28,19 +27,24 @@
   }
 
   > .AffiliateEvent {
+    width: 100%;
     background-color: #f8f8fa;
     height: 24.5rem;
 
     padding-top: 4.375rem;
     margin-bottom: 2.5rem;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     > .title-bar {
-      padding-bottom: 0.85rem;
+      width: 1100px;
+      padding-bottom: 1.25rem;
       font-size: 1.525rem;
       color: #503396;
       line-height: 1.1;
-      font-weight: 500;
-
       display: flex;
       flex-direction: row;
 
@@ -76,17 +80,23 @@
           margin-left: 0.575rem;
 
           color: #503396;
+          cursor: pointer;
 
           &.play {
             width: 0.5rem;
             height: 0.8rem;
+          }
+
+          &.pause{
+            width: 0.5rem;
+            height: 0.8rem;
+            display: none;
           }
         }
 
         > .text {
           font-size: 0.975rem;
           font-weight: 400;
-
           margin-left: 1.3rem;
         }
       }
@@ -97,9 +107,16 @@
       flex-direction: row;
       gap: 2.625rem;
 
+      width: 1100px;
+      height: 277.6px;
       position: relative;
+      overflow: hidden;
 
       > .event {
+        position: absolute;
+        transition-duration: 600ms;
+        transition-property: left, right;
+
         > img {
           width: 33.125rem;
           height: 15.3125rem;
@@ -112,9 +129,11 @@
           flex-direction: row;
 
           margin-top: 0.9375rem;
-          color: #444444;
 
           > .text {
+            font-size: 0.95rem;
+            font-weight: 700;
+
             overflow: hidden;
             display: inline-block;
             width: 360px;
@@ -128,39 +147,42 @@
 
           > .duration {
             font-size: 0.83rem;
+            color: #444444;
           }
         }
       }
+    }
 
-      > [type="button"] {
-        display: block;
-        position: absolute;
-        z-index: 2;
-        top: 50%;
-        width: 50px;
-        height: 50px;
-        margin: 0;
-        padding: 0;
-        border: 0;
-        font-size: 0;
-        line-height: 0;
-        border-radius: 100%;
-        box-shadow: 4px 4px 10px 0 rgba(45, 45, 45, .3);
-        background-size: 28px;
-        background-color: white;
-        background-position: center;
-        background-repeat: no-repeat;
+    > [type="button"] {
+      display: block;
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      width: 50px;
+      height: 50px;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font-size: 0;
+      line-height: 0;
+      border-radius: 100%;
+      box-shadow: 4px 4px 10px 0 rgba(45, 45, 45, .3);
+      background-size: 28px;
+      background-color: white;
+      background-position: center;
+      background-repeat: no-repeat;
+      cursor: pointer;
 
-        &.left {
-          transform: translate(-50%, -100%);
-          background-image: url("../../../images/common/left.png");
-        }
+      &.left {
+        left: calc(50% - 1100px * 0.5);
+        transform: translate(-50%, -25px);
+        background-image: url("../../../images/common/left.png");
+      }
 
-        &.right {
-          right: 0;
-          transform: translate(50%, -100%);
-          background-image: url("../../../images/common/right.png");
-        }
+      &.right {
+        left: calc(50% + 1100px * 0.5);
+        transform: translate(-57%, -25px);
+        background-image: url("../../../images/common/right.png");
       }
     }
   }
@@ -223,11 +245,17 @@
         line-height: 1.1;
 
         > .title{
+          color: #000;
           font-size: 1.5375rem;
+          letter-spacing: -0.1rem;
+
         }
 
         > .text{
+          color: #444444;
           padding-top: 0.875rem;
+          letter-spacing: -0.1rem;
+
         }
       }
 
@@ -314,7 +342,9 @@
               display: flex;
               flex-direction: row;
               align-items: center;
-
+              letter-spacing: -0.1rem;
+              font-size: 15px;
+              color: #000;
 
               > img{
                 width: 0.7rem;
@@ -346,8 +376,6 @@
               margin: 0;
               padding: 0 30px 0 9px;
               border: 1px solid #666;
-              border-bottom: 0;
-              // 이거 버튼 눌렸을 때 안 눌렸을 떄 0, 1px 왔다갔다 해야댐
               border-radius: 4px;
               background-color: #fff;
 
@@ -358,12 +386,14 @@
 
               &.open{
                 border-radius: 4px 4px 0 0;
+                border-bottom: 0;
+                // 이거 버튼 눌렸을 때 안 눌렸을 떄 0, 1px 왔다갔다 해야댐
               }
 
               > .select-fake{
                 line-height: 34px;
                 color: #999999;
-                letter-spacing: -.175rem;
+                letter-spacing: -0.1rem;
                 white-space: break-spaces;
               }
 
@@ -390,7 +420,7 @@
 
             .option-box{
               background-color: #ffffff;
-              width: auto;
+              width: calc(100% - 2px);
               position: absolute;
               border: 1px solid #666;
               min-width: calc(100% - 2px);
@@ -453,6 +483,12 @@
           }
 
           > .link{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            letter-spacing: -0.1rem;
+            font-size: 15px;
+            color: #000;
 
             > img {
               width: 0.7rem;

@@ -848,11 +848,10 @@ li {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: stretch;
+  align-items: center;
 }
 #main > * {
   width: 1100px;
-  padding: 0 25.1rem;
 }
 #main > .title2 {
   font-size: 1.75rem;
@@ -863,17 +862,22 @@ li {
   color: #222222;
 }
 #main > .AffiliateEvent {
+  width: 100%;
   background-color: #f8f8fa;
   height: 24.5rem;
   padding-top: 4.375rem;
   margin-bottom: 2.5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 #main > .AffiliateEvent > .title-bar {
-  padding-bottom: 0.85rem;
+  width: 1100px;
+  padding-bottom: 1.25rem;
   font-size: 1.525rem;
   color: #503396;
   line-height: 1.1;
-  font-weight: 500;
   display: flex;
   flex-direction: row;
 }
@@ -904,10 +908,16 @@ li {
   height: 0.95rem;
   margin-left: 0.575rem;
   color: #503396;
+  cursor: pointer;
 }
 #main > .AffiliateEvent > .title-bar > .swiper-bar-container > img.play {
   width: 0.5rem;
   height: 0.8rem;
+}
+#main > .AffiliateEvent > .title-bar > .swiper-bar-container > img.pause {
+  width: 0.5rem;
+  height: 0.8rem;
+  display: none;
 }
 #main > .AffiliateEvent > .title-bar > .swiper-bar-container > .text {
   font-size: 0.975rem;
@@ -918,7 +928,15 @@ li {
   display: flex;
   flex-direction: row;
   gap: 2.625rem;
+  width: 1100px;
+  height: 277.6px;
   position: relative;
+  overflow: hidden;
+}
+#main > .AffiliateEvent > .event-box > .event {
+  position: absolute;
+  transition-duration: 600ms;
+  transition-property: left, right;
 }
 #main > .AffiliateEvent > .event-box > .event > img {
   width: 33.125rem;
@@ -929,9 +947,10 @@ li {
   display: flex;
   flex-direction: row;
   margin-top: 0.9375rem;
-  color: #444444;
 }
 #main > .AffiliateEvent > .event-box > .event > .text-box > .text {
+  font-size: 0.95rem;
+  font-weight: 700;
   overflow: hidden;
   display: inline-block;
   width: 360px;
@@ -943,8 +962,9 @@ li {
 }
 #main > .AffiliateEvent > .event-box > .event > .text-box > .duration {
   font-size: 0.83rem;
+  color: #444444;
 }
-#main > .AffiliateEvent > .event-box > [type=button] {
+#main > .AffiliateEvent > [type=button] {
   display: block;
   position: absolute;
   z-index: 2;
@@ -962,14 +982,16 @@ li {
   background-color: white;
   background-position: center;
   background-repeat: no-repeat;
+  cursor: pointer;
 }
-#main > .AffiliateEvent > .event-box > [type=button].left {
-  transform: translate(-50%, -100%);
+#main > .AffiliateEvent > [type=button].left {
+  left: calc(50% - 550px);
+  transform: translate(-50%, -25px);
   background-image: url("../../../images/common/left.png");
 }
-#main > .AffiliateEvent > .event-box > [type=button].right {
-  right: 0;
-  transform: translate(50%, -100%);
+#main > .AffiliateEvent > [type=button].right {
+  left: calc(50% + 550px);
+  transform: translate(-57%, -25px);
   background-image: url("../../../images/common/right.png");
 }
 #main > nav > .tab {
@@ -1018,10 +1040,14 @@ li {
   line-height: 1.1;
 }
 #main > .searchAndSelect-box > .search-card > .text-box > .title {
+  color: #000;
   font-size: 1.5375rem;
+  letter-spacing: -0.1rem;
 }
 #main > .searchAndSelect-box > .search-card > .text-box > .text {
+  color: #444444;
   padding-top: 0.875rem;
+  letter-spacing: -0.1rem;
 }
 #main > .searchAndSelect-box > .search-card > .spring {
   flex-grow: 1;
@@ -1095,6 +1121,9 @@ li {
   display: flex;
   flex-direction: row;
   align-items: center;
+  letter-spacing: -0.1rem;
+  font-size: 15px;
+  color: #000;
 }
 #main > .searchAndSelect-box > .select-group > .first-line > .box > .title-box > .link > img {
   width: 0.7rem;
@@ -1120,7 +1149,6 @@ li {
   margin: 0;
   padding: 0 30px 0 9px;
   border: 1px solid #666;
-  border-bottom: 0;
   border-radius: 4px;
   background-color: #fff;
   font-size: 0.945rem;
@@ -1129,11 +1157,12 @@ li {
 }
 #main > .searchAndSelect-box > .select-group > .first-line > .box > .select-box > .button.open {
   border-radius: 4px 4px 0 0;
+  border-bottom: 0;
 }
 #main > .searchAndSelect-box > .select-group > .first-line > .box > .select-box > .button > .select-fake {
   line-height: 34px;
   color: #999999;
-  letter-spacing: -0.175rem;
+  letter-spacing: -0.1rem;
   white-space: break-spaces;
 }
 #main > .searchAndSelect-box > .select-group > .first-line > .box > .select-box > .button > .angleBelow {
@@ -1157,7 +1186,7 @@ li {
 }
 #main > .searchAndSelect-box > .select-group > .first-line > .box > .select-box .option-box {
   background-color: #ffffff;
-  width: auto;
+  width: calc(100% - 2px);
   position: absolute;
   border: 1px solid #666;
   min-width: calc(100% - 2px);
@@ -1203,6 +1232,14 @@ li {
 }
 #main > .searchAndSelect-box > .select-group .second-line > .box > .spring {
   flex-grow: 1;
+}
+#main > .searchAndSelect-box > .select-group .second-line > .box > .link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  letter-spacing: -0.1rem;
+  font-size: 15px;
+  color: #000;
 }
 #main > .searchAndSelect-box > .select-group .second-line > .box > .link > img {
   width: 0.7rem;

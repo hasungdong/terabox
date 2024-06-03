@@ -8,6 +8,7 @@ deleteMovieForm.onsubmit = e => {
     if (!deleteMovieForm.titleLabel.isValid()) {
         return;
     }
+    // 제목에 맞는 영화를 검색해오는 xhr 요청
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
         if (xhr.readyState !== XMLHttpRequest.DONE) {
@@ -68,6 +69,7 @@ deleteMovieForm.onsubmit = e => {
                             {
                                 text: '확인', onclick: instance => {
                                     instance.hide();
+                                    // 클릭된거 삭제하는 xhr 요청
                                     const xhr = new XMLHttpRequest();
                                     const formData = new FormData();
                                     formData.append('index', li.querySelector('[name="index"]').value);

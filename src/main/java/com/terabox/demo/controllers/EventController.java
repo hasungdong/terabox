@@ -4,6 +4,7 @@ import com.terabox.demo.dtos.SearchDto;
 import com.terabox.demo.entities.EventEntity;
 import com.terabox.demo.services.EventService;
 import lombok.RequiredArgsConstructor;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -59,5 +60,11 @@ public class EventController extends AbstractGeneralController{
                 .contentLength(thumbnail.length)
                 .contentType(MediaType.parseMediaType(event.getThumbnailContentType()))
                 .body(thumbnail);
+    }
+
+    @GetMapping(value = "event", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public EventEntity getProduct(@Param("index") int index){
+        return this.eventService.getEvent(index);
     }
 }

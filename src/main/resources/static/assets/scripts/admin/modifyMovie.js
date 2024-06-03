@@ -8,6 +8,7 @@ modifyMovieForm.onsubmit = e => {
     if (!modifyMovieForm.titleLabel.isValid()) {
         return;
     }
+    // 제목에 맞는 영화 검색하는 xhr 요청
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
         if (xhr.readyState !== XMLHttpRequest.DONE) {
@@ -70,6 +71,8 @@ modifyMovieForm.onsubmit = e => {
                                 text: '확인', onclick: instance => {
                                     instance.hide();
                                     modifyMovieFormTwo.show();
+                                    // 선택한 영화에 대한 수정 화면으로 이동하고,
+                                    // 이미 들어가있는 값들 불러오는 xhr 요청
                                     const xhr = new XMLHttpRequest();
                                     xhr.onreadystatechange = function(){
                                         if (xhr.readyState !== XMLHttpRequest.DONE){
@@ -88,7 +91,7 @@ modifyMovieForm.onsubmit = e => {
             <span class="__warning">올바른 제목을 입력해 주세요.</span>
         </label>
         <label class="_obj-label thumbnail" rel="thumbnailLabel">
-            <input hidden accept="image/*" name="thumbnail" type="file" value="${responseObject['thumbnail']}">
+            <input hidden accept="image/*" name="thumbnail" type="file">
             <span class="__text">대표 이미지</span>
             <span class="image-wrapper">
                 <span class="empty" style="display:none;">대표 이미지를 선택해 주세요.</span>
@@ -137,22 +140,20 @@ modifyMovieForm.onsubmit = e => {
                                             }
                                             const fileReader = new FileReader(); // 이미지 파일을 Nase64 인코딩하기 위한 객체
                                             fileReader.onload = () => {
-
-
                                                 empty.style.display = 'none';
                                                 image.style.display = 'block';
                                                 image.setAttribute('src', fileReader.result);
                                             };
                                             fileReader.readAsDataURL(modifyMovieFormTwo['thumbnail'].files[0]);
                                         }
+                                        //
                                         modifyMovieFormInner.querySelector('[rel="hideModifyMovieFormTwo"]').onclick = () => {
                                             modifyMovieFormInner.remove();
                                             modifyMovieFormTwo.hide();
                                         }
                                         modifyMovieFormTwo.onsubmit = e => {
-                                            console.log(modifyMovieFormTwo['thumbnail'])
-                                            console.log(modifyMovieFormTwo['thumbnail'].files[0])
                                             e.preventDefault();
+                                            // 수정할 값들을 받아서 실제로 수정하는 xhr 요청
                                             const xhr = new XMLHttpRequest();
                                             const formData = new FormData();
                                             formData.append('index', li.querySelector('[name="index"]').value);

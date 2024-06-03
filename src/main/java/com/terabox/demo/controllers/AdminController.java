@@ -62,11 +62,13 @@ public class AdminController {
 
     @PatchMapping(value = "/movie", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String patchMovie(@RequestParam("_thumbnail") MultipartFile thumbnail,
+    public String patchMovie(@RequestParam(value = "_thumbnail", required = false) MultipartFile thumbnail,
                              MovieEntity movie) throws IOException {
-        movie.setThumbnail(thumbnail.getBytes());
-        movie.setThumbnailFileName(thumbnail.getOriginalFilename());
-        movie.setThumbnailContentType(thumbnail.getContentType());
+        if (thumbnail != null){
+            movie.setThumbnail(thumbnail.getBytes());
+            movie.setThumbnailFileName(thumbnail.getOriginalFilename());
+            movie.setThumbnailContentType(thumbnail.getContentType());
+        }
         Result result = this.adminService.patchMovie(movie);
         JSONObject responseObject = new JSONObject();
         responseObject.put("result", result.name().toLowerCase());
@@ -75,7 +77,13 @@ public class AdminController {
 
     @PatchMapping(value = "/product", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String patchProduct(ProductEntity product){
+    public String patchProduct(@RequestParam(value = "_thumbnail", required = false) MultipartFile thumbnail,
+                               ProductEntity product) throws IOException {
+        if (thumbnail != null){
+            product.setThumbnail(thumbnail.getBytes());
+            product.setThumbnailFileName(thumbnail.getOriginalFilename());
+            product.setThumbnailContentType(thumbnail.getContentType());
+        }
         Result result = this.adminService.patchProduct(product);
         JSONObject responseObject = new JSONObject();
         responseObject.put("result", result.name().toLowerCase());
@@ -84,7 +92,13 @@ public class AdminController {
 
     @PatchMapping(value = "/event", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String patchEvent(EventEntity event){
+    public String patchEvent(@RequestParam(value = "_thumbnail", required = false) MultipartFile thumbnail,
+                             EventEntity event) throws IOException {
+        if (thumbnail != null){
+            event.setThumbnail(thumbnail.getBytes());
+            event.setThumbnailFileName(thumbnail.getOriginalFilename());
+            event.setThumbnailContentType(thumbnail.getContentType());
+        }
         Result result = this.adminService.patchEvent(event);
         JSONObject responseObject = new JSONObject();
         responseObject.put("result", result.name().toLowerCase());

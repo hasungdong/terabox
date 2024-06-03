@@ -49,14 +49,6 @@ addProductForm.onsubmit = e => {
         return;
     }
 
-    // // __warning 문구 중에 하나라도 보이고 있는게 있으면 제출을 막겠다.
-    // const warnings = document.querySelectorAll('.__warning');
-    // console.log(warnings);
-    // if (warnings.some(warning => warning.style.maxHeight === '2rem')){
-    //     // 여기서 알림같은거 안해줘도 화면에 warning 뜬 부분 빨간 표시 때문에 사용자가 알아먹을 수 있음
-    //     return;
-    // }
-
     const xhr = new XMLHttpRequest();
     const formData = new FormData();
     formData.append('name', addProductForm['name'].value);

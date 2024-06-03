@@ -127,7 +127,7 @@ if (document.querySelector('span.swiper-bar') !== null) {
         swiperBars[0].classList.add('point');
         for (const event of events) {
             event.style.left = `calc((51.5%) * ${i})`;
-            let leftEventValue = 50 * (events.length - 1) + '%';
+            let leftEventValue = 51.5 * (events.length - 1) + '%';
             if (event.style.left === `calc(${leftEventValue})`) {
                 event.style.left = 'calc(-51.5%)';
             }
@@ -402,6 +402,28 @@ if (document.querySelector('span.swiper-bar') !== null) {
             }
         }
     }
+}
+
+if (document.querySelector('button.select') !== null){
+    const showNewsAgencyButton = document.querySelector('button[rel="showNewsAgency"]');
+    const newsAgencyButton = document.querySelector('.option-box.news-agency');
+    showNewsAgencyButton.onclick = () => {
+        showNewsAgencyButton.classList.toggle('open')
+        newsAgencyButton.classList.toggle('open');
+    }
+    const showCard = document.querySelector('button[rel="showCard"]');
+    const card = document.querySelector('.option-box.card');
+    showCard.onclick = () => {
+        showCard.classList.toggle('open');
+        card.classList.toggle('open');
+    }
+    const showPoint = document.querySelector('button[rel="showPoint"]');
+    const point = document.querySelector('.option-box.point');
+    showPoint.onclick = () => {
+        showPoint.classList.toggle('open');
+        point.classList.toggle('open');
+    }
+
 }
 
 

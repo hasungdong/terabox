@@ -4,6 +4,7 @@ import com.terabox.demo.dtos.SearchDto;
 import com.terabox.demo.entities.ProductEntity;
 import com.terabox.demo.services.StoreService;
 import lombok.RequiredArgsConstructor;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -21,7 +22,6 @@ public class StoreController extends AbstractGeneralController {
     @GetMapping(value = "store", produces = MediaType.TEXT_HTML_VALUE)
     public String getStore(){
 //        db에 있는 product 4개 가져오기
-//
         return "store/store";
     }
 
@@ -62,6 +62,7 @@ public class StoreController extends AbstractGeneralController {
     @GetMapping(value = "/image")
     @ResponseBody
     public ResponseEntity<byte[]> getImage(@RequestParam(value = "index", required = false, defaultValue = "0") int index){
+        System.out.println(index);
         ProductEntity product = this.storeService.getProduct(index);
         byte[] thumbnail = product.getThumbnail();
         if (thumbnail == null){
@@ -71,5 +72,11 @@ public class StoreController extends AbstractGeneralController {
                 .contentLength(thumbnail.length)
                 .contentType(MediaType.parseMediaType(product.getThumbnailContentType()))
                 .body(thumbnail);
+    }
+
+    @GetMapping(value = "product", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public ProductEntity getProduct(@Param("index") int index){
+        return this.storeService.getProduct(index);
     }
 }

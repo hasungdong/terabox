@@ -49,7 +49,7 @@ addMovieForm.onsubmit = e => {
         MessageObj.createSimpleOk('경고', '대표 이미지를 선택해주세요.').show();
         return;
     }
-    // 양식 안맞을시 제출 막는 로직, 아래 주석보다 이게 나은듯
+    // 양식 안맞을시 제출 막는 로직
     if (!addMovieForm.titleLabel.isValid() ||
     !addMovieForm.thumbnailLabel.isValid() ||
     !addMovieForm.releaseDateLabel.isValid() ||
@@ -63,6 +63,10 @@ addMovieForm.onsubmit = e => {
     formData.append('_thumbnail', addMovieForm['thumbnail'].files[0]);
     formData.append('title', addMovieForm['title'].value);
     formData.append('releaseDate', addMovieForm['releaseDate'].value);
+    // 입력받은 값을 xx-xx-xx 꼴로 만든다.
+    // html에 input태그의 type을 time으로 해서 받아오게 하면
+    // 런던 시간으로 받아져서 이상한 값이 들어옴
+    // 그래서 그냥 type을 number로 받아와서 직접 합쳤음
     formData.append('playingTime',
         addMovieForm['hour'].value.padStart(2, '0') + ':' +
         addMovieForm['minute'].value.padStart(2, '0') + ':' +

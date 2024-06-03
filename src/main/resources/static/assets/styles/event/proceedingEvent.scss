@@ -9,8 +9,8 @@
 p{
   margin-block-start: 1em;
   margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
   unicode-bidi: isolate;
 }
 
@@ -173,13 +173,13 @@ body{
             }
 
             > .text {
-
               font-size: 0.975rem;
               font-weight: 400;
               margin-left: 1.3rem;
             }
           }
         }
+
         > .event-box {
           display: flex;
           flex-direction: row;

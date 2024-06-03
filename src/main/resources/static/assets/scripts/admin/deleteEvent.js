@@ -8,6 +8,7 @@ deleteEventForm.onsubmit = e => {
     if (!deleteEventForm.titleLabel.isValid()){
         return;
     }
+    // 제목에 맞는 이벤트 검색해오는 xhr 요청
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function(){
         if (xhr.readyState !== XMLHttpRequest.DONE){
@@ -68,6 +69,7 @@ deleteEventForm.onsubmit = e => {
                             {
                                 text: '확인', onclick: instance => {
                                     instance.hide();
+                                    // 선택한거 삭제하는 xhr 요청
                                     const xhr = new XMLHttpRequest();
                                     const formData = new FormData();
                                     formData.append('index', li.querySelector('[name="index"]').value);
@@ -94,7 +96,6 @@ deleteEventForm.onsubmit = e => {
                             }
                             ]
                     }).show();
-
                 })
                 break;
             default:
