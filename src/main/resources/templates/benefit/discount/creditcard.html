@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>제목 미정</title>
+    <th:block th:replace="~{fragments/common/common.html :: commonHead}"></th:block>
+    <link rel="stylesheet" th:href="@{/assets/styles/benefit/discount/creditcard.css}">
+</head>
+<body>
+<th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
+<main id="main">
+    <th:block th:replace="~{fragments/discount/discount.html :: discount}"></th:block>
+    <nav>
+        <ul class="tab">
+            <li class="item">
+                <a class="link" th:href="@{./guide}">할인안내</a>
+            </li>
+            <li class="item on">
+                <a class="link" th:href="@{./creditcard}">신용카드(284)</a>
+            </li>
+            <li class="item">
+                <a class="link" th:href="@{./telecomcard}">통신사(3)</a>
+            </li>
+            <li class="item">
+                <a class="link" th:href="@{./pointcard}">포인트/기타제휴(14)</a>
+            </li>
+            <li class="item">
+                <a class="link" th:href="@{./giftcard}">상품권/관람권(4)</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="all-card-container">
+        <div class="card-list-block">
+            <h3 class="tit">
+                <span> 메가박스카드</span>
+            </h3>
+            <div class="list">
+                <ul>
+                    <li>
+                        <div class="img">
+                            <img src="https://img.megabox.co.kr/SharedImg/card/2022/08/23/oM2yKtWRE8aACculvKqebNDJauF5332J.png "
+                                 alt="null">
+                        </div>
+                        <div class="cont">
+                            <div class="top">
+                                <div class="name">메가박스카드</div>
+                                <div class="spring"></div>
+                                <div class="sale">
+                                    <span class="online">인터넷할인</span>
+                                </div>
+                                <div class="sale">
+                                    <span class="offline">현장할인</span>
+                                </div>
+                            </div>
+                            <ul class="dot-list">할인방식 : 선할인, 청구할인<br>
+                                제공혜택 : 3,000원 즉시할인, 10,000원 청구할인<br>
+                                사용조건 : 현장, 온라인 결제<br>
+                                서비스 제공조건<br>
+                                - 건당 이용금액 10,000원 이상 시 월 1회 3,000원 선할인 제공<br>
+                                &nbsp; &nbsp;* 선할인 미선택 시 할인혜택 제공 불가<br>
+                                - 건당 이용금액 10,000원 이상 시 월 1회 10,000원 청구할인 제공<br>
+                                &nbsp; &nbsp;* 13,000원 이상 결제 시 선할인 선택 후 잔여금액 결제 시 청구할인과 중복적용 가능<br>
+                                - 전월 국내가맹점 이용금액 40만원 이상 시 제공
+                            </ul>
+                            <div class="btn">
+                                <a href="https://www.kjbank.com/ib20/mnu/BHPFTLF040100?ib20_wc=BHPFTLF040100V10:BHPFTLF040100V20&amp;BLTHG_NO=28809"
+                                   target="_blank" title="카드사 홈페이지 이동" class="button purple">자세히 보기</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="img">
+                            <img src="https://img.megabox.co.kr/SharedImg/card/2022/08/23/RlDtPlHegwM9qBRqJ72HZUttWcMfqB7d.png "
+                                 alt="null">
+                        </div>
+                        <div class="cont">
+                            <div class="top">
+                                <div class="name">메가박스 체크카드</div>
+                                <div class="spring"></div>
+                                <div class="sale">
+                                    <span class="online">인터넷할인</span>
+                                </div>
+                                <div class="sale">
+                                    <span class="offline">현장할인</span>
+                                </div>
+                            </div>
+                            <ul class="dot-list">&nbsp;<br>
+                                할인방식 : 선할인, 청구할인<br>
+                                제공혜택 : 3,000원 즉시할인, 5,000원 청구할인<br>
+                                사용조건 : 현장, 온라인 결제<br>
+                                서비스 제공조건<br>
+                                - 건당 이용금액 10,000원 이상 시 월 1회 3,000원 선할인 제공<br>
+                                &nbsp; &nbsp;* 선할인 미선택 시 할인혜택 제공 불가<br>
+                                - 건당 이용금액 5,000원 이상 시 월 1회 5,000원 청구할인 제공<br>
+                                &nbsp; &nbsp;* 10,000원 이상 결제 시 선할인 선택 후 잔여금액 결제 시 청구할인과 중복적용 가능<br>
+                                - 전월 국내가맹점 이용금액 40만원 이상 시 제공
+                            </ul>
+                            <div class="btn">
+                                <a href="https://www.kjbank.com/ib20/mnu/BHPFTLF040100?ib20_wc=BHPFTLF040100V10:BHPFTLF040100V20&amp;BLTHG_NO=28809"
+                                   target="_blank" title="카드사 홈페이지 이동" class="button purple">자세히 보기</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</main>

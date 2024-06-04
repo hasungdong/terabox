@@ -127,6 +127,7 @@ public class AdminService {
             dbProduct.setThumbnailContentType(product.getThumbnailContentType());
         }
         dbProduct.setType("ticket");
+
         return this.adminMapper.updateProduct(dbProduct) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 
@@ -149,6 +150,7 @@ public class AdminService {
             dbEvent.setThumbnailFileName(event.getThumbnailFileName());
             dbEvent.setThumbnailContentType(event.getThumbnailContentType());
         }
+        System.out.println(3);
         return this.adminMapper.updateEvent(dbEvent) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 

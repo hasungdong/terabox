@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>제목 미정</title>
+    <th:block th:replace="~{fragments/common/common.html :: commonHead}"></th:block>
+    <link rel="stylesheet" th:href="@{/assets/styles/benefit/discount/telecomcard.css}">
+</head>
+<body>
+<th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
+<main id="main">
+    <th:block th:replace="~{fragments/discount/discount.html :: discount}"></th:block>
+    <nav>
+        <ul class="tab">
+            <li class="item">
+                <a class="link" th:href="@{./guide}">할인안내</a>
+            </li>
+            <li class="item">
+                <a class="link" th:href="@{./creditcard}">신용카드(284)</a>
+            </li>
+            <li class="item on">
+                <a class="link" th:href="@{./telecomcard}">통신사(3)</a>
+            </li>
+            <li class="item">
+                <a class="link" th:href="@{./pointcard}">포인트/기타제휴(14)</a>
+            </li>
+            <li class="item">
+                <a class="link" th:href="@{./giftcard}">상품권/관람권(4)</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="all-telecom-container">
+        <div class="card-list-block">
+            <h3 class="tit">
+                <span id="LGU＋">LGU＋</span>
+            </h3>
+            <div class="list">
+                <ul>
+                    <li>
+                        <div class="img">
+                            <img src="https://img.megabox.co.kr/SharedImg/card/2021/02/01/WPRyFKx1W6CUkLF96MYSavfRCO9SmTTx.png "
+                                 alt="LGU+">
+                        </div>
+                        <div class="cont">
+                            <div class="top">
+                                <div class="name">LGU+멤버십</div>
+                                <div class="spring"></div>
+                                <div class="sale">
+                                    <span class="online">인터넷할인</span>
+                                </div>
+                                <div class="sale">
+                                    <span class="offline">현장할인</span>
+                                </div>
+                            </div>
+                            <ul class="dot-list">제공혜택<br>
+                                &nbsp; &nbsp;1) VIP콕 할인<br>
+                                &nbsp; &nbsp; &nbsp; &nbsp;- VIP 무료 : 티켓 1매 무료 예매 (월 1회, 연 3회 제한)<br>
+                                &nbsp; &nbsp; &nbsp; &nbsp;- VIP 1+1 : 2매 이상 예매 시 1매 무료, 1매 유료 (월 1회, 연 9회 제한)<br>
+                                &nbsp; &nbsp; &nbsp; &nbsp;- VIP 특별관 6천원 할인 : 하기 특별관에 한하여 티켓 1매 6천원 할인 (월 1회, 연 12회)<br>
+                                &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;* VIP 무료, 1+1 적용조건<br>
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ㄴ&nbsp;일반관, 컴포트관, 일반석, 스페셜석<br>
+                                &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;* VIP 특별관 6천원 할인 적용조건<br>
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ㄴ 더부티크, 더부티크스위트, Dolby Atmos, Dolby
+                                Cinema, MX4D, 일반석, 스페셜석<br>
+                                &nbsp; &nbsp;2) 상시 할인<br>
+                                &nbsp; &nbsp; &nbsp; &nbsp;- VVIP/VIP :&nbsp;티켓 1매당 4천원 할인 (동반 3인까지, 일 1회 제한)<br>
+                                &nbsp; &nbsp; &nbsp; &nbsp;- 일반 :&nbsp;티켓 1매당 2천원 할인 (동반 3인까지, 일 1회 제한)<br>
+                                사 용&nbsp; 처<br>
+                                &nbsp; &nbsp;1) VIP 콕 할인 :&nbsp;메가박스 온라인<br>
+                                &nbsp; &nbsp;2) 상시 할인 : 메가박스 온/오프라인<br>
+                                유의사항<br>
+                                &nbsp; &nbsp;1) VIP 콕 할인<br>
+                                &nbsp; &nbsp; &nbsp; &nbsp;- 월 1회에 한하여 VIP 무료/1+1/특별관 6천원 할인예매 중 1개의 혜택만 적용 가능<br>
+                                &nbsp; &nbsp; &nbsp; &nbsp;- 2D 일반컨텐츠/성인/청소년/우대에 한하여 적용 가능<br>
+                                &nbsp; &nbsp; &nbsp; &nbsp;- 당월에 다른 LGU+ VIP 콕 사용 시 적용 불가<br>
+                                &nbsp; &nbsp;2) 상시할인<br>
+                                &nbsp; &nbsp; &nbsp; &nbsp;- 조조/우대/경로/어린이/문화의날/특별콘텐츠 이용불가<br>
+                                &nbsp; &nbsp; &nbsp; &nbsp;- 돌비시네마, 더부티크스위트, 더부티크 프라이빗 적용 불가<br>
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span
+                                        style="color:#e74c3c">타 제휴 및 할인 쿠폰 중복 적용 불가</span>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-list-block">
+            <h3 class="tit">
+                <span id="SKT">SKT</span>
+            </h3>
+            <div class="list">
+                <ul>
+                    <li>
+                        <div class="img">
+                            <img src="https://img.megabox.co.kr/SharedImg/card/2024/02/21/zLDhZQ6lt8VqfFrPuuOeawLNT2CFE18h.png "
+                                 alt="null">
+                        </div>
+                        <div class="cont">
+                            <div class="top">
+                                <div class="name">SKT멤버십</div>
+                                <div class="spring"></div>
+                                <div class="sale">
+                                    <span class="online">인터넷할인</span>
+                                </div>
+                            </div>
+                            <ul class="dot-list">제공혜택<br>
+                                상시할인: 영화 1천원 ~ 4천원 할인(일 1회, 동반4인)<br>
+                                사 용&nbsp; 처: T멤버십 온라인(홈페이지/App)<br>
+                                유의사항: 조조/우대/경로/어린이/문화의날/특별콘텐츠 이용불가<br>
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;돌비시네마, 돌비애트모스, 더부티크스위트, 더부티크 프라이빗 적용
+                                불가<br>
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;1만 1천원 이상 티켓에 한하여 적용 가능<br>
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color:#e74c3c">타 제휴 및 할인 쿠폰 중복 적용 불가</span>
+                            </ul>
+                            <div class="btn">
+                                <a href="https://sktmembership.tworld.co.kr/mps/pc-bff/program/movie.do"
+                                   target="_blank" title="SKT할인" class="button purple">자세히 보기</a>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="card-list-block"><h3 class="tit"><span id="KT">KT</span></h3>
+            <div class="list">
+                <ul>
+                    <li>
+                        <div class="img">
+                            <img src="https://img.megabox.co.kr/SharedImg/card/2021/02/01/N6pOt68ktn3MBQP1yg44T3dWh1Ckc41F.png "
+                                 alt="null">
+                        </div>
+                        <div class="cont">
+                            <div class="top">
+                                <div class="name">KT멤버십</div>
+                                <div class="spring"></div>
+                                <div class="sale">
+                                    <span class="online">인터넷할인</span>
+                                </div>
+                            </div>
+                            <ul class="dot-list">제공혜택<br>
+                                상시할인: 영화 1.1만원 관람(일반관, 컴포트관, 일반석, 스페셜석)<br>
+                                사 용&nbsp; 처: KT멤버십 온라인(홈페이지/App)<br>
+                                유의사항: 조조/우대/경로/어린이/문화의날/특별콘텐츠 이용불가<br>
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;돌비시네마, 돌비애트모스, 더부티크스위트, 더부티크 프라이빗 적용
+                                불가<br>
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;1만 1천원 이상 티켓에 한하여 적용 가능<br>
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color:#e74c3c">타 제휴 및 할인 쿠폰 중복 적용 불가</span>
+                            </ul>
+                            <div class="btn">
+                                <a href="https://membership.kt.com/culture/movie/MovieInfo.do"
+                                   target="_blank" title="KT 일반/더블 할인" class="button purple">자세히 보기</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</main>

@@ -73,7 +73,7 @@ if (document.querySelector('span.swiper-bar') !== null) {
                 event.style.left !== 'calc(103%)') {
                 event.style.display = 'none';
             } else {
-                event.style.display = 'block';
+                event.style.display = 'flex';
             }
         });
 
@@ -103,7 +103,7 @@ if (document.querySelector('span.swiper-bar') !== null) {
                 event.style.left !== 'calc(103%)') {
                 event.style.display = 'none';
             } else {
-                event.style.display = 'block';
+                event.style.display = 'flex';
             }
         });
         currentPage++;
@@ -138,7 +138,7 @@ if (document.querySelector('span.swiper-bar') !== null) {
                 event.style.left !== 'calc(103%)') {
                 event.style.display = 'none';
             } else {
-                event.style.display = 'block';
+                event.style.display = 'flex';
             }
 
             lessButton.onclick = () => {
@@ -205,15 +205,15 @@ if (document.querySelector('span.swiper-bar') !== null) {
                 event.style.left !== 'calc(103%)') {
                 event.style.display = 'none';
             } else {
-                event.style.display = 'block';
+                event.style.display = 'flex';
             }
         });
         playButton.onclick = () => {
             playButton.style.display = 'none';
-            pauseButton.style.display = 'block';
+            pauseButton.style.display = 'flex';
             const play = setInterval(rightMoveEvent, 3000);
             pauseButton.onclick = () => {
-                playButton.style.display = 'block';
+                playButton.style.display = 'flex';
                 pauseButton.style.display = 'none';
                 clearInterval(play);
             }

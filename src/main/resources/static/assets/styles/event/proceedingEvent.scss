@@ -194,6 +194,7 @@ body{
             position: absolute;
             transition-duration: 600ms;
             transition-property: left, right;
+            flex-direction: column;
 
             > img {
               width: 33.125rem;

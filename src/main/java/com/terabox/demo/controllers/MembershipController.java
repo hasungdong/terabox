@@ -27,4 +27,24 @@ public class MembershipController {
     public String getDiscountGuide(){
         return "benefit/discount/guide";
     }
+
+    @GetMapping(value = "discount/creditcard", produces = MediaType.TEXT_HTML_VALUE)
+    public String getDiscountCreditCard(){
+        return "benefit/discount/creditcard";
+    }
+
+    @GetMapping(value = "discount/telecomcard", produces = MediaType.TEXT_HTML_VALUE)
+    public String getDiscountTelecomCard(){
+        return "benefit/discount/telecomcard";
+    }
+
+    @GetMapping(value = "discount/pointcard", produces = MediaType.TEXT_HTML_VALUE)
+    public String getDiscountPointCard(){
+        return "benefit/discount/pointcard";
+    }
+
+    @GetMapping(value = "discount/giftcard", produces = MediaType.TEXT_HTML_VALUE)
+    public String getDiscountGiftCard(){
+        return "benefit/discount/giftcard";
+    }
 }

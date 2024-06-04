@@ -8,7 +8,7 @@ body {
   overflow-y: scroll;
   font-size: 13px;
   color: #666666;
-  font-family: NanumBarunGothic, Dotum, "돋움", sans-serif;
+  font-family: sans-serif, NanumBarunGothic, Dotum, "돋움";
 }
 
 #header {
@@ -1005,6 +1005,7 @@ body form #container > .AffiliateEvent > .event-box > .event {
   position: absolute;
   transition-duration: 600ms;
   transition-property: left, right;
+  flex-direction: column;
 }
 body form #container > .AffiliateEvent > .event-box > .event > img {
   width: 33.125rem;

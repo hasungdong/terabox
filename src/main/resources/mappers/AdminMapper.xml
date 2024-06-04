@@ -41,8 +41,7 @@
             `thumbnail_content_type` = #{thumbnailContentType},
             `age_limit`              = #{ageLimit},
             `dimension_type`         = #{dimensionType}
-        WHERE BINARY `title` = #{title}
-          AND BINARY `release_date` = #{releaseDate}
+        WHERE `index` = #{index}
     </update>
     <update id="updateProduct" parameterType="com.terabox.demo.entities.ProductEntity">
         UPDATE `terabox`.`products`
@@ -53,8 +52,7 @@
             `thumbnail_file_name`    = #{thumbnailFileName},
             `thumbnail_content_type` = #{thumbnailContentType},
             `type`                   = #{type}
-        WHERE BINARY `name` = #{name}
-        AND BINARY `price` = #{price}
+        WHERE `index` = #{index}
     </update>
     <update id="updateEvent" parameterType="com.terabox.demo.entities.EventEntity">
         UPDATE `terabox`.`events`
@@ -65,8 +63,7 @@
             `thumbnail`              = #{thumbnail},
             `thumbnail_file_name`    = #{thumbnailFileName},
             `thumbnail_content_type` = #{thumbnailContentType}
-        WHERE BINARY `title` = #{title}
-        AND BINARY `start_date` = #{startDate}
+        WHERE BINARY `index` = #{index}
     </update>
 
     <delete id="deleteMovieByIndex">

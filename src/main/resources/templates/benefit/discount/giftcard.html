@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>제목 미정</title>
+    <th:block th:replace="~{fragments/common/common.html :: commonHead}"></th:block>
+    <link rel="stylesheet" th:href="@{/assets/styles/benefit/discount/giftcard.css}">
+</head>
+<body>
+<th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
+<main id="main">
+    <th:block th:replace="~{fragments/discount/discount.html :: discount}"></th:block>
+    <nav>
+        <ul class="tab">
+            <li class="item">
+                <a class="link" th:href="@{./guide}">할인안내</a>
+            </li>
+            <li class="item">
+                <a class="link" th:href="@{./creditcard}">신용카드(284)</a>
+            </li>
+            <li class="item">
+                <a class="link" th:href="@{./telecomcard}">통신사(3)</a>
+            </li>
+            <li class="item">
+                <a class="link" th:href="@{./pointcard}">포인트/기타제휴(14)</a>
+            </li>
+            <li class="item on">
+                <a class="link" th:href="@{./giftcard}">상품권/관람권(4)</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="all-giftcard-container">
+        <div class="card-list-block">
+            <h3 class="tit">문화상품권</h3>
+            <div class="list">
+                <ul>
+                    <li>
+                        <div class="img">
+                            <img src="/assets/images/discount/cultureCard.png" alt="문화상품권">
+                        </div>
+                        <div class="cont">
+                            <div class="top">
+                                <div class="name">문화상품권 (5천원 / 1만원 / 5만원)</div>
+                            </div>
+
+                            <ul class="dot-list">
+                                <li>사용 가능 지점 : 메가박스 전국 지점(일부 제외)</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="img">
+                            <img src="/assets/images/discount/bookCard.png" alt="도서문화상품권">
+                        </div>
+
+                        <div class="cont">
+                            <div class="top">
+                                <div class="name">도서문화상품권 (5천원 / 1만원 / 5만원)</div>
+                            </div>
+
+                            <ul class="dot-list">
+                                <li>사용 가능 지점 : 메가박스 전국 지점(일부 제외)</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="img">
+                            <img src="/assets/images/discount/happyCard.png" alt="해피머니상품권">
+                        </div>
+                        <div class="cont">
+                            <div class="top">
+                                <div class="name">해피머니상품권 (5천원 / 1만원)</div>
+                            </div>
+
+                            <ul class="dot-list">
+                                <li>사용 가능 지점 : 메가박스 전국 지점(일부 제외)</li>
+                                <li>해피머니 경품용 상품권은 사용불가</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-list-block">
+            <h3 class="tit">영화관람권</h3>
+            <div class="list">
+                <ul>
+                    <li>
+                        <div class="img">
+                            <img src="/assets/images/discount/movieTicket.png" alt="메가박스 영화관람권">
+                        </div>
+                        <div class="cont">
+                            <div class="top">
+                                <div class="name">메가박스 영화관람권</div>
+                            </div>
+                            <ul class="dot-list">
+                                <li>영화관람권은 메가박스에서 상영하는 영화 예매 시 메가박스 일반영화관에서 사용 가능</li>
+                                <li>특별콘텐트 예매 시에는 사용불가 (상영관에 따라 추가 차액이(일반요금기준)발생 할 수 있음)</li>
+                                <li>
+                                    현장 매표소에서 영화 입장권으로 교환 가능하며, 홈페이지, 모바일 앱에서 예매 가능.<br>
+                                    (홈페이지 및 모바일 예매 시 ‘결제선택’단계에서 ‘메가박스 영화관람권’을 선택)
+                                </li>
+                                <li>지류(종이)관람권 뒷면의 스크래치가 개봉된 경우 현장 매표소에서 사용할 수 없으며 홈페이지 또는 모바일에서만 사용 가능</li>
+                                <li>영화관람 시 메가박스 규정에 의해 일정의 멤버십 포인트 적립</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,153 @@
+@charset "UTF-8";
+
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+@import "../../common/header";
+@import "../../common/common.notHome";
+@import "discountCommon";
+
+#main {
+  padding-top: 2.5rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  > * {
+    width: 1100px;
+  }
+
+  > .all-giftcard-container{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    letter-spacing: -0.08rem;
+
+    > .card-list-block{
+      display: flex;
+      flex-direction: column;
+
+      > .tit{
+        padding-top: 70px;
+        padding-bottom: 16px;
+        font-size: 24px;
+        color: #503396;
+      }
+
+      > .list{
+        > ul {
+          border-top: 1px solid #555;
+          display: flex;
+          flex-direction: column;
+
+          > li{
+            padding: 30px 0;
+            border-bottom: 1px solid #eaeaea;
+            display: flex;
+            flex-direction: row;
+
+            > .img{
+              width: 230px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+
+            > .cont{
+              flex-grow: 1;
+              padding-left: 40px;
+
+              > .top{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                padding: 0 0 15px 0;
+
+                > .name{
+                  font-size: 1.2rem;
+                  color: #222;
+                  line-height: 1.1;
+                }
+
+                > .spring{
+                  flex-grow: 1;
+                }
+
+                >.sale{
+                  > .online{
+                    overflow: hidden;
+                    display: block;
+                    float: left;
+                    height: 22px;
+                    margin: 0 0 0 5px;
+                    padding: 0 10px;
+                    line-height: 22px;
+                    border: 1px solid #503396;
+                    border-radius: 11px;
+                    color: #503396;
+                  }
+
+                  > .offline{
+                    overflow: hidden;
+                    display: block;
+                    float: left;
+                    height: 22px;
+                    margin: 0 0 0 5px;
+                    padding: 0 10px;
+                    line-height: 22px;
+                    border: 1px solid #037b94;
+                    border-radius: 11px;
+                    color: #037b94;
+                  }
+                }
+              }
+
+              > .dot-list{
+                font-size: 0.9375rem;
+                line-height: 1.5;
+                color: #222222;
+
+                > li{
+                  padding-left: 8px;
+                  position: relative;
+
+                  &::before{
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    top: 9px;
+                    left: 0;
+                    background-color: #503396;
+                    width: 3px;
+                    height: 3px;
+                  }
+                }
+
+              }
+
+              > .btn{
+                padding-top: 19px;
+
+                > .button{
+                  display: inline-block;
+                  height: 36px;
+                  margin: 0;
+                  padding: 0 15px;
+                  text-align: center;
+                  border-radius: 4px;
+                  vertical-align: middle;
+                  cursor: pointer;
+                  line-height: 36px;
+                  border: 0;
+                  background: #503396;
+                  color: #fff;
+                  font-size: 0.9375rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -3,6 +3,7 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
 @import "../../common/header";
 @import "../../common/common.notHome";
+@import "discountCommon";
 
 #main {
   padding-top: 2.5rem;
@@ -14,215 +15,6 @@
 
   > * {
     width: 1100px;
-  }
-
-  > .title2 {
-    font-size: 1.75rem;
-    font-weight: 500;
-    padding-bottom: 1.6rem;
-    line-height: 1.1;
-    letter-spacing: 0;
-    color: #222222;
-
-  }
-
-  > .AffiliateEvent {
-    width: 100%;
-    background-color: #f8f8fa;
-    height: 24.5rem;
-
-    padding-top: 4.375rem;
-    margin-bottom: 2.5rem;
-    position: relative;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    > .title-bar {
-      width: 1100px;
-      padding-bottom: 1.25rem;
-      font-size: 1.525rem;
-      color: #503396;
-      line-height: 1.1;
-      display: flex;
-      flex-direction: row;
-
-      > .spring {
-        flex-grow: 1;
-      }
-
-      > .swiper-bar-container {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-
-        > .swiper-bar-box {
-          display: flex;
-          flex-direction: row;
-
-          > .swiper-bar {
-            display: block;
-            width: 1.875rem;
-            height: 0.125rem;
-            border-radius: 0;
-            background-color: #fff;
-
-            &.point {
-              background-color: #503396;
-            }
-          }
-        }
-
-        > img {
-          width: 0.75rem;
-          height: 0.95rem;
-          margin-left: 0.575rem;
-
-          color: #503396;
-          cursor: pointer;
-
-          &.play {
-            width: 0.5rem;
-            height: 0.8rem;
-          }
-
-          &.pause{
-            width: 0.5rem;
-            height: 0.8rem;
-            display: none;
-          }
-        }
-
-        > .text {
-          font-size: 0.975rem;
-          font-weight: 400;
-          margin-left: 1.3rem;
-        }
-      }
-    }
-
-    > .event-box {
-      display: flex;
-      flex-direction: row;
-      gap: 2.625rem;
-
-      width: 1100px;
-      height: 277.6px;
-      position: relative;
-      overflow: hidden;
-
-      > .event {
-        position: absolute;
-        transition-duration: 600ms;
-        transition-property: left, right;
-
-        > img {
-          width: 33.125rem;
-          height: 15.3125rem;
-
-          border-radius: 0.625rem;
-        }
-
-        > .text-box {
-          display: flex;
-          flex-direction: row;
-
-          margin-top: 0.9375rem;
-
-          > .text {
-            font-size: 0.95rem;
-            font-weight: 700;
-
-            overflow: hidden;
-            display: inline-block;
-            width: 360px;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-          }
-
-          > .spring {
-            flex-grow: 1;
-          }
-
-          > .duration {
-            font-size: 0.83rem;
-            color: #444444;
-          }
-        }
-      }
-    }
-
-    > [type="button"] {
-      display: block;
-      position: absolute;
-      z-index: 2;
-      top: 50%;
-      width: 50px;
-      height: 50px;
-      margin: 0;
-      padding: 0;
-      border: 0;
-      font-size: 0;
-      line-height: 0;
-      border-radius: 100%;
-      box-shadow: 4px 4px 10px 0 rgba(45, 45, 45, .3);
-      background-size: 28px;
-      background-color: white;
-      background-position: center;
-      background-repeat: no-repeat;
-      cursor: pointer;
-
-      &.left {
-        left: calc(50% - 1100px * 0.5);
-        transform: translate(-50%, -25px);
-        background-image: url("../../../images/common/left.png");
-      }
-
-      &.right {
-        left: calc(50% + 1100px * 0.5);
-        transform: translate(-57%, -25px);
-        background-image: url("../../../images/common/right.png");
-      }
-    }
-  }
-
-  > nav {
-
-    > .tab{
-      display: flex;
-      flex-direction: row;
-
-      > .item{
-        border: 0.06rem solid #ebebeb;
-        border-bottom-color: #503396;
-
-        width: calc(100% - 4 * 0.6rem);
-        height: 2.56rem;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-
-        &.on{
-          border-color: #503396;
-          border-bottom: none;
-
-          .link{
-            color: #503396;
-          }
-        }
-
-        > .link{
-          font-size: 1.0175rem;
-          letter-spacing: 0;
-          font-weight: 400;
-          line-height: 2.5rem;
-          color: #222;
-        }
-
-      }
-    }
   }
 
   > .searchAndSelect-box{
@@ -383,6 +175,7 @@
               line-height: 1.15;
 
               position: relative;
+              cursor: pointer;
 
               &.open{
                 border-radius: 4px 4px 0 0;
@@ -449,6 +242,12 @@
                     line-height: 30px;
                     color: #444;
                     white-space: nowrap;
+                    cursor: pointer;
+
+                    &:hover{
+                      color: #01738b;
+                      text-decoration: none;
+                    }
                   }
                 }
               }
