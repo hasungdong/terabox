@@ -10,7 +10,8 @@
                `quantity`               AS `quantity`,
                `thumbnail`              AS `thumbnail`,
                `thumbnail_file_name`    AS `thumbnailFileName`,
-               `thumbnail_content_type` AS `thumbnailContentType`
+               `thumbnail_content_type` AS `thumbnailContentType`,
+               `type`                   AS `type`
         FROM `terabox`.`products`
         WHERE `name` = #{name}
     </select>
@@ -21,7 +22,8 @@
                `quantity`               AS `quantity`,
                `thumbnail`              AS `thumbnail`,
                `thumbnail_file_name`    AS `thumbnailFileName`,
-               `thumbnail_content_type` AS `thumbnailContentType`
+               `thumbnail_content_type` AS `thumbnailContentType`,
+               `type`                   AS `type`
         FROM `terabox`.`products`
         WHERE `index` = #{index}
         LIMIT 1
@@ -39,7 +41,8 @@
                `quantity`               AS `quantity`,
                `thumbnail`              AS `thumbnail`,
                `thumbnail_file_name`    AS `thumbnailFileName`,
-               `thumbnail_content_type` AS `thumbnailContentType`
+               `thumbnail_content_type` AS `thumbnailContentType`,
+               `type`                   AS `type`
         FROM `terabox`.`products` AS `product`
         WHERE (REPLACE(`name`, ' ', '') LIKE CONCAT('%', REPLACE(#{keyword}, ' ', ''), '%'))
         ORDER BY product.`index` DESC

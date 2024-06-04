@@ -62,7 +62,6 @@ public class StoreController extends AbstractGeneralController {
     @GetMapping(value = "/image")
     @ResponseBody
     public ResponseEntity<byte[]> getImage(@RequestParam(value = "index", required = false, defaultValue = "0") int index){
-        System.out.println(index);
         ProductEntity product = this.storeService.getProduct(index);
         byte[] thumbnail = product.getThumbnail();
         if (thumbnail == null){

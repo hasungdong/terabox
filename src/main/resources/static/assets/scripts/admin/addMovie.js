@@ -24,6 +24,9 @@ addMovieForm.thumbnailLabel = new LabelObj(addMovieForm.querySelector('[rel="thu
 addMovieForm.releaseDateLabel = new LabelObj(addMovieForm.querySelector('[rel="releaseDateLabel"]'));
 addMovieForm.playingTimeLabel = new LabelObj(addMovieForm.querySelector('[rel="playingTimeLabel"]'));
 addMovieForm.isSingleLabel = new LabelObj(addMovieForm.querySelector('[rel="isSingleLabel"]'));
+addMovieForm.ageLimitLabel = new LabelObj(addMovieForm.querySelector('[rel="ageLimitLabel"]'));
+addMovieForm.dimensionTypeLabel = new LabelObj(addMovieForm.querySelector('[rel="dimensionTypeLabel"]'));
+
 
 
 // addMovieForm 제출
@@ -44,6 +47,13 @@ addMovieForm.onsubmit = e => {
         (parseInt(addMovieForm['second'].value) < 60 &&
         parseInt(addMovieForm['second'].value) >= 0));
     addMovieForm.isSingleLabel.setValid(addMovieForm['isSingle'].checked === true || addMovieForm['isSingle'].checked === false);
+    addMovieForm.ageLimitLabel.setValid(addMovieForm['ageLimit'].value === 'all' ||
+        addMovieForm['ageLimit'].value === '12' ||
+        addMovieForm['ageLimit'].value === '15' ||
+        addMovieForm['ageLimit'].value === '18');
+    addMovieForm.dimensionTypeLabel.setValid(addMovieForm['dimensionType'].value === '2D' ||
+        addMovieForm['dimensionType'].value === '3D' ||
+        addMovieForm['dimensionType'].value === '4D');
 
     if (addMovieForm['thumbnail'].files.length === 0){
         MessageObj.createSimpleOk('경고', '대표 이미지를 선택해주세요.').show();
@@ -54,7 +64,9 @@ addMovieForm.onsubmit = e => {
     !addMovieForm.thumbnailLabel.isValid() ||
     !addMovieForm.releaseDateLabel.isValid() ||
     !addMovieForm.playingTimeLabel.isValid() ||
-    !addMovieForm.isSingleLabel.isValid()){
+    !addMovieForm.isSingleLabel.isValid() ||
+    !addMovieForm.ageLimitLabel.isValid() ||
+    !addMovieForm.dimensionTypeLabel.isValid()){
         return;
     }
 
@@ -72,6 +84,8 @@ addMovieForm.onsubmit = e => {
         addMovieForm['minute'].value.padStart(2, '0') + ':' +
     addMovieForm['second'].value.padStart(2, '0'));
     formData.append('single', addMovieForm['isSingle'].checked);
+    formData.append('ageLimit', addMovieForm['ageLimit'].value);
+    formData.append('dimensionType', addMovieForm['dimensionType'].value);
     xhr.onreadystatechange = function(){
         if (xhr.readyState !== XMLHttpRequest.DONE){
             return;

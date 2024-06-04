@@ -141,8 +141,37 @@ modifyEventForm.onsubmit = e => {
                                             modifyEventFormInner.remove();
                                             modifyEventFormTwo.hide();
                                         }
+
+                                        // 각 라벨들 선언, add에 있던거 이름만 바꿈
+                                        modifyEventFormTwo.titleLabel = new LabelObj(modifyEventFormTwo.querySelector('[rel="titleLabel"]'));
+                                        modifyEventFormTwo.thumbnailLabel = new LabelObj(modifyEventFormTwo.querySelector('[rel="thumbnailLabel"]'));
+                                        modifyEventFormTwo.startDateLabel = new LabelObj(modifyEventFormTwo.querySelector('[rel="startDateLabel"]'));
+                                        modifyEventFormTwo.endDateLabel = new LabelObj(modifyEventFormTwo.querySelector('[rel="endDateLabel"]'));
+                                        modifyEventFormTwo.discountRateLabel = new LabelObj(modifyEventFormTwo.querySelector('[rel="discountRateLabel"]'));
+
                                         modifyEventFormTwo.onsubmit = e => {
                                             e.preventDefault();
+                                            // EventRegex에 있는거 chatgpt로 자바스크립트에서 쓸 수 잇게 바꿈
+                                            const titleRegex = RegExp(/^([\da-zA-Z가-힣().\- !]{1,100})$/);
+
+                                            // add에서 해줬던 유효성 검사 다시
+                                            // 사진은 검사 안한다. 불러올 때 사진은 불러와서 넣어주는게 힘듦
+                                            // 대신 아무 사진도 없으면 서비스에서 원래 있던 사진으로 냅두기로 함
+                                            modifyEventFormTwo.titleLabel.setValid(titleRegex.test(modifyEventFormTwo['title'].value));
+                                            const regex = RegExp(/^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/);
+                                            modifyEventFormTwo.startDateLabel.setValid(regex.test(modifyEventFormTwo['startDate'].value))
+                                            modifyEventFormTwo.endDateLabel.setValid(regex.test(modifyEventFormTwo['endDate'].value));
+                                            modifyEventFormTwo.discountRateLabel.setValid(modifyEventFormTwo['discountRate'].value > 0 &&
+                                                modifyEventFormTwo['discountRate'].value < 100);
+                                            // 양식 안맞을시 제출 막는 로직, 아래 주석보다 이게 나은듯
+                                            if (!modifyEventFormTwo.titleLabel.isValid() ||
+                                                !modifyEventFormTwo.thumbnailLabel.isValid() ||
+                                                !modifyEventFormTwo.startDateLabel.isValid() ||
+                                                !modifyEventFormTwo.endDateLabel.isValid() ||
+                                                !modifyEventFormTwo.discountRateLabel.isValid()){
+                                                return;
+                                            }
+
                                             const xhr = new XMLHttpRequest();
                                             const formData = new FormData();
                                             formData.append('index', li.querySelector('[name="index"]').value);

@@ -61,7 +61,6 @@ addEventForm.onsubmit = e => {
     formData.append('startDate', addEventForm['startDate'].value);
     formData.append('endDate', addEventForm['endDate'].value);
     formData.append('discountRate', addEventForm['discountRate'].value);
-
     xhr.onreadystatechange = function(){
         if (xhr.readyState !== XMLHttpRequest.DONE){
             return;

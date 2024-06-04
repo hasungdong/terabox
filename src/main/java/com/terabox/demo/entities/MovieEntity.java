@@ -24,7 +24,7 @@ public class MovieEntity {
     private float grade;
     private int view;
     private boolean isSingle;
-    private int ageLimit;
+    private String ageLimit;
     private String dimensionType;
 
     @Override

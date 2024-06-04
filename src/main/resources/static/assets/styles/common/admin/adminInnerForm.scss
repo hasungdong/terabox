@@ -24,6 +24,7 @@
   opacity: 0;
 
   z-index: 10;
+  overflow-y: auto;
 
   &.-visible{
     opacity: 1;
@@ -168,7 +169,7 @@
                 width: 40%;
               }
               > .reservation-rate{
-                width: 28%;
+                width: 20%;
               }
               > .release-date{
                 flex-grow: 1;
@@ -182,6 +183,15 @@
                 width: 37.5%;
               }
               > .end-date{
+                flex-grow: 1;
+              }
+
+              // 상품 관련 2개
+              > .price{
+                width: 50%;
+              }
+
+              > .quantity{
                 flex-grow: 1;
               }
             }

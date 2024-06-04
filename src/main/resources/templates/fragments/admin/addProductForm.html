@@ -34,6 +34,16 @@
             <input class="_obj-input __field" type="text" name="quantity">
             <span class="__warning">올바른 수량을 입력해 주세요.</span>
         </label>
+        <label class="_obj-label" rel="typeLabel">
+            <span class="__text">상품 종류</span>
+            <select class="_obj-input __field" name="type">
+                <option disabled hidden selected value="-1">종류 선택</option>
+                <option value="ticket" selected>티켓(기본)</option>
+                <option value="food">음식</option>
+                <option value="coupon">쿠폰</option>
+            </select>
+            <span class="__warning">종류를 선택해 주세요.</span>
+        </label>
         <div class="spring"></div>
         <button type="submit">추가하기</button>
         <button type="button" rel="hideAddProductForm">취소</button>

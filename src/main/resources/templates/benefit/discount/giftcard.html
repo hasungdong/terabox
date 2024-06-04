@@ -8,12 +8,22 @@
     <title>제목 미정</title>
     <th:block th:replace="~{fragments/common/common.html :: commonHead}"></th:block>
     <link rel="stylesheet" th:href="@{/assets/styles/benefit/discount/giftcard.css}">
+    <script defer th:src="@{/assets/scripts/discount.js}"></script>
+    <script defer>
+        window.onload = () => {
+            window.scroll({
+                top:document.querySelector('nav#nav').offsetTop,
+                left:0,
+                behavior:"smooth"
+            });
+        };
+    </script>
 </head>
 <body>
 <th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
 <main id="main">
     <th:block th:replace="~{fragments/discount/discount.html :: discount}"></th:block>
-    <nav>
+    <nav id="nav">
         <ul class="tab">
             <li class="item">
                 <a class="link" th:href="@{./guide}">할인안내</a>
@@ -33,6 +43,15 @@
         </ul>
     </nav>
     <div class="all-giftcard-container">
+        <div class="search-card">
+            <div class="text-box">
+                <span class="title">상품권</span>
+                <span class="text">상품권은 메가박스 전국 지점(일부 제외)의 현장(매표소)에서만 사용하실 수 있으며, 현대백화점 상품권의 경우, 일부 지점은 제외됩니다. <br>
+                </span>
+                    <span class="color">※해피머니 경품용 상품권은 사용불가, 현대백화점 PP카드 사용불가, 경품용 상품권 사용불가</span>
+
+            </div>
+        </div>
         <div class="card-list-block">
             <h3 class="tit">문화상품권</h3>
             <div class="list">

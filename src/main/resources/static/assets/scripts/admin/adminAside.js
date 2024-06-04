@@ -93,6 +93,15 @@ modifyMovieFormShowButtons.forEach(modifyMovieFormShowButton => modifyMovieFormS
     alertCover.show(() => {
         alertCover.hide();
         modifyMovieForm.hide();
+        if (modifyMovieFormTwo !== null){
+            modifyMovieFormTwo.hide();
+            // modifyMovieFormTwo가 생길때 div.content가 생성되서 지워져야될 때 지워져야 된다.
+            // 안그러면 div.content가 계속해서 생겨남
+            // 지금은 modifyMovieFormTwo가 생기고, 수정하기 누르지 않고 alertCover 눌러서 빠져나올 때의 상황
+            if (modifyMovieFormTwo.querySelector('div.content') !== null){
+                modifyMovieFormTwo.querySelector('div.content').remove();
+            }
+        }
     });
 })
 
@@ -155,6 +164,15 @@ modifyProductFormShowButtons.forEach(modifyProductFormShowButton => modifyProduc
     alertCover.show(() => {
         alertCover.hide();
         modifyProductForm.hide();
+        if (modifyProductFormTwo !== null){
+            modifyProductFormTwo.hide();
+            // modifyProductFormTwo가 생길때 div.content가 생성되서 지워져야될 때 지워져야 된다.
+            // 안그러면 div.content가 계속해서 생겨남
+            // 지금은 modifyProductFormTwo가 생기고, 수정하기 누르지 않고 alertCover 눌러서 빠져나올 때의 상황
+            if (modifyProductFormTwo.querySelector('div.content') !== null){
+                modifyProductFormTwo.querySelector('div.content').remove();
+            }
+        }
     });
 });
 
@@ -217,6 +235,15 @@ modifyEventFormShowButtons.forEach(modifyEventFormShowButton => modifyEventFormS
     alertCover.show(() => {
         alertCover.hide();
         modifyEventForm.hide();
+        if (modifyEventFormTwo !== null){
+            modifyEventFormTwo.hide();
+            // modifyEventFormTwo가 생길때 div.content가 생성되서 지워져야될 때 지워져야 된다.
+            // 안그러면 div.content가 계속해서 생겨남
+            // 지금은 modifyEventFormTwo가 생기고, 수정하기 누르지 않고 alertCover 눌러서 빠져나올 때의 상황
+            if (modifyEventFormTwo.querySelector('div.content') !== null){
+                modifyEventFormTwo.querySelector('div.content').remove();
+            }
+        }
     });
 });
 

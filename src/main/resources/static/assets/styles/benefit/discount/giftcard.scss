@@ -23,6 +23,45 @@
     align-items: stretch;
     letter-spacing: -0.08rem;
 
+    > .search-card{
+      overflow: hidden;
+      margin: 0;
+      margin-top: 2.5rem;
+      padding: 30px 84px 30px 48px;
+      border: 1px solid #ebebeb;
+      border-radius: 10px;
+
+      display: flex;
+      flex-direction: row;
+
+      > .text-box{
+        display: flex;
+        flex-direction: column;
+
+        line-height: 1.1;
+
+        > .title{
+          color: #000;
+          font-size: 1.5375rem;
+          letter-spacing: -0.1rem;
+        }
+
+        > .text{
+          color: #444444;
+          padding-top: 0.875rem;
+          letter-spacing: -0.1rem;
+          font-size: 0.9375rem;
+        }
+
+        > .color{
+          padding-top: 5px;
+          color: #01738b;
+          letter-spacing: -0.1rem;
+          font-size: 0.9375rem;
+        }
+      }
+    }
+
     > .card-list-block{
       display: flex;
       flex-direction: column;

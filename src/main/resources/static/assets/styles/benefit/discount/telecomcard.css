@@ -1033,6 +1033,32 @@ li {
   align-items: stretch;
   letter-spacing: -0.08rem;
 }
+#main > .all-telecom-container > .search-card {
+  overflow: hidden;
+  margin: 0;
+  margin-top: 2.5rem;
+  padding: 30px 84px 30px 48px;
+  border: 1px solid #ebebeb;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+#main > .all-telecom-container > .search-card > .text-box {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+#main > .all-telecom-container > .search-card > .text-box > .title {
+  color: #000;
+  font-size: 1.5375rem;
+  letter-spacing: -0.1rem;
+}
+#main > .all-telecom-container > .search-card > .text-box > .text {
+  color: #444444;
+  padding-top: 0.875rem;
+  letter-spacing: -0.1rem;
+}
 #main > .all-telecom-container > .card-list-block {
   display: flex;
   flex-direction: column;

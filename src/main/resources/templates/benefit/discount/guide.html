@@ -8,6 +8,7 @@
     <title>제목 미정</title>
     <link rel="stylesheet" th:href="@{/assets/styles/benefit/discount/guide.css}">
     <th:block th:replace="~{fragments/common/common.html :: commonHead}"></th:block>
+    <script defer th:src="@{/assets/scripts/discount.js}"></script>
 </head>
 <body>
 <th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
@@ -32,7 +33,7 @@
             </li>
         </ul>
     </nav>
-    <div class="searchAndSelect-box">
+    <div class="searchAndSelect-box" id="searchAndSelect-box">
         <!-- search-card -->
         <div class="search-card">
             <div class="text-box">
@@ -55,7 +56,7 @@
                     <div class="title-box">
                         <span class="title">통신사</span>
                         <div class="spring"></div>
-                        <a class="link" href="#" title="통신사 전체보기">
+                        <a class="link" href="./telecomcard" title="통신사 전체보기">
                             전체보기 <img th:src="@{/assets/images/common/more.png}" alt="">
                         </a>
                     </div>
@@ -108,7 +109,7 @@
                     <div class="title-box">
                         <span class="title">신용카드</span>
                         <div class="spring"></div>
-                        <a class="link" href="#" title="신용카드 전체보기">
+                        <a class="link" href="./creditcard" title="신용카드 전체보기">
                             전체보기 <img th:src="@{/assets/images/common/more.png}" alt="">
                         </a>
                     </div>
@@ -230,7 +231,7 @@
                     <div class="title-box">
                         <span class="title">포인트/기타제휴</span>
                         <div class="spring"></div>
-                        <a class="link" href="#" title="포인트 기타제휴 전체보기">
+                        <a class="link" href="./pointcard" title="포인트 기타제휴 전체보기">
                             전체보기 <img th:src="@{/assets/images/common/more.png}" alt="">
                         </a>
                     </div>
@@ -269,7 +270,7 @@
                 <div class="box">
                     <span class="title">상품권/관람권</span>
                     <div class="spring"></div>
-                    <a class="link" href="#" title="상품권 관람권 전체보기">
+                    <a class="link" href="./giftcard" title="상품권 관람권 전체보기">
                         전체보기
                         <img th:src="@{/assets/images/common/more.png}" alt="">
                     </a>

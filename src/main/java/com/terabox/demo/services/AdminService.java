@@ -39,8 +39,6 @@ public class AdminService {
         }
         movie.setView(0);
         movie.setGrade(0);
-        movie.setAgeLimit(0);
-        movie.setDimensionType("2D");
         return this.adminMapper.insertMovie(movie) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 
@@ -58,7 +56,6 @@ public class AdminService {
                 }
             }
         }
-        product.setType("ticket");
         return this.adminMapper.insertProduct(product) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 
@@ -100,11 +97,8 @@ public class AdminService {
         dbMovie.setGrade(movie.getGrade());
         dbMovie.setView(movie.getView());
         dbMovie.setSingle(movie.isSingle());
-//        이거 추가하는 form에 안만들어놔서 나중에 바꿔야됨
-//        dbMovie.setAgeLimit(movie.getAgeLimit());
-//        dbMovie.setDimensionType(movie.getDimensionType());
-        dbMovie.setAgeLimit(0);
-        dbMovie.setDimensionType("3D");
+        dbMovie.setAgeLimit(movie.getAgeLimit());
+        dbMovie.setDimensionType(movie.getDimensionType());
         return this.adminMapper.updateMovie(dbMovie) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 
@@ -126,8 +120,7 @@ public class AdminService {
             dbProduct.setThumbnailFileName(product.getThumbnailFileName());
             dbProduct.setThumbnailContentType(product.getThumbnailContentType());
         }
-        dbProduct.setType("ticket");
-
+        dbProduct.setType(product.getType());
         return this.adminMapper.updateProduct(dbProduct) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 
@@ -150,7 +143,6 @@ public class AdminService {
             dbEvent.setThumbnailFileName(event.getThumbnailFileName());
             dbEvent.setThumbnailContentType(event.getThumbnailContentType());
         }
-        System.out.println(3);
         return this.adminMapper.updateEvent(dbEvent) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 

@@ -44,8 +44,8 @@ deleteProductForm.onsubmit = e => {
                     <span class="text">${responseArrayElement['name']}</span>
                     <span class="spring"></span>
                     <span class="info">
-                        <span class="playing-time">가격<br> ${responseArrayElement['price']}</span>
-                        <span class="reservation-rate">수량<br> ${responseArrayElement['quantity']}</span>
+                        <span class="price">가격<br> ${responseArrayElement['price']}</span>
+                        <span class="quantity">수량<br> ${responseArrayElement['quantity']}</span>
                     </span>
                 </span>
             </li>

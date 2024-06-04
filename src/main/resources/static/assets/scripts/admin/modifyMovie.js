@@ -118,13 +118,37 @@ modifyMovieForm.onsubmit = e => {
             <input class="_obj-input __field" type="checkbox" name="isSingle">
             <span class="__warning">올바른 값을 입력해 주세요.</span>
         </label>
+        <label class="_obj-label" rel="ageLimitLabel">
+            <span class="__text">영화 연령제한</span>
+            <select class="_obj-input __field" name="ageLimit">
+                <option disabled hidden selected value="-1">분류 선택</option>
+                <option value="all">전체 이용가(기본)</option>
+                <option value="12">12세 이용가</option>
+                <option value="15">15세 이용가</option>
+                <option value="18">18세 이용가</option>
+            </select>
+            <span class="__warning">연령제한을 선택해 주세요.</span>
+        </label>
+        <label class="_obj-label" rel="dimensionTypeLabel">
+            <span class="__text">영화 특수효과</span>
+            <select class="_obj-input __field" name="dimensionType">
+                <option disabled hidden selected value="-1">효과 선택</option>
+                <option value="2D" selected>2D(기본)</option>
+                <option value="3D">3D</option>
+                <option value="4D">4D</option>
+            </select>
+            <span class="__warning">효과를 선택해 주세요.</span>
+        </label>
         <div class="spring"></div>
         <button type="submit">수정하기</button>
         <button type="button" rel="hideModifyMovieFormTwo">취소</button>
     </div>`, 'text/html').querySelector('div.content');
-                                        if (responseObject['isSingle'] === true){
-                                            modifyMovieFormInner['isSingle'].checked = true;
+                                        // 이거 boolean들 is 떼야됨
+                                        if (responseObject['single'] === true){
+                                            modifyMovieFormInner.querySelector('[name="isSingle"]').checked = true;
                                         }
+                                        modifyMovieFormInner.querySelector(`option[value="${responseObject['ageLimit']}"]`).selected = true;
+                                        modifyMovieFormInner.querySelector(`option[value="${responseObject['dimensionType']}"]`).selected = true;
                                         modifyMovieFormTwo.append(modifyMovieFormInner);
                                         modifyMovieFormTwo['thumbnail'].onchange = () => {
                                             const thumbnailLabel = modifyMovieFormTwo.querySelector('label.thumbnail');
@@ -148,11 +172,56 @@ modifyMovieForm.onsubmit = e => {
                                         }
                                         //
                                         modifyMovieFormInner.querySelector('[rel="hideModifyMovieFormTwo"]').onclick = () => {
+                                            // modifyMovieFormTwo가 생길때 div.content가 생성되서 지워져야될 때 지워져야 된다.
+                                            // 안그러면 div.content가 계속해서 생겨남
+                                            // 지금은 modifyMovieFormTwo가 생기고, 수정하기 누르지 않고 취소 눌러서 빠져나올 때의 상황
                                             modifyMovieFormInner.remove();
                                             modifyMovieFormTwo.hide();
                                         }
+
+                                        // 각 라벨들 선언, 이것도 add에 있음
+                                        modifyMovieFormTwo.titleLabel = new LabelObj(modifyMovieFormTwo.querySelector('[rel="titleLabel"]'));
+                                        modifyMovieFormTwo.thumbnailLabel = new LabelObj(modifyMovieFormTwo.querySelector('[rel="thumbnailLabel"]'));
+                                        modifyMovieFormTwo.releaseDateLabel = new LabelObj(modifyMovieFormTwo.querySelector('[rel="releaseDateLabel"]'));
+                                        modifyMovieFormTwo.playingTimeLabel = new LabelObj(modifyMovieFormTwo.querySelector('[rel="playingTimeLabel"]'));
+                                        modifyMovieFormTwo.isSingleLabel = new LabelObj(modifyMovieFormTwo.querySelector('[rel="isSingleLabel"]'));
+                                        modifyMovieFormTwo.ageLimitLabel = new LabelObj(modifyMovieFormTwo.querySelector('[rel="ageLimitLabel"]'));
+                                        modifyMovieFormTwo.dimensionTypeLabel = new LabelObj(modifyMovieFormTwo.querySelector('[rel="dimensionTypeLabel"]'));
+
                                         modifyMovieFormTwo.onsubmit = e => {
                                             e.preventDefault();
+                                            // MovieRegex에 있는거 chatgpt로 자바스크립트에서 쓸 수 잇게 바꿈
+                                            const movieRegex = RegExp(/^([\da-zA-Z가-힣().\- !]{1,100})$/);
+                                            // add에서 해줬던 유효성 검사 다시
+                                            // 사진은 검사 안한다. 불러올 때 사진은 불러와서 넣어주는게 힘듦
+                                            // 대신 아무 사진도 없으면 서비스에서 원래 있던 사진으로 냅두기로 함
+                                            modifyMovieFormTwo.titleLabel.setValid(movieRegex.test(modifyMovieFormTwo['title'].value));
+                                            const regex = RegExp(/^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/);
+                                            modifyMovieFormTwo.releaseDateLabel.setValid(regex.test(modifyMovieFormTwo['releaseDate'].value))
+                                            modifyMovieFormTwo.playingTimeLabel.setValid((parseInt(modifyMovieFormTwo['hour'].value) <= 2 &&
+                                                    parseInt(modifyMovieFormTwo['hour'].value) >= 1) &&
+                                                (parseInt(modifyMovieFormTwo['minute'].value) < 60 &&
+                                                    parseInt(modifyMovieFormTwo['minute'].value) >= 0) &&
+                                                (parseInt(modifyMovieFormTwo['second'].value) < 60 &&
+                                                    parseInt(modifyMovieFormTwo['second'].value) >= 0));
+                                            modifyMovieFormTwo.isSingleLabel.setValid(modifyMovieFormTwo.querySelector('[name="isSingle"]').checked === true
+                                                || modifyMovieFormTwo.querySelector('[name="isSingle"]').checked === false);
+                                            modifyMovieFormTwo.ageLimitLabel.setValid(modifyMovieFormTwo['ageLimit'].value === 'all' ||
+                                                modifyMovieFormTwo['ageLimit'].value === '12' ||
+                                                modifyMovieFormTwo['ageLimit'].value === '15' ||
+                                                modifyMovieFormTwo['ageLimit'].value === '18');
+                                            modifyMovieFormTwo.dimensionTypeLabel.setValid(modifyMovieFormTwo['dimensionType'].value === '2D' ||
+                                                modifyMovieFormTwo['dimensionType'].value === '3D' ||
+                                                modifyMovieFormTwo['dimensionType'].value === '4D');
+                                            // 양식 안맞을시 제출 막는 로직, 이것도 add에서 해줬었음
+                                            if (!modifyMovieFormTwo.titleLabel.isValid() ||
+                                                !modifyMovieFormTwo.releaseDateLabel.isValid() ||
+                                                !modifyMovieFormTwo.playingTimeLabel.isValid() ||
+                                                !modifyMovieFormTwo.isSingleLabel.isValid() ||
+                                                !modifyMovieFormTwo.ageLimitLabel.isValid() ||
+                                                !modifyMovieFormTwo.dimensionTypeLabel.isValid()){
+                                                return;
+                                            }
                                             // 수정할 값들을 받아서 실제로 수정하는 xhr 요청
                                             const xhr = new XMLHttpRequest();
                                             const formData = new FormData();
@@ -165,6 +234,8 @@ modifyMovieForm.onsubmit = e => {
                                                 modifyMovieFormTwo['minute'].value.padStart(2, '0') + ':' +
                                                 modifyMovieFormTwo['second'].value.padStart(2, '0'));
                                             formData.append('isSingle', modifyMovieFormTwo['isSingle'].value);
+                                            formData.append('ageLimit', modifyMovieFormTwo['ageLimit'].value);
+                                            formData.append('dimensionType', modifyMovieFormTwo['dimensionType'].value);
                                             xhr.onreadystatechange = function () {
                                                 if (xhr.readyState !== XMLHttpRequest.DONE) {
                                                     return;
@@ -177,7 +248,14 @@ modifyMovieForm.onsubmit = e => {
                                                 const responseObject = JSON.parse(xhr.responseText);
                                                 const [dTitle, dContent, dOnclick] = {
                                                     failure: ['경고', '알 수 없는 이유로 영화를 수정하지 못하였습니다. 잠시 후 다시 시도해 주세요.'],
-                                                    success: ['알림', '영화를 성공적으로 수정하였습니다.']
+                                                    success: ['알림', '영화를 성공적으로 수정하였습니다.', () => {
+                                                        modifyMovieFormTwo.hide();
+                                                        // modifyMovieFormTwo가 생길때 div.content가 생성되서 지워져야될 때 지워져야 된다.
+                                                        // 안그러면 div.content가 계속해서 생겨남
+                                                        // 지금은 modifyMovieFormTwo가 생기고, 수정하기를 눌러서 성공한 상황
+                                                        modifyMovieFormTwo.querySelector('div.content').remove();
+                                                        modifyMovieForm.divResult.innerHTML = '';
+                                                    }]
                                                 }[responseObject.result] || ['경고', '서버가 알 수 없는 응답을 반환하였습니다. 잠시 후 다시 시도해 주세요.'];
                                                 MessageObj.createSimpleOk(dTitle, dContent, dOnclick).show();
                                             }

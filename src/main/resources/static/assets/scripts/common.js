@@ -48,6 +48,7 @@ if (document.querySelector('[rel="showLoginAlert"]') !== null) {
 //     로그인이 되어있다면 관리자 페이지로 이동
 }
 
+// 스와이퍼 기능, 홈일 때랑 아닐 때 구분돼있음
 if (document.querySelector('span.swiper-bar') !== null) {
     const leftSwiperButton = document.querySelector('button.left.swiper');
     const rightSwiperButton = document.querySelector('button.right.swiper');
@@ -219,6 +220,7 @@ if (document.querySelector('span.swiper-bar') !== null) {
             }
         }
     } else {
+        // 여기부터 홈에 있는 스와이퍼
         let i = 0;
         let currentPage = 1;
         swiperBars[0].classList.add('point');
@@ -404,27 +406,7 @@ if (document.querySelector('span.swiper-bar') !== null) {
     }
 }
 
-if (document.querySelector('button.select') !== null){
-    const showNewsAgencyButton = document.querySelector('button[rel="showNewsAgency"]');
-    const newsAgencyButton = document.querySelector('.option-box.news-agency');
-    showNewsAgencyButton.onclick = () => {
-        showNewsAgencyButton.classList.toggle('open')
-        newsAgencyButton.classList.toggle('open');
-    }
-    const showCard = document.querySelector('button[rel="showCard"]');
-    const card = document.querySelector('.option-box.card');
-    showCard.onclick = () => {
-        showCard.classList.toggle('open');
-        card.classList.toggle('open');
-    }
-    const showPoint = document.querySelector('button[rel="showPoint"]');
-    const point = document.querySelector('.option-box.point');
-    showPoint.onclick = () => {
-        showPoint.classList.toggle('open');
-        point.classList.toggle('open');
-    }
 
-}
 
 
 class MessageObj {
