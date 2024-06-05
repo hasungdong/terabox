@@ -34,7 +34,7 @@
 </head>
 <body>
 <th:block th:fragment="adminCommonBody">
-    <div th:replace="~{fragments/admin/adminAside.html :: adminAside}"></div>
+    <div th:replace="~{fragments/admin/aside/adminAside.html :: adminAside}"></div>
     <div th:replace="~{fragments/admin/movie/addMovieForm.html :: addMovieForm}"></div>
     <div th:replace="~{fragments/admin/product/addProductForm.html :: addProductForm}"></div>
     <div th:replace="~{fragments/admin/event/addEventForm.html :: addEventForm}"></div>
@@ -47,7 +47,8 @@
     <div th:replace="~{fragments/admin/product/modifyProductFormTwo.html :: modifyProductFormTwo}"></div>
     <div th:replace="~{fragments/admin/event/modifyEventForm.html :: modifyEventForm}"></div>
     <div th:replace="~{fragments/admin/event/modifyEventFormTwo.html :: modifyEventFormTwo}"></div>
-    <div th:replace="~{fragments/admin/adminAsideButton.html :: adminAsideButton}"></div>
+    <div th:replace="~{fragments/admin/aside/adminAsideButton.html :: adminAsideButton}"></div>
+    <div th:replace="~{fragments/admin/screeningInfo/modifyScreeningInfo.html :: modifyScreeningInfoForm}"></div>
 </th:block>
 <th:block th:fragment="common">
     <div th:replace="~{fragments/loading.html :: loading}"></div>

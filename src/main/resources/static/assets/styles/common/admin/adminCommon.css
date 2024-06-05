@@ -109,6 +109,9 @@
   gap: 0.5rem;
   justify-content: flex-start;
 }
+.form > .content > .spring {
+  flex-grow: 1;
+}
 .form > .content > .title {
   position: relative;
 }
@@ -257,7 +260,7 @@
 }
 
 #adminAsideButton {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 0;
   transform: translate(0, -50%);
@@ -282,6 +285,62 @@
 }
 #adminAsideButton > img.on {
   display: block;
+}
+
+.form#modifyScreeningInfoForm {
+  width: 1000px;
+  gap: 0;
+}
+.form#modifyScreeningInfoForm > .search-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  border-bottom: 1px solid #444444;
+  position: relative;
+}
+.form#modifyScreeningInfoForm > .search-bar > label:not(:first-child) {
+  border-left: 1px solid #444444;
+}
+.form#modifyScreeningInfoForm > .search-bar > label[rel=releaseDateLabel] {
+  width: 31%;
+  padding: 0 1rem 1rem 1rem;
+}
+.form#modifyScreeningInfoForm > .search-bar > label[rel=releaseDateLabel] > .__text {
+  padding-top: 1rem;
+}
+.form#modifyScreeningInfoForm > .search-bar > label[rel=theaterNameLabel] {
+  width: 31%;
+  padding: 0 1rem 1rem 1rem;
+}
+.form#modifyScreeningInfoForm > .search-bar > label[rel=theaterNameLabel] > .__text {
+  padding-top: 1rem;
+}
+.form#modifyScreeningInfoForm > .search-bar > label[rel=playingTimeLabel] {
+  width: 31%;
+  padding: 0 1rem 1rem 1rem;
+  border-right: 1px solid #444444;
+}
+.form#modifyScreeningInfoForm > .search-bar > label[rel=playingTimeLabel] > .__text {
+  padding-top: 1rem;
+}
+.form#modifyScreeningInfoForm > .search-bar > .spring {
+  flex-grow: 1;
+}
+.form#modifyScreeningInfoForm > .search-bar .search-button {
+  background-color: #ffffff;
+  padding: 0;
+  border: 1px #666666 solid;
+  border-radius: 0.2rem;
+  height: 2rem;
+  position: absolute;
+  top: 50%;
+  right: 0.05rem;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+.form#modifyScreeningInfoForm > .search-bar .search-button > img {
+  width: 2rem;
+  height: 2rem;
 }
 
 /*# sourceMappingURL=adminCommon.css.map */

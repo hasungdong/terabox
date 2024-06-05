@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div class="form" id="modifyScreeningInfoForm" th:fragment="modifyScreeningInfoForm">
+    <h3 class="title">상영정보 수정</h3>
+    <form class="search-bar">
+        <label class="_obj-label" rel="releaseDateLabel">
+            <span class="__text">상영 날짜</span>
+            <input class="_obj-input __field" type="date" name="releaseDate" spellcheck="false">
+            <span class="__warning">올바른 날짜를 입력해 주세요.</span>
+        </label>
+        <label class="_obj-label" rel="theaterNameLabel">
+            <span class="__text">상영 극장</span>
+            <input class="_obj-input __field" type="text" name="theaterName" spellcheck="false">
+            <span class="__warning">올바른 극장을 입력해 주세요.</span>
+        </label>
+        <label class="_obj-label" rel="playingTimeLabel">
+            <span class="__text">상영 시간대</span>
+            <select class="_obj-input __field" name="ageLimit">
+                <option disabled hidden selected value="-1">분류 선택</option>
+                <option value="00:00:00">00:00:00</option>
+                <option value="02:00:00">02:00:00</option>
+                <option value="04:00:00">04:00:00</option>
+                <option value="06:00:00">06:00:00</option>
+                <option value="08:00:00">08:00:00</option>
+                <option value="10:00:00">10:00:00</option>
+                <option value="12:00:00">12:00:00</option>
+                <option value="14:00:00">14:00:00</option>
+                <option value="16:00:00">16:00:00</option>
+                <option value="18:00:00">18:00:00</option>
+                <option value="20:00:00">20:00:00</option>
+                <option value="22:00:00">22:00:00</option>
+            </select>
+            <span class="__warning">올바른 극장을 입력해 주세요.</span>
+        </label>
+        <button type="submit" class="search-button">
+            <img th:src="@{/assets/images/common/search.png}" alt="">
+        </button>
+    </form>
+    <form class="content">
+        <div class="spring"></div>
+        <button type="submit">수정하기</button>
+        <button type="button" rel="hideModifyScreeningInfoForm">취소</button>
+    </form>
+</div>
+</body>
+</html>

@@ -43,6 +43,10 @@ const modifyEventFormTwoHideButtons = document.querySelectorAll('[rel="hideModif
 const deleteEventForm = document.getElementById('deleteEventForm');
 const deleteEventFormShowButtons = document.querySelectorAll('[rel="showDeleteEventForm"]');
 const deleteEventFormHideButtons = document.querySelectorAll('[rel="hideDeleteEventForm"]');
+// 상영정보 수정
+const modifyScreeningInfoForm = document.getElementById('modifyScreeningInfoForm');
+const modifyScreeningInfoFormShowButtons = document.querySelectorAll('[rel="showModifyScreeningInfoForm"]');
+const modifyScreeningInfoFormHideButtons = document.querySelectorAll('[rel="hideModifyScreeningInfoForm"]');
 // adminAside
 const adminAside = document.getElementById('adminAside');
 const adminAsideButton = document.getElementById('adminAsideButton');
@@ -63,6 +67,7 @@ asideOpenButton.onclick = () => {
         cover.hide();
         asideOpenButton.classList.toggle('on');
         asideCloseButton.classList.toggle('on');
+        adminAsideButton.classList.toggle('on');
     });
 }
 
@@ -285,6 +290,21 @@ deleteEventFormShowButtons.forEach(deleteEventFormShowButton => deleteEventFormS
 // deleteEventForm 숨기기
 deleteEventFormHideButtons.forEach(deleteEventFormHideButton => deleteEventFormHideButton.onclick = () => {
     deleteEventForm.hide();
+    alertCover.hide();
+});
+
+// modifyScreeningInfoForm 보여주기
+modifyScreeningInfoFormShowButtons.forEach(modifyScreeningInfoFormShowButton => modifyScreeningInfoFormShowButton.onclick = () => {
+    modifyScreeningInfoForm.show();
+    alertCover.show(() => {
+        alertCover.hide();
+        modifyScreeningInfoForm.hide();
+    });
+});
+
+// modifyScreeningInfoForm 보여주기
+modifyScreeningInfoFormHideButtons.forEach(modifyScreeningInfoFormHideButton => modifyScreeningInfoFormHideButton.onclick = () => {
+    modifyScreeningInfoForm.hide();
     alertCover.hide();
 });
 
