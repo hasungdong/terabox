@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+#adminAsideButton{
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%);
+  //adminAside랑 맞춘거
+  z-index: 9;
+
+  padding: 0;
+  border: none;
+  //border-left: #aaaaaa solid 1px;
+
+  cursor: pointer;
+  pointer-events: all;
+
+  transition-duration: 900ms;
+  transition-property: transform;
+
+  &.on{
+    //adminAside의 width값
+    transform: translate(22.5rem, -50%);
+  }
+
+  > img{
+    width: 3rem;
+    height: 3rem;
+    display: none;
+
+    &.more{
+      transform: scaleX(-1);
+    }
+
+    &.on{
+      display: block;
+    }
+  }
+}

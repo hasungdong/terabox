@@ -45,8 +45,11 @@ const deleteEventFormShowButtons = document.querySelectorAll('[rel="showDeleteEv
 const deleteEventFormHideButtons = document.querySelectorAll('[rel="hideDeleteEventForm"]');
 // adminAside
 const adminAside = document.getElementById('adminAside');
-const asideOpenButton = adminAside.querySelector('.more');
-const asideCloseButton = adminAside.querySelector('.less');
+const adminAsideButton = document.getElementById('adminAsideButton');
+const asideOpenButton = document.querySelector('[rel="showAdminAside"]');
+const asideCloseButton = document.querySelector('[rel="hideAdminAside"]');
+// adminAside 세부파트
+const showDetailLists = document.querySelectorAll('[rel="showDetailList"]');
 
 
 // adminAside 보여주기
@@ -54,6 +57,7 @@ asideOpenButton.onclick = () => {
     adminAside.show();
     asideOpenButton.classList.toggle('on');
     asideCloseButton.classList.toggle('on');
+    adminAsideButton.classList.toggle('on');
     cover.show(() => {
         adminAside.hide()
         cover.hide();
@@ -68,6 +72,7 @@ asideCloseButton.onclick = () => {
     cover.hide();
     asideOpenButton.classList.toggle('on');
     asideCloseButton.classList.toggle('on');
+    adminAsideButton.classList.toggle('on');
 }
 
 
@@ -93,12 +98,12 @@ modifyMovieFormShowButtons.forEach(modifyMovieFormShowButton => modifyMovieFormS
     alertCover.show(() => {
         alertCover.hide();
         modifyMovieForm.hide();
-        if (modifyMovieFormTwo !== null){
+        if (modifyMovieFormTwo !== null) {
             modifyMovieFormTwo.hide();
             // modifyMovieFormTwo가 생길때 div.content가 생성되서 지워져야될 때 지워져야 된다.
             // 안그러면 div.content가 계속해서 생겨남
             // 지금은 modifyMovieFormTwo가 생기고, 수정하기 누르지 않고 alertCover 눌러서 빠져나올 때의 상황
-            if (modifyMovieFormTwo.querySelector('div.content') !== null){
+            if (modifyMovieFormTwo.querySelector('div.content') !== null) {
                 modifyMovieFormTwo.querySelector('div.content').remove();
             }
         }
@@ -164,12 +169,12 @@ modifyProductFormShowButtons.forEach(modifyProductFormShowButton => modifyProduc
     alertCover.show(() => {
         alertCover.hide();
         modifyProductForm.hide();
-        if (modifyProductFormTwo !== null){
+        if (modifyProductFormTwo !== null) {
             modifyProductFormTwo.hide();
             // modifyProductFormTwo가 생길때 div.content가 생성되서 지워져야될 때 지워져야 된다.
             // 안그러면 div.content가 계속해서 생겨남
             // 지금은 modifyProductFormTwo가 생기고, 수정하기 누르지 않고 alertCover 눌러서 빠져나올 때의 상황
-            if (modifyProductFormTwo.querySelector('div.content') !== null){
+            if (modifyProductFormTwo.querySelector('div.content') !== null) {
                 modifyProductFormTwo.querySelector('div.content').remove();
             }
         }
@@ -235,12 +240,12 @@ modifyEventFormShowButtons.forEach(modifyEventFormShowButton => modifyEventFormS
     alertCover.show(() => {
         alertCover.hide();
         modifyEventForm.hide();
-        if (modifyEventFormTwo !== null){
+        if (modifyEventFormTwo !== null) {
             modifyEventFormTwo.hide();
             // modifyEventFormTwo가 생길때 div.content가 생성되서 지워져야될 때 지워져야 된다.
             // 안그러면 div.content가 계속해서 생겨남
             // 지금은 modifyEventFormTwo가 생기고, 수정하기 누르지 않고 alertCover 눌러서 빠져나올 때의 상황
-            if (modifyEventFormTwo.querySelector('div.content') !== null){
+            if (modifyEventFormTwo.querySelector('div.content') !== null) {
                 modifyEventFormTwo.querySelector('div.content').remove();
             }
         }
@@ -283,6 +288,13 @@ deleteEventFormHideButtons.forEach(deleteEventFormHideButton => deleteEventFormH
     alertCover.hide();
 });
 
+// adminAside 안에 추가 수정 삭제 등 세부 사항 보기
+showDetailLists.forEach(showDetailList => {
+    showDetailList.onclick = () => {
+        // 형제 태그 가져오는 법
+        showDetailList.nextElementSibling.classList.toggle('on');
+    }
+})
 
 
 

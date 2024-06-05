@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<form class="form" id="addScreeningInfoForm" th:fragment="addScreeningInfoForm">
+    <h3 class="title">상영정보 추가</h3>
+    <div class="content">
+        <label class="_obj-label title" rel="titleLabel">
+            <span class="__text">상영 영화 제목</span>
+            <input autofocus required class="_obj-input __field" type="text" name="title" maxlength="100" minlength="1"
+                   placeholder="영화 제목(숫자, 영어 대소문자, 완성 한글, 공백 1자 이상 100자 이하)" spellcheck="false">
+            <span class="__warning">올바른 제목을 입력해 주세요.</span>
+        </label>
+        <label class="_obj-label" rel="releaseDateLabel">
+            <span class="__text">상영 날짜</span>
+            <input class="_obj-input __field" type="date" name="releaseDate" spellcheck="false">
+            <span class="__warning">올바른 날짜를 입력해 주세요.</span>
+        </label>
+        <label class="_obj-label" rel="playingTimeLabel">
+            <span class="__text">상영 시간대</span>
+            <span>
+                <select class="_obj-input __field" name="ageLimit">
+                <option disabled hidden selected value="-1">분류 선택</option>
+                <option value="00:00:00">00:00:00</option>
+                <option value="02:00:00">02:00:00</option>
+                <option value="04:00:00">04:00:00</option>
+                <option value="06:00:00">06:00:00</option>
+                <option value="08:00:00">08:00:00</option>
+                <option value="10:00:00">10:00:00</option>
+                <option value="12:00:00">12:00:00</option>
+                <option value="14:00:00">14:00:00</option>
+                <option value="16:00:00">16:00:00</option>
+                <option value="18:00:00">18:00:00</option>
+                <option value="20:00:00">20:00:00</option>
+                <option value="22:00:00">22:00:00</option>
+            </select>
+                <span class="text">상영 시간대는 00:00:00부터 23:59:59 사이의 짝수 시간 정각 중 하나입니다.</span>
+            </span>
+            <span class="__warning">올바른 시간을 입력해 주세요.</span>
+        </label>
+        <label class="_obj-label" rel="isSingleLabel">
+            <span class="__text">영화 단독 개봉 여부</span>
+            <input class="_obj-input __field" type="checkbox" name="isSingle">
+            <span class="__warning">올바른 값을 입력해 주세요.</span>
+        </label>
+        <label class="_obj-label" rel="ageLimitLabel">
+            <span class="__text">영화 연령제한</span>
+            <select class="_obj-input __field" name="ageLimit">
+                <option disabled hidden selected value="-1">분류 선택</option>
+                <option value="all" selected>전체 이용가(기본)</option>
+                <option value="12">12세 이용가</option>
+                <option value="15">15세 이용가</option>
+                <option value="18">18세 이용가</option>
+            </select>
+            <span class="__warning">연령제한을 선택해 주세요.</span>
+        </label>
+        <label class="_obj-label" rel="dimensionTypeLabel">
+            <span class="__text">영화 특수효과</span>
+            <select class="_obj-input __field" name="dimensionType">
+                <option disabled hidden selected value="-1">효과 선택</option>
+                <option value="2D" selected>2D(기본)</option>
+                <option value="3D">3D</option>
+                <option value="4D">4D</option>
+            </select>
+            <span class="__warning">효과를 선택해 주세요.</span>
+        </label>
+        <div class="spring"></div>
+        <button type="submit">추가하기</button>
+        <button type="button" rel="hideAddMovieForm">취소</button>
+    </div>
+</form>
+</body>
+</html>
