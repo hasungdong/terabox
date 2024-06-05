@@ -1,0 +1,29 @@
+#adminAsideButton {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%);
+  z-index: 9;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  pointer-events: all;
+  transition-duration: 900ms;
+  transition-property: transform;
+}
+#adminAsideButton.on {
+  transform: translate(22.5rem, -50%);
+}
+#adminAsideButton > img {
+  width: 3rem;
+  height: 3rem;
+  display: none;
+}
+#adminAsideButton > img.more {
+  transform: scaleX(-1);
+}
+#adminAsideButton > img.on {
+  display: block;
+}
+
+/*# sourceMappingURL=adminAsideButton.css.map */
