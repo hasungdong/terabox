@@ -1,0 +1,102 @@
+<form id="theaterForm" th:fragment="theater">
+  <div class="theater-choice">
+    <p class="title">극장</p>
+    <div class="list-area">
+      <div class="btn-area">
+        <button type="button" class="btn-tap">전체</button>
+        <button type="button" class="btn-tap">특별관</button>
+      </div>
+      <div class="all-list">
+        <div class="region-list">
+          <ul>
+            <li>
+              <button type="button" class="btn">서울(20)</button>
+            </li>
+            <li>
+              <button type="button" class="btn">인천(5)</button>
+            </li>
+            <li>
+              <button type="button" class="btn">대전/충청/세종(17)</button>
+            </li>
+            <li>
+              <button type="button" class="btn">부산/대구/경산(26)</button>
+            </li>
+            <li>
+              <button type="button" class="btn">광주/전라(9)</button>
+            </li>
+            <li>
+              <button type="button" class="btn">강원(4)</button>
+            </li>
+            <li>
+              <button type="button" class="btn">제주(3)</button>
+            </li>
+          </ul>
+        </div>
+        <div class="detail-list">
+          <div class="region seoul">
+            <ul>
+              <li>
+                <button type="button" class="btn">강남</button>
+              </li>
+              <li>
+                <button type="button" class="btn">강동</button>
+              </li>
+              <li>
+                <button type="button" class="btn">군자</button>
+              </li>
+            </ul>
+          </div>
+          <div class="region gyeonggi" style="display: none">
+            <ul>
+              <li>
+                <button type="button" class="btn">고양스타필드</button>
+              </li>
+              <li>
+                <button type="button" class="btn">광명AK플라자</button>
+              </li>
+              <li>
+                <button type="button" class="btn">광명소하</button>
+              </li>
+            </ul>
+          </div>
+          <div class="region incheon" style="display: none">
+            <ul>
+              <li>
+                <button type="button" class="btn">검단</button>
+              </li>
+              <li>
+                <button type="button" class="btn">송도</button>
+              </li>
+              <li>
+                <button type="button" class="btn">영종</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="special">
+
+      </div>
+    </div>
+    <div class="choice-all">
+      <span>모든영화</span>
+      <span>목록에서 영화를 선택하세요</span>
+    </div>
+    <div class="choice-list" style="display:none">
+      <div class="bg">
+        <div class="img">
+          <img src="" alt="">
+        </div>
+        <button class="del">
+          <i class="fa-solid fa-x"></i>
+        </button>
+      </div>
+      <div class="bg">
+
+      </div>
+      <div class="bg">
+
+      </div>
+    </div>
+  </div>
+</form>

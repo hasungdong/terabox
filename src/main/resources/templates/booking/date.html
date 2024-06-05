@@ -1,0 +1,28 @@
+<form id="dateForm" th:fragment="date">
+  <div class="time-schedule">
+    <div class="wrap">
+      <button title="이전 날짜 보기" type="button" class="btn-prev">
+        <i class="fa-solid fa-angle-left"></i>
+      </button>
+      <div class="date-list">
+        <!-- 년도, 월 표시 -->
+        <div class="year-area">
+          <div class="year"></div>
+          <div class="year"></div>
+        </div>
+        <div id="dates" class="date-area">
+          <div class="wrap"></div>
+        </div>
+      </div>
+      <button title="다음 날짜 보기" type="button" class="btn-next">
+        <i class="fa-solid fa-angle-right"></i>
+      </button>
+    </div>
+    <!-- 달력보기 -->
+    <div class="cal-line">
+      <button type="button" id="calendar" class="btn-calendar-large">
+        <img src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-calendar-w20.png" alt="">
+      </button>
+    </div>
+  </div>
+</form>

@@ -9,11 +9,20 @@
   border: 1px solid #d8d9db;
   border-top: 1px solid #555;
 
-  .btn-gr {
+  > .wrap {
     display: flex;
     height: 40px;
 
-    .btn-pre {
+
+    .btn-prev {
+      width: 30px;
+      border: 0 !important;
+      background-color: transparent !important;
+      cursor: pointer;
+      height: inherit;
+    }
+
+    .btn-next {
       width: 30px;
       border: 0 !important;
       background-color: transparent !important;
@@ -22,17 +31,15 @@
     }
 
     .date-list {
-      overflow: hidden;
 
-      .year-area {
-        position: absolute;
-        z-index: 1;
-        opacity: 1;
-
-        height: inherit;
-        left: 28px;
+      > .year-area {
 
         .year {
+          position: absolute;
+          z-index: 1;
+          opacity: 1;
+          left: 30px;
+
           border: 1px solid #d8d9db;
           border-radius: 15px;
           background-color: #fff;
@@ -46,18 +53,47 @@
           font-weight: 300;
           font-size: .8667rem;
         }
+
+        .year:nth-child(2) {
+          position: absolute;
+          z-index: 1;
+          opacity: 1;
+
+          border: 1px solid #d8d9db;
+          border-radius: 15px;
+          background-color: #fff;
+          margin-top: -10px;
+          top: 0;
+          left: 940px;
+          height: 20px;
+          width: 70px;
+          text-align: center;
+          line-height: 18px;
+          font-weight: 300;
+          font-size: .8667rem;
+        }
       }
 
       .date-area {
-        display: flex;
         height: inherit;
+        overflow: hidden;
+        width: 980px;
+
+        .wrap {
+          float: left;
+          display: flex;
+          flex-direction: row;
+          position: relative;
+          transition: 0.5s;
+        }
 
         button {
           display: flex;
           align-items: center;
           justify-content: center;
 
-          padding: 0 17px 0 17px;
+          width: 70px;
+          padding: 0;
           border: 0;
           border-bottom: 2px solid transparent;
           background-color: transparent;
@@ -65,28 +101,22 @@
           font-size: .8667em;
           font-weight: 400;
           cursor: pointer;
-        }
 
-        button:hover {
-          border-bottom-color: #503396;
-        }
 
-        button:focus {
-          border-bottom-color: #503396;
-          background-color: lighten(#444, 70%);
+          &:hover {
+            border-bottom-color: #503396;
+          }
+
+          &:focus {
+            border-bottom-color: #503396;
+            background-color: lighten(#444, 70%);
+          }
         }
 
         em {
           position: relative;
           padding: 0 9px 0 0;
           font-style: normal;
-
-          .date {
-            display: inline-block;
-            //vertical-align: bottom;
-            font-size: 17px;
-            font-weight: 100;
-          }
         }
 
         em::after {
