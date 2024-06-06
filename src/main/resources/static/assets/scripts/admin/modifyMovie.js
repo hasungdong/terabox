@@ -71,6 +71,7 @@ modifyMovieForm.onsubmit = e => {
                                 text: '확인', onclick: instance => {
                                     instance.hide();
                                     modifyMovieFormTwo.show();
+                                    alert(1);
                                     // 선택한 영화에 대한 수정 화면으로 이동하고,
                                     // 이미 들어가있는 값들 불러오는 xhr 요청
                                     const xhr = new XMLHttpRequest();
@@ -82,6 +83,7 @@ modifyMovieForm.onsubmit = e => {
                                             MessageObj.createSimpleOk('오류', '요청을 전송하는 도중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.').show();
                                             return;
                                         }
+                                        alert(2);
                                         const responseObject = JSON.parse(xhr.responseText);
                                         const modifyMovieFormInner = new DOMParser().parseFromString(`
     <div class="content">
@@ -148,12 +150,15 @@ modifyMovieForm.onsubmit = e => {
         <button type="submit">수정하기</button>
         <button type="button" rel="hideModifyMovieFormTwo">취소</button>
     </div>`, 'text/html').querySelector('div.content');
+                                        console.log(modifyMovieFormInner)
+
                                         // 이거 boolean들 is 떼야됨
                                         if (responseObject['single'] === true){
                                             modifyMovieFormInner.querySelector('[name="isSingle"]').checked = true;
                                         }
                                         modifyMovieFormInner.querySelector(`option[value="${responseObject['ageLimit']}"]`).selected = true;
                                         modifyMovieFormInner.querySelector(`option[value="${responseObject['dimensionType']}"]`).selected = true;
+                                        console.log(modifyMovieFormInner)
                                         modifyMovieFormTwo.append(modifyMovieFormInner);
                                         modifyMovieFormTwo['thumbnail'].onchange = () => {
                                             const thumbnailLabel = modifyMovieFormTwo.querySelector('label.thumbnail');

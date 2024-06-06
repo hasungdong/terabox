@@ -18,6 +18,7 @@
         <script defer type="text/javascript" th:src="@{/assets/scripts/admin/modifyMovie.js}"></script>
         <script defer type="text/javascript" th:src="@{/assets/scripts/admin/modifyProduct.js}"></script>
         <script defer type="text/javascript" th:src="@{/assets/scripts/admin/modifyEvent.js}"></script>
+        <script defer type="text/javascript" th:src="@{/assets/scripts/admin/screeningInfo.js}"></script>
     </th:block>
     <th:block th:fragment="commonHead">
         <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/common/common.css}">
@@ -49,6 +50,7 @@
     <div th:replace="~{fragments/admin/event/modifyEventFormTwo.html :: modifyEventFormTwo}"></div>
     <div th:replace="~{fragments/admin/aside/adminAsideButton.html :: adminAsideButton}"></div>
     <div th:replace="~{fragments/admin/screeningInfo/modifyScreeningInfo.html :: modifyScreeningInfoForm}"></div>
+    <div th:replace="~{fragments/admin/screeningInfo/searchMovie.html :: searchMovie}"></div>
 </th:block>
 <th:block th:fragment="common">
     <div th:replace="~{fragments/loading.html :: loading}"></div>

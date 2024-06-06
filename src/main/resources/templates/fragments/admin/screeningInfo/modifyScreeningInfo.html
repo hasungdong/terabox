@@ -11,19 +11,24 @@
 <div class="form" id="modifyScreeningInfoForm" th:fragment="modifyScreeningInfoForm">
     <h3 class="title">상영정보 수정</h3>
     <form class="search-bar">
-        <label class="_obj-label" rel="releaseDateLabel">
+        <label class="_obj-label" rel="screeningDateLabel">
             <span class="__text">상영 날짜</span>
-            <input class="_obj-input __field" type="date" name="releaseDate" spellcheck="false">
+            <input class="_obj-input __field" type="date" name="screeningDate" spellcheck="false">
             <span class="__warning">올바른 날짜를 입력해 주세요.</span>
+        </label>
+        <label class="_obj-label" rel="regionCodeLabel">
+            <span class="__text">지역</span>
+            <input class="_obj-input __field" type="text" name="regionCode" spellcheck="false">
+            <span class="__warning">올바른 지역명 입력해 주세요.</span>
         </label>
         <label class="_obj-label" rel="theaterNameLabel">
             <span class="__text">상영 극장</span>
             <input class="_obj-input __field" type="text" name="theaterName" spellcheck="false">
             <span class="__warning">올바른 극장을 입력해 주세요.</span>
         </label>
-        <label class="_obj-label" rel="playingTimeLabel">
+        <label class="_obj-label" rel="screeningTimeLabel">
             <span class="__text">상영 시간대</span>
-            <select class="_obj-input __field" name="ageLimit">
+            <select class="_obj-input __field" name="screeningTime">
                 <option disabled hidden selected value="-1">분류 선택</option>
                 <option value="00:00:00">00:00:00</option>
                 <option value="02:00:00">02:00:00</option>
@@ -44,11 +49,37 @@
             <img th:src="@{/assets/images/common/search.png}" alt="">
         </button>
     </form>
-    <form class="content">
+    <div class="content">
+        <ul>
+            <li>
+                <input type="hidden" name="screeningDate">
+                <input type="hidden" name="screeningTime">
+                <input type="hidden" name="cinemaIndex">
+                <input type="hidden" name="movieIndex">
+                <label class="_obj-label" rel="releaseDateLabel">
+                    <input class="_obj-input __field" type="text" name="releaseDate" spellcheck="false" value="2024-06-06" disabled>
+                </label>
+                <label class="_obj-label" rel="theaterNameLabel">
+                    <input class="_obj-input __field" type="text" name="theaterName" spellcheck="false" disabled value="대구 동대구역">
+                </label>
+                <label class="_obj-label" rel="cinemaLabel">
+                    <input class="_obj-input __field" type="text" name="cinema" spellcheck="false" disabled value="1">
+                </label>
+                <label class="_obj-label" rel="playingTimeLabel">
+                    <input class="_obj-input __field" type="text" name="cinema" spellcheck="false" disabled value="00:00:00">
+                </label>
+                <label class="_obj-label" rel="titleLabel">
+                    <input class="_obj-input __field" type="text" name="title" spellcheck="false" disabled value="범죄도시4">
+                    <button type="button" class="search-button" rel="showSearchMovie">
+                        <img th:src="@{/assets/images/common/search.png}" alt="">
+                    </button>
+                </label>
+                <button type="button">수정하기</button>
+            </li>
+        </ul>
         <div class="spring"></div>
-        <button type="submit">수정하기</button>
         <button type="button" rel="hideModifyScreeningInfoForm">취소</button>
-    </form>
+    </div>
 </div>
 </body>
 </html>

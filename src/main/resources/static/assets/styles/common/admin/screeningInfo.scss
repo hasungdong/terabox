@@ -11,35 +11,20 @@
     border-bottom: 1px solid #444444;
     position: relative;
 
-    > label:not(:first-child){
-      border-left: 1px solid #444444;
-    }
-
-    > label[rel="releaseDateLabel"]{
-      width: 31%;
+    > label{
+      width: 23%;
       padding: 0 1rem 1rem 1rem;
 
       > .__text{
         padding-top: 1rem;
       }
-    }
 
-    > label[rel="theaterNameLabel"]{
-      width: 31%;
-      padding: 0 1rem 1rem 1rem;
-
-      > .__text{
-        padding-top: 1rem;
+      &:not(:first-child) {
+        border-left: 1px solid #444444;
       }
-    }
 
-    > label[rel="playingTimeLabel"]{
-      width: 31%;
-      padding: 0 1rem 1rem 1rem;
-      border-right: 1px solid #444444;
-
-      > .__text{
-        padding-top: 1rem;
+      &:last-child{
+        border-right: 1px solid #444444;
       }
     }
 
@@ -64,6 +49,68 @@
       > img{
         width: 2rem;
         height: 2rem;
+      }
+    }
+  }
+
+  > .content{
+    > ul{
+      border: 1px solid #444444;
+
+      > li{
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        border-bottom: 1px solid #444444;
+        position: relative;
+        border-radius: 0;
+        //input 태그랑 맞춘값
+
+        &:last-child{
+          border-bottom: none;
+        }
+
+        > label{
+          width: 18.4%;
+          gap: 0;
+          position: relative;
+
+          > ._obj-input{
+            height: 38px;
+            border-radius: 0;
+            background-color: #ffffff;
+            color: #444444;
+          }
+
+          > [type="button"][rel="showSearchMovie"]{
+            background-color: #ffffff;
+            padding: 0;
+            border: 1px #666666 solid;
+            border-radius: 0.2rem;
+            height: 2rem;
+            //이미지 크기랑 맞춰야 됨, 부모에 stretch 때문에 height가 늘어나있는 상태임
+
+            position: absolute;
+            top: 50%;
+            right: 0.01rem;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+
+            > img{
+              width: 2rem;
+              height: 2rem;
+            }
+          }
+
+          > .__text{
+            padding-top: 1rem;
+          }
+        }
+
+        > [type="button"]{
+          flex-grow: 1;
+          cursor: pointer;
+        }
       }
     }
   }

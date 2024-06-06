@@ -2,6 +2,7 @@
 const addMovieForm = document.getElementById('addMovieForm');
 const addMovieFormShowButtons = document.querySelectorAll('[rel="showAddMovieForm"]');
 const addMovieFormHideButtons = document.querySelectorAll('[rel="hideAddMovieForm"]');
+
 // 영화 수정
 const modifyMovieForm = document.getElementById('modifyMovieForm');
 const modifyMovieFormShowButtons = document.querySelectorAll('[rel="showModifyMovieForm"]');
@@ -9,14 +10,17 @@ const modifyMovieFormHideButtons = document.querySelectorAll('[rel="hideModifyMo
 const modifyMovieFormTwo = document.getElementById('modifyMovieFormTwo');
 const modifyMovieFormTwoShowButtons = document.querySelectorAll('[rel="showModifyMovieFormTwo"]');
 const modifyMovieFormTwoHideButtons = document.querySelectorAll('[rel="hideModifyMovieFormTwo"]');
+
 // 영화 삭제
 const deleteMovieForm = document.getElementById('deleteMovieForm');
 const deleteMovieFormShowButtons = document.querySelectorAll('[rel="showdeleteMovieForm"]');
 const deleteMovieFormHideButtons = document.querySelectorAll('[rel="hideDeleteMovieForm"]');
+
 // 상품 추가
 const addProductForm = document.getElementById('addProductForm')
 const addProductFormShowButtons = document.querySelectorAll('[rel="showAddProductForm"]');
 const addProductFormHideButtons = document.querySelectorAll('[rel="hideAddProductForm"]');
+
 // 상품 수정
 const modifyProductForm = document.getElementById('modifyProductForm');
 const modifyProductFormShowButtons = document.querySelectorAll('[rel="showModifyProductForm"]');
@@ -24,14 +28,17 @@ const modifyProductFormHideButtons = document.querySelectorAll('[rel="hideModify
 const modifyProductFormTwo = document.getElementById('modifyProductFormTwo');
 const modifyProductFormTwoShowButtons = document.querySelectorAll('[rel="showModifyProductFormTwo"]');
 const modifyProductFormTwoHideButtons = document.querySelectorAll('[rel="hideModifyProductFormTwo"]');
+
 // 상품 삭제
 const deleteProductForm = document.getElementById('deleteProductForm');
 const deleteProductFormShowButtons = document.querySelectorAll('[rel="showDeleteProductForm"]');
 const deleteProductFormHideButtons = document.querySelectorAll('[rel="hideDeleteProductForm"]');
+
 // 이벤트 추가
 const addEventForm = document.getElementById('addEventForm');
 const addEventFormShowButtons = document.querySelectorAll('[rel="showAddEventForm"]');
 const addEventFormHideButtons = document.querySelectorAll('[rel="hideAddEventForm"]');
+
 // 이벤트 수정
 const modifyEventForm = document.getElementById('modifyEventForm');
 const modifyEventFormShowButtons = document.querySelectorAll('[rel="showModifyEventForm"]');
@@ -39,19 +46,28 @@ const modifyEventFormHideButtons = document.querySelectorAll('[rel="hideModifyEv
 const modifyEventFormTwo = document.getElementById('modifyEventFormTwo');
 const modifyEventFormTwoShowButtons = document.querySelectorAll('[rel="showModifyEventFormTwo"]');
 const modifyEventFormTwoHideButtons = document.querySelectorAll('[rel="hideModifyEventFormTwo"]');
+
 // 이벤트 삭제
 const deleteEventForm = document.getElementById('deleteEventForm');
 const deleteEventFormShowButtons = document.querySelectorAll('[rel="showDeleteEventForm"]');
 const deleteEventFormHideButtons = document.querySelectorAll('[rel="hideDeleteEventForm"]');
+
 // 상영정보 수정
 const modifyScreeningInfoForm = document.getElementById('modifyScreeningInfoForm');
 const modifyScreeningInfoFormShowButtons = document.querySelectorAll('[rel="showModifyScreeningInfoForm"]');
 const modifyScreeningInfoFormHideButtons = document.querySelectorAll('[rel="hideModifyScreeningInfoForm"]');
+
+// 상영정보 수정에 영화 검색창
+const searchMovie = document.getElementById('searchMovie');
+const searchMovieShowButtons = document.querySelectorAll('[rel="showSearchMovie"]');
+const searchMovieHideButtons = document.querySelectorAll('[rel="hideSearchMovie"]');
+
 // adminAside
 const adminAside = document.getElementById('adminAside');
 const adminAsideButton = document.getElementById('adminAsideButton');
 const asideOpenButton = document.querySelector('[rel="showAdminAside"]');
 const asideCloseButton = document.querySelector('[rel="hideAdminAside"]');
+
 // adminAside 세부파트
 const showDetailLists = document.querySelectorAll('[rel="showDetailList"]');
 
@@ -297,8 +313,14 @@ deleteEventFormHideButtons.forEach(deleteEventFormHideButton => deleteEventFormH
 modifyScreeningInfoFormShowButtons.forEach(modifyScreeningInfoFormShowButton => modifyScreeningInfoFormShowButton.onclick = () => {
     modifyScreeningInfoForm.show();
     alertCover.show(() => {
+        modifyScreeningInfoForm.hide()
         alertCover.hide();
-        modifyScreeningInfoForm.hide();
+        if (searchMovie !== null){
+            searchMovie.hide()
+            if (searchMovie.querySelector('div.result-box') !== null){
+                searchMovie.querySelector('div.result-box').remove();
+            }
+        }
     });
 });
 
@@ -307,6 +329,29 @@ modifyScreeningInfoFormHideButtons.forEach(modifyScreeningInfoFormHideButton => 
     modifyScreeningInfoForm.hide();
     alertCover.hide();
 });
+
+// 상영정보 영화 검색창 보여주기
+searchMovieShowButtons.forEach(searchMovieShowButton => searchMovieShowButton.onclick = () => {
+    searchMovie.show();
+    const alertCover2 = alertCover.cloneNode(false);
+    alertCover2.id = alertCover.id + '2';
+    alertCover2.style.zIndex = '10';
+    document.body.append(alertCover2);
+    searchMovie.style.zIndex = '11';
+    alertCover2.show = (onclick) => {
+        alertCover2.onclick = onclick;
+        alertCover2.classList.add(HTMLElement.VISIBLE_CLASS_NAME);
+    }
+    alertCover2.show(() => {
+        alertCover2.hide();
+        searchMovie.hide();
+    });
+});
+
+searchMovieHideButtons.forEach(searchMovieHideButton => searchMovieHideButton.onclick = () => {
+    searchMovie.hide();
+    alertCover.hide();
+})
 
 // adminAside 안에 추가 수정 삭제 등 세부 사항 보기
 showDetailLists.forEach(showDetailList => {
