@@ -1,3 +1,93 @@
-
+.form#modifyScreeningInfoForm {
+  width: 1000px;
+  gap: 0;
+}
+.form#modifyScreeningInfoForm > .search-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  border-bottom: 1px solid #444444;
+  position: relative;
+}
+.form#modifyScreeningInfoForm > .search-bar > label {
+  width: 23%;
+  padding: 0 1rem 1rem 1rem;
+}
+.form#modifyScreeningInfoForm > .search-bar > label > .__text {
+  padding-top: 1rem;
+}
+.form#modifyScreeningInfoForm > .search-bar > label:not(:first-child) {
+  border-left: 1px solid #444444;
+}
+.form#modifyScreeningInfoForm > .search-bar > label:last-child {
+  border-right: 1px solid #444444;
+}
+.form#modifyScreeningInfoForm > .search-bar > .spring {
+  flex-grow: 1;
+}
+.form#modifyScreeningInfoForm > .search-bar .search-button {
+  background-color: #ffffff;
+  padding: 0;
+  border: 1px #666666 solid;
+  border-radius: 0.2rem;
+  height: 2rem;
+  position: absolute;
+  top: 50%;
+  right: 0.05rem;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+.form#modifyScreeningInfoForm > .search-bar .search-button > img {
+  width: 2rem;
+  height: 2rem;
+}
+.form#modifyScreeningInfoForm > .content > ul {
+  border: 1px solid #444444;
+}
+.form#modifyScreeningInfoForm > .content > ul > li {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  border-bottom: 1px solid #444444;
+  position: relative;
+  border-radius: 0;
+}
+.form#modifyScreeningInfoForm > .content > ul > li:last-child {
+  border-bottom: none;
+}
+.form#modifyScreeningInfoForm > .content > ul > li > label {
+  width: 18.4%;
+  gap: 0;
+  position: relative;
+}
+.form#modifyScreeningInfoForm > .content > ul > li > label > ._obj-input {
+  height: 38px;
+  border-radius: 0;
+  background-color: #ffffff;
+  color: #444444;
+}
+.form#modifyScreeningInfoForm > .content > ul > li > label > [type=button][rel=showSearchMovie] {
+  background-color: #ffffff;
+  padding: 0;
+  border: 1px #666666 solid;
+  border-radius: 0.2rem;
+  height: 2rem;
+  position: absolute;
+  top: 50%;
+  right: 0.01rem;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+.form#modifyScreeningInfoForm > .content > ul > li > label > [type=button][rel=showSearchMovie] > img {
+  width: 2rem;
+  height: 2rem;
+}
+.form#modifyScreeningInfoForm > .content > ul > li > label > .__text {
+  padding-top: 1rem;
+}
+.form#modifyScreeningInfoForm > .content > ul > li > [type=button] {
+  flex-grow: 1;
+  cursor: pointer;
+}
 
 /*# sourceMappingURL=screeningInfo.css.map */
