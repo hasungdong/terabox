@@ -350,7 +350,9 @@ searchMovieShowButtons.forEach(searchMovieShowButton => searchMovieShowButton.on
 
 searchMovieHideButtons.forEach(searchMovieHideButton => searchMovieHideButton.onclick = () => {
     searchMovie.hide();
-    alertCover.hide();
+    if (document.querySelector('[id="alertCover2"]') !== null){
+        document.querySelector('[id="alertCover2"]').remove();
+    }
 })
 
 // adminAside 안에 추가 수정 삭제 등 세부 사항 보기

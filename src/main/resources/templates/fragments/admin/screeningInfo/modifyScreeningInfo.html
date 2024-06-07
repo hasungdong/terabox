@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-<div class="form" id="modifyScreeningInfoForm" th:fragment="modifyScreeningInfoForm">
+<div class="form" id="modifyScreeningInfoForm" th:fragment="modifyScreeningInfoForm" th:if="${regions != null}">
     <h3 class="title">상영정보 수정</h3>
     <form class="search-bar">
         <label class="_obj-label" rel="screeningDateLabel">
@@ -18,30 +18,41 @@
         </label>
         <label class="_obj-label" rel="regionCodeLabel">
             <span class="__text">지역</span>
-            <input class="_obj-input __field" type="text" name="regionCode" spellcheck="false">
+            <select class="_obj-input __field" name="regionCode">
+                <option disabled hidden selected value="-1">분류 선택</option>
+<!--                <option th:each="region : ${regions}" th:text="${region.getText()}" th:value="${region.getCode()}">1관</option>-->
+                <option value="1">대구</option>
+                <option value="2">서울</option>
+                <option value="3">경기</option>
+                <option value="4">제주</option>
+                <option value="5">경상</option>
+                <option value="6">부산</option>
+            </select>
             <span class="__warning">올바른 지역명 입력해 주세요.</span>
         </label>
         <label class="_obj-label" rel="theaterNameLabel">
             <span class="__text">상영 극장</span>
-            <input class="_obj-input __field" type="text" name="theaterName" spellcheck="false">
+            <select class="_obj-input __field" name="theaterName">
+                <option disabled hidden selected value="-1">분류 선택</option>
+                <option value="1">대구</option>
+                <option value="1">서울</option>
+                <option value="1">경기</option>
+                <option value="1">제주</option>
+                <option value="1">경상</option>
+                <option value="1">부산</option>
+            </select>
             <span class="__warning">올바른 극장을 입력해 주세요.</span>
         </label>
-        <label class="_obj-label" rel="screeningTimeLabel">
-            <span class="__text">상영 시간대</span>
-            <select class="_obj-input __field" name="screeningTime">
+        <label class="_obj-label" rel="cinemaNumberLabel">
+            <span class="__text">관</span>
+            <select class="_obj-input __field" name="cinemaNumber">
                 <option disabled hidden selected value="-1">분류 선택</option>
-                <option value="00:00:00">00:00:00</option>
-                <option value="02:00:00">02:00:00</option>
-                <option value="04:00:00">04:00:00</option>
-                <option value="06:00:00">06:00:00</option>
-                <option value="08:00:00">08:00:00</option>
-                <option value="10:00:00">10:00:00</option>
-                <option value="12:00:00">12:00:00</option>
-                <option value="14:00:00">14:00:00</option>
-                <option value="16:00:00">16:00:00</option>
-                <option value="18:00:00">18:00:00</option>
-                <option value="20:00:00">20:00:00</option>
-                <option value="22:00:00">22:00:00</option>
+                <option value="1">1관</option>
+                <option value="2">2관</option>
+                <option value="3">3관</option>
+                <option value="4">4관</option>
+                <option value="5">5관</option>
+                <option value="6">6관</option>
             </select>
             <span class="__warning">올바른 극장을 입력해 주세요.</span>
         </label>
@@ -63,7 +74,7 @@
                     <input class="_obj-input __field" type="text" name="theaterName" spellcheck="false" disabled value="대구 동대구역">
                 </label>
                 <label class="_obj-label" rel="cinemaLabel">
-                    <input class="_obj-input __field" type="text" name="cinema" spellcheck="false" disabled value="1">
+                    <input class="_obj-input __field" type="text" name="cinema" spellcheck="false" disabled value="1관">
                 </label>
                 <label class="_obj-label" rel="playingTimeLabel">
                     <input class="_obj-input __field" type="text" name="cinema" spellcheck="false" disabled value="00:00:00">

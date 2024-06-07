@@ -1,23 +1,109 @@
+// 서치바 하나하나 입력할 때 나올 값들
+modifyScreeningInfoForm.querySelector('[name="screeningDate"]').oninput = () => {
+    const searchBar = modifyScreeningInfoForm.querySelector('form.search-bar');
+    const regionCodeLabel = new DOMParser().parseFromString(`
+    <label class="_obj-label" rel="regionCodeLabel">
+            <span class="__text">지역</span>
+            <select class="_obj-input __field" name="regionCode">
+                <option disabled hidden selected value="-1">분류 선택</option>
+                <option value="1">대구</option>
+                <option value="2">서울</option>
+                <option value="3">경기</option>
+                <option value="4">제주</option>
+                <option value="5">경상</option>
+                <option value="6">부산</option>
+            </select>
+            <span class="__warning">올바른 지역명 입력해 주세요.</span>
+        </label>
+    `, 'text/html').querySelector('label');
+    searchBar.append(regionCodeLabel);
+    searchBar.querySelector('[name="regionCode"]').oninput = () => {
+        const theaterNameLabel = new DOMParser().parseFromString(`
+    <label class="_obj-label" rel="theaterNameLabel">
+            <span class="__text">상영 극장</span>
+            <select class="_obj-input __field" name="theaterName">
+                <option disabled hidden selected value="-1">분류 선택</option>
+                <option value="1">대구</option>
+                <option value="1">서울</option>
+                <option value="1">경기</option>
+                <option value="1">제주</option>
+                <option value="1">경상</option>
+                <option value="1">부산</option>
+            </select>
+            <span class="__warning">올바른 극장을 입력해 주세요.</span>
+        </label>
+    `, 'text/html').querySelector('label');
+        searchBar.append(theaterNameLabel);
+        searchBar.querySelector('[name="theaterName"]').oninput = () => {
+            const cinemaNumber = new DOMParser().parseFromString(`
+            <label class="_obj-label" rel="cinemaNumberLabel">
+            <span class="__text">관</span>
+            <select class="_obj-input __field" name="cinemaNumber">
+                <option disabled hidden selected value="-1">분류 선택</option>
+                <option value="1">1관</option>
+                <option value="2">2관</option>
+                <option value="3">3관</option>
+                <option value="4">4관</option>
+                <option value="5">5관</option>
+                <option value="6">6관</option>
+            </select>
+            <span class="__warning">올바른 극장을 입력해 주세요.</span>
+        </label>
+            `, 'text/html').querySelector('label');
+            searchBar.append(cinemaNumber);
+        }
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 서치바 다 입력하고 검색 눌렀을 때
 modifyScreeningInfoForm.divContent = modifyScreeningInfoForm.querySelector('div.content');
 
 modifyScreeningInfoForm.screeningDateLabel = new LabelObj(modifyScreeningInfoForm.querySelector('[rel="screeningDateLabel"]'));
 modifyScreeningInfoForm.regionCodeLabel = new LabelObj(modifyScreeningInfoForm.querySelector('[rel="regionCodeLabel"]'));
 modifyScreeningInfoForm.theaterNameLabel = new LabelObj(modifyScreeningInfoForm.querySelector('[rel="theaterNameLabel"]'));
-modifyScreeningInfoForm.screeningTimeLabel = new LabelObj(modifyScreeningInfoForm.querySelector('[rel="screeningTimeLabel"]'));
+modifyScreeningInfoForm.cinemaNumberLabel = new LabelObj(modifyScreeningInfoForm.querySelector('[rel="cinemaNumber"]'));
 
 modifyScreeningInfoForm.onsubmit = e => {
     e.preventDefault();
 
     const dateRegex = RegExp(/^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/);
     modifyScreeningInfoForm.screeningDateLabel.setValid(dateRegex.test(modifyScreeningInfoForm['screeningDate'].value))
-    modifyScreeningInfoForm.screeningTimeLabel.setValid(dateRegex.test(modifyScreeningInfoForm['screeningTime'].value))
+    modifyScreeningInfoForm.cinemaNumberLabel.setValid(modifyScreeningInfoForm['screeningTime'].value > 0)
     const regionCodeRegex = RegExp(/^([a-zA-Z가-힣().\- !]{1,100})$/);
     modifyScreeningInfoForm.regionCodeLabel.setValid(regionCodeRegex.test(modifyScreeningInfoForm['regionCode'].value))
     const theaterNameRegex = RegExp(/^([a-zA-Z가-힣().\- !]{1,100})$/);
     modifyScreeningInfoForm.theaterNameLabel.setValid(theaterNameRegex.test(modifyScreeningInfoForm['theaterName'].value));
 
     if (!modifyScreeningInfoForm.screeningDateLabel.isValid() ||
-        !modifyScreeningInfoForm.screeningTimeLabel.isValid() ||
+        !modifyScreeningInfoForm.cinemaNumberLabel.isValid() ||
         !modifyScreeningInfoForm.regionCodeLabel.isValid() ||
         !modifyScreeningInfoForm.theaterNameLabel.isValid()) {
         return;
@@ -55,7 +141,7 @@ modifyScreeningInfoForm.onsubmit = e => {
                     <input class="_obj-input __field" type="text" name="theaterName" spellcheck="false" disabled value="대구 동대구역">
                 </label>
                 <label class="_obj-label" rel="cinemaLabel">
-                    <input class="_obj-input __field" type="text" name="cinema" spellcheck="false" disabled value="1">
+                    <input class="_obj-input __field" type="text" name="cinema" spellcheck="false" disabled value="1관">
                 </label>
                 <label class="_obj-label" rel="playingTimeLabel">
                     <input class="_obj-input __field" type="text" name="cinema" spellcheck="false" disabled value="00:00:00">
@@ -79,7 +165,7 @@ modifyScreeningInfoForm.onsubmit = e => {
 
 
     }
-    xhr.open('GET', `/screeningInfo/?screeningDate=${modifyScreeningInfoForm['screeningDate'].value}&screeningTime=${modifyScreeningInfoForm['screeningTime'].value}&regionCode=${modifyScreeningInfoForm['regionCode'].value}&theaterName=${modifyScreeningInfoForm['theaterName'].value}`);
+    xhr.open('GET', `/screeningInfo/?screeningDate=${modifyScreeningInfoForm['screeningDate'].value}&cinemaNumberLabel=${modifyScreeningInfoForm['cinemaNumber'].value}&regionCode=${modifyScreeningInfoForm['regionCode'].value}&theaterName=${modifyScreeningInfoForm['theaterName'].value}`);
     xhr.send();
 }
 //
