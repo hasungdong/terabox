@@ -54,6 +54,7 @@ const deleteEventFormHideButtons = document.querySelectorAll('[rel="hideDeleteEv
 
 // 상영정보 수정
 const modifyScreeningInfoForm = document.getElementById('modifyScreeningInfoForm');
+const searchBar = modifyScreeningInfoForm.querySelector('form.search-bar');
 const modifyScreeningInfoFormShowButtons = document.querySelectorAll('[rel="showModifyScreeningInfoForm"]');
 const modifyScreeningInfoFormHideButtons = document.querySelectorAll('[rel="hideModifyScreeningInfoForm"]');
 

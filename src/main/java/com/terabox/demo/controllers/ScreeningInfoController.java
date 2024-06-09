@@ -35,6 +35,7 @@ public class ScreeningInfoController {
                                    @RequestParam("regionCode") String regionCode,
                                    @RequestParam("theaterName") String theaterName) {
 
+
         return null;
     }
 }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.terabox.demo.mappers.CinemaMapper">
+    <select id="selectCinemasByTheaterIndex" resultType="com.terabox.demo.entities.CinemaEntity">
+        SELECT `index`         AS 'index',
+               `theater_index` AS 'theater_index',
+               `number`        AS 'number'
+        FROM `terabox`.`cinemas`
+        WHERE `theater_index` = #{theaterIndex}
+    </select>
+</mapper>

@@ -1,80 +1,131 @@
 // 서치바 하나하나 입력할 때 나올 값들
-modifyScreeningInfoForm.querySelector('[name="screeningDate"]').oninput = () => {
-    const searchBar = modifyScreeningInfoForm.querySelector('form.search-bar');
-    const regionCodeLabel = new DOMParser().parseFromString(`
+const searchBar = modifyScreeningInfoForm.querySelector('form.search-bar');
+searchBar.querySelector('[name="screeningDate"]').oninput = () => {
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+        if (xhr.readyState !== XMLHttpRequest.DONE){
+            return;
+        }
+        if (xhr.status < 200 || xhr.status >= 300){
+            MessageObj.createSimpleOk('알림', '요청을 전송하는 도중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.').show();
+            return;
+        }
+        if (document.querySelector('[rel="regionCodeLabel"]') !== null){
+            document.querySelector('[rel="regionCodeLabel"]').remove();
+        }
+        const responseObject = JSON.parse(xhr.responseText);
+        const regions = responseObject['regions'];
+        const regionCodeLabel = new DOMParser().parseFromString(`
     <label class="_obj-label" rel="regionCodeLabel">
             <span class="__text">지역</span>
             <select class="_obj-input __field" name="regionCode">
-                <option disabled hidden selected value="-1">분류 선택</option>
-                <option value="1">대구</option>
-                <option value="2">서울</option>
-                <option value="3">경기</option>
-                <option value="4">제주</option>
-                <option value="5">경상</option>
-                <option value="6">부산</option>
+                <option disabled hidden selected value="-1">지역 선택</option>
             </select>
             <span class="__warning">올바른 지역명 입력해 주세요.</span>
         </label>
     `, 'text/html').querySelector('label');
-    searchBar.append(regionCodeLabel);
-    searchBar.querySelector('[name="regionCode"]').oninput = () => {
-        const theaterNameLabel = new DOMParser().parseFromString(`
-    <label class="_obj-label" rel="theaterNameLabel">
+        searchBar.append(regionCodeLabel);
+        for (const region of regions) {
+            const option = new DOMParser().parseFromString(`
+                <option value="${region['code']}">${region['text']}</option>
+            `, 'text/html').querySelector('option');
+            regionCodeLabel.querySelector('select[name="regionCode"]').append(option);
+        }
+        // 지역 라벨 변했을 때
+        searchBar.querySelector('[name="regionCode"]').onchange = () => {
+            const xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                if (xhr.readyState !== XMLHttpRequest.DONE){
+                    return;
+                }
+                if (xhr.status < 200 || xhr.status >= 300){
+                    MessageObj.createSimpleOk('알림', '요청을 전송하는 도중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.').show();
+                    return;
+                }
+                // 선택이 새로 되면 기존 값을 지워야 하니까 없애줌
+                if (document.querySelector('[rel="theaterSearchNameLabel"]') !== null){
+                    document.querySelector('[rel="theaterSearchNameLabel"]').remove();
+                }
+                if (document.querySelector('[rel="cinemaNumberLabel"]') !== null){
+                    document.querySelector('[rel="cinemaNumberLabel"]').remove();
+                }
+                if (document.querySelector('button[type="submit"]') !== null){
+                    document.querySelector('button[type="submit"]').remove()
+                }
+                const responseObject = JSON.parse(xhr.responseText);
+                const theaters = responseObject['theaters'];
+                const theaterNameLabel = new DOMParser().parseFromString(`
+    <label class="_obj-label" rel="theaterSearchNameLabel">
             <span class="__text">상영 극장</span>
             <select class="_obj-input __field" name="theaterName">
-                <option disabled hidden selected value="-1">분류 선택</option>
-                <option value="1">대구</option>
-                <option value="1">서울</option>
-                <option value="1">경기</option>
-                <option value="1">제주</option>
-                <option value="1">경상</option>
-                <option value="1">부산</option>
+                <option disabled hidden selected value="-1">극장 선택</option>
             </select>
             <span class="__warning">올바른 극장을 입력해 주세요.</span>
         </label>
     `, 'text/html').querySelector('label');
-        searchBar.append(theaterNameLabel);
-        searchBar.querySelector('[name="theaterName"]').oninput = () => {
-            const cinemaNumber = new DOMParser().parseFromString(`
+                searchBar.append(theaterNameLabel);
+                for (const theater of theaters) {
+                    const option = new DOMParser().parseFromString(`
+                    <option value="${theater['index']}">${theater['name']}</option>
+                `, 'text/html').querySelector('option');
+                    theaterNameLabel.querySelector('select[name="theaterName"]').append(option);
+                }
+                // 극장 라벨 변할 때
+                searchBar.querySelector('[name="theaterName"]').onchange = () => {
+                    const xhr = new XMLHttpRequest();
+                    xhr.onreadystatechange = function(){
+                        if (xhr.readyState !== XMLHttpRequest.DONE){
+                            return;
+                        }
+                        if (xhr.status < 200 || xhr.status >= 300){
+                            MessageObj.createSimpleOk('알림', '요청을 전송하는 도중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.').show();
+                            return;
+                        }
+                        if (document.querySelector('[rel="cinemaNumberLabel"]') !== null){
+                            document.querySelector('[rel="cinemaNumberLabel"]').remove();
+                        }
+                        if (document.querySelector('button[type="submit"]') !== null){
+                            document.querySelector('button[type="submit"]').remove()
+                        }
+                        const responseObject = JSON.parse(xhr.responseText);
+                        const cinemas = responseObject['cinemas'];
+                        const cinemaNumberLabel = new DOMParser().parseFromString(`
             <label class="_obj-label" rel="cinemaNumberLabel">
             <span class="__text">관</span>
             <select class="_obj-input __field" name="cinemaNumber">
-                <option disabled hidden selected value="-1">분류 선택</option>
-                <option value="1">1관</option>
-                <option value="2">2관</option>
-                <option value="3">3관</option>
-                <option value="4">4관</option>
-                <option value="5">5관</option>
-                <option value="6">6관</option>
+                <option disabled hidden selected value="-1">관 선택</option>
             </select>
             <span class="__warning">올바른 극장을 입력해 주세요.</span>
         </label>
             `, 'text/html').querySelector('label');
-            searchBar.append(cinemaNumber);
+                        searchBar.append(cinemaNumberLabel);
+                        for (const cinema of cinemas) {
+                            const option = new DOMParser().parseFromString(`
+                <option value="${cinema['number']}">${cinema['number']}</option>
+                `, 'text/html').querySelector('option');
+                            cinemaNumberLabel.querySelector('select[name="cinemaNumber"]').append(option);
+                        }
+                        // 버튼 추가
+                        searchBar.querySelector('[name="cinemaNumber"]').onchange = () => {
+                            const submitButton = new DOMParser().parseFromString(`
+        <button type="submit" class="search-button">
+            <img src="/assets/images/common/search.png" alt="">
+        </button>
+                `, 'text/html').querySelector('[type="submit"]');
+                            searchBar.append(submitButton);
+                        }
+                    }
+                    xhr.open('GET', `/cinema/?theaterIndex=${theaterNameLabel.querySelector('select[name="theaterName"]').options[theaterNameLabel.querySelector('select[name="theaterName"]').selectedIndex].value}`);
+                    xhr.send();
+                }
+            }
+            xhr.open('GET', `/theater/?regionCode=${regionCodeLabel.querySelector('select[name="regionCode"]').options[regionCodeLabel.querySelector('select[name="regionCode"]').selectedIndex].value}`);
+            xhr.send();
         }
     }
-
-
+    xhr.open('GET', '/region/');
+    xhr.send();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -91,7 +142,7 @@ modifyScreeningInfoForm.regionCodeLabel = new LabelObj(modifyScreeningInfoForm.q
 modifyScreeningInfoForm.theaterNameLabel = new LabelObj(modifyScreeningInfoForm.querySelector('[rel="theaterNameLabel"]'));
 modifyScreeningInfoForm.cinemaNumberLabel = new LabelObj(modifyScreeningInfoForm.querySelector('[rel="cinemaNumber"]'));
 
-modifyScreeningInfoForm.onsubmit = e => {
+searchBar.onsubmit = e => {
     e.preventDefault();
 
     const dateRegex = RegExp(/^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/);

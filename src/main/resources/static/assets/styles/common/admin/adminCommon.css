@@ -308,9 +308,6 @@
 .form#modifyScreeningInfoForm > .search-bar > label:not(:first-child) {
   border-left: 1px solid #444444;
 }
-.form#modifyScreeningInfoForm > .search-bar > label:last-child {
-  border-right: 1px solid #444444;
-}
 .form#modifyScreeningInfoForm > .search-bar > .spring {
   flex-grow: 1;
 }

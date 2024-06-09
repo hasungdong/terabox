@@ -19,7 +19,7 @@ public class RegionController {
     @ResponseBody
     public String getRegions(){
         JSONObject responseObject = new JSONObject();
-        responseObject.put("regions", regionService.getRegions());
+        responseObject.put("regions", this.regionService.getRegions());
         return responseObject.toString();
     }
 }

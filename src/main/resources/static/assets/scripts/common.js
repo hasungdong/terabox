@@ -42,9 +42,7 @@ if (document.querySelector('[rel="showLoginAlert"]') !== null) {
             alertCover.hide();
             document.querySelector('._obj-message').hide();
         }
-
-    })
-
+    });
 //     로그인이 되어있다면 관리자 페이지로 이동
 }
 
