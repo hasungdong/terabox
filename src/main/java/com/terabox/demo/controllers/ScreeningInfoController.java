@@ -17,6 +17,7 @@ import java.time.LocalDate;
 public class ScreeningInfoController {
     private final ScreeningInfoService screeningInfoService;
 
+//    한 관에 대해 하루치의 상영정보들 받아오기
     @GetMapping(value = "/vo", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public String getScreeningInfoVo(@DateTimeFormat(pattern = "yyyy-mm-dd")@RequestParam("screeningDate") LocalDate screeningDate,
@@ -26,6 +27,7 @@ public class ScreeningInfoController {
         return responseObject.toString();
     }
 
+//    상영정보 부분 수정
     @PatchMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public String patchScreeningInfo(@Param("index") int index,
