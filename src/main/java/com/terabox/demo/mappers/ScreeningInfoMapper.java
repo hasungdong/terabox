@@ -3,6 +3,7 @@ package com.terabox.demo.mappers;
 import com.terabox.demo.vos.ScreeningInfoVo;
 import com.terabox.demo.entities.ScreeningInfoEntity;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.time.LocalDate;
 
@@ -10,10 +11,13 @@ import java.time.LocalDate;
 public interface ScreeningInfoMapper {
     int insertScreeningInfo(ScreeningInfoEntity screeningInfo);
 
-    int updateScreeningInfo(ScreeningInfoEntity screeningInfo);
+    int updateScreeningInfoByIndex(ScreeningInfoEntity screeningInfo);
 
-    ScreeningInfoEntity[] selectScreeningInfoByCinemaAndDate(LocalDate screeningDate, int cinemaIndex);
+    ScreeningInfoEntity selectScreeningInfoByIndex(@Param("index") int index);
 
-    ScreeningInfoVo[] selectScreeningInfoVoByCinemaAndDate(LocalDate screeningDate, int cinemaIndex);
+    ScreeningInfoEntity[] selectScreeningInfosByCinemaAndDate(LocalDate screeningDate, int cinemaIndex);
+
+    ScreeningInfoVo[] selectScreeningInfoVoByCinemaAndDate(@Param("screeningDate") String  screeningDate,
+                                                           @Param("cinemaIndex") int cinemaIndex);
 
 }

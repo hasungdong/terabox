@@ -19,5 +19,4 @@ public class ScreeningInfoEntity {
     private LocalDate screeningDate;
     @DateTimeFormat(pattern = "HH:mm:ss")
     private LocalTime screeningTime;
-    private int price;
 }

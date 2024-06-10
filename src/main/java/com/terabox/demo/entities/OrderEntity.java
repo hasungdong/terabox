@@ -11,9 +11,9 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(of = "index")
 public class OrderEntity {
     private int index;
-    private String  userEmail;
-    private int movieReservationIndex;
-    private int productIndex;
+    private String userEmail;
+    private Integer movieReservationIndex;
+    private Integer productIndex;
     private int price;
     private LocalDateTime createdAt;
 }

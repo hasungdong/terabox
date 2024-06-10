@@ -327,10 +327,13 @@
   width: 2rem;
   height: 2rem;
 }
-.form#modifyScreeningInfoForm > .content > ul {
+.form#modifyScreeningInfoForm > .content .result-box {
+  flex-grow: 1;
+}
+.form#modifyScreeningInfoForm > .content .result-box > ul {
   border: 1px solid #444444;
 }
-.form#modifyScreeningInfoForm > .content > ul > li {
+.form#modifyScreeningInfoForm > .content .result-box > ul > li {
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -338,21 +341,21 @@
   position: relative;
   border-radius: 0;
 }
-.form#modifyScreeningInfoForm > .content > ul > li:last-child {
+.form#modifyScreeningInfoForm > .content .result-box > ul > li:last-child {
   border-bottom: none;
 }
-.form#modifyScreeningInfoForm > .content > ul > li > label {
+.form#modifyScreeningInfoForm > .content .result-box > ul > li > label {
   width: 18.4%;
   gap: 0;
   position: relative;
 }
-.form#modifyScreeningInfoForm > .content > ul > li > label > ._obj-input {
+.form#modifyScreeningInfoForm > .content .result-box > ul > li > label > ._obj-input {
   height: 38px;
   border-radius: 0;
   background-color: #ffffff;
   color: #444444;
 }
-.form#modifyScreeningInfoForm > .content > ul > li > label > [type=button][rel=showSearchMovie] {
+.form#modifyScreeningInfoForm > .content .result-box > ul > li > label > [type=button][rel=showSearchMovie] {
   background-color: #ffffff;
   padding: 0;
   border: 1px #666666 solid;
@@ -364,14 +367,14 @@
   transform: translate(-50%, -50%);
   cursor: pointer;
 }
-.form#modifyScreeningInfoForm > .content > ul > li > label > [type=button][rel=showSearchMovie] > img {
+.form#modifyScreeningInfoForm > .content .result-box > ul > li > label > [type=button][rel=showSearchMovie] > img {
   width: 2rem;
   height: 2rem;
 }
-.form#modifyScreeningInfoForm > .content > ul > li > label > .__text {
+.form#modifyScreeningInfoForm > .content .result-box > ul > li > label > .__text {
   padding-top: 1rem;
 }
-.form#modifyScreeningInfoForm > .content > ul > li > [type=button] {
+.form#modifyScreeningInfoForm > .content .result-box > ul > li > [type=button] {
   flex-grow: 1;
   cursor: pointer;
 }
