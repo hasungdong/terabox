@@ -28,7 +28,7 @@ deleteProductForm.onsubmit = e => {
                 const responseArray = responseObject['products'];
                 deleteProductForm.divResult.innerHTML = '';
                 if (responseArray.length === 0){
-                    alert('3');
+                    MessageObj.createSimpleOk('알림', '삭제할 상품이 없습니다.').show();
                     return;
                 }
                 const ul = new DOMParser().parseFromString(`

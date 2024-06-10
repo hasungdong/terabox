@@ -6,7 +6,6 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Getter
@@ -18,6 +17,7 @@ public class ScreeningInfoEntity {
     private int cinemaIndex;
     @DateTimeFormat(pattern = "yyyy-mm-dd")
     private LocalDate screeningDate;
+    @DateTimeFormat(pattern = "HH:mm:ss")
     private LocalTime screeningTime;
     private int price;
 }

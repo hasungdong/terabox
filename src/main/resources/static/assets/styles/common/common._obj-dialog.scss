@@ -14,7 +14,8 @@
   position: fixed;
   transform: translate(-50%, -50%);
   transition: top, opacity 250ms ease;
-  z-index: 9;
+  //알림창은 항상 젤 위에 잇어야 하니까
+  z-index: 999;
 
   align-items: stretch;
   display: flex;

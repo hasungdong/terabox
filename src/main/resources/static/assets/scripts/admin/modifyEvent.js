@@ -27,6 +27,7 @@ modifyEventForm.onsubmit = e => {
                 const responseArray = responseObject['events'];
                 modifyEventForm.divResult.innerHTML = '';
                 if (responseArray.length === 0) {
+                    MessageObj.createSimpleOk('알림', '수정할 이벤트가 없습니다.').show();
                     return;
                 }
                 const ul = new DOMParser().parseFromString(`

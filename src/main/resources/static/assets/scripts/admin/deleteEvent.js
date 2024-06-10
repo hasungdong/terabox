@@ -28,6 +28,7 @@ deleteEventForm.onsubmit = e => {
                 const responseArray = responseObject['events'];
                 deleteEventForm.divResult.innerHTML = '';
                 if (responseArray.length === 0){
+                    MessageObj.createSimpleOk('알림', '삭제할 이벤트가 없습니다.').show();
                     return;
                 }
                 const ul = new DOMParser().parseFromString(`
