@@ -8,6 +8,12 @@ modifyEventForm.onsubmit = e => {
     if (!modifyEventForm.titleLabel.isValid()) {
         return;
     }
+
+    showEvents(1);
+}
+
+
+const showEvents = (page) => {
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
         if (xhr.readyState !== XMLHttpRequest.DONE) {
@@ -56,6 +62,46 @@ modifyEventForm.onsubmit = e => {
                 }
 
                 modifyEventForm.divResult.append(ul);
+
+                // 검색하고 밑에 페이지 나오게
+                // pageContainer 만들기
+                const pageContainer = new DOMParser().parseFromString(`
+                 <div class="page-container"></div>
+                `, 'text/html').querySelector('div');
+                modifyEventForm.divResult.append(pageContainer);
+                // pageContainer 내용물 만들기
+                const maxPage = responseObject['search']['maxPage'];
+                if (maxPage > 10) {
+                    const preButton = new DOMParser().parseFromString(`
+                <button type="button">
+                    <img src="/assets/images/common/left.png" height="16" width="16" alt=""/>
+                    <span>이전</span>
+                </button>
+                    `, 'text/html').querySelector('button');
+                    pageContainer.append(preButton);
+                }
+                // 페이지 숫자들 들어갈 박스
+                const pageBox = new DOMParser().parseFromString(`
+                <div class="page-box"></div>
+                `, 'text/html').querySelector('div');
+                pageContainer.append(pageBox);
+                // 페이지 숫자
+                for (let i = 1; i <= maxPage; i++) {
+                    const page = new DOMParser().parseFromString(`
+                    <span class="page">${i}</span>
+                    `, 'text/html').querySelector('.page');
+                    pageBox.append(page);
+                }
+                // 다음 버튼
+                if (maxPage > 10) {
+                    const nextButton = new DOMParser().parseFromString(`
+                    <button type="button">
+                    <span>다음</span>
+                    <img src="/assets/images/common/right.png" height="16" width="16"/>
+                </button>
+                    `, 'text/html').querySelector('button');
+                    pageContainer.append(nextButton);
+                }
                 const lis = modifyEventForm.divResult.querySelectorAll('li');
                 lis.forEach(li => li.onclick = () => {
                     new MessageObj({
@@ -193,7 +239,14 @@ modifyEventForm.onsubmit = e => {
                                                 const responseObject = JSON.parse(xhr.responseText);
                                                 const [dTitle, dContent, dOnclick] = {
                                                     failure: ['경고', '알 수 없는 이유로 영화를 수정하지 못하였습니다. 잠시 후 다시 시도해 주세요.'],
-                                                    success: ['알림', '영화를 성공적으로 수정하였습니다.']
+                                                    success: ['알림', '이벤트를 성공적으로 수정하였습니다.', () => {
+                                                        modifyEventFormTwo.hide();
+                                                        // modifyMovieFormTwo가 생길때 div.content가 생성되서 지워져야될 때 지워져야 된다.
+                                                        // 안그러면 div.content가 계속해서 생겨남
+                                                        // 지금은 modifyMovieFormTwo가 생기고, 수정하기를 눌러서 성공한 상황
+                                                        modifyEventFormTwo.querySelector('div.content').remove();
+                                                        modifyEventForm.divResult.innerHTML = '';
+                                                    }]
                                                 }[responseObject.result] || ['경고', '서버가 알 수 없는 응답을 반환하였습니다. 잠시 후 다시 시도해 주세요.'];
                                                 MessageObj.createSimpleOk(dTitle, dContent, dOnclick).show();
                                             }
@@ -214,8 +267,13 @@ modifyEventForm.onsubmit = e => {
                 MessageObj.createSimpleOk('경고', '서버가 알 수 없는 응답을 반환하였습니다. 잠시 후 다시 시도해주세요.').show();
                 return;
         }
+        // 페이지가 불러져와있을 때 다른 페이지를 눌렀을 때 이동하는 로직
+        const pages = modifyEventForm.divResult.querySelectorAll('.page');
+        pages.forEach(page => page.onclick = () => {
+            showEvents(page.innerText);
+        });
     }
-    xhr.open('GET', `/event/search?keyword=${modifyEventForm['title'].value}`);
+    xhr.open('GET', `/event/search?keyword=${modifyEventForm['title'].value}&page=${page}`);
     xhr.send();
     loading.show();
 }

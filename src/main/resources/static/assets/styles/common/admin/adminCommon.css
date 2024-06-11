@@ -170,10 +170,12 @@
 }
 .form > .content > .result-box {
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 .form > .content > .result-box > ul {
   min-height: 131px;
-  max-height: 521px;
+  max-height: 533px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -181,7 +183,7 @@
   border-bottom: none;
 }
 .form > .content > .result-box > ul > li {
-  height: 130px;
+  height: 133px;
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -237,6 +239,40 @@
 }
 .form > .content > .result-box > ul > li > .text-box > .info > .quantity {
   flex-grow: 1;
+}
+.form > .content > .result-box .page-container {
+  padding-bottom: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 0.6rem;
+  flex-grow: 1;
+}
+.form > .content > .result-box .page-container > [type=button] {
+  background-color: #ffffff;
+  border: none;
+  outline: none;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
+}
+.form > .content > .result-box .page-container > .page-box {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 1rem;
+}
+.form > .content > .result-box .page-container > .page-box > .page {
+  color: #444444;
+  cursor: pointer;
+}
+.form > .content > .result-box .page-container > .page-box > .page:hover {
+  color: #989898;
 }
 .form > .content > button {
   background-color: #545454;
@@ -353,7 +389,7 @@
   flex-grow: 1;
 }
 .form#modifyScreeningInfoForm > .content .result-box > ul > li > label > ._obj-input {
-  height: 38px;
+  height: 100%;
   border-radius: 0;
   background-color: #ffffff;
   color: #444444;

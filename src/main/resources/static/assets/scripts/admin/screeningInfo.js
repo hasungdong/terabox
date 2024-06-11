@@ -293,32 +293,33 @@ screeningInfoSearchBar.onsubmit = e => {
                     return;
                 }
 
-                const xhr = new XMLHttpRequest();
-                xhr.onreadystatechange = function(){
-                    if (xhr.readyState !== XMLHttpRequest.DONE){
-                        return;
-                    }
-                    loading.hide();
-                    if(xhr.status < 200 || xhr.status >= 300){
-                        MessageObj.createSimpleOk('오류', '알 수 없는 이유로 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.').show();
-                        return;
-                    }
-                    const responseObject = JSON.parse(xhr.responseText);
-                    switch (responseObject['result']) {
-                        case 'failure':
-                            MessageObj.createSimpleOk('경고', '알 수 없는 이유로 검색에 실패했습니다. 잠시 후 다시 시도해 주세요.').show();
-                            break;
-                        case 'success':
-                            const responseArray = responseObject['movies'];
-                            searchMovie.divResult.innerHTML = '';
-                            if (responseArray.length === 0) {
-                                return;
-                            }
-                            const ul = new DOMParser().parseFromString(`
+                const showMoviesScreeningInfo = (page) => {
+                    const xhr = new XMLHttpRequest();
+                    xhr.onreadystatechange = function(){
+                        if (xhr.readyState !== XMLHttpRequest.DONE){
+                            return;
+                        }
+                        loading.hide();
+                        if(xhr.status < 200 || xhr.status >= 300){
+                            MessageObj.createSimpleOk('오류', '알 수 없는 이유로 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.').show();
+                            return;
+                        }
+                        const responseObject = JSON.parse(xhr.responseText);
+                        switch (responseObject['result']) {
+                            case 'failure':
+                                MessageObj.createSimpleOk('경고', '알 수 없는 이유로 검색에 실패했습니다. 잠시 후 다시 시도해 주세요.').show();
+                                break;
+                            case 'success':
+                                const responseArray = responseObject['movies'];
+                                searchMovie.divResult.innerHTML = '';
+                                if (responseArray.length === 0) {
+                                    return;
+                                }
+                                const ul = new DOMParser().parseFromString(`
             <ul></ul>
         `, 'text/html').querySelector('ul');
-                            for (const responseArrayElement of responseArray) {
-                                const li = new DOMParser().parseFromString(`
+                                for (const responseArrayElement of responseArray) {
+                                    const li = new DOMParser().parseFromString(`
         <ul>
             <li>
                 <input type="hidden" name="index" value="${responseArrayElement['index']}">
@@ -335,53 +336,99 @@ screeningInfoSearchBar.onsubmit = e => {
             </li>
         </ul>
             `, 'text/html').querySelector('li');
-                                li.querySelector('.img').setAttribute('src', `/movie/image?index=${responseArrayElement['index']}`);
-                                ul.append(li);
-                            }
-                            searchMovie.divResult.append(ul);
-                            const lis = searchMovie.divResult.querySelectorAll('li');
-                            lis.forEach(li => li.onclick = () => {
-                                new MessageObj({
-                                    title: '취소',
-                                    content: '이 영화로 교체하시겠습니까?',
-                                    buttons: [
-                                        {
-                                            text: '취소', onclick: instance => {
-                                                instance.hide();
-                                            }
-                                        },
-                                        {
-                                            text: '확인', onclick: instance => {
-                                                instance.hide();
-                                                searchMovie.hide();
-                                                document.querySelector('[id=alertCover2]').remove();
-                                                const xhr = new XMLHttpRequest();
-                                                xhr.onreadystatechange = function(){
-                                                    if (xhr.readyState !== XMLHttpRequest.DONE){
-                                                        return;
-                                                    }
-                                                    loading.hide();
-                                                    if(xhr.status < 200 || xhr.status >= 300){
-                                                        MessageObj.createSimpleOk('오류', '알 수 없는 이유로 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.').show();
-                                                        return;
-                                                    }
-                                                    const responseObject = JSON.parse(xhr.responseText);
-                                                    contentLi.querySelector('[name="title"]').value = responseObject['title'];
-                                                    contentLi.querySelector('[type="hidden"][name="movieIndex"]').value = li.querySelector('[name="index"]').value;
+                                    li.querySelector('.img').setAttribute('src', `/movie/image?index=${responseArrayElement['index']}`);
+                                    ul.append(li);
+                                }
+                                searchMovie.divResult.append(ul);
+                                // 검색하고 밑에 페이지 나오게
+                                // pageContainer 만들기
+                                const pageContainer = new DOMParser().parseFromString(`
+                 <div class="page-container"></div>
+                `, 'text/html').querySelector('div');
+                                searchMovie.divResult.append(pageContainer);
+                                // pageContainer 내용물 만들기
+                                const maxPage = responseObject['search']['maxPage'];
+                                if (maxPage > 10) {
+                                    const preButton = new DOMParser().parseFromString(`
+                <button type="button">
+                    <img src="/assets/images/common/left.png" height="16" width="16"/>
+                    <span>이전</span>
+                </button>
+                    `, 'text/html').querySelector('button');
+                                    pageContainer.append(preButton);
+                                }
+                                // 페이지 숫자들 들어갈 박스
+                                const pageBox = new DOMParser().parseFromString(`
+                <div class="page-box"></div>
+                `, 'text/html').querySelector('div');
+                                pageContainer.append(pageBox);
+                                // 페이지 숫자
+                                for (let i = 1; i <= maxPage; i++) {
+                                    const page = new DOMParser().parseFromString(`
+                    <span class="page">${i}</span>
+                    `, 'text/html').querySelector('.page');
+                                    pageBox.append(page);
+                                }
+                                // 다음 버튼
+                                if (maxPage > 10) {
+                                    const nextButton = new DOMParser().parseFromString(`
+                    <button type="button">
+                    <span>다음</span>
+                    <img src="/assets/images/common/right.png" height="16" width="16"/>
+                </button>
+                    `, 'text/html').querySelector('button');
+                                    pageContainer.append(nextButton);
+                                }
+                                const lis = searchMovie.divResult.querySelectorAll('li');
+                                lis.forEach(li => li.onclick = () => {
+                                    new MessageObj({
+                                        title: '취소',
+                                        content: '이 영화로 교체하시겠습니까?',
+                                        buttons: [
+                                            {
+                                                text: '취소', onclick: instance => {
+                                                    instance.hide();
                                                 }
-                                                xhr.open('GET', `/movie/movie?index=${li.querySelector('[name="index"]').value}`);
-                                                xhr.send();
-                                                loading.show();
+                                            },
+                                            {
+                                                text: '확인', onclick: instance => {
+                                                    instance.hide();
+                                                    searchMovie.hide();
+                                                    document.querySelector('[id=alertCover2]').remove();
+                                                    const xhr = new XMLHttpRequest();
+                                                    xhr.onreadystatechange = function(){
+                                                        if (xhr.readyState !== XMLHttpRequest.DONE){
+                                                            return;
+                                                        }
+                                                        loading.hide();
+                                                        if(xhr.status < 200 || xhr.status >= 300){
+                                                            MessageObj.createSimpleOk('오류', '알 수 없는 이유로 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.').show();
+                                                            return;
+                                                        }
+                                                        const responseObject = JSON.parse(xhr.responseText);
+                                                        contentLi.querySelector('[name="title"]').value = responseObject['title'];
+                                                        contentLi.querySelector('[type="hidden"][name="movieIndex"]').value = li.querySelector('[name="index"]').value;
+                                                    }
+                                                    xhr.open('GET', `/movie/movie?index=${li.querySelector('[name="index"]').value}`);
+                                                    xhr.send();
+                                                    loading.show();
+                                                }
                                             }
-                                        }
-                                    ]
-                                }).show();
-                            })
+                                        ]
+                                    }).show();
+                                })
+                        }
+                        // 페이지가 불러져와있을 때 다른 페이지를 눌렀을 때 이동하는 로직
+                        const pages = searchMovie.divResult.querySelectorAll('.page');
+                        pages.forEach(page => page.onclick = () => {
+                            showMoviesScreeningInfo(page.innerText);
+                        });
                     }
+                    xhr.open('GET', `/movie/search?keyword=${searchMovie['title'].value}&page=${page}`);
+                    xhr.send();
+                    loading.show();
                 }
-                xhr.open('GET', `/movie/search?keyword=${searchMovie['title'].value}`);
-                xhr.send();
-                loading.show();
+                showMoviesScreeningInfo(1);
             }
         });
     }

@@ -8,6 +8,10 @@ modifyProductForm.onsubmit = e => {
     if (!modifyProductForm.nameLabel.isValid()) {
         return;
     }
+    showProducts(1);
+}
+
+const showProducts = (page) => {
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
         if (xhr.readyState !== XMLHttpRequest.DONE) {
@@ -54,7 +58,49 @@ modifyProductForm.onsubmit = e => {
                     ul.append(li);
                 }
                 modifyProductForm.divResult.append(ul);
+
+                // 검색하고 밑에 페이지 나오게
+                // pageContainer 만들기
+                const pageContainer = new DOMParser().parseFromString(`
+                 <div class="page-container"></div>
+                `, 'text/html').querySelector('div');
+                modifyProductForm.divResult.append(pageContainer);
+                // pageContainer 내용물 만들기
+                const maxPage = responseObject['search']['maxPage'];
+                if (maxPage > 10) {
+                    const preButton = new DOMParser().parseFromString(`
+                <button type="button">
+                    <img src="/assets/images/common/left.png" height="16" width="16"/>
+                    <span>이전</span>
+                </button>
+                    `, 'text/html').querySelector('button');
+                    pageContainer.append(preButton);
+                }
+                // 페이지 숫자들 들어갈 박스
+                const pageBox = new DOMParser().parseFromString(`
+                <div class="page-box"></div>
+                `, 'text/html').querySelector('div');
+                pageContainer.append(pageBox);
+                // 페이지 숫자
+                for (let i = 1; i <= maxPage; i++) {
+                    const page = new DOMParser().parseFromString(`
+                    <span class="page">${i}</span>
+                    `, 'text/html').querySelector('.page');
+                    pageBox.append(page);
+                }
+                // 다음 버튼
+                if (maxPage > 10) {
+                    const nextButton = new DOMParser().parseFromString(`
+                    <button type="button">
+                    <span>다음</span>
+                    <img src="/assets/images/common/right.png" height="16" width="16"/>
+                </button>
+                    `, 'text/html').querySelector('button');
+                    pageContainer.append(nextButton);
+                }
+
                 const lis = modifyProductForm.divResult.querySelectorAll('li');
+                // 불러온 상품들 선택했을 때
                 lis.forEach(li => li.onclick = () => {
                     new MessageObj({
                         title: '경고',
@@ -232,8 +278,13 @@ modifyProductForm.onsubmit = e => {
                 MessageObj.createSimpleOk('경고', '서버가 알 수 없는 응답을 반환하였습니다. 잠시 후 다시 시도해주세요.').show();
                 return;
         }
+        // 페이지가 불러져와있을 때 다른 페이지를 눌렀을 때 이동하는 로직
+        const pages = modifyProductForm.divResult.querySelectorAll('.page');
+        pages.forEach(page => page.onclick = () => {
+            showProducts(page.innerText);
+        });
     }
-    xhr.open('GET', `/store/search?keyword=${modifyProductForm['name'].value}`);
+    xhr.open('GET', `/store/search?keyword=${modifyProductForm['name'].value}&page=${page}`);
     xhr.send();
     loading.show();
 }

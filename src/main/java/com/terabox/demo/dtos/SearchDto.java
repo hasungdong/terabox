@@ -16,4 +16,18 @@ public class SearchDto {
     private int maxPage;        // 조회할 수 있는 최대 페이지
     private int minPage = 1;    // 조회할 수 있는 최소 페이지
     private int offset;         // 거를 게시글 개수
+
+//    JSON으로 바꿀 수 있는 형태로 변경
+    @Override
+    public String toString() {
+        return "{" +
+                "\"keyword\":" + "\"" + keyword + "\"" +
+                ", \"countPerPage\":" + "\"" + countPerPage + "\"" +
+                ", \"requestPage\":" + "\"" + requestPage + "\"" +
+                ", \"totalCount\":" + "\"" + totalCount + "\"" +
+                ", \"maxPage\":" + "\"" + maxPage + "\"" +
+                ", \"minPage\":" + "\"" + minPage + "\"" +
+                ", \"offset\":" + "\"" + offset + "\"" +
+                "}";
+    }
 }
