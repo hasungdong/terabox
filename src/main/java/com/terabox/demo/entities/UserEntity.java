@@ -14,8 +14,10 @@ public class UserEntity {
     private String password;
     private String nickname;
     private LocalDateTime birth;
+    private String address;
     private String membershipCode;
     private LocalDateTime createdAt;
     private int point;
     private int mileage;
+    private boolean isAdmin;
 }
