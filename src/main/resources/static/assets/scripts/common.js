@@ -411,6 +411,10 @@ class MessageObj {
     static cover = null;
     static stack = [];
 
+    setOnclick(onclick) {
+        this.onclick = onclick;
+    }
+
     static createSimpleOk = (title, content, onclick) => {
         return new MessageObj({
             title: title,
