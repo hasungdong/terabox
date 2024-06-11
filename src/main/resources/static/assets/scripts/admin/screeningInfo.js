@@ -204,7 +204,6 @@ screeningInfoSearchBar.onsubmit = e => {
         `, 'text/html').querySelector('ul');
         const responseObject = JSON.parse(xhr.responseText);
         const screeningInfoVos = responseObject['screeningInfoVos'];
-        console.log(screeningInfoVos)
         for (const screeningInfoVo of screeningInfoVos) {
             const li = new DOMParser().parseFromString(`
         <ul>
@@ -242,8 +241,6 @@ screeningInfoSearchBar.onsubmit = e => {
             modifyScreeningFormButtons.forEach(modifyScreeningFormButton => modifyScreeningFormButton.onclick = () => {
                 const xhr = new XMLHttpRequest();
                 const formData = new FormData();
-                console.log(li.querySelector('[type="hidden"][name="index"]'));
-                console.log(li.querySelector('[type="hidden"][name="movieIndex"]'));
                 formData.append('index', li.querySelector('[type="hidden"][name="index"]').value);
                 formData.append('movieIndex', li.querySelector('[type="hidden"][name="movieIndex"]').value);
                 xhr.onreadystatechange = function(){
@@ -267,9 +264,11 @@ screeningInfoSearchBar.onsubmit = e => {
         }
         modifyScreeningInfoForm.querySelector('div.content').querySelector('.result-box').append(ul);
         // 영화 검색하기
-        const lis = modifyScreeningInfoForm.divContent.querySelectorAll('li');
-        lis.forEach(li => li.querySelector('[rel="showSearchMovie"]').onclick = () => {
+        const contentLis = modifyScreeningInfoForm.divContent.querySelectorAll('li');
+        contentLis.forEach(contentLi => contentLi.querySelector('[rel="showSearchMovie"]').onclick = () => {
             searchMovie.show();
+            searchMovie.divResult = searchMovie.querySelector('.result-box');
+            searchMovie.divResult.innerHTML = '';
             const alertCover2 = alertCover.cloneNode(false);
             alertCover2.id = alertCover.id + '2';
             alertCover2.style.zIndex = '10';
@@ -293,7 +292,6 @@ screeningInfoSearchBar.onsubmit = e => {
                 if (!searchMovie.titleLabel.isValid()) {
                     return;
                 }
-                searchMovie.divResult = searchMovie.querySelector('.result-box');
 
                 const xhr = new XMLHttpRequest();
                 xhr.onreadystatechange = function(){
@@ -368,8 +366,8 @@ screeningInfoSearchBar.onsubmit = e => {
                                                         return;
                                                     }
                                                     const responseObject = JSON.parse(xhr.responseText);
-                                                    modifyScreeningInfoForm.querySelector('div.content').querySelector('[name="title"]').value = responseObject['title'];
-                                                    modifyScreeningInfoForm.querySelector('div.content').querySelector('[type="hidden"][name="movieIndex"]').value = li.querySelector('[name="index"]').value;
+                                                    contentLi.querySelector('[name="title"]').value = responseObject['title'];
+                                                    contentLi.querySelector('[type="hidden"][name="movieIndex"]').value = li.querySelector('[name="index"]').value;
                                                 }
                                                 xhr.open('GET', `/movie/movie?index=${li.querySelector('[name="index"]').value}`);
                                                 xhr.send();
