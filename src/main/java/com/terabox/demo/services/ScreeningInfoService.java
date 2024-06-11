@@ -54,6 +54,7 @@ public class ScreeningInfoService {
 //        return this.screeningInfoMapper.selectScreeningInfoByCinemaAndDate(screeningDate, cinemaIndex);
 //    }
 
+//    상영정보 가져오는데, 만약 없다면 추가도 해주는 메서드
     public ScreeningInfoVo[] getScreeningInfoVos(LocalDate screeningDate, int cinemaIndex){
 //        상영정보 못가져오면 직접 추가한 다음 가져오려고 함
         if (this.screeningInfoMapper.selectScreeningInfosByCinemaAndDate(screeningDate, cinemaIndex).length < 1){
@@ -71,7 +72,8 @@ public class ScreeningInfoService {
         return this.screeningInfoMapper.selectScreeningInfoVoByCinemaAndDate(screeningDate.toString(), cinemaIndex);
     }
 
-    public Result patchScreeningInfo(int index, int movieIndex) {
+//    상영정보 부분 수정
+    public Result patchScreeningInfo(int index, Integer movieIndex) {
         if (index < 1 || movieIndex < 1){
             return CommonResult.FAILURE;
         }

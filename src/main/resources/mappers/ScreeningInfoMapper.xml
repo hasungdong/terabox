@@ -12,7 +12,17 @@
         VALUES (#{movieIndex}, #{cinemaIndex}, #{screeningDate}, #{screeningTime})
     </insert>
 
-    <select id="selectScreeningInfoByCinemaAndDate" resultType="com.terabox.demo.entities.ScreeningInfoEntity">
+    <select id="selectScreeningInfoByIndex" resultType="com.terabox.demo.entities.ScreeningInfoEntity">
+        SELECT `index`          AS `index`,
+               `movie_index`    AS `movieIndex`,
+               `cinema_index`   AS `cinemaIndex`,
+               `screening_date` AS `screeningDate`,
+               `screening_time` AS `screeningTime`
+        FROM `terabox`.`screening_info`
+        WHERE `index` = #{index}
+    </select>
+
+    <select id="selectScreeningInfosByCinemaAndDate" resultType="com.terabox.demo.entities.ScreeningInfoEntity">
         SELECT `index`          AS 'index',
                `movie_index`    AS 'movie_index',
                `cinema_index`   AS 'cinema_index',

@@ -345,9 +345,12 @@
   border-bottom: none;
 }
 .form#modifyScreeningInfoForm > .content .result-box > ul > li > label {
-  width: 18.4%;
+  width: 15.5%;
   gap: 0;
   position: relative;
+}
+.form#modifyScreeningInfoForm > .content .result-box > ul > li > label[rel=titleLabel] {
+  flex-grow: 1;
 }
 .form#modifyScreeningInfoForm > .content .result-box > ul > li > label > ._obj-input {
   height: 38px;
@@ -375,7 +378,7 @@
   padding-top: 1rem;
 }
 .form#modifyScreeningInfoForm > .content .result-box > ul > li > [type=button] {
-  flex-grow: 1;
+  width: 13%;
   cursor: pointer;
 }
 

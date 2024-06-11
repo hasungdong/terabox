@@ -70,9 +70,13 @@
          }
 
          > label{
-           width: 18.4%;
+           width: 15.5%;
            gap: 0;
            position: relative;
+
+           &[rel=titleLabel]{
+             flex-grow: 1;
+           }
 
            > ._obj-input{
              height: 38px;
@@ -107,7 +111,7 @@
          }
 
          > [type="button"]{
-           flex-grow: 1;
+           width: 13%;
            cursor: pointer;
          }
        }

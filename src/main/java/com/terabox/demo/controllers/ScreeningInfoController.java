@@ -31,7 +31,7 @@ public class ScreeningInfoController {
     @PatchMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public String patchScreeningInfo(@Param("index") int index,
-                                     @Param("movieIndex") int movieIndex) {
+                                     @Param("movieIndex") Integer movieIndex) {
         JSONObject responseObject = new JSONObject();
         responseObject.put("result", this.screeningInfoService.patchScreeningInfo(index, movieIndex).name().toLowerCase());
         return responseObject.toString();
