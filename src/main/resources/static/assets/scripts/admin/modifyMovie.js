@@ -308,6 +308,7 @@ const showMovies = (page) => {
                                                 const responseObject = JSON.parse(xhr.responseText);
                                                 const [dTitle, dContent, dOnclick] = {
                                                     failure: ['경고', '알 수 없는 이유로 영화를 수정하지 못하였습니다. 잠시 후 다시 시도해 주세요.'],
+                                                    failure_duplicate: ['경고', '이미 존재하는 영화 입니다. 제목이나 개봉일을 변경 후 시도해 주세요.'],
                                                     success: ['알림', '영화를 성공적으로 수정하였습니다.', () => {
                                                         modifyMovieFormTwo.hide();
                                                         // modifyMovieFormTwo가 생길때 div.content가 생성되서 지워져야될 때 지워져야 된다.

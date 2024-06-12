@@ -250,11 +250,12 @@ const showProducts = (page) => {
                                                 const responseObject = JSON.parse(xhr.responseText);
                                                 const [dTitle, dContent, dOnclick] = {
                                                     failure: ['경고', '알 수 없는 이유로 상품을 수정하지 못하였습니다. 잠시 후 다시 시도해 주세요.'],
+                                                    failure_duplicate: ['경고', '이미 존재하는 상품 입니다. 이름이나 가격을 변경 후 시도해 주세요.'],
                                                     success: ['알림', '상품을 성공적으로 수정하였습니다.', () => {
                                                         modifyProductFormTwo.hide();
                                                         // modifyProductFormTwo가 생길때 div.content가 생성되서 지워져야될 때 지워져야 된다.
                                                         // 안그러면 div.content가 계속해서 생겨남
-                                                        // 지금은 modifyProductFormTwo가 생기고, 수정하기 누르지 않고 alertCover 눌러서 빠져나올 때의 상황
+                                                        // 지금은 modifyProductFormTwo가 생기고, 수정하기를 눌러서 성공한 상황
                                                         modifyProductFormTwo.querySelector('div.content').remove();
                                                         modifyProductForm.divResult.innerHTML = '';
                                                     }]

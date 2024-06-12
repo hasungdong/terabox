@@ -84,9 +84,14 @@ public class AdminService {
         if (dbMovie == null){
             return CommonResult.FAILURE;
         }
+//        중복 검사
+        if (dbMovie.getTitle().equals(movie.getTitle()) && dbMovie.getReleaseDate().equals(movie.getReleaseDate())){
+            return CommonResult.FAILURE_DUPLICATE;
+        }
         dbMovie.setTitle(movie.getTitle());
         dbMovie.setReleaseDate(movie.getReleaseDate());
         dbMovie.setPlayingTime(movie.getPlayingTime());
+//        받은 사진이 없으면, 사진은 수정 안하겠다
         if (movie.getThumbnail().length == 0){
 
         }else {
@@ -110,9 +115,14 @@ public class AdminService {
         if (dbProduct == null){
             return CommonResult.FAILURE;
         }
+//        중복 검사
+        if (dbProduct.getName().equals(product.getName()) && dbProduct.getPrice() == product.getPrice()){
+            return CommonResult.FAILURE_DUPLICATE;
+        }
         dbProduct.setName(product.getName());
         dbProduct.setPrice(product.getPrice());
         dbProduct.setQuantity(product.getQuantity());
+        //        받은 사진이 없으면, 사진은 수정 안하겠다
         if (product.getThumbnail().length == 0){
 
         }else {
@@ -132,10 +142,15 @@ public class AdminService {
         if (dbEvent == null){
             return CommonResult.FAILURE;
         }
+//        중복 검사
+        if (dbEvent.getTitle().equals(event.getTitle()) && dbEvent.getStartDate().equals(event.getStartDate())){
+            return CommonResult.FAILURE_DUPLICATE;
+        }
         dbEvent.setTitle(event.getTitle());
         dbEvent.setStartDate(event.getStartDate());
         dbEvent.setEndDate(event.getEndDate());
         dbEvent.setDiscountRate(event.getDiscountRate());
+        //        받은 사진이 없으면, 사진은 수정 안하겠다
         if (event.getThumbnail().length == 0){
 
         }else {
