@@ -2,12 +2,9 @@ package com.terabox.demo.services;
 
 import com.terabox.demo.entities.EventEntity;
 import com.terabox.demo.entities.ProductEntity;
-import com.terabox.demo.mappers.EventMapper;
-import com.terabox.demo.mappers.StoreMapper;
+import com.terabox.demo.mappers.*;
 import lombok.RequiredArgsConstructor;
 import com.terabox.demo.entities.MovieEntity;
-import com.terabox.demo.mappers.AdminMapper;
-import com.terabox.demo.mappers.MovieMapper;
 import com.terabox.demo.results.CommonResult;
 import com.terabox.demo.results.Result;
 import org.springframework.stereotype.Service;
@@ -19,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class AdminService {
     private final AdminMapper adminMapper;
     private final MovieMapper movieMapper;
-    private final StoreMapper storeMapper;
+    private final ProductMapper productMapper;
     private final EventMapper eventMapper;
 
     public Result addMovie(MovieEntity movie){
@@ -48,7 +45,7 @@ public class AdminService {
             return CommonResult.FAILURE;
         }
 //        이름과 가격이 같으면 같은 상품
-        ProductEntity[] dbProducts = this.storeMapper.selectProductsByName(product.getName());
+        ProductEntity[] dbProducts = this.productMapper.selectProductsByName(product.getName());
         if (dbProducts != null){
             for (ProductEntity dbProduct : dbProducts) {
                 if (dbProduct.getPrice() == product.getPrice()){
@@ -142,7 +139,7 @@ public class AdminService {
             return CommonResult.FAILURE;
         }
 //        index를 통해 가져온 상품
-        ProductEntity dbProduct = this.storeMapper.selectProductByIndex(product.getIndex());
+        ProductEntity dbProduct = this.productMapper.selectProductByIndex(product.getIndex());
         if (dbProduct == null){
             return CommonResult.FAILURE;
         }
@@ -151,7 +148,7 @@ public class AdminService {
 //        만약 나왔을 때 위에서 index로 가져온 dbProduct 값과 일치하는 건 괜찮다.
 
 //        이름과 가격을 통해 가져온 상품
-        ProductEntity dbProductNP = this.storeMapper.selectProductByNamePrice(product.getName(), product.getPrice());
+        ProductEntity dbProductNP = this.productMapper.selectProductByNamePrice(product.getName(), product.getPrice());
         if (dbProductNP == null){
 //            1. 이름과 가격을 db에 없는 값으로 변경하려는 경우
             dbProduct.setName(product.getName());
@@ -255,7 +252,7 @@ public class AdminService {
         if (index < 1){
             return CommonResult.FAILURE;
         }
-        ProductEntity dbProduct = this.storeMapper.selectProductByIndex(index);
+        ProductEntity dbProduct = this.productMapper.selectProductByIndex(index);
         if (dbProduct == null){
             return CommonResult.FAILURE;
         }

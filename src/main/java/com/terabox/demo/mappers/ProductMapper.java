@@ -5,15 +5,14 @@ import com.terabox.demo.entities.ProductEntity;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-
 @Mapper
-public interface StoreMapper {
+public interface ProductMapper {
     ProductEntity selectProductByIndex(@Param("index") int index);
 
     ProductEntity[] selectProductsByName(@Param("name") String name);
 
     ProductEntity selectProductByNamePrice(@Param("name") String name,
-                                              @Param("price") int price);
+                                           @Param("price") int price);
 
     int selectProductsCountBySearch(SearchDto searchDto);
 

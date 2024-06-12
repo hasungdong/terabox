@@ -54,7 +54,7 @@ const showProducts = (page) => {
             </li>
         </ul>
             `, 'text/html').querySelector('li');
-                    li.querySelector('.img').setAttribute('src', `/store/image?index=${responseArrayElement['index']}`);
+                    li.querySelector('.img').setAttribute('src', `/product/image?index=${responseArrayElement['index']}`);
                     ul.append(li);
                 }
                 modifyProductForm.divResult.append(ul);
@@ -138,7 +138,7 @@ const showProducts = (page) => {
             <span class="__text">상품 이미지</span>
             <span class="image-wrapper">
                 <span class="empty" style="display:none;">상품 이미지를 선택해 주세요.</span>
-                <img alt="" class="image" src="/store/image?index=${responseObject['index']}" style="display:block;">
+                <img alt="" class="image" src="/product/image?index=${responseObject['index']}" style="display:block;">
             </span>
         </label>
         <label class="_obj-label" rel="priceLabel">
@@ -267,7 +267,7 @@ const showProducts = (page) => {
                                             loading.show();
                                         }
                                     }
-                                    xhr.open('GET', `/store/product?index=${li.querySelector('[name="index"]').value}`);
+                                    xhr.open('GET', `/product/product?index=${li.querySelector('[name="index"]').value}`);
                                     xhr.send();
                                 }
                             }
@@ -285,7 +285,7 @@ const showProducts = (page) => {
             showProducts(page.innerText);
         });
     }
-    xhr.open('GET', `/store/search?keyword=${modifyProductForm['name'].value}&page=${page}`);
+    xhr.open('GET', `/product/search?keyword=${modifyProductForm['name'].value}&page=${page}`);
     xhr.send();
     loading.show();
 }

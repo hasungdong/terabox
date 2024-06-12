@@ -55,7 +55,7 @@ const showProductsDelete = (page) => {
             </li>
         </ul>
             `, 'text/html').querySelector('li');
-                    li.querySelector('.img').setAttribute('src', `/store/image?index=${responseArrayElement['index']}`);
+                    li.querySelector('.img').setAttribute('src', `/product/image?index=${responseArrayElement['index']}`);
                     ul.append(li);
                 }
                 deleteProductForm.divResult.append(ul);
@@ -153,7 +153,7 @@ const showProductsDelete = (page) => {
             showProductsDelete(page.innerText);
         });
     }
-    xhr.open('GET', `/store/search?keyword=${deleteProductForm['name'].value}&page=${page}`);
+    xhr.open('GET', `/product/search?keyword=${deleteProductForm['name'].value}&page=${page}`);
     xhr.send();
     loading.show();
 }
