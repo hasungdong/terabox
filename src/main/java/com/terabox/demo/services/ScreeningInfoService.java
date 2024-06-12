@@ -31,10 +31,13 @@ public class ScreeningInfoService {
 //            이러면 현재 한 관에 대해서 12번 실행된다.
             for (int i = 0; i <= 22; i= i+2) {
                 tempInfo.setScreeningTime(LocalTime.parse(String.format("%02d:00:00", i)));
-                this.screeningInfoMapper.insertScreeningInfo(tempInfo);
+                int isSuccess = this.screeningInfoMapper.insertScreeningInfo(tempInfo);
+                if (isSuccess != 1){
+                    System.out.println(i + "시간대에서 오류 발생");
+                }
             }
         }
-        return this.screeningInfoMapper.selectScreeningInfoVoByCinemaAndDate(screeningDate.toString(), cinemaIndex);
+        return this.screeningInfoMapper.selectScreeningInfoVoByCinemaAndDate(screeningDate, cinemaIndex);
     }
 
 //    상영정보 부분 수정

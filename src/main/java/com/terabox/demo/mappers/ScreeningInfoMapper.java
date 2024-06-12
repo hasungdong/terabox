@@ -17,7 +17,7 @@ public interface ScreeningInfoMapper {
 
     ScreeningInfoEntity[] selectScreeningInfosByCinemaAndDate(LocalDate screeningDate, int cinemaIndex);
 
-    ScreeningInfoVo[] selectScreeningInfoVoByCinemaAndDate(@Param("screeningDate") String  screeningDate,
+    ScreeningInfoVo[] selectScreeningInfoVoByCinemaAndDate(@Param("screeningDate") LocalDate screeningDate,
                                                            @Param("cinemaIndex") int cinemaIndex);
 
 }

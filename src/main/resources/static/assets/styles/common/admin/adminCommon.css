@@ -394,6 +394,15 @@
   background-color: #ffffff;
   color: #444444;
 }
+.form#modifyScreeningInfoForm > .content .result-box > ul > li > label > [type=button].vacateMovieButton {
+  border: none;
+  outline: none;
+  position: absolute;
+  top: 50%;
+  right: 3.01rem;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
 .form#modifyScreeningInfoForm > .content .result-box > ul > li > label > [type=button][rel=showSearchMovie] {
   background-color: #ffffff;
   padding: 0;

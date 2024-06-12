@@ -479,6 +479,8 @@ class MessageObj {
                 MessageObj.cover.hide();
             }
             this.element.hide();
+            // 여길 해줘서 이제 메세지는 hide를 하면 숨겨지고 잠시 뒤에 삭제가 된다.
+            setTimeout(() => this.element.remove(), 1000);
         }, 100);
     }
 

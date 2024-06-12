@@ -85,6 +85,17 @@
              color: #444444;
            }
 
+           > [type="button"].vacateMovieButton{
+             border: none;
+             outline: none;
+
+             position: absolute;
+             top: 50%;
+             right: 3.01rem;
+             transform: translate(-50%, -50%);
+             cursor: pointer;
+           }
+
            > [type="button"][rel="showSearchMovie"]{
              background-color: #ffffff;
              padding: 0;

@@ -254,7 +254,21 @@ screeningInfoSearchBar.onsubmit = e => {
                     const responseObject = JSON.parse(xhr.responseText);
                     const [dTitle, dContent, dOnclick] = {
                         failure: ['경고', '알 수 없는 이유로 상영정보를 수정하지 못하였습니다. 잠시 후 다시 시도해주세요.'],
-                        success: ['알림', '상영정보를 수정하였습니다.']
+                        success: ['알림', '상영정보를 수정하였습니다.', () => {
+                            if (li.querySelector('[name="title"]').value !== "배정된 영화가 없습니다."){
+                                const vacateMovieButton = new DOMParser().parseFromString(`
+                                <button type="button" class="vacateMovieButton">
+                                    <img src="/assets/images/common/cancel.png" height="15" width="16"/>
+                                </button>
+                                `, 'text/html').querySelector('button');
+                                li.querySelector('[rel="titleLabel"]').append(vacateMovieButton);
+                                vacateMovieButton.onclick = () => {
+                                    vacateMovieButton.remove();
+                                    li.querySelector('[name="title"]').value = "배정된 영화가 없습니다.";
+                                    li.querySelector('[type="hidden"][name="movieIndex"]').value = undefined;
+                                }
+                            }
+                        }]
                     }[responseObject.result] || ['경고', '서버가 알 수 없는 응답을 반환하였습니다. 잠시 후 다시 시도해주세요.'];
                     MessageObj.createSimpleOk(dTitle, dContent, dOnclick).show();
                 }

@@ -80,14 +80,44 @@ public class AdminService {
         if (movie.getIndex() < 1){
             return CommonResult.FAILURE;
         }
+//        index를 통해 가져온 영화
         MovieEntity dbMovie = this.movieMapper.selectMovieByIndex(movie.getIndex());
         if (dbMovie == null){
+//            이게 null이면 없는 영화인건데 없으면 당연히 수정도 못함
             return CommonResult.FAILURE;
         }
 //        중복 검사
-        if (dbMovie.getTitle().equals(movie.getTitle()) && dbMovie.getReleaseDate().equals(movie.getReleaseDate())){
+//        movie의 제목과 시작일로 검색했을 때 나올 때,
+//        만약 나왔을 때 위에서 index로 가져온 dbMovie의 값과 일치하는 건 괜찮다.
+
+//        제목과 개봉일을 통해 가져온 영화
+        MovieEntity dbMovieTR = this.movieMapper.selectMovieByTitleReleaseDate(movie.getTitle(), movie.getReleaseDate());
+        if (dbMovieTR == null){
+//            1. 제목과 시작일을 db에 없는 값으로 변경하려고 하는 경우
+            dbMovie.setTitle(movie.getTitle());
+            dbMovie.setReleaseDate(movie.getReleaseDate());
+            dbMovie.setPlayingTime(movie.getPlayingTime());
+//        받은 사진이 없으면, 사진은 수정 안하겠다
+            if (movie.getThumbnail().length == 0){
+
+            }else {
+                dbMovie.setThumbnail(movie.getThumbnail());
+                dbMovie.setThumbnailFileName(movie.getThumbnailFileName());
+                dbMovie.setThumbnailContentType(movie.getThumbnailContentType());
+            }
+            dbMovie.setGrade(movie.getGrade());
+            dbMovie.setView(movie.getView());
+            dbMovie.setSingle(movie.isSingle());
+            dbMovie.setAgeLimit(movie.getAgeLimit());
+            dbMovie.setDimensionType(movie.getDimensionType());
+            return this.adminMapper.updateMovie(dbMovie) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
+//            이거 밑에 로직이랑 똑같은데 dbTR인 경우를 따로 안빼주면 밑에서 dbTR 쓸때 NPE 발생함 그래서 어쩔 수 없이 이렇게 냅둠
+        }
+        if (!(dbMovieTR.getReleaseDate().equals(dbMovie.getReleaseDate()) && dbMovieTR.getTitle().equals(dbMovie.getTitle()))){
+//           3. 이건 영화의 제목과 개봉일을 바꾸려고 하는데, 바꾸기 위해 입력한 값이 db의 다른 영화의 제목과 개봉일인 경우
             return CommonResult.FAILURE_DUPLICATE;
         }
+//        2. 제목과 시작일은 그대로 두고, 나머지 값만 변경하는 경우
         dbMovie.setTitle(movie.getTitle());
         dbMovie.setReleaseDate(movie.getReleaseDate());
         dbMovie.setPlayingTime(movie.getPlayingTime());
@@ -111,14 +141,39 @@ public class AdminService {
         if (product.getIndex() < 1){
             return CommonResult.FAILURE;
         }
+//        index를 통해 가져온 상품
         ProductEntity dbProduct = this.storeMapper.selectProductByIndex(product.getIndex());
         if (dbProduct == null){
             return CommonResult.FAILURE;
         }
 //        중복 검사
-        if (dbProduct.getName().equals(product.getName()) && dbProduct.getPrice() == product.getPrice()){
+        //        product의 이름과 가격으로 검색했을 때 나올 때,
+//        만약 나왔을 때 위에서 index로 가져온 dbProduct 값과 일치하는 건 괜찮다.
+
+//        이름과 가격을 통해 가져온 상품
+        ProductEntity dbProductNP = this.storeMapper.selectProductByNamePrice(product.getName(), product.getPrice());
+        if (dbProductNP == null){
+//            1. 이름과 가격을 db에 없는 값으로 변경하려는 경우
+            dbProduct.setName(product.getName());
+            dbProduct.setPrice(product.getPrice());
+            dbProduct.setQuantity(product.getQuantity());
+            //        받은 사진이 없으면, 사진은 수정 안하겠다
+            if (product.getThumbnail().length == 0){
+
+            }else {
+                dbProduct.setThumbnail(product.getThumbnail());
+                dbProduct.setThumbnailFileName(product.getThumbnailFileName());
+                dbProduct.setThumbnailContentType(product.getThumbnailContentType());
+            }
+            dbProduct.setType(product.getType());
+//            이거 밑에 로직이랑 똑같은데 dbNP인 경우를 따로 안빼주면 밑에서 dbNP 쓸때 NPE 발생함 그래서 어쩔 수 없이 이렇게 냅둠
+            return this.adminMapper.updateProduct(dbProduct) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
+        }
+        if (!(dbProductNP.getName().equals(dbProduct.getName()) && dbProductNP.getPrice() == (dbProduct.getPrice()))){
+//           3. 이건 상품의 이름과 가격을 바꾸려고 하는데, 바꾸기 위해 입력한 값이 db의 다른 상품의 이름과 가격인 경우
             return CommonResult.FAILURE_DUPLICATE;
         }
+//        2. 이름과 가격은 그대로 두고, 나머지 값만 변경하는 경우
         dbProduct.setName(product.getName());
         dbProduct.setPrice(product.getPrice());
         dbProduct.setQuantity(product.getQuantity());
@@ -143,9 +198,33 @@ public class AdminService {
             return CommonResult.FAILURE;
         }
 //        중복 검사
-        if (dbEvent.getTitle().equals(event.getTitle()) && dbEvent.getStartDate().equals(event.getStartDate())){
+        //        event의 이름과 가격으로 검색했을 때 나올 때,
+//        만약 나왔을 때 위에서 index로 가져온 dbEvent 값과 일치하는 건 괜찮다.
+        //        이름과 가격을 통해 가져온 상품
+        EventEntity dbEventTS = this.eventMapper.selectEventByTitleStartDate(event.getTitle(), event.getStartDate());
+        if (dbEventTS == null){
+            //            1. 이름과 가격을 db에 없는 값으로 변경하려는 경우
+            dbEvent.setTitle(event.getTitle());
+            dbEvent.setStartDate(event.getStartDate());
+            dbEvent.setEndDate(event.getEndDate());
+            dbEvent.setDiscountRate(event.getDiscountRate());
+            //        받은 사진이 없으면, 사진은 수정 안하겠다
+            if (event.getThumbnail().length == 0){
+
+            }else {
+                dbEvent.setThumbnail(event.getThumbnail());
+                dbEvent.setThumbnailFileName(event.getThumbnailFileName());
+                dbEvent.setThumbnailContentType(event.getThumbnailContentType());
+            }
+//            이거 밑에 로직이랑 똑같은데 dbTS인 경우를 따로 안빼주면 밑에서 dbTS 쓸때 NPE 발생함 그래서 어쩔 수 없이 이렇게 냅둠
+            return this.adminMapper.updateEvent(dbEvent) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
+        }
+        if (!(dbEventTS.getTitle().equals(dbEvent.getTitle()) && dbEventTS.getStartDate().equals(dbEvent.getStartDate()))){
+            //           3. 이건 이벤트의 제목과 시작일을 바꾸려고 하는데, 바꾸기 위해 입력한 값이 db의 다른 이벤트의 제목과 시작일인 경우
             return CommonResult.FAILURE_DUPLICATE;
         }
+//        2. 제목과 시작일은 그대로 두고, 나머지 값만 변경하는 경우
+
         dbEvent.setTitle(event.getTitle());
         dbEvent.setStartDate(event.getStartDate());
         dbEvent.setEndDate(event.getEndDate());

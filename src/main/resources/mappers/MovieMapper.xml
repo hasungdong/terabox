@@ -3,6 +3,25 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.terabox.demo.mappers.MovieMapper">
+    <select id="selectMovieByTitleReleaseDate" resultType="com.terabox.demo.entities.MovieEntity">
+        SELECT `index`                  AS `index`,
+               `title`                  AS `title`,
+               `release_date`           AS `releaseDate`,
+               `playing_time`           AS `playingTime`,
+               `thumbnail`              AS `thumbnail`,
+               `grade`                  AS `grade`,
+               `view`                   AS `view`,
+               `is_single`              AS `isSingle`,
+               `thumbnail_file_name`    AS `thumbnailFileName`,
+               `thumbnail_content_type` AS `thumbnailContentType`,
+               `age_limit`              AS `ageLimit`,
+               `dimension_type`         AS `dimensionType`,
+               `price`                  AS 'price'
+        FROM `terabox`.`movies`
+        WHERE `title` = #{title}
+          AND `release_date` = #{releaseDate}
+    </select>
+
     <select id="selectMoviesByTitle" resultType="com.terabox.demo.entities.MovieEntity">
         SELECT `index`                  AS `index`,
                `title`                  AS `title`,
