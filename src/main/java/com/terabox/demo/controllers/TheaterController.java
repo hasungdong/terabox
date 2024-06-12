@@ -1,10 +1,14 @@
 package com.terabox.demo.controllers;
 
+import com.terabox.demo.services.RegionService;
 import com.terabox.demo.services.TheaterService;
+import com.terabox.demo.vos.RegionVo;
+import com.terabox.demo.vos.TheaterVo;
 import lombok.RequiredArgsConstructor;
 import org.json.JSONObject;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,10 +19,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequiredArgsConstructor
 public class TheaterController {
     private final TheaterService theaterService;
+    private final RegionService regionService;
 
 //    theater/list html 페이지 보여주는거
     @GetMapping(value = "/list", produces = MediaType.TEXT_HTML_VALUE)
-    public String getDiscountGuide(){
+    public String getList(Model model){
+        RegionVo[] regions = this.regionService.getRegionsOnTheaterList();
+        model.addAttribute("regionVos", regions);
+        TheaterVo[] theaters = this.theaterService.getTheatersOnTheaterList();
+        model.addAttribute("theaterVos", theaters);
         return "theater/list";
     }
 
@@ -27,7 +36,7 @@ public class TheaterController {
     @ResponseBody
     public String getTheater(@RequestParam("regionCode") String regionCode) {
         JSONObject responseObject = new JSONObject();
-        responseObject.put("theaters", this.theaterService.getTheaters(regionCode));
+        responseObject.put("theaters", this.theaterService.getTheatersByRegionCode(regionCode));
         return responseObject.toString();
     }
 }

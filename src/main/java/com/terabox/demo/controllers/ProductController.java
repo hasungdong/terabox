@@ -26,6 +26,7 @@ public class ProductController extends AbstractGeneralController{
         ProductEntity[] products = this.productService.getProducts(searchDto);
         return this.parseResponse(searchDto, products, "products").toString();
 
+//        일반적인 코드
 //        JSONObject responseObject = new JSONObject();
 //        responseObject.put("search", searchDto);
 //        responseObject.put("products", products);

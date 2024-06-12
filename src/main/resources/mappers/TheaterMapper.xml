@@ -5,9 +5,29 @@
 <mapper namespace="com.terabox.demo.mappers.TheaterMapper">
     <select id="selectTheatersByRegionCode" resultType="com.terabox.demo.entities.TheaterEntity">
         SELECT `index`       AS 'index',
-               `region_code` AS 'region_code',
+               `region_code` AS 'regionCode',
                `name`        AS 'name'
         FROM `terabox`.`theaters`
         WHERE `region_code` = #{regionCode}
+    </select>
+
+    <select id="selectTheaters" resultType="com.terabox.demo.entities.TheaterEntity">
+        SELECT `index`       AS 'index',
+               `region_code` AS 'regionCode',
+               `name`        AS 'name'
+        FROM `terabox`.`theaters`
+    </select>
+
+    <select id="selectTheatersOnTheaterList" resultType="com.terabox.demo.vos.TheaterVo">
+        SELECT `index` AS `index`,
+               CASE
+                   WHEN `theaters`.region_code IN ('Dae', 'Gyeong', 'Bu') THEN 'Dae/Gyeong/Bu'
+                   WHEN `theaters`.region_code IN ('Daej', 'Chung', 'Sej') THEN 'Daej/Chung/Sej'
+                   WHEN `theaters`.`region_code` IN ('Gwang', 'Jeon') THEN 'Gwang/Jeon'
+                   ELSE region_code
+                   END AS 'regionCodeTwo',
+               `name` AS `name`
+        FROM `terabox`.`theaters`
+        ORDER BY theaters.`name`
     </select>
 </mapper>
