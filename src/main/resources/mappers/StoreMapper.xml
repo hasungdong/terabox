@@ -15,6 +15,7 @@
         FROM `terabox`.`products`
         WHERE `name` = #{name}
         AND `price` = #{price}
+        LIMIT 1
     </select>
 
     <select id="selectProductsByName" resultType="com.terabox.demo.entities.ProductEntity">

@@ -20,6 +20,7 @@
                `screening_time` AS `screeningTime`
         FROM `terabox`.`screening_info`
         WHERE `index` = #{index}
+        LIMIT 1
     </select>
 
     <select id="selectScreeningInfosByCinemaAndDate" resultType="com.terabox.demo.entities.ScreeningInfoEntity">

@@ -20,6 +20,7 @@
         FROM `terabox`.`movies`
         WHERE `title` = #{title}
           AND `release_date` = #{releaseDate}
+        LIMIT 1
     </select>
 
     <select id="selectMoviesByTitle" resultType="com.terabox.demo.entities.MovieEntity">

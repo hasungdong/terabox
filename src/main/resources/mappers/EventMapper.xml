@@ -15,6 +15,7 @@
         FROM `terabox`.`events`
         WHERE `title` = #{title}
         AND `start_date` = #{startDate}
+        LIMIT 1
     </select>
 
     <select id="selectEventsByTitle" resultType="com.terabox.demo.entities.EventEntity">

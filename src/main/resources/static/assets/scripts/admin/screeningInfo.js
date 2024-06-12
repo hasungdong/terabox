@@ -210,7 +210,7 @@ screeningInfoSearchBar.onsubmit = e => {
             <li>
 <!--            아래 2개 input이 입력값-->
                 <input type="hidden" name="index" value="${screeningInfoVo['index']}">
-                <input type="hidden" name="movieIndex" value="${screeningInfoVo['movieIndex']}">
+                <input type="hidden" name="movieIndex" value="${screeningInfoVo['movieIndex'] === undefined ? -1 : screeningInfoVo['movieIndex']}">
 <!--                이 아래부턴 그냥 보여주기 용도라 실제 사용되지는 않는다.-->
 <!-- 입력해줄거 아닌데 굳이 input태그 사용한건 css 새로 만들기 귀찮아서...-->
                 <label class="_obj-label" rel="screeningDateLabel">
@@ -235,9 +235,23 @@ screeningInfoSearchBar.onsubmit = e => {
             </li>
         </ul>`, 'text/html').querySelector('li');
             ul.append(li);
+            // x 버튼 생성
+            if (li.querySelector('[name="title"]').value !== "배정된 영화가 없습니다."){
+                const vacateMovieButton = new DOMParser().parseFromString(`
+                                <button type="button" class="vacateMovieButton">
+                                    <img src="/assets/images/common/cancelBlack.png" height="20" width="20"/>
+                                </button>
+                                `, 'text/html').querySelector('button');
+                li.querySelector('[rel="titleLabel"]').append(vacateMovieButton);
+                vacateMovieButton.onclick = () => {
+                    vacateMovieButton.remove();
+                    li.querySelector('[name="title"]').value = "배정된 영화가 없습니다.";
+                    li.querySelector('[type="hidden"][name="movieIndex"]').value = -1;
+                }
+            }
 
             // 상영정보 수정
-            const modifyScreeningFormButtons = li.querySelectorAll('[class="modifyScreeningFormButton"]');
+            const modifyScreeningFormButtons = li.querySelectorAll('.modifyScreeningFormButton');
             modifyScreeningFormButtons.forEach(modifyScreeningFormButton => modifyScreeningFormButton.onclick = () => {
                 const xhr = new XMLHttpRequest();
                 const formData = new FormData();
@@ -255,17 +269,18 @@ screeningInfoSearchBar.onsubmit = e => {
                     const [dTitle, dContent, dOnclick] = {
                         failure: ['경고', '알 수 없는 이유로 상영정보를 수정하지 못하였습니다. 잠시 후 다시 시도해주세요.'],
                         success: ['알림', '상영정보를 수정하였습니다.', () => {
+                            // x버튼 생성
                             if (li.querySelector('[name="title"]').value !== "배정된 영화가 없습니다."){
                                 const vacateMovieButton = new DOMParser().parseFromString(`
                                 <button type="button" class="vacateMovieButton">
-                                    <img src="/assets/images/common/cancel.png" height="15" width="16"/>
+                                    <img src="/assets/images/common/cancelBlack.png" height="20" width="20"/>
                                 </button>
                                 `, 'text/html').querySelector('button');
                                 li.querySelector('[rel="titleLabel"]').append(vacateMovieButton);
                                 vacateMovieButton.onclick = () => {
                                     vacateMovieButton.remove();
                                     li.querySelector('[name="title"]').value = "배정된 영화가 없습니다.";
-                                    li.querySelector('[type="hidden"][name="movieIndex"]').value = undefined;
+                                    li.querySelector('[type="hidden"][name="movieIndex"]').value = -1;
                                 }
                             }
                         }]
@@ -422,6 +437,21 @@ screeningInfoSearchBar.onsubmit = e => {
                                                         const responseObject = JSON.parse(xhr.responseText);
                                                         contentLi.querySelector('[name="title"]').value = responseObject['title'];
                                                         contentLi.querySelector('[type="hidden"][name="movieIndex"]').value = li.querySelector('[name="index"]').value;
+
+                                                    //     영화 제목 칸에 x버튼 만들기
+                                                        if (contentLi.querySelector('[name="title"]').value !== "배정된 영화가 없습니다."){
+                                                            const vacateMovieButton = new DOMParser().parseFromString(`
+                                <button type="button" class="vacateMovieButton">
+                                    <img src="/assets/images/common/cancelBlack.png" height="20" width="20"/>
+                                </button>
+                                `, 'text/html').querySelector('button');
+                                                            contentLi.querySelector('[rel="titleLabel"]').append(vacateMovieButton);
+                                                            vacateMovieButton.onclick = () => {
+                                                                vacateMovieButton.remove();
+                                                                contentLi.querySelector('[name="title"]').value = "배정된 영화가 없습니다.";
+                                                                contentLi.querySelector('[type="hidden"][name="movieIndex"]').value = -1;
+                                                            }
+                                                        }
                                                     }
                                                     xhr.open('GET', `/movie/movie?index=${li.querySelector('[name="index"]').value}`);
                                                     xhr.send();
