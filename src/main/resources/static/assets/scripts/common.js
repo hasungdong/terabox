@@ -94,7 +94,7 @@ if (document.querySelector('span.swiper-bar') !== null) {
         events.forEach(event => {
             event.style.left = `calc((-51.5%) + ${event.style.left}`;
             if (event.style.left === 'calc(-103%)') {
-                // -51.5% * 2 = -100%
+                // -51.5% * 2 = -103%
                 event.style.left = `calc(51.5% * ${events.length - 2})`;
             }
             if (event.style.left !== 'calc(0%)' &&
@@ -129,7 +129,10 @@ if (document.querySelector('span.swiper-bar') !== null) {
             event.style.left = `calc((51.5%) * ${i})`;
             let leftEventValue = 51.5 * (events.length - 1) + '%';
             if (event.style.left === `calc(${leftEventValue})`) {
-                event.style.left = 'calc(-51.5%)';
+                // 이벤트가 3개가 안되면 2개가 그냥 제자리에 있어야 하니까
+                if (events.length > 2){
+                    event.style.left = 'calc(-51.5%)';
+                }
             }
             i++;
             if (event.style.left !== `calc(0%)` &&
@@ -567,13 +570,15 @@ HTMLElement.prototype.isEnabled = function () {
 }
 
 if (document.getElementById('loginForm') !== null){
+    // 로그인 취소 버튼 작동
     loginCancelButton.onclick = () => {
         loginForm.hide();
         cover.hide();
     }
-
+    // 로그인 시도
     loginForm.onsubmit = e => {
         e.preventDefault();
+        // 관리자용 아이디 검사용 로직, 나중에 서비스에서 할 수 있게 바꿔야댐
         if (loginForm.email.value === 'a@aaa' &&
             loginForm.password.value === 'aaaaa') {
             alertCover.show(() => {

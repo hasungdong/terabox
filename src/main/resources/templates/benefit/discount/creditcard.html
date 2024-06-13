@@ -12,9 +12,11 @@
     <script defer>
         window.onload = () => {
             window.scroll({
-                top:document.querySelector('nav#nav').offsetTop,
-                left:0,
-                behavior:"smooth"
+                // 현재 화면의 위치를 해당 값으로 이동한다.
+                top: document.querySelector('nav#nav').offsetTop,
+                left: 0,
+                // 스크롤로 움직이는 것처럼 부드럽게 이동, 이거 안하면 순간이동함
+                behavior: "smooth"
             });
         };
     </script>
@@ -48,6 +50,13 @@
                 <span class="title">더욱 알뜰하게 메가박스를 즐기는 방법!</span>
                 <span class="text">소지하고 계신 카드를 검색해 보세요. 할인 및 혜택정보를 빠르게 확인할 수 있어요.</span>
             </div>
+        </div>
+        <div class="search-card-button-bar">
+            <button type="button" class="on">전체</button>
+            <button type="button" class="">메가박스카드</button>
+            <button type="button" class="">삼성카드</button>
+            <button type="button">현대카드</button>
+            <button type="button">신한카드</button>
         </div>
         <div class="card-list-block">
             <h3 class="tit">

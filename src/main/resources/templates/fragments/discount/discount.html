@@ -16,88 +16,81 @@
             <div class="spring"></div>
             <div class="swiper-bar-container">
                 <div class="swiper-bar-box">
-                    <span class="swiper-bar point"></span>
-                    <span class="swiper-bar"></span>
-                    <span class="swiper-bar"></span>
-                    <span class="swiper-bar"></span>
-                    <span class="swiper-bar"></span>
-                    <span class="swiper-bar"></span>
-                    <span class="swiper-bar"></span>
-                    <span class="swiper-bar"></span>
+                    <span class="swiper-bar" th:each="event : ${events}"></span>
                 </div>
                 <img class="less" th:src="@{/assets/images/common/less.png}" alt="">
                 <img class="more" th:src="@{/assets/images/common/more.png}" alt="">
                 <img class="play" th:src="@{/assets/images/common/play.png}" alt="">
                 <img class="pause" th:src="@{/assets/images/common/pause.png}" alt="">
-                <span class="text current-page">1 / 8</span>
+                <span class="text current-page" th:text="${'1 / ' + eventsCount}"></span>
                 <!--                현재 페이지 / 전체 페이지-->
             </div>
         </div>
         <div class="event-box">
-            <a href="#" class="event">
-                <img th:src="@{/assets/images/common/favicon.ico}" alt="" class="temp">
+            <a href="#" class="event" th:each="event : ${events}">
+                <img th:src="@{/event/image (index=${event.getIndex()})}" alt="" class="temp">
                 <div class="text-box">
-                    <span class="text">[프로모션][굿즈] &lt;가필드 더 무비&gt; 콤보 론칭</span>
+                    <span class="text" th:text="${event.getTitle()}"></span>
                     <div class="spring"></div>
-                    <span class="duration">2024.05.13~2024.05.31</span>
+                    <span class="duration" th:text="${event.getStartDate() + '~' + event.getEndDate()}"></span>
                 </div>
             </a>
-            <a href="#" class="event">
-                <img th:src="@{/assets/images/common/favicon.ico}" alt="" class="temp">
-                <div class="text-box">
-                    <span class="text">[프로모션][굿즈] &lt;극장판하이큐!! 쓰레기장의 결전&gt; 콤보 론칭</span>
-                    <div class="spring"></div>
-                    <span class="duration">2024.05.15~2024.06.30</span>
-                </div>
-            </a>
-            <a href="#" class="event">
-                <img src="" alt="" class="temp">
-                <div class="text-box">
-                    <span class="text">&lt;가필드 더 무비&gt; 굿즈패키지 런칭</span>
-                    <div class="spring"></div>
-                    <span class="duration">2024.05.11~2024.05.31</span>
-                </div>
-            </a>
-            <a href="#" class="event">
-                <img src="" alt="" class="temp">
-                <div class="text-box">
-                    <span class="text">메가박스 오리지널 티켓 Re.24 &lt;쇼생크 탈출&gt;</span>
-                    <div class="spring"></div>
-                    <span class="duration">2024.05.07~2024.06.07</span>
-                </div>
-            </a>
-            <a href="#" class="event">
-                <img src="" alt="" class="temp">
-                <div class="text-box">
-                    <span class="text">&lt;혹성탈출:새로운 시대&gt; 굿즈패키지 런칭</span>
-                    <div class="spring"></div>
-                    <span class="duration">2024.05.02~2024.05.31</span>
-                </div>
-            </a>
-            <a href="#" class="event">
-                <img src="" alt="" class="temp">
-                <div class="text-box">
-                    <span class="text">메가박스 오리지널 티켓 No.109 &lt;범죄도시4&gt;</span>
-                    <div class="spring"></div>
-                    <span class="duration">2024.04.24~2024.05.24</span>
-                </div>
-            </a>
-            <a href="#" class="event">
-                <img src="" alt="" class="temp">
-                <div class="text-box">
-                    <span class="text">4월에는 시리즈4 영화 필관하자!</span>
-                    <div class="spring"></div>
-                    <span class="duration">2024.04.10~2024.05.19</span>
-                </div>
-            </a>
-            <a href="#" class="event">
-                <img src="" alt="" class="temp">
-                <div class="text-box">
-                    <span class="text">메가박스 오리지널 티켓 No.108 &lt;골드핑거&gt;</span>
-                    <div class="spring"></div>
-                    <span class="duration">2024.04.13~2024.05.12</span>
-                </div>
-            </a>
+<!--            <a href="#" class="event">-->
+<!--                <img th:src="@{/assets/images/common/favicon.ico}" alt="" class="temp">-->
+<!--                <div class="text-box">-->
+<!--                    <span class="text">[프로모션][굿즈] &lt;극장판하이큐!! 쓰레기장의 결전&gt; 콤보 론칭</span>-->
+<!--                    <div class="spring"></div>-->
+<!--                    <span class="duration">2024.05.15~2024.06.30</span>-->
+<!--                </div>-->
+<!--            </a>-->
+<!--            <a href="#" class="event">-->
+<!--                <img src="" alt="" class="temp">-->
+<!--                <div class="text-box">-->
+<!--                    <span class="text">&lt;가필드 더 무비&gt; 굿즈패키지 런칭</span>-->
+<!--                    <div class="spring"></div>-->
+<!--                    <span class="duration">2024.05.11~2024.05.31</span>-->
+<!--                </div>-->
+<!--            </a>-->
+<!--            <a href="#" class="event">-->
+<!--                <img src="" alt="" class="temp">-->
+<!--                <div class="text-box">-->
+<!--                    <span class="text">메가박스 오리지널 티켓 Re.24 &lt;쇼생크 탈출&gt;</span>-->
+<!--                    <div class="spring"></div>-->
+<!--                    <span class="duration">2024.05.07~2024.06.07</span>-->
+<!--                </div>-->
+<!--            </a>-->
+<!--            <a href="#" class="event">-->
+<!--                <img src="" alt="" class="temp">-->
+<!--                <div class="text-box">-->
+<!--                    <span class="text">&lt;혹성탈출:새로운 시대&gt; 굿즈패키지 런칭</span>-->
+<!--                    <div class="spring"></div>-->
+<!--                    <span class="duration">2024.05.02~2024.05.31</span>-->
+<!--                </div>-->
+<!--            </a>-->
+<!--            <a href="#" class="event">-->
+<!--                <img src="" alt="" class="temp">-->
+<!--                <div class="text-box">-->
+<!--                    <span class="text">메가박스 오리지널 티켓 No.109 &lt;범죄도시4&gt;</span>-->
+<!--                    <div class="spring"></div>-->
+<!--                    <span class="duration">2024.04.24~2024.05.24</span>-->
+<!--                </div>-->
+<!--            </a>-->
+<!--            <a href="#" class="event">-->
+<!--                <img src="" alt="" class="temp">-->
+<!--                <div class="text-box">-->
+<!--                    <span class="text">4월에는 시리즈4 영화 필관하자!</span>-->
+<!--                    <div class="spring"></div>-->
+<!--                    <span class="duration">2024.04.10~2024.05.19</span>-->
+<!--                </div>-->
+<!--            </a>-->
+<!--            <a href="#" class="event">-->
+<!--                <img src="" alt="" class="temp">-->
+<!--                <div class="text-box">-->
+<!--                    <span class="text">메가박스 오리지널 티켓 No.108 &lt;골드핑거&gt;</span>-->
+<!--                    <div class="spring"></div>-->
+<!--                    <span class="duration">2024.04.13~2024.05.12</span>-->
+<!--                </div>-->
+<!--            </a>-->
         </div>
         <button class="left swiper" type="button"></button>
         <button class="right swiper" type="button"></button>

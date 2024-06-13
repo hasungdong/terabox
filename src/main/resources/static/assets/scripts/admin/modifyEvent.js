@@ -246,7 +246,9 @@ const showEvents = (page) => {
                                                         // 안그러면 div.content가 계속해서 생겨남
                                                         // 지금은 modifyMovieFormTwo가 생기고, 수정하기를 눌러서 성공한 상황
                                                         modifyEventFormTwo.querySelector('div.content').remove();
-                                                        modifyEventForm.divResult.innerHTML = '';
+                                                        // modifyEventForm.divResult.innerHTML = '';
+                                                        // 성공했으면 1page로 검색
+                                                        showEvents(1);
                                                     }]
                                                 }[responseObject.result] || ['경고', '서버가 알 수 없는 응답을 반환하였습니다. 잠시 후 다시 시도해 주세요.'];
                                                 MessageObj.createSimpleOk(dTitle, dContent, dOnclick).show();

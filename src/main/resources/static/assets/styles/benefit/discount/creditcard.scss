@@ -57,6 +57,41 @@
       }
     }
 
+    > .search-card-button-bar{
+      margin-top: 30px;
+      text-align: center;
+
+      > button{
+        position: relative;
+        display: inline-block;
+        margin: 10px 12px 0 12px;
+        padding: 0 0 5px 0;
+        border: 0;
+        color: #555;
+        font-size: 1.0667em;
+        font-weight: 400;
+        border-bottom: 2px solid #fff;
+        background-color: #fff;
+
+        &::after{
+          content: '';
+          display: block;
+          position: absolute;
+          right: -14px;
+          top: 2px;
+          width: 1px;
+          height: 14px;
+          background-color: #d8d9db;
+        }
+
+        &.on{
+          color: #351f66;
+          border-bottom: 2px solid #503396;
+          font-weight: 400;
+        }
+      }
+    }
+
     > .card-list-block{
       display: flex;
       flex-direction: column;

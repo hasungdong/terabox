@@ -21,7 +21,7 @@ if (document.querySelector('button.select') !== null){
         showPointButton.classList.toggle('open');
         pointButton.classList.toggle('open');
     }
-//     열려있을 때 누르면 실행되는 코드
+//     셀렉트 옵션들 보일 때 누르면 실행되는 코드
     newsAgencyButton.querySelectorAll(':scope > ul > li').forEach(newsAgency => newsAgency.onclick = () => {
         location.href = './creditcard';
     })
