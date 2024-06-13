@@ -1,5 +1,6 @@
 package com.terabox.demo.controllers;
 
+import com.terabox.demo.services.EventService;
 import com.terabox.demo.services.RegionService;
 import com.terabox.demo.services.TheaterService;
 import com.terabox.demo.vos.RegionVo;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class TheaterController {
     private final TheaterService theaterService;
     private final RegionService regionService;
+    private final EventService eventService;
 
 //    theater/list html 페이지 보여주는거
     @GetMapping(value = "/list", produces = MediaType.TEXT_HTML_VALUE)
@@ -28,6 +30,8 @@ public class TheaterController {
         model.addAttribute("regionVos", regions);
         TheaterVo[] theaters = this.theaterService.getTheatersOnTheaterList();
         model.addAttribute("theaterVos", theaters);
+        model.addAttribute("events", this.eventService.getEventsAll());
+        model.addAttribute("eventTwo", this.eventService.getEventsTwoStartDate());
         return "theater/list";
     }
 

@@ -144,6 +144,10 @@
       background-color: #ecf0f4;
 
       > div{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
         > .icon{
           width: 10px;
           height: 12px;
@@ -188,7 +192,7 @@
         flex-direction: row;
         align-items: center;
         color: #666666;
-        
+
         > .icon{
           width: 18.5px;
           height: 18.5px;
@@ -206,6 +210,7 @@
         width: calc(50% - 0.95rem);
         border-radius: 10px;
         height: 250px;
+        cursor: pointer;
       }
     }
   }

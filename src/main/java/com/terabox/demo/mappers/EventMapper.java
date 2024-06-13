@@ -20,4 +20,10 @@ public interface EventMapper {
 
     EventEntity[] selectEventsBySearch(SearchDto searchDto);
 
+    EventEntity[] selectEventsAll();
+
+    int selectEventsAllCount();
+
+    EventEntity[] selectEventsTwoStartDate();
+
 }

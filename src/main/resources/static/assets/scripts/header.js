@@ -1,7 +1,7 @@
 const headerImg = document.querySelector('.header-main-page');
-const cover = document.getElementById('cover');
+
 const loginForm = document.getElementById('loginForm');
-const loading = document.getElementById('loading');
+
 const linksitemap = document.getElementById('header-site-map');
 const sitemap = document.getElementById('layer_sitemap');
 

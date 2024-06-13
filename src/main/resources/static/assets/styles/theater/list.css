@@ -951,6 +951,11 @@ li {
   border-radius: 0 0 10px 10px;
   background-color: #ecf0f4;
 }
+#main > .theater-box > .user-theater > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 #main > .theater-box > .user-theater > div > .icon {
   width: 10px;
   height: 12px;
@@ -1002,6 +1007,7 @@ li {
   width: calc(50% - 0.95rem);
   border-radius: 10px;
   height: 250px;
+  cursor: pointer;
 }
 #main > .notice-container {
   display: flex;

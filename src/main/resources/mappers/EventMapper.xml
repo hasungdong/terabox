@@ -67,5 +67,36 @@
         LIMIT #{countPerPage} OFFSET #{offset}
     </select>
 
+    <select id="selectEventsAll" resultType="com.terabox.demo.entities.EventEntity">
+        SELECT `index` AS `index`,
+               `title` AS `title`,
+               `start_date` AS `startDate`,
+               `end_date` AS `endDate`,
+               `discount_rate` AS `discountRate`,
+               `thumbnail` AS `thumbnail`,
+               `thumbnail_file_name` AS `thumbnailFileName`,
+               `thumbnail_content_type` AS `thumbnailContentType`
+        FROM `terabox`.`events`
+    </select>
+
+    <select id="selectEventsAllCount" parameterType="_int">
+        SELECT COUNT(0) AS `count`
+        FROM `terabox`.`events` AS `event`
+    </select>
+
+    <select id="selectEventsTwoStartDate" resultType="com.terabox.demo.entities.EventEntity">
+        SELECT `index` AS `index`,
+               `title` AS `title`,
+               `start_date` AS `startDate`,
+               `end_date` AS `endDate`,
+               `discount_rate` AS `discountRate`,
+               `thumbnail` AS `thumbnail`,
+               `thumbnail_file_name` AS `thumbnailFileName`,
+               `thumbnail_content_type` AS `thumbnailContentType`
+        FROM `terabox`.`events`
+        ORDER BY `start_date`
+        LIMIT 2
+    </select>
+
 
 </mapper>
