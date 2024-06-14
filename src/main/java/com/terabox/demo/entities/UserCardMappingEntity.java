@@ -6,8 +6,10 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@EqualsAndHashCode(of = {"userEmail", "cardName"})
+@EqualsAndHashCode(of = {"index"})
 public class UserCardMappingEntity {
+    private int index;
     private String userEmail;
     private String cardName;
+    private int point;
 }

@@ -15,5 +15,7 @@ public class OrderEntity {
     private Integer movieReservationIndex;
     private Integer productIndex;
     private int price;
+    private int userCardMappingIndex;
+    private int quantity;
     private LocalDateTime createdAt;
 }

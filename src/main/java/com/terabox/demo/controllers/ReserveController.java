@@ -13,4 +13,10 @@ public class ReserveController {
 
         return "booking/reserve";
     }
+
+//    여기 어차피 없애고 나중에 xhr로 만들게 해야됨
+    @GetMapping(value = "order", produces = MediaType.TEXT_HTML_VALUE)
+    public String getOrder(){
+        return "booking/order";
+    }
 }

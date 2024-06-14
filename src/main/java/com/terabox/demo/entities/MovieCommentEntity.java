@@ -12,5 +12,7 @@ import java.time.LocalDateTime;
 public class MovieCommentEntity {
     private int index;
     private int movieIndex;
+    private String userEmail;
+    private String content;
     private LocalDateTime createdAt;
 }

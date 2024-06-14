@@ -1,0 +1,166 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+@import "../common/header";
+@import "../common/common.notHome";
+
+*{
+  box-sizing: border-box;
+}
+
+.temp{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Nanum Gothic", sans-serif;
+  box-sizing: border-box;
+
+  .order-container{
+    display: flex;
+    flex-direction: row;
+    width: 1100px;
+
+    > .seat-section{
+      display: flex;
+      flex-direction: column;
+      height: auto;
+      min-height: 556px;
+      border-top: 1px solid #000;
+      background-color: #fff;
+      width: 770px;
+
+      > .tit-util{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 8px 0 7px 0;
+
+
+        > h3{
+          font-size: 1.125rem;
+          color: #222;
+          line-height: 32px;
+        }
+
+        > button{
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          margin: 0;
+          text-align: center;
+          font-weight: 400;
+          border-radius: 4px;
+          font-family: "Nanum Gothic", sans-serif;
+          text-decoration: none;
+          vertical-align: middle;
+          cursor: pointer;
+          outline: none;
+
+          height: 32px;
+          padding: 0 12px;
+          font-size: .875rem;
+          letter-spacing: -.5px;
+
+          color: #444;
+          border: 1px solid #c1c1c1;
+          background-color: #fff;
+
+          line-height: 32px;
+
+
+          > img{
+            width: 14px;
+            height: 14px;
+            margin-right: 4px;
+          }
+        }
+      }
+
+      .discout-setting{
+        > .discout-list{
+          > ul{
+            > li{
+              & + li{
+                margin-top: 10px;
+              }
+
+              &.on{
+                > .tit{
+                  border: 1px solid #f2f4f5;
+                  background-color: #f2f4f5;
+                }
+
+                > .cont-down{
+                  display: block;
+                }
+              }
+
+              > .tit{
+                display: block;
+                height: 40px;
+                padding: 0 0 0 20px;
+                border: 1px solid #d8d9db;
+                font-size: 1rem;
+                color: #444;
+                font-weight: 700;
+                border-radius: 3px;
+                line-height: 40px;
+              }
+
+              > .cont-down{
+                display: none;
+                padding-bottom: 30px;
+
+                > .coupon-box{
+                  display: grid;
+                  grid-template-columns: repeat(4, 1fr);
+
+                  > .item{
+                    position: relative;
+                    float: left;
+                    display: block;
+                    height: 46px;
+                    margin: 11px 0 0 10px;
+                    padding: 0;
+                    text-align: left;
+                    background-color: #fff;
+
+                    width: 185px;
+
+                    &:first-child{
+                      margin: 11px 0 0 0;
+                    }
+
+                    > a{
+                      color: #444444;
+                      font-size: 0.8125rem;
+
+                      position: relative;
+
+                      display: flex;
+                      flex-direction: row;
+                      align-items: center;
+
+                      width: 100%;
+                      height: 100%;
+                      margin: 0;
+                      padding: 11px 18px;
+                      text-decoration: none;
+                      border: 1px solid #ebebeb;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    > .right{
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+}

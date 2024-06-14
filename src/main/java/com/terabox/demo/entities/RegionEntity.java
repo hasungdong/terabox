@@ -12,5 +12,5 @@ import lombok.ToString;
 public class RegionEntity {
     private String code;
     private String text;
-    private String populationRanking;
+    private int populationRanking;
 }
