@@ -24,4 +24,5 @@ public class MovieService {
         searchDto.setOffset(searchDto.getCountPerPage() * (searchDto.getRequestPage() - 1));
         return this.movieMapper.selectMoviesBySearch(searchDto);
     }
+
 }

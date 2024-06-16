@@ -22,7 +22,7 @@
             <a th:href="@{/movie/allMovie/admin}" class="header-admin" rel="seeByAdmin">관리자 모드로 보기</a>
             <a class="header-login" href="#" rel="showLogin">로그인</a>
             <a class="header-register" th:href="@{/register/register}" rel="showRegister">회원가입</a>
-            <a class="header-fast-buy" th:href="@{/booking/reserve}" rel="reserveLink">빠른예매</a>
+            <a class="header-fast-buy" th:href="@{/booking}" rel="reserveLink">빠른예매</a>
         </div>
     </div>
     <div class="link-area">
@@ -47,7 +47,7 @@
                 </li>
             </ul>
         </div> <!-- 나중에 호버시 밑에 링크로 뜨게하기 -->
-        <a id="header-buy-ticket" class="header-buy-ticket" href="/booking/reserve" rel="reserveLink">예매</a>
+        <a id="header-buy-ticket" class="header-buy-ticket" href="/booking" rel="reserveLink">예매</a>
         <div id="reserveLink-mini" class="reserveLink-mini">
             <ul>
                 <li>
@@ -84,7 +84,7 @@
                     <a href="/event" title="진행중 이벤트">진행중 이벤트</a>
                 </li>
                 <li>
-                    <a href="/event/end" title="지난 이벤트">지난 이벤트</a>
+                    <a href="/event/pastEvent" title="지난 이벤트">지난 이벤트</a>
                 </li>
                 <li>
                     <a href="/event/winner/list" title="당첨자발표">당첨자발표</a>
@@ -160,7 +160,7 @@
 
                 <ul class="list-depth">
                     <li><a href="/event" title="진행중 이벤트">진행중 이벤트</a></li>
-                    <li><a href="/event/end" title="지난 이벤트">지난 이벤트</a></li>
+                    <li><a href="/event/pastEvent" title="지난 이벤트">지난 이벤트</a></li>
                     <li><a href="/event/winner/list" title="당첨자발표">당첨자발표</a></li>
                 </ul>
             </div>

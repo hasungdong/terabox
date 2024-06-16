@@ -139,6 +139,11 @@ modifyMovieForm.onsubmit = e => {
             </select>
             <span class="__warning">효과를 선택해 주세요.</span>
         </label>
+        <label class="_obj-label" rel="priceLabel">
+            <span class="__text">영화 가격</span>
+            <input class="_obj-input __field" type="number" name="price" value="${responseObject['price']}">
+            <span class="__warning">올바른 값을 입력해 주세요.</span>
+        </label>
         <div class="spring"></div>
         <button type="submit">수정하기</button>
         <button type="button" rel="hideModifyMovieFormTwo">취소</button>
@@ -187,6 +192,8 @@ modifyMovieForm.onsubmit = e => {
                                         modifyMovieFormTwo.isSingleLabel = new LabelObj(modifyMovieFormTwo.querySelector('[rel="isSingleLabel"]'));
                                         modifyMovieFormTwo.ageLimitLabel = new LabelObj(modifyMovieFormTwo.querySelector('[rel="ageLimitLabel"]'));
                                         modifyMovieFormTwo.dimensionTypeLabel = new LabelObj(modifyMovieFormTwo.querySelector('[rel="dimensionTypeLabel"]'));
+                                        modifyMovieFormTwo.priceLabel = new LabelObj(modifyMovieFormTwo.querySelector('[rel="priceLabel"]'));
+
 
                                         modifyMovieFormTwo.onsubmit = e => {
                                             e.preventDefault();
@@ -213,13 +220,15 @@ modifyMovieForm.onsubmit = e => {
                                             modifyMovieFormTwo.dimensionTypeLabel.setValid(modifyMovieFormTwo['dimensionType'].value === '2D' ||
                                                 modifyMovieFormTwo['dimensionType'].value === '3D' ||
                                                 modifyMovieFormTwo['dimensionType'].value === '4D');
+                                            modifyMovieFormTwo.priceLabel.setValid(modifyMovieFormTwo['price'].value > 0);
                                             // 양식 안맞을시 제출 막는 로직, 이것도 add에서 해줬었음
                                             if (!modifyMovieFormTwo.titleLabel.isValid() ||
                                                 !modifyMovieFormTwo.releaseDateLabel.isValid() ||
                                                 !modifyMovieFormTwo.playingTimeLabel.isValid() ||
                                                 !modifyMovieFormTwo.isSingleLabel.isValid() ||
                                                 !modifyMovieFormTwo.ageLimitLabel.isValid() ||
-                                                !modifyMovieFormTwo.dimensionTypeLabel.isValid()){
+                                                !modifyMovieFormTwo.dimensionTypeLabel.isValid() ||
+                                                !modifyMovieFormTwo.priceLabel.isValid()){
                                                 return;
                                             }
                                             // 수정할 값들을 받아서 실제로 수정하는 xhr 요청
@@ -236,6 +245,7 @@ modifyMovieForm.onsubmit = e => {
                                             formData.append('isSingle', modifyMovieFormTwo['isSingle'].value);
                                             formData.append('ageLimit', modifyMovieFormTwo['ageLimit'].value);
                                             formData.append('dimensionType', modifyMovieFormTwo['dimensionType'].value);
+                                            formData.append('price', modifyMovieFormTwo['price'].value);
                                             xhr.onreadystatechange = function () {
                                                 if (xhr.readyState !== XMLHttpRequest.DONE) {
                                                     return;

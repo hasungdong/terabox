@@ -100,22 +100,36 @@
       height: 90px;
       margin-left: 20px;
       background: url("https://img.megabox.co.kr/static/pc/images/reserve/bg-empty-cell.png");
+
+      > .wrap {
+        position: relative;
+
+        img {
+          position: absolute;
+
+          width: 69px;
+          height: 90px;
+          left: -69px;
+        }
+
+        > .del {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          width: 18px;
+          height: 18px;
+          left: -18px;
+          border: 0;
+          background-color: #666;
+          color: #ffffff;
+        }
+      }
     }
 
     .bg:first-child {
       margin-left: 0;
-    }
-
-    .del {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      width: 18px;
-      height: 18px;
-      border: 0;
-      background-color: #666;
-      color: #ffffff;
     }
   }
 }

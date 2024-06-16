@@ -10,72 +10,48 @@
         <div class="region-list">
           <ul>
             <li>
-              <button type="button" class="btn">서울(20)</button>
+              <button type="button" class="btn" data-region="Seoul" id="Seoul-count">서울(0)</button>
             </li>
             <li>
-              <button type="button" class="btn">인천(5)</button>
+              <button type="button" class="btn" data-region="Gyeonggi" id="Gyeonggi-count">경기(0)</button>
             </li>
             <li>
-              <button type="button" class="btn">대전/충청/세종(17)</button>
+              <button type="button" class="btn" data-region="Incheon" id="Incheon-count">인천(0)</button>
             </li>
             <li>
-              <button type="button" class="btn">부산/대구/경산(26)</button>
+              <button type="button" class="btn" data-region="ChungDaeSej" id="ChungDaeSej-count">대전/충청/세종(0)</button>
             </li>
             <li>
-              <button type="button" class="btn">광주/전라(9)</button>
+              <button type="button" class="btn" data-region="BuDaeGyeong" id="BuDaeGyeong-count">부산/대구/경상(0)</button>
             </li>
             <li>
-              <button type="button" class="btn">강원(4)</button>
+              <button type="button" class="btn" data-region="GwangJeon" id="GwangJeon-count">광주/전라(0)</button>
             </li>
             <li>
-              <button type="button" class="btn">제주(3)</button>
+              <button type="button" class="btn" data-region="Gang" id="Gang-count">강원(0)</button>
+            </li>
+            <li>
+              <button type="button" class="btn" data-region="Jeju" id="Jeju-count">제주(0)</button>
             </li>
           </ul>
         </div>
         <div class="detail-list">
-          <div class="region seoul">
+          <div class="region Seoul">
             <ul>
-              <li>
-                <button type="button" class="btn">강남</button>
-              </li>
-              <li>
-                <button type="button" class="btn">강동</button>
-              </li>
-              <li>
-                <button type="button" class="btn">군자</button>
-              </li>
-            </ul>
-          </div>
-          <div class="region gyeonggi" style="display: none">
-            <ul>
-              <li>
-                <button type="button" class="btn">고양스타필드</button>
-              </li>
-              <li>
-                <button type="button" class="btn">광명AK플라자</button>
-              </li>
-              <li>
-                <button type="button" class="btn">광명소하</button>
-              </li>
-            </ul>
-          </div>
-          <div class="region incheon" style="display: none">
-            <ul>
-              <li>
-                <button type="button" class="btn">검단</button>
-              </li>
-              <li>
-                <button type="button" class="btn">송도</button>
-              </li>
-              <li>
-                <button type="button" class="btn">영종</button>
-              </li>
+              <!--              <li>-->
+              <!--                <button type="button" class="btn">강남</button>-->
+              <!--              </li>-->
+              <!--              <li>-->
+              <!--                <button type="button" class="btn">강동</button>-->
+              <!--              </li>-->
+              <!--              <li>-->
+              <!--                <button type="button" class="btn">군자</button>-->
+              <!--              </li>-->
             </ul>
           </div>
         </div>
       </div>
       <div class="special">
-
       </div>
     </div>
     <div class="choice-all">
@@ -84,18 +60,34 @@
     </div>
     <div class="choice-list" style="display:none">
       <div class="bg">
-        <div class="img">
-          <img src="" alt="">
+        <div class="wrap">
+          <div class="txt">
+            강남
+          </div>
+          <button class="del">
+            <i class="fa-solid fa-x"></i>
+          </button>
         </div>
-        <button class="del">
-          <i class="fa-solid fa-x"></i>
-        </button>
       </div>
       <div class="bg">
-
+        <div class="wrap">
+          <div class="txt">
+            가나다라마바사아자차카타하
+          </div>
+          <button class="del">
+            <i class="fa-solid fa-x"></i>
+          </button>
+        </div>
       </div>
       <div class="bg">
-
+        <div class="wrap">
+          <div class="txt">
+            군자
+          </div>
+          <button class="del">
+            <i class="fa-solid fa-x"></i>
+          </button>
+        </div>
       </div>
     </div>
   </div>

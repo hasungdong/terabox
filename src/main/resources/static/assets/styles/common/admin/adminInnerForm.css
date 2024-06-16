@@ -16,6 +16,7 @@
   pointer-events: none;
   opacity: 0;
   z-index: 10;
+  overflow-y: auto;
 }
 .form.-visible {
   opacity: 1;
@@ -27,7 +28,7 @@
   border-bottom: #5e5e5e solid 0.06rem;
 }
 .form > .content {
-  height: 100%;
+  flex-grow: 1;
   padding: 1rem;
   align-items: stretch;
   display: flex;
@@ -141,7 +142,7 @@
   width: 40%;
 }
 .form > .content > .result-box > ul > li > .text-box > .info > .reservation-rate {
-  width: 28%;
+  width: 20%;
 }
 .form > .content > .result-box > ul > li > .text-box > .info > .release-date {
   flex-grow: 1;
@@ -153,6 +154,12 @@
   width: 37.5%;
 }
 .form > .content > .result-box > ul > li > .text-box > .info > .end-date {
+  flex-grow: 1;
+}
+.form > .content > .result-box > ul > li > .text-box > .info > .price {
+  width: 50%;
+}
+.form > .content > .result-box > ul > li > .text-box > .info > .quantity {
   flex-grow: 1;
 }
 .form > .content > button {

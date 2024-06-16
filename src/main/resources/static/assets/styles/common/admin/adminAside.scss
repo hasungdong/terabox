@@ -8,13 +8,15 @@
   box-shadow: 0 0 1.5rem 0.0625rem rgba(33, 33, 33, 0.3764705882);
   box-sizing: border-box;
   color: #ffffff;
-  overflow: visible;
+  overflow-x: visible;
+  overflow-y: auto;
   pointer-events: none;
   position: fixed;
   transition-duration: 900ms;
   transition-property: transform;
   z-index: 9;
   //cover의 z-index가 8이라서
+
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -27,58 +29,62 @@
     pointer-events: all;
   }
 
-  > .title{
+  > h2.title{
     padding: 4rem;
     text-align: center;
     border-bottom: 0.0625rem solid #5e5e5e;
   }
 
-  > ul {
 
-    > li{
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
+    > h3.title{
+      color: inherit;
+      border: none;
+      border-bottom: 0.0625rem solid #5e5e5e;
+      padding: 2rem;
+      text-align: center;
+      cursor: pointer;
 
-      > button{
-        color: inherit;
-        border: none;
-        border-bottom: 0.0625rem solid #5e5e5e;
-        padding: 2rem;
-        text-align: center;
-        cursor: pointer;
-
-        background-color: transparent;
-      }
+      background-color: transparent;
     }
-  }
 
-  > button{
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translate(100%, -50%);
-    z-index: 3;
-
-    padding: 0;
-    border: none;
-    //border-left: #aaaaaa solid 1px;
-
-    cursor: pointer;
-    pointer-events: all;
-
-    > img{
-      width: 3rem;
-      height: 3rem;
+    > ul {
       display: none;
-
-      &.more{
-        transform: scaleX(-1);
-      }
+      background-color: #5e5e5e;
 
       &.on{
         display: block;
       }
+
+      > li{
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        position: relative;
+
+        > button{
+          color: inherit;
+          border: none;
+          //border-bottom: 0.0625rem solid #4b4b4b;
+          padding: 0.5rem 2rem;
+          text-align: left;
+          cursor: pointer;
+
+          background-color: transparent;
+          position: relative;
+
+          &::before{
+            content: '';
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 1.25rem;
+            transform: translate(-50%, -50%);
+            background-color: #444444;
+            width: 3px;
+            height: 3px;
+          }
+        }
+      }
     }
-  }
+
 }

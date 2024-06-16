@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.terabox.demo.mappers.BookingMapper">
+    <!-- 특정 날짜의 모든 영화 SELECT -->
+    <select id="selectMoviesByScreeningDate" resultType="com.terabox.demo.entities.MovieEntity">
+        SELECT `movie`.`index` AS `index`,
+               `movie`.`title` AS `title`,
+               `movie`.`release_date` AS `releaseDate`,
+               `movie`.`playing_time` AS `playingTime`,
+               `movie`.`thumbnail` AS `thumbnail`,
+               `movie`.`grade` AS `grade`,
+               `movie`.`view` AS `view`,
+               `movie`.`is_single` AS `isSingle`,
+               `movie`.`thumbnail_file_name` AS `thumbnailFileName`,
+               `movie`.`thumbnail_content_type` AS `thumbnailContentType`,
+               `movie`.`age_limit` AS `ageLimit`,
+               `movie`.`dimension_type` AS `dimensionType`
+        FROM `terabox`.`movies` AS `movie`
+                 JOIN `terabox`.`screening_info` AS `screen`
+                      ON `movie`.`index` = `screen`.`movie_index`
+        WHERE `screen`.`screening_date` = #{screeningDate}
+    </select>
+
+    <!-- 특정 날짜의 모든 극장 SELECT -->
+    <select id="selectTheatersByScreeningDate" resultType="com.terabox.demo.entities.TheaterEntity">
+        SELECT `theater`.`index` AS `index`,
+               `theater`.`region_code` AS `regionCode`,
+               `theater`.`name` AS `name`
+        FROM `terabox`.`theaters` AS `theater`
+                 JOIN `terabox`.`screening_info` AS `screen`
+                      ON `theater`.`index` = `screen`.`cinema_index`
+        WHERE `screen`.`screening_date` = #{screeningDate}
+    </select>
+
+    <!-- 특정 날짜 및 영화에 대한 모든 극장 SELECT -->
+    <select id="selectTheatersByDateAndMovie" resultType="com.terabox.demo.entities.TheaterEntity">
+        SELECT `theater`.`index`       AS `index`,
+               `theater`.`region_code` AS `regionCode`,
+               `theater`.`name`        AS `name`
+        FROM `terabox`.`theaters` AS `theater`
+                 JOIN `terabox`.`screening_info` AS `screen`
+                      ON `theater`.`index` = `screen`.`cinema_index`
+        WHERE `screen`.`screening_date` = #{screeningDate}
+          AND `screen`.`movie_index` = #{movieIndex}
+    </select>
+
+    <!-- 특정 날짜, 영화, 극장의 상영 시간 SELECT -->
+    <select id="selectScreeningTimes" resultType="com.terabox.demo.entities.ScreeningInfoEntity">
+        SELECT screen.`index` AS `index`,
+               screen.`movie_index` AS `movieIndex`,
+               screen.`cinema_index` AS `cinemaIndex`,
+               screen.`screening_date` AS `screeningDate`,
+               screen.`screening_time` AS `screeningTime`,
+               screen.`price` AS `price`
+        FROM `terabox`.`screening_info` AS `screen`
+        WHERE `screen`.`screening_date` = #{screeningDate} AND `screen`.`movie_index` = #{movieIndex} AND `screen`.`cinema_index` = #{cinemaIndex}
+    </select>
+
+    <select id="selectTheaterCountsByRegion" resultType="com.terabox.demo.dtos.RegionCountDto">
+        SELECT
+            CASE
+                WHEN region_code IN ('Chung', 'Daej', 'Sej') THEN 'ChungDaeSej'
+                WHEN region_code IN ('Bu', 'Dae', 'Gyeong') THEN 'BuDaeGyeong'
+                WHEN region_code IN ('Gwang', 'Jeon') THEN 'GwangJeon'
+                ELSE region_code
+                END AS region,
+            COUNT(*) AS count
+        FROM `terabox`.`theaters`
+        GROUP BY region
+    </select>
+
+    <select id="selectTheatersByRegion" resultType="com.terabox.demo.entities.TheaterEntity">
+        SELECT `theater`.`index` AS `index`,
+        `theater`.`region_code` AS `regionCode`,
+        `theater`.`name` AS `name`
+        FROM `terabox`.`theaters` AS `theater`
+        WHERE `theater`.`region_code` IN
+        <if test="region == 'ChungDaeSej'">
+            ('Chung', 'Daej', 'Sej')
+        </if>
+        <if test="region == 'BuDaeGyeong'">
+            ('Bu', 'Dae', 'Gyeong')
+        </if>
+        <if test="region == 'GwangJeon'">
+            ('Gwang', 'Jeon')
+        </if>
+        <if test="region != 'ChungDaeSej' and region != 'BuDaeGyeong' and region != 'GwangJeon'">
+            (#{region})
+        </if>
+    </select>
+
+</mapper>

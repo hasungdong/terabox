@@ -4,7 +4,9 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Getter
 @Setter
@@ -14,6 +16,7 @@ public class ScreeningInfoEntity {
     private int movieIndex;
     private int eventIndex;
     private int theaterIndex;
-    private LocalDateTime screeningDatetime;
+    private LocalTime screeningTime;
+    private LocalDate screeningDate;
     private int price;
 }

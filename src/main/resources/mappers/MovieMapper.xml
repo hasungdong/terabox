@@ -63,4 +63,5 @@
         ORDER BY movie.`index` DESC
         LIMIT #{countPerPage} OFFSET #{offset}
     </select>
+
 </mapper>

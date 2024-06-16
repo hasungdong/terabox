@@ -10,6 +10,7 @@
 <body>
 <aside id="adminAside" class="" th:fragment="adminAside">
     <h2 class="title">관리자 모드 기능</h2>
+    <h3 class="title" rel="showDetailList">영화</h3>
     <ul>
         <li>
             <button type="button" rel="showAddMovieForm">영화 추가</button>
@@ -20,6 +21,9 @@
         <li>
             <button type="button" rel="showDeleteMovieForm">영화 삭제</button>
         </li>
+    </ul>
+    <h3 class="title" rel="showDetailList">상품</h3>
+    <ul>
         <li>
             <button type="button" rel="showAddProductForm">스토어 상품 추가</button>
         </li>
@@ -29,6 +33,9 @@
         <li>
             <button type="button" rel="showDeleteProductForm">스토어 상품 삭제</button>
         </li>
+    </ul>
+    <h3 class="title" rel="showDetailList">이벤트</h3>
+    <ul>
         <li>
             <button type="button" rel="showAddEventForm">이벤트 추가</button>
         </li>
@@ -38,21 +45,41 @@
         <li>
             <button type="button" rel="showDeleteEventForm">이벤트 삭제</button>
         </li>
-<!--        극장은 보류-->
-<!--        <li>-->
-<!--            <button type="button" rel="showDeleteProductForm">극장 추가</button>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--            <button type="button" rel="showDeleteProductForm">극장 수정</button>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--            <button type="button" rel="showDeleteProductForm">극장 삭제</button>-->
-<!--        </li>-->
+        <!--        극장은 보류-->
+        <!--        <li>-->
+        <!--            <button type="button" rel="showDeleteProductForm">극장 추가</button>-->
+        <!--        </li>-->
+        <!--        <li>-->
+        <!--            <button type="button" rel="showDeleteProductForm">극장 수정</button>-->
+        <!--        </li>-->
+        <!--        <li>-->
+        <!--            <button type="button" rel="showDeleteProductForm">극장 삭제</button>-->
+        <!--        </li>-->
     </ul>
-    <button type="button">
-        <img class="more on" th:src="@{/assets/images/common/lessAside.png}" alt="">
-        <img class="less" th:src="@{/assets/images/common/lessAside.png}" alt="">
-    </button>
+    <h3 class="title" rel="showDetailList">상영정보</h3>
+    <ul>
+        <li>
+            <button type="button" rel="showAddScreeningInfoForm">상영정보 추가</button>
+        </li>
+        <li>
+            <button type="button" rel="showModifyScreeningInfoForm">상영정보 수정</button>
+        </li>
+        <li>
+            <button type="button" rel="showDeleteScreeningInfo`Form">상영정보 삭제</button>
+        </li>
+    </ul>
+    <h3 class="title">아무거나</h3>
+    <ul>
+        <li>
+            <button type="button" rel="showAddScreeningInfoForm">상영정보 추가</button>
+        </li>
+        <li>
+            <button type="button" rel="showModifyScreeningInfoForm">상영정보 수정</button>
+        </li>
+        <li>
+            <button type="button" rel="showDeleteScreeningInfo`Form">상영정보 삭제</button>
+        </li>
+    </ul>
 </aside>
 </body>
 </html>
