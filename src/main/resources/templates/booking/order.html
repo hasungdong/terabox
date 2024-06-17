@@ -311,7 +311,7 @@ seat-select-section을 없애고 order-container를 보여주는 식으로 합�
                         <label for="rdo_pay_mobile">휴대폰 결제</label>
                     </span>
                     <span class="bg-chk small">
-                        <input type="radio" name="radio_payment_easypay" id="rdo_pay_easypay" value="easypay">
+                        <input type="radio" name="radio_payment" id="rdo_pay_easypay" value="easypay">
                         <label for="rdo_pay_easypay">간편결제</label>
                     </span>
                     <span class="bg-chk small">
@@ -321,59 +321,116 @@ seat-select-section을 없애고 order-container를 보여주는 식으로 합�
                 </div>
                 <div class="select-payment-card">
                     <label for="card_select">카드사 선택 <!-- 카드사 선택 --></label>
-                    <div class="dropdown bootstrap-select v1 small bs3"><select id="card_select" title="카드사 선택" class="selectpicker v1 small" tabindex="-98">
-                        <option class="bs-title-option" value=""></option>
-                        <option value="00" selected="">카드선택</option><!-- 전체카드   -->
-                        <option value="01">비씨카드</option><!-- 비씨카드   -->
-                        <option value="07">국민카드</option><!-- 국민카드   -->
-                        <option value="02">신한카드</option><!-- 신한카드   -->
-                        <option value="03">삼성카드</option><!-- 삼성카드   -->
-                        <option value="05">롯데카드</option><!-- 롯데카드   -->
-                        <option value="12">농협카드</option><!-- 농협카드   -->
-                        <option value="27">하나카드</option><!-- 하나카드   -->
-                        <option value="04">현대카드</option><!-- 현대카드   -->
-                        <option value="13">씨티카드</option><!-- 씨티카드   -->
-                        <option value="22">제주카드</option><!-- 제주카드   -->
-                        <option value="14">우리카드</option><!-- 우리카드   -->
-                        <option value="11">수협카드</option><!-- 수협카드   -->
-                        <option value="24">전북카드</option><!-- 전북카드   -->
-                        <option value="23">광주카드</option><!-- 광주카드   -->
-                        <option value="17">신협카드</option><!-- 신협카드   -->
-                        <option value="90">카카오뱅크</option><!-- 카카오뱅크 -->
-                        <option value="91">케이뱅크</option><!-- 케이뱅크   -->
+                    <div class="dropdown bootstrap-select v1 small bs3">
+                        <select id="card_select" title="카드사 선택" class="selectpicker v1 small" tabindex="-98">
+                            <option class="bs-title-option" value=""></option>
+                            <option value="00" selected="">카드선택</option><!-- 전체카드   -->
+                            <option value="01">비씨카드</option><!-- 비씨카드   -->
+                            <option value="07">국민카드</option><!-- 국민카드   -->
+                            <option value="02">신한카드</option><!-- 신한카드   -->
+                            <option value="03">삼성카드</option><!-- 삼성카드   -->
+                            <option value="05">롯데카드</option><!-- 롯데카드   -->
+                            <option value="12">농협카드</option><!-- 농협카드   -->
+                            <option value="27">하나카드</option><!-- 하나카드   -->
+                            <option value="04">현대카드</option><!-- 현대카드   -->
+                            <option value="13">씨티카드</option><!-- 씨티카드   -->
+                            <option value="22">제주카드</option><!-- 제주카드   -->
+                            <option value="14">우리카드</option><!-- 우리카드   -->
+                            <option value="11">수협카드</option><!-- 수협카드   -->
+                            <option value="24">전북카드</option><!-- 전북카드   -->
+                            <option value="23">광주카드</option><!-- 광주카드   -->
+                            <option value="17">신협카드</option><!-- 신협카드   -->
+                            <option value="90">카카오뱅크</option><!-- 카카오뱅크 -->
+                            <option value="91">케이뱅크</option><!-- 케이뱅크   -->
 
-                        <option value="B0">우체국카드</option><!-- 우체국 카드   -->
-                        <option value="B1">토스 카드</option><!-- 토스  카드  -->
-                        <option value="B2">SC제일은행 비씨카드</option><!-- SC제일은행 비씨카드   -->
-                        <option value="S0">SC제일은행 삼성카드</option><!-- SC제일은행 삼성카드   -->
-                        <option value="B3">IBK기업은행 카드</option><!-- IBK기업은행 카드  -->
-                    </select>
-                        <button type="button" class="btn dropdown-toggle btn-default" data-toggle="dropdown"
-                                role="button"
-                                data-id="card_select" title="카드선택">
-                            <div class="filter-option">
-                                <div class="filter-option-inner">
-                                    <div class="filter-option-inner-inner">카드선택</div>
-                                </div>
-                            </div>
-                            <span class="bs-caret"><span class="caret"></span></span></button>
+                            <option value="B0">우체국카드</option><!-- 우체국 카드   -->
+                            <option value="B1">토스 카드</option><!-- 토스  카드  -->
+                            <option value="B2">SC제일은행 비씨카드</option><!-- SC제일은행 비씨카드   -->
+                            <option value="S0">SC제일은행 삼성카드</option><!-- SC제일은행 삼성카드   -->
+                            <option value="B3">IBK기업은행 카드</option><!-- IBK기업은행 카드  -->
+                        </select>
+                        <button type="button" class="btn dropdown-toggle btn-default" role="button" title="카드선택">
+                            <div class="filter-option-inner-inner">카드선택</div>
+                            <span class="bs-caret">
+                                <span class="caret"></span>
+                            </span>
+                        </button>
                         <div class="dropdown-menu open" role="combobox">
                             <div class="inner open" role="listbox" aria-expanded="false" tabindex="-1">
-                                <ul class="dropdown-menu inner "></ul>
+                                <ul class="dropdown-menu inner ">
+                                    <li class=""><a role="option" aria-disabled="false" tabindex="0" class=""
+                                                    aria-selected="false"><span class="text">카드선택</span></a></li>
+                                    <li class=""><a role="option" aria-disabled="false" tabindex="0"
+                                                    aria-selected="false" class=""><span class="text">비씨카드</span></a>
+                                    </li>
+                                    <li class=""><a role="option" aria-disabled="false" tabindex="0"
+                                                    aria-selected="false" class=""><span class="text">국민카드</span></a>
+                                    </li>
+                                    <li class=""><a role="option" aria-disabled="false" tabindex="0"
+                                                    aria-selected="false" class=""><span class="text">신한카드</span></a>
+                                    </li>
+                                    <li class=""><a role="option" aria-disabled="false" tabindex="0"
+                                                    aria-selected="false" class=""><span class="text">삼성카드</span></a>
+                                    </li>
+                                    <li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span
+                                            class="text">롯데카드</span></a></li>
+                                    <li class=""><a role="option" aria-disabled="false" tabindex="0"
+                                                    aria-selected="false" class=""><span class="text">농협카드</span></a>
+                                    </li>
+                                    <li class="selected active"><a role="option" aria-disabled="false" tabindex="0"
+                                                                   aria-selected="true" class="selected active">
+                                        <span class="text">하나카드</span></a></li>
+                                    <li class=""><a role="option" aria-disabled="false" tabindex="0"
+                                                    aria-selected="false" class="">
+                                        <span class="text">현대카드</span>
+                                    </a>
+                                    </li>
+                                    <li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span
+                                            class="text">씨티카드</span></a></li>
+                                    <li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span
+                                            class="text">제주카드</span></a></li>
+                                    <li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span
+                                            class="text">우리카드</span></a></li>
+                                    <li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span
+                                            class="text">수협카드</span></a></li>
+                                    <li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span
+                                            class="text">전북카드</span></a></li>
+                                    <li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span
+                                            class="text">광주카드</span></a></li>
+                                    <li>
+                                        <a role="option" aria-disabled="false" tabindex="0" aria-selected="false">
+                                            <span class="text">신협카드</span>
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a role="option" aria-disabled="false" tabindex="0" aria-selected="false"
+                                           class="">
+                                            <span class="text">카카오뱅크</span></a>
+                                    </li>
+                                    <li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span
+                                            class="text">케이뱅크</span></a></li>
+                                    <li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span
+                                            class="text">우체국카드</span></a></li>
+                                    <li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span
+                                            class="text">토스  카드</span></a></li>
+                                    <li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span
+                                            class="text">SC제일은행 비씨카드</span></a></li>
+                                    <li class=""><a role="option" aria-disabled="false" tabindex="0"
+                                                    aria-selected="false" class=""><span class="text">SC제일은행 삼성카드</span></a>
+                                    </li>
+                                    <li><a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span
+                                            class="text">IBK기업은행 카드</span></a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
 
-                    <input type="radio" name="rdo_card_select" id="app_card" class="ml20" checked="" value="01"
-                           style="display: none;">
-                    <label for="app_card" id="lab_app_card" style="display: none;">앱카드 <!-- ISP, APP --></label>
-
-                    <input type="radio" name="rdo_card_select" id="general_card" class="ml20" value="00"
-                           style="display: none;">
-                    <label for="general_card" id="lab_general_card" style="display: none;">일반결제 <!-- 일반결제 --></label>
-
-                    <input type="radio" name="rdo_card_select" id="sepecial_card" value="02" style="display:none;">
-                    <label for="sepecial_card" id="lab_sepecial_card" style="display:none;">포인트사용
+                    <input type="radio" name="rdo_card_select" id="app_card" class="ml20" checked="" value="01">
+                    <label for="app_card" id="lab_app_card">앱카드 <!-- ISP, APP --></label>
+                    <input type="radio" name="rdo_card_select" id="general_card" class="ml20" value="00">
+                    <label for="general_card" id="lab_general_card">일반결제 <!-- 일반결제 --></label>
+                    <input type="radio" name="rdo_card_select" id="sepecial_card" value="02">
+                    <label for="sepecial_card" id="lab_sepecial_card">포인트사용
                         <!-- 삼성카드 포인트 사용 --></label>
                 </div>
 
@@ -470,9 +527,10 @@ seat-select-section을 없애고 order-container를 보여주는 식으로 합�
 
             <dl class="term-list" id="terms" style="display: none;">
                 <dt>
-						<span class="bg-chk small">
-							<input type="checkbox" id="agree"><label for="agree">결제대행 서비스 약관 필수 동의</label>
-						</span>
+                    <span class="bg-chk small">
+                        <input type="checkbox" id="agree">
+                        <label for="agree">결제대행 서비스 약관 필수 동의</label>
+                    </span>
                 </dt>
                 <dd class="tit">
                     전자금융거래 이용약관<!-- 전자금융거래 이용약관 -->
@@ -492,7 +550,6 @@ seat-select-section을 없애고 order-container를 보여주는 식으로 합�
         <div class="right">
             <div class="seat-result">
                 <div class="wrap">
-
                     <div class="tit-area type2">
                         <!--
                             관람 등급 표시
@@ -507,13 +564,20 @@ seat-select-section을 없애고 order-container를 보여주는 식으로 합�
                         <p class="tit" id="movieNm">인사이드 아웃 2</p>
                         <p class="cate" id="playKindNm">2D(자막)</p>
                         <p class="theater" id="brchNm">검단/리클라이너 4관</p>
-                        <p class="date"><span id="playDe">2024.06.14</span><em id="dowNm">(금)</em> <span class="time"
-                                                                                                         id="playTime"><i
-                                class="iconset ico-clock-white"></i>11:35~13:21</span></p>
+                        <p class="date">
+                            <span id="playDe">2024.06.14</span>
+                            <em id="dowNm">(금)</em>
+                            <span class="time" id="playTime">
+                                <i class="iconset ico-clock-white"></i>
+                                11:35~13:21
+                            </span>
+                        </p>
                     </div>
                     <div class="price-process">
                         <div class="box">
-                            <div class="data"><span class="tit">성인 <em>1</em></span><span class="price">15,000</span>
+                            <div class="data">
+                                <span class="tit">성인 <em>1</em></span>
+                                <span class="price">15,000</span>
                             </div>
                             <!--
                             <div class="data">
@@ -531,25 +595,20 @@ seat-select-section을 없애고 order-container를 보여주는 식으로 합�
                                 <span class="price"><em>15,000</em> <span>원 <!-- 원 --></span></span>
                             </div>
                         </div>
-
                         <div class="box discout-box">
-
                             <div class="all">
                                 <span class="tit">할인적용 <!-- 할인적용 --></span>
                                 <span class="price"><em>0</em> 원 <!-- 원 --></span>
                             </div>
                         </div>
                     </div>
-
                     <div class="pay-area">
                         <div class="add-thing">
                             <p class="tit">추가차액 <!-- 추가금액 --></p>
-
                             <div class="money">0</div>
                         </div>
                         <div class="pay">
                             <p class="tit">최종결제금액 <!-- 최종결제금액 --></p>
-
                             <div class="money">
                                 <em>15,000</em>
                                 <span>원 <!-- 원 --></span>
@@ -560,101 +619,68 @@ seat-select-section을 없애고 order-container를 보여주는 식으로 합�
                             <span class="thing">신용/체크카드</span>
                         </div>
                     </div>
-
                     <div class="btn-group">
                         <a href="#" class="button" id="btn_booking_back" title="이전">이전 <!-- 이전 --></a>
-
-
                         <a href="#" w-data="600" h-data="400" class="button active btn-modal-open" id="btn_booking_pay"
                            onclick="startPay()" title="결제">결제</a>
-
-
                     </div>
                 </div>
             </div>
-
             <div class="adbox">
                 <div class="swiper-container payBannerSwiper swiper-container-initialized swiper-container-horizontal">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active"
                              data-swiper-slide-index="2" style="width: 310px;">
-
-
-                            <a href="https://www.megabox.co.kr/event/detail?eventNo=11263" target="_top" title="할인쿠폰 받기"
-                               classname="eventBtn">
+                            <a title="할인쿠폰 받기" classname="eventBtn">
                                 <img style="width:310px;"
                                      src="https://img.megabox.co.kr/SharedImg/cpBanner/2024/05/28/LhTGE905muZ2ZTCHUHgG7Xkn4KhODcEa.png"
                                      alt=" ">
                             </a>
-
-
                         </div>
-
                         <div class="swiper-slide swiper-slide-duplicate-next" data-swiper-slide-index="0"
                              style="width: 310px;">
-
-
                             <a href="https://megabox.co.kr/event/detail?eventNo=15520" target="_blank" title=""
                                classname="eventBtn">
                                 <img style="width:310px;"
                                      src="https://img.megabox.co.kr/SharedImg/cpBanner/2024/05/30/YlTKrFfw1vKGQuMzLmCskmNqf6jzBsAY.jpg"
                                      alt=" ">
                             </a>
-
-
                         </div>
-
                         <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="1" style="width: 310px;">
-
-
                             <a href="https://megabox.co.kr/event/detail?eventNo=15571" target="_blank" title=""
                                classname="eventBtn">
                                 <img style="width:310px;"
                                      src="https://img.megabox.co.kr/SharedImg/cpBanner/2024/06/10/J5PMH4Eze5swdGkt9HT2AYvdsp5JMB2X.jpg"
                                      alt=" ">
                             </a>
-
-
                         </div>
-
                         <div class="swiper-slide swiper-slide-active" data-swiper-slide-index="2" style="width: 310px;">
-
-
                             <a href="https://www.megabox.co.kr/event/detail?eventNo=11263" target="_top" title="할인쿠폰 받기"
                                classname="eventBtn">
                                 <img style="width:310px;"
                                      src="https://img.megabox.co.kr/SharedImg/cpBanner/2024/05/28/LhTGE905muZ2ZTCHUHgG7Xkn4KhODcEa.png"
                                      alt=" ">
                             </a>
-
-
                         </div>
-
                         <div class="swiper-slide swiper-slide-duplicate swiper-slide-next" data-swiper-slide-index="0"
                              style="width: 310px;">
-
-
                             <a href="https://megabox.co.kr/event/detail?eventNo=15520" target="_blank" title=""
                                classname="eventBtn">
                                 <img style="width:310px;"
                                      src="https://img.megabox.co.kr/SharedImg/cpBanner/2024/05/30/YlTKrFfw1vKGQuMzLmCskmNqf6jzBsAY.jpg"
                                      alt=" ">
                             </a>
-
-
                         </div>
                     </div>
-                    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
-                <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"><span
-                        class="swiper-pagination-bullet" tabindex="0" role="button"
-                        aria-label="Go to slide 1"></span><span
-                        class="swiper-pagination-bullet" tabindex="0" role="button"
-                        aria-label="Go to slide 2"></span><span
-                        class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button"
-                        aria-label="Go to slide 3"></span></div>
+                    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                </div>
+                <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets">
+                    <span class="swiper-pagination-bullet" role="button" aria-label="Go to slide 1"></span>
+                    <span class="swiper-pagination-bullet" role="button" aria-label="Go to slide 2"></span>
+                    <span class="swiper-pagination-bullet on" role="button" aria-label="Go to slide 3"></span>
+                </div>
             </div>
         </div>
-
     </div>
 </div>
 

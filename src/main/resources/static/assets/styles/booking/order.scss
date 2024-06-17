@@ -3,23 +3,28 @@
 @import "../common/header";
 @import "../common/common.notHome";
 
-*{
+* {
   box-sizing: border-box;
 }
 
-.temp{
+.temp {
   display: flex;
   flex-direction: column;
   align-items: center;
   font-family: "Nanum Gothic", sans-serif;
   box-sizing: border-box;
 
-  .order-container{
+  .order-container {
     display: flex;
     flex-direction: row;
     width: 1100px;
 
-    > .seat-section{
+    p {
+      margin: 0;
+      padding: 0;
+    }
+
+    > .seat-section {
       display: flex;
       flex-direction: column;
       height: auto;
@@ -28,20 +33,20 @@
       background-color: #fff;
       width: 770px;
 
-      > .tit-util{
+      > .tit-util {
         display: flex;
         flex-direction: row;
         align-items: center;
         padding: 8px 0 7px 0;
 
 
-        > h3{
+        > h3 {
           font-size: 1.125rem;
           color: #222;
           line-height: 32px;
         }
 
-        > button{
+        > button {
           display: flex;
           flex-direction: row;
           align-items: center;
@@ -68,7 +73,7 @@
           line-height: 32px;
 
 
-          > img{
+          > img {
             width: 14px;
             height: 14px;
             margin-right: 4px;
@@ -76,26 +81,26 @@
         }
       }
 
-      .discout-setting{
-        > .discout-list{
-          > ul{
-            > li{
-              & + li{
+      .discout-setting {
+        > .discout-list {
+          > ul {
+            > li {
+              & + li {
                 margin-top: 10px;
               }
 
-              &.on{
-                > .tit{
+              &.on {
+                > .tit {
                   border: 1px solid #f2f4f5;
                   background-color: #f2f4f5;
                 }
 
-                > .cont-down{
+                > .cont-down {
                   display: block;
                 }
               }
 
-              > .tit{
+              > .tit {
                 display: block;
                 height: 40px;
                 padding: 0 0 0 20px;
@@ -108,16 +113,16 @@
 
               }
 
-              > .cont-down{
+              > .cont-down {
                 display: none;
                 padding-bottom: 30px;
 
-                > .coupon-box{
+                > .coupon-box {
                   margin-left: -10px;
                   display: grid;
                   grid-template-columns: repeat(4, 1fr);
 
-                  > .item{
+                  > .item {
                     position: relative;
                     float: left;
                     display: block;
@@ -129,7 +134,7 @@
 
                     width: 185px;
 
-                    > a{
+                    > a {
                       color: #444444;
                       font-size: 0.8125rem;
 
@@ -150,7 +155,7 @@
                 }
               }
 
-              > .pointtxt{
+              > .pointtxt {
                 position: absolute;
                 bottom: 3px;
                 left: 0;
@@ -160,7 +165,7 @@
                 padding-left: 10px;
                 display: none;
 
-                &::after{
+                &::after {
                   position: absolute;
                   content: "";
                   left: 0;
@@ -171,15 +176,15 @@
                 }
               }
 
-              &.praddbox{
+              &.praddbox {
                 position: relative;
 
-                &.on{
-                  > .cont-down{
+                &.on {
+                  > .cont-down {
                     padding-bottom: 40px;
                   }
 
-                  > .pointtxt{
+                  > .pointtxt {
                     display: block;
                   }
                 }
@@ -189,25 +194,25 @@
         }
       }
 
-      > .tit-util{
+      > .tit-util {
         padding: 8px 0 7px 0;
         display: flex;
         flex-direction: row;
 
-        &.mt40{
+        &.mt40 {
           margin-top: 40px !important;
         }
 
-        > .right{
+        > .right {
           line-height: 1.5;
           font-size: 0.9375rem;
         }
       }
 
-      > .rollbanner{
+      > .rollbanner {
         padding: 20px 0 20px 0;
 
-        .text{
+        .text {
           padding: 0 53px 0 95px;
           line-height: 40px;
           font-size: 14px;
@@ -218,7 +223,7 @@
           font-weight: 700;
         }
 
-        .pgbx{
+        .pgbx {
           position: absolute;
           top: 0;
           left: auto;
@@ -229,13 +234,13 @@
           color: #666;
         }
 
-        > .inrolb{
+        > .inrolb {
           position: relative;
           height: 40px;
           background-color: #f5f5f5;
         }
 
-        > .swiper-container{
+        > .swiper-container {
           margin: 0 auto;
           position: relative;
           overflow: hidden;
@@ -245,26 +250,28 @@
         }
       }
 
-      > .select-payment{
+      > .select-payment {
         border: 1px solid #ebebeb;
         border-radius: 10px;
 
-        > .radio-group{
+        > .radio-group {
           padding: 20px;
 
-          > .bg-chk{
+          > .bg-chk {
             margin-right: 30px;
 
             label {
               position: relative;
               padding: 0 0 0 34px;
               line-height: 28px;
+              letter-spacing: -0.065625rem;
+
             }
 
-            [type="radio"]{
+            [type="radio"] {
               display: none;
 
-              & + label::before{
+              & + label::before {
                 content: '';
                 display: block;
                 position: absolute;
@@ -277,28 +284,524 @@
                 background: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-radio-small.png) no-repeat -24px 0;
               }
 
-              &:checked + label::before{
+              &:checked + label::before {
                 background-position: 0 0;
               }
             }
 
-            &:last-child{
+            &:last-child {
               margin: 0;
             }
           }
         }
 
-        > .select-payment-card{
+        > .select-payment-card {
+          color: #444444;
           padding: 20px;
           border-top: 1px solid #ebebeb;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          > label {
+            letter-spacing: -0.065625rem;
+            margin-right: 10px;
+          }
+
+          > .dropdown {
+            display: flex;
+            position: relative;
+
+            > #card_select {
+              display: none;
+            }
+
+            > button {
+              height: 100%;
+              margin: 0;
+              padding: 0 30px 0 9px;
+              border: 1px solid #666;
+              border-radius: 0;
+              background-color: #fff;
+              line-height: 30px;
+
+              &.open {
+                border-radius: 4px;
+              }
+            }
+
+            > .dropdown-menu {
+              display: block;
+              position: absolute;
+              left: 0;
+              z-index: 4;
+              float: left;
+              max-width: 200px;
+              margin: 0;
+              padding: 0;
+              font-size: 1em;
+              text-align: left;
+              list-style: none;
+              background-color: #fff;
+              border: 1px solid #666;
+              border-radius: 0;
+              -webkit-box-shadow: none;
+              box-shadow: none;
+
+              max-height: 302px;
+              overflow: hidden;
+              min-width: 166px;
+
+              top: auto;
+              bottom: 100%;
+              margin-bottom: 0;
+              //이렇게 3줄 적으면 select가 기준점 아래가 아니라 위에 생김
+
+              > .inner {
+                max-height: 300px;
+                overflow-y: auto;
+
+                > .dropdown-menu {
+                  // ul
+                  > li {
+                    > a {
+                      display: block;
+                      padding: 0 9px;
+                      clear: both;
+                      font-weight: 400;
+                      line-height: 30px;
+                      color: #444;
+                      white-space: nowrap;
+
+                      cursor: pointer;
+                      user-select: none;
+
+                      &:hover {
+                        color: #01738b;
+                        text-decoration: none;
+                        background-color: #ecf0f4;
+                      }
+                    }
+                  }
+                }
+              }
+
+              &.open {
+                display: block;
+              }
+            }
+          }
+
+          > [type="radio"]{
+            margin-left: 20px;
+          }
         }
       }
+
+
     }
 
-    > .right{
+    > .right {
       display: flex;
       flex-direction: column;
       align-items: stretch;
+      position: relative;
+
+      > .seat-result{
+        overflow: hidden;
+        width: 310px;
+        height: 556px;
+        color: #fff;
+        background-color: #333;
+        border-radius: 10px;
+
+        > .wrap{
+          position: relative;
+          width: 100%;
+          height: 100%;
+          padding: 15px 20px 0 0;
+
+          > .tit-area{
+            overflow: hidden;
+            position: relative;
+            margin-left: 20px;
+            padding: 0 0 0 28px;
+
+            > p{
+              margin: 0;
+            }
+
+            > .movie-grade{
+              background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/ALL_40x40.png);
+              background-size: 20px 20px;
+
+              width: 20px;
+              height: 20px;
+
+              display: block;
+              position: absolute;
+              left: 0;
+              top: 0;
+
+              margin: 0;
+              padding: 0;
+              text-indent: -9999px;
+              background-position: center;
+              background-repeat: no-repeat;
+              overflow: hidden;
+            }
+
+            > .tit{
+              overflow: hidden;
+              width: 100%;
+              padding: 1px 0 0 0;
+              font-size: 1.0667em;
+              font-weight: 400;
+              line-height: 1.1;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+            }
+
+            > .cate{
+              font-size: .8667em;
+              color: #aaa;
+              line-height: 1.1;
+              padding: 5px 0 0 0;
+            }
+
+            > .theater{
+              padding: 5px 0 0 0;
+              color: #c4c4c4;
+              font-size: .8667em;
+            }
+
+            > .date{
+              padding: 5px 0 15px 0;
+              color: #c4c4c4;
+              font-size: .8667em;
+              line-height: 1.1;
+
+              > .time{
+                position: relative;
+                margin-left: 10px;
+                padding-left: 11px;
+
+                > .ico-clock-white{
+                  overflow: hidden;
+                  width: 13px;
+                  height: 13px;
+                  background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-clock-white.png);
+
+                  margin: -1px 0 0 0;
+                  margin-top: -2px;
+                  margin-right: 3px;
+
+                  display: inline-block;
+                  padding: 0;
+                  font-size: 0;
+                  line-height: 0;
+                  vertical-align: middle;
+                  background-position: 0 0;
+                  background-repeat: no-repeat;
+                }
+
+                &::before{
+                  content: '';
+                  display: block;
+                  position: absolute;
+                  left: 0;
+                  top: 50%;
+                  width: 1px;
+                  height: 12px;
+                  margin-top: -7px;
+                  background-color: #747474;
+                }
+              }
+            }
+          }
+
+          > .price-process{
+            margin-left: 20px;
+            height: auto;
+            overflow-y: auto;
+            max-height: 270px;
+
+            > .box{
+              position: relative;
+              border-radius: 4px;
+              padding: 15px 20px;
+              margin-bottom: 10px;
+              background-color: #434343;
+
+              &.discout-box:before{
+                content: '';
+                position: absolute;
+                top: -18px;
+                left: 50%;
+                margin-left: -12px;
+                width: 24px;
+                height: 24px;
+                background: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-circle-minus.png);
+              }
+
+              > .data{
+                line-height: 1.1;
+
+                &::after{
+                  clear: both;
+                  content: '';
+                  display: block;
+                }
+
+                > .tit{
+                  color: #c4c4c4;
+                  float: left;
+                  font-size: .8667em;
+                }
+
+                > .price{
+                  color: #c4c4c4;
+                  float: right;
+                  font-size: .9333em;
+                  font-family: Roboto;
+                  font-weight: 300;
+                }
+              }
+
+              > .all{
+                margin: 7px 0 0 0;
+                padding: 7px 0 0 0;
+                border-top: 1px solid #4d4d4d;
+                line-height: 1.1;
+
+                &::after{
+                  clear: both;
+                  content: '';
+                  display: block;
+                }
+
+                > .tit{
+                  float: left;
+                  color: #fff;
+                  font-size: .9333em;
+                }
+
+                > .price{
+                  float: right;
+                  color: #fff;
+
+                  > em{
+                    font-size: 1.2em;
+                    font-family: Roboto;
+                    font-weight: 400
+                  }
+
+                  > span{
+                    font-size: .9333em;
+                  }
+                }
+              }
+            }
+          }
+
+          > .pay-area{
+            position: absolute;
+            left: 0;
+            bottom: 40px;
+            width: 100%;
+            margin: 0;
+            padding: 10px 20px;
+
+            > .add-thing{
+              margin: 0 0 5px 0;
+              width: 100%;
+              display: block;
+
+              &::after{
+                clear: both;
+                content: '';
+                display: block;
+              }
+
+              > .tit{
+                float: left;
+                font-size: .9333em;
+                color: #c4c4c4;
+              }
+
+              > .money{
+                float: right;
+                font-size: .9333em;
+                color: #c4c4c4;
+              }
+            }
+
+            > .pay{
+              overflow: hidden;
+              line-height: 1.1;
+
+              > .tit{
+                float: left;
+                line-height: 35px;
+                font-size: .9333em;
+              }
+
+              > .money{
+                float: right;
+
+                > em{
+                  display: block;
+                  float: left;
+                  line-height: 35px;
+                  font-size: 1.6em;
+                  color: #59bec9;
+                  font-family: Roboto, Dotum, '돋움', sans-serif;
+                  font-weight: 400;
+                }
+
+                > span{
+                  display: block;
+                  float: left;
+                  padding: 0 0 0 5px;
+                  line-height: 35px;
+                }
+              }
+            }
+
+            > .payment-thing{
+              padding: 10px 0;
+              margin-top: 5px;
+              border-top: 1px solid #6a6a6c;
+
+              &:after{
+                clear: both;
+                content: '';
+                display: block;
+              }
+
+              > .tit{
+                float: left;
+                font-size: .9333em;
+                color: #c4c4c4;
+              }
+
+              > .thing{
+                float: right;
+                font-size: .9333em;
+                color: #c4c4c4;
+
+                &::after{
+                  clear: both;
+                  content: '';
+                  display: block;
+                }
+              }
+            }
+          }
+
+          > .btn-group{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+
+            &:before{
+              content: '';
+              display: table;
+            }
+
+            &:after{
+              clear: both;
+            }
+
+            > .button{
+              display: block;
+              float: left;
+              width: 50%;
+              height: 40px;
+              margin: 0;
+              padding: 0;
+              font-size: 1.2em;
+              line-height: 40px;
+              color: #fff !important;
+              border: 0;
+              border-radius: 0;
+              background-color: #53565b;
+              text-align: center;
+              font-family: "Nanum Gothic", Dotum, '돋움', sans-serif;
+              vertical-align: middle;
+              cursor: pointer;
+
+              & + .button{
+                border-left: 1px solid #6a6a6c;
+                color: #fff !important;
+                background-color: #329eb1;
+              }
+            }
+          }
+        }
+      }
+
+      > .adbox{
+        position: absolute;
+        top: 576px;
+        right: 0;
+        width: 310px;
+        height: 60px;
+
+        > .swiper-container{
+          margin: 0 auto;
+          position: relative;
+          overflow: hidden;
+          list-style: none;
+          padding: 0;
+          z-index: 1;
+
+          > .swiper-wrapper{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            display: flex;
+            box-sizing: content-box;
+
+            > .swiper-slide{
+              flex-shrink: 0;
+              width: 100%;
+              height: 100%;
+              position: relative;
+              transition-property: transform;
+            }
+          }
+        }
+
+        > .swiper-pagination{
+          margin-top: 10px;
+          position: relative;
+          text-align: center;
+          transition: .3s opacity;
+          transform: translate3d(0, 0, 0);
+          z-index: 10;
+
+          > .swiper-pagination-bullet{
+            width: 8px;
+            height: 8px;
+            display: inline-block;
+            border-radius: 100%;
+            background: #efefef;
+            opacity: 1;
+            margin-right: 6px;
+            cursor: pointer;
+
+            &.on{
+              opacity: 1;
+              background: #14b9cb;
+            }
+          }
+        }
+      }
     }
   }
 }
