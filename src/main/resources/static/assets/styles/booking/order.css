@@ -940,10 +940,8 @@ li {
   padding-bottom: 30px;
 }
 .temp .order-container > .seat-section .discout-setting > .discout-list > ul > li > .cont-down > .coupon-box {
-<<<<<<< HEAD
-=======
+
   margin-left: -10px;
->>>>>>> origin/master
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }
@@ -958,7 +956,6 @@ li {
   background-color: #fff;
   width: 185px;
 }
-
 .temp .order-container > .seat-section .discout-setting > .discout-list > ul > li > .cont-down > .coupon-box > .item:first-child {
   margin: 11px 0 0 0;
 }
