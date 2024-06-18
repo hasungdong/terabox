@@ -855,18 +855,19 @@ li {
   align-items: center;
   font-family: "Nanum Gothic", sans-serif;
   box-sizing: border-box;
+  color: #444444;
+  line-height: 1.5;
+  font-size: 0.9375rem;
 }
 .temp .order-container {
   display: flex;
   flex-direction: row;
   width: 1100px;
 }
-
 .temp .order-container p {
   margin: 0;
   padding: 0;
 }
-
 .temp .order-container > .seat-section {
   display: flex;
   flex-direction: column;
@@ -914,6 +915,9 @@ li {
   height: 14px;
   margin-right: 4px;
 }
+.temp .order-container > .seat-section .discout-setting > .discout-list > ul > li {
+  cursor: pointer;
+}
 .temp .order-container > .seat-section .discout-setting > .discout-list > ul > li + li {
   margin-top: 10px;
 }
@@ -925,7 +929,6 @@ li {
   display: block;
 }
 .temp .order-container > .seat-section .discout-setting > .discout-list > ul > li > .tit {
-  display: block;
   height: 40px;
   padding: 0 0 0 20px;
   border: 1px solid #d8d9db;
@@ -934,13 +937,20 @@ li {
   font-weight: 700;
   border-radius: 3px;
   line-height: 40px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-right: 0.7rem;
+}
+.temp .order-container > .seat-section .discout-setting > .discout-list > ul > li > .tit > img {
+  width: 1.1rem;
+  height: 1.1rem;
 }
 .temp .order-container > .seat-section .discout-setting > .discout-list > ul > li > .cont-down {
   display: none;
   padding-bottom: 30px;
 }
 .temp .order-container > .seat-section .discout-setting > .discout-list > ul > li > .cont-down > .coupon-box {
-
   margin-left: -10px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -956,10 +966,6 @@ li {
   background-color: #fff;
   width: 185px;
 }
-.temp .order-container > .seat-section .discout-setting > .discout-list > ul > li > .cont-down > .coupon-box > .item:first-child {
-  margin: 11px 0 0 0;
-}
-
 .temp .order-container > .seat-section .discout-setting > .discout-list > ul > li > .cont-down > .coupon-box > .item > a {
   color: #444444;
   font-size: 0.8125rem;
@@ -974,7 +980,6 @@ li {
   text-decoration: none;
   border: 1px solid #ebebeb;
 }
-
 .temp .order-container > .seat-section .discout-setting > .discout-list > ul > li > .pointtxt {
   position: absolute;
   bottom: 3px;
@@ -1051,9 +1056,23 @@ li {
   padding: 0;
   z-index: 1;
 }
+.temp .order-container > .seat-section > .rollbanner > .swiper-container > .swiper-wrapper {
+  position: relative;
+}
+.temp .order-container > .seat-section > .rollbanner > .swiper-container > .swiper-wrapper > .swiper-slide {
+  position: absolute;
+  transition-property: top;
+  transition-duration: 900ms;
+  display: none;
+}
 .temp .order-container > .seat-section > .select-payment {
   border: 1px solid #ebebeb;
   border-radius: 10px;
+  letter-spacing: -0.065625rem;
+}
+.temp .order-container > .seat-section > .select-payment > *:not(:first-child) {
+  padding: 20px;
+  border-top: 1px solid #ebebeb;
 }
 .temp .order-container > .seat-section > .select-payment > .radio-group {
   padding: 20px;
@@ -1066,6 +1085,7 @@ li {
   padding: 0 0 0 34px;
   line-height: 28px;
   letter-spacing: -0.065625rem;
+  font-size: 0.9375rem;
 }
 .temp .order-container > .seat-section > .select-payment > .radio-group > .bg-chk [type=radio] {
   display: none;
@@ -1089,10 +1109,10 @@ li {
   margin: 0;
 }
 .temp .order-container > .seat-section > .select-payment > .select-payment-card {
+  display: none;
   color: #444444;
   padding: 20px;
   border-top: 1px solid #ebebeb;
-  display: flex;
   flex-direction: row;
   align-items: center;
 }
@@ -1115,12 +1135,28 @@ li {
   border-radius: 0;
   background-color: #fff;
   line-height: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.temp .order-container > .seat-section > .select-payment > .select-payment-card > .dropdown > button > img {
+  position: absolute;
+  top: 50%;
+  right: 0.6rem;
+  transform: translateY(-50%);
+  width: 0.9rem;
+  height: 0.9rem;
 }
 .temp .order-container > .seat-section > .select-payment > .select-payment-card > .dropdown > button.open {
-  border-radius: 4px;
+  border-radius: 0 0 4px 4px;
+  border-top: none;
+}
+.temp .order-container > .seat-section > .select-payment > .select-payment-card > .dropdown > button.open + .dropdown-menu {
+  display: block;
 }
 .temp .order-container > .seat-section > .select-payment > .select-payment-card > .dropdown > .dropdown-menu {
-  display: block;
+  display: none;
   position: absolute;
   left: 0;
   z-index: 4;
@@ -1169,13 +1205,65 @@ li {
 .temp .order-container > .seat-section > .select-payment > .select-payment-card > [type=radio] {
   margin-left: 20px;
 }
-
+.temp .order-container > .seat-section > .select-payment > .select-mobile-info {
+  padding: 20px;
+  border-top: 1px solid #ebebeb;
+  display: none;
+}
+.temp .order-container > .seat-section > .select-payment > .select-mobile-info > .dash-list > li {
+  position: relative;
+  padding: 0 0 0 11px;
+  font-size: 0.87rem;
+}
+.temp .order-container > .seat-section > .select-payment > .select-mobile-info > .dash-list > li:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 4px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  background-color: #333;
+}
+.temp .order-container > .seat-section > .select-payment > .select-mobile-info > .dash-list > li + li {
+  margin-top: 5px;
+}
+.temp .order-container > .seat-section > .select-payment > .select-payment-easypay {
+  display: flex;
+  align-items: center;
+}
+.temp .order-container > .seat-section > .select-payment > .select-payment-easypay input {
+  margin: 0;
+}
+.temp .order-container > .seat-section > .select-payment > .select-payment-easypay label {
+  margin-right: 20px;
+}
+.temp .order-container > .seat-section > .select-payment > .select-settlebank-info > .dash-list > li {
+  position: relative;
+  padding: 0 0 0 11px;
+  font-size: 0.87rem;
+}
+.temp .order-container > .seat-section > .select-payment > .select-settlebank-info > .dash-list > li:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 4px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  background-color: #333;
+}
+.temp .order-container > .seat-section > .select-payment > .select-settlebank-info > .dash-list > li + li {
+  margin-top: 5px;
+}
 .temp .order-container > .right {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-<<<<<<< HEAD
-=======
   position: relative;
 }
 .temp .order-container > .right > .seat-result {
@@ -1516,7 +1604,6 @@ li {
 .temp .order-container > .right > .adbox > .swiper-pagination > .swiper-pagination-bullet.on {
   opacity: 1;
   background: #14b9cb;
->>>>>>> origin/master
 }
 
 /*# sourceMappingURL=order.css.map */
