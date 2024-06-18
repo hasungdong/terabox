@@ -1,6 +1,5 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
-@import "../common/header";
 @import "../common/common.notHome";
 
 * {
@@ -286,6 +285,8 @@
 
         > .radio-group {
           padding: 20px;
+          display: flex;
+          flex-direction: row;
 
           > .bg-chk {
             margin-right: 30px;
@@ -443,6 +444,10 @@
           > [type="radio"]{
             margin-left: 20px;
           }
+
+          > input, label:not(:first-child){
+            display: none;
+          }
         }
 
         > .select-mobile-info{
@@ -457,7 +462,7 @@
               padding: 0 0 0 11px;
               font-size: 0.87rem;
 
-              &:before{
+              &::before{
                 content: '';
                 display: block;
                 position: absolute;
@@ -483,10 +488,25 @@
 
           input{
             margin: 0;
+            width: 16px;
+            height: 16px;
           }
 
           label{
             margin-right: 20px;
+          }
+        }
+
+        > .select-toss-info{
+          padding: 20px;
+          border-top: 1px solid #ebebeb;
+
+          > .dash-list{
+            > li{
+              position: relative;
+              padding: 0 0 0 11px;
+              font-size: .87rem;
+            }
           }
         }
 
@@ -497,7 +517,7 @@
               padding: 0 0 0 11px;
               font-size: .87rem;
 
-              &:before{
+              &::before{
                 content: '';
                 display: block;
                 position: absolute;
@@ -518,7 +538,102 @@
         }
       }
 
+      > .term-list{
+        padding-top: 60px;
+        display: none;
+        margin: 0;
 
+        > dt{
+          padding-bottom: 10px;
+
+          > .bg-chk{
+            display: inline-block;
+            position: relative;
+
+            > input{
+              position: absolute;
+              left: -99999px;
+
+              width: 16px;
+              height: 16px;
+              vertical-align: middle;
+
+              box-sizing: border-box;
+              padding: 0;
+
+              overflow: visible;
+
+              margin: 0;
+              font-family: inherit;
+              font-size: 1em;
+              line-height: 1.15;
+
+              &:hover{
+                + label::before{
+                  background-position: -56px 0;
+                }
+              }
+
+              &:checked{
+                + label::before{
+                  background-position: -28px 0;
+                }
+              }
+            }
+
+            > label{
+              font-size: 18px;
+              color: #222;
+              font-weight: 900;
+
+              position: relative;
+              padding: 0 0 0 34px;
+              line-height: 28px;
+
+              display: inline-block;
+              vertical-align: middle;
+              cursor: pointer;
+
+              &::before{
+                content: '';
+                display: block;
+                position: absolute;
+                left: 0;
+                top: 50%;
+                width: 28px;
+                height: 28px;
+                margin: -14px 0 0 0;
+                cursor: pointer;
+                background: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-checkbox.png) no-repeat 0 0;
+              }
+            }
+          }
+        }
+
+        > .tit{
+          position: relative;
+          margin: 0;
+          margin-top: 10px;
+          border: 1px solid #d8d9db;
+          padding: 0 19px;
+          height: 38px;
+          line-height: 36px;
+          border-radius: 4px;
+          font-size: 15px;
+
+
+          > a{
+            position: absolute;
+            display: block;
+            top: 13px;
+            right: 19px;
+            line-height: 15px;
+            font-size: 14px;
+            color: #444;
+            text-decoration: underline;
+          }
+        }
+      }
     }
 
     > .right {
@@ -871,6 +986,12 @@
         width: 310px;
         height: 60px;
 
+        a{
+          display: block;
+          width: 310px;
+          height: 60px;
+        }
+
         > .swiper-container{
           margin: 0 auto;
           position: relative;
@@ -882,17 +1003,19 @@
           > .swiper-wrapper{
             position: relative;
             width: 100%;
-            height: 100%;
+            height: 60px;
             z-index: 1;
             display: flex;
             box-sizing: content-box;
+            overflow: hidden;
 
             > .swiper-slide{
               flex-shrink: 0;
               width: 100%;
-              height: 100%;
-              position: relative;
-              transition-property: transform;
+              height: 60px;
+              position: absolute;
+              transition-property: left;
+              transition-duration: 300ms;
             }
           }
         }
@@ -923,5 +1046,24 @@
         }
       }
     }
+  }
+}
+
+.dash-list > li{
+  position: relative;
+  padding: 0 0 0 11px;
+  font-size: 0.87rem;
+
+  &::before{
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 4px;
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    background-color: #333;
   }
 }
