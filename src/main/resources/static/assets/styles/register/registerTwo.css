@@ -1077,15 +1077,15 @@ body > .body-wrap > .member-wrap > .col-wrap > .col > .button-member-bottom {
   padding: 40px 0 0 0;
   text-align: center;
 }
-body > .body-wrap > .member-wrap > .col-wrap > .col > .button-member-bottom > .large {
+body > .body-wrap > .member-wrap > .col-wrap > .col > .button-member-bottom > .three-link > .large {
   line-height: 46px;
 }
-body > .body-wrap > .member-wrap > .col-wrap > .col > .button-member-bottom > .purple {
+body > .body-wrap > .member-wrap > .col-wrap > .col > .button-member-bottom > .three-link > .purple {
   border: 0;
   color: #fff;
   background: #503396;
 }
-body > .body-wrap > .member-wrap > .col-wrap > .col > .button-member-bottom > .button {
+body > .body-wrap > .member-wrap > .col-wrap > .col > .button-member-bottom > .three-link > .button {
   display: inline-block;
   margin: 0;
   text-align: center;

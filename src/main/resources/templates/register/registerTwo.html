@@ -10,7 +10,7 @@
     <th:block th:replace="~{fragments/common/common.html :: commonHeadNoHeader}"></th:block>
 </head>
 <body>
-<th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
+<th:block th:replace="~{fragments/common/common.html :: commonRegister}"></th:block>
 <div class="body-wrap">
     <div class="member-wrap">
         <h1 class="h1">
@@ -672,9 +672,11 @@
                     </div>
                 </div>
                 <div class="button-member-bottom">
-                    <button id="buttonClauAgree" type="button" class="button purple large" disabled="disabled">
+                    <a class="three-link" target="_self" href="/register/registerThree">
+                        <button id="buttonClauAgree" type="button" class="button purple large"> <!-- disabled="disabled" 필수체크x시 disabled-->
                         확인
-                    </button>
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>

@@ -7,10 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/register/registerThree.css}">
     <title>MEET PLAY SHARE, 메가박스</title>
-    <th:block th:replace="~{fragments/common/common.html :: commonHead}"></th:block>
+    <th:block th:replace="~{fragments/common/common.html :: commonHeadNoHeader}"></th:block>
+    <script defer th:src="@{/assets/scripts/register.js}"></script>
 </head>
 <body>
-<th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
+<th:block th:replace="~{fragments/common/common.html :: commonRegister}"></th:block>
 <div class="body-wrap">
     <div class="member-wrap">
         <h1 class="h1">
@@ -56,7 +57,7 @@
                         회원정보를 입력해 주세요.
                     </span>
                 </p>
-                <form class="form" id="registerForm">
+                <form class="form" id="registerForm" th:with="userRegex=${T(com.terabox.demo.regexes.UserRegex)}, emailAuthRegex=${T(com.terabox.demo.regexes.EmailAuthRegex)}">
                     <input hidden name="emailSalt" type="hidden"> <!-- emailSalt 부분? -->
                 <div class="table-wrap">
                     <table class="border-form">
@@ -70,12 +71,9 @@
                         <tr>
                             <th scope="row">닉네임 <!-- 이름 --> </th>
                             <td id="userNickNametd">
-                                <label for="userNickName" rel="nickNameLabel">
-                                    <input required autocomplete="off" name="nickName" maxlength="12" minlength="2" id="userNickName" type="text"
-                                           placeholder="닉네임을 설정해 주세요." class="input-text w260px">
-                                    <button id="nicknameButton" type="button"
-                                            class="button gray-line small w75px ml08 disabled">중복확인<!--중복확인-->
-                                    </button>
+                                <label for="userNickname" rel="nickNameLabel">
+                                    <input required autocomplete="off" name="nickname" maxlength="12" minlength="2" id="userNickname" type="text"
+                                           placeholder="닉네임을 설정해 주세요." class="input-text w260px" th:attrappend="data-regex=${userRegex.nickname.expression}">
                                 </label>
                             </td>
                         </tr>
@@ -95,7 +93,7 @@
                             </th>
                             <td>
                                 <label class="emailLabel" rel="emailLabel"><!--이메일 주소-->
-                                    <input name="email" id="userEmail" required autocomplete="email" maxlength="50" minlength=""  type="email" placeholder="이메일 (user@sample.com)" spellcheck="false" class="input-text w260px"><!--이메일주소를 입력해 주세요-->
+                                    <input name="email" id="userEmail" required autocomplete="email" maxlength="50" minlength=""  type="email" placeholder="이메일 (user@sample.com)" spellcheck="false" class="input-text w260px" th:attrappend="data-regex=${userRegex.email.expression}"><!--이메일주소를 입력해 주세요-->
                                     <br><br>
                                     <button class="emailButton" name="emailSend" type="button">인증번호 전송</button>
                                 </label>
@@ -109,8 +107,7 @@
                             <td>
                                 <div class="chk-num">
                                     <div class="line">
-                                        <input disabled required autocomplete="one-time-code" name="emailCode" maxlength="6"  minlength="6" placeholder="인증번호 (숫자 여섯 자리)" spellcheck="false" id="userEmailCode" type="text" class="input-text w210px"
-                                               title="인증번호 입력">
+                                        <input disabled required autocomplete="one-time-code" name="emailCode" maxlength="6"  minlength="6" placeholder="인증번호 (숫자 여섯 자리)" spellcheck="false" id="userEmailCode" type="text" class="input-text w210px" title="인증번호 입력" th:attrappend="data-regex=${emailAuthRegex.code.expression}">
                                         <!--인증번호 입력-->
                                         <br>
                                         <br>
@@ -133,7 +130,7 @@
                             </th>
                             <td>
                                 <label class="passwordLabel" rel="passwordLabel">
-                                    <input required autocomplete="new-password" name="password" maxlength="50" minlength="5" type="password" placeholder="영문,숫자,특수기호 중 2가지 이상 조합" class="input-text w260px" spellcheck="false">
+                                    <input required autocomplete="new-password" name="password" maxlength="50" minlength="5" type="password" placeholder="영문,숫자,특수기호 중 2가지 이상 조합" class="input-text w260px" spellcheck="false" th:attrappend="data-regex=${userRegex.password.expression}">
                                     <!--영문,숫자,특수기호 중 2가지 이상 조합-->
                                     <br><br>
                                     <span class="tooltiptext">비밀번호 설정 시 사용가능한 특수문자는 ~ ! @ # $ % ^ &amp; * + = - ? _  입니다.</span>
@@ -213,8 +210,8 @@
                             <input type="checkbox" id="sms" class="ml20">
                             <label for="sms">SMS</label>
 
-                            <input type="checkbox" id="email" class="ml20">
-                            <label for="email">이메일<!--이메일--></label>
+                            <input type="checkbox" id="checkEmail" class="ml20">
+                            <label for="checkEmail">이메일<!--이메일--></label>
                         </div>
 
                         <p class="mt20">
@@ -225,7 +222,7 @@
                     </div>
                 </div>
                 <div class="button-member-bottom">
-                    <button id="btnJoinInfoRegButton" type="button" class="button purle large">회원가입
+                    <button id="btnJoinInfoRegButton" type="submit" class="button purle large">회원가입
                     </button>
                 </div>
                 </form>
