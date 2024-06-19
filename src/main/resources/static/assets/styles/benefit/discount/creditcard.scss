@@ -66,14 +66,16 @@
         display: inline-block;
         margin: 10px 12px 0 12px;
         padding: 0 0 5px 0;
-        border: 0;
+        border: none;
+        outline: none;
         color: #555;
         font-size: 1.0667em;
         font-weight: 400;
         border-bottom: 2px solid #fff;
         background-color: #fff;
+        cursor: pointer;
 
-        &::after{
+        &:not(:last-of-type)::after{
           content: '';
           display: block;
           position: absolute;

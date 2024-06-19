@@ -1,5 +1,6 @@
 package com.terabox.demo.controllers;
 
+import com.terabox.demo.services.CardService;
 import com.terabox.demo.services.EventService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 public class MembershipController {
     private final EventService eventService;
+    private final CardService cardService;
 
     @GetMapping(value = "membership", produces = MediaType.TEXT_HTML_VALUE)
     public String getGuide(){
@@ -23,6 +25,8 @@ public class MembershipController {
     public String getLounge(Model model){
         model.addAttribute("events", this.eventService.getEventsAll());
         model.addAttribute("eventsCount", this.eventService.getEventsAllCount());
+        model.addAttribute("cards", this.cardService.getCards());
+        model.addAttribute("cardsCount", this.cardService.getCardsCount());
         return "benefit/vipLounge";
     }
 
@@ -31,6 +35,8 @@ public class MembershipController {
     public String getDiscountGuide(Model model){
         model.addAttribute("events", this.eventService.getEventsAll());
         model.addAttribute("eventsCount", this.eventService.getEventsAllCount());
+        model.addAttribute("cards", this.cardService.getCards());
+        model.addAttribute("cardsCount", this.cardService.getCardsCount());
         return "benefit/discount/guide";
     }
 
@@ -38,6 +44,8 @@ public class MembershipController {
     public String getDiscountCreditCard(Model model){
         model.addAttribute("events", this.eventService.getEventsAll());
         model.addAttribute("eventsCount", this.eventService.getEventsAllCount());
+        model.addAttribute("cards", this.cardService.getCards());
+        model.addAttribute("cardsCount", this.cardService.getCardsCount());
         return "benefit/discount/creditcard";
     }
 
@@ -45,6 +53,8 @@ public class MembershipController {
     public String getDiscountTelecomCard(Model model){
         model.addAttribute("events", this.eventService.getEventsAll());
         model.addAttribute("eventsCount", this.eventService.getEventsAllCount());
+        model.addAttribute("cards", this.cardService.getCards());
+        model.addAttribute("cardsCount", this.cardService.getCardsCount());
         return "benefit/discount/telecomcard";
     }
 
@@ -52,6 +62,8 @@ public class MembershipController {
     public String getDiscountPointCard(Model model){
         model.addAttribute("events", this.eventService.getEventsAll());
         model.addAttribute("eventsCount", this.eventService.getEventsAllCount());
+        model.addAttribute("cards", this.cardService.getCards());
+        model.addAttribute("cardsCount", this.cardService.getCardsCount());
         return "benefit/discount/pointcard";
     }
 
@@ -59,6 +71,8 @@ public class MembershipController {
     public String getDiscountGiftCard(Model model){
         model.addAttribute("events", this.eventService.getEventsAll());
         model.addAttribute("eventsCount", this.eventService.getEventsAllCount());
+        model.addAttribute("cards", this.cardService.getCards());
+        model.addAttribute("cardsCount", this.cardService.getCardsCount());
         return "benefit/discount/giftcard";
     }
 }

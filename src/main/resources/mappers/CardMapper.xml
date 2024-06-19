@@ -3,12 +3,22 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.terabox.demo.mappers.CardMapper">
-    <select id="selectCard" resultType="com.terabox.demo.entities.CardEntity">
+    <select id="selectCardByName" resultType="com.terabox.demo.entities.CardEntity">
         SELECT  `name` AS name,
                 `discount_rate` AS discountRate
-
         FROM `terabox`.`cards`
-        WHERE `name` = #{selectedValue}
+        WHERE `name` = #{name}
         LIMIT 1
+    </select>
+
+    <select id="selectCards" resultType="com.terabox.demo.entities.CardEntity">
+        SELECT  `name` AS name,
+                `discount_rate` AS discountRate
+        FROM `terabox`.`cards`
+    </select>
+
+    <select id="selectCardsCount" resultType="_int">
+        SELECT COUNT(0)
+        FROM `terabox`.`cards`
     </select>
 </mapper>

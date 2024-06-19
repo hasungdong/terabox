@@ -46,7 +46,7 @@ public class ProductService {
     public StoreOrderDto getStoreSale(String selectedValue, int rOrderTotalPrice){
         //최종금액 - 할인된 금액의 값 = rOrderTotalPrice
         StoreOrderDto storeOrderDto = new StoreOrderDto();
-        CardEntity salePrice = this.cardMapper.selectCard(selectedValue);
+        CardEntity salePrice = this.cardMapper.selectCardByName(selectedValue);
 
         if (salePrice != null){
             storeOrderDto.setSaleTotalPrice(rOrderTotalPrice- rOrderTotalPrice *  salePrice.getDiscountRate()/100);

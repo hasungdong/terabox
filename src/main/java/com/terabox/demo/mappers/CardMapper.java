@@ -6,6 +6,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Mapper
 public interface CardMapper {
-    CardEntity selectCard(@RequestParam("selectedValue")String selectedValue);
+    CardEntity selectCardByName(@RequestParam("name")String name);
+
+    CardEntity[] selectCards();
+
+    int selectCardsCount();
 
 }
