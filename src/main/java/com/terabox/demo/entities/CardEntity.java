@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@EqualsAndHashCode(of = {"name", "discountRate"})
+@EqualsAndHashCode(of = {"name"})
 public class CardEntity {
     private String name;
     private int discountRate;

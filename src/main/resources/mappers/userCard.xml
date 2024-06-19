@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.terabox.demo.mappers.UserCardMapper">
+    <select id="selectUserCard" resultType="com.terabox.demo.entities.UserCardEntity">
+        SELECT `index` AS `index`,
+               `user_email` AS `userEmail`,
+               `card_name` AS `cardName`,
+               `point` AS `point`
+        FROM `terabox`.`user_card_mapping`
+        WHERE user_email = #{userEmail} AND `card_name` = #{selectedValue}
+        LIMIT 1
+    </select>
+
+    <update id="updatePoint" parameterType="com.terabox.demo.entities.UserCardEntity">
+    UPDATE `terabox`.user_card_mapping
+    SET
+        `user_email` = #{userEmail},
+        `card_name` = #{cardName},
+        `point` = #{point}
+        WHERE BINARY `user_email`= #{userEmail} AND `card_name` = #{cardName}
+    </update>
+
+
+</mapper>

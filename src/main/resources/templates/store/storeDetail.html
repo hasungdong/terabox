@@ -20,15 +20,16 @@
         <a class="icon"></a>
         <a th:href="@{/store/store}" class="event">스토어</a>
         <a class="icon"></a>
-        <a th:href="@{/store/storeDetail}" class="last-event">스토어 상세 </a>
+        <a th:href="@{/store/storeDetail}" class="last-event">스토어 상세</a>
       </div>
     </div>
   </div>
   <div class="content">
     <div class="inner">
-      <h2 class="title">Dolby Cinema 전용관람권</h2>
+      <h2 class="title" th:text="${storeDetail.getName()}"></h2>
+      <input type="hidden" name="index" th:value="${storeDetail.getIndex()}"> <!--order 페이지에 storeDetail index 값을 주기 위해서 input hidden 을 사용해준다. -->
       <div class="sub-info">
-        <p class="bundle">Dolby Cinema 전용관람권</p>
+        <p class="bundle" th:text="${storeDetail.getSubTitle()}">Dolby Cinema 전용관람권</p>
       </div>
       <div class="event-list">
         <div class="inner">
@@ -36,8 +37,9 @@
             <div class="left">
               <div class="img">
                 <p>
-                  <img src="https://img.megabox.co.kr/SharedImg/store/2021/02/04/XxKX38rQAArz5GGaFCs7KwvYyUz5oQFC_280.png" alt="Dolby Cinema 관람권">
+                  <img th:src="@{/store/image(index=${storeDetail.getIndex()})}" alt="Image">
                 </p>
+<!--                <img src="https://img.megabox.co.kr/SharedImg/store/2021/02/04/XxKX38rQAArz5GGaFCs7KwvYyUz5oQFC_280.png" alt="Dolby Cinema 관람권">-->
               </div>
             </div>
             <div class="right">
@@ -50,7 +52,7 @@
 
                   <div class="cont">
                     <a href="#" class="a-link" name="brchList">사용가능극장</a>
-                    <p class="store_alert">※ 남양주 현대아울렛 스페이스원, 대구신세계, 대전신세계 아트앤사이언스, 송도, 수원AK플라자,&nbsp;안성스타필드, 코엑스 지점</p>
+                    <p class="store_alert"> ※ 남양주 현대아울렛 스페이스원, 대구신세계, 대전신세계 아트앤사이언스, 송도, 수원AK플라자,&nbsp;안성스타필드, 코엑스 지점</p>
                   </div>
 
                 </div>
@@ -58,7 +60,7 @@
                   <p class="tit">유효기간</p>
                   <div class="cont">
                     <p class="txt">구매일로부터 24개월 이내 사용 가능</p>
-                    <p class="txt min">예매 가능 유효기간은 구매일로부터 2년입니다. </p>
+                    <p class="txt min">예매 가능 유효기간은 구매일로부터 2년입니다.</p>
                     <p>
                     </p>
                   </div>
@@ -98,13 +100,14 @@
                         <i class="fa-solid ico-minus" style="color: #3d3d3d;">
                         </i>
                       </button>
+                      <input type="hidden" th:value="${storeDetail.getQuantity()}" class="DetailQuantity">
                       <input type="text" title="수량 입력" class="input-text" readonly="readonly" value="1">
                       <button type="button" class="btn plus" title="수량증가">
                         <i class="fa-solid fa-plus" style="color: #3d3d3d;"></i>
                       </button>
                       <div class="spring"></div>
                       <div class="money">
-                        <em id="price">18,000</em>
+                        <em id="price"  th:text="|${#numbers.formatInteger(storeDetail.getPrice(), 0, 'COMMA')}|"></em>
                         <span>원</span>
                       </div>
                     </div>
@@ -113,9 +116,9 @@
               </div>
               <!--// type -->
               <div class="btn-group">
-                <a href="#" id="btnGift" class="button large" title="선물">선물</a>
-                <a th:href="@{/store/order}" class="button purple large" title="구매" rel="showLoginAlert">구매</a>
-<!--                <a class="button purple large" title="구매" rel="showLoginAlert">구매</a>-->
+                <a class="button purple large DetailBuyButton" title="구매" rel="showLoginAlert">구매</a>
+
+                <button type="button" class="button gray large" disabled="disabled">판매종료</button>
               </div>
               <p class="origin"></p>
             </div>
@@ -124,6 +127,7 @@
             <button class="btn1" rel="btn1">구매 후 취소
               <i class="move-btn"></i>
             </button>
+
           </div>
           <div class="dotList02 bottomBar1">
             <ul>

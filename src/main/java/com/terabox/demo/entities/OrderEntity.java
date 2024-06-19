@@ -18,4 +18,8 @@ public class OrderEntity {
     private int userCardMappingIndex;
     private int quantity;
     private LocalDateTime createdAt;
+
+    private int totalSale; // 할인금액
+    private int totalPrice; // 상품 총 금액
+    private String selectedValue; // 카드 선택하기
 }

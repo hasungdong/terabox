@@ -28,8 +28,8 @@ public class ScreeningInfoService {
             tempInfo.setCinemaIndex(cinemaIndex);
             tempInfo.setScreeningDate(screeningDate);
             tempInfo.setMovieIndex(null);
-//            이러면 현재 한 관에 대해서 12번 실행된다.
-            for (int i = 0; i <= 22; i = i + 2) {
+//            이러면 현재 한 관에 대해서 6번 실행된다.
+            for (int i = 0; i <= 20; i = i + 4) {
                 tempInfo.setScreeningTime(LocalTime.parse(String.format("%02d:00:00", i)));
                 int isSuccess = this.screeningInfoMapper.insertScreeningInfo(tempInfo);
                 if (isSuccess != 1) {

@@ -17,4 +17,11 @@ public interface ProductMapper {
     int selectProductsCountBySearch(SearchDto searchDto);
 
     ProductEntity[] selectProductsBySearch(SearchDto searchDto);
+
+    ProductEntity[] selectProductsFourByTypeTicket();
+
+    ProductEntity[] selectProductsFourByTypeDfg();
+    ProductEntity[] selectProductsFourByTypePoint();
+
+    int updateProduct(ProductEntity product);
 }

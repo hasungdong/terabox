@@ -5,6 +5,7 @@
   <title>진행중인 이벤트</title>
   <link rel="stylesheet" th:href="@{/assets/styles/store/store.css}">
   <th:block th:replace="~{fragments/common/common.html :: commonHead}"></th:block>
+  <script defer type="text/javascript" th:src="@{/assets/scripts/store.js}"></script>
 </head>
 <body>
 <th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
@@ -62,7 +63,6 @@
           </a>
         </div>
       </div>
-
       <div class="event-box">
         <a th:href="@{/store/storeDetail}" class="event">
           <img src="https://img.megabox.co.kr/SharedImg/store/2020/12/29/ZVX4FRDP8NLYto5HL0gAtxr6u4ZCmwOP_280.png" alt="">
@@ -73,108 +73,37 @@
       <div class="right">
         <h3 class="tit">메가티켓</h3>
         <div class="spring"></div>
-        <a href="" title="더보기">더보기
-          <i class="fa-solid fa-chevron-right" style="color: #c2c2c2;"></i></a>
       </div>
     </div>
     <div class="movie-list-util">
     </div>
     <div class="movie-list m15">
       <ul class="list">
-        <li class="img">
-          <a th:href="@{/store/storeDetail}">
-          <div class="movie-list-info">
-            <img src="https://img.megabox.co.kr/SharedImg/store/2020/12/29/rxCDUuqHT9RostRRQYeu1mr1knFyHxWr_280.png" alt="더 부티크 전용관람권">
-          </div>
-          <!--제목 -->
+        <li class="img" th:each="product : ${productsTicket}">
+          <a th:href="@{/store/storeDetail(index=${product.getIndex()})}">
+            <div class="movie-list-info">
+              <img th:src="@{/store/image(index=${product.getIndex()}) }" alt="Image"><!--/store/image 는 컨트롤러에 맵핑 주소 적어준것 . 그래서 prductController 에 getImage 에있는 주소에 맵핑되서 메서드를 쓰는것-->
+              <div class="sold" th:if="${product.getQuantity() < 1}">
+              <div class="soldout">SOLD OUT</div>
+              </div>
+
+            </div>
           <div class="tit-area">
-            <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
+            <p class="title" th:text="${product.getName()}">
               [프로모션]
             </p>
           </div>
           <div class="rate-date">
-            <span class="rate">더 부티끄 전용관람관</span>
+            <span class="rate" th:text="${product.getSubTitle()}"></span>
           </div>
           <div class="price">
             <p class="sale">
-              <em>13,000</em>
+              <em class="storePrice" th:text="${product.getPrice()}"></em>
               <span>원</span>
             </p>
             <p class="ea">
             </p>
           </div>
-          </a>
-        </li>
-        <li class="img">
-          <a th:href="@{/store/storeDetail}">
-            <div class="movie-list-info">
-              <img src="https://img.megabox.co.kr/SharedImg/store/2020/12/29/rxCDUuqHT9RostRRQYeu1mr1knFyHxWr_280.png" alt="더 부티크 전용관람권">
-            </div>
-            <!--제목 -->
-            <div class="tit-area">
-              <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
-                [프로모션]
-              </p>
-            </div>
-            <div class="rate-date">
-              <span class="rate">더 부티끄 전용관람관</span>
-            </div>
-            <div class="price">
-              <p class="sale">
-                <em>13,000</em>
-                <span>원</span>
-              </p>
-              <p class="ea">
-              </p>
-            </div>
-          </a>
-        </li>
-        <li class="img">
-          <a th:href="@{/store/storeDetail}">
-            <div class="movie-list-info">
-              <img src="https://img.megabox.co.kr/SharedImg/store/2020/12/29/rxCDUuqHT9RostRRQYeu1mr1knFyHxWr_280.png" alt="더 부티크 전용관람권">
-            </div>
-            <!--제목 -->
-            <div class="tit-area">
-              <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
-                [프로모션]
-              </p>
-            </div>
-            <div class="rate-date">
-              <span class="rate">더 부티끄 전용관람관</span>
-            </div>
-            <div class="price">
-              <p class="sale">
-                <em>13,000</em>
-                <span>원</span>
-              </p>
-              <p class="ea">
-              </p>
-            </div>
-          </a>
-        </li>
-        <li class="img">
-          <a th:href="@{/store/storeDetail}">
-            <div class="movie-list-info">
-              <img src="https://img.megabox.co.kr/SharedImg/store/2020/12/29/rxCDUuqHT9RostRRQYeu1mr1knFyHxWr_280.png" alt="더 부티크 전용관람권">
-            </div>
-            <!--제목 -->
-            <div class="tit-area">
-              <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
-                [프로모션]
-              </p>
-            </div>
-            <div class="rate-date">
-              <span class="rate">더 부티끄 전용관람관</span>
-            </div>
-            <div class="price">
-              <p class="sale">
-                <em>13,000</em>
-                <span>원</span>
-              </p>
-              <p class="ea">
-              </p>
-            </div>
           </a>
         </li>
       </ul>
@@ -183,101 +112,32 @@
       <div class="right">
         <h3 class="tit">팝콘/음료/굿즈</h3>
         <div class="spring"></div>
-        <a href="" title="더보기">더보기
-          <i class="fa-solid fa-chevron-right" style="color: #c2c2c2;"></i></a>
       </div>
+    </div>
+    <div class="movie-list-util">
     </div>
     <div class="movie-list m15">
       <ul class="list">
-        <li class="img">
-          <a th:href="@{/store/storeDetail}">
-            <div class="movie-list-info">
-              <img src="https://img.megabox.co.kr/SharedImg/store/2020/12/29/rxCDUuqHT9RostRRQYeu1mr1knFyHxWr_280.png" alt="더 부티크 전용관람권">
+        <li class="img" th:each="productsDfgs : ${productsDfg}">
+          <a th:href="@{/store/storeDetail (index=${productsDfgs.getIndex()})}">
+            <div class="movie-list-info" >
+              <img th:src="@{/store/image(index=${productsDfgs.getIndex()}) }" alt="Image"><!--/store/image 는 컨트롤러에 맵핑 주소 적어준것 . 그래서 prductController 에 getImage 에있는 주소에 맵핑되서 메서드를 쓰는것-->
+              <div class="sold" th:if="${productsDfgs.getQuantity() < 1}">
+                <div class="soldout">SOLD OUT</div>
+              </div>
             </div>
-            <!--제목 -->
             <div class="tit-area">
-              <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
+              <p class="title" th:text="${productsDfgs.getName()}">
                 [프로모션]
               </p>
             </div>
             <div class="rate-date">
-              <span class="rate">더 부티끄 전용관람관</span>
+              <span class="rate" th:text="${productsDfgs.getSubTitle()}"></span>
             </div>
             <div class="price">
               <p class="sale">
-                <em>13,000</em>
-                <span>원</span>
-              </p>
-              <p class="ea">
-              </p>
-            </div>
-          </a>
-        </li>
-        <li class="img">
-          <a th:href="@{/store/storeDetail}">
-            <div class="movie-list-info">
-              <img src="https://img.megabox.co.kr/SharedImg/store/2020/12/29/rxCDUuqHT9RostRRQYeu1mr1knFyHxWr_280.png" alt="더 부티크 전용관람권">
-            </div>
-            <!--제목 -->
-            <div class="tit-area">
-              <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
-                [프로모션]
-              </p>
-            </div>
-            <div class="rate-date">
-              <span class="rate">더 부티끄 전용관람관</span>
-            </div>
-            <div class="price">
-              <p class="sale">
-                <em>13,000</em>
-                <span>원</span>
-              </p>
-              <p class="ea">
-              </p>
-            </div>
-          </a>
-        </li>
-        <li class="img">
-          <a th:href="@{/store/storeDetail}">
-            <div class="movie-list-info">
-              <img src="https://img.megabox.co.kr/SharedImg/store/2020/12/29/rxCDUuqHT9RostRRQYeu1mr1knFyHxWr_280.png" alt="더 부티크 전용관람권">
-            </div>
-            <!--제목 -->
-            <div class="tit-area">
-              <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
-                [프로모션]
-              </p>
-            </div>
-            <div class="rate-date">
-              <span class="rate">더 부티끄 전용관람관</span>
-            </div>
-            <div class="price">
-              <p class="sale">
-                <em>13,000</em>
-                <span>원</span>
-              </p>
-              <p class="ea">
-              </p>
-            </div>
-          </a>
-        </li>
-        <li class="img">
-          <a th:href="@{/store/storeDetail}">
-            <div class="movie-list-info">
-              <img src="https://img.megabox.co.kr/SharedImg/store/2020/12/29/rxCDUuqHT9RostRRQYeu1mr1knFyHxWr_280.png" alt="더 부티크 전용관람권">
-            </div>
-            <!--제목 -->
-            <div class="tit-area">
-              <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
-                [프로모션]
-              </p>
-            </div>
-            <div class="rate-date">
-              <span class="rate">더 부티끄 전용관람관</span>
-            </div>
-            <div class="price">
-              <p class="sale">
-                <em>13,000</em>
+                <em class="storePrice" th:text="${productsDfgs.getPrice()}">
+                </em>
                 <span>원</span>
               </p>
               <p class="ea">
@@ -291,101 +151,31 @@
       <div class="right">
         <h3 class="tit">포인트몰</h3>
         <div class="spring"></div>
-        <a href="" title="더보기">더보기
-          <i class="fa-solid fa-chevron-right" style="color: #c2c2c2;"></i></a>
       </div>
+    </div>
+    <div class="movie-list-util">
     </div>
     <div class="movie-list m15">
       <ul class="list">
-        <li class="img">
-          <a th:href="@{/store/storeDetail}">
+        <li class="img" th:each="products: ${productsPointer}">
+          <a th:href="@{/store/storeDetail (index=${products.getIndex()})}">
             <div class="movie-list-info">
-              <img src="https://img.megabox.co.kr/SharedImg/store/2020/12/29/rxCDUuqHT9RostRRQYeu1mr1knFyHxWr_280.png" alt="더 부티크 전용관람권">
+              <img th:src="@{/store/image(index=${products.getIndex()})}" alt="Image"><!--/store/image 는 컨트롤러에 맵핑 주소 적어준것 . 그래서 prductController 에 getImage 에있는 주소에 맵핑되서 메서드를 쓰는것-->
+              <div class="sold" th:if="${products.getQuantity() < 1}">
+                <div class="soldout">SOLD OUT</div>
+              </div>
             </div>
-            <!--제목 -->
             <div class="tit-area">
-              <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
+              <p class="title" th:text="${products.getName()}">
                 [프로모션]
               </p>
             </div>
             <div class="rate-date">
-              <span class="rate">더 부티끄 전용관람관</span>
+              <span class="rate" th:text="${products.getSubTitle()}"></span>
             </div>
             <div class="price">
               <p class="sale">
-                <em>13,000</em>
-                <span>원</span>
-              </p>
-              <p class="ea">
-              </p>
-            </div>
-          </a>
-        </li>
-        <li class="img">
-          <a th:href="@{/store/storeDetail}">
-            <div class="movie-list-info">
-              <img src="https://img.megabox.co.kr/SharedImg/store/2020/12/29/rxCDUuqHT9RostRRQYeu1mr1knFyHxWr_280.png" alt="더 부티크 전용관람권">
-            </div>
-            <!--제목 -->
-            <div class="tit-area">
-              <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
-                [프로모션]
-              </p>
-            </div>
-            <div class="rate-date">
-              <span class="rate">더 부티끄 전용관람관</span>
-            </div>
-            <div class="price">
-              <p class="sale">
-                <em>13,000</em>
-                <span>원</span>
-              </p>
-              <p class="ea">
-              </p>
-            </div>
-          </a>
-        </li>
-        <li class="img">
-          <a th:href="@{/store/storeDetail}">
-            <div class="movie-list-info">
-              <img src="https://img.megabox.co.kr/SharedImg/store/2020/12/29/rxCDUuqHT9RostRRQYeu1mr1knFyHxWr_280.png" alt="더 부티크 전용관람권">
-            </div>
-            <!--제목 -->
-            <div class="tit-area">
-              <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
-                [프로모션]
-              </p>
-            </div>
-            <div class="rate-date">
-              <span class="rate">더 부티끄 전용관람관</span>
-            </div>
-            <div class="price">
-              <p class="sale">
-                <em>13,000</em>
-                <span>원</span>
-              </p>
-              <p class="ea">
-              </p>
-            </div>
-          </a>
-        </li>
-        <li class="img">
-          <a th:href="@{/store/storeDetail}">
-            <div class="movie-list-info">
-              <img src="https://img.megabox.co.kr/SharedImg/store/2020/12/29/rxCDUuqHT9RostRRQYeu1mr1knFyHxWr_280.png" alt="더 부티크 전용관람권">
-            </div>
-            <!--제목 -->
-            <div class="tit-area">
-              <p title="극장판 하이큐!! 쓰레기장의 결전" class="title">
-                [프로모션]
-              </p>
-            </div>
-            <div class="rate-date">
-              <span class="rate">더 부티끄 전용관람관</span>
-            </div>
-            <div class="price">
-              <p class="sale">
-                <em>13,000</em>
+                <em class="storePrice" th:text="${products.getPrice()}"></em>
                 <span>원</span>
               </p>
               <p class="ea">
@@ -397,6 +187,5 @@
     </div>
   </div>
 </form>
-
 </body>
 </html>

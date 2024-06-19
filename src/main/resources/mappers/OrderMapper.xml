@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.terabox.demo.mappers.OrderMapper">
+
+    <insert id="insertOrder" parameterType="com.terabox.demo.entities.OrderEntity">
+        INSERT INTO `terabox`.`orders`
+        (user_email, movie_reservation_index,product_index,price,user_card_mapping_index,quantity,created_at,total_price,total_sale,selected_value)
+        VALUES (#{userEmail},#{movieReservationIndex},
+                #{productIndex},#{price},#{userCardMappingIndex},#{quantity},#{createdAt},#{totalPrice},#{totalSale},#{selectedValue})
+    </insert>
+
+    <select id="selectEmailByList" resultType="com.terabox.demo.vos.OrderVo">
+
+    SELECT  `orders`.`index` AS `index`,
+            `orders`.`user_email` AS userEmail,
+            `orders`.`movie_reservation_index` AS movieReservationIndex,
+            `orders`.`product_index` AS productIndex,
+            `orders`.`price` AS price,
+            `orders`.`user_card_mapping_index` AS userCardMappingIndex,
+            `orders`. `quantity` AS quantity,
+            `orders`. `created_at` AS createdAt,
+            `orders`.`total_price` AS totalPrice,
+            `orders`.`total_sale` AS totalSale,
+            `orders`. selected_value AS selectedValue,
+            `product`.`name` AS  productName,
+            `product`.`quantity` AS  productQuantity
+    FROM `terabox`.`orders`
+    LEFT JOIN `terabox`.`products` AS `product` ON `orders`.`product_index` = `product`.`index`
+    WHERE BINARY `user_email` = #{userEmail}
+
+    </select>
+
+
+
+</mapper>
