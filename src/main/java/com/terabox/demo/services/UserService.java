@@ -113,6 +113,9 @@ public class UserService {
             !UserRegex.password.tests(user.getPassword()) ||
             !UserRegex.nickname.tests(user.getNickname())) {
             System.out.println("정규화 안맞음");
+            System.out.println(user.getEmail());
+            System.out.println(user.getPassword());
+            System.out.println(user.getNickname());
             return CommonResult.FAILURE;
         }
         EmailAuthEntity dbEmailAuth = this.userMapper.selectEmailAuthByEmailCodeSalt(emailAuth.getEmail(), emailAuth.getCode(), emailAuth.getSalt());
@@ -134,6 +137,10 @@ public class UserService {
         user.setMembershipCode("일반");
         user.setPoint(0);
         user.setMileage(0);
+        System.out.println(user.getEmail());
+        System.out.println(user.getPassword());
+        System.out.println(user.getNickname());
+        System.out.println(user.getBirth());
         if (this.userMapper.insertUser(user) != 1) {
             System.out.println("insert 실패");
             return CommonResult.FAILURE;
