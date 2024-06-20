@@ -42,5 +42,4 @@ public class OrderController {
         model.setViewName("store/myMegabox");
        return model;
     }
-
 }
