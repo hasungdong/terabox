@@ -3,42 +3,91 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.terabox.demo.mappers.BookingMapper">
+    <!-- 모든 영화와 극장 SELECT -->
+    <select id="selectAllMovies" resultType="com.terabox.demo.entities.MovieEntity">
+        SELECT
+            `index`,
+            `title`,
+            `release_date`,
+            `playing_time`,
+            `thumbnail`,
+            `thumbnail_file_name`,
+            `thumbnail_content_type`,
+            `grade`,
+            `view`,
+            `is_single`,
+            `age_limit`,
+            `dimension_type`
+        FROM `terabox`.`movies`
+    </select>
+
+    <select id="selectAllTheaters" resultType="com.terabox.demo.entities.TheaterEntity">
+        SELECT
+            `index`,
+            `region_code`,
+            `name`
+        FROM `terabox`.`theaters`
+    </select>
+
     <!-- 특정 날짜의 모든 영화 SELECT -->
     <select id="selectMoviesByScreeningDate" resultType="com.terabox.demo.entities.MovieEntity">
-        SELECT `movie`.`index` AS `index`,
-               `movie`.`title` AS `title`,
-               `movie`.`release_date` AS `releaseDate`,
-               `movie`.`playing_time` AS `playingTime`,
-               `movie`.`thumbnail` AS `thumbnail`,
-               `movie`.`grade` AS `grade`,
-               `movie`.`view` AS `view`,
-               `movie`.`is_single` AS `isSingle`,
-               `movie`.`thumbnail_file_name` AS `thumbnailFileName`,
-               `movie`.`thumbnail_content_type` AS `thumbnailContentType`,
-               `movie`.`age_limit` AS `ageLimit`,
-               `movie`.`dimension_type` AS `dimensionType`
+        SELECT
+            `movie`.`index` AS `index`,
+            `movie`.`title` AS `title`,
+            `movie`.`release_date` AS `releaseDate`,
+            `movie`.`playing_time` AS `playingTime`,
+            `movie`.`thumbnail` AS `thumbnail`,
+            `movie`.`thumbnail_file_name` AS `thumbnailFileName`,
+            `movie`.`thumbnail_content_type` AS `thumbnailContentType`,
+            `movie`.`grade` AS `grade`,
+            `movie`.`view` AS `view`,
+            `movie`.`is_single` AS `isSingle`,
+            `movie`.`age_limit` AS `ageLimit`,
+            `movie`.`dimension_type` AS `dimensionType`
         FROM `terabox`.`movies` AS `movie`
                  JOIN `terabox`.`screening_info` AS `screen`
                       ON `movie`.`index` = `screen`.`movie_index`
         WHERE `screen`.`screening_date` = #{screeningDate}
     </select>
 
-    <!-- 특정 날짜의 모든 극장 SELECT -->
-    <select id="selectTheatersByScreeningDate" resultType="com.terabox.demo.entities.TheaterEntity">
-        SELECT `theater`.`index` AS `index`,
-               `theater`.`region_code` AS `regionCode`,
-               `theater`.`name` AS `name`
-        FROM `terabox`.`theaters` AS `theater`
-                 JOIN `terabox`.`screening_info` AS `screen`
-                      ON `theater`.`index` = `screen`.`cinema_index`
-        WHERE `screen`.`screening_date` = #{screeningDate}
+    <!-- 특정 영화의 모든 날짜, 극장 SELECT -->
+    <select id="selectDatesAndTheatersByMovie" resultType="com.terabox.demo.entities.ScreeningInfoEntity">
+        SELECT
+            `screen`.`screening_date` AS `screeningDate`,
+            `theater`.`index` AS `theaterIndex`,
+            `theater`.`region_code` AS `regionCode`,
+            `theater`.`name` AS `theaterName`
+        FROM `terabox`.`screening_info` AS `screen`
+                 JOIN `terabox`.`theaters` AS `theater`
+                      ON `screen`.`cinema_index` = `theater`.`index`
+        WHERE `screen`.`movie_index` = #{movieIndex}
     </select>
 
-    <!-- 특정 날짜 및 영화에 대한 모든 극장 SELECT -->
+    <!-- 특정 극장의 모든 날짜, 영화, 상영정보 SELECT -->
+    <select id="selectScreeningInfoByTheater" resultType="com.terabox.demo.entities.ScreeningInfoEntity">
+        SELECT
+            `screen`.`index` AS `index`,
+            `screen`.`movie_index` AS `movieIndex`,
+            `screen`.`screening_date` AS `screeningDate`,
+            `screen`.`screening_time` AS `screeningTime`,
+            `screen`.`price` AS `price`,
+            `movie`.`title` AS `movieTitle`,
+            `movie`.`dimension_type` AS `dimensionType`,
+            `theater`.`name` AS `theaterName`
+        FROM `terabox`.`screening_info` AS `screen`
+                 JOIN `terabox`.`movies` AS `movie`
+                      ON `screen`.`movie_index` = `movie`.`index`
+                 JOIN `terabox`.`theaters` AS `theater`
+                      ON `screen`.`cinema_index` = `theater`.`index`
+        WHERE `screen`.`cinema_index` = #{cinemaIndex}
+    </select>
+
+    <!-- 특정 날짜와 영화에 대한 모든 극장 SELECT -->
     <select id="selectTheatersByDateAndMovie" resultType="com.terabox.demo.entities.TheaterEntity">
-        SELECT `theater`.`index`       AS `index`,
-               `theater`.`region_code` AS `regionCode`,
-               `theater`.`name`        AS `name`
+        SELECT
+            `theater`.`index` AS `index`,
+            `theater`.`region_code` AS `regionCode`,
+            `theater`.`name` AS `name`
         FROM `terabox`.`theaters` AS `theater`
                  JOIN `terabox`.`screening_info` AS `screen`
                       ON `theater`.`index` = `screen`.`cinema_index`
@@ -46,18 +95,68 @@
           AND `screen`.`movie_index` = #{movieIndex}
     </select>
 
-    <!-- 특정 날짜, 영화, 극장의 상영 시간 SELECT -->
-    <select id="selectScreeningTimes" resultType="com.terabox.demo.entities.ScreeningInfoEntity">
-        SELECT screen.`index` AS `index`,
-               screen.`movie_index` AS `movieIndex`,
-               screen.`cinema_index` AS `cinemaIndex`,
-               screen.`screening_date` AS `screeningDate`,
-               screen.`screening_time` AS `screeningTime`,
-               screen.`price` AS `price`
+    <!-- 특정 날짜에 해당 극장의 모든 상영정보 SELECT -->
+    <select id="selectScreeningInfoByDateAndTheater" resultType="com.terabox.demo.entities.ScreeningInfoEntity">
+        SELECT
+            `screen`.`index` AS `index`,
+            `screen`.`movie_index` AS `movieIndex`,
+            `screen`.`screening_date` AS `screeningDate`,
+            `screen`.`screening_time` AS `screeningTime`,
+            `screen`.`price` AS `price`,
+            `movie`.`title` AS `movieTitle`,
+            `movie`.`dimension_type` AS `dimensionType`,
+            `theater`.`name` AS `theaterName`
         FROM `terabox`.`screening_info` AS `screen`
-        WHERE `screen`.`screening_date` = #{screeningDate} AND `screen`.`movie_index` = #{movieIndex} AND `screen`.`cinema_index` = #{cinemaIndex}
+                 JOIN `terabox`.`movies` AS `movie`
+                      ON `screen`.`movie_index` = `movie`.`index`
+                 JOIN `terabox`.`theaters` AS `theater`
+                      ON `screen`.`cinema_index` = `theater`.`index`
+        WHERE `screen`.`screening_date` = #{screeningDate}
+          AND `screen`.`cinema_index` = #{cinemaIndex}
     </select>
 
+    <!-- 특정 영화가 등록된 극장의 상영정보 SELECT -->
+    <select id="selectScreeningInfoByMovieAndTheater" resultType="com.terabox.demo.entities.ScreeningInfoEntity">
+        SELECT
+            `screen`.`index` AS `index`,
+            `screen`.`movie_index` AS `movieIndex`,
+            `screen`.`screening_date` AS `screeningDate`,
+            `screen`.`screening_time` AS `screeningTime`,
+            `screen`.`price` AS `price`,
+            `movie`.`title` AS `movieTitle`,
+            `movie`.`dimension_type` AS `dimensionType`,
+            `theater`.`name` AS `theaterName`
+        FROM `terabox`.`screening_info` AS `screen`
+                 JOIN `terabox`.`movies` AS `movie`
+                      ON `screen`.`movie_index` = `movie`.`index`
+                 JOIN `terabox`.`theaters` AS `theater`
+                      ON `screen`.`cinema_index` = `theater`.`index`
+        WHERE `screen`.`movie_index` = #{movieIndex}
+          AND `screen`.`cinema_index` = #{cinemaIndex}
+    </select>
+
+    <!-- 특정 날짜와 영화의 해당 극장 상영 시간 정보 SELECT -->
+    <select id="selectScreeningInfoByDateMovieTheater" resultType="com.terabox.demo.entities.ScreeningInfoEntity">
+        SELECT
+            `screen`.`index` AS `index`,
+            `screen`.`movie_index` AS `movieIndex`,
+            `screen`.`screening_date` AS `screeningDate`,
+            `screen`.`screening_time` AS `screeningTime`,
+            `screen`.`price` AS `price`,
+            `movie`.`title` AS `movieTitle`,
+            `movie`.`dimension_type` AS `dimensionType`,
+            `theater`.`name` AS `theaterName`
+        FROM `terabox`.`screening_info` AS `screen`
+                 JOIN `terabox`.`movies` AS `movie`
+                      ON `screen`.`movie_index` = `movie`.`index`
+                 JOIN `terabox`.`theaters` AS `theater`
+                      ON `screen`.`cinema_index` = `theater`.`index`
+        WHERE `screen`.`screening_date` = #{screeningDate}
+          AND `screen`.`movie_index` = #{movieIndex}
+          AND `screen`.`cinema_index` = #{cinemaIndex}
+    </select>
+
+    <!-- 지역별 극장 수 SELECT -->
     <select id="selectTheaterCountsByRegion" resultType="com.terabox.demo.dtos.RegionCountDto">
         SELECT
             CASE
@@ -71,8 +170,10 @@
         GROUP BY region
     </select>
 
+    <!-- 특정 지역의 모든 극장 SELECT -->
     <select id="selectTheatersByRegion" resultType="com.terabox.demo.entities.TheaterEntity">
-        SELECT `theater`.`index` AS `index`,
+        SELECT
+        `theater`.`index` AS `index`,
         `theater`.`region_code` AS `regionCode`,
         `theater`.`name` AS `name`
         FROM `terabox`.`theaters` AS `theater`

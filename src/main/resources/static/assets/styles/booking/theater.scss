@@ -66,6 +66,11 @@
           color: #fff;
           background-color: #666;
         }
+
+        &.disabled {
+          opacity: 0.5;
+          pointer-events: none;
+        }
       }
     }
   }

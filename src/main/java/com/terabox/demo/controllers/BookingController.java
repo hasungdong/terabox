@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @Controller
 @RequiredArgsConstructor
 @RequestMapping(value = "booking")
@@ -25,7 +24,13 @@ public class BookingController {
     return "booking/booking";
   }
 
-  @PostMapping(value = "/movie", produces = MediaType.APPLICATION_JSON_VALUE)
+  @PostMapping(value = "/all-movies", produces = MediaType.APPLICATION_JSON_VALUE)
+  @ResponseBody
+  public List<MovieEntity> getAllMovies() {
+    return bookingService.getAllMovies();
+  }
+
+  @PostMapping(value = "/movies-by-date", produces = MediaType.APPLICATION_JSON_VALUE)
   @ResponseBody
   public List<MovieEntity> getMoviesByDate(@RequestParam("date") String date) {
     return bookingService.getMoviesByDate(date);

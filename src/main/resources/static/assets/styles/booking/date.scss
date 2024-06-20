@@ -102,15 +102,24 @@
           font-weight: 400;
           cursor: pointer;
 
+          &.selected {
+            border-bottom-color: #503396;
+            background-color: lighten(#444, 70%);
+          }
+
+          &.disabled {
+            opacity: 0.5;
+            pointer-events: none;
+          }
 
           &:hover {
             border-bottom-color: #503396;
           }
 
-          &:focus {
-            border-bottom-color: #503396;
-            background-color: lighten(#444, 70%);
-          }
+          //&:focus {
+          //  border-bottom-color: #503396;
+          //  background-color: lighten(#444, 70%);
+          //}
         }
 
         em {

@@ -18,9 +18,9 @@
         <button title="이전 날짜 보기" type="button" class="btn-pre">
           <i class="fa-solid fa-angle-left"></i>
         </button>
-        <div class="date-list">
-          <div class="date-area">
-            <button type="button" th:data="hour">
+        <div class="hour-area">
+          <div class="wrap">
+<!--            <button type="button" th:data="hour">
               <span class="hour">00</span>
             </button>
             <button type="button" th:data="hour">
@@ -50,20 +50,50 @@
             <button type="button" th:data="hour">
               <span class="hour">09</span>
             </button>
+            <button type="button" th:data="hour">
+              <span class="hour">00</span>
+            </button>
+            <button type="button" th:data="hour">
+              <span class="hour">01</span>
+            </button>
+            <button type="button" th:data="hour">
+              <span class="hour">02</span>
+            </button>
+            <button type="button" th:data="hour">
+              <span class="hour">03</span>
+            </button>
+            <button type="button" th:data="hour">
+              <span class="hour">04</span>
+            </button>
+            <button type="button" th:data="hour">
+              <span class="hour">05</span>
+            </button>
+            <button type="button" th:data="hour">
+              <span class="hour">06</span>
+            </button>
+            <button type="button" th:data="hour">
+              <span class="hour">07</span>
+            </button>
+            <button type="button" th:data="hour">
+              <span class="hour">08</span>
+            </button>
+            <button type="button" th:data="hour">
+              <span class="hour">09</span>
+            </button>-->
           </div>
         </div>
-        <button title="다음 날짜 보기" type="button" class="btn-pre">
+        <button title="다음 날짜 보기" type="button" class="btn-next">
           <i class="fa-solid fa-angle-right"></i>
         </button>
       </div>
     </div>
     <div class="movie-schedule-area">
-      <div class="no-result" style="display: none">
+      <div class="no-result" >
         <img src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-movie-time.png" alt="">
         <span>영화와 극장을 선택하시면</span>
         <span>상영시간표를 비교하여 볼 수 있습니다.</span>
       </div>
-      <div class="result">
+      <div class="result" style="display: none">
         <ul>
           <li>
             <button class="btn" type="button">

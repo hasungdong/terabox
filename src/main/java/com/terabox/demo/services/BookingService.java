@@ -15,6 +15,10 @@ import java.util.List;
 public class BookingService {
   private final BookingMapper bookingMapper;
 
+  public List<MovieEntity> getAllMovies() {
+    return bookingMapper.selectAllMovies();
+  }
+
   public List<MovieEntity> getMoviesByDate(String date) {
     return bookingMapper.selectMoviesByScreeningDate(date);
   }
@@ -27,3 +31,4 @@ public class BookingService {
     return Arrays.asList(bookingMapper.selectTheatersByRegion(region));
   }
 }
+

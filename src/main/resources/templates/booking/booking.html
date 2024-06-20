@@ -8,10 +8,11 @@
   <title>MEET PLAY SHARE, 메가박스</title>
   <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/booking/main.css}">
   <script src="https://kit.fontawesome.com/39b115ab30.js" crossorigin="anonymous"></script>
-  <script defer type="text/javascript" th:src="@{/assets/scripts/booking/datebox.js}"></script>
-  <script defer type="text/javascript" th:src="@{/assets/scripts/booking/bookingMovie.js}"></script>
-  <script defer type="text/javascript" th:src="@{/assets/scripts/booking/bookingTime.js}"></script>
-  <script defer type="text/javascript" th:src="@{/assets/scripts/booking/bookingTheater.js}"></script>
+  <script defer type="text/javascript" th:src="@{/assets/scripts/booking/date.js}"></script>
+  <script defer type="text/javascript" th:src="@{/assets/scripts/booking/movie.js}"></script>
+  <script defer type="text/javascript" th:src="@{/assets/scripts/booking/screening.js}"></script>
+  <script defer type="text/javascript" th:src="@{/assets/scripts/booking/theater.js}"></script>
+  <script defer type="text/javascript" th:src="@{/assets/scripts/booking/booking.js}"></script>
 
   <th:block th:replace="~{fragments/common/common.html :: commonHead}"></th:block>
 </head>
@@ -33,7 +34,7 @@
       <!-- theater list : 극장 선택 -->
       <th:block th:replace="~{booking/theater.html :: theater}"></th:block>
       <!-- time list : 시간 선택 -->
-      <th:block th:replace="~{booking/time.html :: time}"></th:block>
+      <th:block th:replace="~{booking/screening.html :: time}"></th:block>
     </div>
   </div>
 </div>

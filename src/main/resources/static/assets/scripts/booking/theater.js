@@ -1,162 +1,3 @@
-/*
-document.addEventListener('DOMContentLoaded', function () {
-  const theaterChoice = document.querySelector('.theater-choice');
-  const theaterChoiceAll = theaterChoice.querySelector('.choice-all');
-  const theaterChoiceList = theaterChoice.querySelector('.choice-list');
-  const regionButtons = document.querySelectorAll('.region-list .btn');
-  const detailList = document.querySelector('.detail-list');
-
-  regionButtons.forEach(button => {
-    button.addEventListener('click', function () {
-      const region = this.getAttribute('data-region');
-      fetchTheatersByRegion(region);
-    });
-  });
-
-  function updateRegionCounts() {
-    const xhr = new XMLHttpRequest();
-
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState !== XMLHttpRequest.DONE) {
-        return;
-      }
-      loading.hide();
-      if (xhr.status < 200 || xhr.status >= 300) {
-        console.error('Failed to fetch data', xhr.status, xhr.statusText);
-        return;
-      }
-
-      const data = JSON.parse(xhr.responseText);
-      console.log('Data fetched successfully:', data);
-      data.forEach(regionCount => {
-        const button = document.getElementById(`${regionCount.region}-count`);
-        if (button) {
-          button.textContent = `${button.textContent.split('(')[0]}(${regionCount.count})`;
-        }
-      });
-
-    };
-
-    xhr.open('POST', '/booking/theaters/count-by-region');
-    xhr.send();
-    loading.show();
-  }
-
-  function fetchTheatersByRegion(region) {
-    const xhr = new XMLHttpRequest();
-    const formData = new FormData();
-    formData.append('region', region);
-
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState !== XMLHttpRequest.DONE) {
-        return;
-      }
-      loading.hide();
-      if (xhr.status < 200 || xhr.status >= 300) {
-        console.error('Failed to fetch data', xhr.status, xhr.statusText);
-        return;
-      }
-
-      const data = JSON.parse(xhr.responseText);
-      console.log('Data fetched successfully:', data);
-      updateDetailList(region, data);
-
-    };
-
-    xhr.open('POST', '/booking/theaters/by-region');
-    xhr.send(formData);
-    loading.show();
-  }
-
-  function updateDetailList(region, theaters) {
-    detailList.innerHTML = '';
-    const regionDiv = document.createElement('div');
-    regionDiv.className = 'region ' + region.toLowerCase();
-
-    const ul = document.createElement('ul');
-    theaters.forEach(theater => {
-      const li = document.createElement('li');
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.className = 'btn';
-      button.textContent = theater.name;
-      li.appendChild(button);
-      ul.appendChild(li);
-    });
-
-    regionDiv.appendChild(ul);
-    detailList.appendChild(regionDiv);
-
-    // Attach event listeners to the new buttons
-    const theaterButtons = regionDiv.querySelectorAll('.btn');
-    theaterButtons.forEach(button => {
-      button.addEventListener('click', function () {
-        handleTheaterButtonClick(this);
-      });
-    });
-  }
-
-  function handleTheaterButtonClick(button) {
-    const selectedButtons = detailList.querySelectorAll('.btn.selected');
-
-    if (selectedButtons.length >= 3 && !button.classList.contains('selected')) {
-      alert('최대 3개까지만 선택할 수 있습니다.');
-      return;
-    }
-
-    button.classList.toggle('selected');
-
-    updateChoiceList();
-  }
-
-  function updateChoiceList() {
-    const selectedButtons = detailList.querySelectorAll('.btn.selected');
-
-    theaterChoiceList.innerHTML = '';
-    selectedButtons.forEach(button => {
-      const wrap = document.createElement('div');
-      wrap.className = 'wrap';
-
-      const txt = document.createElement('div');
-      txt.className = 'txt';
-      txt.textContent = button.textContent;
-
-      const del = document.createElement('button');
-      del.className = 'del';
-      del.innerHTML = '<i class="fa-solid fa-x"></i>';
-      del.addEventListener('click', function () {
-        button.classList.remove('selected');
-        updateChoiceList();
-      });
-
-      wrap.appendChild(txt);
-      wrap.appendChild(del);
-
-      // Find the first available .bg element and append the wrap to it
-      const availableBg = theaterChoiceList.querySelector('.bg:not(:has(.wrap))');
-      if (availableBg) {
-        availableBg.appendChild(wrap);
-      } else {
-        // Create a new .bg element if none are available
-        const newBg = document.createElement('div');
-        newBg.className = 'bg';
-        newBg.appendChild(wrap);
-        theaterChoiceList.appendChild(newBg);
-      }
-    });
-
-    if (selectedButtons.length > 0) {
-      theaterChoiceAll.style.display = 'none';
-      theaterChoiceList.style.removeProperty('display');
-    } else {
-      theaterChoiceAll.style.removeProperty('display');
-      theaterChoiceList.style.display = 'none';
-    }
-  }
-
-  updateRegionCounts();
-});*/
-
 document.addEventListener('DOMContentLoaded', function () {
   const theaterChoice = document.querySelector('.theater-choice');
   const theaterChoiceAll = theaterChoice.querySelector('.choice-all');
@@ -181,26 +22,22 @@ document.addEventListener('DOMContentLoaded', function () {
       if (xhr.readyState !== XMLHttpRequest.DONE) {
         return;
       }
-      loading.hide();
       if (xhr.status < 200 || xhr.status >= 300) {
         console.error('Failed to fetch data', xhr.status, xhr.statusText);
         return;
       }
 
       const data = JSON.parse(xhr.responseText);
-      console.log('Data fetched successfully:', data);
       data.forEach(regionCount => {
         const button = document.getElementById(`${regionCount.region}-count`);
         if (button) {
           button.textContent = `${button.textContent.split('(')[0]}(${regionCount.count})`;
         }
       });
-
     };
 
     xhr.open('POST', '/booking/theaters/count-by-region');
     xhr.send();
-    loading.show();
   }
 
   function fetchTheatersByRegion(region) {
@@ -212,21 +49,17 @@ document.addEventListener('DOMContentLoaded', function () {
       if (xhr.readyState !== XMLHttpRequest.DONE) {
         return;
       }
-      loading.hide();
       if (xhr.status < 200 || xhr.status >= 300) {
         console.error('Failed to fetch data', xhr.status, xhr.statusText);
         return;
       }
 
       const data = JSON.parse(xhr.responseText);
-      console.log('Data fetched successfully:', data);
       updateDetailList(region, data);
-
     };
 
     xhr.open('POST', '/booking/theaters/by-region');
     xhr.send(formData);
-    loading.show();
   }
 
   function updateDetailList(region, theaters) {
@@ -334,6 +167,63 @@ document.addEventListener('DOMContentLoaded', function () {
       theaterChoiceAll.style.removeProperty('display');
       theaterChoiceList.style.display = 'none';
     }
+  }
+
+  // 날짜 선택 시 극장 버튼을 업데이트하는 함수
+  function handleDateClick(event, button) {
+    event.preventDefault(); // 기본 동작 방지
+
+    if (previousSelectedButton) {
+      previousSelectedButton.classList.remove('selected');
+    }
+    button.classList.add('selected');
+    previousSelectedButton = button;
+
+    const selectedDate = button.dataset.date;
+    const xhr = new XMLHttpRequest();
+    const formData = new FormData();
+    formData.append('date', selectedDate);
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState !== XMLHttpRequest.DONE) {
+        return;
+      }
+      if (xhr.status < 200 || xhr.status >= 300) {
+        console.error('Error fetching theaters for date:', xhr.status, xhr.statusText);
+        return;
+      }
+      const theaters = JSON.parse(xhr.responseText);
+      updateTheaterButtons(theaters);
+    };
+    xhr.open('POST', '/booking/theaters-by-date');
+    xhr.send(formData);
+  }
+
+  function updateTheaterButtons(theaters) {
+    const theaterButtons = document.querySelectorAll('.region-list .btn');
+    let regionCounts = {};
+
+    theaterButtons.forEach(button => {
+      const region = button.dataset.region;
+      const theaterCount = theaters.filter(theater => theater.regionCode === region).length;
+
+      if (theaterCount > 0) {
+        button.disabled = false;
+        button.classList.remove('disabled');
+      } else {
+        button.disabled = true;
+        button.classList.add('disabled');
+      }
+
+      regionCounts[region] = theaterCount;
+    });
+
+    // Update region counts
+    Object.keys(regionCounts).forEach(region => {
+      const button = document.getElementById(`${region}-count`);
+      if (button) {
+        button.textContent = `${button.textContent.split('(')[0]}(${regionCounts[region]})`;
+      }
+    });
   }
 
   updateRegionCounts();
