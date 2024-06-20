@@ -16,8 +16,8 @@
             keyColumn="index"
             keyProperty="index"
             parameterType="com.terabox.demo.entities.ProductEntity">
-        INSERT INTO `terabox`.`products` (`name`, `price`, `quantity`, `thumbnail`, `thumbnail_file_name`, `thumbnail_content_type`, `type`)
-        VALUES (#{name}, #{price}, #{quantity}, #{thumbnail}, #{thumbnailFileName}, #{thumbnailContentType}, #{type})
+        INSERT INTO `terabox`.`products` (`name`, `price`, `quantity`, `thumbnail`, `thumbnail_file_name`, `thumbnail_content_type`, `type`, `sub_title`)
+        VALUES (#{name}, #{price}, #{quantity}, #{thumbnail}, #{thumbnailFileName}, #{thumbnailContentType}, #{type}, #{subTitle})
     </insert>
     <insert id="insertEvent"
             useGeneratedKeys="true"
@@ -51,7 +51,8 @@
             `thumbnail`              = #{thumbnail},
             `thumbnail_file_name`    = #{thumbnailFileName},
             `thumbnail_content_type` = #{thumbnailContentType},
-            `type`                   = #{type}
+            `type`                   = #{type},
+            `sub_title`              = #{sub_Title}
         WHERE `index` = #{index}
     </update>
     <update id="updateEvent" parameterType="com.terabox.demo.entities.EventEntity">

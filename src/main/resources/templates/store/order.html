@@ -60,7 +60,7 @@
                                     <div class="goods-info">
                                         <p class="img">
                                             <a href="" title="Dolby Cinema 전용관람권">
-                                                <img th:src="@{/store/image(index=${order.getIndex()})}" alt="Image" ></a>
+                                                <img th:src="@{/product/image(index=${order.getIndex()})}" alt="Image" ></a>
                                         </p>
                                     </div>
                                 </td>
@@ -77,7 +77,7 @@
                                     </div>
                                 </th>
                                 <td>
-                                    <a href="#" class="a-link" name="brchList" title="사용가능극장 확인">사용가능극장 확인</a>
+                                    <a href="#" class="a-link" title="사용가능극장 확인">사용가능극장 확인</a>
                                 </td>
                                 <td>
                                     <em id="orderQuantity" th:text="${inputText}">1</em>

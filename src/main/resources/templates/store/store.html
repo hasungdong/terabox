@@ -82,7 +82,7 @@
         <li class="img" th:each="product : ${productsTicket}">
           <a th:href="@{/store/storeDetail(index=${product.getIndex()})}">
             <div class="movie-list-info">
-              <img th:src="@{/store/image(index=${product.getIndex()}) }" alt="Image"><!--/store/image 는 컨트롤러에 맵핑 주소 적어준것 . 그래서 prductController 에 getImage 에있는 주소에 맵핑되서 메서드를 쓰는것-->
+              <img th:src="@{/product/image(index=${product.getIndex()}) }" alt="Image"><!--/store/image 는 컨트롤러에 맵핑 주소 적어준것 . 그래서 prductController 에 getImage 에있는 주소에 맵핑되서 메서드를 쓰는것-->
               <div class="sold" th:if="${product.getQuantity() < 1}">
               <div class="soldout">SOLD OUT</div>
               </div>
@@ -121,7 +121,7 @@
         <li class="img" th:each="productsDfgs : ${productsDfg}">
           <a th:href="@{/store/storeDetail (index=${productsDfgs.getIndex()})}">
             <div class="movie-list-info" >
-              <img th:src="@{/store/image(index=${productsDfgs.getIndex()}) }" alt="Image"><!--/store/image 는 컨트롤러에 맵핑 주소 적어준것 . 그래서 prductController 에 getImage 에있는 주소에 맵핑되서 메서드를 쓰는것-->
+              <img th:src="@{/product/image(index=${productsDfgs.getIndex()}) }" alt="Image"><!--/store/image 는 컨트롤러에 맵핑 주소 적어준것 . 그래서 prductController 에 getImage 에있는 주소에 맵핑되서 메서드를 쓰는것-->
               <div class="sold" th:if="${productsDfgs.getQuantity() < 1}">
                 <div class="soldout">SOLD OUT</div>
               </div>
@@ -160,7 +160,7 @@
         <li class="img" th:each="products: ${productsPointer}">
           <a th:href="@{/store/storeDetail (index=${products.getIndex()})}">
             <div class="movie-list-info">
-              <img th:src="@{/store/image(index=${products.getIndex()})}" alt="Image"><!--/store/image 는 컨트롤러에 맵핑 주소 적어준것 . 그래서 prductController 에 getImage 에있는 주소에 맵핑되서 메서드를 쓰는것-->
+              <img th:src="@{/product/image(index=${products.getIndex()})}" alt="Image"><!--/store/image 는 컨트롤러에 맵핑 주소 적어준것 . 그래서 prductController 에 getImage 에있는 주소에 맵핑되서 메서드를 쓰는것-->
               <div class="sold" th:if="${products.getQuantity() < 1}">
                 <div class="soldout">SOLD OUT</div>
               </div>
@@ -176,7 +176,7 @@
             <div class="price">
               <p class="sale">
                 <em class="storePrice" th:text="${products.getPrice()}"></em>
-                <span>원</span>
+                <span>Point</span>
               </p>
               <p class="ea">
               </p>

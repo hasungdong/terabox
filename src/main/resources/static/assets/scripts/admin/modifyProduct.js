@@ -116,11 +116,11 @@ const showProducts = (page) => {
                                     instance.hide();
                                     modifyProductFormTwo.show();
                                     const xhr = new XMLHttpRequest();
-                                    xhr.onreadystatechange = function(){
-                                        if (xhr.readyState !== XMLHttpRequest.DONE){
+                                    xhr.onreadystatechange = function () {
+                                        if (xhr.readyState !== XMLHttpRequest.DONE) {
                                             return;
                                         }
-                                        if(xhr.status < 200 || xhr.status >= 300){
+                                        if (xhr.status < 200 || xhr.status >= 300) {
                                             MessageObj.createSimpleOk('오류', '요청을 전송하는 도중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.').show();
                                             return;
                                         }
@@ -156,10 +156,15 @@ const showProducts = (page) => {
             <select class="_obj-input __field" name="type">
                 <option disabled hidden selected value="-1">종류 선택</option>
                 <option value="ticket">티켓(기본)</option>
-                <option value="food">음식</option>
-                <option value="coupon">쿠폰</option>
+                <option value="fdg">음식</option>
+                <option value="point">포인트 상품</option>
             </select>
             <span class="__warning">종류를 선택해 주세요.</span>
+        </label>
+        <label class="_obj-label" rel="subTitleLabel">
+            <span class="__text">상품 설명</span>
+            <input class="_obj-input __field" type="text" name="subTitle" maxlength="30" minlength="1" placeholder="상품 설명(숫자, 영어 대소문자, 완성 한글, 공백 1자 이상 30자 이하)">
+            <span class="__warning">올바른 문자를 입력해 주세요.</span>
         </label>
         <div class="spring"></div>
         <button type="submit">수정하기</button>
@@ -175,7 +180,7 @@ const showProducts = (page) => {
                                             const image = imageWrapper.querySelector(':scope > .image');
 
                                             // 이미지 선택할 때 취소 누르면 아래 if문으로 빠짐
-                                            if (modifyProductFormTwo['thumbnail'].files.length === 0){
+                                            if (modifyProductFormTwo['thumbnail'].files.length === 0) {
                                                 empty.style.display = 'block';
                                                 image.style.display = 'none';
                                                 return;
@@ -202,6 +207,7 @@ const showProducts = (page) => {
                                         modifyProductFormTwo.priceLabel = new LabelObj(modifyProductFormTwo.querySelector('[rel="priceLabel"]'));
                                         modifyProductFormTwo.quantityLabel = new LabelObj(modifyProductFormTwo.querySelector('[rel="quantityLabel"]'));
                                         modifyProductFormTwo.typeLabel = new LabelObj(modifyProductFormTwo.querySelector('[rel="typeLabel"]'));
+                                        modifyProductFormTwo.subTitleLabel = new LabelObj(modifyProductFormTwo.querySelector('[rel="subTitleLabel"]'));
 
                                         modifyProductFormTwo.onsubmit = e => {
                                             e.preventDefault();
@@ -218,15 +224,19 @@ const showProducts = (page) => {
                                             modifyProductFormTwo.quantityLabel.setValid(modifyProductFormTwo['quantity'].value > 0 &&
                                                 modifyProductFormTwo['quantity'].value < 10000);
                                             modifyProductFormTwo.typeLabel.setValid(modifyProductFormTwo['type'].value === 'ticket' ||
-                                                modifyProductFormTwo['type'].value === 'food' ||
-                                                modifyProductFormTwo['type'].value === 'coupon');
+                                                modifyProductFormTwo['type'].value === 'fdg' ||
+                                                modifyProductFormTwo['type'].value === 'point');
+                                            const subTitleRegex = RegExp(/^([\da-zA-Z가-힣().\- !]{1,30})$/);
+                                            addProductForm.subTitleLabel.setValid(subTitleRegex.test(addProductForm['subTitle'].value));
+
 
                                             // 양식 안맞을시 제출 막는 로직, 이것도 add에서 해줬었음
                                             if (!modifyProductFormTwo.nameLabel.isValid() ||
                                                 !modifyProductFormTwo.thumbnailLabel.isValid() ||
                                                 !modifyProductFormTwo.priceLabel.isValid() ||
                                                 !modifyProductFormTwo.quantityLabel.isValid() ||
-                                                !modifyProductFormTwo.typeLabel.isValid()){
+                                                !modifyProductFormTwo.typeLabel.isValid() ||
+                                                !modifyProductFormTwo.subTitleLabel.isValid()) {
                                                 return;
                                             }
 
@@ -238,6 +248,7 @@ const showProducts = (page) => {
                                             formData.append('quantity', modifyProductFormTwo['quantity'].value);
                                             formData.append('_thumbnail', modifyProductFormTwo['thumbnail'].files[0]);
                                             formData.append('type', modifyProductFormTwo['type'].value);
+                                            formData.append('subTitle', modifyProductFormTwo['subTitle'].value);
                                             xhr.onreadystatechange = function () {
                                                 if (xhr.readyState !== XMLHttpRequest.DONE) {
                                                     return;

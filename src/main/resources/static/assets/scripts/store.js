@@ -369,15 +369,12 @@ if (totalSale !== null) { // storeDetail 에서 order 로 넘어왔을때 order 
                         title: '알림',
                         content: '카드를 선택해주세요.',
                         buttons: [
-                            {text: '취소', onclick: instance => {
-                                    instance.hide();
-                                    alertCover.hide();
-                                }},
                             {text: '확인', onclick: instance => {
                                     // 개인정보 약관 동의 체크 되도록
                                     instance.hide();
                                     alertCover.hide();
-                                }}
+                                }
+                            }
                         ]
                     }).show();
                     return;

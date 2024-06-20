@@ -9,7 +9,7 @@
     <th:block th:replace="~{fragments/common/common.html :: commonHead}"></th:block>
     <link rel="stylesheet" th:href="@{/assets/styles/benefit/discount/creditcard.css}">
     <script defer th:src="@{/assets/scripts/benefit/discount.js}"></script>
-    <script defer>
+    <script>
         window.onload = () => {
             window.scroll({
                 // 현재 화면의 위치를 해당 값으로 이동한다.
@@ -18,67 +18,27 @@
                 // 스크롤로 움직이는 것처럼 부드럽게 이동, 이거 안하면 순간이동함
                 behavior: "smooth"
             });
-        };
 
-        // 생각해보니까 이렇게 안하고 그냥 on인거 보여주게 하고
-        // 전체 누르면 전부 on 추가하고 특정 하나 누르면 그거에 대한 카드 부분만 on 추가하면 되잖아
-        // const cardSearchButtons = document.querySelectorAll('.search-card-button-bar > [type="button"]');
-        // console.log(document.querySelectorAll('.search-card-button-bar > [type="button"]'))
-        // console.log(cardSearchButtons);
-        // cardSearchButtons.forEach(cardSearchButton => cardSearchButton.onclick = () => {
-        //     const xhr = new XMLHttpRequest();
-        //     xhr.onreadystatechange = function () {
-        //         if (xhr.readyState !== XMLHttpRequest.DONE) {
-        //             return;
-        //         }
-        //         if (xhr.status < 200 || xhr.status >= 300) {
-        //             return;
-        //         }
-        //         const responseObject = JSON.parse(xhr.responseText);
-        //         document.querySelector('.card-list-block').innerHTML = '';
-        //         const cardTitle = new DOMParser().parseFromString(`
-        //     <h3 class="tit">
-        //         <span>${responseObject['name']}</span>
-        //     </h3>`, 'text/html').querySelector('h3');
-        //         document.querySelector('.card-list-block').append(cardTitle);
-        //         const cardList = new DOMParser().parseFromString(`
-        //     <div class="list">
-        //         <ul>
-        //             <li>
-        //                 <div class="img">
-        //                     <img src="/assets/images/discount/kookminCard.png" alt="null">
-        //                 </div>
-        //                 <div class="cont">
-        //                     <div class="top">
-        //                         <div class="name">${responseObject['name']}</div>
-        //                         <div class="spring"></div>
-        //                         <div class="sale">
-        //                             <span class="online">인터넷할인</span>
-        //                         </div>
-        //                         <div class="sale">
-        //                             <span class="offline">현장할인</span>
-        //                         </div>
-        //                     </div>
-        //                     <ul class="dot-list">할인방식 : 선할인<br>
-        //                         제공혜택 : ${responseObject['discountRate']}% 즉시할인<br>
-        //                         사용조건 : 온라인 결제<br>
-        //                         서비스 제공조건<br>
-        //                         - 건당 이용금액 10,000원 이상 시 월 1회 ${responseObject['discountRate']}% 즉시할인 제공<br>
-        //                         &nbsp; &nbsp;* 선할인 미선택 시 할인혜택 제공 불가<br>
-        //                         - 전월 국내가맹점 이용금액 40만원 이상 시 제공
-        //                     </ul>
-        //                     <div class="btn">
-        //                         <a title="카드사 홈페이지 이동" class="button purple">자세히 보기</a>
-        //                     </div>
-        //                 </div>
-        //             </li>
-        //         </ul>
-        //     </div>`, 'text/html').querySelector('.list');
-        //         document.querySelector('.card-list-block').append(cardList);
-        //     }
-        //     xhr.open('GET', `/card/search?name=${cardSearchButton.innerText}`);
-        //     xhr.send();
-        // })
+            const cardSearchButtons = document.querySelectorAll('.search-card-button-bar > [type="button"]');
+            cardSearchButtons.forEach(cardSearchButton => cardSearchButton.onclick = () => {
+                cardSearchButtons.forEach(cardSearchButton => cardSearchButton.classList.remove('on'));
+
+                const cardLists = document.querySelectorAll('.card-list-block > ul > li');
+                // foreach는 탈출이 안된대서 forof 사용
+                for (let cardList of cardLists) {
+                    cardLists.forEach(cardList => cardList.classList.remove('on'))
+                    if (cardSearchButton.innerText === cardList.querySelector(':scope > .tit > span').innerText){
+                        cardList.classList.add('on');
+                        cardSearchButton.classList.add('on');
+                        return;
+                    } else if (cardSearchButton.innerText === '전체') {
+                        cardSearchButton.classList.add('on');
+                        cardLists.forEach(cardList => cardList.classList.add('on'));
+                        return;
+                    }
+                }
+            })
+        };
     </script>
 </head>
 <body>
@@ -117,146 +77,159 @@
                     th:if="${!card.getName().equals('카카오페이')}"></button>
         </div>
         <div class="card-list-block">
-            <h3 class="tit">
-                <span>국민카드</span>
-            </h3>
-            <div class="list">
-                <ul>
-                    <li>
-                        <div class="img">
-                            <img src="/assets/images/discount/kookminCard.png" alt="null">
-                        </div>
-                        <div class="cont">
-                            <div class="top">
-                                <div class="name">KB국민카드</div>
-                                <div class="spring"></div>
-                                <div class="sale">
-                                    <span class="online">인터넷할인</span>
+            <ul>
+                <li class="on">
+                    <h3 class="tit">
+                        <span>국민카드</span>
+                    </h3>
+                    <div class="list">
+                        <ul>
+                            <li>
+                                <div class="img">
+                                    <img src="/assets/images/discount/kookminCard.png" alt="null">
                                 </div>
-                                <div class="sale">
-                                    <span class="offline">현장할인</span>
+                                <div class="cont">
+                                    <div class="top">
+                                        <div class="name">KB국민카드</div>
+                                        <div class="spring"></div>
+                                        <div class="sale">
+                                            <span class="online">인터넷할인</span>
+                                        </div>
+                                        <div class="sale">
+                                            <span class="offline">현장할인</span>
+                                        </div>
+                                    </div>
+                                    <ul class="dot-list">할인방식 : 선할인<br>
+                                        제공혜택 : 10% 즉시할인<br>
+                                        사용조건 : 온라인 결제<br>
+                                        서비스 제공조건<br>
+                                        - 건당 이용금액 10,000원 이상 시 월 1회 10% 즉시할인 제공<br>
+                                        &nbsp; &nbsp;* 선할인 미선택 시 할인혜택 제공 불가<br>
+                                        - 전월 국내가맹점 이용금액 40만원 이상 시 제공
+                                    </ul>
+                                    <div class="btn">
+                                        <a title="카드사 홈페이지 이동" class="button purple">자세히 보기</a>
+                                    </div>
                                 </div>
-                            </div>
-                            <ul class="dot-list">할인방식 : 선할인<br>
-                                제공혜택 : 10% 즉시할인<br>
-                                사용조건 : 온라인 결제<br>
-                                서비스 제공조건<br>
-                                - 건당 이용금액 10,000원 이상 시 월 1회 10% 즉시할인 제공<br>
-                                &nbsp; &nbsp;* 선할인 미선택 시 할인혜택 제공 불가<br>
-                                - 전월 국내가맹점 이용금액 40만원 이상 시 제공
-                            </ul>
-                            <div class="btn">
-                                <a title="카드사 홈페이지 이동" class="button purple">자세히 보기</a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <h3 class="tit">
-                <span>비씨카드</span>
-            </h3>
-            <div class="list">
-                <ul>
-                    <li>
-                        <div class="img">
-                            <img src="/assets/images/discount/BCCard.png" alt="null">
-                        </div>
-                        <div class="cont">
-                            <div class="top">
-                                <div class="name">비씨카드</div>
-                                <div class="spring"></div>
-                                <div class="sale">
-                                    <span class="online">인터넷할인</span>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="on">
+                    <h3 class="tit">
+                        <span>비씨카드</span>
+                    </h3>
+                    <div class="list">
+                        <ul>
+                            <li>
+                                <div class="img">
+                                    <img src="/assets/images/discount/BCCard.png" alt="null">
                                 </div>
-                                <div class="sale">
-                                    <span class="offline">현장할인</span>
+                                <div class="cont">
+                                    <div class="top">
+                                        <div class="name">비씨카드</div>
+                                        <div class="spring"></div>
+                                        <div class="sale">
+                                            <span class="online">인터넷할인</span>
+                                        </div>
+                                        <div class="sale">
+                                            <span class="offline">현장할인</span>
+                                        </div>
+                                    </div>
+                                    <ul class="dot-list">할인방식 : 선할인<br>
+                                        제공혜택 : 5% 즉시할인<br>
+                                        사용조건 : 온라인 결제<br>
+                                        서비스 제공조건<br>
+                                        - 건당 이용금액 10,000원 이상 시 월 1회 5% 즉시할인 제공<br>
+                                        &nbsp; &nbsp;* 선할인 미선택 시 할인혜택 제공 불가<br>
+                                        - 전월 국내가맹점 이용금액 40만원 이상 시 제공
+                                    </ul>
+                                    <div class="btn">
+                                        <a title="카드사 홈페이지 이동" class="button purple">자세히 보기</a>
+                                    </div>
                                 </div>
-                            </div>
-                            <ul class="dot-list">할인방식 : 선할인<br>
-                                제공혜택 : 5% 즉시할인<br>
-                                사용조건 : 온라인 결제<br>
-                                서비스 제공조건<br>
-                                - 건당 이용금액 10,000원 이상 시 월 1회 5% 즉시할인 제공<br>
-                                &nbsp; &nbsp;* 선할인 미선택 시 할인혜택 제공 불가<br>
-                                - 전월 국내가맹점 이용금액 40만원 이상 시 제공
-                            </ul>
-                            <div class="btn">
-                                <a title="카드사 홈페이지 이동" class="button purple">자세히 보기</a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <h3 class="tit">
-                <span>삼성카드</span>
-            </h3>
-            <div class="list">
-                <ul>
-                    <li>
-                        <div class="img">
-                            <img src="/assets/images/discount/samsungCard.png" alt="null">
-                        </div>
-                        <div class="cont">
-                            <div class="top">
-                                <div class="name">삼성카드</div>
-                                <div class="spring"></div>
-                                <div class="sale">
-                                    <span class="online">인터넷할인</span>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="on">
+                    <h3 class="tit">
+                        <span>삼성카드</span>
+                    </h3>
+                    <div class="list">
+                        <ul>
+                            <li>
+                                <div class="img">
+                                    <img src="/assets/images/discount/samsungCard.png" alt="null">
                                 </div>
-                                <div class="sale">
-                                    <span class="offline">현장할인</span>
+                                <div class="cont">
+                                    <div class="top">
+                                        <div class="name">삼성카드</div>
+                                        <div class="spring"></div>
+                                        <div class="sale">
+                                            <span class="online">인터넷할인</span>
+                                        </div>
+                                        <div class="sale">
+                                            <span class="offline">현장할인</span>
+                                        </div>
+                                    </div>
+                                    <ul class="dot-list">할인방식 : 선할인<br>
+                                        제공혜택 : 15% 즉시할인<br>
+                                        사용조건 : 온라인 결제<br>
+                                        서비스 제공조건<br>
+                                        - 건당 이용금액 10,000원 이상 시 월 1회 15% 즉시할인 제공<br>
+                                        &nbsp; &nbsp;* 선할인 미선택 시 할인혜택 제공 불가<br>
+                                        - 전월 국내가맹점 이용금액 40만원 이상 시 제공
+                                    </ul>
+                                    <div class="btn">
+                                        <a title="카드사 홈페이지 이동" class="button purple">자세히 보기</a>
+                                    </div>
                                 </div>
-                            </div>
-                            <ul class="dot-list">할인방식 : 선할인<br>
-                                제공혜택 : 15% 즉시할인<br>
-                                사용조건 : 온라인 결제<br>
-                                서비스 제공조건<br>
-                                - 건당 이용금액 10,000원 이상 시 월 1회 15% 즉시할인 제공<br>
-                                &nbsp; &nbsp;* 선할인 미선택 시 할인혜택 제공 불가<br>
-                                - 전월 국내가맹점 이용금액 40만원 이상 시 제공
-                            </ul>
-                            <div class="btn">
-                                <a title="카드사 홈페이지 이동" class="button purple">자세히 보기</a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <h3 class="tit">
-                <span>신한카드</span>
-            </h3>
-            <div class="list">
-                <ul>
-                    <li>
-                        <div class="img">
-                            <img src="/assets/images/discount/shinhanCard.png" alt="null">
-                        </div>
-                        <div class="cont">
-                            <div class="top">
-                                <div class="name">신한카드</div>
-                                <div class="spring"></div>
-                                <div class="sale">
-                                    <span class="online">인터넷할인</span>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="on">
+                    <h3 class="tit">
+                        <span>신한카드</span>
+                    </h3>
+                    <div class="list">
+                        <ul>
+                            <li>
+                                <div class="img">
+                                    <img src="/assets/images/discount/shinhanCard.png" alt="null">
                                 </div>
-                                <div class="sale">
-                                    <span class="offline">현장할인</span>
+                                <div class="cont">
+                                    <div class="top">
+                                        <div class="name">신한카드</div>
+                                        <div class="spring"></div>
+                                        <div class="sale">
+                                            <span class="online">인터넷할인</span>
+                                        </div>
+                                        <div class="sale">
+                                            <span class="offline">현장할인</span>
+                                        </div>
+                                    </div>
+                                    <ul class="dot-list">할인방식 : 선할인<br>
+                                        제공혜택 : 7% 즉시할인<br>
+                                        사용조건 : 온라인 결제<br>
+                                        서비스 제공조건<br>
+                                        - 건당 이용금액 10,000원 이상 시 월 1회 7% 즉시할인 제공<br>
+                                        &nbsp; &nbsp;* 선할인 미선택 시 할인혜택 제공 불가<br>
+                                        - 전월 국내가맹점 이용금액 40만원 이상 시 제공
+                                    </ul>
+                                    <div class="btn">
+                                        <a title="카드사 홈페이지 이동" class="button purple">자세히 보기</a>
+                                    </div>
                                 </div>
-                            </div>
-                            <ul class="dot-list">할인방식 : 선할인<br>
-                                제공혜택 : 7% 즉시할인<br>
-                                사용조건 : 온라인 결제<br>
-                                서비스 제공조건<br>
-                                - 건당 이용금액 10,000원 이상 시 월 1회 7% 즉시할인 제공<br>
-                                &nbsp; &nbsp;* 선할인 미선택 시 할인혜택 제공 불가<br>
-                                - 전월 국내가맹점 이용금액 40만원 이상 시 제공
-                            </ul>
-                            <div class="btn">
-                                <a title="카드사 홈페이지 이동" class="button purple">자세히 보기</a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
         </div>
+        <script>
+
+        </script>
     </div>
 </main>

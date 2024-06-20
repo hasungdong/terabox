@@ -174,7 +174,7 @@ const showMovies = (page) => {
                 <option value="all">전체 이용가(기본)</option>
                 <option value="12">12세 이용가</option>
                 <option value="15">15세 이용가</option>
-                <option value="18">18세 이용가</option>
+                <option value="19">19세 이용가</option>
             </select>
             <span class="__warning">연령제한을 선택해 주세요.</span>
         </label>
@@ -266,7 +266,7 @@ const showMovies = (page) => {
                                             modifyMovieFormTwo.ageLimitLabel.setValid(modifyMovieFormTwo['ageLimit'].value === 'all' ||
                                                 modifyMovieFormTwo['ageLimit'].value === '12' ||
                                                 modifyMovieFormTwo['ageLimit'].value === '15' ||
-                                                modifyMovieFormTwo['ageLimit'].value === '18');
+                                                modifyMovieFormTwo['ageLimit'].value === '19');
                                             modifyMovieFormTwo.dimensionTypeLabel.setValid(modifyMovieFormTwo['dimensionType'].value === '2D' ||
                                                 modifyMovieFormTwo['dimensionType'].value === '3D' ||
                                                 modifyMovieFormTwo['dimensionType'].value === '4D');
