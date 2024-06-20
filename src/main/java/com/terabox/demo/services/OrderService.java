@@ -28,11 +28,14 @@ public class OrderService {
     }
 
     /* 결제하기 누르면 결제되는 창 */
-    public CommonResult postOrder(OrderEntity order,@RequestParam("productIndex")int productIndex){
+    public CommonResult postOrder(OrderEntity order,@RequestParam("productIndex") int productIndex){
 
+//        여기 바꿔야댐
+//        이메일은 어차피 로그인 세션에서 가져오면 됨
         order.setUserEmail("1234@naver.com");
         order.setMovieReservationIndex(null);
         order.setCreatedAt(LocalDateTime.now());
+
 
         UserCardEntity cardDb = this.userCardMapper.selectUserCard(order);
         ProductEntity product = this.productMapper.selectProductByIndex(productIndex);
@@ -40,7 +43,7 @@ public class OrderService {
         if (cardDb == null){
             return CommonResult.FAILURE;
         }
-        if (cardDb.getPoint() < order.getTotalPrice()){
+        if (cardDb.getMoney() < order.getTotalPrice()){
             return CommonResult.FAILURE_NOT_POINT;
         }
         if (product.getQuantity() < order.getQuantity()){
@@ -49,17 +52,15 @@ public class OrderService {
 
         //결제 금액만큼 포인트 차감되는 쿼리
         order.setUserCardMappingIndex(cardDb.getIndex());
-        cardDb.setPoint(cardDb.getPoint() - order.getTotalPrice());
+        cardDb.setMoney(cardDb.getMoney() - order.getTotalPrice());
         product.setQuantity(product.getQuantity()- order.getQuantity());
 
         if (this.productMapper.updateProduct(product)< 1){
             return CommonResult.FAILURE;
         }
-        if (this.userCardMapper.updatePoint(cardDb) < 1){
+        if (this.userCardMapper.updateMoney(cardDb) < 1){
             return CommonResult.FAILURE;
         }
-
-        System.out.println(order.getSelectedValue());
         return this.orderMapper.insertOrder(order) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 

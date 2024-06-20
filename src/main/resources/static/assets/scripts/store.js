@@ -67,14 +67,11 @@ if (price !== null){
                     title: '알림',
                     content: '수량이 부족합니다.',
                     buttons: [
-                        {text: '취소', onclick: instance => {
-                                instance.hide();
-                                alertCover.hide();
-                            }},
                         {text: '확인', onclick: instance => {
                                 instance.hide();
                                 alertCover.hide();
-                            }}
+                            }
+                        }
                     ]
                 }).show();
                 return;
@@ -84,14 +81,11 @@ if (price !== null){
                     title: '알림',
                     content: '상품이 품절되어서 구매가 불가능합니다.',
                     buttons: [
-                        {text: '취소', onclick: instance => {
-                                instance.hide();
-                                alertCover.hide();
-                            }},
                         {text: '확인', onclick: instance => {
                                 instance.hide();
                                 alertCover.hide();
-                            }}
+                            }
+                        }
                     ]
                 }).show();
                 return;
@@ -241,15 +235,12 @@ if (totalSale !== null) { // storeDetail 에서 order 로 넘어왔을때 order 
                             title: '알림',
                             content: '결제가 완료되었습니다. 구매내역은 나의 메가박스에서 확인해주세요.',
                             buttons: [
-                                {text: '취소', onclick: instance => {
-                                        instance.hide();
-                                        alertCover.hide();
-                                    }},
                                 {text: '확인', onclick: instance => {
                                         instance.hide();
                                         alertCover.hide();
                                         location.replace('/store/store');
-                                    }}
+                                    }
+                                }
                             ]
                         }).show();
                         break;
@@ -262,34 +253,27 @@ if (totalSale !== null) { // storeDetail 에서 order 로 넘어왔을때 order 
                             title: '알림',
                             content: '결제가 실패하였습니다.',
                             buttons: [
-                                {text: '취소', onclick: instance => {
-                                        instance.hide();
-                                        alertCover.hide();
-                                    }},
                                 {text: '확인', onclick: instance => {
                                         instance.hide();
                                         alertCover.hide();
-                                    }}
+                                    }
+                                }
                             ]
                         }).show();
                         break;
-
                     case 'failure_not_point':
                         alertPopup.hide();
                         cover.hide();
                         alertCover.show()
                         new MessageObj({
                             title: '알림',
-                            content: '포인트가 부족하여 결제가 실패하였습니다. 잔여 포인트를 확인해주세요.',
+                            content: '금액이 부족하여 결제가 실패하였습니다. 잔여 포인트를 확인해주세요.',
                             buttons: [
-                                {text: '취소', onclick: instance => {
-                                        instance.hide();
-                                        alertCover.hide();
-                                    }},
                                 {text: '확인', onclick: instance => {
                                         instance.hide();
                                         alertCover.hide();
-                                    }}
+                                    }
+                                }
                             ]
                         }).show();
                         break;
@@ -302,14 +286,11 @@ if (totalSale !== null) { // storeDetail 에서 order 로 넘어왔을때 order 
                             title: '알림',
                             content: '상품이 수량이 소진되어 품절되었습니다.',
                             buttons: [
-                                {text: '취소', onclick: instance => {
-                                        instance.hide();
-                                        alertCover.hide();
-                                    }},
                                 {text: '확인', onclick: instance => {
                                         instance.hide();
                                         alertCover.hide();
-                                    }}
+                                    }
+                                }
                             ]
                         }).show();
                         break;
@@ -322,14 +303,11 @@ if (totalSale !== null) { // storeDetail 에서 order 로 넘어왔을때 order 
                             title: '알림',
                             content: '요청이 실패했습니다.',
                             buttons: [
-                                {text: '취소', onclick: instance => {
-                                        instance.hide();
-                                        alertCover.hide();
-                                    }},
                                 {text: '확인', onclick: instance => {
                                         instance.hide();
                                         alertCover.hide();
-                                    }}
+                                    }
+                                }
                             ]
                         }).show();
                         break;

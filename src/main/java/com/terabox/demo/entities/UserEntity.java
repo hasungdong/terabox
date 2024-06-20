@@ -19,7 +19,7 @@ public class UserEntity {
     private LocalDate birth;
     private String membershipCode;
     private LocalDateTime createdAt;
-//    private int point; 유저에 카드가 통장처럼 사용되는 중이라 유저에 포인트가 있으면 안됨
-    private int mileage;
+//    마일리지를 포인트로 바꿨음
+    private int point;
     private boolean isAdmin;
 }

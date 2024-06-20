@@ -7,5 +7,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface UserCardMapper {
     UserCardEntity selectUserCard (OrderEntity order);
-    int updatePoint(UserCardEntity userCard);
+    int updateMoney(UserCardEntity userCard);
 }

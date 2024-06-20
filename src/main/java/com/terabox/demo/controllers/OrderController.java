@@ -28,7 +28,6 @@ public class OrderController {
     @ResponseBody /*이거 안적어줘서 계속 템플릿 없다고 뜬거였음 */
     public String postOrder(OrderEntity order,@RequestParam("productIndex")int productIndex){
         CommonResult result = this.orderService.postOrder(order,productIndex);
-        System.out.println(order.getSelectedValue());
         JSONObject responseObject = new JSONObject();
         responseObject.put("result",result.name().toLowerCase());
         return responseObject.toString();

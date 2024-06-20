@@ -11,5 +11,5 @@ public class UserCardEntity {
     private int index;
     private String userEmail;
     private String cardName;
-    private int point;
+    private int money;
 }

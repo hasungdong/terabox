@@ -6,9 +6,11 @@
 
     <insert id="insertOrder" parameterType="com.terabox.demo.entities.OrderEntity">
         INSERT INTO `terabox`.`orders`
-        (user_email, movie_reservation_index,product_index,price,user_card_mapping_index,quantity,created_at,total_price,total_sale,selected_value)
-        VALUES (#{userEmail},#{movieReservationIndex},
-                #{productIndex},#{price},#{userCardMappingIndex},#{quantity},#{createdAt},#{totalPrice},#{totalSale},#{selectedValue})
+        (user_email, movie_reservation_index, product_index, price, user_card_mapping_index, quantity, created_at,
+         total_price, total_sale)
+        VALUES (#{userEmail}, #{movieReservationIndex},
+                #{productIndex}, #{price}, #{userCardMappingIndex}, #{quantity}, #{createdAt}, #{totalPrice},
+                #{totalSale})
     </insert>
 
     <select id="selectEmailByList" resultType="com.terabox.demo.vos.OrderVo">
@@ -23,7 +25,6 @@
             `orders`. `created_at` AS createdAt,
             `orders`.`total_price` AS totalPrice,
             `orders`.`total_sale` AS totalSale,
-            `orders`. selected_value AS selectedValue,
             `product`.`name` AS  productName,
             `product`.`quantity` AS  productQuantity
     FROM `terabox`.`orders`
