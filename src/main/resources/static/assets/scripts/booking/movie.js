@@ -18,7 +18,8 @@ function loadAllMovies() {
       button.type = 'button';
       button.className = 'btn';
       button.dataset.group = 'btn1';
-      button.dataset.selected = 'false'; // 초기 선택 상태 설정
+      button.dataset.selected = 'false';
+      button.dataset.index = movie.index;  // 영화 index를 데이터 속성으로 추가
 
       let imgSrc = '';
       switch (movie.grade) {
@@ -31,19 +32,19 @@ function loadAllMovies() {
         case 19:
           imgSrc = '/assets/images/booking/KMRB_19.jpeg';
           break;
-        case 'ALL':
-          imgSrc = '/assets/images/booking/KMRB_ALL.jpeg';
+        case 0:
+          imgSrc = '/assets/images/booking/KMRB_All.jpeg';
           break;
         default:
-          imgSrc = '/assets/images/booking/default.jpeg'; // 기본 이미지 설정
+          imgSrc = '/assets/images/booking/default.jpeg';
           break;
       }
 
       button.innerHTML = `
-                    <img src="${imgSrc}" alt="${movie.title}" height="20" width="20"/>
-                    <span class="txt">${movie.title}</span>
-                    <i class="fa-regular fa-heart"></i>
-                `;
+        <img src="${imgSrc}" alt="${movie.title}" height="20" width="20"/>
+        <span class="txt">${movie.title}</span>
+        <i class="fa-regular fa-heart"></i>
+      `;
       button.addEventListener('click', () => handleMovieButtonClick(button, movie));
       li.appendChild(button);
       movieList.appendChild(li);
@@ -52,6 +53,7 @@ function loadAllMovies() {
   xhr.open('POST', '/booking/all-movies');
   xhr.send(formData);
 }
+
 
 function handleMovieButtonClick(button, movie) {
   const isSelected = button.dataset.selected === 'true';

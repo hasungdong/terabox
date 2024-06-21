@@ -29,8 +29,9 @@
         background-color: #fff;
         border: 0;
 
-        &:focus {
+        &.selected {
           background-color: #ebebeb;
+
 
           &::after {
             content: "";
@@ -132,6 +133,7 @@
       }
     }
   }
+
   .bg:nth-child(2),
   .bg:nth-child(3) {
     margin-left: 20px;

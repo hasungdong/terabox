@@ -152,39 +152,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     button.classList.add('selected');
     previousSelectedButton = button;
-
-    const selectedDate = button.dataset.date;
-    const xhr = new XMLHttpRequest();
-    const formData = new FormData();
-    formData.append('date', selectedDate);
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState !== XMLHttpRequest.DONE) {
-        return;
-      }
-      if (xhr.status < 200 || xhr.status >= 300) {
-        console.error('Error fetching movies for date:', xhr.status, xhr.statusText);
-        return;
-      }
-      const movies = JSON.parse(xhr.responseText);
-      updateMovieButtons(movies);
-    };
-    xhr.open('POST', '/booking/movies-by-date');
-    xhr.send(formData);
-  }
-
-  function updateMovieButtons(movies) {
-    const movieButtons = document.querySelectorAll('.all-list .btn');
-    movieButtons.forEach(button => {
-      const movieTitle = button.querySelector('.txt').textContent;
-      const movie = movies.find(movie => movie.title === movieTitle);
-      if (movie) {
-        button.disabled = false;
-        button.classList.remove('disabled');
-      } else {
-        button.disabled = true;
-        button.classList.add('disabled');
-      }
-    });
   }
 
   // 이전/다음 버튼에 클릭 이벤트를 추가
@@ -202,4 +169,26 @@ document.addEventListener('DOMContentLoaded', function () {
     const day = String(selectedDate.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}`;
   };
+
+  function updateDateButtons(availableDates) {
+    const dateButtons = document.querySelectorAll('.date-area .wrap .date');
+    dateButtons.forEach(button => {
+      const date = button.dataset.date;
+      if (availableDates.includes(date)) {
+        button.disabled = false;
+        button.classList.remove('disabled');
+      } else {
+        button.disabled = true;
+        button.classList.add('disabled');
+      }
+    });
+  }
+
+  function enableAllDateButtons() {
+    const dateButtons = document.querySelectorAll('.date-area .wrap .date');
+    dateButtons.forEach(button => {
+      button.disabled = false;
+      button.classList.remove('disabled');
+    });
+  }
 });

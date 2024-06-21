@@ -7,13 +7,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // 배열로 선택된 값을 저장
   let selectedChoices = [];
+  let lastSelectedRegion = localStorage.getItem('lastSelectedRegion');
 
   regionButtons.forEach(button => {
     button.addEventListener('click', function () {
       const region = this.getAttribute('data-region');
       fetchTheatersByRegion(region);
+      setSelectedRegionButton(this);
+      localStorage.setItem('lastSelectedRegion', region);
     });
+
+    // 페이지 로드 시 마지막으로 클릭한 버튼을 선택된 상태로 설정
+    if (lastSelectedRegion && button.getAttribute('data-region') === lastSelectedRegion) {
+      setSelectedRegionButton(button);
+      fetchTheatersByRegion(lastSelectedRegion);
+    }
   });
+
+  function setSelectedRegionButton(button) {
+    regionButtons.forEach(btn => btn.classList.remove('selected'));
+    button.classList.add('selected');
+  }
 
   function updateRegionCounts() {
     const xhr = new XMLHttpRequest();
@@ -63,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function updateDetailList(region, theaters) {
+    const detailList = document.querySelector('.detail-list');
     detailList.innerHTML = '';
     const regionDiv = document.createElement('div');
     regionDiv.className = 'region ' + region.toLowerCase();
@@ -74,6 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
       button.type = 'button';
       button.className = 'btn';
       button.textContent = theater.name;
+      button.dataset.index = theater.index; // 극장 index를 데이터 속성으로 추가
       li.appendChild(button);
       ul.appendChild(li);
     });

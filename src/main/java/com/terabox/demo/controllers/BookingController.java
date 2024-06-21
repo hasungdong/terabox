@@ -2,7 +2,9 @@ package com.terabox.demo.controllers;
 
 
 import com.terabox.demo.dtos.RegionCountDto;
+import com.terabox.demo.dtos.ScreeningInfoDto;
 import com.terabox.demo.entities.MovieEntity;
+import com.terabox.demo.entities.ScreeningInfoEntity;
 import com.terabox.demo.entities.TheaterEntity;
 import com.terabox.demo.services.BookingService;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +18,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping(value = "booking")
 public class BookingController {
-
   private final BookingService bookingService;
 
   @GetMapping(value = "", produces = MediaType.TEXT_HTML_VALUE)
@@ -30,12 +31,6 @@ public class BookingController {
     return bookingService.getAllMovies();
   }
 
-  @PostMapping(value = "/movies-by-date", produces = MediaType.APPLICATION_JSON_VALUE)
-  @ResponseBody
-  public List<MovieEntity> getMoviesByDate(@RequestParam("date") String date) {
-    return bookingService.getMoviesByDate(date);
-  }
-
   @PostMapping(value = "/theaters/count-by-region", produces = MediaType.APPLICATION_JSON_VALUE)
   @ResponseBody
   public List<RegionCountDto> getTheaterCountsByRegion() {
@@ -47,4 +42,13 @@ public class BookingController {
   public List<TheaterEntity> getTheatersByRegion(@RequestParam("region") String region) {
     return bookingService.getTheatersByRegion(region);
   }
+
+  @PostMapping(value = "/screening-info", produces = MediaType.APPLICATION_JSON_VALUE)
+  @ResponseBody
+  public List<ScreeningInfoDto> getScreeningInfo(@RequestParam("date") String date,
+                                                 @RequestParam("movieIndex") int movieIndex,
+                                                 @RequestParam("cinemaIndex") int cinemaIndex) {
+    return bookingService.getScreeningInfoByDateMovieTheater(date, movieIndex, cinemaIndex);
+  }
 }
+
