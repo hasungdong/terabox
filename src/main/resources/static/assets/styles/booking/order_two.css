@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
+#header {
+  background-color: #ffffff;
+  color: #666666;
+}
+#header > .link-area {
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+}
+#header > .link-area > .header-site-map {
+  color: black;
+  font-size: 1.5rem;
+  position: relative;
+  right: 20rem;
+}
+#header > .link-area > .header-search {
+  color: black;
+  font-size: 1.2rem;
+  margin-top: 0.2rem;
+  position: relative;
+  right: 18.7rem;
+}
+#header > .link-area > .header-movie {
+  text-decoration-line: none;
+  color: black;
+  position: relative;
+  right: 12.5rem;
+}
+#header > .link-area > .header-buy-ticket {
+  text-decoration-line: none;
+  color: black;
+  position: relative;
+  right: 8.5rem;
+}
+#header > .link-area > .header-cinema {
+  text-decoration-line: none;
+  color: black;
+  position: relative;
+  right: 4.7rem;
+}
+#header > .link-area > .header-main-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  left: 2rem;
+  top: -1rem;
+}
+#header > .link-area > .header-event {
+  text-decoration-line: none;
+  color: black;
+  position: relative;
+  left: 7.5rem;
+}
+#header > .link-area > .header-store {
+  text-decoration-line: none;
+  color: black;
+  position: relative;
+  left: 11.7rem;
+}
+#header > .link-area > .header-benefits {
+  text-decoration-line: none;
+  color: black;
+  position: relative;
+  left: 15.7rem;
+}
+#header > .link-area > .header-timetable > .header-timetable-img {
+  width: 2.2rem;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+  position: relative;
+  left: 20.25rem;
+}
+#header > .link-area > .header-my-megabox {
+  margin-left: 1rem;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+  position: relative;
+  left: 20.2rem;
+}
+#header > .link-area > .header-my-megabox > .header-my-megabox-img {
+  width: 1.1rem;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.temp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Nanum Gothic", sans-serif;
+  box-sizing: border-box;
+  color: #444444;
+  line-height: 1.5;
+  font-size: 0.9375rem;
+}
+.temp .order-three-container {
+  display: flex;
+  flex-direction: row;
+  width: 1100px;
+}
+.temp .order-three-container p {
+  margin: 0;
+  padding: 0;
+}
+.temp .order-three-container > .seat-section {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: 556px;
+  border-top: 1px solid #000;
+  background-color: #fff;
+  width: 770px;
+}
+
+.dash-list > li {
+  position: relative;
+  padding: 0 0 0 11px;
+  font-size: 0.87rem;
+}
+.dash-list > li::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 4px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  background-color: #333;
+}
+
+/*# sourceMappingURL=order_two.css.map */
