@@ -474,6 +474,17 @@ class MessageObj {
         }
         document.body.prepend(element);
         this.element = element;
+        // 닫기버튼 누르면 없어지는 거 구현
+        element.querySelector('[rel=alertCancel]').onclick = () => {
+            this.element.hide();
+            setTimeout(() => this.element.remove(), 1000);
+            if (alertCover !== null){
+                alertCover.hide();
+            }
+            if (cover !== null){
+                cover.hide();
+            }
+        }
     }
 
     hide() {

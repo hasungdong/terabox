@@ -16,7 +16,7 @@
   line-height: 1.5;
   font-size: 0.9375rem;
 
-  .order-three-container {
+  .order-two-container {
     display: flex;
     flex-direction: row;
     width: 1100px;
@@ -34,25 +34,671 @@
       border-top: 1px solid #000;
       background-color: #fff;
       width: 770px;
+
+      > .tit-util {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 8px 0 7px 0;
+
+        > h3 {
+          font-size: 1.125rem;
+          color: #222;
+          line-height: 32px;
+        }
+
+        > button {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          margin: 0;
+          text-align: center;
+          font-weight: 400;
+          border-radius: 4px;
+          font-family: "Nanum Gothic", sans-serif;
+          text-decoration: none;
+          vertical-align: middle;
+          cursor: pointer;
+          outline: none;
+
+          height: 32px;
+          padding: 0 12px;
+          font-size: .875rem;
+          letter-spacing: -.5px;
+
+          color: #444;
+          border: 1px solid #c1c1c1;
+          background-color: #fff;
+
+          line-height: 32px;
+
+          > img {
+            width: 14px;
+            height: 14px;
+            margin-right: 4px;
+          }
+        }
+      }
+
+      > .seat-area{
+        display: flex;
+        flex-direction: column;
+        //align-items: stretch;
+
+        > .seat-count{
+          display: flex;
+          flex-direction: row;
+
+          padding: 10px 0 10px 20px;
+          background-color: #f2f4f5;
+          border: 1px solid #d8d9db;
+          border-bottom: 0;
+          min-height: 52px;
+
+          > .cell{
+            display: flex;
+            width: 25%;
+
+            > .txt{
+              float: left;
+              padding: 0 10px 0 0;
+              line-height: 32px;
+            }
+
+            > .count{
+              display: flex;
+              float: left;
+              width: 106px;
+
+              button{
+                display: block;
+                margin: 0;
+                padding: 0;
+                border: 0;
+                background-color: #fff;
+                font-family: Roboto, Dotum, '돋움', sans-serif;
+                font-weight: 300;
+                cursor: pointer;
+              }
+
+              > .down{
+                float: left;
+                width: 32px;
+                height: 32px;
+                border: 1px solid #ccc;
+                border-radius: 5px 0 0 5px;
+                font-size: 1.2em;
+              }
+
+              > .up{
+                float: left;
+                width: 32px;
+                height: 32px;
+                border: 1px solid #ccc;
+                border-radius: 0 5px 5px 0;
+                font-size: 1.2em;
+              }
+
+              > .number{
+                position: relative;
+                float: left;
+                width: 42px;
+
+                > .now{
+                  width: 42px;
+                  height: 32px;
+                  border: 1px solid #ccc;
+                  border-width: 1px 0;
+                }
+              }
+            }
+          }
+        }
+
+        > .seat-layout{
+          position: relative;
+          height: 454px;
+          border: 1px solid #d8d9db;
+          border-top: 0;
+
+          > .scroll{
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            height: 452px;
+            padding: 30px 0;
+
+            > .mCustomScrollBox{
+              position: relative;
+              overflow: hidden;
+              height: 100%;
+              max-width: 100%;
+              outline: 0;
+              direction: ltr;
+              max-height: none;
+
+              > .mCSB_container{
+                position: relative;
+                top: 0;
+                left: 0;
+                height: 270px;
+
+                > #seatLayout{
+                  width: 100%;
+                  height: 270px;
+
+                  > img{
+                    position: absolute;
+                    left: 62px;
+                    top: 10px;
+                  }
+
+                  > .row{
+                    > .btn-seat-row{
+                      overflow: hidden;
+                      display: inline-block;
+                      width: 16px;
+                      height: 16px;
+                      margin: 0;
+                      padding: 0;
+                      font-size: .7333em;
+                      color: #000;
+                      vertical-align: middle;
+                      border: 1px solid #ccc;
+                      background-color: #fff;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    > .seat-result{
+      overflow: hidden;
+      width: 310px;
+      height: 556px;
+      color: #fff;
+      background-color: #333;
+      border-radius: 10px;
+
+      > .wrap{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding: 15px 20px 0 0;
+
+        > .tit-area{
+          overflow: hidden;
+          position: relative;
+          margin-left: 20px;
+          padding: 0 0 0 28px;
+          border-bottom: 1px solid #434343;
+
+          > .movie-grade{
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+
+            width: 20px;
+            height: 20px;
+
+            background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/ALL_40x40.png);
+            background-size: 20px 20px;
+
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            text-indent: -9999px;
+            background-position: center;
+            background-repeat: no-repeat;
+          }
+
+          > .tit{
+            overflow: hidden;
+            width: 100%;
+            padding: 1px 0 0 0;
+            font-size: 1.0667em;
+            font-weight: 400;
+            line-height: 1.1;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+
+          > .cate{
+            padding: 5px 0 10px 0;
+            font-size: .8667em;
+            color: #aaa;
+            line-height: 1.1;
+          }
+        }
+
+        > .info-area{
+          position: relative;
+          min-height: 121px;
+          margin-left: 20px;
+          padding: 0 104px 0 0;
+          font-size: .8667em;
+          border-bottom: 1px solid #434343;
+
+          p{
+            padding: 0;
+            color: #c4c4c4;
+          }
+
+          > .theater{
+            padding-top: 10px;
+          }
+
+          > .other-time{
+            position: relative;
+            width: 143px;
+            margin: 8px 0 0 -14px;
+            padding: 0;
+
+            button{
+              display: block;
+              width: 100%;
+              height: 28px;
+              margin: 0;
+              padding: 0 0 0 14px;
+              border: 0;
+              font-size: .9333em;
+              letter-spacing: 1px;
+              text-align: left;
+              background-color: transparent;
+              font-family: Roboto;
+              font-weight: 300;
+            }
+
+            > .now{
+              border: 1px solid #333;
+              border-bottom: 0;
+              border-radius: 5px 5px 0 0;
+              color: #fff;
+
+              > .arr{
+                display: inline-block;
+                width: 16px;
+                height: 16px;
+                margin: -1px 0 0 15px;
+                padding: 0;
+                color: #fff;
+                vertical-align: middle;
+              }
+            }
+
+            > .other{
+              display: none;
+              position: absolute;
+              left: 0;
+              top: 28px;
+              z-index: 2;
+              width: 100%;
+              border: 1px solid #5c5c5c;
+              border-top: 0;
+
+              button{
+                display: block;
+                color: #c4c4c4;
+                background-color: #333;
+
+                &.on{
+                  color: #fff;
+                  background-color: #404143;
+                }
+              }
+            }
+          }
+
+          > .poster{
+            position: absolute;
+            right: 24px;
+            top: 10px;
+            width: 70px;
+            height: 100px;
+            padding: 0;
+            background: url(https://img.megabox.co.kr/static/pc/images/reserve/bg-seat-result-poster.png) no-repeat 0 0;
+
+            > img{
+              display: block;
+              width: 70px;
+              height: 100px;
+            }
+          }
+        }
+
+        > .choice-seat-area{
+          overflow: hidden;
+          position: relative;
+          min-height: 230px;
+          margin: 10px 0 0 20px;
+          border-radius: 5px;
+          border: 1px solid #434343;
+
+          > .legend{
+            float: left;
+            width: calc(100% - 117px);
+            padding: 16px 0 0 20px;
+
+            > .list{
+
+              .seat-condition{
+                width: 14px;
+                height: 14px;
+                margin-right: 4px;
+
+                //선택
+                &.choice{
+                  background-color: #503396 !important;
+                  background-position: right 0;
+                  background-image: url(../../images/booking/selectedSeat14.png) !important;
+                }
+
+                //예매완료
+                &.finish{
+                  background-color: #ccc !important;
+                  background-position: center 0;
+                  background-image: url(../../images/booking/reservedSeat14.png) !important;
+                }
+
+                //선택불가
+                &.impossible{
+                  background-color: #ccc !important;
+                  background-position: center 0;
+                  background-image: url(../../images/booking/selectImpossibleSeat14.png) !important;
+                }
+
+                //장애인석
+                &.disabled{
+                  background-color: #328619;
+                  background-position: center center;
+                  background-image: url(../../images/booking/disabledSeat14.png);
+                }
+              }
+
+              em{
+                color: #c4c4c4;
+                font-size: .8667em;
+                letter-spacing: -1px;
+              }
+            }
+          }
+
+          > .seat-num{
+            float: right;
+            width: 116px;
+
+            > .tit{
+              height: 43px;
+              margin: 0;
+              padding: 0;
+              line-height: 42px;
+              font-size: .8667em;
+              color: #c4c4c4;
+              text-align: center;
+            }
+
+            > .my-seat{
+              overflow: hidden;
+              padding: 0 14px;
+
+              > .seat{
+                display: block;
+                float: left;
+                width: 40px;
+                height: 35px;
+                margin: 7px 0 0 0;
+                padding: 0;
+                line-height: 32px;
+                font-size: .9333em;
+                border: 1px solid #5c5c5c;
+                text-align: center;
+                font-family: Roboto, Dotum, '돋움', sans-serif;
+                font-weight: 300;
+
+                &:nth-child(2n){
+                  float: right;
+                }
+
+                &.possible{
+                  background-color: #53565b;
+                }
+
+                &.choice{
+                  background-color: #503396;
+                }
+              }
+            }
+          }
+        }
+
+        > .pay-area{
+          position: absolute;
+          left: 0;
+          bottom: 40px;
+          width: 100%;
+          margin: 0;
+          padding: 10px 20px;
+
+          > .count{
+            overflow: hidden;
+
+            span{
+              display: block;
+              float: left;
+              position: relative;
+              padding: 0 0 0 12px;
+              font-size: .8667em;
+              color: #c4c4c4;
+              vertical-align: middle;
+
+              &:first-child{
+                padding: 0;
+              }
+
+              &:not(:first-child):before{
+                content: '';
+                display: block;
+                position: absolute;
+                left: 5px;
+                top: 50%;
+                width: 2px;
+                height: 2px;
+                margin: -2px 0 0 0;
+                background-color: #c4c4c4;
+              }
+            }
+          }
+
+          > .pay{
+            overflow: hidden;
+            line-height: 1.1;
+
+            > .tit{
+              float: left;
+              line-height: 35px;
+              font-size: .9333em;
+            }
+
+            > .money{
+              float: right;
+
+              em{
+                display: block;
+                float: left;
+                line-height: 35px;
+                font-size: 1.6em;
+                color: #59bec9;
+                font-family: Roboto, Dotum, '돋움', sans-serif;
+                font-weight: 400;
+              }
+
+              span{
+                display: block;
+                float: left;
+                padding: 0 0 0 5px;
+                line-height: 35px;
+              }
+            }
+          }
+        }
+
+        > .btn-group{
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          margin: 0;
+          padding: 0;
+
+          > .button{
+            display: block;
+            float: left;
+            width: 50%;
+            height: 40px;
+            margin: 0;
+            padding: 0;
+            font-size: 1.2em;
+            line-height: 40px;
+            color: #fff !important;
+            border: 0;
+            border-radius: 0;
+            background-color: #53565b;
+            text-align: center;
+            cursor: pointer;
+
+            & + button{
+              border-left: 1px solid #6a6a6c;
+            }
+
+            &.disabled{
+              cursor: default !important;
+              background-color: #e0e0e0 !important;
+              border-color: #e0e0e0 !important;
+              color: #aaa !important;
+            }
+
+            &.active{
+              color: #fff !important;
+              background-color: #329eb1;
+            }
+          }
+        }
+      }
     }
   }
 }
 
-.dash-list > li{
-  position: relative;
-  padding: 0 0 0 11px;
-  font-size: 0.87rem;
+.mCSB_container {
+  overflow: hidden;
+  width: auto;
+  height: auto;
+}
 
-  &::before{
-    content: '';
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 10px;
-    width: 4px;
-    height: 1px;
-    margin: 0;
-    padding: 0;
-    background-color: #333;
+.seat-condition {
+  overflow: hidden;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: middle;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-color: #fff;
+
+  //선택
+  &.choice{
+    background-color: #503396 !important;
+    background-position: right 0;
+    background-image: url(../../images/booking/selectedSeat18.png) !important;
   }
+
+  //예매완료
+  &.finish{
+    background-color: #ccc !important;
+    background-position: center 0;
+    background-image: url(../../images/booking/reservedSeat18.png) !important;
+  }
+
+  //선택불가
+  &.impossible{
+    background-color: #ccc !important;
+    background-position: center 0;
+    background-image: url(../../images/booking/selectImpossibleSeat18.png) !important;
+  }
+
+  //일반석
+  &.common{
+    background-color: #747474;
+    background-image: url(../../images/booking/normalSeat14.png);
+  }
+
+  //장애인석
+  &.disabled{
+    background-color: #328619;
+    background-position: center center;
+    background-image: url(../../images/booking/disabledSeat18.png);
+  }
+
+  &.on{
+    background-color: #503396 !important;
+    background-position: right 0 !important;
+    background-image: url(../../images/booking/selectedSeat18.png) !important;
+  }
+
+  &[type="button"]{
+    display: block;
+    position: relative;
+
+    .num{
+      display: block;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      color: #fff;
+      font-size: .7333em;
+      line-height: 18px;
+      text-indent: 0;
+    }
+
+    &:after{
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 2;
+    }
+
+    &.standard:after{
+      border: 1px solid #02bfd3;
+    }
+  }
+}
+
+button {
+  cursor: pointer;
+  letter-spacing: -.5px;
+  font-weight: 400;
+  font-family: NanumBarunGothic, Dotum, '돋움', sans-serif;
+}
+
+button, input, optgroup, select, textarea {
+  margin: 0;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  line-height: 1.15;
+}
+
+em{
+  font-style: normal;
 }

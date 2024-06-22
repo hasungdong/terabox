@@ -134,7 +134,7 @@ if (DetailBuyButton !== null){
     }
 }
 
-/* --------------------- order.js ------------------ */
+/* --------------------- orderThree.js ------------------ */
 
 if (totalSale !== null) { // storeDetail 에서 order 로 넘어왔을때 order 에만 있는 함수를 적어준다.
     // 최종 결제금액(totalSale) = 총 상품금액(orderTotalPrice) - 할인금액(totalSale)
