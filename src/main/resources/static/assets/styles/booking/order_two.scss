@@ -6,6 +6,7 @@
   box-sizing: border-box;
 }
 
+//temp는 임시라는 뜻
 .temp {
   display: flex;
   flex-direction: column;
@@ -300,6 +301,17 @@
             margin: 8px 0 0 -14px;
             padding: 0;
 
+            &.on{
+              .other{
+                display: block;
+                background-color: #fff;
+              }
+
+              .now{
+                border-color: #5c5c5c;
+              }
+            }
+
             button{
               display: block;
               width: 100%;
@@ -347,7 +359,7 @@
                 color: #c4c4c4;
                 background-color: #333;
 
-                &.on{
+                &:hover{
                   color: #fff;
                   background-color: #404143;
                 }
@@ -489,13 +501,17 @@
             overflow: hidden;
 
             span{
-              display: block;
+              display: none;
               float: left;
               position: relative;
               padding: 0 0 0 12px;
               font-size: .8667em;
               color: #c4c4c4;
               vertical-align: middle;
+
+              &.on{
+                display: block;
+              }
 
               &:first-child{
                 padding: 0;

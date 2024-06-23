@@ -345,6 +345,13 @@
   margin: 8px 0 0 -14px;
   padding: 0;
 }
+.temp .order-two-container > .seat-result > .wrap > .info-area > .other-time.on .other {
+  display: block;
+  background-color: #fff;
+}
+.temp .order-two-container > .seat-result > .wrap > .info-area > .other-time.on .now {
+  border-color: #5c5c5c;
+}
 .temp .order-two-container > .seat-result > .wrap > .info-area > .other-time button {
   display: block;
   width: 100%;
@@ -389,7 +396,7 @@
   color: #c4c4c4;
   background-color: #333;
 }
-.temp .order-two-container > .seat-result > .wrap > .info-area > .other-time > .other button.on {
+.temp .order-two-container > .seat-result > .wrap > .info-area > .other-time > .other button:hover {
   color: #fff;
   background-color: #404143;
 }
@@ -502,13 +509,16 @@
   overflow: hidden;
 }
 .temp .order-two-container > .seat-result > .wrap > .pay-area > .count span {
-  display: block;
+  display: none;
   float: left;
   position: relative;
   padding: 0 0 0 12px;
   font-size: 0.8667em;
   color: #c4c4c4;
   vertical-align: middle;
+}
+.temp .order-two-container > .seat-result > .wrap > .pay-area > .count span.on {
+  display: block;
 }
 .temp .order-two-container > .seat-result > .wrap > .pay-area > .count span:first-child {
   padding: 0;
