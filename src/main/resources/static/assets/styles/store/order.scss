@@ -55,7 +55,7 @@ p.price{
 
 select {
   height: 36px;
-  padding-left: 4px;
+  padding-right: 60px;
   border-color: #ccc;
   border-radius: 4px;
   font-family: NanumBarunGothic, Dotum, '돋움', sans-serif;
@@ -95,6 +95,7 @@ table {
   table-layout: fixed;
   border-collapse: collapse;
   empty-cells: show;
+  border-top: 1px solid #555;
 }
 
 tbody {
@@ -109,14 +110,7 @@ tbody {
 //  margin: 0;
 //}
 
-h3{
-  margin: 0;
-  padding: 30px 0 15px 0;
-  font-size: 1.6em;
-  font-weight: 480;
-  color: #503396;
-  line-height: 1.1;
-}
+
 strong {
   font-weight: 700;
 }
@@ -185,6 +179,15 @@ body {
   width: 1100px;
   margin: 0 auto;
 
+    h3{ // h3 가 .inner 의 자손이 되도록 넣어줌(자손은 꺽쇄 없이 )
+    margin: 0;
+    padding: 30px 0 15px 0;
+    font-size: 1.6em;
+    font-weight: 480;
+    color: #503396;
+    line-height: 1.1;
+  }
+
   > .btn-group{
     overflow: hidden;
     margin: 20px 0 0 25rem;
@@ -249,9 +252,6 @@ body > .container > {
     }
 
     > {
-
-
-
       a {
         display: block;
         position: relative;
@@ -308,17 +308,11 @@ body > .container > {
               display: none;
             > .dash-list{
               list-style: none;
-
-
-
             }
             &.-visible {
               display: block;
             }
           }
-
-
-
           > .calc {
             gap: 2.5rem;
             display: flex;
@@ -436,17 +430,11 @@ body > .container > {
         }
 
 
-        > .table-wrap { /* 주문 상품 정보*/
+        > .table-wrap { /* 주문 상품 정보 */
           position: relative;
-          border-top: 1px solid #555;
-
 
           > .board-list {
-
             > tbody {
-
-
-
               > tr {
                 > th{
                   text-align: left;
@@ -543,8 +531,6 @@ body > .container > {
                 }
               }
             }
-
-
           }
         }
 
@@ -586,11 +572,11 @@ body > .container > {
 
                input[type=checkbox]:hover+label:before {
                 background-position: -56px 0
-              }
+              }//마우스 갖다댔을떄
 
               input[type=checkbox]:checked+label:before {
                 background-position: -28px 0
-              }
+              }//체크 됐을떄
 
               input[type=checkbox]:checked:hover+label:before {
                 background-position: -28px 0
@@ -607,10 +593,6 @@ body > .container > {
               input[type=checkbox][disabled]:checked+label:before {
                 background-position: right 0
               }
-
-
-
-
             }
           }
 

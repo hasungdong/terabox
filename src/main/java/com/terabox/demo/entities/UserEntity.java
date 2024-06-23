@@ -3,7 +3,9 @@ package com.terabox.demo.entities;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -13,9 +15,11 @@ public class UserEntity {
     private String email;
     private String password;
     private String nickname;
-    private LocalDateTime birth;
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
+    private LocalDate birth;
     private String membershipCode;
     private LocalDateTime createdAt;
+//    마일리지를 포인트로 바꿨음
     private int point;
-    private int mileage;
+    private boolean isAdmin;
 }

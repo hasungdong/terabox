@@ -8,10 +8,13 @@
     <title>Document</title>
     <th:block th:replace="~{fragments/common/common.html :: commonHead}"></th:block>
     <script defer type="text/javascript" th:src="@{/assets/scripts/store.js}"></script>
+    <link rel="stylesheet" th:href="@{/assets/styles/store/payment.css}">
     <link rel="stylesheet" th:href="@{/assets/styles/store/order.css}">
 </head>
 <body>
+<th:block th:replace="~{/store/payment.html::payment}"></th:block>
 <th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
+
 <div class="container">
     <div class="page-util">
         <div class="inner">
@@ -25,6 +28,7 @@
         </div>
     </div>
     <div class="content">
+        <input class="index" type="hidden" name="index" th:value="${order.getIndex()}">
         <div class="inner">
             <h2 class="title">결제</h2>
             <div class="sub-info">
@@ -56,16 +60,16 @@
                                     <div class="goods-info">
                                         <p class="img">
                                             <a href="" title="Dolby Cinema 전용관람권">
-                                                <img src="https://img.megabox.co.kr/SharedImg/store/2021/02/04/XxKX38rQAArz5GGaFCs7KwvYyUz5oQFC_280.png" alt=""></a>
+                                                <img th:src="@{/product/image(index=${order.getIndex()})}" alt="Image" ></a>
                                         </p>
                                     </div>
                                 </td>
                                 <th scope="row">
                                     <div class="goods-info">
                                         <p class="name">
-                                            <a href="" title="Dolby Cinema 전용관람권">Dolby Cinema 전용관람권</a>
+                                            <a href="" title="Dolby Cinema 전용관람권" th:text="${order.getName()}"></a>
                                         </p>
-                                        <p class="bundle">Dolby Cinema 전용관람권</p>
+                                        <p class="bundle subTitle" th:text="${order.getSubTitle()}"></p>
                                     </div>
                                     <div class="mt10">
                                         <span id="acptBrchView" class="font-gblue"></span>
@@ -73,14 +77,14 @@
                                     </div>
                                 </th>
                                 <td>
-                                    <a href="#" class="a-link" name="brchList" title="사용가능극장 확인">사용가능극장 확인</a>
+                                    <a href="#" class="a-link" title="사용가능극장 확인">사용가능극장 확인</a>
                                 </td>
                                 <td>
-                                    <em id="purcQtyView">1</em>
+                                    <em id="orderQuantity" th:text="${inputText}">1</em>
                                 </td>
                                 <td>
                                     <div class="goods-info">
-                                        <em id="prdtSumAmtView" class="price">18,000</em>원
+                                        <em id="orderPrice" class="price" th:text="${price}">18,000</em>원
                                     </div>
                                 </td>
                             </tr>
@@ -95,15 +99,15 @@
                             <div class="cell all">
                                 <p class="txt">총 상품금액</p>
                                 <p class="price">
-                                    <em id="totPrdtAmtView">15,000</em>
+                                    <em id="orderTotalPrice" th:text="${price}">15,000</em>
                                     <span>원</span>
                                 </p>
                             </div>
                             <i class="iconset ico-circle-minus"></i>
                             <div class="cell sale">
-                                <p class="txt">할인금액</p>
+                                <p class="txt" >할인금액</p>
                                 <p class="price">
-                                    <em id="totDcAmtView">0</em>
+                                    <em id="totalSale">0</em>
                                     <span>원</span>
                                 </p>
                             </div>
@@ -111,7 +115,7 @@
                             <div class="cell real">
                                 <p class="txt">최종 결제금액</p>
                                 <p class="price">
-                                    <em class="N" id="lstPayAmtView">15,000</em>
+                                    <em class="N" id="totalPrice"></em>
                                     <span>원</span>
                                 </p>
                             </div>
@@ -124,7 +128,7 @@
                                     <label for="radio_choice01">신용/체크카드</label> <!--label for 은 어디 input 태그를 참조하고 있는지 확인-->
                                 </div>
                                 <div class="cell">
-                                    <input type="radio" id="radio_choice03" name="radio_choice" value="kakaopay">
+                                    <input type="radio" id="radio_choice03" name="radio_choice" value="카카오페이">
                                     <label for="radio_choice03">카카오페이</label>
                                 </div>
                             </div>
@@ -135,29 +139,14 @@
                                 <div class="cell">
                                     <select id="card_select" title="카드사 선택" class="x-small selpicker">
                                         <option value="00" selected="">카드선택</option><!-- 전체카드   -->
-                                        <option value="01">비씨카드</option><!-- 비씨카드   -->
-                                        <option value="07">국민카드</option><!-- 국민카드   -->
-                                        <option value="02">신한카드</option><!-- 신한카드   -->
-                                        <option value="03">삼성카드</option><!-- 삼성카드   -->
-                                        <option value="05">롯데카드</option><!-- 롯데카드   -->
-                                        <option value="12">농협카드</option><!-- 농협카드   -->
-                                        <option value="27">하나카드</option><!-- 하나카드   -->
-                                        <option value="04">현대카드</option><!-- 현대카드   -->
-                                        <option value="13">씨티카드</option><!-- 씨티카드   -->
-                                        <option value="22">제주카드</option><!-- 제주카드   -->
-                                        <option value="14">우리카드</option><!-- 우리카드   -->
-                                        <option value="11">수협카드</option><!-- 수협카드   -->
-                                        <option value="24">전북카드</option><!-- 전북카드   -->
-                                        <option value="23">광주카드</option><!-- 광주카드   -->
-                                        <option value="17">신협카드</option><!-- 신협카드   -->
-                                        <option value="90">카카오뱅크</option><!-- 카카오뱅크 -->
-                                        <option value="91">케이뱅크</option><!-- 케이뱅크   -->
-
-                                        <option value="B0">우체국카드</option><!-- 우체국 카드   -->
-                                        <option value="B1">토스  카드</option><!-- 토스  카드  -->
-                                        <option value="B2">SC제일은행 비씨카드</option><!-- SC제일은행 비씨카드   -->
-                                        <option value="S0">SC제일은행 삼성카드</option><!-- SC제일은행 삼성카드   -->
-                                        <option value="B3">IBK기업은행 카드</option><!-- IBK기업은행 카드  -->
+                                        <option value="비씨카드">비씨카드</option>
+                                        <!-- 비씨카드   -->
+                                        <option value="국민카드">국민카드</option>
+                                        <!-- 국민카드   -->
+                                        <option value="신한카드">신한카드</option>
+                                        <!-- 신한카드   -->
+                                        <option value="삼성카드">삼성카드</option>
+                                        <!-- 삼성카드   -->
                                     </select>
                                 </div>
                                 <div class="cell pl0">
@@ -165,7 +154,7 @@
                                     <label for="app_card" id="lab_app_card">앱카드</label>
                                 </div>
                                 <div class="cell">
-                                    <input type="radio" name="rdo_card_select" id="general_card" value="00">
+                                    <input type="radio" name="rdo_card_select" id="general_card"  value="00">
                                     <label for="general_card" id="lab_general_card">일반결제</label>
                                 </div>
 
@@ -238,12 +227,12 @@
                     </div>
                     <div class="board-move more">
                         <button class="btn">개인정보 제공 및 위탁 안내내용보기
-                            <a target="_blank" th:href="@{/store/terms}">내용보기</a>
+                            <a target="_blank"  th:href="@{/store/terms}">내용보기</a>
                         </button>
                     </div>
                     <div class="btn-group">
-                        <a href="/store/storeDetail"  id="btnGift" class="button large" title="선물">취소</a>
-                        <a href="#" id="btnPurc" class="button purple large" title="구매">결제</a>
+                        <a href="/store/storeDetail" id="btnGift" class="button large" title="취소">취소</a>
+                        <a href="#" id="btnPurc" class="orderBuyButton button purple large" title="구매">결제</a>
                     </div>
                 </div>
             </div>

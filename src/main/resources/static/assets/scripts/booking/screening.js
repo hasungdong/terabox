@@ -163,35 +163,40 @@ document.addEventListener('DOMContentLoaded', function () {
 
       const screeningTime = screeningInfo.screeningTime;
       const playingTime = screeningInfo.playingTime; // 영화 상영 시간
-      const endTime = new Date(new Date(`2024-05-01T${screeningTime}`).getTime() + new Date(`2024-05-01T${playingTime}`).getTime()).toTimeString().split(' ')[0];
-      const playingTimeArray = playingTime.toString().split(':');
 
-      console.log()
+      // 상영 시작 시간을 Date 객체로 변환
+      // JavaScript에서 시간 계산을 할 때 Date 객체를 사용할 수 있지만, playingTime이 시간 형식이 아닌 문자열로 전달되면 Date 객체를 직접 사용할 수 없다 따라서 playingTime을 시간 단위와 분 단위로 나누어 계산하는 방법이 필요합니다.
+      const [screeningHours, screeningMinutes] = screeningTime.split(':').map(Number);
+      const screeningDate = new Date();
+      screeningDate.setHours(screeningHours, screeningMinutes, 0, 0);
 
-      console.log(playingTime.toString().split(':'))
-      console.log(new Date((new Date(`2024-06-21T${screeningTime}`).getTime() + (Number(playingTimeArray[0]) * 3600 +
-          Number(playingTimeArray[1]) * 60 +
-          Number(playingTimeArray[2])) * 1000)))
+      // 상영 시간을 분 단위로 변환
+      const [playingHours, playingMinutes] = playingTime.split(':').map(Number);
+      const totalPlayingMinutes = (playingHours * 60) + playingMinutes;
+
+      // 종료 시간 계산
+      const endDate = new Date(screeningDate.getTime() + totalPlayingMinutes * 60000);
+      const endTime = endDate.toTimeString().split(' ')[0].substring(0, 5); // HH:mm 형식으로 포맷
 
       button.innerHTML = `
-        <i class="time-icon">
-          <img src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-greeting-option-sun.png" alt="">
-        </i>
-        <span class="time">
-          <strong title="상영 시작">${screeningTime}</strong>
-          <em title="상영 종료">~${endTime}</em>
-        </span>
-        <span class="title">
-          <strong>${screeningInfo.movieTitle}</strong>
-          <em>${screeningInfo.dimensionType}</em>
-        </span>
-        <span class="info">
-          <i class="theater">
-            ${screeningInfo.theaterName}<br>
-            ${screeningInfo.cinemaNumber}관
-          </i>
-        </span>
-      `;
+            <i class="time-icon">
+              <img src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-greeting-option-sun.png" alt="">
+            </i>
+            <span class="time">
+              <strong title="상영 시작">${screeningTime.substring(0, 5)}</strong>
+              <em title="상영 종료">~${endTime}</em>
+            </span>
+            <span class="title">
+              <strong>${screeningInfo.movieTitle}</strong>
+              <em>${screeningInfo.dimensionType}</em>
+            </span>
+            <span class="info">
+              <i class="theater">
+                ${screeningInfo.theaterName}<br>
+                ${screeningInfo.cinemaNumber}관
+              </i>
+            </span>
+        `;
       li.appendChild(button);
       resultList.appendChild(li);
     });
@@ -199,6 +204,7 @@ document.addEventListener('DOMContentLoaded', function () {
     noResult.style.display = 'none';
     result.style.removeProperty('display');
   }
+
 
   // 날짜 선택 시 이벤트 리스너
   function handleDateClick(event, button) {

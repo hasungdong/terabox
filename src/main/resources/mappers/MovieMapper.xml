@@ -3,19 +3,40 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.terabox.demo.mappers.MovieMapper">
-    <select id="selectMoviesByTitle" resultType="com.terabox.demo.entities.MovieEntity">
-        SELECT `index` AS `index`,
-               `title` AS `title`,
-               `release_date` AS `releaseDate`,
-               `playing_time` AS `playingTime`,
-               `thumbnail` AS `thumbnail`,
-               `grade` AS `grade`,
-               `view` AS `view`,
-               `is_single` AS `isSingle`,
-               `thumbnail_file_name` AS `thumbnailFileName`,
+    <select id="selectMovieByTitleReleaseDate" resultType="com.terabox.demo.entities.MovieEntity">
+        SELECT `index`                  AS `index`,
+               `title`                  AS `title`,
+               `release_date`           AS `releaseDate`,
+               `playing_time`           AS `playingTime`,
+               `thumbnail`              AS `thumbnail`,
+               `grade`                  AS `grade`,
+               `view`                   AS `view`,
+               `is_single`              AS `isSingle`,
+               `thumbnail_file_name`    AS `thumbnailFileName`,
                `thumbnail_content_type` AS `thumbnailContentType`,
                `age_limit`              AS `ageLimit`,
-               `dimension_type`         AS `dimensionType`
+               `dimension_type`         AS `dimensionType`,
+               `price`                  AS 'price'
+        FROM `terabox`.`movies`
+        WHERE `title` = #{title}
+          AND `release_date` = #{releaseDate}
+        LIMIT 1
+    </select>
+
+    <select id="selectMoviesByTitle" resultType="com.terabox.demo.entities.MovieEntity">
+        SELECT `index`                  AS `index`,
+               `title`                  AS `title`,
+               `release_date`           AS `releaseDate`,
+               `playing_time`           AS `playingTime`,
+               `thumbnail`              AS `thumbnail`,
+               `grade`                  AS `grade`,
+               `view`                   AS `view`,
+               `is_single`              AS `isSingle`,
+               `thumbnail_file_name`    AS `thumbnailFileName`,
+               `thumbnail_content_type` AS `thumbnailContentType`,
+               `age_limit`              AS `ageLimit`,
+               `dimension_type`         AS `dimensionType`,
+               `price`                  AS 'price'
         FROM `terabox`.`movies`
         WHERE `title` = #{title}
     </select>
@@ -32,7 +53,8 @@
                `thumbnail_file_name`    AS `thumbnailFileName`,
                `thumbnail_content_type` AS `thumbnailContentType`,
                `age_limit`              AS `ageLimit`,
-               `dimension_type`         AS `dimensionType`
+               `dimension_type`         AS `dimensionType`,
+               `price`                  AS 'price'
         FROM `terabox`.`movies`
         WHERE `index` = #{index}
         LIMIT 1
@@ -57,11 +79,11 @@
                `thumbnail_file_name`    AS `thumbnailFileName`,
                `thumbnail_content_type` AS `thumbnailContentType`,
                `age_limit`              AS `ageLimit`,
-               `dimension_type`         AS `dimensionType`
+               `dimension_type`         AS `dimensionType`,
+               `price`                  AS 'price'
         FROM `terabox`.`movies` AS `movie`
         WHERE (REPLACE(`title`, ' ', '') LIKE CONCAT('%', REPLACE(#{keyword}, ' ', ''), '%'))
         ORDER BY movie.`index` DESC
         LIMIT #{countPerPage} OFFSET #{offset}
     </select>
-
 </mapper>

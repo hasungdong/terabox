@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>결제창</title>
+</head>
+<body>
+    <section  th:fragment="payment" class="alert-popup" style="position: fixed; padding-top: 45px; background: rgb(255, 255, 255); z-index: 5006; top: 50%; left: 50%; width: 500px; opacity: 1; transform: translate(-50%, -50%);">
+        <div class="wrap">
+            <header class="layer-header">
+                <h3 class="tit">알림</h3>
+            </header>.
+            <div class="layer-con" style="height:200px">
+                <p class="txt-common"></p>
+                <div class="layer-con" style="height:200px">
+                    <div class="strn">
+                        <div class="colorbox">
+                            <span class="email"></span> 로 스토어교환권이 발송됩니다.</div>
+                        <div class="text">결제하시겠습니까?</div>
+                        <div class="line"></div>
+                        <div class="text2"> ※ 휴대폰 번호가 올바르지 않은 경우 ‘MY &gt;개인정보수정’에서<br>변경 후 진행해주세요.</div>
+                    </div>
+                </div>
+                <p></p>
+                <div class="btn-group">
+                    <button type="button" class="button lyclose">취소</button>
+                    <button type="button" class="button purple confirm">확인</button>
+                </div>
+            </div>
+            <button type="button" class="btn-layer-close">레이어 닫기</button>
+        </div>
+    </section>
+
+</body>
+</html>

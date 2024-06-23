@@ -36,6 +36,9 @@
   gap: 0.5rem;
   justify-content: flex-start;
 }
+.form > .content > .spring {
+  flex-grow: 1;
+}
 .form > .content > .title {
   position: relative;
 }

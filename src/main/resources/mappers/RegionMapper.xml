@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.terabox.demo.mappers.RegionMapper">
+    <select id="selectRegionsOnTheaterList" resultType="com.terabox.demo.vos.RegionVo">
+        SELECT CASE
+                   WHEN code IN ('Dae', 'Gyeong', 'Bu') THEN 'Dae/Gyeong/Bu'
+                   WHEN code IN ('Daej', 'Chung', 'Sej') THEN 'Daej/Chung/Sej'
+                   WHEN code IN ('Gwang', 'Jeon') THEN 'Gwang/Jeon'
+                   ELSE code
+                   END AS `codeTwo`,
+               CASE
+                   WHEN code IN ('Dae', 'Gyeong', 'Bu') THEN '대구/경북/부산'
+                   WHEN code IN ('Daej', 'Chung', 'Sej') THEN '대전/충청/세종'
+                   WHEN code IN ('Gwang', 'Jeon') THEN '광주/전라'
+                   ELSE text
+                   END AS `textTwo`,
+               MIN(population_ranking) AS `populationRanking`
+        FROM `terabox`.`regions`
+        GROUP BY
+            `codeTwo`,
+            `textTwo`
+        ORDER BY
+            `populationRanking`;
+    </select>
+
+    <select id="selectRegions">
+        SELECT `code`               AS `code`,
+               `text`               AS `text`,
+               `population_ranking` AS `population_ranking`
+        FROM `terabox`.`regions`
+    </select>
+
+</mapper>

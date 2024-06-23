@@ -1,6 +1,7 @@
 const loginCancelButton = document.querySelector('[rel="loginCancel"]');
 const alertCover = document.getElementById('alertCover');
-
+const cover = document.getElementById('cover');
+const loading = document.getElementById('loading');
 
 if (document.querySelector('[rel="showLoginAlert"]') !== null) {
     // 로그인이 안되어있다면 << 나중에 이 조건도 코딩해야됨
@@ -42,9 +43,7 @@ if (document.querySelector('[rel="showLoginAlert"]') !== null) {
             alertCover.hide();
             document.querySelector('._obj-message').hide();
         }
-
-    })
-
+    });
 //     로그인이 되어있다면 관리자 페이지로 이동
 }
 
@@ -95,7 +94,7 @@ if (document.querySelector('span.swiper-bar') !== null) {
         events.forEach(event => {
             event.style.left = `calc((-51.5%) + ${event.style.left}`;
             if (event.style.left === 'calc(-103%)') {
-                // -51.5% * 2 = -100%
+                // -51.5% * 2 = -103%
                 event.style.left = `calc(51.5% * ${events.length - 2})`;
             }
             if (event.style.left !== 'calc(0%)' &&
@@ -130,7 +129,10 @@ if (document.querySelector('span.swiper-bar') !== null) {
             event.style.left = `calc((51.5%) * ${i})`;
             let leftEventValue = 51.5 * (events.length - 1) + '%';
             if (event.style.left === `calc(${leftEventValue})`) {
-                event.style.left = 'calc(-51.5%)';
+                // 이벤트가 3개가 안되면 2개가 그냥 제자리에 있어야 하니까
+                if (events.length > 2){
+                    event.style.left = 'calc(-51.5%)';
+                }
             }
             i++;
             if (event.style.left !== `calc(0%)` &&
@@ -481,6 +483,8 @@ class MessageObj {
                 MessageObj.cover.hide();
             }
             this.element.hide();
+            // 여길 해줘서 이제 메세지는 hide를 하면 숨겨지고 잠시 뒤에 삭제가 된다.
+            setTimeout(() => this.element.remove(), 1000);
         }, 100);
     }
 
@@ -565,47 +569,52 @@ HTMLElement.prototype.isEnabled = function () {
     return !this.hasAttribute('disabled');
 }
 
-loginCancelButton.onclick = () => {
-    loginForm.hide();
-    cover.hide();
-}
-
-loginForm.onsubmit = e => {
-    e.preventDefault();
-    if (loginForm.email.value === 'a@aaa' &&
-        loginForm.password.value === 'aaaaa') {
-        alertCover.show(() => {
-            alertCover.hide();
-            document.querySelector('._obj-message').hide();
-        });
-        MessageObj.createSimpleOk('알림', '아이디 또는 비밀번호가 맞지 않습니다. <br>로그인 정보를 다시 확인바랍니다.', () => {
-            alertCover.hide();
-        }).show();
-        if (document.querySelector('._obj-message') !== null) {
-            document.querySelector('._obj-message').style.width = '400px';
-        }
-        return;
+if (document.getElementById('loginForm') !== null){
+    // 로그인 취소 버튼 작동
+    loginCancelButton.onclick = () => {
+        loginForm.hide();
+        cover.hide();
     }
-}
+    // 로그인 시도
+    loginForm.onsubmit = e => {
+        e.preventDefault();
+        // 관리자용 아이디 검사용 로직, 나중에 서비스에서 할 수 있게 바꿔야댐
+        if (loginForm.email.value === 'a@aaa' &&
+            loginForm.password.value === 'aaaaa') {
+            alertCover.show(() => {
+                alertCover.hide();
+                document.querySelector('._obj-message').hide();
+            });
+            MessageObj.createSimpleOk('알림', '아이디 또는 비밀번호가 맞지 않습니다. <br>로그인 정보를 다시 확인바랍니다.', () => {
+                alertCover.hide();
+            }).show();
+            if (document.querySelector('._obj-message') !== null) {
+                document.querySelector('._obj-message').style.width = '400px';
+            }
+            return;
+        }
+    }
 
 // 로그인 화면에서 이메일이나 비밀번호 값에 변경이 있을 때, 둘 중 하나라도 비어있으면 제출 버튼이 비활성화된다.
-loginForm.email.oninput = () => {
-    if (loginForm.email.value === '' ||
-        loginForm.password.value === '') {
-        loginForm.querySelector('[type="submit"]').disable();
-        return;
+    loginForm.email.oninput = () => {
+        if (loginForm.email.value === '' ||
+            loginForm.password.value === '') {
+            loginForm.querySelector('[type="submit"]').disable();
+            return;
+        }
+        loginForm.querySelector('[type="submit"]').enable();
     }
-    loginForm.querySelector('[type="submit"]').enable();
+
+    loginForm.password.oninput = () => {
+        if (loginForm.email.value === '' ||
+            loginForm.password.value === '') {
+            loginForm.querySelector('[type="submit"]').disable();
+            return;
+        }
+        loginForm.querySelector('[type="submit"]').enable();
+    }
 }
 
-loginForm.password.oninput = () => {
-    if (loginForm.email.value === '' ||
-        loginForm.password.value === '') {
-        loginForm.querySelector('[type="submit"]').disable();
-        return;
-    }
-    loginForm.querySelector('[type="submit"]').enable();
-}
 
 cover.show = (onclick) => {
     cover.onclick = onclick;
@@ -616,31 +625,3 @@ alertCover.show = (onclick) => {
     alertCover.onclick = onclick;
     alertCover.classList.add(HTMLElement.VISIBLE_CLASS_NAME);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

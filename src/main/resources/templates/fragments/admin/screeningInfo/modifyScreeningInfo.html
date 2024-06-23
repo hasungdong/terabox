@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div class="form" id="modifyScreeningInfoForm" th:fragment="modifyScreeningInfoForm">
+    <h3 class="title">상영정보 수정</h3>
+    <form class="search-bar">
+        <label class="_obj-label" rel="screeningDateLabel">
+            <span class="__text">상영 날짜</span>
+            <input class="_obj-input __field" type="date" name="screeningDate" spellcheck="false">
+            <span class="__warning">올바른 날짜를 입력해 주세요.</span>
+        </label>
+    </form>
+    <div class="content">
+        <div class="result-box"></div>
+        <button type="button" rel="hideModifyScreeningInfoForm">취소</button>
+    </div>
+</div>
+</body>
+</html>

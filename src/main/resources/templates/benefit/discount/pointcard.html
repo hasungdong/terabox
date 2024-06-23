@@ -8,7 +8,7 @@
     <title>제목 미정</title>
     <th:block th:replace="~{fragments/common/common.html :: commonHead}"></th:block>
     <link rel="stylesheet" th:href="@{/assets/styles/benefit/discount/pointcard.css}">
-    <script defer th:src="@{/assets/scripts/discount.js}"></script>
+    <script defer th:src="@{/assets/scripts/benefit/discount.js}"></script>
     <script defer>
         window.onload = () => {
             window.scroll({
@@ -29,7 +29,7 @@
                 <a class="link" th:href="@{./guide}">할인안내</a>
             </li>
             <li class="item">
-                <a class="link" th:href="@{./creditcard}">신용카드(284)</a>
+                <a class="link" th:href="@{./creditcard}" th:text="${'신용카드(' + (cardsCount - 1) + ')'}">신용카드(4)</a>
             </li>
             <li class="item">
                 <a class="link" th:href="@{./telecomcard}">통신사(3)</a>

@@ -8,14 +8,36 @@
     <title>제목 미정</title>
     <th:block th:replace="~{fragments/common/common.html :: commonHead}"></th:block>
     <link rel="stylesheet" th:href="@{/assets/styles/benefit/discount/creditcard.css}">
-    <script defer th:src="@{/assets/scripts/discount.js}"></script>
-    <script defer>
+    <script defer th:src="@{/assets/scripts/benefit/discount.js}"></script>
+    <script>
         window.onload = () => {
             window.scroll({
-                top:document.querySelector('nav#nav').offsetTop,
-                left:0,
-                behavior:"smooth"
+                // 현재 화면의 위치를 해당 값으로 이동한다.
+                top: document.querySelector('nav#nav').offsetTop,
+                left: 0,
+                // 스크롤로 움직이는 것처럼 부드럽게 이동, 이거 안하면 순간이동함
+                behavior: "smooth"
             });
+
+            const cardSearchButtons = document.querySelectorAll('.search-card-button-bar > [type="button"]');
+            cardSearchButtons.forEach(cardSearchButton => cardSearchButton.onclick = () => {
+                cardSearchButtons.forEach(cardSearchButton => cardSearchButton.classList.remove('on'));
+
+                const cardLists = document.querySelectorAll('.card-list-block > ul > li');
+                // foreach는 탈출이 안된대서 forof 사용
+                for (let cardList of cardLists) {
+                    cardLists.forEach(cardList => cardList.classList.remove('on'))
+                    if (cardSearchButton.innerText === cardList.querySelector(':scope > .tit > span').innerText){
+                        cardList.classList.add('on');
+                        cardSearchButton.classList.add('on');
+                        return;
+                    } else if (cardSearchButton.innerText === '전체') {
+                        cardSearchButton.classList.add('on');
+                        cardLists.forEach(cardList => cardList.classList.add('on'));
+                        return;
+                    }
+                }
+            })
         };
     </script>
 </head>
@@ -29,7 +51,7 @@
                 <a class="link" th:href="@{./guide}">할인안내</a>
             </li>
             <li class="item on">
-                <a class="link" th:href="@{./creditcard}">신용카드(284)</a>
+                <a class="link" th:href="@{./creditcard}" th:text="${'신용카드(' + (cardsCount - 1) + ')'}">신용카드(4)</a>
             </li>
             <li class="item">
                 <a class="link" th:href="@{./telecomcard}">통신사(3)</a>
@@ -49,79 +71,165 @@
                 <span class="text">소지하고 계신 카드를 검색해 보세요. 할인 및 혜택정보를 빠르게 확인할 수 있어요.</span>
             </div>
         </div>
-        <div class="card-list-block">
-            <h3 class="tit">
-                <span> 메가박스카드</span>
-            </h3>
-            <div class="list">
-                <ul>
-                    <li>
-                        <div class="img">
-                            <img src="https://img.megabox.co.kr/SharedImg/card/2022/08/23/oM2yKtWRE8aACculvKqebNDJauF5332J.png "
-                                 alt="null">
-                        </div>
-                        <div class="cont">
-                            <div class="top">
-                                <div class="name">메가박스카드</div>
-                                <div class="spring"></div>
-                                <div class="sale">
-                                    <span class="online">인터넷할인</span>
-                                </div>
-                                <div class="sale">
-                                    <span class="offline">현장할인</span>
-                                </div>
-                            </div>
-                            <ul class="dot-list">할인방식 : 선할인, 청구할인<br>
-                                제공혜택 : 3,000원 즉시할인, 10,000원 청구할인<br>
-                                사용조건 : 현장, 온라인 결제<br>
-                                서비스 제공조건<br>
-                                - 건당 이용금액 10,000원 이상 시 월 1회 3,000원 선할인 제공<br>
-                                &nbsp; &nbsp;* 선할인 미선택 시 할인혜택 제공 불가<br>
-                                - 건당 이용금액 10,000원 이상 시 월 1회 10,000원 청구할인 제공<br>
-                                &nbsp; &nbsp;* 13,000원 이상 결제 시 선할인 선택 후 잔여금액 결제 시 청구할인과 중복적용 가능<br>
-                                - 전월 국내가맹점 이용금액 40만원 이상 시 제공
-                            </ul>
-                            <div class="btn">
-                                <a href="https://www.kjbank.com/ib20/mnu/BHPFTLF040100?ib20_wc=BHPFTLF040100V10:BHPFTLF040100V20&amp;BLTHG_NO=28809"
-                                   target="_blank" title="카드사 홈페이지 이동" class="button purple">자세히 보기</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="img">
-                            <img src="https://img.megabox.co.kr/SharedImg/card/2022/08/23/RlDtPlHegwM9qBRqJ72HZUttWcMfqB7d.png "
-                                 alt="null">
-                        </div>
-                        <div class="cont">
-                            <div class="top">
-                                <div class="name">메가박스 체크카드</div>
-                                <div class="spring"></div>
-                                <div class="sale">
-                                    <span class="online">인터넷할인</span>
-                                </div>
-                                <div class="sale">
-                                    <span class="offline">현장할인</span>
-                                </div>
-                            </div>
-                            <ul class="dot-list">&nbsp;<br>
-                                할인방식 : 선할인, 청구할인<br>
-                                제공혜택 : 3,000원 즉시할인, 5,000원 청구할인<br>
-                                사용조건 : 현장, 온라인 결제<br>
-                                서비스 제공조건<br>
-                                - 건당 이용금액 10,000원 이상 시 월 1회 3,000원 선할인 제공<br>
-                                &nbsp; &nbsp;* 선할인 미선택 시 할인혜택 제공 불가<br>
-                                - 건당 이용금액 5,000원 이상 시 월 1회 5,000원 청구할인 제공<br>
-                                &nbsp; &nbsp;* 10,000원 이상 결제 시 선할인 선택 후 잔여금액 결제 시 청구할인과 중복적용 가능<br>
-                                - 전월 국내가맹점 이용금액 40만원 이상 시 제공
-                            </ul>
-                            <div class="btn">
-                                <a href="https://www.kjbank.com/ib20/mnu/BHPFTLF040100?ib20_wc=BHPFTLF040100V10:BHPFTLF040100V20&amp;BLTHG_NO=28809"
-                                   target="_blank" title="카드사 홈페이지 이동" class="button purple">자세히 보기</a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+        <div class="search-card-button-bar">
+            <button type="button" class="on">전체</button>
+            <button type="button" th:each="card : ${cards}" th:text="${card.getName()}"
+                    th:if="${!card.getName().equals('카카오페이')}"></button>
         </div>
+        <div class="card-list-block">
+            <ul>
+                <li class="on">
+                    <h3 class="tit">
+                        <span>국민카드</span>
+                    </h3>
+                    <div class="list">
+                        <ul>
+                            <li>
+                                <div class="img">
+                                    <img src="/assets/images/discount/kookminCard.png" alt="null">
+                                </div>
+                                <div class="cont">
+                                    <div class="top">
+                                        <div class="name">KB국민카드</div>
+                                        <div class="spring"></div>
+                                        <div class="sale">
+                                            <span class="online">인터넷할인</span>
+                                        </div>
+                                        <div class="sale">
+                                            <span class="offline">현장할인</span>
+                                        </div>
+                                    </div>
+                                    <ul class="dot-list">할인방식 : 선할인<br>
+                                        제공혜택 : 10% 즉시할인<br>
+                                        사용조건 : 온라인 결제<br>
+                                        서비스 제공조건<br>
+                                        - 건당 이용금액 10,000원 이상 시 월 1회 10% 즉시할인 제공<br>
+                                        &nbsp; &nbsp;* 선할인 미선택 시 할인혜택 제공 불가<br>
+                                        - 전월 국내가맹점 이용금액 40만원 이상 시 제공
+                                    </ul>
+                                    <div class="btn">
+                                        <a title="카드사 홈페이지 이동" class="button purple">자세히 보기</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="on">
+                    <h3 class="tit">
+                        <span>비씨카드</span>
+                    </h3>
+                    <div class="list">
+                        <ul>
+                            <li>
+                                <div class="img">
+                                    <img src="/assets/images/discount/BCCard.png" alt="null">
+                                </div>
+                                <div class="cont">
+                                    <div class="top">
+                                        <div class="name">비씨카드</div>
+                                        <div class="spring"></div>
+                                        <div class="sale">
+                                            <span class="online">인터넷할인</span>
+                                        </div>
+                                        <div class="sale">
+                                            <span class="offline">현장할인</span>
+                                        </div>
+                                    </div>
+                                    <ul class="dot-list">할인방식 : 선할인<br>
+                                        제공혜택 : 5% 즉시할인<br>
+                                        사용조건 : 온라인 결제<br>
+                                        서비스 제공조건<br>
+                                        - 건당 이용금액 10,000원 이상 시 월 1회 5% 즉시할인 제공<br>
+                                        &nbsp; &nbsp;* 선할인 미선택 시 할인혜택 제공 불가<br>
+                                        - 전월 국내가맹점 이용금액 40만원 이상 시 제공
+                                    </ul>
+                                    <div class="btn">
+                                        <a title="카드사 홈페이지 이동" class="button purple">자세히 보기</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="on">
+                    <h3 class="tit">
+                        <span>삼성카드</span>
+                    </h3>
+                    <div class="list">
+                        <ul>
+                            <li>
+                                <div class="img">
+                                    <img src="/assets/images/discount/samsungCard.png" alt="null">
+                                </div>
+                                <div class="cont">
+                                    <div class="top">
+                                        <div class="name">삼성카드</div>
+                                        <div class="spring"></div>
+                                        <div class="sale">
+                                            <span class="online">인터넷할인</span>
+                                        </div>
+                                        <div class="sale">
+                                            <span class="offline">현장할인</span>
+                                        </div>
+                                    </div>
+                                    <ul class="dot-list">할인방식 : 선할인<br>
+                                        제공혜택 : 15% 즉시할인<br>
+                                        사용조건 : 온라인 결제<br>
+                                        서비스 제공조건<br>
+                                        - 건당 이용금액 10,000원 이상 시 월 1회 15% 즉시할인 제공<br>
+                                        &nbsp; &nbsp;* 선할인 미선택 시 할인혜택 제공 불가<br>
+                                        - 전월 국내가맹점 이용금액 40만원 이상 시 제공
+                                    </ul>
+                                    <div class="btn">
+                                        <a title="카드사 홈페이지 이동" class="button purple">자세히 보기</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="on">
+                    <h3 class="tit">
+                        <span>신한카드</span>
+                    </h3>
+                    <div class="list">
+                        <ul>
+                            <li>
+                                <div class="img">
+                                    <img src="/assets/images/discount/shinhanCard.png" alt="null">
+                                </div>
+                                <div class="cont">
+                                    <div class="top">
+                                        <div class="name">신한카드</div>
+                                        <div class="spring"></div>
+                                        <div class="sale">
+                                            <span class="online">인터넷할인</span>
+                                        </div>
+                                        <div class="sale">
+                                            <span class="offline">현장할인</span>
+                                        </div>
+                                    </div>
+                                    <ul class="dot-list">할인방식 : 선할인<br>
+                                        제공혜택 : 7% 즉시할인<br>
+                                        사용조건 : 온라인 결제<br>
+                                        서비스 제공조건<br>
+                                        - 건당 이용금액 10,000원 이상 시 월 1회 7% 즉시할인 제공<br>
+                                        &nbsp; &nbsp;* 선할인 미선택 시 할인혜택 제공 불가<br>
+                                        - 전월 국내가맹점 이용금액 40만원 이상 시 제공
+                                    </ul>
+                                    <div class="btn">
+                                        <a title="카드사 홈페이지 이동" class="button purple">자세히 보기</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <script>
+
+        </script>
     </div>
 </main>

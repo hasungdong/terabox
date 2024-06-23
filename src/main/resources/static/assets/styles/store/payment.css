@@ -1,0 +1,158 @@
+@charset "UTF-8";
+section {
+  box-sizing: border-box;
+  display: block;
+}
+
+div {
+  display: block;
+  unicode-bidi: isolate;
+}
+
+header {
+  display: block;
+}
+
+p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  unicode-bidi: isolate;
+}
+
+.alert-popup {
+  display: none;
+  position: fixed;
+  padding-top: 45px;
+  background: rgb(255, 255, 255);
+  z-index: 5006;
+  top: 220px;
+  left: 250px;
+  width: 500px;
+  opacity: 1;
+}
+.alert-popup > .wrap {
+  text-align: center;
+}
+.alert-popup > .wrap > .layer-header {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 45px;
+  background: #503396;
+}
+.alert-popup > .wrap > .layer-header > .tit {
+  text-align: left;
+  color: #fff;
+  padding: 15px 20px 0 20px;
+  font-size: 1.2em;
+  line-height: 1.1;
+  margin: 0;
+}
+.alert-popup > .wrap .layer-con {
+  overflow-y: auto;
+  background-color: #fff;
+  padding: 10px 20px 0 20px;
+  height: auto !important;
+}
+.alert-popup > .wrap .layer-con .strn > .colorbox {
+  padding: 20px 15px;
+  border-radius: 5px;
+  background-color: #f2f4f5;
+  color: #444;
+  font-size: 17px;
+  line-height: 26px;
+  text-align: center;
+  letter-spacing: -0.05em;
+}
+.alert-popup > .wrap .layer-con .strn > .colorbox > span {
+  color: #503396;
+}
+.alert-popup > .wrap .layer-con .strn > .text2 {
+  padding: 18px 0 5px;
+  font-size: 14px;
+  line-height: 26px;
+  color: #e81003;
+  text-align: center;
+}
+.alert-popup > .wrap .layer-con .strn > .text {
+  padding: 18px 0 20px;
+  font-size: 15px;
+  line-height: 15px;
+  text-align: center;
+  color: #444;
+}
+.alert-popup > .wrap .layer-con .strn > .line {
+  height: 8px;
+  background: url(https://img.megabox.co.kr/static/pc/images/common/bul/strn_line.png) repeat-x;
+}
+.alert-popup > .wrap .layer-con > .txt-common {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+.alert-popup > .wrap .layer-con > .btn-group {
+  padding: 15px 0 20px 0;
+  margin: 0;
+  text-align: center;
+}
+.alert-popup > .wrap .layer-con > .btn-group button {
+  font-size: 1em;
+  display: inline-block;
+  height: 36px;
+  margin: 0;
+  padding: 0 15px;
+  text-align: center;
+  line-height: 34px;
+  color: #503396;
+  font-weight: 400;
+  border-radius: 4px;
+  font-family: NanumBarunGothic, Dotum, "돋움", sans-serif;
+  text-decoration: none;
+  border: 1px solid #503396;
+  vertical-align: middle;
+  background-color: #fff;
+  cursor: pointer;
+  letter-spacing: -0.5px;
+  text-transform: none;
+}
+.alert-popup > .wrap .layer-con > .btn-group > .button {
+  margin: 0 3px;
+}
+.alert-popup > .wrap .layer-con > .btn-group > .button.lyclose:hover {
+  color: #351f67;
+  text-decoration: none;
+  background-color: #f2f4f8;
+}
+.alert-popup > .wrap .layer-con > .btn-group > .button.purple {
+  color: #fff;
+  line-height: 36px;
+  border: 0;
+  background: #503396;
+}
+.alert-popup > .wrap .layer-con > .btn-group > .button.purple:hover {
+  background-color: #351f67;
+  text-decoration: none;
+}
+.alert-popup > .wrap > .btn-layer-close {
+  display: block;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  width: 16px;
+  height: 15px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  text-indent: -9999px;
+  background: url(https://img.megabox.co.kr/static/pc/images/common/btn/btn-layer-close.png) no-repeat center;
+}
+.alert-popup.-visible {
+  display: block;
+}
+
+/*# sourceMappingURL=payment.css.map */

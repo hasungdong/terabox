@@ -24,6 +24,7 @@ addProductForm.thumbnailLabel = new LabelObj(addProductForm.querySelector('[rel=
 addProductForm.priceLabel = new LabelObj(addProductForm.querySelector('[rel="priceLabel"]'));
 addProductForm.quantityLabel = new LabelObj(addProductForm.querySelector('[rel="quantityLabel"]'));
 addProductForm.typeLabel = new LabelObj(addProductForm.querySelector('[rel="typeLabel"]'));
+addProductForm.subTitleLabel = new LabelObj(addProductForm.querySelector('[rel="subTitleLabel"]'));
 
 // 제출할 때
 addProductForm.onsubmit = e => {
@@ -38,8 +39,9 @@ addProductForm.onsubmit = e => {
     addProductForm.quantityLabel.setValid(addProductForm['quantity'].value > 0 &&
         addProductForm['quantity'].value < 10000);
     addProductForm.typeLabel.setValid(addProductForm['type'].value === 'ticket' ||
-        addProductForm['type'].value === 'food' ||
-        addProductForm['type'].value === 'coupon');
+        addProductForm['type'].value === 'fdg' ||
+        addProductForm['type'].value === 'point');
+    addProductForm.subTitleLabel.setValid(addProductForm['subTitle'].tests());
 
     if (addProductForm['thumbnail'].files.length === 0){
         MessageObj.createSimpleOk('경고', '대표 이미지를 선택해주세요.').show();
@@ -50,7 +52,8 @@ addProductForm.onsubmit = e => {
     !addProductForm.thumbnailLabel.isValid() ||
     !addProductForm.priceLabel.isValid() ||
     !addProductForm.quantityLabel.isValid() ||
-    !addProductForm.typeLabel.isValid()){
+    !addProductForm.typeLabel.isValid() ||
+    !addProductForm.subTitleLabel.isValid()){
         return;
     }
 
@@ -61,6 +64,7 @@ addProductForm.onsubmit = e => {
     formData.append('quantity', addProductForm['quantity'].value);
     formData.append('_thumbnail', addProductForm['thumbnail'].files[0]);
     formData.append('type', addProductForm['type'].value);
+    formData.append('subTitle', addProductForm['subTitle'].value);
     xhr.onreadystatechange = function(){
         if (xhr.readyState !== XMLHttpRequest.DONE){
             return;

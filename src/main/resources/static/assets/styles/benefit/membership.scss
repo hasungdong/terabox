@@ -1,9 +1,9 @@
 @charset "UTF-8";
 
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
-@import "../common/header";
-@import "../common/common.notHome";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 
+@import "../common/common.notHome";
 
 #main{
   padding-top: 2.5rem;
@@ -260,6 +260,7 @@
   .title4{
     font-size: 1.125rem;
     margin-top: 1.25rem;
+    color: #222222;
   }
 }
 

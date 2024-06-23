@@ -8,16 +8,16 @@
             keyColumn="index"
             keyProperty="index"
             parameterType="com.terabox.demo.entities.MovieEntity">
-        INSERT INTO `terabox`.`movies` (`title`, `release_date`, `playing_time`, `grade`, `view`, `is_single`, `thumbnail`, `thumbnail_file_name`, `thumbnail_content_type`, `age_limit`, `dimension_type`)
-        VALUES (#{title}, #{releaseDate}, #{playingTime}, #{grade}, #{view}, #{isSingle}, #{thumbnail}, #{thumbnailFileName}, #{thumbnailContentType}, #{ageLimit}, #{dimensionType})
+        INSERT INTO `terabox`.`movies` (`title`, `release_date`, `playing_time`, `grade`, `view`, `is_single`, `thumbnail`, `thumbnail_file_name`, `thumbnail_content_type`, `age_limit`, `dimension_type`, `price`)
+        VALUES (#{title}, #{releaseDate}, #{playingTime}, #{grade}, #{view}, #{isSingle}, #{thumbnail}, #{thumbnailFileName}, #{thumbnailContentType}, #{ageLimit}, #{dimensionType}, #{price})
     </insert>
     <insert id="insertProduct"
             useGeneratedKeys="true"
             keyColumn="index"
             keyProperty="index"
             parameterType="com.terabox.demo.entities.ProductEntity">
-        INSERT INTO `terabox`.`products` (`name`, `price`, `quantity`, `thumbnail`, `thumbnail_file_name`, `thumbnail_content_type`, `type`)
-        VALUES (#{name}, #{price}, #{quantity}, #{thumbnail}, #{thumbnailFileName}, #{thumbnailContentType}, #{type})
+        INSERT INTO `terabox`.`products` (`name`, `price`, `quantity`, `thumbnail`, `thumbnail_file_name`, `thumbnail_content_type`, `type`, `sub_title`)
+        VALUES (#{name}, #{price}, #{quantity}, #{thumbnail}, #{thumbnailFileName}, #{thumbnailContentType}, #{type}, #{subTitle})
     </insert>
     <insert id="insertEvent"
             useGeneratedKeys="true"
@@ -51,7 +51,8 @@
             `thumbnail`              = #{thumbnail},
             `thumbnail_file_name`    = #{thumbnailFileName},
             `thumbnail_content_type` = #{thumbnailContentType},
-            `type`                   = #{type}
+            `type`                   = #{type},
+            `sub_title`              = #{sub_Title}
         WHERE `index` = #{index}
     </update>
     <update id="updateEvent" parameterType="com.terabox.demo.entities.EventEntity">

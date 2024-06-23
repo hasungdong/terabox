@@ -6,9 +6,9 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>제목 미정</title>
-    <link rel="stylesheet" th:href="@{/assets/styles/benefit/discount/guide.css}">
     <th:block th:replace="~{fragments/common/common.html :: commonHead}"></th:block>
-    <script defer th:src="@{/assets/scripts/discount.js}"></script>
+    <link rel="stylesheet" th:href="@{/assets/styles/benefit/discount/guide.css}">
+    <script defer th:src="@{/assets/scripts/benefit/discount.js}"></script>
 </head>
 <body>
 <th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
@@ -20,7 +20,7 @@
                 <a class="link" th:href="@{./guide}">할인안내</a>
             </li>
             <li class="item">
-                <a class="link" th:href="@{./creditcard}">신용카드(284)</a>
+                <a class="link" th:href="@{./creditcard}" th:text="${'신용카드(' + (cardsCount - 1) + ')'}">신용카드(4)</a>
             </li>
             <li class="item">
                 <a class="link" th:href="@{./telecomcard}">통신사(3)</a>

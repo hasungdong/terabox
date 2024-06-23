@@ -41,6 +41,8 @@ P {
   margin: 0;
 }
 
+
+
 button {
   cursor: pointer;
   letter-spacing: -.5px;
@@ -413,9 +415,34 @@ body > .container > {
               text-align: center;
 
               > .button.large {
+                width: 570px;
                 height: 46px;
                 padding: 5px 0 0 0;
               }
+
+              > .button.purple{
+
+                &.-visible{
+                  display: none;
+                }
+              }
+
+              > .button.gray{
+                display: none;
+
+                &.-visible{
+                  display: block;
+                }
+              }
+
+              >.button[disabled]{
+                color: #777 !important;
+                cursor: default !important;
+                background-color: #e0e0e0 !important;
+                border-color: #e0e0e0 !important;
+              }
+
+
 
 
               > .button {

@@ -8,6 +8,11 @@ deleteEventForm.onsubmit = e => {
     if (!deleteEventForm.titleLabel.isValid()){
         return;
     }
+    showEventsDelete(1);
+}
+
+
+const showEventsDelete = (page) => {
     // 제목에 맞는 이벤트 검색해오는 xhr 요청
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function(){
@@ -28,6 +33,7 @@ deleteEventForm.onsubmit = e => {
                 const responseArray = responseObject['events'];
                 deleteEventForm.divResult.innerHTML = '';
                 if (responseArray.length === 0){
+                    MessageObj.createSimpleOk('알림', '삭제할 이벤트가 없습니다.').show();
                     return;
                 }
                 const ul = new DOMParser().parseFromString(`
@@ -55,6 +61,47 @@ deleteEventForm.onsubmit = e => {
                     ul.append(li);
                 }
                 deleteEventForm.divResult.append(ul);
+
+                // 검색하고 밑에 페이지 나오게
+                // pageContainer 만들기
+                const pageContainer = new DOMParser().parseFromString(`
+                 <div class="page-container"></div>
+                `, 'text/html').querySelector('div');
+                deleteEventForm.divResult.append(pageContainer);
+                // pageContainer 내용물 만들기
+                const maxPage = responseObject['search']['maxPage'];
+                if (maxPage > 10) {
+                    const preButton = new DOMParser().parseFromString(`
+                <button type="button">
+                    <img src="/assets/images/common/left.png" height="16" width="16"/>
+                    <span>이전</span>
+                </button>
+                    `, 'text/html').querySelector('button');
+                    pageContainer.append(preButton);
+                }
+                // 페이지 숫자들 들어갈 박스
+                const pageBox = new DOMParser().parseFromString(`
+                <div class="page-box"></div>
+                `, 'text/html').querySelector('div');
+                pageContainer.append(pageBox);
+                // 페이지 숫자
+                for (let i = 1; i <= maxPage; i++) {
+                    const page = new DOMParser().parseFromString(`
+                    <span class="page">${i}</span>
+                    `, 'text/html').querySelector('.page');
+                    pageBox.append(page);
+                }
+                // 다음 버튼
+                if (maxPage > 10) {
+                    const nextButton = new DOMParser().parseFromString(`
+                    <button type="button">
+                    <span>다음</span>
+                    <img src="/assets/images/common/right.png" height="16" width="16"/>
+                </button>
+                    `, 'text/html').querySelector('button');
+                    pageContainer.append(nextButton);
+                }
+
                 const lis = deleteEventForm.divResult.querySelectorAll('li');
                 lis.forEach(li => li.onclick = () => {
                     new MessageObj({
@@ -85,7 +132,10 @@ deleteEventForm.onsubmit = e => {
                                         const responseObject = JSON.parse(xhr.responseText);
                                         const [dTitle, dContent, dOnclick] = {
                                             failure: ['경고', '알 수 없는 이유로 이벤트를 삭제하지 못하였습니다. 잠시 후 다시 시도해 주세요.'],
-                                            success: ['알림', '이벤트를 성공적으로 삭제하였습니다.']
+                                            success: ['알림', '이벤트를 성공적으로 삭제하였습니다.', () => {
+                                                // 성공했으면 1page로 검색
+                                                showEventsDelete(1);
+                                            }]
                                         }[responseObject.result] || ['경고', '서버가 알 수 없는 응답을 반환하였습니다. 잠시 후 다시 시도해 주세요.'];
                                         MessageObj.createSimpleOk(dTitle, dContent, dOnclick).show();
                                     }
@@ -94,7 +144,7 @@ deleteEventForm.onsubmit = e => {
                                     loading.show();
                                 }
                             }
-                            ]
+                        ]
                     }).show();
                 })
                 break;
@@ -102,10 +152,14 @@ deleteEventForm.onsubmit = e => {
                 MessageObj.createSimpleOk('경고', '서버가 알 수 없는 응답을 반환하였습니다. 잠시 후 다시 시도해주세요.').show();
                 return;
         }
+        // 페이지가 불러져와있을 때 다른 페이지를 눌렀을 때 이동하는 로직
+        const pages = deleteEventForm.divResult.querySelectorAll('.page');
+        pages.forEach(page => page.onclick = () => {
+            showMoviesDelete(page.innerText);
+        });
     }
-    xhr.open('GET', `/event/search?keyword=${deleteEventForm['title'].value}`);
+    xhr.open('GET', `/event/search?keyword=${deleteEventForm['title'].value}&page=${page}`);
     xhr.send();
     loading.show();
 }
-
 

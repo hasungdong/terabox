@@ -1,4 +1,6 @@
 @charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
 body {
   font-weight: 400;
   letter-spacing: 0;
@@ -8,7 +10,7 @@ body {
   overflow-y: scroll;
   font-size: 13px;
   color: #666666;
-  font-family: sans-serif, NanumBarunGothic, Dotum, "돋움";
+  font-family: NanumBarunGothic, Dotum, "돋움", sans-serif;
 }
 
 #header {
@@ -1174,8 +1176,24 @@ body > .container > .content > .inner > .event-list > .inner > .box-store-view >
   text-align: center;
 }
 body > .container > .content > .inner > .event-list > .inner > .box-store-view > .right > .btn-group > .button.large {
+  width: 570px;
   height: 46px;
   padding: 5px 0 0 0;
+}
+body > .container > .content > .inner > .event-list > .inner > .box-store-view > .right > .btn-group > .button.purple.-visible {
+  display: none;
+}
+body > .container > .content > .inner > .event-list > .inner > .box-store-view > .right > .btn-group > .button.gray {
+  display: none;
+}
+body > .container > .content > .inner > .event-list > .inner > .box-store-view > .right > .btn-group > .button.gray.-visible {
+  display: block;
+}
+body > .container > .content > .inner > .event-list > .inner > .box-store-view > .right > .btn-group > .button[disabled] {
+  color: #777 !important;
+  cursor: default !important;
+  background-color: #e0e0e0 !important;
+  border-color: #e0e0e0 !important;
 }
 body > .container > .content > .inner > .event-list > .inner > .box-store-view > .right > .btn-group > .button {
   float: left;

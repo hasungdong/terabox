@@ -52,7 +52,7 @@ addMovieForm.onsubmit = e => {
     addMovieForm.ageLimitLabel.setValid(addMovieForm['ageLimit'].value === 'all' ||
         addMovieForm['ageLimit'].value === '12' ||
         addMovieForm['ageLimit'].value === '15' ||
-        addMovieForm['ageLimit'].value === '18');
+        addMovieForm['ageLimit'].value === '19');
     addMovieForm.dimensionTypeLabel.setValid(addMovieForm['dimensionType'].value === '2D' ||
         addMovieForm['dimensionType'].value === '3D' ||
         addMovieForm['dimensionType'].value === '4D');
