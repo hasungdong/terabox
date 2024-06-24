@@ -22,7 +22,10 @@
 <body>
 <th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
 <main id="main">
-    <th:block th:replace="~{fragments/discount/discount.html :: discount}"></th:block>
+    <h2 class="title2">제휴할인</h2>
+    <div class="AffiliateEvent">
+        <th:block th:replace="~{fragments/discount/discount.html :: discount('제휴 이벤트')}"></th:block>
+    </div>
     <nav id="nav">
         <ul class="tab">
             <li class="item">

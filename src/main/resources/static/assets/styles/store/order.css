@@ -17,6 +17,7 @@ body {
   letter-spacing: -0.08rem;
   background-color: #000;
   width: 100%;
+  height: 91px;
   border-bottom: solid 0.5px #888;
   display: flex;
   flex-direction: column;
@@ -808,6 +809,7 @@ li {
   position: relative;
   left: 2rem;
   top: -1rem;
+  filter: none;
 }
 #header > .link-area > .header-event {
   text-decoration-line: none;
@@ -1339,4 +1341,4 @@ body > .container > .content > .inner > .event-list > .inner > .board-move.more.
   display: block;
 }
 
-/*# sourceMappingURL=order_three.css.map */
+/*# sourceMappingURL=order.css.map */

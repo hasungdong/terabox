@@ -13,7 +13,10 @@
 <body>
 <th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
 <main id="main">
-    <th:block th:replace="~{fragments/discount/discount.html :: discount}"></th:block>
+    <h2 class="title2">제휴할인</h2>
+    <div class="AffiliateEvent">
+        <th:block th:replace="~{fragments/discount/discount.html :: discount('제휴 이벤트')}"></th:block>
+    </div>
     <nav>
         <ul class="tab">
             <li class="item on">
@@ -57,7 +60,7 @@
                         <span class="title">통신사</span>
                         <div class="spring"></div>
                         <a class="link" href="./telecomcard" title="통신사 전체보기">
-                            전체보기 <img th:src="@{/assets/images/common/more.png}" alt="">
+                            전체보기 <img th:src="@{/assets/images/common/moreGray.png}" alt="">
                         </a>
                     </div>
                     <div class="number" id="ckc01cnt">3</div>
@@ -110,7 +113,7 @@
                         <span class="title">신용카드</span>
                         <div class="spring"></div>
                         <a class="link" href="./creditcard" title="신용카드 전체보기">
-                            전체보기 <img th:src="@{/assets/images/common/more.png}" alt="">
+                            전체보기 <img th:src="@{/assets/images/common/moreGray.png}" alt="">
                         </a>
                     </div>
                     <div class="number" id="ckc02cnt">284</div>
@@ -232,7 +235,7 @@
                         <span class="title">포인트/기타제휴</span>
                         <div class="spring"></div>
                         <a class="link" href="./pointcard" title="포인트 기타제휴 전체보기">
-                            전체보기 <img th:src="@{/assets/images/common/more.png}" alt="">
+                            전체보기 <img th:src="@{/assets/images/common/moreGray.png}" alt="">
                         </a>
                     </div>
                     <div class="number" id="ckc03cnt">14</div>
@@ -272,7 +275,7 @@
                     <div class="spring"></div>
                     <a class="link" href="./giftcard" title="상품권 관람권 전체보기">
                         전체보기
-                        <img th:src="@{/assets/images/common/more.png}" alt="">
+                        <img th:src="@{/assets/images/common/moreGray.png}" alt="">
                     </a>
                 </div>
             </div>

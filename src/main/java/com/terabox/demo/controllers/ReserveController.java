@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ReserveController {
     @GetMapping(value = "reserve", produces = MediaType.TEXT_HTML_VALUE)
     public String getBooking() {
-
         return "booking/reserve";
     }
 

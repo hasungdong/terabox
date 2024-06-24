@@ -12,9 +12,9 @@
     <script defer>
         window.onload = () => {
             window.scroll({
-                top:document.querySelector('nav#nav').offsetTop,
-                left:0,
-                behavior:"smooth"
+                top: document.querySelector('nav#nav').offsetTop,
+                left: 0,
+                behavior: "smooth"
             });
         };
     </script>
@@ -22,7 +22,10 @@
 <body>
 <th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
 <main id="main">
-    <th:block th:replace="~{fragments/discount/discount.html :: discount}"></th:block>
+    <h2 class="title2">제휴할인</h2>
+    <div class="AffiliateEvent">
+        <th:block th:replace="~{fragments/discount/discount.html :: discount('제휴 이벤트')}"></th:block>
+    </div>
     <nav id="nav">
         <ul class="tab">
             <li class="item">
@@ -58,7 +61,7 @@
                     <li>
                         <div class="img">
                             <img src="https://img.megabox.co.kr/SharedImg/card/2020/01/28/rnsHsbeu5HqsKWoSDIqDLwI1U7gXKc97.png "
-                                alt="블루멤버스 포인트"></div>
+                                 alt="블루멤버스 포인트"></div>
                         <div class="cont">
                             <div class="top">
                                 <div class="name">블루멤버스 포인트</div>
@@ -86,7 +89,7 @@
                     <li>
                         <div class="img">
                             <img src="https://img.megabox.co.kr/SharedImg/card/2023/12/18/yweFFam6vA0BG9pN1XNXUmZEuKDHHI7d.png "
-                                alt="null"></div>
+                                 alt="null"></div>
                         <div class="cont">
                             <div class="top">
                                 <div class="name">기아멤버스</div>
@@ -110,7 +113,7 @@
                     <li>
                         <div class="img">
                             <img src="https://img.megabox.co.kr/SharedImg/card/2019/12/19/NcS6J177UXwgd43kRg8Y7ZgK11t4fACK.png "
-                                alt="null"></div>
+                                 alt="null"></div>
                         <div class="cont">
                             <div class="top">
                                 <div class="name">OK캐쉬백(사용)</div>
@@ -137,7 +140,7 @@
                     <li>
                         <div class="img">
                             <img src="https://img.megabox.co.kr/SharedImg/card/2019/12/19/18D8m9aCcMOzXmgjFbCj71NvHbua7aSz.png "
-                                alt="GS&amp;amp;Point 카드"></div>
+                                 alt="GS&amp;amp;Point 카드"></div>
                         <div class="cont">
                             <div class="top">
                                 <div class="name">GS&amp;Point 카드</div>
@@ -166,7 +169,7 @@
                     <li>
                         <div class="img">
                             <img src="https://img.megabox.co.kr/SharedImg/card/2020/12/14/wWPlFXdNbe6Fkt3Vj08nmrn5BQTdpNwG.jpg "
-                                alt="해피포인트 카드"></div>
+                                 alt="해피포인트 카드"></div>
                         <div class="cont">
                             <div class="top">
                                 <div class="name">해피포인트 카드</div>
@@ -194,7 +197,7 @@
                     <li>
                         <div class="img">
                             <img src="https://img.megabox.co.kr/SharedImg/card/2019/12/19/U13iGZLH0yufgiZxXMuNpDVHmGRr5Ou7.png "
-                                alt="하나포인트"></div>
+                                 alt="하나포인트"></div>
                         <div class="cont">
                             <div class="top">
                                 <div class="name">하나포인트</div>
@@ -218,7 +221,7 @@
                     <li>
                         <div class="img">
                             <img src="https://img.megabox.co.kr/SharedImg/card/2020/01/06/iTJIKfrZm1SBrqsTAdUk3eBtbRgOq2gN.png "
-                                alt="현대카드 M포인트"></div>
+                                 alt="현대카드 M포인트"></div>
                         <div class="cont">
                             <div class="top">
                                 <div class="name">현대카드 M포인트</div>
@@ -246,7 +249,7 @@
                     <li>
                         <div class="img">
                             <img src="https://img.megabox.co.kr/SharedImg/card/2019/12/19/IY01N4K2G8cgqUrGp8zWZGyQhh0UnNhJ.png "
-                                alt="중앙멤버십"></div>
+                                 alt="중앙멤버십"></div>
                         <div class="cont">
                             <div class="top">
                                 <div class="name">중앙멤버십</div>
@@ -282,7 +285,7 @@
                     <li>
                         <div class="img">
                             <img src="https://img.megabox.co.kr/SharedImg/card/2019/12/19/pC2fxGafE99x018nDGGGQaoGILRodULX.png "
-                                alt="블루멤버스 현대카드">
+                                 alt="블루멤버스 현대카드">
                         </div>
                         <div class="cont">
                             <div class="top">
@@ -312,7 +315,7 @@
                     <li>
                         <div class="img">
                             <img src="https://img.megabox.co.kr/SharedImg/card/2023/04/10/tXyhnQb9LOZGNTIkXHKnqQyIgymZnneW.png "
-                                alt="현대오일뱅크 보너스카드">
+                                 alt="현대오일뱅크 보너스카드">
                         </div>
                         <div class="cont">
                             <div class="top">
@@ -349,7 +352,7 @@
                     <li>
                         <div class="img">
                             <img src="https://img.megabox.co.kr/SharedImg/card/2020/02/06/zcmi10MSteMWFBvWtp0nB0p5e9gWuszS.png "
-                                alt="OK캐쉬백">
+                                 alt="OK캐쉬백">
                         </div>
                         <div class="cont">
                             <div class="top">
@@ -386,7 +389,7 @@
                     <li>
                         <div class="img">
                             <img src="https://img.megabox.co.kr/SharedImg/card/2020/12/14/W8GAbcDGVr6aEyrxBtyfJiBKV2Q22yLC.jpg "
-                                alt="문화누리카드"></div>
+                                 alt="문화누리카드"></div>
                         <div class="cont">
                             <div class="top">
                                 <div class="name">문화누리카드</div>
@@ -420,7 +423,7 @@
                     <li>
                         <div class="img">
                             <img src="https://img.megabox.co.kr/SharedImg/card/2020/12/17/pGH1YO4zq5eWuvhLc30V4V8H0LC5Q6DD.png "
-                                alt="null"></div>
+                                 alt="null"></div>
                         <div class="cont">
                             <div class="top">
                                 <div class="name">L.POINT(사용)</div>
@@ -440,7 +443,8 @@
                                     L.POINT&nbsp;적립 불가</p>
                             </ul>
                             <div class="btn">
-                                <a href="https://www.lpoint.com/app/useplace/LHUI100100.do" target="_blank" title="카드사 홈페이지 이동" class="button purple">자세히 보기</a>
+                                <a href="https://www.lpoint.com/app/useplace/LHUI100100.do" target="_blank"
+                                   title="카드사 홈페이지 이동" class="button purple">자세히 보기</a>
                             </div>
                         </div>
                     </li>

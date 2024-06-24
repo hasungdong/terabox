@@ -35,6 +35,15 @@ public class TheaterController {
         return "theater/list";
     }
 
+    @GetMapping(value = "/detail", produces = MediaType.TEXT_HTML_VALUE)
+    public String getDetail(Model model){
+        RegionVo[] regions = this.regionService.getRegionsOnTheaterList();
+        model.addAttribute("regionVos", regions);
+        TheaterVo[] theaters = this.theaterService.getTheatersOnTheaterList();
+        model.addAttribute("theaterVos", theaters);
+        return "theater/detail";
+    }
+
 //    db에 극장 이름들 불러오는거
     @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody

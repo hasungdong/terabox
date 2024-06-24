@@ -188,9 +188,9 @@ const showMovies = (page) => {
             </select>
             <span class="__warning">효과를 선택해 주세요.</span>
         </label>
-        <label class="_obj-label" rel="priceLabel">
-            <span class="__text">영화 가격</span>
-            <input class="_obj-input __field" type="number" name="price" value="${responseObject['price']}">
+        <label class="_obj-label" rel="explanationLabel">
+            <span class="__text">영화 설명</span>
+            <textarea class="_obj-input __field" type="text" name="explanation"></textarea>
             <span class="__warning">올바른 값을 입력해 주세요.</span>
         </label>
         <div class="spring"></div>
@@ -242,7 +242,7 @@ const showMovies = (page) => {
                                         modifyMovieFormTwo.isSingleLabel = new LabelObj(modifyMovieFormTwo.querySelector('[rel="isSingleLabel"]'));
                                         modifyMovieFormTwo.ageLimitLabel = new LabelObj(modifyMovieFormTwo.querySelector('[rel="ageLimitLabel"]'));
                                         modifyMovieFormTwo.dimensionTypeLabel = new LabelObj(modifyMovieFormTwo.querySelector('[rel="dimensionTypeLabel"]'));
-                                        modifyMovieFormTwo.priceLabel = new LabelObj(modifyMovieFormTwo.querySelector('[rel="priceLabel"]'));
+                                        modifyMovieFormTwo.explanationLabel = new LabelObj(modifyMovieFormTwo.querySelector('[rel="explanationLabel"]'));
 
 
                                         modifyMovieFormTwo.onsubmit = e => {
@@ -270,7 +270,9 @@ const showMovies = (page) => {
                                             modifyMovieFormTwo.dimensionTypeLabel.setValid(modifyMovieFormTwo['dimensionType'].value === '2D' ||
                                                 modifyMovieFormTwo['dimensionType'].value === '3D' ||
                                                 modifyMovieFormTwo['dimensionType'].value === '4D');
-                                            modifyMovieFormTwo.priceLabel.setValid(modifyMovieFormTwo['price'].value > 0);
+                                            const explanationRegex = new RegExp("^([\\da-zA-Z가-힣()\\-.,!·<>\\s\"']{1,1000})$");
+
+                                            modifyMovieFormTwo.explanationLabel.setValid(explanationRegex.test(modifyMovieFormTwo['explanation'].value));
                                             // 양식 안맞을시 제출 막는 로직, 이것도 add에서 해줬었음
                                             if (!modifyMovieFormTwo.titleLabel.isValid() ||
                                                 !modifyMovieFormTwo.releaseDateLabel.isValid() ||
@@ -278,7 +280,7 @@ const showMovies = (page) => {
                                                 !modifyMovieFormTwo.isSingleLabel.isValid() ||
                                                 !modifyMovieFormTwo.ageLimitLabel.isValid() ||
                                                 !modifyMovieFormTwo.dimensionTypeLabel.isValid() ||
-                                                !modifyMovieFormTwo.priceLabel.isValid()) {
+                                                !modifyMovieFormTwo.explanationLabel.isValid()) {
                                                 return;
                                             }
                                             // 수정할 값들을 받아서 실제로 수정하는 xhr 요청
@@ -295,7 +297,7 @@ const showMovies = (page) => {
                                             formData.append('isSingle', modifyMovieFormTwo['isSingle'].value);
                                             formData.append('ageLimit', modifyMovieFormTwo['ageLimit'].value);
                                             formData.append('dimensionType', modifyMovieFormTwo['dimensionType'].value);
-                                            formData.append('price', modifyMovieFormTwo['price'].value);
+                                            formData.append('explanation', modifyMovieFormTwo['explanation'].value);
                                             xhr.onreadystatechange = function () {
                                                 if (xhr.readyState !== XMLHttpRequest.DONE) {
                                                     return;

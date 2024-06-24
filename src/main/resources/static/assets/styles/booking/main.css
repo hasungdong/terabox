@@ -532,6 +532,7 @@ footer {
   position: relative;
   left: 2rem;
   top: -1rem;
+  filter: none;
 }
 #header > .link-area > .header-event {
   text-decoration-line: none;

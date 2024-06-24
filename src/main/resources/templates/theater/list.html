@@ -51,12 +51,12 @@
         <div class="title-bar">
             <h3 class="title3">극장 이벤트</h3>
             <div class="spring"></div>
-            <a href="#" class="link">
+            <a class="link">
                 더보기
                 <img class="icon" th:src="@{/assets/images/common/moreGray.png}" alt="">
             </a>
         </div>
-        <div class="event-box" >
+        <div class="event-box">
             <img class="icon" alt="" th:each="event : ${eventTwo}" th:src="@{/event/image (index=${event.getIndex()})}">
         </div>
     </div>
@@ -64,7 +64,7 @@
         <div class="title-bar">
             <h3 class="title3">극장 공지사항</h3>
             <div class="spring"></div>
-            <a href="#" class="link">
+            <a class="link">
                 더보기
                 <img class="icon" th:src="@{/assets/images/common/moreGray.png}" alt="">
             </a>
@@ -89,7 +89,7 @@
             <tr>
                 <td>성수</td>
                 <th scope="row">
-                    <a class="link" href="#"
+                    <a class="link"
                        title="[성수지점] 5/15(수)~5/19(일) 7층 부티크 스위트 미운영 안내 상세보기">
                         [성수지점] 5/15(수)~5/19(일) 7층 부티크 스위트 미운영 안내
                     </a>
@@ -100,7 +100,7 @@
             <tr>
                 <td>김포한강신도시</td>
                 <th scope="row">
-                    <a class="link" href="#"
+                    <a class="link"
                        title="[김포한강신도시] 지하주차장 공사 안내 (5월 13일 ~ 30일, 11일간) 상세보기">
                         [김포한강신도시] 지하주차장 공사 안내 (5월 13일 ~ 30일, 11일간)
                     </a>
@@ -111,7 +111,7 @@
             <tr>
                 <td>광명AK플라자</td>
                 <th scope="row">
-                    <a class="link" href="#"
+                    <a class="link"
                        title="[광명AK플라자]5월 12일(일요일) 극장 영업시간 조정 안내 상세보기">
                         [광명AK플라자]5월 12일(일요일) 극장 영업시간 조정 안내
                     </a>
@@ -122,7 +122,7 @@
             <tr>
                 <td>마산</td>
                 <th scope="row">
-                    <a class="link" href="#"
+                    <a class="link"
                        title="[마산]영업재개 및 후속 조치 안내 상세보기">
                         [마산]영업재개 및 후속 조치 안내
                     </a>
@@ -133,7 +133,7 @@
             <tr>
                 <td>상암월드컵경기장</td>
                 <th scope="row">
-                    <a class="link" href="#"
+                    <a class="link"
                        title="[상암월드컵경기장지점] 24년 5월 상암월드컵주경기장 행사로 인한 주차 안내 상세보기">
                         [상암월드컵경기장지점] 24년 5월 상암월드컵주경기장 행사로 인한 주차 안내
                     </a>

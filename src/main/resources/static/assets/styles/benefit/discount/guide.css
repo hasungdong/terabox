@@ -53,6 +53,7 @@
   position: relative;
   left: 2rem;
   top: -1rem;
+  filter: none;
 }
 #header > .link-area > .header-event {
   text-decoration-line: none;
@@ -376,9 +377,9 @@
   color: #000;
 }
 #main > .searchAndSelect-box > .select-group > .first-line > .box > .title-box > .link > img {
-  width: 0.7rem;
-  height: 0.8rem;
-  margin-left: 0.25rem;
+  width: 0.375rem;
+  height: 0.5625rem;
+  margin-left: 0.5rem;
 }
 #main > .searchAndSelect-box > .select-group > .first-line > .box > .number {
   padding: 0.3125rem 0 0.625rem 0;
@@ -498,9 +499,9 @@
   color: #000;
 }
 #main > .searchAndSelect-box > .select-group .second-line > .box > .link > img {
-  width: 0.7rem;
-  height: 0.8rem;
-  margin-left: 0.25rem;
+  width: 0.375rem;
+  height: 0.5625rem;
+  margin-left: 0.5rem;
 }
 
 /*# sourceMappingURL=guide.css.map */
