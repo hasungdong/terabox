@@ -15,9 +15,6 @@ public class TheaterService {
         return this.theaterMapper.selectTheatersByRegionCode(regionCode);
     }
 
-    public TheaterEntity[] getTheaters(){
-        return this.theaterMapper.selectTheaters();
-    }
 
     public TheaterVo[] getTheatersOnTheaterList(){
         return this.theaterMapper.selectTheatersOnTheaterList();

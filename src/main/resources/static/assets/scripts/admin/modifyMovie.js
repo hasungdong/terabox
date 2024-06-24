@@ -158,7 +158,7 @@ const showMovies = (page) => {
                 <input class="_obj-input __field" type="number" name="hour" placeholder="시간" spellcheck="false" value="${responseObject['playingTime'].toString().substring(0, 2)}">
                 <input class="_obj-input __field" type="number" name="minute" placeholder="분" spellcheck="false" value="${responseObject['playingTime'].toString().substring(3, 5)}">
                 <input class="_obj-input __field" type="number" name="second" placeholder="초" spellcheck="false" value="${responseObject['playingTime'].toString().substring(6, 8)}">
-                <span class="text">영화 길이는 1 ~ 2시간 사이입니다.</span>
+                <span class="text">영화 길이는 1 ~ 4시간 사이입니다.</span>
             </span>
             <span class="__warning">올바른 시간을 입력해 주세요.</span>
         </label>
@@ -255,7 +255,7 @@ const showMovies = (page) => {
                                             modifyMovieFormTwo.titleLabel.setValid(movieRegex.test(modifyMovieFormTwo['title'].value));
                                             const regex = RegExp(/^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/);
                                             modifyMovieFormTwo.releaseDateLabel.setValid(regex.test(modifyMovieFormTwo['releaseDate'].value))
-                                            modifyMovieFormTwo.playingTimeLabel.setValid((parseInt(modifyMovieFormTwo['hour'].value) <= 2 &&
+                                            modifyMovieFormTwo.playingTimeLabel.setValid((parseInt(modifyMovieFormTwo['hour'].value) <= 3 &&
                                                     parseInt(modifyMovieFormTwo['hour'].value) >= 1) &&
                                                 (parseInt(modifyMovieFormTwo['minute'].value) < 60 &&
                                                     parseInt(modifyMovieFormTwo['minute'].value) >= 0) &&

@@ -10,10 +10,11 @@
     <th:block th:replace="~{fragments/common/common.html :: commonHeadNoHeader}"></th:block>
 </head>
 <body>
+<th:block th:replace="~{fragments/common/common.html :: commonRegister}"></th:block>
 <div class="body-wrap">
     <div class="member-wrap">
         <h1 class="h1">
-            <a href="/megabox/">
+            <a href="/home">
                 <img th:src="@{/assets/images/register/main-logo.png}" alt="메인 페이지로 이동">
             </a>
         </h1>
@@ -71,6 +72,13 @@
                     <a class="i-pin" href="">
                         <img th:src="@{/assets/images/register/i-pin.png}" alt="">
                         <span>아이핀 인증</span>
+                    </a>
+                </div>
+                <div class="join3">
+                    <a class="terabox-register" target="_self" href="/register/registerTwo">
+                        <div class="register-text">
+                            <h2>TeraBox 회원가입</h2>
+                        </div>
                     </a>
                 </div>
                 <div class="foot-txt-container">

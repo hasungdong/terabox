@@ -8,12 +8,14 @@
     <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/register/registerThree.css}">
     <title>MEET PLAY SHARE, 메가박스</title>
     <th:block th:replace="~{fragments/common/common.html :: commonHeadNoHeader}"></th:block>
+    <script defer th:src="@{/assets/scripts/register.js}"></script>
 </head>
 <body>
+<th:block th:replace="~{fragments/common/common.html :: commonRegister}"></th:block>
 <div class="body-wrap">
     <div class="member-wrap">
         <h1 class="h1">
-            <a href="/megabox/">
+            <a href="/home">
                 <img th:src="@{/assets/images/register/main-logo.png}" alt="메인 페이지로 이동">
             </a>
         </h1>
@@ -49,12 +51,14 @@
                 </div>
                 <p class="page-info-txt">
                     <strong>
-                        OOO님 안녕하세요.
+                        고객님 안녕하세요.
                     </strong>
                     <span>
                         회원정보를 입력해 주세요.
                     </span>
                 </p>
+                <form class="form" id="registerForm" th:with="userRegex=${T(com.terabox.demo.regexes.UserRegex)}, emailAuthRegex=${T(com.terabox.demo.regexes.EmailAuthRegex)}">
+                    <input hidden name="emailSalt" type="hidden"> <!-- emailSalt 부분? -->
                 <div class="table-wrap">
                     <table class="border-form">
                         <caption>생년월일, 휴대폰번호, 아이디, 비밀번호, 비밀번호 확인, 이메일 주소, 무인발권기 기능설정, 나만의 메가박스 항목을 가진 회원가입 정보입력 표
@@ -65,79 +69,92 @@
                         </colgroup>
                         <tbody>
                         <tr>
+                            <th scope="row">닉네임 <!-- 이름 --> </th>
+                            <td id="userNickNametd">
+                                <label for="userNickname" rel="nickNameLabel">
+                                    <input required autocomplete="off" name="nickname" maxlength="12" minlength="2" id="userNickname" type="text"
+                                           placeholder="닉네임을 설정해 주세요." class="input-text w260px" th:attrappend="data-regex=${userRegex.nickname.expression}">
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
                             <th scope="row">생년월일<!--생년월일--></th>
-                            <td id="ibxMbJoinInfoRegBirthDe">2000 06월 17일</td>
+                            <td id="ibxMbJoinInfoRegBirthDe">
+                                <label class="birthLabel" rel="birthLabel">
+                                    <input name="birth" required maxlength="12" id="userBirthDay" type="date"
+                                           placeholder="생년월일을 입력해 주세요." class="input-text w260px">
+                                </label>
+                            </td>
                         </tr>
 
-                        <!-- 휴대폰 번호 불러올때 -->
-                        <tr id="trMblpTelno">
-                            <th scope="row">휴대폰 번호 <!--휴대폰 번호 --></th>
-                            <td> 010-0000-0001</td>
+                        <tr>
+                            <th scope="row">
+                                이메일
+                            </th>
+                            <td>
+                                <label class="emailLabel" rel="emailLabel"><!--이메일 주소-->
+                                    <input name="email" id="userEmail" required autocomplete="email" maxlength="50" minlength=""  type="email" placeholder="이메일 (user@sample.com)" spellcheck="false" class="input-text w260px" th:attrappend="data-regex=${userRegex.email.expression}"><!--이메일주소를 입력해 주세요-->
+                                    <br><br>
+                                    <button class="emailButton" name="emailSend" type="button">인증번호 전송</button>
+                                </label>
+                                <div id="JoinInfoRegEmail-error-text" class="alert"></div>
+                            </td>
                         </tr>
-                        <tr id="nonMbCertRow" style="display: none;">
-                            <th scope="row"><label for="mblpCharCertNo">인증번호<!--인증번호--></label></th>
+                        <tr id="userCertificationNone">
+                            <th scope="row">
+                                <label for="userEmailCode">인증번호<!--인증번호--></label>
+                            </th>
                             <td>
                                 <div class="chk-num">
                                     <div class="line">
-                                        <input maxlength="4" id="mblpCharCertNo" type="text" class="input-text w210px"
-                                               title="인증번호 입력"><!--인증번호 입력-->
-
+                                        <input disabled required autocomplete="one-time-code" name="emailCode" maxlength="6"  minlength="6" placeholder="인증번호 (숫자 여섯 자리)" spellcheck="false" id="userEmailCode" type="text" class="input-text w210px" title="인증번호 입력" th:attrappend="data-regex=${emailAuthRegex.code.expression}">
+                                        <!--인증번호 입력-->
+                                        <br>
+                                        <br>
                                         <div class="time-limit" id="timer">
                                             3:00
                                         </div>
                                     </div>
                                 </div>
-
-                                <button id="btnMblpCharCert" type="button"
-                                        class="button gray-line small w75px ml08 disabled">인증확인
+                                <br>
+                                <button disabled name="emailVerify" type="button"
+                                        class="button gray-line small w75px ml08 disabled">인증번호 확인
                                 </button>
-                                <div id="nonMbCert-error-text" class="alert"></div>
+                                <span class="__warning">올바른 이메일을 입력해 주세요.</span>
                             </td>
 
                         </tr>
                         <tr>
                             <th scope="row">
-                                <label for="ibxJoinInfoRegLoginId">아이디<!--아이디--></label>
+                                비밀번호
                             </th>
                             <td>
-                                <input maxlength="12" id="ibxJoinInfoRegLoginId" type="text"
-                                       placeholder="영문,숫자 조합(8~12자)" class="input-text w260px"><!--영문,숫자 조합(8~12자)-->
-                                <button id="btnMbLoginIdDupCnfm" type="button"
-                                        class="button gray-line small w75px ml08 disabled">중복확인<!--중복확인--></button>
-                                <div id="JoinInfoRegLoginId-error-text" class="alert"></div>
+                                <label class="passwordLabel" rel="passwordLabel">
+                                    <input required autocomplete="new-password" name="password" maxlength="50" minlength="5" type="password" placeholder="영문,숫자,특수기호 중 2가지 이상 조합" class="input-text w260px" spellcheck="false" th:attrappend="data-regex=${userRegex.password.expression}">
+                                    <!--영문,숫자,특수기호 중 2가지 이상 조합-->
+                                    <br><br>
+                                    <span class="tooltiptext">비밀번호 설정 시 사용가능한 특수문자는 ~ ! @ # $ % ^ &amp; * + = - ? _  입니다.</span>
+                                </label>
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row"><label for="ibxJoinInfoRegLoginPwd">비밀번호<!--비밀번호--></label></th>
-                            <td>
-                                <input maxlength="16" id="ibxJoinInfoRegLoginPwd" type="password"
-                                       placeholder="영문,숫자,특수기호 중 2가지 이상 조합" class="input-text w260px">
-                                <!--영문,숫자,특수기호 중 2가지 이상 조합-->
-                                <span class="tooltiptext">비밀번호 설정 시 사용가능한 특수문자는 ~ ! @ # $ % ^ &amp; * + = - ? _  입니다.</span>
-                                <div id="JoinInfoRegLoginPwd-error-text" class="alert"></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><label for="ibxJoinInfoRegLoginPwdConfirm">비밀번호 확인<!--비밀번호 확인--></label>
+                            <th scope="row">
+                                비밀번호 확인<!--비밀번호 확인-->
                             </th>
                             <td>
-                                <input maxlength="16" id="ibxJoinInfoRegLoginPwdConfirm" type="password"
-                                       placeholder="영문,숫자,특수기호 중 2가지 이상 조합" class="input-text w260px">
-                                <!--영문,숫자,특수기호 중 2가지 이상 조합-->
-                                <span class="tooltiptext">비밀번호 설정 시 사용가능한 특수문자는 ~ ! @ # $ % ^ &amp; * + = - ? _  입니다.</span>
-                                <div id="JoinInfoRegLoginPwdConfirm-error-text" class="alert"></div>
+                                <label>
+                                    <input required autocomplete="off" name="passwordCheck" maxlength="50" min="5" type="password"
+                                           placeholder="영문,숫자,특수기호 중 2가지 이상 조합" class="input-text w260px" spellcheck="false">
+                                    <!--영문,숫자,특수기호 중 2가지 이상 조합-->
+                                    <br><br>
+                                    <span class="tooltiptext">비밀번호 설정 시 사용가능한 특수문자는 ~ ! @ # $ % ^ &amp; * + = - ? _  입니다.
+                                    </span>
+                                </label>
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row"><label for="ibxJoinInfoRegEmail">이메일 주소<!--이메일 주소--></label></th>
-                            <td>
-                                <input maxlength="50" id="ibxJoinInfoRegEmail" type="text" placeholder="이메일주소를 입력해 주세요"
-                                       class="input-text w260px"><!--이메일주소를 입력해 주세요-->
-                                <div id="JoinInfoRegEmail-error-text" class="alert"></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">무인발권기<br>기능 설정<!--무인발권기<br />기능 설정--></th>
+                            <th scope="row">무인발권기<br>기능 설정<!--무인발권기<br />기능 설정-->
+                            </th>
                             <td>
                                 <input checked type="radio" id="kioskByymmddLoginSetY" name="kioskByymmddLoginSetAt">
                                 <label for="kioskByymmddLoginSetY">사용<!--사용--></label>
@@ -162,6 +179,7 @@
                         </tbody>
                     </table>
                 </div>
+
                 <div class="marketing-agree mt40">
                     <p class="tit">마케팅 활용을 위한 개인정보 수집 이용 안내(선택)<!--마케팅 활용을 위한 개인정보 수집 이용 안내(선택)--></p>
 
@@ -192,8 +210,8 @@
                             <input type="checkbox" id="sms" class="ml20">
                             <label for="sms">SMS</label>
 
-                            <input type="checkbox" id="email" class="ml20">
-                            <label for="email">이메일<!--이메일--></label>
+                            <input type="checkbox" id="checkEmail" class="ml20">
+                            <label for="checkEmail">이메일<!--이메일--></label>
                         </div>
 
                         <p class="mt20">
@@ -204,9 +222,10 @@
                     </div>
                 </div>
                 <div class="button-member-bottom">
-                    <button id="btnJoinInfoRegButton" type="button" class="button purle large">회원가입
+                    <button id="btnJoinInfoRegButton" type="submit" class="button purle large">회원가입
                     </button>
                 </div>
+                </form>
             </div>
         </div>
     </div>

@@ -8,12 +8,14 @@
     <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/register/registerTwo.css}">
     <title>MEET PLAY SHARE, 메가박스</title>
     <th:block th:replace="~{fragments/common/common.html :: commonHeadNoHeader}"></th:block>
+    <script defer th:src="@{/assets/scripts/registerTwo.js}"></script>
 </head>
 <body>
+<th:block th:replace="~{fragments/common/common.html :: commonRegister}"></th:block>
 <div class="body-wrap">
     <div class="member-wrap">
         <h1 class="h1">
-            <a href="/megabox/">
+            <a href="/home">
                 <img th:src="@{/assets/images/register/main-logo.png}" alt="메인 페이지로 이동">
             </a>
         </h1>
@@ -57,16 +59,16 @@
                 </p>
                 <div class="member-rule-agree">
                     <div class="all-check">
-                        <input type="checkbox" id="checkAll">
+                        <input type="checkbox" class="checkboxes" id="checkAll">
                         <label for="checkAll">
                             필수항목 전체동의
                         </label>
                     </div>
                     <div class="block">
                         <div class="check">
-                            <input type="checkbox" id="checkUtilClau">
+                            <input type="checkbox" id="checkUtilClau" class="checkboxes" name="item">
                             <label for="checkUtilClau" class="must">
-                                서비스 이용 약관 동의 필수
+                                서비스 이용 약관 동의 (필수)
                             </label>
                         </div>
                         <div id="utilClau" class="scroll" tabindex="0">
@@ -370,7 +372,7 @@
                         </div>
                         <div class="block2">
                                 <div class="chk">
-                                    <input type="checkbox" id="chkPersonInfo">
+                                    <input type="checkbox" id="chkPersonInfo" class="checkboxes" name="item">
                                     <label for="chkPersonInfo" class="must">개인정보 수집 및 이용 동의(필수)
                                     </label>
                                 </div>
@@ -671,9 +673,11 @@
                     </div>
                 </div>
                 <div class="button-member-bottom">
-                    <button id="buttonClauAgree" type="button" class="button purple large" disabled="disabled">
+                    <a class="three-link" target="_self" href="/register/registerThree">
+                        <button id="buttonClauAgree" type="button" class="button purple large"> <!-- disabled="disabled" 필수체크x시 disabled-->
                         확인
-                    </button>
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>

@@ -17,12 +17,12 @@ public class MembershipController {
     private final CardService cardService;
 
     @GetMapping(value = "membership", produces = MediaType.TEXT_HTML_VALUE)
-    public String getGuide(){
+    public String getMembership(){
         return "benefit/membership";
     }
 
     @GetMapping(value = "vipLounge", produces = MediaType.TEXT_HTML_VALUE)
-    public String getLounge(Model model){
+    public String getVipLounge(Model model){
         model.addAttribute("events", this.eventService.getEventsAll());
         model.addAttribute("eventsCount", this.eventService.getEventsAllCount());
         model.addAttribute("cards", this.cardService.getCards());

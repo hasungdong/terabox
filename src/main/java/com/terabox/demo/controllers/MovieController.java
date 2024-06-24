@@ -8,7 +8,6 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -64,15 +63,6 @@ public class MovieController extends AbstractGeneralController {
                 .contentType(MediaType.parseMediaType(movie.getThumbnailContentType()))
                 .body(thumbnail);
     }
-
-//    @GetMapping(value = "movie", produces = MediaType.APPLICATION_JSON_VALUE)
-//    @ResponseBody
-//    public String getProduct(@Param("index") int index){
-//        MovieEntity movie = this.movieService.getMovie(index);
-//        JSONObject responseObject = new JSONObject();
-//        responseObject.put("movie", movie.toString());
-//        return responseObject.toString();
-//    }
 
     @GetMapping(value = "movie", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody

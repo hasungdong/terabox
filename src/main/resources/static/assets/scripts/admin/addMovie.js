@@ -42,7 +42,7 @@ addMovieForm.onsubmit = e => {
     addMovieForm.thumbnailLabel.setValid(addMovieForm['thumbnail'].files.length > 0);
     const regex = RegExp(/^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/);
     addMovieForm.releaseDateLabel.setValid(regex.test(addMovieForm['releaseDate'].value))
-    addMovieForm.playingTimeLabel.setValid((parseInt(addMovieForm['hour'].value) <= 2 &&
+    addMovieForm.playingTimeLabel.setValid((parseInt(addMovieForm['hour'].value) <= 3 &&
         parseInt(addMovieForm['hour'].value) >= 1) &&
         (parseInt(addMovieForm['minute'].value) < 60 &&
         parseInt(addMovieForm['minute'].value) >= 0) &&

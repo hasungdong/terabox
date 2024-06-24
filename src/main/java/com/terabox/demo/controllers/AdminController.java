@@ -18,7 +18,6 @@ import java.io.IOException;
 @RequestMapping(value = "/admin")
 @RequiredArgsConstructor
 public class AdminController {
-
     private final AdminService adminService;
 
     @PostMapping(value = "/movie", produces = MediaType.APPLICATION_JSON_VALUE)

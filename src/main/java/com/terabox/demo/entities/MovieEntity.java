@@ -27,6 +27,7 @@ public class MovieEntity {
     private String ageLimit;
     private String dimensionType;
     private int price;
+    private String explanation;
 
     @Override
     public String toString() {

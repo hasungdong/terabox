@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import "../common/header";
 @import "../common/common.notHome";
 
 
@@ -185,6 +186,41 @@ body {
                 display: block;
                 padding: 10px 0 0 0;
                 color: black;
+              }
+            }
+          }
+
+          > .join3 {
+            width: 100%;
+            float: left;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #ebebeb;
+            border-radius: 10px;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+
+            > .terabox-register {
+              width: 100%;
+              margin: 0 auto 20px;
+              height: auto;
+              padding: 30px 20px 20px 20px;
+
+              > .register-text {
+                height: 71px;
+                overflow: hidden;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+
+
+                > h2 {
+                  font-size: 1.5rem;
+                  font-weight: bold;
+                }
               }
             }
           }
