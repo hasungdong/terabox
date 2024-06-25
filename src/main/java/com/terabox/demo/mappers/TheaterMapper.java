@@ -9,4 +9,6 @@ public interface TheaterMapper {
     TheaterEntity[] selectTheatersByRegionCode(String regionCode);
 
     TheaterVo[] selectTheatersOnTheaterList();
+
+    TheaterEntity selectTheaterByIndex(int index);
 }

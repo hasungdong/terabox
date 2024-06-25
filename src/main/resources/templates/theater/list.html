@@ -23,8 +23,8 @@
                     </button>
                     <div class="theater-list">
                         <ul>
-                            <li th:each="theaterVo : ${theaterVos}" th:if="${theaterVo.getRegionCodeTwo().equals(regionVo.getCodeTwo())}">
-                                <a th:text="${theaterVo.getName()}"></a>
+                            <li th:if="${theaterVo.getRegionCodeTwo().equals(regionVo.getCodeTwo())}" th:each="theaterVo : ${theaterVos}" >
+                                <a th:href="@{/theater/detail (index = ${theaterVo.getIndex()})}" th:text="${theaterVo.getName()}"></a>
                             </li>
                         </ul>
                     </div>

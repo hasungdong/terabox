@@ -91,7 +91,7 @@
             float: left;
             margin-left: 72px;
 
-            &.on{
+            &:hover{
                .area-depth2{
                  display: block;
                }
@@ -118,7 +118,6 @@
               box-shadow: 10px 10px 10px rgba(0, 0, 0, .2);
 
               > ul{
-
                 &:after{
                   clear: both;
                   content: '';
@@ -135,8 +134,10 @@
                     vertical-align: middle;
                     color: #444;
                     padding: 0 11px;
+                  }
 
-                    &:not(:last-of-type):after{
+                  &:not(:last-of-type){
+                    > a:after{
                       content: '';
                       position: absolute;
                       top: 50%;
@@ -148,7 +149,7 @@
                     }
                   }
 
-                  &.on{
+                  &:hover{
                     a{
                       color: #01738b !important;
                     }

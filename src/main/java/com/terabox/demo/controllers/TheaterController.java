@@ -36,7 +36,8 @@ public class TheaterController {
     }
 
     @GetMapping(value = "/detail", produces = MediaType.TEXT_HTML_VALUE)
-    public String getDetail(Model model){
+    public String getDetail(@RequestParam("index") int index, Model model){
+        model.addAttribute("theater", this.theaterService.getTheater(index));
         RegionVo[] regions = this.regionService.getRegionsOnTheaterList();
         model.addAttribute("regionVos", regions);
         TheaterVo[] theaters = this.theaterService.getTheatersOnTheaterList();
