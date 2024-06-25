@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -923,7 +923,105 @@
         </div>
     </div>
     <div class="content">
+        <h2 class="tit small">시설안내</h2>
+        <h3 class="tit small">보유시설</h3>
+        <div class="theater-facility">
+            <p><img src="/assets/images/theater/normalCinema.png" alt="">일반상영관</p>
+            <p><img src="/assets/images/theater/disabledSeat.png" alt="">장애인석</p>
+        </div>
+        <h3 class="tit small mt30">층별안내</h3>
+        <ul class="dot-list">
+            <li><span class="font-gblue">8층 : </span> 매표소, 매점, 에스컬레이터, 엘리베이터 , 남자 · 여자 화장실, 비상계단 3</li>
+            <li><span class="font-gblue">9층 : </span> 1관, 2관, 남자 · 여자 화장실, 엘리베이터, 비상계단3</li>
+            <li><span class="font-gblue">10층 : </span> 3관, 4관, 엘리베이터2, 남자 · 여자 화장실, 비상계단 3</li>
+            <li><span class="font-gblue">11층 : </span> 5관, 6관, 7관, 엘리베이터2, 남자 · 여자 화장실, 비상계단 3</li>
+        </ul>
+        <h2 class="tit small mt70">교통안내</h2>
+        <h3 class="tit small">약도</h3>
+        <ul class="dot-list">
+            <li><span class="font-gblue">도로명주소 : </span> 서울특별시 서초구 서초대로 77길 3 (서초동) 아라타워 8층</li>
+        </ul>
+        <div class="location-map-btn mt15">
+            <div class="btn-group left">
+                <a href="http://m.map.naver.com/map.nhn?lng=127.0264086&amp;lat=37.498214&amp;level=2"
+                   class="button purple" target="_blank" title="새창열림">지도에서 보기</a>
+            </div>
+        </div>
+        <h3 class="tit small mt30">주차</h3>
+        <div class="parking-info">
+            <div class="parking-section">
+                <div class="icon-box">
+                    <img src="/assets/images/theater/parking.png" alt="">
+                </div>
+                <div class="info">
+                    <p class="tit">주차안내</p>
+                    <ul class="dot-list">
+                        <li>주차 위치는 ~~ 입니다.</li>
+                    </ul>
+                </div>
+            </div>
 
+
+            <div class="parking-section">
+                <div class="icon-box">
+                    <img src="/assets/images/theater/car.png" alt="">
+                </div>
+                <div class="info">
+                    <p class="tit">주차확인</p>
+
+                    <ul class="dot-list">
+
+                        <li>8층 주차정산기에서 티켓 하단 바코드 인증 후 할인 등록</li>
+
+                        <li>영화 관람 시 3시간 30분 : 3천원 (이후 10분당 1천원 / 카드결제만 가능)</li>
+
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="parking-section">
+                <div class="icon-box">
+                    <img src="/assets/images/theater/timeMoney.png" alt="">
+                </div>
+                <div class="info">
+                    <p class="tit">주차요금</p>
+                    <ul class="dot-list">
+                        <li>주차는 입차시간 기준으로, 입차 후 20분 이후부터 정산 가능</li>
+                        <li>건물 내 타 매장과 주차 할인 중복 적용 불가</li>
+                        <li>주차 공간이 협소하므로 가급적이면 대중교통을 이용 바랍니다.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <h3 class="tit small mt30">대중교통</h3>
+        <!-- location-info -->
+        <div class="public-transportation">
+            <!-- 버스 정보 -->
+            <div class="transportation-section">
+                <div class="icon-box">
+                    <img src="/assets/images/theater/bus.png" alt="">
+                </div>
+                <div class="info">
+                    <p class="tit">버스</p>
+                    <ul class="dot-list">
+                        <li>xxx번, yyy번 zzzz번</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 지하철 정보 -->
+            <div class="transportation-section">
+                <div class="icon-box">
+                    <img src="/assets/images/theater/subway.png" alt="">
+                </div>
+                <div class="info">
+                    <p class="tit">지하철</p>
+                    <ul class="dot-list">
+                        <li>지하철 x호선, xx선 'xx역 - > 지하철 x번 출구</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </main>
 </body>

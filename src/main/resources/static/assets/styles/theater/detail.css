@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
 #header {
@@ -93,6 +94,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  line-height: 1.5;
 }
 #main > * {
   width: 1100px;
@@ -162,6 +164,9 @@
   float: left;
   margin-left: 72px;
 }
+#main > .top > .theater-all > .theater-area-list > .area-depth1 > li.on .area-depth2 {
+  display: block;
+}
 #main > .top > .theater-all > .theater-area-list > .area-depth1 > li > .depth1 {
   position: relative;
   display: block;
@@ -181,6 +186,11 @@
   z-index: 10;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
 }
+#main > .top > .theater-all > .theater-area-list > .area-depth1 > li > .area-depth2 > ul:after {
+  clear: both;
+  content: "";
+  display: block;
+}
 #main > .top > .theater-all > .theater-area-list > .area-depth1 > li > .area-depth2 > ul > li {
   float: left;
   margin: 5px 0;
@@ -191,6 +201,16 @@
   vertical-align: middle;
   color: #444;
   padding: 0 11px;
+}
+#main > .top > .theater-all > .theater-area-list > .area-depth1 > li > .area-depth2 > ul > li > a:not(:last-of-type):after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 1px;
+  height: 12px;
+  margin-top: -6px;
+  background-color: #d8d9db;
 }
 #main > .top > .theater-all > .theater-area-list > .area-depth1 > li > .area-depth2 > ul > li.on a {
   color: #01738b !important;
@@ -258,9 +278,208 @@
   margin: 0 auto;
   padding-top: 40px !important;
 }
+#main > .content > .theater-facility {
+  overflow: hidden;
+  padding: 2px 0 0 0;
+}
+#main > .content > .theater-facility p {
+  float: left;
+  width: 111px;
+  margin: 0 30px 0 0;
+  padding: 0;
+  text-align: center;
+}
+#main > .content > .theater-facility p img {
+  overflow: hidden;
+  display: inline-block;
+  margin: -1px 0 0 0;
+  padding: 0;
+  font-size: 0;
+  line-height: 0;
+  vertical-align: middle;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  width: 111px;
+  height: 111px;
+  margin-bottom: 10px;
+}
+#main > .content .parking-info {
+  padding: 0 0 30px 0;
+  border: 1px solid #d8d9db;
+  border-radius: 10px;
+}
+#main > .content .parking-info > .parking-section {
+  min-height: 85px;
+  padding: 30px 0 0 0;
+  position: relative;
+}
+#main > .content .parking-info > .parking-section > .icon-box {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  width: 150px;
+  text-align: center;
+}
+#main > .content .parking-info > .parking-section > .icon-box > img {
+  width: 67px;
+  height: 57px;
+}
+#main > .content .parking-info > .parking-section > .info {
+  padding-left: 150px;
+}
+#main > .content .parking-info > .parking-section > .info .tit {
+  margin: 0;
+  padding: 0 0 10px 0;
+}
+#main > .content .parking-info p {
+  padding: 0;
+  margin: 0;
+}
+#main > .content .public-transportation {
+  padding: 0 0 30px 0;
+  border: 1px solid #d8d9db;
+  border-radius: 10px;
+}
+#main > .content .public-transportation .transportation-section {
+  min-height: 85px;
+  position: relative;
+  padding: 30px 0 0 0;
+}
+#main > .content .public-transportation .transportation-section > .icon-box {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  width: 150px;
+  text-align: center;
+}
+#main > .content .public-transportation .transportation-section > .icon-box > img {
+  width: 67px;
+  height: 70px;
+}
+#main > .content .public-transportation .transportation-section > .info {
+  padding-left: 150px;
+}
+#main > .content .public-transportation .transportation-section > .info > .tit {
+  margin: 0;
+  padding: 0 0 10px 0;
+}
+#main > .content .public-transportation p {
+  padding: 0;
+  margin: 0;
+}
 
 button {
   letter-spacing: -0.5px;
+}
+
+.mt15 {
+  margin-top: 15px !important;
+}
+
+.mt30 {
+  margin-top: 30px !important;
+}
+
+.mt70 {
+  margin-top: 70px !important;
+}
+
+.dot-list > li {
+  position: relative;
+  padding: 0 0 0 8px;
+}
+.dot-list > li:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 9px;
+  left: 0;
+  background-color: #503396;
+  width: 3px;
+  height: 3px;
+}
+
+.font-gblue {
+  color: #01738b !important;
+}
+
+h2.tit {
+  padding: 0 0 26px 0;
+  font-size: 1.8666em;
+  font-weight: 400;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  color: #222;
+}
+h2.tit.small {
+  padding: 0 0 16px 0;
+  font-size: 1.375rem;
+  color: #503396;
+}
+
+h3.tit {
+  margin: 0;
+  padding: 0 0 16px 0;
+  font-size: 1.6em;
+  font-weight: 400;
+  color: #503396;
+  line-height: 1.1;
+}
+h3.tit.small {
+  padding: 0 0 10px 0;
+  font-size: 1.125rem;
+  color: #222;
+}
+
+.btn-group {
+  padding: 20px 0 30px 0;
+  margin: 0;
+  text-align: center;
+}
+
+.btn-group.left {
+  text-align: left;
+}
+
+.location-map-btn > div {
+  padding: 0;
+  margin: 0;
+}
+.location-map-btn a:before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 17px;
+  background: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-location-map.png) 0 0 no-repeat;
+  padding-right: 3px;
+  vertical-align: middle;
+}
+
+.button {
+  display: inline-block;
+  height: 36px;
+  margin: 0;
+  padding: 0 15px;
+  text-align: center;
+  line-height: 34px;
+  color: #503396;
+  font-weight: 400;
+  border-radius: 4px;
+  font-family: "Nanum Gothic", Dotum, "돋움", sans-serif;
+  text-decoration: none;
+  border: 1px solid #503396;
+  vertical-align: middle;
+  background-color: #fff;
+  cursor: pointer;
+}
+.button.purple {
+  color: #fff;
+  line-height: 36px;
+  border: 0;
+  background: #503396;
+}
+.button.purple .button {
+  margin: 0 3px;
 }
 
 /*# sourceMappingURL=detail.css.map */

@@ -580,51 +580,7 @@ HTMLElement.prototype.isEnabled = function () {
     return !this.hasAttribute('disabled');
 }
 
-if (document.getElementById('loginForm') !== null){
-    // 로그인 취소 버튼 작동
-    loginCancelButton.onclick = () => {
-        loginForm.hide();
-        cover.hide();
-    }
-    // 로그인 시도
-    loginForm.onsubmit = e => {
-        e.preventDefault();
-        // 관리자용 아이디 검사용 로직, 나중에 서비스에서 할 수 있게 바꿔야댐
-        if (loginForm.email.value === 'a@aaa' &&
-            loginForm.password.value === 'aaaaa') {
-            alertCover.show(() => {
-                alertCover.hide();
-                document.querySelector('._obj-message').hide();
-            });
-            MessageObj.createSimpleOk('알림', '아이디 또는 비밀번호가 맞지 않습니다. <br>로그인 정보를 다시 확인바랍니다.', () => {
-                alertCover.hide();
-            }).show();
-            if (document.querySelector('._obj-message') !== null) {
-                document.querySelector('._obj-message').style.width = '400px';
-            }
-            return;
-        }
-    }
 
-// 로그인 화면에서 이메일이나 비밀번호 값에 변경이 있을 때, 둘 중 하나라도 비어있으면 제출 버튼이 비활성화된다.
-    loginForm.email.oninput = () => {
-        if (loginForm.email.value === '' ||
-            loginForm.password.value === '') {
-            loginForm.querySelector('[type="submit"]').disable();
-            return;
-        }
-        loginForm.querySelector('[type="submit"]').enable();
-    }
-
-    loginForm.password.oninput = () => {
-        if (loginForm.email.value === '' ||
-            loginForm.password.value === '') {
-            loginForm.querySelector('[type="submit"]').disable();
-            return;
-        }
-        loginForm.querySelector('[type="submit"]').enable();
-    }
-}
 
 
 cover.show = (onclick) => {
