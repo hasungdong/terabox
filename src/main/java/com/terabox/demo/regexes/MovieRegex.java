@@ -9,6 +9,4 @@ public class MovieRegex {
     public static final Regex explanation = new Regex("^([\\da-zA-Z가-힣\\(\\)\\-.,!·<>\\s\"']{1,50})$");
 
     public static final Regex subExplanation = new Regex("^([\\da-zA-Z가-힣\\(\\)\\-.,!·<>\\s\"']{1,1000})$");
-
-
 }
