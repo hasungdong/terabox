@@ -27,9 +27,7 @@ addMovieForm.isSingleLabel = new LabelObj(addMovieForm.querySelector('[rel="isSi
 addMovieForm.ageLimitLabel = new LabelObj(addMovieForm.querySelector('[rel="ageLimitLabel"]'));
 addMovieForm.dimensionTypeLabel = new LabelObj(addMovieForm.querySelector('[rel="dimensionTypeLabel"]'));
 addMovieForm.explanationLabel = new LabelObj(addMovieForm.querySelector('[rel="explanationLabel"]'));
-
-
-
+addMovieForm.subExplanationLabel = new LabelObj(addMovieForm.querySelector('[rel="subExplanationLabel"]'));
 
 // addMovieForm 제출
 addMovieForm.onsubmit = e => {
@@ -57,6 +55,7 @@ addMovieForm.onsubmit = e => {
         addMovieForm['dimensionType'].value === '3D' ||
         addMovieForm['dimensionType'].value === '4D');
     addMovieForm.explanationLabel.setValid(addMovieForm['explanation'].tests());
+    addMovieForm.subExplanationLabel.setValid(addMovieForm['subExplanation'].tests());
 
     if (addMovieForm['thumbnail'].files.length === 0){
         MessageObj.createSimpleOk('경고', '대표 이미지를 선택해주세요.').show();
@@ -70,7 +69,8 @@ addMovieForm.onsubmit = e => {
     !addMovieForm.isSingleLabel.isValid() ||
     !addMovieForm.ageLimitLabel.isValid() ||
     !addMovieForm.dimensionTypeLabel.isValid() ||
-    !addMovieForm.explanationLabel.isValid()){
+    !addMovieForm.explanationLabel.isValid() ||
+    !addMovieForm.subExplanationLabel.isValid()){
         return;
     }
 
@@ -91,6 +91,7 @@ addMovieForm.onsubmit = e => {
     formData.append('ageLimit', addMovieForm['ageLimit'].value);
     formData.append('dimensionType', addMovieForm['dimensionType'].value);
     formData.append('explanation', addMovieForm['explanation'].value);
+    formData.append('subExplanation', addMovieForm['subExplanation'].value);
     xhr.onreadystatechange = function(){
         if (xhr.readyState !== XMLHttpRequest.DONE){
             return;

@@ -189,8 +189,13 @@ const showMovies = (page) => {
             <span class="__warning">효과를 선택해 주세요.</span>
         </label>
         <label class="_obj-label" rel="explanationLabel">
-            <span class="__text">영화 설명</span>
+            <span class="__text">영화 설명 핵심</span>
             <textarea class="_obj-input __field" type="text" name="explanation"></textarea>
+            <span class="__warning">올바른 값을 입력해 주세요.</span>
+        </label>
+        <label class="_obj-label" rel="subExplanationLabel">
+            <span class="__text">영화 설명</span>
+            <textarea class="_obj-input __field" type="text" name="subExplanation"></textarea>
             <span class="__warning">올바른 값을 입력해 주세요.</span>
         </label>
         <div class="spring"></div>
@@ -243,7 +248,7 @@ const showMovies = (page) => {
                                         modifyMovieFormTwo.ageLimitLabel = new LabelObj(modifyMovieFormTwo.querySelector('[rel="ageLimitLabel"]'));
                                         modifyMovieFormTwo.dimensionTypeLabel = new LabelObj(modifyMovieFormTwo.querySelector('[rel="dimensionTypeLabel"]'));
                                         modifyMovieFormTwo.explanationLabel = new LabelObj(modifyMovieFormTwo.querySelector('[rel="explanationLabel"]'));
-
+                                        modifyMovieFormTwo.subExplanationLabel = new LabelObj(modifyMovieFormTwo.querySelector('[rel="subExplanationLabel"]'));
 
                                         modifyMovieFormTwo.onsubmit = e => {
                                             e.preventDefault();
@@ -270,9 +275,10 @@ const showMovies = (page) => {
                                             modifyMovieFormTwo.dimensionTypeLabel.setValid(modifyMovieFormTwo['dimensionType'].value === '2D' ||
                                                 modifyMovieFormTwo['dimensionType'].value === '3D' ||
                                                 modifyMovieFormTwo['dimensionType'].value === '4D');
-                                            const explanationRegex = new RegExp("^([\\da-zA-Z가-힣()\\-.,!·<>\\s\"']{1,1000})$");
-
+                                            const explanationRegex = new RegExp("^([\\da-zA-Z가-힣()\\-.,!·<>\\s\"']{1,50})$");
                                             modifyMovieFormTwo.explanationLabel.setValid(explanationRegex.test(modifyMovieFormTwo['explanation'].value));
+                                            const subExplanationRegex = new RegExp("^([\\da-zA-Z가-힣()\\-.,!·<>\\s\"']{1,800})$");
+                                            modifyMovieFormTwo.subExplanationLabel.setValid(explanationRegex.test(modifyMovieFormTwo['subExplanation'].value));
                                             // 양식 안맞을시 제출 막는 로직, 이것도 add에서 해줬었음
                                             if (!modifyMovieFormTwo.titleLabel.isValid() ||
                                                 !modifyMovieFormTwo.releaseDateLabel.isValid() ||
@@ -280,7 +286,8 @@ const showMovies = (page) => {
                                                 !modifyMovieFormTwo.isSingleLabel.isValid() ||
                                                 !modifyMovieFormTwo.ageLimitLabel.isValid() ||
                                                 !modifyMovieFormTwo.dimensionTypeLabel.isValid() ||
-                                                !modifyMovieFormTwo.explanationLabel.isValid()) {
+                                                !modifyMovieFormTwo.explanationLabel.isValid() ||
+                                                !modifyMovieFormTwo.subExplanationLabel.isValid()) {
                                                 return;
                                             }
                                             // 수정할 값들을 받아서 실제로 수정하는 xhr 요청
@@ -298,6 +305,7 @@ const showMovies = (page) => {
                                             formData.append('ageLimit', modifyMovieFormTwo['ageLimit'].value);
                                             formData.append('dimensionType', modifyMovieFormTwo['dimensionType'].value);
                                             formData.append('explanation', modifyMovieFormTwo['explanation'].value);
+                                            formData.append('subExplanation', modifyMovieFormTwo['subExplanation'].value);
                                             xhr.onreadystatechange = function () {
                                                 if (xhr.readyState !== XMLHttpRequest.DONE) {
                                                     return;

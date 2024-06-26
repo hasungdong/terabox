@@ -16,7 +16,8 @@
                `thumbnail_content_type` AS `thumbnailContentType`,
                `age_limit`              AS `ageLimit`,
                `dimension_type`         AS `dimensionType`,
-               `explanation`            AS `explanation`
+               `explanation`            AS `explanation`,
+               `sub_explanation`        AS `subExplanation`
         FROM `terabox`.`movies`
         WHERE `title` = #{title}
           AND `release_date` = #{releaseDate}
@@ -36,7 +37,8 @@
                `thumbnail_content_type` AS `thumbnailContentType`,
                `age_limit`              AS `ageLimit`,
                `dimension_type`         AS `dimensionType`,
-               `explanation`            AS `explanation`
+               `explanation`            AS `explanation`,
+               `sub_explanation`        AS `subExplanation`
         FROM `terabox`.`movies`
         WHERE `title` = #{title}
     </select>
@@ -54,7 +56,8 @@
                `thumbnail_content_type` AS `thumbnailContentType`,
                `age_limit`              AS `ageLimit`,
                `dimension_type`         AS `dimensionType`,
-               `explanation`            AS `explanation`
+               `explanation`            AS `explanation`,
+               `sub_explanation`        AS `subExplanation`
         FROM `terabox`.`movies`
         WHERE `index` = #{index}
         LIMIT 1
@@ -80,7 +83,8 @@
                `thumbnail_content_type` AS `thumbnailContentType`,
                `age_limit`              AS `ageLimit`,
                `dimension_type`         AS `dimensionType`,
-               `explanation`            AS `explanation`
+               `explanation`            AS `explanation`,
+               `sub_explanation`        AS `subExplanation`
         FROM `terabox`.`movies` AS `movie`
         WHERE (REPLACE(`title`, ' ', '') LIKE CONCAT('%', REPLACE(#{keyword}, ' ', ''), '%'))
         ORDER BY movie.`index` DESC

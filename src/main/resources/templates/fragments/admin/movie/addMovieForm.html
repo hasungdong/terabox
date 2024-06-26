@@ -66,8 +66,13 @@
             <span class="__warning">효과를 선택해 주세요.</span>
         </label>
         <label class="_obj-label" rel="explanationLabel">
-            <span class="__text">영화 설명</span>
+            <span class="__text">영화 설명 핵심</span>
             <textarea class="_obj-input __field" type="text" name="explanation" th:attrappend="data-regex=${movieRegex.explanation.expression}"></textarea>
+            <span class="__warning">올바른 값을 입력해 주세요.</span>
+        </label>
+        <label class="_obj-label" rel="subExplanationLabel">
+            <span class="__text">영화 설명</span>
+            <textarea class="_obj-input __field" type="text" name="subExplanation" th:attrappend="data-regex=${movieRegex.subExplanation.expression}"></textarea>
             <span class="__warning">올바른 값을 입력해 주세요.</span>
         </label>
         <div class="spring"></div>

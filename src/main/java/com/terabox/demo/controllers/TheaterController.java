@@ -23,6 +23,7 @@ public class TheaterController {
     private final RegionService regionService;
     private final EventService eventService;
 
+
 //    theater/list html 페이지 보여주는거
     @GetMapping(value = "/list", produces = MediaType.TEXT_HTML_VALUE)
     public String getList(Model model){

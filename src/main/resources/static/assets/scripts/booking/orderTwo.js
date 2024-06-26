@@ -183,6 +183,7 @@ selectPeopleCells.forEach(selectPeopleCell => {
             }
         }
 
+        // 버튼 활성, 비활성화
         if (seatsCanIncludeValue.length !== 0) {
             document.getElementById('pageNext').classList.remove('active');
             document.getElementById('pageNext').classList.add('disabled');
@@ -225,8 +226,21 @@ selectPeopleCells.forEach(selectPeopleCell => {
             }
         }
 
-
+        // 각 타입의 개수가 0이면 그 타입은 안보이게 한다.
+        // 예: 노인 티켓이 현재 0개면 노인 글씨는 안보인다
         seatTypeCounts.forEach(seatTypeCount => seatTypeCount.querySelector('em').innerText === '0' ? seatTypeCount.style.display = 'none' : seatTypeCount.style.display = 'block');
+
+        // 결제 금액 값 바꾸기
+        // 결제 금액
+        const orderPriceComma = orderTwoContainer.querySelector('.pay-area > .pay > .money > em');
+        // 결제 금액 값 새로 지정
+        let orderPrice;
+        orderPrice = parseInt(adultCount.innerText) * 14000 +
+            parseInt(teenagerCount.innerText) * 12000 +
+            parseInt(oldCount.innerText) * 7000 +
+            parseInt(disabledCount.innerText) * 6000;
+        // 구한 값에 3번째 자리마다 콤마 찍어주기
+        orderPriceComma.innerText = orderPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
 //     감소 버튼 눌렀을 때
@@ -323,6 +337,18 @@ selectPeopleCells.forEach(selectPeopleCell => {
                     document.getElementById('pageNext').classList.remove('disabled');
                     document.getElementById('pageNext').classList.add('active');
                 }
+
+                // 결제 금액 값 바꾸기
+                // 결제 금액
+                const orderPriceComma = orderTwoContainer.querySelector('.pay-area > .pay > .money > em');
+                // 결제 금액 값 새로 지정
+                let orderPrice;
+                orderPrice = parseInt(adultCount.innerText) * 14000 +
+                    parseInt(teenagerCount.innerText) * 12000 +
+                    parseInt(oldCount.innerText) * 7000 +
+                    parseInt(disabledCount.innerText) * 6000;
+                // 구한 값에 3번째 자리마다 콤마 찍어주기
+                orderPriceComma.innerText = orderPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             } else {
                 // 값을 고를 수 있는 좌석이 없다면
                 alertCover.show();
@@ -341,6 +367,7 @@ selectPeopleCells.forEach(selectPeopleCell => {
                             text: '확인', onclick: instance => {
                                 instance.hide();
                                 alertCover.hide();
+                                location.reload();
                             }
                         }
                     ]
@@ -554,6 +581,18 @@ selectPeopleCells.forEach(selectPeopleCell => {
                         });
                     }
 
+                    // 결제 금액 값 바꾸기
+                    // 결제 금액
+                    const orderPriceComma = orderTwoContainer.querySelector('.pay-area > .pay > .money > em');
+                    // 결제 금액 값 새로 지정
+                    let orderPrice;
+                    orderPrice = parseInt(adultCount.innerText) * 14000 +
+                        parseInt(teenagerCount.innerText) * 12000 +
+                        parseInt(oldCount.innerText) * 7000 +
+                        parseInt(disabledCount.innerText) * 6000;
+                    // 구한 값에 3번째 자리마다 콤마 찍어주기
+                    orderPriceComma.innerText = orderPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
                     //     바꾸고 난 뒤에 선택되지 않게 되었으면
                 } else {
                     // 선택된 좌석 중에 제일 뒤를 빼고
@@ -593,6 +632,8 @@ selectPeopleCells.forEach(selectPeopleCell => {
                             seatsNotIncludingValue.push(seat);
                         }
                     });
+
+
 
                     // 좌석 이름을 -로 변경
                     seatsCanIncludeValue[0].innerText = '-';
@@ -653,6 +694,18 @@ selectPeopleCells.forEach(selectPeopleCell => {
                             }
                         });
                     }
+
+                    // 결제 금액 값 바꾸기
+                    // 결제 금액
+                    const orderPriceComma = orderTwoContainer.querySelector('.pay-area > .pay > .money > em');
+                    // 결제 금액 값 새로 지정
+                    let orderPrice;
+                    orderPrice = parseInt(adultCount.innerText) * 14000 +
+                        parseInt(teenagerCount.innerText) * 12000 +
+                        parseInt(oldCount.innerText) * 7000 +
+                        parseInt(disabledCount.innerText) * 6000;
+                    // 구한 값에 3번째 자리마다 콤마 찍어주기
+                    orderPriceComma.innerText = orderPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                 }
             }
         }
