@@ -212,6 +212,10 @@
   color: #503396;
   margin-left: 10px;
 }
+#main > .theater-box > .user-theater > div > .link:hover {
+  background-color: #503396;
+  color: #ffffff;
+}
 #main > .event-container {
   display: flex;
   flex-direction: column;

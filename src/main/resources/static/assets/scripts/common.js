@@ -3,50 +3,6 @@ const alertCover = document.getElementById('alertCover');
 const cover = document.getElementById('cover');
 const loading = document.getElementById('loading');
 
-if (document.querySelector('[rel="showLoginAlert"]') !== null) {
-    // 로그인이 안되어있다면 << 나중에 이 조건도 코딩해야됨
-    const loginAlertButtons = document.querySelectorAll('[rel="showLoginAlert"]');
-    loginAlertButtons.forEach(loginAlertButton => loginAlertButton.onclick = () => {
-        new MessageObj({
-            title: '알림',
-            content: '로그인 후 이용가능한 서비스입니다 <br> 로그인하시겠습니까?',
-            buttons: [
-                {
-                    text: '취소', onclick: instance => {
-                        instance.hide();
-                        alertCover.hide();
-                    }
-                },
-                {
-                    text: '확인', onclick: instance => {
-                        instance.hide();
-                        showLogin();
-                        alertCover.hide();
-                    }
-                }
-            ]
-        }).show();
-        // document.querySelector('._obj-message.-visible') 이건 왜 안되징
-        document.querySelector('._obj-message').querySelector('.title-bar').style.boxSizing = 'border-box';
-        document.querySelector('._obj-message').querySelector('.title-bar').style.width = '300px';
-        document.querySelector('._obj-message').querySelector('.__content').style.boxSizing = 'border-box';
-        document.querySelector('._obj-message').querySelector('.__content').style.width = '300px';
-        document.querySelector('._obj-message').querySelector('.__button:first-child').style.backgroundColor = '#ffffff';
-        document.querySelector('._obj-message').querySelector('.__button:first-child').style.color = '#503396';
-        alertCover.show(() => {
-            console.log(document.querySelector('._obj-message.-visible').style.width);
-            document.querySelector('._obj-message.-visible').hide();
-            alertCover.hide();
-        });
-        const alertCancelButton = document.querySelector('[rel="alertCancel"]');
-        alertCancelButton.onclick = () => {
-            alertCover.hide();
-            document.querySelector('._obj-message').hide();
-        }
-    });
-//     로그인이 되어있다면 관리자 페이지로 이동
-}
-
 // 스와이퍼 기능, 홈일 때랑 아닐 때 구분돼있음
 if (document.querySelector('span.swiper-bar') !== null) {
     const leftSwiperButton = document.querySelector('button.left.swiper');

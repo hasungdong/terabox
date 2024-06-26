@@ -8,7 +8,7 @@
     <title>MEET PLAY SHARE, 테라박스</title>
     <th:block th:replace="~{fragments/common/common.html :: commonHead}"></th:block>
     <link rel="stylesheet" th:href="@{/assets/styles/theater/detail.css}">
-    <!--    <script defer th:src="@{/assets/scripts/theater/detail.js}"></script>-->
+    <script defer th:src="@{/assets/scripts/theater/detail.js}"></script>
 </head>
 <body>
 <th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
@@ -37,19 +37,13 @@
             <p class="name" th:text="${theater.getName()}"></p>
             <div class="btn-util right">
                 <div class="block">
-                    <button type="button" class="btn btn-like tooltip click">
+                    <button type="button" class="btn btn-like tooltip click login" th:if="${session.user != null}">
                         <img src="/assets/images/common/favicon.ico" alt="" class="preferred-theater">
                         <span>선호극장</span>
-                        <span class="ir" data-width="235">
-                            <span class="cont-area">
-                                <span class="login-alert-tooltip">
-                                    로그인이 필요한 서비스 입니다.<br>
-                                    <a href="" id="moveLogin" title="로그인하기">로그인하기
-                                        <i class="iconset ico-arr-right-green"></i>
-                                    </a>
-                                </span>
-                            </span>
-                        </span>
+                    </button>
+                    <button type="button" class="btn btn-like tooltip click" th:if="${session.user == null}">
+                        <img src="/assets/images/common/favicon.ico" alt="" class="preferred-theater">
+                        <span>선호극장</span>
                     </button>
                 </div>
             </div>
@@ -72,11 +66,11 @@
         <h2 class="tit small mt70">교통안내</h2>
         <h3 class="tit small">약도</h3>
         <ul class="dot-list">
-            <li><span class="font-gblue">도로명주소 : </span> 서울특별시 서초구 서초대로 77길 3 (서초동) 아라타워 8층</li>
+            <li><span class="font-gblue">도로명주소 : </span> xx시 xx구 xxx로 xx길 xx (xx동)</li>
         </ul>
         <div class="location-map-btn mt15">
             <div class="btn-group left">
-                <a href="http://m.map.naver.com/map.nhn?lng=127.0264086&amp;lat=37.498214&amp;level=2"
+                <a href="/assets/images/theater/location.png"
                    class="button purple" target="_blank" title="새창열림">지도에서 보기</a>
             </div>
         </div>

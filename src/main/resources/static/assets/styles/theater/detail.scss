@@ -189,6 +189,16 @@
             border-radius: 4px;
             background-color: rgba(0, 0, 0, .4);
 
+            &:hover{
+              color: #222;
+              background-color: #fff;
+            }
+
+            &.on{
+              color: #222;
+              background-color: #fff;
+            }
+
             &.btn-like{
               display: flex;
               align-items: center;
@@ -207,25 +217,6 @@
 
               span{
                 display: inline;
-              }
-
-              .ir{
-                text-indent: -9999px;
-                position: fixed;
-                top: -9999px;
-                font-size: 1px;
-                width: 1px;
-                height: 1px;
-                opacity: 0;
-
-                .login-alert-tooltip{
-                  display: block;
-                  text-align: center;
-
-                  a{
-                    color: #037b94;
-                  }
-                }
               }
             }
           }

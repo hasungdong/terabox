@@ -240,6 +240,14 @@
   border-radius: 4px;
   background-color: rgba(0, 0, 0, 0.4);
 }
+#main > .top > .theater-all > .btn-util > .block > .btn:hover {
+  color: #222;
+  background-color: #fff;
+}
+#main > .top > .theater-all > .btn-util > .block > .btn.on {
+  color: #222;
+  background-color: #fff;
+}
 #main > .top > .theater-all > .btn-util > .block > .btn.btn-like {
   display: flex;
   align-items: center;
@@ -257,22 +265,6 @@
 }
 #main > .top > .theater-all > .btn-util > .block > .btn.btn-like span {
   display: inline;
-}
-#main > .top > .theater-all > .btn-util > .block > .btn.btn-like .ir {
-  text-indent: -9999px;
-  position: fixed;
-  top: -9999px;
-  font-size: 1px;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-}
-#main > .top > .theater-all > .btn-util > .block > .btn.btn-like .ir .login-alert-tooltip {
-  display: block;
-  text-align: center;
-}
-#main > .top > .theater-all > .btn-util > .block > .btn.btn-like .ir .login-alert-tooltip a {
-  color: #037b94;
 }
 #main > .content {
   margin: 0 auto;

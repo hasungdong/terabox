@@ -36,14 +36,14 @@
             <div th:if="${session.user == null}">
                 <img class="icon" th:src="@{/assets/images/common/favicon.ico}" alt="">
                 나의 선호영화관 정보
-                <a href="" class="button link ml10" title="로그인하기" rel="showLogin">로그인하기</a>
+                <a class="button link ml10" title="로그인하기" rel="showLogin">로그인하기</a>
             </div>
 <!--            로그인 후-->
-            <div th:if="session.user != null">
+            <div th:if="${session.user != null}">
                 <img class="icon" th:src="@{/assets/images/common/favicon.ico}" alt="">
-                <span style="color: #01738b; padding-left: 5px;"> 하성동</span>님의 선호영화관
+                <span style="color: #01738b; padding-left: 5px;" th:text="${session.user.getNickname()}"> 하성동</span>님의 선호영화관
                 <div class="spring" style="flex-grow: 1"></div>
-                <a href="" class="button link ml10" title="로그인하기">선호영화관 관리</a>
+                <a class="button link ml10" title="로그인하기">선호영화관 관리</a>
             </div>
         </div>
     </div>
