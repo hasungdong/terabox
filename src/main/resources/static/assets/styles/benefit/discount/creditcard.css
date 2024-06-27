@@ -371,6 +371,9 @@
   justify-content: center;
   align-items: center;
 }
+#main > .all-card-container > .card-list-block > ul > li > .list > ul > li > .img img {
+  object-fit: contain;
+}
 #main > .all-card-container > .card-list-block > ul > li > .list > ul > li > .cont {
   flex-grow: 1;
   padding-left: 40px;
