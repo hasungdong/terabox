@@ -24,10 +24,50 @@
             </li>
         </ul>
     </nav>
-    <div class="checkLevel">
+    <div class="checkLevel" th:if="${session.user == null}">
         <span class="title">MEGABOX <span class="bold">VIP</span></span>
         <span class="text">메가박스의 더 많은 혜택을 누릴 수 있는 방법! 로그인 후 메가박스 등급을 확인하세요.</span>
         <a class="link" rel="showLogin">로그인</a>
+    </div>
+    <div class="benefit-vip-lounge2 normal" th:if="${session.user != null}">
+        <div class="lt">
+            <div class="mbimg"><img src="/assets/images/benefit/welcome.png" alt="WELCOME"></div>
+            <div class="mb_name">안녕하세요!<br><p><span>하성동</span>님</p></div>
+            <div class="period">
+            </div>
+        </div>
+        <div class="rt">
+            <div class="sect n1">
+                <div class="tit">VIP선정포인트</div>
+                <div class="point nowPoint">0 P</div>
+            </div>
+
+            <div class="sect n3 activityInfo"><ul>		<li>서로다른 영화관람<span>0편</span></li>		<li>티켓<span>0 P</span></li>		<li>매점<span>0 P</span></li>		<li>이벤트<span>0 P</span></li></ul></div>
+        </div>
+        <div class="graphBox mbClassInx0">
+            <div class="inner">
+                <div class="bar">
+                    <div class="inBar"></div>
+                </div>
+            </div>
+            <ul class="list" id="pointFlag-list">
+                <li class="on act">Welcome
+                    <div class="pointFlag"><span>다음 Friends 등급까지 6,000 P 남았어요!</span></div>
+                </li>
+                <li class="">Friends
+                    <div class="pointFlag"><span>다음 Friends 등급까지 6,000 P 남았어요!</span></div>
+                </li>
+                <li class="">VIP
+                    <div class="pointFlag"><span>다음 Friends 등급까지 6,000 P 남았어요!</span></div>
+                </li>
+                <li class="">VVIP
+                    <div class="pointFlag"><span>다음 Friends 등급까지 6,000 P 남았어요!</span></div>
+                </li>
+                <li class="">MVIP
+                    <div class="pointFlag"><span>다음 Friends 등급까지 6,000 P 남았어요!</span></div>
+                </li>
+            </ul>
+        </div>
     </div>
     <div class="lounge-benefit-box">
         <th:block th:replace="~{fragments/discount/discount.html :: discount('VIP 회원님을 위한 특별한 이벤트!!')}"></th:block>

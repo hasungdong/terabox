@@ -23,7 +23,7 @@
                 <a class="link" th:href="@{./guide}">할인안내</a>
             </li>
             <li class="item">
-                <a class="link" th:href="@{./creditcard}" th:text="${'신용카드(' + (cardsCount - 1) + ')'}">신용카드(4)</a>
+                <a class="link" th:href="@{./creditcard}" th:text="${'신용카드(' + (cardsCount) + ')'}">신용카드(4)</a>
             </li>
             <li class="item">
                 <a class="link" th:href="@{./telecomcard}">통신사(3)</a>
@@ -116,7 +116,7 @@
                             전체보기 <img th:src="@{/assets/images/common/moreGray.png}" alt="">
                         </a>
                     </div>
-                    <div class="number" id="ckc02cnt">284</div>
+                    <div class="number" id="ckc02cnt" th:text="${cardsCount}"></div>
                     <div class="select-box">
                         <select title="카드 선택" id="sbxCredit" name="sbxCredit" class="selectpicker" tabindex="-98">
                             <option class="bs-title-option" value=""></option>
