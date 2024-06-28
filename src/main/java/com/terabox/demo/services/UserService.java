@@ -104,11 +104,13 @@ public class UserService {
 
     @Transactional
     public Result register(EmailAuthEntity emailAuth, UserEntity user) {
+        if (user == null) {
+            return CommonResult.FAILURE;
+        }
         if (emailAuth == null ||
             !EmailAuthRegex.email.tests(emailAuth.getEmail()) ||
             !EmailAuthRegex.code.tests(emailAuth.getCode()) ||
             !EmailAuthRegex.salt.tests(emailAuth.getSalt()) ||
-            user == null ||
             !UserRegex.email.tests(user.getEmail()) ||
             !UserRegex.password.tests(user.getPassword()) ||
             !UserRegex.nickname.tests(user.getNickname())) {
@@ -136,7 +138,6 @@ public class UserService {
         user.setAdmin(false);
         user.setMembershipCode("일반");
         user.setPoint(0);
-        user.setMileage(0);
         System.out.println(user.getEmail());
         System.out.println(user.getPassword());
         System.out.println(user.getNickname());
@@ -200,7 +201,6 @@ public class UserService {
         user.setCreatedAt(LocalDateTime.now());
         user.setAdmin(false);
         user.setMembershipCode("일반"); // 이거 물어보기
-        user.setMileage(0);
         user.setPoint(0);
         dbEmailAuth.setUsed(true);
 
@@ -231,7 +231,6 @@ public class UserService {
         user.setAdmin(dbUser.isAdmin());
         user.setMembershipCode(dbUser.getMembershipCode());
         user.setPoint(dbUser.getPoint());
-        user.setMileage(dbUser.getMileage());
 
         return CommonResult.SUCCESS;
     }
