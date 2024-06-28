@@ -1,4 +1,6 @@
 @charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
 body {
   font-weight: 400;
   letter-spacing: 0;
@@ -64,7 +66,19 @@ body {
   margin-right: 20px;
   text-decoration-line: none;
 }
+#header > .link-box > .right-link > .header-user {
+  color: #888888;
+  font-size: 13px;
+  margin-right: 20px;
+  text-decoration-line: none;
+}
 #header > .link-box > .right-link > .header-register {
+  color: #888888;
+  font-size: 13px;
+  margin-right: 20px;
+  text-decoration-line: none;
+}
+#header > .link-box > .right-link > .header-logout {
   color: #888888;
   font-size: 13px;
   margin-right: 20px;
@@ -177,7 +191,7 @@ body {
   display: none;
   position: absolute;
   width: 100%;
-  top: 79px;
+  top: 86px;
   height: 44px;
   z-index: 1;
   background-color: #444444;
@@ -203,7 +217,7 @@ body {
   display: none;
   position: absolute;
   width: 100%;
-  top: 79px;
+  top: 86px;
   height: 44px;
   z-index: 1;
   background-color: #444444;
@@ -229,7 +243,7 @@ body {
   display: none;
   position: absolute;
   width: 100%;
-  top: 79px;
+  top: 86px;
   height: 44px;
   z-index: 1;
   background-color: #444444;
@@ -255,7 +269,7 @@ body {
   display: none;
   position: absolute;
   width: 100%;
-  top: 79px;
+  top: 86px;
   height: 44px;
   z-index: 1;
   background-color: #444444;
@@ -281,7 +295,7 @@ body {
   display: none;
   position: absolute;
   width: 100%;
-  top: 79px;
+  top: 86px;
   height: 44px;
   z-index: 1;
   background-color: #444444;
@@ -307,7 +321,7 @@ body {
   display: none;
   position: absolute;
   left: 0;
-  top: 75px;
+  top: 86px;
   z-index: 101;
   width: 100%;
   min-width: 1100px;
@@ -907,7 +921,19 @@ body {
   margin-right: 20px;
   text-decoration-line: none;
 }
+#header > .link-box > .right-link > .header-user {
+  color: #888888;
+  font-size: 13px;
+  margin-right: 20px;
+  text-decoration-line: none;
+}
 #header > .link-box > .right-link > .header-register {
+  color: #888888;
+  font-size: 13px;
+  margin-right: 20px;
+  text-decoration-line: none;
+}
+#header > .link-box > .right-link > .header-logout {
   color: #888888;
   font-size: 13px;
   margin-right: 20px;
@@ -1020,7 +1046,7 @@ body {
   display: none;
   position: absolute;
   width: 100%;
-  top: 79px;
+  top: 86px;
   height: 44px;
   z-index: 1;
   background-color: #444444;
@@ -1046,7 +1072,7 @@ body {
   display: none;
   position: absolute;
   width: 100%;
-  top: 79px;
+  top: 86px;
   height: 44px;
   z-index: 1;
   background-color: #444444;
@@ -1072,7 +1098,7 @@ body {
   display: none;
   position: absolute;
   width: 100%;
-  top: 79px;
+  top: 86px;
   height: 44px;
   z-index: 1;
   background-color: #444444;
@@ -1098,7 +1124,7 @@ body {
   display: none;
   position: absolute;
   width: 100%;
-  top: 79px;
+  top: 86px;
   height: 44px;
   z-index: 1;
   background-color: #444444;
@@ -1124,7 +1150,7 @@ body {
   display: none;
   position: absolute;
   width: 100%;
-  top: 79px;
+  top: 86px;
   height: 44px;
   z-index: 1;
   background-color: #444444;
@@ -1150,7 +1176,7 @@ body {
   display: none;
   position: absolute;
   left: 0;
-  top: 75px;
+  top: 86px;
   z-index: 101;
   width: 100%;
   min-width: 1100px;
