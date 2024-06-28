@@ -1,5 +1,8 @@
 @charset "UTF-8";
 @import "../common/header";
+@import "../common/footer";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
 
 body {
   font-weight: 400;
@@ -11,10 +14,11 @@ body {
   font-size: 15px;
   color: #444;
   font-family: sans-serif, NanumBarunGothic, Dotum, '돋움';
+  width: 100vw;
 }
 
 #main {
-  width: 100vw;
+  //width: 100vw;
 
   > .main-container {
     display: flex;
