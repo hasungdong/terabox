@@ -102,6 +102,7 @@ public class UserController {
         return responseObject.toString();
     }
 
+    // 로그인 관련 컨트롤러
     @PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public String postLogin(HttpSession session, UserEntity user) {
