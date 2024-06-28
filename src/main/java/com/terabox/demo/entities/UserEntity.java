@@ -18,6 +18,5 @@ public class UserEntity {
     private String membershipCode;
     private LocalDateTime createdAt;
     private int point;
-    private int mileage;
     private boolean isAdmin;
 }
