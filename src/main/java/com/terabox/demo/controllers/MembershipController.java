@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping(value = "benefit")
@@ -41,7 +42,8 @@ public class MembershipController {
     }
 
     @GetMapping(value = "discount/creditcard", produces = MediaType.TEXT_HTML_VALUE)
-    public String getDiscountCreditCard(Model model){
+    public String getDiscountCreditCard(@RequestParam(value = "cardName", required = false) String cardName,
+                                        Model model){
         model.addAttribute("events", this.eventService.getEventsAll());
         model.addAttribute("eventsCount", this.eventService.getEventsAllCount());
         model.addAttribute("cards", this.cardService.getCards());
@@ -50,7 +52,8 @@ public class MembershipController {
     }
 
     @GetMapping(value = "discount/telecomcard", produces = MediaType.TEXT_HTML_VALUE)
-    public String getDiscountTelecomCard(Model model){
+    public String getDiscountTelecomCard(@RequestParam(value = "telecom", required = false) String telecom,
+                                         Model model){
         model.addAttribute("events", this.eventService.getEventsAll());
         model.addAttribute("eventsCount", this.eventService.getEventsAllCount());
         model.addAttribute("cards", this.cardService.getCards());

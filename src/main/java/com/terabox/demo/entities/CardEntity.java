@@ -10,4 +10,5 @@ import lombok.Setter;
 public class CardEntity {
     private String name;
     private int discountRate;
+    private String engName;
 }

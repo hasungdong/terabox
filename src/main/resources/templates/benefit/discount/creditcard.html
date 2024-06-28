@@ -11,13 +11,57 @@
     <script defer th:src="@{/assets/scripts/benefit/discount.js}"></script>
     <script>
         window.onload = () => {
-            window.scroll({
-                // 현재 화면의 위치를 해당 값으로 이동한다.
-                top: document.querySelector('nav#nav').offsetTop,
-                left: 0,
-                // 스크롤로 움직이는 것처럼 부드럽게 이동, 이거 안하면 순간이동함
-                behavior: "smooth"
-            });
+            const currentParameter = window.location.search;
+            if (currentParameter.split('cardName').length > 1){
+                const cardName = currentParameter.split('cardName')[1].split('=')[1];
+                switch (cardName) {
+                    case 'gookmin':
+                        window.scroll({
+                            // 현재 화면의 위치를 해당 값으로 이동한다.
+                            top: document.getElementById('gookmin').offsetTop,
+                            left: 0,
+                            // 스크롤로 움직이는 것처럼 부드럽게 이동, 이거 안하면 순간이동함
+                            behavior: "smooth"
+                        });
+                        break;
+                    case 'bc':
+                        window.scroll({
+                            // 현재 화면의 위치를 해당 값으로 이동한다.
+                            top: document.getElementById('bc').offsetTop,
+                            left: 0,
+                            // 스크롤로 움직이는 것처럼 부드럽게 이동, 이거 안하면 순간이동함
+                            behavior: "smooth"
+                        });
+                        break;
+                    case 'samsung':
+                        window.scroll({
+                            // 현재 화면의 위치를 해당 값으로 이동한다.
+                            top: document.getElementById('samsung').offsetTop,
+                            left: 0,
+                            // 스크롤로 움직이는 것처럼 부드럽게 이동, 이거 안하면 순간이동함
+                            behavior: "smooth"
+                        });
+                        break;
+                    case 'shinhan':
+                        window.scroll({
+                            // 현재 화면의 위치를 해당 값으로 이동한다.
+                            top: document.getElementById('shinhan').offsetTop,
+                            left: 0,
+                            // 스크롤로 움직이는 것처럼 부드럽게 이동, 이거 안하면 순간이동함
+                            behavior: "smooth"
+                        });
+                        break;
+                    case 'kakao':
+                        window.scroll({
+                            // 현재 화면의 위치를 해당 값으로 이동한다.
+                            top: document.getElementById('kakao').offsetTop,
+                            left: 0,
+                            // 스크롤로 움직이는 것처럼 부드럽게 이동, 이거 안하면 순간이동함
+                            behavior: "smooth"
+                        });
+                        break;
+                }
+            }
 
             const cardLists = document.querySelectorAll('.card-list-block > ul > li');
 
@@ -88,7 +132,7 @@
         </div>
         <div class="card-list-block">
             <ul>
-                <li class="on" th:each="card : ${cards}">
+                <li class="on" th:each="card : ${cards}" th:id="${card.getEngName()}">
                     <h3 class="tit">
                         <span th:text="${card.getName()}">국민카드</span>
                     </h3>

@@ -87,19 +87,19 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
+                                    <a th:href="@{./telecomcard (telecom=lgu)}" class="link" role="option" aria-disabled="false" tabindex="0"
                                        aria-selected="false">
                                         <span class="text">LGU＋</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
+                                    <a th:href="@{./telecomcard (telecom=skt)}" class="link" role="option" aria-disabled="false" tabindex="0"
                                        aria-selected="false">
                                         <span class="text">SKT</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
+                                    <a th:href="@{./telecomcard (telecom=kt)}" class="link" role="option" aria-disabled="false" tabindex="0"
                                        aria-selected="false">
                                         <span class="text">KT</span>
                                     </a>
@@ -121,19 +121,7 @@
                         <select title="카드 선택" id="sbxCredit" name="sbxCredit" class="selectpicker" tabindex="-98">
                             <option class="bs-title-option" value=""></option>
                             <option>카드 선택</option>
-                            <option value="CPCT00">메가박스카드</option>
-                            <option value="CPCT01">삼성카드</option>
-                            <option value="CPCT02">현대카드</option>
-                            <option value="CPCT03">신한카드</option>
-                            <option value="CPCT04">비씨카드</option>
-                            <option value="CPCT05">KB국민카드</option>
-                            <option value="CPCT06">우리카드</option>
-                            <option value="CPCT07">하나카드</option>
-                            <option value="CPCT09">NH농협카드</option>
-                            <option value="CPCT10">씨티카드</option>
-                            <option value="CPCT11">IBK기업은행</option>
-                            <option value="CPCT15">SC제일은행</option>
-                            <option value="CPCT99">기타</option>
+                            <option th:value="${card.getName()}" th:each="card : ${cards}"></option>
                         </select>
                         <button type="button" class="button select" title="카드 선택" rel="showCard">
                             <div class="select-fake">카드 선택</div>
@@ -149,81 +137,10 @@
                                         <span class="text">카드 선택</span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
+                                <li th:each="card : ${cards}">
+                                    <a th:href="@{./creditcard (cardName= ${card.getEngName()})}" class="link" role="option" aria-disabled="false" tabindex="0"
                                        aria-selected="false">
-                                        <span class="text">메가박스카드</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
-                                       aria-selected="false">
-                                        <span class="text">삼성카드</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
-                                       aria-selected="false">
-                                        <span class="text">현대카드</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
-                                       aria-selected="false">
-                                        <span class="text">신한카드</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
-                                       aria-selected="false">
-                                        <span class="text">비씨카드</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
-                                       aria-selected="false">
-                                        <span class="text">KB국민카드</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
-                                       aria-selected="false"><span class="text">우리카드</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
-                                       aria-selected="false">
-                                        <span class="text">하나카드</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
-                                       aria-selected="false">
-                                        <span class="text">NH농협카드</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
-                                       aria-selected="false">
-                                        <span class="text">씨티카드</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
-                                       aria-selected="false">
-                                        <span class="text">IBK기업은행</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
-                                       aria-selected="false">
-                                        <span class="text">SC제일은행</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
-                                       aria-selected="false">
-                                        <span class="text">기타</span>
+                                        <span class="text" th:text="${card.getName()}"></span>
                                     </a>
                                 </li>
                             </ul>

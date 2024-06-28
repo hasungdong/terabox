@@ -11,11 +11,40 @@
     <script defer th:src="@{/assets/scripts/benefit/discount.js}"></script>
     <script defer>
         window.onload = () => {
-            window.scroll({
-                top:document.querySelector('nav#nav').offsetTop,
-                left:0,
-                behavior:"smooth"
-            });
+            const currentParameter = window.location.search;
+            if (currentParameter.split('telecom').length > 1){
+                const telecom = currentParameter.split('telecom')[1].split('=')[1];
+                switch (telecom) {
+                    case 'skt':
+                        window.scroll({
+                            // 현재 화면의 위치를 해당 값으로 이동한다.
+                            top: document.getElementById('skt').offsetTop,
+                            left: 0,
+                            // 스크롤로 움직이는 것처럼 부드럽게 이동, 이거 안하면 순간이동함
+                            behavior: "smooth"
+                        });
+                        break;
+                    case 'kt':
+                        window.scroll({
+                            // 현재 화면의 위치를 해당 값으로 이동한다.
+                            top: document.getElementById('kt').offsetTop,
+                            left: 0,
+                            // 스크롤로 움직이는 것처럼 부드럽게 이동, 이거 안하면 순간이동함
+                            behavior: "smooth"
+                        });
+                        break;
+                    case 'lgu':
+                        window.scroll({
+                            // 현재 화면의 위치를 해당 값으로 이동한다.
+                            top: document.getElementById('lgu').offsetTop,
+                            left: 0,
+                            // 스크롤로 움직이는 것처럼 부드럽게 이동, 이거 안하면 순간이동함
+                            behavior: "smooth"
+                        });
+                        break;
+                }
+            }
+
         };
     </script>
 </head>
@@ -53,14 +82,14 @@
             </div>
         </div>
         <div class="card-list-block">
-            <h3 class="tit">
+            <h3 class="tit" id="lgu">
                 <span id="LGU＋">LGU＋</span>
             </h3>
             <div class="list">
                 <ul>
                     <li>
                         <div class="img">
-                            <img src="https://img.megabox.co.kr/SharedImg/card/2021/02/01/WPRyFKx1W6CUkLF96MYSavfRCO9SmTTx.png "
+                            <img src="/assets/images/discount/lgu.png"
                                  alt="LGU+">
                         </div>
                         <div class="cont">
@@ -107,14 +136,14 @@
             </div>
         </div>
         <div class="card-list-block">
-            <h3 class="tit">
-                <span id="SKT">SKT</span>
+            <h3 class="tit" id="skt">
+                <span>SKT</span>
             </h3>
             <div class="list">
                 <ul>
                     <li>
                         <div class="img">
-                            <img src="https://img.megabox.co.kr/SharedImg/card/2024/02/21/zLDhZQ6lt8VqfFrPuuOeawLNT2CFE18h.png "
+                            <img src="/assets/images/discount/skt.png"
                                  alt="null">
                         </div>
                         <div class="cont">
@@ -135,8 +164,7 @@
                                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color:#e74c3c">타 제휴 및 할인 쿠폰 중복 적용 불가</span>
                             </ul>
                             <div class="btn">
-                                <a href="https://sktmembership.tworld.co.kr/mps/pc-bff/program/movie.do"
-                                   target="_blank" title="SKT할인" class="button purple">자세히 보기</a>
+                                <a title="SKT할인" class="button purple">자세히 보기</a>
                             </div>
                         </div>
                     </li>
@@ -144,12 +172,15 @@
                 </ul>
             </div>
         </div>
-        <div class="card-list-block"><h3 class="tit"><span id="KT">KT</span></h3>
+        <div class="card-list-block">
+            <h3 class="tit" id="kt">
+                <span>KT</span>
+            </h3>
             <div class="list">
                 <ul>
                     <li>
                         <div class="img">
-                            <img src="https://img.megabox.co.kr/SharedImg/card/2021/02/01/N6pOt68ktn3MBQP1yg44T3dWh1Ckc41F.png "
+                            <img src="/assets/images/discount/kt.png"
                                  alt="null">
                         </div>
                         <div class="cont">
@@ -170,8 +201,7 @@
                                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color:#e74c3c">타 제휴 및 할인 쿠폰 중복 적용 불가</span>
                             </ul>
                             <div class="btn">
-                                <a href="https://membership.kt.com/culture/movie/MovieInfo.do"
-                                   target="_blank" title="KT 일반/더블 할인" class="button purple">자세히 보기</a>
+                                <a title="KT 일반/더블 할인" class="button purple">자세히 보기</a>
                             </div>
                         </div>
                     </li>

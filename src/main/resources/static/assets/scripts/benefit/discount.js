@@ -25,9 +25,6 @@ if (document.querySelector('button.select') !== null){
     newsAgencyButton.querySelectorAll(':scope > ul > li').forEach(newsAgency => newsAgency.onclick = () => {
         location.href = './telecomcard';
     })
-    cardButton.querySelectorAll(':scope > ul > li').forEach(card => card.onclick = () => {
-        location.href = './creditcard';
-    })
     pointButton.querySelectorAll(':scope > ul > li').forEach(point => point.onclick = () => {
         location.href = './pointcard';
     })
