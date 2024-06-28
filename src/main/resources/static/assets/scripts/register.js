@@ -25,6 +25,31 @@ const showRegister = () => {
     })
 }
 
+const timerDiv = document.getElementById('timer');
+const timerText = timerDiv.textContent.trim();
+
+
+// 타이머 시작 함수
+function startTimer() {
+    timerDiv.style.display = 'block';
+    const [minutes, seconds] = timerText.split(':').map(Number);
+    let timeLeft = minutes * 60 + seconds;
+
+    const timerInterval = setInterval(() => {
+        timeLeft--;
+        const newMinutes = Math.floor(timeLeft / 60);
+        const newSeconds = timeLeft % 60;
+        timerDiv.textContent = `${newMinutes.toString().padStart(2, '0')}:${newSeconds.toString().padStart(2, '0')}`;
+
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            MessageObj.createSimpleOk('알림', '인증이 만료되었습니다. 다시 시도해 주세요.').show();
+            // 이메일 입력 필드와 인증번호 전송 버튼 활성화
+            registerForm['email'].enable();
+            registerForm['emailSend'].enable();
+        }
+    }, 1000);
+}
 
 // Label 오브젝트에 rel값들 담아주기 (김성민)
 registerForm.emailLabel = new LabelObj(registerForm.querySelector('[rel="emailLabel"]'));
@@ -64,6 +89,8 @@ registerForm['emailSend'].onclick = () => {
                 registerForm['emailCode'].enable();
                 registerForm['emailCode'].focus();
                 registerForm['emailVerify'].enable();
+                timerDiv.style.display = 'block';
+                startTimer();
             }]
         }[responseObject.result] || ['경고', '서버가 알 수 없는 응답을 반환하였습니다. 잠시 후 다시 시도해 주세요.'];
         MessageObj.createSimpleOk(dTitle, dContent, dOnclick).show();
@@ -72,6 +99,7 @@ registerForm['emailSend'].onclick = () => {
     xhr.send(formData);
     loading.show();
 }
+// }
 
 // 이메일 Label? (김성민)
 registerForm.emailLabel = new LabelObj(registerForm.querySelector('[rel="emailLabel"]'));
@@ -113,6 +141,8 @@ registerForm['emailVerify'].onclick = () => {
                 registerForm['emailCode'].disable();
                 registerForm['emailVerify'].disable();
                 registerForm['password'].focus();
+                clearInterval(startTimer);
+                timerDiv.style.display = 'none';
             }]
         } [responseObject.result] || ['경고', '서버가 알 수 없는 응답을 반환하였습니다. 잠시 후 다시 시도해 주세요.'];
         MessageObj.createSimpleOk(dTitle, dContent, dOnclick).show();
@@ -174,7 +204,8 @@ registerForm.onsubmit = e => {
                 registerForm['nickname'].focus()
             }],
             success: ['알림', '회원가입해주셔서 감사드립니다. 확인 버튼을 클릭하면 다음 페이지로 이동합니다.', () => {
-                location.href = '/register/registerFour';
+                location.href = `/register/registerFour?nickname=${document.getElementById('userNickname').value}`;
+                //                      location.href는 링크가 get방식으로 전달됨 ^ 위에처럼 링크를주고 elementid를 같이 전달한다, 이렇게 전달 후 컨트롤러에 addAtrribute나 mav추가를 해서 이동한 링크에서 이 값을 사용한다. (여기서는 registerController에서 이동하는 registerFour.html이라 컨트롤러도 registerFour에 model.addAtrribute를 함)
             }]
 
         }[responseObject.result] || ['경고', '서버가 알 수 없는 응답을 반환하였습니다. 잠시 후 다시 시도해주세요.'];
@@ -191,3 +222,4 @@ registerForm.onsubmit = e => {
     xhr.open('POST', '/user/register');
     xhr.send(formData);
 }
+
