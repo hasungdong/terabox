@@ -9,8 +9,8 @@
     </insert>
 
     <insert id="insertUser" parameterType="com.terabox.demo.entities.UserEntity">
-        INSERT INTO `terabox`.`users` (email, password, nickname, birth,  membership_code, created_at, point, mileage, is_admin)
-        VALUES (#{email}, #{password}, #{nickname}, #{birth}, #{membershipCode}, #{createdAt}, #{point}, #{mileage}, #{isAdmin})
+        INSERT INTO `terabox`.`users` (email, password, nickname, birth,  membership_code, created_at, point, is_admin)
+        VALUES (#{email}, #{password}, #{nickname}, #{birth}, #{membershipCode}, #{createdAt}, #{point}, #{isAdmin})
     </insert>
 
     <select id="selectEmailAuthByEmailCodeSalt" resultType="com.terabox.demo.entities.EmailAuthEntity">
@@ -37,7 +37,6 @@
                `membership_code` AS `membershipCode`,
                `created_at`      AS `createdAt`,
                `point`           AS `point`,
-               `mileage`         AS `mileage`,
                `is_admin`        AS `isAdmin`
         FROM `terabox`.`users`
         WHERE BINARY `email` = #{email}
@@ -52,7 +51,6 @@
                `membership_code` AS `membershipCode`,
                `created_at`      AS `createdAt`,
                `point`           AS `point`,
-               `mileage`         AS `mileage`,
                `is_admin`        AS `isAdmin`
         FROM `terabox`.`users`
         WHERE BINARY `nickname` = #{nickname}
