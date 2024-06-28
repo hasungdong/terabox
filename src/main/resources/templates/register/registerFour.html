@@ -50,7 +50,7 @@
                 </div>
                 <div class="join-complete">
                     <img class="image" th:src="@{/assets/images/register/icon-gift.png}" alt="">
-                    <p class="name">
+                    <p class="name" th:text="${nickname + '님 메가박스 가입을 환영합니다.'}">
                         OOO님 메가박스 가입을 환영합니다.
                         <!-- js로 그 사람으로 가입시 이름나타나며 누구누구님 으로 변경..-->
                     </p>
@@ -59,7 +59,7 @@
                     </p>
                 </div>
                 <div class="button-member-bottom">
-                    <a href="/megabox/" class="button purple large">신규회원 혜택 확인</a>
+                    <a href="/home" class="button purple large">메인페이지 이동</a>
                 </div>
             </div>
         </div>
