@@ -6,5 +6,4 @@ import lombok.Data;
 public class StoreOrderDto {
     private int salePrice;
     private int saleTotalPrice;
-
 }

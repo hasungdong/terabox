@@ -163,7 +163,7 @@ const showProducts = (page) => {
         </label>
         <label class="_obj-label" rel="subTitleLabel">
             <span class="__text">상품 설명</span>
-            <input class="_obj-input __field" type="text" name="subTitle" maxlength="30" minlength="1" placeholder="상품 설명(숫자, 영어 대소문자, 완성 한글, 공백 1자 이상 30자 이하)">
+            <input class="_obj-input __field" type="text" name="subTitle" maxlength="30" minlength="1" placeholder="상품 설명(숫자, 영어 대소문자, 완성 한글, 공백 1자 이상 30자 이하)" value="${responseObject['subTitle']}">
             <span class="__warning">올바른 문자를 입력해 주세요.</span>
         </label>
         <div class="spring"></div>

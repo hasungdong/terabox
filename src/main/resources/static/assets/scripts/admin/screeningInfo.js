@@ -292,6 +292,7 @@ screeningInfoSearchBar.onsubmit = e => {
             })
         }
         modifyScreeningInfoForm.querySelector('div.content').querySelector('.result-box').append(ul);
+
         // 영화 검색하기
         const contentLis = modifyScreeningInfoForm.divContent.querySelectorAll('li');
         contentLis.forEach(contentLi => contentLi.querySelector('[rel="showSearchMovie"]').onclick = () => {

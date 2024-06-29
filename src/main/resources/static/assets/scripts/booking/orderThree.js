@@ -8,7 +8,7 @@ const dropdownMenu = orderThreeContainer.querySelector('.dropdown-menu');
 const dropdownMenuLis = dropdownMenu.querySelectorAll(':scope > .inner > .dropdown-menu.inner > li');
 const selectPaymentCardMethods = orderThreeContainer.querySelectorAll('.select-payment-card > input, .select-payment-card > label:not(:first-child)');
 
-if (document.querySelector('.order-container') !== null) {
+if (document.querySelector('.order-three-container') !== null) {
     // 관람권 및 할인적용에서 li 누르면 안에 내용 보이는거
     liBars.forEach(li => li.onclick = () => {
         // li에 있는 on을 전부 지우고
@@ -69,6 +69,19 @@ if (document.querySelector('.order-container') !== null) {
                 if (orderThreeContainer.querySelector('.filter-option-inner-inner').innerText === '카드선택') {
                     showAlertCheckTerms('결제하실 카드를 선택하세요.');
                 }
+
+                const xhr = new XMLHttpRequest();
+                const formData = new FormData();
+                xhr.onreadystatechange = function(){
+                    if (xhr.readyState !== XMLHttpRequest.DONE){
+                        return;
+                    }
+                    if (xhr.status < 200 || xhr.status >= 300){
+                        return;
+                    }
+                }
+                xhr.open('POST', '/order/movie');
+                xhr.send(formData);
             }
         }
         // 휴대폰결제
@@ -127,9 +140,11 @@ if (document.querySelector('.order-container') !== null) {
                     }
                 }
             });
+            // 결제수단란 비우기
             if (payMethodChecked.every(payMethod => payMethod === false)) {
                 orderThreeContainer.querySelector('.payment-thing > .thing').innerText = '';
             }
+            // 결제방식 바뀔 때
             payMethods.forEach(payMethod => payMethod.onchange = () => {
                 if (payMethod.checked) {
                     if (payMethod.classList.contains('toss')) {
@@ -169,12 +184,14 @@ if (document.querySelector('.order-container') !== null) {
                     }
                 }
             })
+
             // 결제 눌르면
             orderThreeContainer.querySelector('[rel="checkAgreeTerms"]').onclick = () => {
                 const payMethodsIsChecked = [];
                 payMethods.forEach(payMethod => {
                     payMethodsIsChecked.push(payMethod.checked);
                 })
+
                 if (!orderThreeContainer.querySelector('.term-list > dt > .bg-chk > input').checked) {
                     if (payMethodsIsChecked.every(payMethod => payMethod === false)) {
                         showAlertCheckTerms(`결제 하지 않은 금액이 있습니다. <br>

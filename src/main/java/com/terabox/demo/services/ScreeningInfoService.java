@@ -40,6 +40,10 @@ public class ScreeningInfoService {
         return this.screeningInfoMapper.selectScreeningInfoVoByCinemaAndDate(screeningDate, cinemaIndex);
     }
 
+    public ScreeningInfoVo getScreeningInfoVos(Integer index){
+        return this.screeningInfoMapper.selectScreeningInfoVoByIndex(index);
+    }
+
     //    상영정보 부분 수정
     public Result patchScreeningInfo(int index, Integer movieIndex) {
 //        if문만 있으면 break;가 안먹어서 약간의 꼼수

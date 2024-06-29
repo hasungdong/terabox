@@ -311,16 +311,10 @@ if (totalSale !== null) { // storeDetail 에서 order 로 넘어왔을때 order 
                             ]
                         }).show();
                         break;
-
                 }
-
-
             }
-
-            xhr.open(`POST`,`./order`);
+            xhr.open(`POST`,`/order/product`);
             xhr.send(formData);
-
-
         }
 
         /* 스토어 오더에서 결제버튼 눌렀을때 */

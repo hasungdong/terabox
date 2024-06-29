@@ -190,12 +190,12 @@ const showMovies = (page) => {
         </label>
         <label class="_obj-label" rel="explanationLabel">
             <span class="__text">영화 설명 핵심</span>
-            <textarea class="_obj-input __field" type="text" name="explanation"></textarea>
+            <textarea class="_obj-input __field" type="text" name="explanation">${responseObject['explanation']}</textarea>
             <span class="__warning">올바른 값을 입력해 주세요.</span>
         </label>
         <label class="_obj-label" rel="subExplanationLabel">
             <span class="__text">영화 설명</span>
-            <textarea class="_obj-input __field" type="text" name="subExplanation"></textarea>
+            <textarea class="_obj-input __field" type="text" name="subExplanation">${responseObject['subExplanation']}</textarea>
             <span class="__warning">올바른 값을 입력해 주세요.</span>
         </label>
         <div class="spring"></div>
@@ -278,7 +278,7 @@ const showMovies = (page) => {
                                             const explanationRegex = new RegExp("^([\\da-zA-Z가-힣()\\-.,!·<>\\s\"']{1,50})$");
                                             modifyMovieFormTwo.explanationLabel.setValid(explanationRegex.test(modifyMovieFormTwo['explanation'].value));
                                             const subExplanationRegex = new RegExp("^([\\da-zA-Z가-힣()\\-.,!·<>\\s\"']{1,800})$");
-                                            modifyMovieFormTwo.subExplanationLabel.setValid(explanationRegex.test(modifyMovieFormTwo['subExplanation'].value));
+                                            modifyMovieFormTwo.subExplanationLabel.setValid(subExplanationRegex.test(modifyMovieFormTwo['subExplanation'].value));
                                             // 양식 안맞을시 제출 막는 로직, 이것도 add에서 해줬었음
                                             if (!modifyMovieFormTwo.titleLabel.isValid() ||
                                                 !modifyMovieFormTwo.releaseDateLabel.isValid() ||

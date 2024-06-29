@@ -12,27 +12,36 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping(value = "store")
+@RequestMapping(value = "order")
 public class OrderController {
     private final OrderService orderService;
-
 
     @Autowired
     public OrderController(OrderService orderService) {
         this.orderService = orderService;
     }
 
-
     /* 결제 완료 했을떄 들어가는 값 */
-    @PostMapping(value = "order",produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "product",produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody /*이거 안적어줘서 계속 템플릿 없다고 뜬거였음 */
-    public String postOrder(OrderEntity order,@RequestParam("productIndex")int productIndex){
+    public String postProduct(OrderEntity order,@RequestParam("productIndex")int productIndex){
         CommonResult result = this.orderService.postOrder(order,productIndex);
         JSONObject responseObject = new JSONObject();
         responseObject.put("result",result.name().toLowerCase());
         return responseObject.toString();
-
     }
+
+    /* 결제 완료 했을떄 들어가는 값 */
+    @PostMapping(value = "movie",produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody /*이거 안적어줘서 계속 템플릿 없다고 뜬거였음 */
+    public String postMovie(OrderEntity order,@RequestParam("productIndex")int productIndex){
+        CommonResult result = this.orderService.postOrder(order,productIndex);
+        JSONObject responseObject = new JSONObject();
+        responseObject.put("result",result.name().toLowerCase());
+        return responseObject.toString();
+    }
+
+
 
     @GetMapping(value = "myMegaBox",produces = MediaType.TEXT_HTML_VALUE)
     public ModelAndView getMyMegaBox(@RequestParam(value = "user_email",required = false)String userEmail){
