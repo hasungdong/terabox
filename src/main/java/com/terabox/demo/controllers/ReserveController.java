@@ -28,7 +28,8 @@ public class ReserveController {
     @GetMapping(value = "orderThree", produces = MediaType.TEXT_HTML_VALUE)
     public String getOrderThree(
             @RequestParam(value = "screeningInfoIndex", required = false) Integer screeningInfoIndex,
-            @RequestParam(value = "seatIndexes", required = false) Integer[] seatIndexes,
+            @RequestParam(value = "seatIndexes", required = false) int[] seatIndexes,
+            @RequestParam(value = "seatTypes", required = false) String st,
             Model model){
         model.addAttribute("seatIndexes", seatIndexes);
         ScreeningInfoVo screeningInfoVo = this.screeningInfoService.getScreeningInfoVos(screeningInfoIndex);
