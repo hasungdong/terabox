@@ -1,5 +1,6 @@
 package com.terabox.demo.controllers;
 
+import com.terabox.demo.dtos.MovieOrderDto;
 import com.terabox.demo.entities.CardEntity;
 import com.terabox.demo.services.CardService;
 import com.terabox.demo.services.OrderService;
@@ -27,12 +28,9 @@ public class ReserveController {
 //    여기 어차피 없애고 나중에 xhr로 만들게 해야됨
     @GetMapping(value = "orderThree", produces = MediaType.TEXT_HTML_VALUE)
     public String getOrderThree(
-            @RequestParam(value = "screeningInfoIndex", required = false) Integer screeningInfoIndex,
-            @RequestParam(value = "seatIndexes", required = false) int[] seatIndexes,
-            @RequestParam(value = "seatTypes", required = false) String st,
+            MovieOrderDto movieOrderDto,
             Model model){
-        model.addAttribute("seatIndexes", seatIndexes);
-        ScreeningInfoVo screeningInfoVo = this.screeningInfoService.getScreeningInfoVos(screeningInfoIndex);
+        ScreeningInfoVo screeningInfoVo = this.screeningInfoService.getScreeningInfoVos(movieOrderDto.getScreeningInfoIndex());
         model.addAttribute("screeningInfoVo", screeningInfoVo);
         CardEntity[] cards = this.cardService.getCards();
         model.addAttribute("cards", cards);
