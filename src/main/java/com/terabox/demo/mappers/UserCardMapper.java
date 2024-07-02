@@ -6,6 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface UserCardMapper {
-    UserCardEntity selectUserCard (OrderEntity order);
+    UserCardEntity selectUserCard (OrderEntity order, String cardName);
     int updateMoney(UserCardEntity userCard);
 }

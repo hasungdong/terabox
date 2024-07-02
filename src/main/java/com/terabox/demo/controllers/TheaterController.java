@@ -24,7 +24,8 @@ public class TheaterController {
 
     //    theater/list html 페이지 보여주는거
     @GetMapping(value = "/list", produces = MediaType.TEXT_HTML_VALUE)
-    public String getList(@SessionAttribute(value = "user", required = false) UserEntity user,
+    public String getList(
+            @SessionAttribute(value = "user", required = false) UserEntity user,
                           Model model) {
         RegionVo[] regions = this.regionService.getRegionsOnTheaterList();
         model.addAttribute("regionVos", regions);

@@ -1,8 +1,11 @@
 package com.terabox.demo.controllers;
 
 
+import com.terabox.demo.dtos.MovieOrderDto;
 import com.terabox.demo.entities.OrderEntity;
+import com.terabox.demo.entities.UserEntity;
 import com.terabox.demo.results.CommonResult;
+import com.terabox.demo.results.Result;
 import com.terabox.demo.services.OrderService;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +27,10 @@ public class OrderController {
     /* 결제 완료 했을떄 들어가는 값 */
     @PostMapping(value = "product",produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody /*이거 안적어줘서 계속 템플릿 없다고 뜬거였음 */
-    public String postProduct(OrderEntity order,@RequestParam("productIndex")int productIndex){
-        CommonResult result = this.orderService.postOrder(order,productIndex);
+    public String postProduct(OrderEntity order,
+                              @RequestParam("productIndex")int productIndex,
+                              @RequestParam("cardName") String cardName){
+        CommonResult result = this.orderService.postProductOrder(order,productIndex, cardName);
         JSONObject responseObject = new JSONObject();
         responseObject.put("result",result.name().toLowerCase());
         return responseObject.toString();
@@ -34,13 +39,14 @@ public class OrderController {
     /* 결제 완료 했을떄 들어가는 값 */
     @PostMapping(value = "movie",produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody /*이거 안적어줘서 계속 템플릿 없다고 뜬거였음 */
-    public String postMovie(OrderEntity order,@RequestParam("productIndex")int productIndex){
-        CommonResult result = this.orderService.postOrder(order,productIndex);
+    public String postMovie(@SessionAttribute("user") UserEntity user,
+                            OrderEntity order,
+                            MovieOrderDto movieOrderDto){
+        Result postMovieOrderResult = this.orderService.postMovieOrder(user, order, movieOrderDto);
         JSONObject responseObject = new JSONObject();
-        responseObject.put("result",result.name().toLowerCase());
+        responseObject.put("result", "");
         return responseObject.toString();
     }
-
 
 
     @GetMapping(value = "myMegaBox",produces = MediaType.TEXT_HTML_VALUE)

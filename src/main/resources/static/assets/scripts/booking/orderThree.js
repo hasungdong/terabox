@@ -72,6 +72,7 @@ if (document.querySelector('.order-three-container') !== null) {
 
                 const xhr = new XMLHttpRequest();
                 const formData = new FormData();
+                formData.append("")
                 xhr.onreadystatechange = function(){
                     if (xhr.readyState !== XMLHttpRequest.DONE){
                         return;

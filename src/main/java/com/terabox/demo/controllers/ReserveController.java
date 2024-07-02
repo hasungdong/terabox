@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class ReserveController {
     private final CardService cardService;
-    private final OrderService orderService;
     private final ScreeningInfoService screeningInfoService;
 
     @GetMapping(value = "reserve", produces = MediaType.TEXT_HTML_VALUE)
@@ -30,6 +29,10 @@ public class ReserveController {
     public String getOrderThree(
             MovieOrderDto movieOrderDto,
             Model model){
+        movieOrderDto.setAdultCount(1);
+        movieOrderDto.setTeenagerCount(1);
+        movieOrderDto.setOldCount(1);
+        movieOrderDto.setDisabledCount(1);
         ScreeningInfoVo screeningInfoVo = this.screeningInfoService.getScreeningInfoVos(movieOrderDto.getScreeningInfoIndex());
         model.addAttribute("screeningInfoVo", screeningInfoVo);
         CardEntity[] cards = this.cardService.getCards();

@@ -165,7 +165,7 @@ if (totalSale !== null) { // storeDetail 에서 order 로 넘어왔을때 order 
 
 
         }
-         xhr.open(`GET`,`/store/card?selectedValue=${selectedValue}&rOrderTotalPrice=${rOrderTotalPrice}`);
+         xhr.open(`GET`,`/store/card?cardName=${selectedValue}&rOrderTotalPrice=${rOrderTotalPrice}`);
         /*store/order 라고 썼어서 안됐음 -> card 로 바꿔줬음*/
         // /슬래시가 꼭 있어야함. 슬래쉬가 있으면 절대경로 없으면 상대경로인데 절대경로로 주는것이 좋다.
          xhr.send();
@@ -210,7 +210,7 @@ if (totalSale !== null) { // storeDetail 에서 order 로 넘어왔을때 order 
             formData.append('totalSale',totalSale.innerText.replace(/,/g, ""));
             formData.append('quantity',orderQuantity.innerText);
             formData.append('price',orderPrice.innerText.replace(/,/g, ""));
-            formData.append('selectedValue', selectedOption);
+            formData.append('cardName', selectedOption);
             console.log(selectedOption.value);
             console.log(selectedOption);
             formData.append('totalPrice',totalPrice.innerText.replace(/,/g, ""));
