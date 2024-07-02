@@ -316,11 +316,13 @@
                                     <li class="">
                                         <a>
                                             <span class="text">카드선택</span>
+                                            <input type="hidden" name="discountRate" th:value="${0}">
                                         </a>
                                     </li>
                                     <li class="" th:each="card : ${cards}">
                                         <a>
                                             <span class="text" th:text="${card.getName()}"></span>
+                                            <input type="hidden" name="discountRate" th:value="${card.getDiscountRate()}">
                                         </a>
                                     </li>
                                 </ul>
@@ -448,23 +450,23 @@
                         </p>
                     </div>
                     <div class="price-process">
-                        <div class="box">
+                        <div class="box total">
                             <div class="data">
-                                <span class="tit">성인 <em>1</em></span>
-                                <span class="price">14,000</span>
+                                <span class="tit">성인 <em th:text="${movieOrderDto.getAdultCount()}">1</em></span>
+                                <span class="price" th:text="${movieOrderDto.getAdultCount() * adultPrice}">14,000</span>
                             </div>
                             <div class="data">
                                 <span class="tit">청소년
-                                    <em>1</em></span>
-                                <span class="price">12,000</span>
+                                    <em th:text="${movieOrderDto.getTeenagerCount()}">1</em></span>
+                                <span class="price" th:text="${movieOrderDto.getTeenagerCount() * teenagerPrice}">12,000</span>
                             </div>
                             <div class="data">
-                                <span class="tit">경로 <em>1</em></span>
-                                <span class="price">7,000</span>
+                                <span class="tit">경로 <em th:text="${movieOrderDto.getOldCount()}">1</em></span>
+                                <span class="price" th:text="${movieOrderDto.getOldCount() * oldPrice}">7,000</span>
                             </div>
                             <div class="data">
-                                <span class="tit">우대 <em>1</em></span>
-                                <span class="price">6,000</span>
+                                <span class="tit">우대 <em th:text="${movieOrderDto.getDisabledCount()}">1</em></span>
+                                <span class="price" th:text="${movieOrderDto.getDisabledCount() * disabledPrice}">6,000</span>
                             </div>
                             <!--
                             <div class="data">

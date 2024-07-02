@@ -38,13 +38,13 @@ public class OrderController {
 
     /* 결제 완료 했을떄 들어가는 값 */
     @PostMapping(value = "movie",produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody /*이거 안적어줘서 계속 템플릿 없다고 뜬거였음 */
+    @ResponseBody
     public String postMovie(@SessionAttribute("user") UserEntity user,
                             OrderEntity order,
                             MovieOrderDto movieOrderDto){
         Result postMovieOrderResult = this.orderService.postMovieOrder(user, order, movieOrderDto);
         JSONObject responseObject = new JSONObject();
-        responseObject.put("result", "");
+        responseObject.put("result", postMovieOrderResult.name().toLowerCase());
         return responseObject.toString();
     }
 

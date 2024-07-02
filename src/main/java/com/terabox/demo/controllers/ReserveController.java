@@ -2,9 +2,10 @@ package com.terabox.demo.controllers;
 
 import com.terabox.demo.dtos.MovieOrderDto;
 import com.terabox.demo.entities.CardEntity;
+import com.terabox.demo.entities.SeatPriceEntity;
 import com.terabox.demo.services.CardService;
-import com.terabox.demo.services.OrderService;
 import com.terabox.demo.services.ScreeningInfoService;
+import com.terabox.demo.services.SeatPriceService;
 import com.terabox.demo.vos.ScreeningInfoVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 public class ReserveController {
     private final CardService cardService;
     private final ScreeningInfoService screeningInfoService;
+    private final SeatPriceService seatPriceService;
 
     @GetMapping(value = "reserve", produces = MediaType.TEXT_HTML_VALUE)
     public String getBooking() {
@@ -29,10 +31,29 @@ public class ReserveController {
     public String getOrderThree(
             MovieOrderDto movieOrderDto,
             Model model){
-        movieOrderDto.setAdultCount(1);
-        movieOrderDto.setTeenagerCount(1);
+        movieOrderDto.setAdultCount(2);
+        movieOrderDto.setTeenagerCount(3);
         movieOrderDto.setOldCount(1);
         movieOrderDto.setDisabledCount(1);
+        SeatPriceEntity[] seatPrices = this.seatPriceService.getSeatPrices();
+        for (SeatPriceEntity seatPrice : seatPrices) {
+            switch (seatPrice.getType()) {
+                case "adult":
+                    model.addAttribute("adultPrice", Math.max(seatPrice.getPrice(), 0));
+                    break;
+                case "teenager":
+                    model.addAttribute("teenagerPrice", Math.max(seatPrice.getPrice(), 0));
+                    break;
+                case "old":
+                    model.addAttribute("oldPrice", Math.max(seatPrice.getPrice(), 0));
+                    break;
+                case "disabled":
+                    model.addAttribute("disabledPrice", Math.max(seatPrice.getPrice(), 0));
+                    break;
+                default:
+            }
+        }
+        model.addAttribute("movieOrderDto", movieOrderDto);
         ScreeningInfoVo screeningInfoVo = this.screeningInfoService.getScreeningInfoVos(movieOrderDto.getScreeningInfoIndex());
         model.addAttribute("screeningInfoVo", screeningInfoVo);
         CardEntity[] cards = this.cardService.getCards();

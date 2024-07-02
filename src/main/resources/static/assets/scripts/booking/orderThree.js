@@ -8,6 +8,24 @@ const dropdownMenu = orderThreeContainer.querySelector('.dropdown-menu');
 const dropdownMenuLis = dropdownMenu.querySelectorAll(':scope > .inner > .dropdown-menu.inner > li');
 const selectPaymentCardMethods = orderThreeContainer.querySelectorAll('.select-payment-card > input, .select-payment-card > label:not(:first-child)');
 
+// 검은색 결제 박스에 0개인 곳은 안보이게
+window.onload = () => {
+    const orderTargets = orderThreeContainer.querySelectorAll('.data');
+    orderTargets.forEach(orderTarget => {
+        // 컨트롤러에서 타임리프로 값 설정할 때 0보다 작으면 0으로 입력되게 만들어서 0이 아닌 경우는 생각할 필요가 없음
+        if (orderTarget.querySelector('em').innerText === '0') {
+            orderTarget.style.display = 'none';
+        }
+    });
+
+    // 결제 금액 지정
+    let totalPrice = 0;
+    orderTargets.forEach(orderTarget => {
+        totalPrice += parseInt(orderTarget.querySelector('.price').innerText);
+    });
+    orderThreeContainer.querySelector('.price-process > .box > .all em').innerText = totalPrice;
+}
+
 if (document.querySelector('.order-three-container') !== null) {
     // 관람권 및 할인적용에서 li 누르면 안에 내용 보이는거
     liBars.forEach(li => li.onclick = () => {
@@ -64,7 +82,7 @@ if (document.querySelector('.order-three-container') !== null) {
             orderThreeContainer.querySelector('.payment-thing > .thing').innerText = orderThreeContainer.querySelector('label.credit').innerText;
             orderThreeContainer.querySelector('.term-list').style.display = 'none';
 
-            // 결제 눌르면
+            // 카드결제 결제 누르면
             orderThreeContainer.querySelector('[rel="checkAgreeTerms"]').onclick = () => {
                 if (orderThreeContainer.querySelector('.filter-option-inner-inner').innerText === '카드선택') {
                     showAlertCheckTerms('결제하실 카드를 선택하세요.');
@@ -73,11 +91,11 @@ if (document.querySelector('.order-three-container') !== null) {
                 const xhr = new XMLHttpRequest();
                 const formData = new FormData();
                 formData.append("")
-                xhr.onreadystatechange = function(){
-                    if (xhr.readyState !== XMLHttpRequest.DONE){
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState !== XMLHttpRequest.DONE) {
                         return;
                     }
-                    if (xhr.status < 200 || xhr.status >= 300){
+                    if (xhr.status < 200 || xhr.status >= 300) {
                         return;
                     }
                 }
@@ -186,7 +204,7 @@ if (document.querySelector('.order-three-container') !== null) {
                 }
             })
 
-            // 결제 눌르면
+            // 간편결제 결제 누르면
             orderThreeContainer.querySelector('[rel="checkAgreeTerms"]').onclick = () => {
                 const payMethodsIsChecked = [];
                 payMethods.forEach(payMethod => {
@@ -223,6 +241,15 @@ if (document.querySelector('.order-three-container') !== null) {
     dropdownMenuLis.forEach(dropdownMenuLi => dropdownMenuLi.onclick = () => {
         // 버튼의 내용을 내가 선택한 select의 내용으로 바꾸고
         dropdownToggleButton.querySelector('.filter-option-inner-inner').innerText = dropdownMenuLi.querySelector('span.text').innerText;
+
+// 결제 할인 금액 적용
+        const totalPrice = parseInt(orderThreeContainer.querySelector('.price-process > .total > .all > .price em').innerText);
+        const discountRate = dropdownMenuLi.querySelector('input').value;
+        const salePrice = orderThreeContainer.querySelector('.discout-box > .all > .price > em');
+        salePrice.innerText = totalPrice * discountRate / 100;
+        const orderPrice = orderThreeContainer.querySelector('.pay-area > .pay > .money > em');
+        orderPrice.innerText = totalPrice - parseInt(salePrice.innerText);
+
         // 버튼에 open 삭제
         dropdownToggleButton.classList.remove('open');
 
@@ -233,7 +260,7 @@ if (document.querySelector('.order-three-container') !== null) {
         }
     });
 
-//     결제 눌렀을 때 약관동의 체크 안돼있으면
+//     간편 결제 쪽 결제 눌렀을 때 약관동의 체크 안돼있으면
     const showAlertCheckTerms = (content, onclick) => {
         alertCover.show();
         if (typeof onclick === 'function') {
@@ -296,7 +323,7 @@ if (document.querySelector('.order-three-container') !== null) {
             swiperBullets.forEach(swiperBullet => swiperBullet.classList.remove('on'));
             // 슬라이드가 개라서 이렇게 함, 갯수 바뀌면 수정해야댐
             if (j === 0 ||
-            j === 1){
+                j === 1) {
                 j++;
                 swiperBulletsArray[j].classList.add('on');
             } else {

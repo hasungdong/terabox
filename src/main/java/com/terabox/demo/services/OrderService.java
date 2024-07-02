@@ -2,10 +2,7 @@ package com.terabox.demo.services;
 
 import com.terabox.demo.dtos.MovieOrderDto;
 import com.terabox.demo.entities.*;
-import com.terabox.demo.mappers.OrderMapper;
-import com.terabox.demo.mappers.ProductMapper;
-import com.terabox.demo.mappers.SeatPriceMapper;
-import com.terabox.demo.mappers.UserCardMapper;
+import com.terabox.demo.mappers.*;
 import com.terabox.demo.results.CommonResult;
 import com.terabox.demo.results.Result;
 import com.terabox.demo.vos.OrderVo;
@@ -22,13 +19,15 @@ public class OrderService {
     private final UserCardMapper userCardMapper;
     private final ProductMapper productMapper;
     private final SeatPriceMapper seatPriceMapper;
+    private final CardMapper cardMapper;
 
     @Autowired
-    public OrderService(OrderMapper orderMapper, UserCardMapper userCardMapper, ProductMapper productMapper, SeatPriceMapper seatPriceMapper) {
+    public OrderService(OrderMapper orderMapper, UserCardMapper userCardMapper, ProductMapper productMapper, SeatPriceMapper seatPriceMapper, CardMapper cardMapper) {
         this.orderMapper = orderMapper;
         this.userCardMapper = userCardMapper;
         this.productMapper = productMapper;
         this.seatPriceMapper = seatPriceMapper;
+        this.cardMapper = cardMapper;
     }
 
     /* 결제하기 누르면 결제되는 창 */
@@ -82,9 +81,14 @@ public class OrderService {
     }
 
     //    영화 결제
+//    여러개의 좌석을 입력받았지만 실제로 한 결제에 하나의 좌석값만 들어간다.
+//    8개의 좌석을 받아왔으면 insertOrder가 8번 실행되는 구조
     public Result postMovieOrder(UserEntity user,
                                  OrderEntity order,
                                  MovieOrderDto movieOrderDto) {
+//        현재 order는 멤버변수에 값이 아무것도 초기화되지 않은 상태이다.
+//        유효성 검사와 함께 order의 매개변수를 초기화해주고,
+//        모든 멤버변수가 초기화 됐을 때 insert를 하는 방식이다.
         if (user == null) {
             return CommonResult.FAILURE;
         }
@@ -97,11 +101,11 @@ public class OrderService {
 //        유효성 검사
 //        이메일이랑 카드 이름으로 카드 가져왔을 때,
 //        카드가 존재하면 결제 대상 카드를 가져온 카드로 지정한다.
-        UserCardEntity dbCard = this.userCardMapper.selectUserCard(order, movieOrderDto.getCardName());
-        if (dbCard == null) {
+        UserCardEntity dbUserCard = this.userCardMapper.selectUserCard(order, movieOrderDto.getCardName());
+        if (dbUserCard == null) {
             return CommonResult.FAILURE;
         }
-        order.setUserCardMappingIndex(dbCard.getIndex());
+        order.setUserCardMappingIndex(dbUserCard.getIndex());
 
         //        잔고 부족을 위한 변수 선언
         int totalPrice = 0;
@@ -149,7 +153,7 @@ public class OrderService {
         }
 
 //        통장에 돈이 모자라면 실패
-        if (dbCard.getMoney() < totalPrice){
+        if (dbUserCard.getMoney() < totalPrice){
             return CommonResult.FAILURE_NOT_POINT;
         }
 
@@ -163,9 +167,9 @@ public class OrderService {
                 movieOrderDto.getOldCount() +
                 movieOrderDto.getDisabledCount();
 
-//        총 개수만큼 반복
+//        좌석 총 개수만큼 반복
         for (int i = 0; i < totalCount; i++) {
-//            seatIndexes의 길이가 좌석 총 길이와 반드시 같아서 i 사용해도 문제 없다.
+//            seatIndexes의 길이가 총 좌석 개수와 반드시 같아서 i 사용해도 문제 없다.
             movieReservationEntity.setSeatIndex(movieOrderDto.getSeatIndexes()[i]);
 
 //            MovieReservation 테이블에 insert 결과에 따라 다른 로직
@@ -176,13 +180,95 @@ public class OrderService {
 //            insert 성공했으면 바로 불러온다.
             MovieReservationEntity dbMovieReservation = this.orderMapper.selectMovieReservationBySeatScreeningInfo(movieOrderDto.getScreeningInfoIndex(), movieOrderDto.getSeatIndexes()[i]);
 
-//            불러온 엔티티의 index를 order의 멤버변수로 지정
+            //            불러온 엔티티의 index를 order의 멤버변수로 지정
             order.setMovieReservationIndex(dbMovieReservation.getIndex());
-            if (this.orderMapper.insertOrder(order) != 1){
-                return CommonResult.FAILURE;
-            }
 
+//            결제할 카드
+            CardEntity dbCard = this.cardMapper.selectCardByName(dbUserCard.getCardName());
+
+//            경우에 따라 결제
+            for (SeatPriceEntity seatPrice : seatPrices) {
+                switch (seatPrice.getType()) {
+                    case "adult":
+//                        원가
+                        order.setPrice(adultPrice);
+//                        할인되는 금액
+                        order.setTotalSale(order.getPrice() * dbCard.getDiscountRate() / 100);
+//                        최종 결제 금액
+                        order.setTotalPrice(order.getPrice() - order.getTotalSale());
+//                        결제
+                        for (int j = 0; j < movieOrderDto.getAdultCount(); j++) {
+                            int insertResult = this.orderMapper.insertOrder(order);
+                            if (insertResult != 1){
+//                            여기 오류 발생 시켜줘야 될 거 같은디
+                                return CommonResult.FAILURE;
+                            }
+                        }
+
+//                        결제 성공하면 통장에서 돈 차감
+                        dbUserCard.setMoney(dbUserCard.getMoney() - order.getTotalPrice());
+                        break;
+                    case "teenager":
+//                        원가
+                        order.setPrice(teenagerPrice);
+//                        할인되는 금액
+                        order.setTotalSale(order.getPrice() * dbCard.getDiscountRate() / 100);
+//                        최종 결제 금액
+                        order.setTotalPrice(order.getPrice() - order.getTotalSale());
+//                        결제
+                        for (int j = 0; j < movieOrderDto.getTeenagerCount(); j++) {
+                            int insertResult = this.orderMapper.insertOrder(order);
+                            if (insertResult != 1){
+//                            여기 오류 발생 시켜줘야 될 거 같은디
+                                return CommonResult.FAILURE;
+                            }
+                        }
+                        //                        결제 성공하면 통장에서 돈 차감
+                        dbUserCard.setMoney(dbUserCard.getMoney() - order.getTotalPrice());
+                        break;
+                    case "old":
+                        //                        원가
+                        order.setPrice(oldPrice);
+//                        할인되는 금액
+                        order.setTotalSale(order.getPrice() * dbCard.getDiscountRate() / 100);
+//                        최종 결제 금액
+                        order.setTotalPrice(order.getPrice() - order.getTotalSale());
+//                        결제
+                        for (int j = 0; j < movieOrderDto.getOldCount(); j++) {
+                            int insertResult = this.orderMapper.insertOrder(order);
+                            if (insertResult != 1){
+//                            여기 오류 발생 시켜줘야 될 거 같은디
+                                return CommonResult.FAILURE;
+                            }
+                        }
+                        //                        결제 성공하면 통장에서 돈 차감
+                        dbUserCard.setMoney(dbUserCard.getMoney() - order.getTotalPrice());
+                        break;
+                    case "disabled":
+                        //                        원가
+                        order.setPrice(disabledPrice);
+//                        할인되는 금액
+                        order.setTotalSale(order.getPrice() * dbCard.getDiscountRate() / 100);
+//                        최종 결제 금액
+                        order.setTotalPrice(order.getPrice() - order.getTotalSale());
+//                        결제
+                        for (int j = 0; j < movieOrderDto.getDisabledCount(); j++) {
+                            int insertResult = this.orderMapper.insertOrder(order);
+                            if (insertResult != 1){
+//                            여기 오류 발생 시켜줘야 될 거 같은디
+                                return CommonResult.FAILURE;
+                            }
+                        }
+                        //                        결제 성공하면 통장에서 돈 차감
+                        dbUserCard.setMoney(dbUserCard.getMoney() - order.getTotalPrice());
+                        break;
+                    default:
+//                            여기 오류 발생 시켜줘야 될 거 같은디
+                        return CommonResult.FAILURE;
+                }
+            }
         }
+//        실패를 하나도 안했으면 성공
         return CommonResult.SUCCESS;
     }
 }
