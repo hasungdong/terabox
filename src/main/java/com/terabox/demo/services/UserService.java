@@ -92,7 +92,8 @@ public class UserService {
                 emailAuth.getEmail(),
                 emailAuth.getCode(),
                 emailAuth.getSalt());
-        if (dbEmailAuth == null || dbEmailAuth.isVerified() || dbEmailAuth.isUsed()) {
+        if (dbEmailAuth == null ||
+            dbEmailAuth.isVerified() || dbEmailAuth.isUsed()) {
             return CommonResult.FAILURE;
         }
         if (dbEmailAuth.isExpired() || dbEmailAuth.getExpiresAt().isBefore(LocalDateTime.now())) {
@@ -127,7 +128,8 @@ public class UserService {
             return CommonResult.FAILURE;
         }
         EmailAuthEntity dbEmailAuth = this.userMapper.selectEmailAuthByEmailCodeSalt(emailAuth.getEmail(), emailAuth.getCode(), emailAuth.getSalt());
-        if (dbEmailAuth == null || !dbEmailAuth.isVerified() || dbEmailAuth.isUsed()) {
+        if (dbEmailAuth == null ||
+            !dbEmailAuth.isVerified() || dbEmailAuth.isUsed()) {
             System.out.println("이메일 인증을 하지 않았음");
             return CommonResult.FAILURE;
         }
@@ -215,6 +217,9 @@ public class UserService {
         this.userMapper.updateEmailAuth(dbEmailAuth);
 
         UserEntity dbUser = this.userMapper.selectUserByEmail(user.getEmail());
+        if (dbUser == null) {
+            return CommonResult.FAILURE;
+        }
         dbUser.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
         return this.userMapper.updateUser(dbUser) > 0
                 ? CommonResult.SUCCESS
@@ -229,6 +234,9 @@ public class UserService {
             return CommonResult.FAILURE;
         }
         UserEntity dbUser = this.userMapper.selectUserByEmail(user.getEmail());
+        if (dbUser == null) {
+            return CommonResult.FAILURE;
+        }
         if (!BCrypt.checkpw(user.getPassword(), dbUser.getPassword())) {
             return CommonResult.FAILURE;
         }
