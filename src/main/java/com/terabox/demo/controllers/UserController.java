@@ -71,7 +71,7 @@ public class UserController {
 
     @PostMapping(value = "resetPasswordEmail", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String postResetPasswordEmail(EmailAuthEntity emailAuth) throws MessagingException {
+    public String postResetPasswordEmail(EmailAuthEntity emailAuth) throws MessagingException, NoSuchAlgorithmException {
         Result result = this.userService.sendResetPasswordEmail(emailAuth);
         JSONObject responseObject = new JSONObject();
         responseObject.put("result", result.name().toLowerCase());
