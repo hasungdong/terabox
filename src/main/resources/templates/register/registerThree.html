@@ -93,7 +93,7 @@
                             </th>
                             <td>
                                 <label class="emailLabel" rel="emailLabel"><!--이메일 주소-->
-                                    <input name="email" id="userEmail" required autocomplete="email" maxlength="50" minlength=""  type="email" placeholder="이메일 (user@sample.com)" spellcheck="false" class="input-text w260px" th:attrappend="data-regex=${userRegex.email.expression}"><!--이메일주소를 입력해 주세요-->
+                                    <input name="email" id="userEmail" required autocomplete="email" maxlength="50" minlength="5"  type="email" placeholder="이메일 (user@sample.com)" spellcheck="false" class="input-text w260px" th:attrappend="data-regex=${userRegex.email.expression}"><!--이메일주소를 입력해 주세요-->
                                     <br><br>
                                     <button class="emailButton" name="emailSend" type="button">인증번호 전송</button>
                                 </label>
