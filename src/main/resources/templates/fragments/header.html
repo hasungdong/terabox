@@ -6,7 +6,6 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>헤더</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/common/header.css}">
 </head>
 <body>
 <header id="header" th:fragment="header">
@@ -37,74 +36,86 @@
         </a>
         <a id="header-movie" class="header-movie" href="/movie/allMovie" rel="movieLink">영화</a>
         <div id="movieLink-mini-container" class="movieLink-mini">
-            <ul>
-                <li>
-                    <a href="/movie" title="전체영화">전체영화</a>
-                </li>
-                <li id="festivalArea" style="display: none;">
-                    <a href="/festival" title="영화제">영화제</a>
-                </li>
-                <li>
-                    <a href="/moviepost/all" title="무비포스트">무비포스트</a>
-                </li>
-            </ul>
+            <div class="movie-link-box-1100px">
+                <ul>
+                    <li>
+                        <a href="/movie" title="전체영화">전체영화</a>
+                    </li>
+                    <li id="festivalArea" style="display: none;">
+                        <a href="/festival" title="영화제">영화제</a>
+                    </li>
+                    <li>
+                        <a href="/moviepost/all" title="무비포스트">무비포스트</a>
+                    </li>
+                </ul>
+            </div>
         </div> <!-- 나중에 호버시 밑에 링크로 뜨게하기 -->
+
         <a id="header-buy-ticket" class="header-buy-ticket" href="/booking/reserve" rel="reserveLink">예매</a>
         <div id="reserveLink-mini-container" class="reserveLink-mini">
-            <ul>
-                <li>
-                    <a href="/booking" title="빠른예매">빠른예매</a>
-                </li>
-                <li>
-                    <a href="/booking/timetable" title="상영시간표">상영시간표</a>
-                </li>
-                <li>
-                    <a href="/booking/privatebooking" title="더 부티크 프라이빗 예매">더 부티크 프라이빗 예매</a>
-                </li>
-            </ul>
+            <div class="reserve-link-box-1100px">
+                <ul>
+                    <li>
+                        <a href="/booking" title="빠른예매">빠른예매</a>
+                    </li>
+                    <li>
+                        <a href="/booking/timetable" title="상영시간표">상영시간표</a>
+                    </li>
+                    <li>
+                        <a href="/booking/privatebooking" title="더 부티크 프라이빗 예매">더 부티크 프라이빗 예매</a>
+                    </li>
+                </ul>
+            </div>
         </div> <!-- 나중에 호버시 밑에 링크로 뜨게하기 -->
+
         <a id="header-cinema" class="header-cinema" href="/theater/list" rel="theaterLink">극장</a>
         <div id="theaterLink-mini-container" class="theaterLink-mini">
-            <ul>
-                <li>
-                    <a href="/theater/list" title="전체극장">전체극장</a>
-                </li>
-                <li>
-                    <a href="/specialtheater/list" title="특별관">특별관</a>
-                </li>
-            </ul>
+            <div class="theater-link-box-1100px">
+                <ul>
+                    <li>
+                        <a href="/theater/list" title="전체극장">전체극장</a>
+                    </li>
+                    <li>
+                        <a href="/specialtheater/list" title="특별관">특별관</a>
+                    </li>
+                </ul>
+            </div>
         </div> <!-- 나중에 호버시 밑에 링크로 뜨게하기 -->
         <a class="header-main-page" href="/home">
             <h1>
-                <img src="https://img.megabox.co.kr/static/pc/images/common/ci/logo_new2.png" alt="">
+                <img class="main-logo-img" th:src="@{/assets/images/common/Terabox-white.png}" alt="">
             </h1>
         </a>
         <a id="header-event" class="header-event" href="/event/proceedingEvent" rel="eventLink">이벤트</a>
         <div id="eventLink-mini-container" class="eventLink-mini">
-            <ul>
-                <li>
-                    <a href="/event" title="진행중 이벤트">진행중 이벤트</a>
-                </li>
-                <li>
-                    <a href="/event/pastEvent" title="지난 이벤트">지난 이벤트</a>
-                </li>
-                <li>
-                    <a href="/event/winner/list" title="당첨자발표">당첨자발표</a>
-                </li>
-            </ul>
+            <div class="event-link-box-1100px">
+                <ul>
+                    <li>
+                        <a href="/event" title="진행중 이벤트">진행중 이벤트</a>
+                    </li>
+                    <li>
+                        <a href="/event/pastEvent" title="지난 이벤트">지난 이벤트</a>
+                    </li>
+                    <li>
+                        <a href="/event/winner/list" title="당첨자발표">당첨자발표</a>
+                    </li>
+                </ul>
+            </div>
         </div> <!-- 나중에 호버시 밑에 링크로 뜨게하기 -->
         <a class="header-store" href="/store/store">스토어</a>
 
         <a id="header-benefits" class="header-benefits" href="/benefit/membership" rel="membershipLink">혜택</a>
         <div id="membershipLink-mini-container" class="membershipLink-mini"> <!-- 나중에 호버시 밑에 링크로 뜨게하기 -->
-            <ul>
-                <li>
-                    <a href="/benefit/membership" title="메가박스 멤버십">메가박스 멤버십</a>
-                </li>
-                <li>
-                    <a href="/benefit/discount/guide" title="제휴/할인">제휴/할인</a>
-                </li>
-            </ul>
+            <div class="membership-link-box-1100px">
+                <ul>
+                    <li>
+                        <a href="/benefit/membership" title="메가박스 멤버십">메가박스 멤버십</a>
+                    </li>
+                    <li>
+                        <a href="/benefit/discount/guide" title="제휴/할인">제휴/할인</a>
+                    </li>
+                </ul>
+            </div>
         </div>
         <a class="header-timetable" href="#" title="상영시간표">
             <img class="header-timetable-img" src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-schedule.png" alt="">
