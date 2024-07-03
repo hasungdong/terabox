@@ -14,7 +14,7 @@
                `is_single`              AS `isSingle`,
                `thumbnail_file_name`    AS `thumbnailFileName`,
                `thumbnail_content_type` AS `thumbnailContentType`,
-               `age_limit`              AS `ageLimit`,
+               `age_limit_type`              AS `ageLimit`,
                `dimension_type`         AS `dimensionType`,
                `explanation`            AS `explanation`,
                `sub_explanation`        AS `subExplanation`
@@ -35,7 +35,7 @@
                `is_single`              AS `isSingle`,
                `thumbnail_file_name`    AS `thumbnailFileName`,
                `thumbnail_content_type` AS `thumbnailContentType`,
-               `age_limit`              AS `ageLimit`,
+               `age_limit_type`              AS `ageLimit`,
                `dimension_type`         AS `dimensionType`,
                `explanation`            AS `explanation`,
                `sub_explanation`        AS `subExplanation`
@@ -54,7 +54,7 @@
                `is_single`              AS `isSingle`,
                `thumbnail_file_name`    AS `thumbnailFileName`,
                `thumbnail_content_type` AS `thumbnailContentType`,
-               `age_limit`              AS `ageLimit`,
+               `age_limit_type`              AS `ageLimit`,
                `dimension_type`         AS `dimensionType`,
                `explanation`            AS `explanation`,
                `sub_explanation`        AS `subExplanation`
@@ -81,7 +81,7 @@
                `is_single`              AS `isSingle`,
                `thumbnail_file_name`    AS `thumbnailFileName`,
                `thumbnail_content_type` AS `thumbnailContentType`,
-               `age_limit`              AS `ageLimit`,
+               `age_limit_type`              AS `ageLimit`,
                `dimension_type`         AS `dimensionType`,
                `explanation`            AS `explanation`,
                `sub_explanation`        AS `subExplanation`

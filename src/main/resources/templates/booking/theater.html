@@ -1,0 +1,73 @@
+<form id="theaterForm" th:fragment="theater">
+  <div class="theater-choice">
+    <p class="title">극장</p>
+    <div class="list-area">
+      <div class="btn-area">
+        <button type="button" class="btn-tap">전체</button>
+        <button type="button" class="btn-tap">특별관</button>
+      </div>
+      <div class="all-list">
+        <div class="region-list">
+          <ul>
+            <li>
+              <button type="button" class="btn" data-region="Seoul" id="Seoul-count">서울(0)</button>
+            </li>
+            <li>
+              <button type="button" class="btn" data-region="Gyeonggi" id="Gyeonggi-count">경기(0)</button>
+            </li>
+            <li>
+              <button type="button" class="btn" data-region="Incheon" id="Incheon-count">인천(0)</button>
+            </li>
+            <li>
+              <button type="button" class="btn" data-region="ChungDaeSej" id="ChungDaeSej-count">대전/충청/세종(0)</button>
+            </li>
+            <li>
+              <button type="button" class="btn" data-region="BuDaeGyeong" id="BuDaeGyeong-count">부산/대구/경상(0)</button>
+            </li>
+            <li>
+              <button type="button" class="btn" data-region="GwangJeon" id="GwangJeon-count">광주/전라(0)</button>
+            </li>
+            <li>
+              <button type="button" class="btn" data-region="Gang" id="Gang-count">강원(0)</button>
+            </li>
+            <li>
+              <button type="button" class="btn" data-region="Jeju" id="Jeju-count">제주(0)</button>
+            </li>
+          </ul>
+        </div>
+        <div class="detail-list">
+          <div class="region Seoul">
+            <ul>
+              <!--              <li>-->
+              <!--                <button type="button" class="btn">강남</button>-->
+              <!--              </li>-->
+              <!--              <li>-->
+              <!--                <button type="button" class="btn">강동</button>-->
+              <!--              </li>-->
+              <!--              <li>-->
+              <!--                <button type="button" class="btn">군자</button>-->
+              <!--              </li>-->
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="special">
+      </div>
+    </div>
+    <div class="choice-all">
+      <span>모든영화</span>
+      <span>목록에서 영화를 선택하세요</span>
+    </div>
+    <div class="choice-list" style="display:none">
+      <div class="bg">
+
+      </div>
+      <div class="bg">
+
+      </div>
+      <div class="bg">
+
+      </div>
+    </div>
+  </div>
+</form>

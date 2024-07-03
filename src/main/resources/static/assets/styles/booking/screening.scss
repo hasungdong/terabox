@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .time-choice {
-  width: calc(100% - 620px);
+  width: 478px;
   height: 530px;
   padding: 0;
 
@@ -32,28 +32,39 @@
     .btn-gr {
       display: flex;
       flex-direction: row;
-      align-items: center;
-      justify-content: space-evenly;
-      height: inherit;
+
 
       .btn-pre {
+        margin: 0 15px 0 25px;
         width: 30px;
         border: 0;
         background-color: transparent;
         cursor: pointer;
         height: inherit;
         color: #444;
-
       }
 
-      .date-list {
-        overflow: hidden;
+      .btn-next {
+        margin: 0 25px 0 15px;
+        width: 30px;
+        border: 0;
+        background-color: transparent;
+        cursor: pointer;
         height: inherit;
+        color: #444;
+      }
 
-        .date-area {
+      .hour-area {
+        height: 30px;
+        overflow: hidden;
+
+
+        > .wrap {
           height: inherit;
+          width: 1015px;
 
           button {
+            width: 35px;
             padding: 0 5px 0 5px;
             border: 0;
             background-color: transparent;
@@ -62,17 +73,16 @@
             font-weight: 400;
             cursor: pointer;
             color: #444;
+
+            &.selected {
+              background-color: #555;
+              color: #fff;
+            }
           }
 
-          button:focus {
+          &.selected {
             background-color: #555;
             color: #fff;
-          }
-
-          .date {
-            display: inline-block;
-            font-size: 17px;
-            font-weight: 100;
           }
         }
       }
@@ -85,7 +95,7 @@
     align-items: center;
     justify-content: flex-start;
 
-    height: calc(100% - 68px);
+    height: calc(100% - 50px);
 
     .no-r:first-child {
       margin-top: 30px;
@@ -93,7 +103,16 @@
 
     .no-result {
       display: flex;
+      align-items: center;
+      justify-content: center;
       flex-direction: column;
+
+      height: inherit;
+
+      > img {
+        width: 46px;
+        height: 46px;
+      }
     }
 
     .result {

@@ -2,6 +2,7 @@ package com.terabox.demo.services;
 
 import com.terabox.demo.dtos.MovieOrderDto;
 import com.terabox.demo.entities.*;
+import com.terabox.demo.exceptions.TransactionalException;
 import com.terabox.demo.mappers.*;
 import com.terabox.demo.results.CommonResult;
 import com.terabox.demo.results.Result;
@@ -199,9 +200,10 @@ public class OrderService {
 //                        결제
                         for (int j = 0; j < movieOrderDto.getAdultCount(); j++) {
                             int insertResult = this.orderMapper.insertOrder(order);
+//                            결제 실패 시
                             if (insertResult != 1){
-//                            여기 오류 발생 시켜줘야 될 거 같은디
-                                return CommonResult.FAILURE;
+//                                오류 발생
+                                throw new TransactionalException();
                             }
                         }
 
@@ -218,9 +220,10 @@ public class OrderService {
 //                        결제
                         for (int j = 0; j < movieOrderDto.getTeenagerCount(); j++) {
                             int insertResult = this.orderMapper.insertOrder(order);
+                            //                            결제 실패 시
                             if (insertResult != 1){
-//                            여기 오류 발생 시켜줘야 될 거 같은디
-                                return CommonResult.FAILURE;
+//                                오류 발생
+                                throw new TransactionalException();
                             }
                         }
                         //                        결제 성공하면 통장에서 돈 차감
@@ -236,9 +239,10 @@ public class OrderService {
 //                        결제
                         for (int j = 0; j < movieOrderDto.getOldCount(); j++) {
                             int insertResult = this.orderMapper.insertOrder(order);
+                            //                            결제 실패 시
                             if (insertResult != 1){
-//                            여기 오류 발생 시켜줘야 될 거 같은디
-                                return CommonResult.FAILURE;
+//                                오류 발생
+                                throw new TransactionalException();
                             }
                         }
                         //                        결제 성공하면 통장에서 돈 차감
@@ -254,17 +258,18 @@ public class OrderService {
 //                        결제
                         for (int j = 0; j < movieOrderDto.getDisabledCount(); j++) {
                             int insertResult = this.orderMapper.insertOrder(order);
+                            //                            결제 실패 시
                             if (insertResult != 1){
-//                            여기 오류 발생 시켜줘야 될 거 같은디
-                                return CommonResult.FAILURE;
+//                                오류 발생
+                                throw new TransactionalException();
                             }
                         }
                         //                        결제 성공하면 통장에서 돈 차감
                         dbUserCard.setMoney(dbUserCard.getMoney() - order.getTotalPrice());
                         break;
                     default:
-//                            여기 오류 발생 시켜줘야 될 거 같은디
-                        return CommonResult.FAILURE;
+//                        엉뚱한 값 드가있으면 오류 발생
+                        throw new TransactionalException();
                 }
             }
         }

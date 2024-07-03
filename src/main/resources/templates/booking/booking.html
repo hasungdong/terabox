@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>MEET PLAY SHARE, 메가박스</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/booking/main.css}">
+  <script src="https://kit.fontawesome.com/39b115ab30.js" crossorigin="anonymous"></script>
+  <script defer type="text/javascript" th:src="@{/assets/scripts/booking/date.js}"></script>
+  <script defer type="text/javascript" th:src="@{/assets/scripts/booking/movie.js}"></script>
+  <script defer type="text/javascript" th:src="@{/assets/scripts/booking/screening.js}"></script>
+  <script defer type="text/javascript" th:src="@{/assets/scripts/booking/theater.js}"></script>
+  <script defer type="text/javascript" th:src="@{/assets/scripts/common.js}"></script>
+
+
+  <th:block th:replace="~{fragments/common/common.html :: commonHead}"></th:block>
+</head>
+<body>
+<th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
+<div class="page-util">
+  예매 > 빠른예매
+</div>
+<div class="inner-wrap">
+  <div class="quick-reserve">
+    <div class="title-reserve">
+      <h2 class="tit">빠른예매</h2>
+    </div>
+    <!-- calendar : 날짜, 캘린더 선택 -->
+    <th:block th:replace="~{booking/date.html :: date}"></th:block>
+    <div class="quick-reserve-area">
+      <!-- movie list : 영화 선택 -->
+      <th:block th:replace="~{booking/movie.html :: movie}"></th:block>
+      <!-- theater list : 극장 선택 -->
+      <th:block th:replace="~{booking/theater.html :: theater}"></th:block>
+      <!-- time list : 시간 선택 -->
+      <th:block th:replace="~{booking/screening.html :: time}"></th:block>
+    </div>
+  </div>
+</div>
+<footer>
+</footer>
+</body>
+</html>

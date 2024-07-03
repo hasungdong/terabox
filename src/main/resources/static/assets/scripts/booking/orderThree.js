@@ -23,7 +23,10 @@ window.onload = () => {
     orderTargets.forEach(orderTarget => {
         totalPrice += parseInt(orderTarget.querySelector('.price').innerText);
     });
+    // 금액란
     orderThreeContainer.querySelector('.price-process > .box > .all em').innerText = totalPrice;
+    // 최종결제금액란
+    orderThreeContainer.querySelector('.pay-area > .pay > .money > em').innerText = totalPrice;
 }
 
 if (document.querySelector('.order-three-container') !== null) {

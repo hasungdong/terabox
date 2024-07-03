@@ -1,0 +1,191 @@
+<form id="timeForm" th:fragment="time">
+  <div class="time-choice">
+    <div class="title-area">
+      <p class="time">시간</p>
+      <div class="right-item">
+        <img src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-greeting-option-sun.png"
+             alt="">
+        <span>조조</span>
+        <img src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-time-brunch.png" alt="">
+        <span>브런치</span>
+        <img src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-greeting-option-moon.png"
+             alt="">
+        <span>심야</span>
+      </div>
+    </div>
+    <div class="hour-schedule">
+      <div class="btn-gr">
+        <button title="이전 날짜 보기" type="button" class="btn-pre">
+          <i class="fa-solid fa-angle-left"></i>
+        </button>
+        <div class="hour-area">
+          <div class="wrap">
+<!--            <button type="button" th:data="hour">
+              <span class="hour">00</span>
+            </button>
+            <button type="button" th:data="hour">
+              <span class="hour">01</span>
+            </button>
+            <button type="button" th:data="hour">
+              <span class="hour">02</span>
+            </button>
+            <button type="button" th:data="hour">
+              <span class="hour">03</span>
+            </button>
+            <button type="button" th:data="hour">
+              <span class="hour">04</span>
+            </button>
+            <button type="button" th:data="hour">
+              <span class="hour">05</span>
+            </button>
+            <button type="button" th:data="hour">
+              <span class="hour">06</span>
+            </button>
+            <button type="button" th:data="hour">
+              <span class="hour">07</span>
+            </button>
+            <button type="button" th:data="hour">
+              <span class="hour">08</span>
+            </button>
+            <button type="button" th:data="hour">
+              <span class="hour">09</span>
+            </button>
+            <button type="button" th:data="hour">
+              <span class="hour">00</span>
+            </button>
+            <button type="button" th:data="hour">
+              <span class="hour">01</span>
+            </button>
+            <button type="button" th:data="hour">
+              <span class="hour">02</span>
+            </button>
+            <button type="button" th:data="hour">
+              <span class="hour">03</span>
+            </button>
+            <button type="button" th:data="hour">
+              <span class="hour">04</span>
+            </button>
+            <button type="button" th:data="hour">
+              <span class="hour">05</span>
+            </button>
+            <button type="button" th:data="hour">
+              <span class="hour">06</span>
+            </button>
+            <button type="button" th:data="hour">
+              <span class="hour">07</span>
+            </button>
+            <button type="button" th:data="hour">
+              <span class="hour">08</span>
+            </button>
+            <button type="button" th:data="hour">
+              <span class="hour">09</span>
+            </button>-->
+          </div>
+        </div>
+        <button title="다음 날짜 보기" type="button" class="btn-next">
+          <i class="fa-solid fa-angle-right"></i>
+        </button>
+      </div>
+    </div>
+    <div class="movie-schedule-area">
+      <div class="no-result" >
+        <img src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-movie-time.png" alt="">
+        <span>영화와 극장을 선택하시면</span>
+        <span>상영시간표를 비교하여 볼 수 있습니다.</span>
+      </div>
+      <div class="result" style="display: none">
+        <ul>
+<!--          <li>
+            <button class="btn" type="button">
+              <i class="time-icon">
+                <img src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-greeting-option-sun.png"
+                     alt="">
+              </i>
+              <span class="time">
+                      <strong title="상영 시작">08:50</strong>
+                      <em title="상영 종료">~10:49</em>
+                    </span>
+              <span class="title">
+                      <strong>범죄도시4</strong>
+                      <em>2D</em>
+                    </span>
+              <span class="info">
+                      <i class="theater">
+                        고양스타필드<br>
+                        4관[Laser]
+                      </i>
+                      <i class="seat">
+                        <strong class="now" title="잔여 좌석">
+                          188
+                        </strong>
+                        <span>/</span>
+                        <em class="all" title="전체좌석">
+                          190
+                        </em>
+                      </i>
+                    </span>
+            </button>
+          </li>
+          <li>
+            <button class="btn" type="button">
+              <i class="time-icon">
+              </i>
+              <span class="time">
+                      <strong title="상영 시작">08:50</strong>
+                      <em title="상영 종료">~10:49</em>
+                    </span>
+              <span class="title">
+                      <strong>범죄도시4</strong>
+                      <em>2D</em>
+                    </span>
+              <span class="info">
+                      <i class="theater">
+                        고양스타필드<br>
+                        4관[Laser]
+                      </i>
+                      <i class="seat">
+                        <strong class="now" title="잔여 좌석">
+                          188
+                        </strong>
+                        <span>/</span>
+                        <em class="all" title="전체좌석">
+                          190
+                        </em>
+                      </i>
+                    </span>
+            </button>
+          </li>
+          <li>
+            <button class="btn" type="button">
+              <i class="time-icon">
+              </i>
+              <span class="time">
+                      <strong title="상영 시작">08:50</strong>
+                      <em title="상영 종료">~10:49</em>
+                    </span>
+              <span class="title">
+                      <strong>범죄도시4</strong>
+                      <em>2D</em>
+                    </span>
+              <span class="info">
+                      <i class="theater">
+                        고양스타필드<br>
+                        4관[Laser]
+                      </i>
+                      <i class="seat">
+                        <strong class="now" title="잔여 좌석">
+                          188
+                        </strong>
+                        <span>/</span>
+                        <em class="all" title="전체좌석">
+                          190
+                        </em>
+                      </i>
+                    </span>
+            </button>
+          </li>-->
+        </ul>
+      </div>
+    </div>
+  </div>
+</form>

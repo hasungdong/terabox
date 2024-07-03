@@ -4,7 +4,9 @@ package com.terabox.demo.controllers;
 import com.terabox.demo.dtos.MovieOrderDto;
 import com.terabox.demo.entities.OrderEntity;
 import com.terabox.demo.entities.UserEntity;
+import com.terabox.demo.exceptions.TransactionalException;
 import com.terabox.demo.results.CommonResult;
+import com.terabox.demo.results.OrderResult;
 import com.terabox.demo.results.Result;
 import com.terabox.demo.services.OrderService;
 import org.json.JSONObject;
@@ -42,7 +44,14 @@ public class OrderController {
     public String postMovie(@SessionAttribute("user") UserEntity user,
                             OrderEntity order,
                             MovieOrderDto movieOrderDto){
-        Result postMovieOrderResult = this.orderService.postMovieOrder(user, order, movieOrderDto);
+        Result postMovieOrderResult;
+//        예외가 발생해도 클라이언트 측에서는 오류 페이지가 아니라 우리가 만든 경고창이 뜨게 하기 위해서 예외처리
+        try {
+             postMovieOrderResult = this.orderService.postMovieOrder(user, order, movieOrderDto);
+        } catch (TransactionalException ignored) {
+//            예외 발생시 에러
+            postMovieOrderResult = OrderResult.ORDER_ERROR;
+        }
         JSONObject responseObject = new JSONObject();
         responseObject.put("result", postMovieOrderResult.name().toLowerCase());
         return responseObject.toString();
