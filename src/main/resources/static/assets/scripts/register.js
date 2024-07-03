@@ -6,24 +6,24 @@ const loading = document.getElementById('loading');
 // 김성민 2024.06.05 만듬
 
 // 회원가입 보여주기 (김성민)
-const showRegister = () => {
-    registerForm['emailSalt'].value = '';
-    registerForm['email'].enable();
-    registerForm['email'].focus();
-    registerForm['email'].value = '';
-    registerForm['emailSend'].enable();
-    registerForm['emailCode'].disable();
-    registerForm['emailCode'].value = '';
-    registerForm['emailVerify'].disable();
-    registerForm['password'].value = '';
-    registerForm['passwordCheck'].value = '';
-    registerForm['agree'].checked = false;
-    registerForm.show();
-    cover.show(() => {
-        registerForm.hide();
-        showLogin();
-    })
-}
+// const showRegister = () => {
+//     registerForm['emailSalt'].value = '';
+//     registerForm['email'].enable();
+//     registerForm['email'].focus();
+//     registerForm['email'].value = '';
+//     registerForm['emailSend'].enable();
+//     registerForm['emailCode'].disable();
+//     registerForm['emailCode'].value = '';
+//     registerForm['emailVerify'].disable();
+//     registerForm['password'].value = '';
+//     registerForm['passwordCheck'].value = '';
+//     registerForm['agree'].checked = false;
+//     registerForm.show();
+//     cover.show(() => {
+//         registerForm.hide();
+//         showLogin();
+//     })
+// }
 
 const timerDiv = document.getElementById('timer');
 const timerText = timerDiv.textContent.trim();
