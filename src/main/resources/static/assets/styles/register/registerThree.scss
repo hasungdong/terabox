@@ -1,6 +1,8 @@
 @charset "UTF-8";
 @import "../common/header";
 @import "../common/common.notHome";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
 
 
 html {
@@ -184,6 +186,11 @@ body {
                       vertical-align: middle;
                       background-color: #fff;
                       cursor: pointer;
+
+                      &:hover {
+                        background-color: #503396;
+                        color: #fff;
+                      }
                     }
 
                     > .gray-line {
@@ -194,7 +201,8 @@ body {
                       line-height: 32px;
                     }
 
-                    > .disabled {
+                    // []대괄호가 속성잡는거임
+                    > [disabled] {
                       color: #777 !important;
                       background-color: #e0e0e0 !important;
                       border-color: #e0e0e0 !important;

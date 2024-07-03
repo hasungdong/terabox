@@ -49,6 +49,7 @@ public class UserService {
         emailAuth.setUsed(false); // 사용됨을 false로
     }
 
+    // 회원가입할 이메일에 인증번호 보내기
     public Result sendRegisterEmail(EmailAuthEntity emailAuth) throws NoSuchAlgorithmException, MessagingException {
         if (emailAuth == null ||
                 !EmailAuthRegex.email.tests(emailAuth.getEmail())) {
@@ -81,16 +82,18 @@ public class UserService {
         if (!EmailAuthRegex.email.tests(emailAuth.getEmail()) ||
                 !EmailAuthRegex.code.tests(emailAuth.getCode()) ||
                 !EmailAuthRegex.salt.tests(emailAuth.getSalt())) {
-            System.out.println(emailAuth.getEmail());
-            System.out.println(emailAuth.getCode());
-            System.out.println(emailAuth.getSalt());
+            System.out.println("!!!");
+            System.out.println("email:" + emailAuth.getEmail());
+            System.out.println("code:" + emailAuth.getCode());
+            System.out.println("salt:" + emailAuth.getSalt());
             return CommonResult.FAILURE;
         }
         EmailAuthEntity dbEmailAuth = this.userMapper.selectEmailAuthByEmailCodeSalt(
                 emailAuth.getEmail(),
                 emailAuth.getCode(),
                 emailAuth.getSalt());
-        if (dbEmailAuth == null || dbEmailAuth.isVerified() || dbEmailAuth.isUsed()) {
+        if (dbEmailAuth == null ||
+            dbEmailAuth.isVerified() || dbEmailAuth.isUsed()) {
             return CommonResult.FAILURE;
         }
         if (dbEmailAuth.isExpired() || dbEmailAuth.getExpiresAt().isBefore(LocalDateTime.now())) {
@@ -104,19 +107,29 @@ public class UserService {
 
     @Transactional
     public Result register(EmailAuthEntity emailAuth, UserEntity user) {
+        if (user == null ||
+            user.getNickname() == null || user.getNickname().length() > 12 || user.getNickname().length() < 2 ||
+            user.getEmail() == null || user.getEmail().length() > 50 || user.getEmail().length() < 5 ||
+            user.getBirth() == null ||
+            user.getPassword() == null || user.getPassword().length() > 50 || user.getPassword().length() < 5) {
+            return CommonResult.FAILURE;
+        }
         if (emailAuth == null ||
             !EmailAuthRegex.email.tests(emailAuth.getEmail()) ||
             !EmailAuthRegex.code.tests(emailAuth.getCode()) ||
             !EmailAuthRegex.salt.tests(emailAuth.getSalt()) ||
-            user == null ||
             !UserRegex.email.tests(user.getEmail()) ||
             !UserRegex.password.tests(user.getPassword()) ||
             !UserRegex.nickname.tests(user.getNickname())) {
             System.out.println("정규화 안맞음");
+            System.out.println(user.getEmail());
+            System.out.println(user.getPassword());
+            System.out.println(user.getNickname());
             return CommonResult.FAILURE;
         }
         EmailAuthEntity dbEmailAuth = this.userMapper.selectEmailAuthByEmailCodeSalt(emailAuth.getEmail(), emailAuth.getCode(), emailAuth.getSalt());
-        if (dbEmailAuth == null || !dbEmailAuth.isVerified() || dbEmailAuth.isUsed()) {
+        if (dbEmailAuth == null ||
+            !dbEmailAuth.isVerified() || dbEmailAuth.isUsed()) {
             System.out.println("이메일 인증을 하지 않았음");
             return CommonResult.FAILURE;
         }
@@ -133,6 +146,10 @@ public class UserService {
         user.setAdmin(false);
         user.setMembershipCode("일반");
         user.setPoint(0);
+        System.out.println(user.getEmail());
+        System.out.println(user.getPassword());
+        System.out.println(user.getNickname());
+        System.out.println(user.getBirth());
         if (this.userMapper.insertUser(user) != 1) {
             System.out.println("insert 실패");
             return CommonResult.FAILURE;
@@ -144,7 +161,7 @@ public class UserService {
     }
 
     public String getEmailByNickname(String nickname) {
-        if (!UserRegex.nickname.tests(nickname)) {
+        if (nickname == null || !UserRegex.nickname.tests(nickname)) {
             return null;
         }
         UserEntity dbUser = this.userMapper.selectUserByNickname(nickname);
@@ -152,13 +169,16 @@ public class UserService {
                 ? dbUser.getEmail()
                 : null;
     }
-
-    public Result sendResetPasswordEmail(EmailAuthEntity emailAuth) throws MessagingException {
+    public Result sendResetPasswordEmail(EmailAuthEntity emailAuth) throws MessagingException, NoSuchAlgorithmException {
         if (emailAuth == null ||
                 !EmailAuthRegex.email.tests(emailAuth.getEmail())) {
             return CommonResult.FAILURE;
         }
         if (this.userMapper.selectUserByEmail(emailAuth.getEmail()) == null) {
+            return CommonResult.FAILURE;
+        }
+        prepareEmailAuth(emailAuth);
+        if (this.userMapper.insertEmailAuth(emailAuth) != 1) {
             return CommonResult.FAILURE;
         }
         Context context = new Context();
@@ -184,20 +204,22 @@ public class UserService {
                 !UserRegex.password.tests(user.getPassword())) {
             return CommonResult.FAILURE;
         }
-
         EmailAuthEntity dbEmailAuth = this.userMapper.selectEmailAuthByEmailCodeSalt(emailAuth.getEmail(), emailAuth.getCode(), emailAuth.getSalt());
         if (dbEmailAuth == null || !dbEmailAuth.isVerified() || dbEmailAuth.isUsed()) {
             return CommonResult.FAILURE;
         }
+
         user.setCreatedAt(LocalDateTime.now());
         user.setAdmin(false);
-        user.setMembershipCode("일반"); // 이거 물어보기
-        user.setPoint(0);
+        user.setMembershipCode(user.getMembershipCode()); // 이거 물어보기
+        user.setPoint(user.getPoint());
         dbEmailAuth.setUsed(true);
-
         this.userMapper.updateEmailAuth(dbEmailAuth);
 
         UserEntity dbUser = this.userMapper.selectUserByEmail(user.getEmail());
+        if (dbUser == null) {
+            return CommonResult.FAILURE;
+        }
         dbUser.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
         return this.userMapper.updateUser(dbUser) > 0
                 ? CommonResult.SUCCESS
@@ -212,6 +234,9 @@ public class UserService {
             return CommonResult.FAILURE;
         }
         UserEntity dbUser = this.userMapper.selectUserByEmail(user.getEmail());
+        if (dbUser == null) {
+            return CommonResult.FAILURE;
+        }
         if (!BCrypt.checkpw(user.getPassword(), dbUser.getPassword())) {
             return CommonResult.FAILURE;
         }
@@ -219,7 +244,6 @@ public class UserService {
         user.setPassword(dbUser.getPassword());
         user.setNickname(dbUser.getNickname());
         user.setCreatedAt(dbUser.getCreatedAt());
-        user.setBirth(dbUser.getBirth());
         user.setAdmin(dbUser.isAdmin());
         user.setMembershipCode(dbUser.getMembershipCode());
         user.setPoint(dbUser.getPoint());

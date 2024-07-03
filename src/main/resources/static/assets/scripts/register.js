@@ -1,30 +1,55 @@
 const registerForm = document.getElementById('registerForm');
+const loading = document.getElementById('loading');
 
 
 
 // 김성민 2024.06.05 만듬
 
 // 회원가입 보여주기 (김성민)
-const showRegister = () => {
-    registerForm['emailSalt'].value = '';
-    registerForm['email'].enable();
-    registerForm['email'].focus();
-    registerForm['email'].value = '';
-    registerForm['emailSend'].enable();
-    registerForm['emailCode'].disable();
-    registerForm['emailCode'].value = '';
-    registerForm['emailVerify'].disable();
-    registerForm['password'].value = '';
-    registerForm['passwordCheck'].value = '';
-    registerForm['agree'].checked = false;
-    registerForm.show();
-    cover.show(() => {
-        registerForm.hide();
-        showLogin();
-    })
+// const showRegister = () => {
+//     registerForm['emailSalt'].value = '';
+//     registerForm['email'].enable();
+//     registerForm['email'].focus();
+//     registerForm['email'].value = '';
+//     registerForm['emailSend'].enable();
+//     registerForm['emailCode'].disable();
+//     registerForm['emailCode'].value = '';
+//     registerForm['emailVerify'].disable();
+//     registerForm['password'].value = '';
+//     registerForm['passwordCheck'].value = '';
+//     registerForm['agree'].checked = false;
+//     registerForm.show();
+//     cover.show(() => {
+//         registerForm.hide();
+//         showLogin();
+//     })
+// }
+
+const timerDiv = document.getElementById('timer');
+const timerText = timerDiv.textContent.trim();
+
+
+// 타이머 시작 함수
+function startTimer() {
+    timerDiv.style.display = 'block';
+    const [minutes, seconds] = timerText.split(':').map(Number);
+    let timeLeft = minutes * 60 + seconds;
+
+    const timerInterval = setInterval(() => {
+        timeLeft--;
+        const newMinutes = Math.floor(timeLeft / 60);
+        const newSeconds = timeLeft % 60;
+        timerDiv.textContent = `${newMinutes.toString().padStart(2, '0')}:${newSeconds.toString().padStart(2, '0')}`;
+
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            MessageObj.createSimpleOk('알림', '인증이 만료되었습니다. 다시 시도해 주세요.').show();
+            // 이메일 입력 필드와 인증번호 전송 버튼 활성화
+            registerForm['email'].enable();
+            registerForm['emailSend'].enable();
+        }
+    }, 1000);
 }
-
-
 
 // Label 오브젝트에 rel값들 담아주기 (김성민)
 registerForm.emailLabel = new LabelObj(registerForm.querySelector('[rel="emailLabel"]'));
@@ -64,6 +89,8 @@ registerForm['emailSend'].onclick = () => {
                 registerForm['emailCode'].enable();
                 registerForm['emailCode'].focus();
                 registerForm['emailVerify'].enable();
+                timerDiv.style.display = 'block';
+                startTimer();
             }]
         }[responseObject.result] || ['경고', '서버가 알 수 없는 응답을 반환하였습니다. 잠시 후 다시 시도해 주세요.'];
         MessageObj.createSimpleOk(dTitle, dContent, dOnclick).show();
@@ -72,6 +99,7 @@ registerForm['emailSend'].onclick = () => {
     xhr.send(formData);
     loading.show();
 }
+// }
 
 // 이메일 Label? (김성민)
 registerForm.emailLabel = new LabelObj(registerForm.querySelector('[rel="emailLabel"]'));
@@ -113,6 +141,8 @@ registerForm['emailVerify'].onclick = () => {
                 registerForm['emailCode'].disable();
                 registerForm['emailVerify'].disable();
                 registerForm['password'].focus();
+                clearInterval(startTimer);
+                timerDiv.style.display = 'none';
             }]
         } [responseObject.result] || ['경고', '서버가 알 수 없는 응답을 반환하였습니다. 잠시 후 다시 시도해 주세요.'];
         MessageObj.createSimpleOk(dTitle, dContent, dOnclick).show();
