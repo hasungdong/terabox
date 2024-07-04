@@ -130,6 +130,7 @@ public class BookingController {
     public String getOrderThree(
             MovieOrderDto movieOrderDto,
             Model model){
+        System.out.println(movieOrderDto);
         SeatPriceEntity[] seatPrices = this.seatPriceService.getSeatPrices();
         for (SeatPriceEntity seatPrice : seatPrices) {
             switch (seatPrice.getType()) {

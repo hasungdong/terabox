@@ -62,7 +62,12 @@ if (price !== null){
     plus.onclick = () => {
         if (inputText.value < 8) {
             //db에 있는 수량보다 더 플러스 못하게
-            if (inputText.value === DetailQuantity.value ){
+            console.log(inputText.value)
+            console.log(DetailQuantity.value);
+            console.log(typeof inputText.value)
+            console.log(typeof DetailQuantity.value)
+            console.log(inputText.value > DetailQuantity.value)
+            if (parseInt(inputText.value) === parseInt(DetailQuantity.value)){
                 new MessageObj({
                     title: '알림',
                     content: '수량이 부족합니다.',
@@ -76,7 +81,7 @@ if (price !== null){
                 }).show();
                 return;
             }
-            if (inputText.value > DetailQuantity.value ){
+            if (parseInt(inputText.value) > parseInt(DetailQuantity.value)){
                 new MessageObj({
                     title: '알림',
                     content: '상품이 품절되어서 구매가 불가능합니다.',

@@ -13,4 +13,5 @@ public class MovieOrderDto {
     private int[] seatIndexes;
     private int screeningInfoIndex;
     private String cardName;
+
 }

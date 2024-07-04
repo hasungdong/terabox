@@ -38,15 +38,16 @@ public class OrderService {
 
 //        여기 바꿔야댐
 //        이메일은 어차피 로그인 세션에서 가져오면 됨
-        order.setUserEmail("1234@naver.com");
+        order.setUserEmail("gktjdehd3333@gmail.com");
         order.setMovieReservationIndex(null);
         order.setCreatedAt(LocalDateTime.now());
 
 
-        UserCardEntity cardDb = this.userCardMapper.selectUserCard(order, cardName);
+        UserCardEntity cardDb = this.userCardMapper.selectUserCard(order.getUserEmail(), cardName);
         ProductEntity product = this.productMapper.selectProductByIndex(productIndex);
 
         if (cardDb == null) {
+            System.out.println(1);
             return CommonResult.FAILURE;
         }
         if (cardDb.getMoney() < order.getTotalPrice()) {
@@ -62,11 +63,14 @@ public class OrderService {
         product.setQuantity(product.getQuantity() - order.getQuantity());
 
         if (this.productMapper.updateProduct(product) < 1) {
+            System.out.println(2);
             return CommonResult.FAILURE;
         }
         if (this.userCardMapper.updateMoney(cardDb) < 1) {
+            System.out.println(3);
             return CommonResult.FAILURE;
         }
+        System.out.println(4);
         return this.orderMapper.insertOrder(order) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 
@@ -102,7 +106,7 @@ public class OrderService {
 //        유효성 검사
 //        이메일이랑 카드 이름으로 카드 가져왔을 때,
 //        카드가 존재하면 결제 대상 카드를 가져온 카드로 지정한다.
-        UserCardEntity dbUserCard = this.userCardMapper.selectUserCard(order, movieOrderDto.getCardName());
+        UserCardEntity dbUserCard = this.userCardMapper.selectUserCard(order.getUserEmail(), movieOrderDto.getCardName());
         if (dbUserCard == null) {
             return CommonResult.FAILURE;
         }
