@@ -68,7 +68,7 @@
         theater.name AS theaterName,
         cinema.number AS cinemaNumber,
         movie.thumbnail AS thumbnail,
-        movie.age_limit AS ageLimit,
+        movie.age_limit_type AS ageLimit,
         screen.screening_date AS screeningDate
         FROM
         terabox.screening_info AS screen

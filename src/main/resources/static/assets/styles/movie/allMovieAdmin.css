@@ -395,6 +395,7 @@ body form #container > .movie-list > .list > .img > .movie-list-info > .movie-sc
   border-radius: 0.5rem;
 }
 body form #container > .movie-list > .list > .img > .movie-list-info > .movie-score > .wrap:hover > .summary {
+  overflow: hidden;
   display: block;
   color: white;
 }
@@ -402,7 +403,7 @@ body form #container > .movie-list > .list > .img > .movie-list-info > .movie-sc
   position: absolute;
   overflow: hidden;
   width: 180px;
-  height: 400px;
+  height: 163px;
   display: none;
 }
 body form #container > .movie-list > .list > .img > .tit-area { /*묶음자리*/

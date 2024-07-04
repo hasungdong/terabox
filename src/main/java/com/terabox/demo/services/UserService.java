@@ -244,6 +244,7 @@ public class UserService {
         user.setPassword(dbUser.getPassword());
         user.setNickname(dbUser.getNickname());
         user.setCreatedAt(dbUser.getCreatedAt());
+        user.setBirth(dbUser.getBirth());
         user.setAdmin(dbUser.isAdmin());
         user.setMembershipCode(dbUser.getMembershipCode());
         user.setPoint(dbUser.getPoint());

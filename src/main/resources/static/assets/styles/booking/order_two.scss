@@ -17,6 +17,22 @@
   line-height: 1.5;
   font-size: 0.9375rem;
 
+  > .tit-box{
+    display: flex;
+    width: 1100px;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    h2.tit{
+      padding: 40px 0 30px 0;
+      font-size: 1.8666em;
+      font-weight: 400;
+      letter-spacing: -1px;
+      line-height: 1.1;
+      color: #222;
+    }
+  }
+
   .order-two-container {
     display: flex;
     flex-direction: row;
@@ -248,15 +264,17 @@
             width: 20px;
             height: 20px;
 
-            background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/ALL_40x40.png);
-            background-size: 20px 20px;
-
             overflow: hidden;
             margin: 0;
             padding: 0;
             text-indent: -9999px;
-            background-position: center;
-            background-repeat: no-repeat;
+
+            img {
+              display: flex;
+              flex: 1;
+              width: 20px;
+              height: 20px;
+            }
           }
 
           > .tit{
@@ -374,7 +392,6 @@
             width: 70px;
             height: 100px;
             padding: 0;
-            background: url(https://img.megabox.co.kr/static/pc/images/reserve/bg-seat-result-poster.png) no-repeat 0 0;
 
             > img{
               display: block;
@@ -412,14 +429,14 @@
                 }
 
                 //예매완료
-                &.finish{
+                &.reserved{
                   background-color: #ccc !important;
                   background-position: center 0;
                   background-image: url(../../images/booking/reservedSeat14.png) !important;
                 }
 
                 //선택불가
-                &.impossible{
+                &.selectImpossible{
                   background-color: #ccc !important;
                   background-position: center 0;
                   background-image: url(../../images/booking/selectImpossibleSeat14.png) !important;
@@ -637,21 +654,21 @@
   }
 
   //예매완료
-  &.finish{
+  &.reserved{
     background-color: #ccc !important;
     background-position: center 0;
     background-image: url(../../images/booking/reservedSeat18.png) !important;
   }
 
   //선택불가
-  &.impossible{
+  &.selectImpossible{
     background-color: #ccc !important;
     background-position: center 0;
     background-image: url(../../images/booking/selectImpossibleSeat18.png) !important;
   }
 
   //일반석
-  &.common{
+  &.normal{
     background-color: #747474;
     background-image: url(../../images/booking/normalSeat14.png);
   }

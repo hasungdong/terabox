@@ -4,13 +4,14 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @EqualsAndHashCode(of = "index")
-public class SeatEntity {
+public class MovieCommentLikesEntity {
     private int index;
-    private int row;
-    private int column;
-    private int cinemaIndex;
-    private String seatStatus;
+    private int movieCommentIndex;
+    private String userEmail;
+    private LocalDateTime createdAt;
 }

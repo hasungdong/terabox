@@ -8,7 +8,7 @@ body {
   overflow-y: scroll;
   font-size: 13px;
   color: #666666;
-  font-family: sans-serif, NanumBarunGothic, Dotum, "돋움";
+  font-family: NanumBarunGothic, Dotum, "돋움", sans-serif;
 }
 
 #header {
@@ -806,7 +806,6 @@ li {
   position: relative;
   left: 2rem;
   top: -1rem;
-  filter: none;
 }
 #header > .link-area > .header-event {
   text-decoration-line: none;
@@ -908,7 +907,7 @@ body form #container > .tab-list > .topMenu > .on { /*li 태그들*/
 body form #container > .tab-list > .topMenu > .on > .a { /*링크 태그들*/
   position: relative;
   display: block;
-  width: 100%;
+  width: 1100px;
   padding: 8px 0;
   text-align: center;
   color: #222;
@@ -1058,11 +1057,11 @@ body form #container > .movie-list > .list > .img > .movie-list-info > .movie-sc
   display: block;
   padding: 25px;
 }
-body form #container > .movie-list > .list > .img > .movie-list-info > .movie-score > .wrap:hover {
+body form #container > .movie-list > .list > .img > .movie-list-info:hover > .movie-score > .wrap {
   background-color: rgba(0, 0, 0, 0.8);
   border-radius: 0.5rem;
 }
-body form #container > .movie-list > .list > .img > .movie-list-info > .movie-score > .wrap:hover > .summary {
+body form #container > .movie-list > .list > .img > .movie-list-info:hover  > .movie-score > .wrap> .summary {
   display: block;
   color: white;
 }
@@ -1070,7 +1069,7 @@ body form #container > .movie-list > .list > .img > .movie-list-info > .movie-sc
   position: absolute;
   overflow: hidden;
   width: 180px;
-  height: 400px;
+  height: 163px;
   display: none;
 }
 body form #container > .movie-list > .list > .img > .tit-area { /*묶음자리*/
@@ -1160,7 +1159,7 @@ body form #container > .movie-list > .list > .img > .btn-util > .Ticketing-conta
 }
 body form #container > .movie-list > .list > .img > .btn-util > .Ticketing-container > .button.purple.ticketing {
   margin-left: 0;
-  width: 74px;
+  width: 150px;
 }
 body form #container > .movie-list > .list > .img > .btn-util > .Ticketing-container > .button.purple.img {
   display: inline-block;

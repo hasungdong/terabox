@@ -130,10 +130,6 @@ public class BookingController {
     public String getOrderThree(
             MovieOrderDto movieOrderDto,
             Model model){
-        movieOrderDto.setAdultCount(2);
-        movieOrderDto.setTeenagerCount(3);
-        movieOrderDto.setOldCount(1);
-        movieOrderDto.setDisabledCount(1);
         SeatPriceEntity[] seatPrices = this.seatPriceService.getSeatPrices();
         for (SeatPriceEntity seatPrice : seatPrices) {
             switch (seatPrice.getType()) {

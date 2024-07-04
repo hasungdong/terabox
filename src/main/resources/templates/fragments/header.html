@@ -13,13 +13,13 @@
         <div class="left-link">
             <a class="header-vip" href="/benefit/vipLounge" target="_self" rel="vipLoungeLink">VIP LOUNGE</a>
             <a class="header-membership" href="/benefit/membership" target="_self" rel="membershipLink">멤버십</a>
-            <a class="header-support" href="#" target="_self">고객센터</a>
+            <a class="header-support"  target="_self">고객센터</a>
         </div>
         <div class="right-link">
 <!--            로그인 되있는지 아닌지에 따라 showLoginAlert와 showAdminPage 중 보여줄 지 타임리프로 결정할 거 -->
 
             <a th:if="${session.user != null && session.user.isAdmin() == true}" th:href="@{/movie/allMovie/admin}" class="header-admin" rel="seeByAdmin">관리자 모드로 보기</a>
-            <a th:if="${session.user == null}" class="header-login" href="#" rel="showLogin">로그인</a>
+            <a th:if="${session.user == null}" class="header-login"  rel="showLogin">로그인</a>
             <a th:if="${session.user != null}" class="header-user" th:text="${session.user.getNickname()+'님'}"></a>
             <a th:if="${session.user == null}" class="header-register" th:href="@{/register/register}" rel="showRegister">회원가입</a>
             <a th:if="${session.user != null}" class="header-logout" th:href="@{/user/logout}">로그아웃</a>
@@ -27,11 +27,11 @@
         </div>
     </div>
     <div class="link-area">
-        <a id="header-site-map" class="header-site-map" href="#" title="사이트맵">
+        <a id="header-site-map" class="header-site-map"  title="사이트맵">
             <i class="fa-solid fa-bars on"></i>
             <img class="cancel-button" th:src="@{/assets/images/home/cancel.png}" alt="">
         </a>
-        <a class="header-search" href="#" title="검색">
+        <a class="header-search"  title="검색">
             <i class="fa-solid fa-magnifying-glass"></i>
         </a>
         <a id="header-movie" class="header-movie" href="/movie/allMovie" rel="movieLink">영화</a>
@@ -56,7 +56,7 @@
             <div class="reserve-link-box-1100px">
                 <ul>
                     <li>
-                        <a href="/booking" title="빠른예매">빠른예매</a>
+                        <a href="/booking/" title="빠른예매">빠른예매</a>
                     </li>
                     <li>
                         <a href="/booking/timetable" title="상영시간표">상영시간표</a>
@@ -117,10 +117,10 @@
                 </ul>
             </div>
         </div>
-        <a class="header-timetable" href="#" title="상영시간표">
+        <a class="header-timetable"  title="상영시간표">
             <img class="header-timetable-img" src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-schedule.png" alt="">
         </a>
-        <a class="header-my-megabox" href="#" title="나의 메가박스">
+        <a class="header-my-megabox"  title="나의 메가박스">
             <img class="header-my-megabox-img" src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-mymega-white.png" alt="">
         </a>
     </div>
@@ -201,11 +201,8 @@
                     <li><a href="javascript:movePage('/mypage/moviestory',         '로그인이 필요한 서비스 입니다. \n로그인하시겠습니까?');" title="나의 무비스토리">나의 무비스토리</a></li>
                     <li><a href="javascript:movePage('/mypage/myevent',            '로그인이 필요한 서비스 입니다. \n로그인하시겠습니까?');" title="나의 이벤트 응모내역">나의 이벤트 응모내역</a></li>
                     <li><a href="javascript:movePage('/mypage/myinquiry',         '로그인이 필요한 서비스 입니다. \n로그인하시겠습니까?');" title="나의 문의내역">나의 문의내역</a></li>
-                    <li><a href="#" title="자주쓰는 할인카드">자주쓰는 할인카드</a></li>
+                    <li><a  title="자주쓰는 할인카드">자주쓰는 할인카드</a></li>
                     <li><a href="javascript:movePage('/on/oh/ohh/Mypage/mainPage.do?returnURL=info','로그인이 필요한 서비스 입니다.');" title="회원정보">회원정보</a></li>
-
-
-
                 </ul>
             </div>
 

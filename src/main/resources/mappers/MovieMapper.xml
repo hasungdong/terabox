@@ -90,4 +90,70 @@
         ORDER BY movie.`index` DESC
         LIMIT #{countPerPage} OFFSET #{offset}
     </select>
+
+    <select id="selectMovieAll" resultType="com.terabox.demo.entities.MovieEntity">
+        SELECT `index`                  AS `index`,
+               `title`                  AS `title`,
+               `release_date`           AS `releaseDate`,
+               `playing_time`           AS `playingTime`,
+               `thumbnail`              AS `thumbnail`,
+               `grade`                  AS `grade`,
+               `view`                   AS `view`,
+               `is_single`              AS `isSingle`,
+               `thumbnail_file_name`    AS `thumbnailFileName`,
+               `thumbnail_content_type` AS `thumbnailContentType`,
+               `age_limit_type`              AS `ageLimit`,
+               `dimension_type`         AS `dimensionType`,
+               `explanation`            AS `explanation`
+        FROM `terabox`.`movies`
+    </select>
+
+    <insert id="insertMovieComment" parameterType="com.terabox.demo.entities.MovieCommentEntity">
+        INSERT INTO `terabox`.`movie_comments`
+            (movie_index, created_at, user_email, content, grade, favorite)
+        VALUES (#{movieIndex},#{createdAt},#{userEmail},#{content},#{grade},#{favorite})
+    </insert>
+
+    <!-- 좋아요 눌렀을때 좋아요 받아온만큼 뜨게 하기 -->
+    <select id="selectComments" resultType="com.terabox.demo.dtos.MovieCommentDto">
+        SELECT  comment.`index` AS `index`,
+                comment.`movie_index` AS `movieIndex`,
+                comment.`created_at` AS `createdAt` ,
+                comment.`user_email` AS `userEmail`,
+                comment.`content` AS `content`,
+                comment.`grade` AS `grade`,
+                comment.`favorite` AS `favorite`,
+                COUNT(`comment_like`.`index`) AS `commentLikeCount`
+        FROM `terabox`.`movie_comments` AS `comment`
+                 LEFT JOIN `terabox`.`movie_comment_likes` AS `comment_like` ON `comment`.`index` = `comment_like`.`movie_comment_index`
+        WHERE BINARY `movie_index` = #{movieIndex}
+        GROUP BY `comment`.`index`
+        ORDER BY `index` DESC
+        LIMIT 20
+    </select>
+
+    <select id="selectCountComments" resultType="_int">
+        SELECT  COUNT(0) AS `count`
+        FROM `terabox`.`movie_comments`
+        WHERE BINARY `movie_index` = #{movieIndex}
+    </select>
+
+    <update id="upDateMovie" parameterType="com.terabox.demo.entities.MovieEntity">
+        UPDATE `terabox`.`movies`
+        SET `index`                  = #{index},
+            `title`                  = #{title},
+            `release_date`           = #{releaseDate},
+            `playing_time`           = #{playingTime},
+            `thumbnail`              = #{thumbnail},
+            `grade`                  = #{grade},
+            `view`                   = #{view},
+            `is_single`              = #{isSingle},
+            `thumbnail_file_name`    = #{thumbnailFileName},
+            `thumbnail_content_type` = #{thumbnailContentType},
+            `age_limit_type`              = #{ageLimit},
+            `dimension_type`         = #{dimensionType},
+            `explanation`            = #{explanation}
+        WHERE BINARY `index` = #{index}
+        LIMIT 1
+    </update>
 </mapper>
