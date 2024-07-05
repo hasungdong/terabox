@@ -87,20 +87,22 @@ if (document.querySelector('.order-three-container') !== null) {
 
             // 카드결제 결제 누르면
             orderThreeContainer.querySelector('[rel="checkAgreeTerms"]').onclick = () => {
+                alert(1)
                 if (orderThreeContainer.querySelector('.filter-option-inner-inner').innerText === '카드선택') {
                     showAlertCheckTerms('결제하실 카드를 선택하세요.');
+                    return;
                 }
 
                 const xhr = new XMLHttpRequest();
                 const formData = new FormData();
 
                 formData.append("cardName", dropdownToggleButton.querySelector('.filter-option-inner-inner').innerText);
-                formData.append("adultCount", orderThreeContainer.querySelector('.adultCount'));
-                formData.append("teenagerCount", orderThreeContainer.querySelector('.teenagerCount'));
-                formData.append("oldCount", orderThreeContainer.querySelector('.oldCount'));
-                formData.append("disabledCount", orderThreeContainer.querySelector('.disabledCount'));
-                formData.append("seatIndexes", orderThreeContainer.querySelector('.seatIndexes'));
-                formData.append("screeningInfoIndex", orderThreeContainer.querySelector('.screeningInfoIndex'));
+                formData.append("adultCount", document.querySelector('.adultCount').innerText);
+                formData.append("teenagerCount", document.querySelector('.teenagerCount').innerText);
+                formData.append("oldCount", document.querySelector('.oldCount').innerText);
+                formData.append("disabledCount", document.querySelector('.disabledCount').innerText);
+                formData.append("seatIndexes", document.querySelector('.seatIndexes').innerText);
+                formData.append("screeningInfoIndex", document.querySelector('.screeningInfoIndex').innerText);
 
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState !== XMLHttpRequest.DONE) {
@@ -111,6 +113,91 @@ if (document.querySelector('.order-three-container') !== null) {
                     }
                     const responseObject = JSON.parse(xhr.responseText);
                     console.log(responseObject['result']);
+
+                    switch (responseObject['result']){
+                        case 'success':
+                            alertCover.show();
+                            new MessageObj({
+                                title: '알림',
+                                content: '결제가 완료되었습니다. 구매내역을 확인하시겠습니까?',
+                                buttons: [
+                                    {
+                                        text: '취소', onclick: instance => {
+                                            instance.hide();
+                                            alertCover.hide();
+                                        }
+                                    },
+                                    {
+                                        text: '확인', onclick: instance => {
+                                            instance.hide();
+                                            alertCover.hide();
+                                            location.href = '';
+                                        }
+                                    }
+                                ]
+                            }).show();
+                            break;
+                        case 'failure':
+                            alertCover.show();
+                            new MessageObj({
+                                title: '경고',
+                                content: '알 수 없는 이유로 결제에 실패했습니다. 잠시 후 다시 시도해주세요',
+                                buttons: [
+                                    {
+                                        text: '확인', onclick: instance => {
+                                            instance.hide();
+                                            alertCover.hide();
+                                        }
+                                    }
+                                ]
+                            }).show()
+                            break;
+                        case 'failure_not_point':
+                            alertCover.show();
+                            new MessageObj({
+                                title: '경고',
+                                content: '금액이 부족합니다.',
+                                buttons: [
+                                    {
+                                        text: '확인', onclick: instance => {
+                                            instance.hide();
+                                            alertCover.hide();
+                                        }
+                                    }
+                                ]
+                            }).show()
+                            break;
+                        case 'order_error':
+                            alertCover.show();
+                            new MessageObj({
+                                title: '경고',
+                                content: '결제 도중 오류가 발생하였습니다. 잠시 후 다시 시도해 주세요.',
+                                buttons: [
+                                    {
+                                        text: '확인', onclick: instance => {
+                                            instance.hide();
+                                            alertCover.hide();
+                                        }
+                                    }
+                                ]
+                            }).show();
+                            break;
+                        default:
+                            alertCover.show();
+                            new MessageObj({
+                                title: '경고',
+                                content: '서버가 알 수 없는 응답을 반환하였습니다. 잠시 후 다시 시도해 주세요.',
+                                buttons: [
+                                    {
+                                        text: '확인', onclick: instance => {
+                                            instance.hide();
+                                            alertCover.hide();
+                                        }
+                                    }
+                                ]
+                            }).show();
+                            break;
+                    }
                 }
                 xhr.open('POST', '/order/movie');
                 xhr.send(formData);

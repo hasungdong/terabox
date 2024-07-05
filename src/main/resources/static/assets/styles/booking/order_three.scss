@@ -671,7 +671,6 @@
             }
 
             > .movie-grade{
-              background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/ALL_40x40.png);
               background-size: 20px 20px;
 
               width: 20px;
@@ -688,6 +687,22 @@
               background-position: center;
               background-repeat: no-repeat;
               overflow: hidden;
+
+              &.twelve{
+                background-image: url(../../images/booking/KMRB_12.jpeg);
+              }
+              &.fifteen{
+                background-image: url(../../images/booking/KMRB_15.jpeg);
+
+              }
+              &.nineteen{
+                background-image: url(../../images/booking/KMRB_19.jpeg);
+
+              }
+              &.all{
+                background-image: url(../../images/booking/KMRB_All.jpeg);
+
+              }
             }
 
             > .tit{

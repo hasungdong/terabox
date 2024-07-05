@@ -630,7 +630,6 @@
   margin: 0;
 }
 .temp .order-three-container > .right > .seat-result > .wrap > .tit-area > .movie-grade {
-  background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/ALL_40x40.png);
   background-size: 20px 20px;
   width: 20px;
   height: 20px;
@@ -644,6 +643,18 @@
   background-position: center;
   background-repeat: no-repeat;
   overflow: hidden;
+}
+.temp .order-three-container > .right > .seat-result > .wrap > .tit-area > .movie-grade.twelve {
+  background-image: url(../../images/booking/KMRB_12.jpeg);
+}
+.temp .order-three-container > .right > .seat-result > .wrap > .tit-area > .movie-grade.fifteen {
+  background-image: url(../../images/booking/KMRB_15.jpeg);
+}
+.temp .order-three-container > .right > .seat-result > .wrap > .tit-area > .movie-grade.nineteen {
+  background-image: url(../../images/booking/KMRB_19.jpeg);
+}
+.temp .order-three-container > .right > .seat-result > .wrap > .tit-area > .movie-grade.all {
+  background-image: url(../../images/booking/KMRB_All.jpeg);
 }
 .temp .order-three-container > .right > .seat-result > .wrap > .tit-area > .tit {
   overflow: hidden;

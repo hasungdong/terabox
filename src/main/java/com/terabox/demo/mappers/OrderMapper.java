@@ -12,7 +12,7 @@ public interface OrderMapper {
 
     int insertMovieReservation(MovieReservationEntity movieReservation);
 
-    OrderVo[] selectEmailByList(@Param("email") String email);
+    OrderVo[] selectEmailByList(@Param("userEmail") String userEmail);
 
     MovieReservationEntity selectMovieReservationBySeatScreeningInfo(
             @Param("screeningInfoIndex") int screeningInfoIndex,

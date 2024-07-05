@@ -277,7 +277,9 @@ public class OrderService {
                 }
             }
         }
-//        실패를 하나도 안했으면 성공
+
+
+//        성공 반환
         return CommonResult.SUCCESS;
     }
 }

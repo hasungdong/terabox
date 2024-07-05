@@ -41,7 +41,7 @@ public class OrderController {
     /* 결제 완료 했을떄 들어가는 값 */
     @PostMapping(value = "movie",produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String postMovie(@SessionAttribute("user") UserEntity user,
+    public String postMovie(@SessionAttribute(value = "user", required = false) UserEntity user,
                             OrderEntity order,
                             MovieOrderDto movieOrderDto){
         Result postMovieOrderResult;
@@ -61,7 +61,7 @@ public class OrderController {
     @GetMapping(value = "myMegaBox",produces = MediaType.TEXT_HTML_VALUE)
     public ModelAndView getMyMegaBox(@RequestParam(value = "user_email",required = false)String userEmail){
         ModelAndView model = new ModelAndView();
-        userEmail = "1234@naver.com";
+        userEmail = "gktjdehd3333@gmail.com";
         model.addObject("list",this.orderService.selectOrderList(userEmail));
         model.setViewName("store/myMegabox");
        return model;

@@ -433,11 +433,10 @@
                             <span class="movie-grade small age-19">청소년 관람 불가</span>
                             <span class="movie-grade small age-no">미정</span>
                         -->
-                        <span th:text="${screeningInfoVo.getAgeLimit()}"></span>
                         <th:block th:switch="${screeningInfoVo.getAgeLimit()}">
-                            <span class="movie-grade small age-all"  th:case="'12'" th:classappend="'12'"></span>
-                            <span class="movie-grade small age-all" th:case="'15'" th:classappend="'15'"></span>
-                            <span class="movie-grade small age-all"  th:case="'19'" th:classappend="'19'"></span>
+                            <span class="movie-grade small age-all"  th:case="'12'" th:classappend="'twelve'"></span>
+                            <span class="movie-grade small age-all" th:case="'15'" th:classappend="'fifteen'"></span>
+                            <span class="movie-grade small age-all"  th:case="'19'" th:classappend="'nineteen'"></span>
                             <span class="movie-grade small age-all" th:case="'all'" th:classappend="'all'"></span>
                         </th:block>
 
