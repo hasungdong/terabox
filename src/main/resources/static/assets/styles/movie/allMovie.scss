@@ -40,7 +40,6 @@ body{
 
   form {
 
-
     #container {
       width: 1100px;
       margin: 0 auto;
@@ -84,18 +83,9 @@ body{
               text-decoration: none;
               border: 0.04rem solid #dedede;
               font-weight: 500;
-
             }
-
-
-
           }
-
-
-
-
         }
-
       }
       >.movie-list-util{ /*영화관 검색 있는곳 묶음*/
         display: flex;
@@ -160,9 +150,6 @@ body{
             height: 32px;
           }
         }
-
-
-
       }
 
       >.movie-list{ /*영화 리스트 묶음*/
@@ -203,8 +190,6 @@ body{
         }
 
 
-
-
         >.list{ /*그 밑에 ol 태그*/
           margin-left: -60px;
           padding: 0;
@@ -218,7 +203,6 @@ body{
             padding: 0;
             margin: 0 0 60px 60px;
             background-color: #fff;
-
 
             >.movie-list-info{
               position: relative;
@@ -239,7 +223,6 @@ body{
                 color: #fff;
                 text-shadow: 2px 2px 2px rgba(0, 0, 0, .8);
                 background: url(https://img.megabox.co.kr/static/pc/images/movie/bg-movie-list-rank.png) no-repeat 0 0;
-
               }
 
               >.poster{ /*영화 사진*/
@@ -252,7 +235,6 @@ body{
                 padding: 0;
                 background-color: #fff;
                 border-radius: 0.5rem;
-
               }
 
               >.movie-score{
@@ -264,7 +246,6 @@ body{
                   display: block;
                   padding: 25px;
 
-
                   &:hover{
                     background-color: rgba(0, 0, 0, .8);
                     border-radius: 0.5rem;
@@ -273,29 +254,18 @@ body{
                       overflow: hidden;
                       display: block;
                       color: white;
-
                     }
-
-
                   }
+
                   >.summary{
                     position: absolute; //absolute 줄려면 조상중에 있어야함 position: relative;
                     overflow: hidden;
                     width: 180px;
                     height: 163px;
                     display: none;
-
-
-
                   }
-
-
-
                 }
-
-
               }
-
             }
 
             >.tit-area{ /*묶음자리*/
@@ -304,8 +274,6 @@ body{
               margin: 15px 0 0 0;
               padding: 0 0 0 30px;
               line-height: 25px;
-
-
 
               >.movie-grad-all{
                 height: 100%;
@@ -329,8 +297,6 @@ body{
                 font-size: 1.7em;
                 font-weight: 400;
                 margin : 0;
-
-
               }
             }
 
@@ -359,10 +325,7 @@ body{
                 position: relative;
                 float: left;
                 font-weight: 600;
-
-
               }
-
             }
 
             >.btn-util{
@@ -431,32 +394,12 @@ body{
                     padding-top: 7px;
                     border: 0;
                   }
-
                 }
-
-
               }
-
-
             }
-
-
           }
-
-
-
-
         }
-
-
       }
-
     }
-
-
-
-
-
-
   }
 }
