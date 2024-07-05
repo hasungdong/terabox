@@ -77,8 +77,6 @@
   }
 }
 
-@charset "UTF-8";
-
 .login {
   top: 50%;
   left: 50%;
@@ -93,7 +91,7 @@
   position: fixed;
   transform: translate(-50%, -50%);
   transition: top, opacity 250ms ease;
-  z-index: 9;
+  z-index: 100;
 
   &.-visible {
     top: 50%;

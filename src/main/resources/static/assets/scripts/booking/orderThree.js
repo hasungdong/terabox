@@ -93,7 +93,15 @@ if (document.querySelector('.order-three-container') !== null) {
 
                 const xhr = new XMLHttpRequest();
                 const formData = new FormData();
-                formData.append("")
+
+                formData.append("cardName", dropdownToggleButton.querySelector('.filter-option-inner-inner').innerText);
+                formData.append("adultCount", orderThreeContainer.querySelector('.adultCount'));
+                formData.append("teenagerCount", orderThreeContainer.querySelector('.teenagerCount'));
+                formData.append("oldCount", orderThreeContainer.querySelector('.oldCount'));
+                formData.append("disabledCount", orderThreeContainer.querySelector('.disabledCount'));
+                formData.append("seatIndexes", orderThreeContainer.querySelector('.seatIndexes'));
+                formData.append("screeningInfoIndex", orderThreeContainer.querySelector('.screeningInfoIndex'));
+
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState !== XMLHttpRequest.DONE) {
                         return;
@@ -101,6 +109,8 @@ if (document.querySelector('.order-three-container') !== null) {
                     if (xhr.status < 200 || xhr.status >= 300) {
                         return;
                     }
+                    const responseObject = JSON.parse(xhr.responseText);
+                    console.log(responseObject['result']);
                 }
                 xhr.open('POST', '/order/movie');
                 xhr.send(formData);

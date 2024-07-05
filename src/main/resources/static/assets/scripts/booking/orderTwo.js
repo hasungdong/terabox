@@ -850,7 +850,7 @@ if (screeningInfo) {
 
   function postOrderThree(movieOrderDto) {
     const form = document.createElement('form');
-    form.method = 'GET';
+    form.method = 'POST';
     form.action = '/booking/orderThree';
 
     const input = document.createElement('input');

@@ -37,7 +37,7 @@
                         <img th:src="@{/movie/image(index=${allMovies.getIndex()})}" class="poster" alt="Image">
                         <!--                        마우스 갖다댔을때 나오는 텍스트-->
                         <div class="movie-score">
-                            <a href="#" class="wrap movieBtn"
+                            <a  class="wrap movieBtn"
                                title="극장판 하이큐 g vg!! 쓰레기장의 결전 상세보기" th:href="@{/movie/movieDetail (index=${allMovies.getIndex()})}">
                                 <div class="summary" th:text="${allMovies.getExplanation()}">봄철 고교 배구대회 미야기현 대표 결정전.
                                     1회전과 2회전에서 우승 후보를 차례로 꺾은 카라스노 고등학교는 마침내 3회전에서 인연의 라이벌 네코마 고등학교와 맞붙게 된다.
@@ -72,10 +72,10 @@
                             <span>2.3k</span>
                         </button>
                         <div class="Ticketing-container">
-                            <a href="#" class="button purple ticketing" data-no="24024700" title="영화 예매하기">
+                            <a  class="button purple ticketing" data-no="24024700" title="영화 예매하기">
                                 예매
                             </a>
-                            <!--                            <a href="#" class="button purple img" data-no="24024700">-->
+                            <!--                            <a  class="button purple img" data-no="24024700">-->
                             <!--                                <img src="https://www.megabox.co.kr/static/pc/images/common/btn/mov_list_db_btn.png" alt="dolby 버튼" class="img">-->
                             <!--                            </a>-->
                         </div>

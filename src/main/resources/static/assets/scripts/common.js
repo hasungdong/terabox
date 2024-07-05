@@ -4,9 +4,11 @@ const cover = document.getElementById('cover');
 const loading = document.getElementById('loading');
 
 // 로그인 취소 버튼 작동
-loginCancelButton.onclick = () => {
-    loginForm.hide();
-    cover.hide();
+if (loginCancelButton !== null){
+    loginCancelButton.onclick = () => {
+        loginForm.hide();
+        cover.hide();
+    }
 }
 
 // 스와이퍼 기능, 홈일 때랑 아닐 때 구분돼있음

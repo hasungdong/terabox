@@ -1,5 +1,4 @@
 const registerForm = document.getElementById('registerForm');
-const loading = document.getElementById('loading');
 
 
 

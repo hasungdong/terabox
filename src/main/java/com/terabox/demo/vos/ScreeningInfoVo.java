@@ -15,4 +15,18 @@ public class ScreeningInfoVo extends ScreeningInfoEntity {
     private String movieTitle;
     private String movieDimensionType;
     private LocalTime moviePlayingTime;
+    private String ageLimit;   // 추가된 필드
+
+    @Override
+    public String toString() {
+        return "ScreeningInfoVo{" +
+                "theaterName='" + theaterName + '\'' +
+                ", cinemaNumber=" + cinemaNumber +
+                ", regionText='" + regionText + '\'' +
+                ", movieTitle='" + movieTitle + '\'' +
+                ", movieDimensionType='" + movieDimensionType + '\'' +
+                ", moviePlayingTime=" + moviePlayingTime +
+                ", ageLimit='" + ageLimit + '\'' +
+                '}';
+    }
 }
