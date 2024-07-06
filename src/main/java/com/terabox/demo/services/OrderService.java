@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 @Transactional
@@ -218,8 +216,6 @@ public class OrderService {
             if (this.userCardMapper.updateMoney(dbUserCard) != 1){
                 return CommonResult.FAILURE_NOT_POINT;
             }
-
-            System.out.println(dbUserCard.getMoney() - order.getTotalPrice());
         }
 
 //        성공 반환
