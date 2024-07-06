@@ -16,6 +16,22 @@
   line-height: 1.5;
   font-size: 0.9375rem;
 
+  > .tit-box{
+    display: flex;
+    width: 1100px;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    h2.tit{
+      padding: 40px 0 30px 0;
+      font-size: 1.8666em;
+      font-weight: 400;
+      letter-spacing: -1px;
+      line-height: 1.1;
+      color: #222;
+    }
+  }
+
   .order-three-container {
     display: flex;
     flex-direction: row;

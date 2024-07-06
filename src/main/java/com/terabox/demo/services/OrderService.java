@@ -9,12 +9,16 @@ import com.terabox.demo.results.Result;
 import com.terabox.demo.vos.OrderVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
+@Transactional
 public class OrderService {
     private final OrderMapper orderMapper;
     private final UserCardMapper userCardMapper;
@@ -101,7 +105,7 @@ public class OrderService {
         order.setUserEmail(user.getEmail());
         order.setProductIndex(null);
         order.setCreatedAt(LocalDateTime.now());
-        order.setPrice(0);
+        order.setQuantity(1);
 
 //        유효성 검사
 //        이메일이랑 카드 이름으로 카드 가져왔을 때,
@@ -125,28 +129,28 @@ public class OrderService {
 //            받은 좌석 타입 종류에 따라 가격 다르게 설정
             switch (seatPrice.getType()) {
                 case "adult":
-                    adultPrice = seatPrice.getPrice() * movieOrderDto.getAdultCount();
+                    adultPrice = seatPrice.getPrice();
                     //                    해당 타입의 개수만큼 반복
                     for (int i = 0; i < movieOrderDto.getAdultCount(); i++) {
                         totalPrice += adultPrice;
                     }
                     break;
                 case "teenager":
-                    teenagerPrice = seatPrice.getPrice() * movieOrderDto.getAdultCount();
+                    teenagerPrice = seatPrice.getPrice();
                     //                    해당 타입의 개수만큼 반복
                     for (int i = 0; i < movieOrderDto.getTeenagerCount(); i++) {
                         totalPrice += teenagerPrice;
                     }
                     break;
                 case "old":
-                    oldPrice = seatPrice.getPrice() * movieOrderDto.getOldCount();
+                    oldPrice = seatPrice.getPrice();
                     //                    해당 타입의 개수만큼 반복
                     for (int i = 0; i < movieOrderDto.getOldCount(); i++) {
                         totalPrice += oldPrice;
                     }
                     break;
                 case "disabled":
-                    disabledPrice = seatPrice.getPrice() * movieOrderDto.getDisabledCount();
+                    disabledPrice = seatPrice.getPrice();
                     //                    해당 타입의 개수만큼 반복
                     for (int i = 0; i < movieOrderDto.getDisabledCount(); i++) {
                         totalPrice += disabledPrice;
@@ -158,7 +162,7 @@ public class OrderService {
         }
 
 //        통장에 돈이 모자라면 실패
-        if (dbUserCard.getMoney() < totalPrice){
+        if (dbUserCard.getMoney() < totalPrice) {
             return CommonResult.FAILURE_NOT_POINT;
         }
 
@@ -166,20 +170,23 @@ public class OrderService {
         MovieReservationEntity movieReservationEntity = new MovieReservationEntity();
         movieReservationEntity.setScreeningInfoIndex(movieOrderDto.getScreeningInfoIndex());
 
-//        결제하려는 좌석의 총 개수
-        int totalCount = movieOrderDto.getAdultCount() +
-                movieOrderDto.getTeenagerCount() +
-                movieOrderDto.getOldCount() +
-                movieOrderDto.getDisabledCount();
-
 //        좌석 총 개수만큼 반복
-        for (int i = 0; i < totalCount; i++) {
+        for (int i = 0; i < movieOrderDto.getSeatIndexes().length; i++) {
+            if (i < movieOrderDto.getAdultCount()){
+                order.setPrice(adultPrice);
+            } else if (i < movieOrderDto.getAdultCount() + movieOrderDto.getTeenagerCount()) {
+                order.setPrice(teenagerPrice);
+            } else if (i < movieOrderDto.getAdultCount() + movieOrderDto.getTeenagerCount() + movieOrderDto.getOldCount()) {
+                order.setPrice(oldPrice);
+            } else if (i < movieOrderDto.getAdultCount() + movieOrderDto.getTeenagerCount() + movieOrderDto.getOldCount() + movieOrderDto.getDisabledCount()) {
+                order.setPrice(disabledPrice);
+            }
 //            seatIndexes의 길이가 총 좌석 개수와 반드시 같아서 i 사용해도 문제 없다.
             movieReservationEntity.setSeatIndex(movieOrderDto.getSeatIndexes()[i]);
 
 //            MovieReservation 테이블에 insert 결과에 따라 다른 로직
-            if (this.orderMapper.insertMovieReservation(movieReservationEntity) != 1){
-                return CommonResult.FAILURE;
+            if (this.orderMapper.insertMovieReservation(movieReservationEntity) != 1) {
+                throw new TransactionalException();
             }
 
 //            insert 성공했으면 바로 불러온다.
@@ -188,96 +195,32 @@ public class OrderService {
             //            불러온 엔티티의 index를 order의 멤버변수로 지정
             order.setMovieReservationIndex(dbMovieReservation.getIndex());
 
-//            결제할 카드
+            //            결제할 카드 종류
             CardEntity dbCard = this.cardMapper.selectCardByName(dbUserCard.getCardName());
 
-//            경우에 따라 결제
-            for (SeatPriceEntity seatPrice : seatPrices) {
-                switch (seatPrice.getType()) {
-                    case "adult":
-//                        원가
-                        order.setPrice(adultPrice);
 //                        할인되는 금액
-                        order.setTotalSale(order.getPrice() * dbCard.getDiscountRate() / 100);
+            order.setTotalSale(order.getPrice() * dbCard.getDiscountRate() / 100);
 //                        최종 결제 금액
-                        order.setTotalPrice(order.getPrice() - order.getTotalSale());
-//                        결제
-                        for (int j = 0; j < movieOrderDto.getAdultCount(); j++) {
-                            int insertResult = this.orderMapper.insertOrder(order);
+            order.setTotalPrice(order.getPrice() - order.getTotalSale());
+            System.out.println(order);
+
+//            결제
+            int insertResult = this.orderMapper.insertOrder(order);
 //                            결제 실패 시
-                            if (insertResult != 1){
+            if (insertResult != 1) {
 //                                오류 발생
-                                throw new TransactionalException();
-                            }
-                        }
-
-//                        결제 성공하면 통장에서 돈 차감
-                        dbUserCard.setMoney(dbUserCard.getMoney() - order.getTotalPrice());
-                        break;
-                    case "teenager":
-//                        원가
-                        order.setPrice(teenagerPrice);
-//                        할인되는 금액
-                        order.setTotalSale(order.getPrice() * dbCard.getDiscountRate() / 100);
-//                        최종 결제 금액
-                        order.setTotalPrice(order.getPrice() - order.getTotalSale());
-//                        결제
-                        for (int j = 0; j < movieOrderDto.getTeenagerCount(); j++) {
-                            int insertResult = this.orderMapper.insertOrder(order);
-                            //                            결제 실패 시
-                            if (insertResult != 1){
-//                                오류 발생
-                                throw new TransactionalException();
-                            }
-                        }
-                        //                        결제 성공하면 통장에서 돈 차감
-                        dbUserCard.setMoney(dbUserCard.getMoney() - order.getTotalPrice());
-                        break;
-                    case "old":
-                        //                        원가
-                        order.setPrice(oldPrice);
-//                        할인되는 금액
-                        order.setTotalSale(order.getPrice() * dbCard.getDiscountRate() / 100);
-//                        최종 결제 금액
-                        order.setTotalPrice(order.getPrice() - order.getTotalSale());
-//                        결제
-                        for (int j = 0; j < movieOrderDto.getOldCount(); j++) {
-                            int insertResult = this.orderMapper.insertOrder(order);
-                            //                            결제 실패 시
-                            if (insertResult != 1){
-//                                오류 발생
-                                throw new TransactionalException();
-                            }
-                        }
-                        //                        결제 성공하면 통장에서 돈 차감
-                        dbUserCard.setMoney(dbUserCard.getMoney() - order.getTotalPrice());
-                        break;
-                    case "disabled":
-                        //                        원가
-                        order.setPrice(disabledPrice);
-//                        할인되는 금액
-                        order.setTotalSale(order.getPrice() * dbCard.getDiscountRate() / 100);
-//                        최종 결제 금액
-                        order.setTotalPrice(order.getPrice() - order.getTotalSale());
-//                        결제
-                        for (int j = 0; j < movieOrderDto.getDisabledCount(); j++) {
-                            int insertResult = this.orderMapper.insertOrder(order);
-                            //                            결제 실패 시
-                            if (insertResult != 1){
-//                                오류 발생
-                                throw new TransactionalException();
-                            }
-                        }
-                        //                        결제 성공하면 통장에서 돈 차감
-                        dbUserCard.setMoney(dbUserCard.getMoney() - order.getTotalPrice());
-                        break;
-                    default:
-//                        엉뚱한 값 드가있으면 오류 발생
-                        throw new TransactionalException();
-                }
+                throw new TransactionalException();
             }
-        }
 
+            //                        결제 성공하면 통장에서 돈 차감
+            dbUserCard.setMoney(dbUserCard.getMoney() - order.getTotalPrice());
+
+            if (this.userCardMapper.updateMoney(dbUserCard) != 1){
+                return CommonResult.FAILURE_NOT_POINT;
+            }
+
+            System.out.println(dbUserCard.getMoney() - order.getTotalPrice());
+        }
 
 //        성공 반환
         return CommonResult.SUCCESS;

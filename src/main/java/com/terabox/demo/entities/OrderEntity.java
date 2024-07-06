@@ -21,4 +21,20 @@ public class OrderEntity {
 
     private int totalSale; // 할인금액
     private int totalPrice; // 상품 총 금액
+
+    @Override
+    public String toString() {
+        return "OrderEntity{" +
+                "index=" + index +
+                ", userEmail='" + userEmail + '\'' +
+                ", movieReservationIndex=" + movieReservationIndex +
+                ", productIndex=" + productIndex +
+                ", price=" + price +
+                ", userCardMappingIndex=" + userCardMappingIndex +
+                ", quantity=" + quantity +
+                ", createdAt=" + createdAt +
+                ", totalSale=" + totalSale +
+                ", totalPrice=" + totalPrice +
+                '}';
+    }
 }

@@ -85,123 +85,7 @@ if (document.querySelector('.order-three-container') !== null) {
             orderThreeContainer.querySelector('.payment-thing > .thing').innerText = orderThreeContainer.querySelector('label.credit').innerText;
             orderThreeContainer.querySelector('.term-list').style.display = 'none';
 
-            // 카드결제 결제 누르면
-            orderThreeContainer.querySelector('[rel="checkAgreeTerms"]').onclick = () => {
-                alert(1)
-                if (orderThreeContainer.querySelector('.filter-option-inner-inner').innerText === '카드선택') {
-                    showAlertCheckTerms('결제하실 카드를 선택하세요.');
-                    return;
-                }
 
-                const xhr = new XMLHttpRequest();
-                const formData = new FormData();
-
-                formData.append("cardName", dropdownToggleButton.querySelector('.filter-option-inner-inner').innerText);
-                formData.append("adultCount", document.querySelector('.adultCount').innerText);
-                formData.append("teenagerCount", document.querySelector('.teenagerCount').innerText);
-                formData.append("oldCount", document.querySelector('.oldCount').innerText);
-                formData.append("disabledCount", document.querySelector('.disabledCount').innerText);
-                formData.append("seatIndexes", document.querySelector('.seatIndexes').innerText);
-                formData.append("screeningInfoIndex", document.querySelector('.screeningInfoIndex').innerText);
-
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState !== XMLHttpRequest.DONE) {
-                        return;
-                    }
-                    if (xhr.status < 200 || xhr.status >= 300) {
-                        return;
-                    }
-                    const responseObject = JSON.parse(xhr.responseText);
-                    console.log(responseObject['result']);
-
-                    switch (responseObject['result']){
-                        case 'success':
-                            alertCover.show();
-                            new MessageObj({
-                                title: '알림',
-                                content: '결제가 완료되었습니다. 구매내역을 확인하시겠습니까?',
-                                buttons: [
-                                    {
-                                        text: '취소', onclick: instance => {
-                                            instance.hide();
-                                            alertCover.hide();
-                                        }
-                                    },
-                                    {
-                                        text: '확인', onclick: instance => {
-                                            instance.hide();
-                                            alertCover.hide();
-                                            location.href = '';
-                                        }
-                                    }
-                                ]
-                            }).show();
-                            break;
-                        case 'failure':
-                            alertCover.show();
-                            new MessageObj({
-                                title: '경고',
-                                content: '알 수 없는 이유로 결제에 실패했습니다. 잠시 후 다시 시도해주세요',
-                                buttons: [
-                                    {
-                                        text: '확인', onclick: instance => {
-                                            instance.hide();
-                                            alertCover.hide();
-                                        }
-                                    }
-                                ]
-                            }).show()
-                            break;
-                        case 'failure_not_point':
-                            alertCover.show();
-                            new MessageObj({
-                                title: '경고',
-                                content: '금액이 부족합니다.',
-                                buttons: [
-                                    {
-                                        text: '확인', onclick: instance => {
-                                            instance.hide();
-                                            alertCover.hide();
-                                        }
-                                    }
-                                ]
-                            }).show()
-                            break;
-                        case 'order_error':
-                            alertCover.show();
-                            new MessageObj({
-                                title: '경고',
-                                content: '결제 도중 오류가 발생하였습니다. 잠시 후 다시 시도해 주세요.',
-                                buttons: [
-                                    {
-                                        text: '확인', onclick: instance => {
-                                            instance.hide();
-                                            alertCover.hide();
-                                        }
-                                    }
-                                ]
-                            }).show();
-                            break;
-                        default:
-                            alertCover.show();
-                            new MessageObj({
-                                title: '경고',
-                                content: '서버가 알 수 없는 응답을 반환하였습니다. 잠시 후 다시 시도해 주세요.',
-                                buttons: [
-                                    {
-                                        text: '확인', onclick: instance => {
-                                            instance.hide();
-                                            alertCover.hide();
-                                        }
-                                    }
-                                ]
-                            }).show();
-                            break;
-                    }
-                }
-                xhr.open('POST', '/order/movie');
-                xhr.send(formData);
-            }
         }
         // 휴대폰결제
         if (selectPaymentLabel.classList.contains('mobile')) {
@@ -304,24 +188,24 @@ if (document.querySelector('.order-three-container') !== null) {
                 }
             })
 
-            // 간편결제 결제 누르면
-            orderThreeContainer.querySelector('[rel="checkAgreeTerms"]').onclick = () => {
-                const payMethodsIsChecked = [];
-                payMethods.forEach(payMethod => {
-                    payMethodsIsChecked.push(payMethod.checked);
-                })
-
-                if (!orderThreeContainer.querySelector('.term-list > dt > .bg-chk > input').checked) {
-                    if (payMethodsIsChecked.every(payMethod => payMethod === false)) {
-                        showAlertCheckTerms(`결제 하지 않은 금액이 있습니다. <br>
-                        결제 수단을 선택해주세요.`);
-                    } else {
-                        showAlertCheckTerms(`결제대행 서비스 약관에 동의하시겠습니까?`, () => {
-                            orderThreeContainer.querySelector('.term-list > dt > .bg-chk > input').checked = true;
-                        });
-                    }
-                }
-            }
+            // // 간편결제 결제 누르면
+            // orderThreeContainer.querySelector('[rel="checkAgreeTerms"]').onclick = () => {
+            //     const payMethodsIsChecked = [];
+            //     payMethods.forEach(payMethod => {
+            //         payMethodsIsChecked.push(payMethod.checked);
+            //     })
+            //
+            //     if (!orderThreeContainer.querySelector('.term-list > dt > .bg-chk > input').checked) {
+            //         if (payMethodsIsChecked.every(payMethod => payMethod === false)) {
+            //             showAlertCheckTerms(`결제 하지 않은 금액이 있습니다. <br>
+            //             결제 수단을 선택해주세요.`);
+            //         } else {
+            //             showAlertCheckTerms(`결제대행 서비스 약관에 동의하시겠습니까?`, () => {
+            //                 orderThreeContainer.querySelector('.term-list > dt > .bg-chk > input').checked = true;
+            //             });
+            //         }
+            //     }
+            // }
         }
         // 내 통장 결제
         if (selectPaymentLabel.classList.contains('settlebank')) {
@@ -445,6 +329,231 @@ if (document.querySelector('.order-three-container') !== null) {
             })
         }, 3300);
     }
+
+    // 결제 누르면
+    orderThreeContainer.querySelector('[rel="checkAgreeTerms"]').onclick = () => {
+        const orderMethods = orderThreeContainer.querySelectorAll('.radio-group > span');
+
+        let noSelectMethod = [];
+        orderMethods.forEach(orderMethod => noSelectMethod.push(orderMethod));
+        if (noSelectMethod.every(orderMethod => orderMethod.checked === false)){
+            alertCover.show();
+            MessageObj.createSimpleOk('알림', '한 가지 이상의 결제수단을 선택해야 합니다.')
+            return;
+        }
+
+        orderMethods.forEach(orderMethod => {
+            if(orderMethod.querySelector('input').classList.contains('credit')){
+                if (!orderMethod.querySelector('input.credit').checked === true){
+                    return;
+                }
+                // 카드 결제
+                if (orderThreeContainer.querySelector('.filter-option-inner-inner').innerText === '카드선택') {
+                    showAlertCheckTerms('결제하실 카드를 선택하세요.');
+                    return;
+                }
+
+                const xhr = new XMLHttpRequest();
+                const formData = new FormData();
+
+                const cardName = dropdownToggleButton.querySelector('.filter-option-inner-inner').innerText;
+                const adultCount = document.querySelector('.adultCount').innerText;
+                const teenagerCount = document.querySelector('.teenagerCount').innerText;
+                const oldCount = document.querySelector('.oldCount').innerText;
+                const disabledCount = document.querySelector('.disabledCount').innerText;
+                const seatIndexesString = document.querySelector('.seatIndexes').innerText;
+                const screeningInfoIndex = document.querySelector('.screeningInfoIndex').innerText;
+
+                const movieOrderDto = {
+                    cardName,
+                    adultCount,
+                    teenagerCount,
+                    oldCount,
+                    disabledCount,
+                    screeningInfoIndex
+                };
+
+                formData.append("movieOrderDto", JSON.stringify(movieOrderDto));
+                formData.append("seatIndexesString", seatIndexesString);
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState !== XMLHttpRequest.DONE) {
+                        return;
+                    }
+                    if (xhr.status < 200 || xhr.status >= 300) {
+                        return;
+                    }
+                    const responseObject = JSON.parse(xhr.responseText);
+
+                    switch (responseObject['result']) {
+                        case 'success':
+                            alertCover.show();
+                            new MessageObj({
+                                title: '알림',
+                                content: '결제가 완료되었습니다. 구매내역을 확인하시겠습니까?',
+                                buttons: [
+                                    {
+                                        text: '취소', onclick: instance => {
+                                            instance.hide();
+                                            alertCover.hide();
+                                            location.href = '/home';
+                                        }
+                                    },
+                                    {
+                                        text: '확인', onclick: instance => {
+                                            instance.hide();
+                                            alertCover.hide();
+                                            location.href = '/order/myMegaBox';
+                                        }
+                                    }
+                                ]
+                            }).show();
+                            break;
+                        case 'failure':
+                            alertCover.show();
+                            new MessageObj({
+                                title: '경고',
+                                content: '알 수 없는 이유로 결제에 실패했습니다. 잠시 후 다시 시도해주세요',
+                                buttons: [
+                                    {
+                                        text: '확인', onclick: instance => {
+                                            instance.hide();
+                                            alertCover.hide();
+                                        }
+                                    }
+                                ]
+                            }).show()
+                            break;
+                        case 'failure_not_point':
+                            alertCover.show();
+                            new MessageObj({
+                                title: '경고',
+                                content: '금액이 부족합니다.',
+                                buttons: [
+                                    {
+                                        text: '확인', onclick: instance => {
+                                            instance.hide();
+                                            alertCover.hide();
+                                        }
+                                    }
+                                ]
+                            }).show()
+                            break;
+                        case 'order_error':
+                            alertCover.show();
+                            new MessageObj({
+                                title: '경고',
+                                content: '결제 도중 오류가 발생하였습니다. 잠시 후 다시 시도해 주세요.',
+                                buttons: [
+                                    {
+                                        text: '확인', onclick: instance => {
+                                            instance.hide();
+                                            alertCover.hide();
+                                        }
+                                    }
+                                ]
+                            }).show();
+                            break;
+                        default:
+                            alertCover.show();
+                            new MessageObj({
+                                title: '경고',
+                                content: '서버가 알 수 없는 응답을 반환하였습니다. 잠시 후 다시 시도해 주세요.',
+                                buttons: [
+                                    {
+                                        text: '확인', onclick: instance => {
+                                            instance.hide();
+                                            alertCover.hide();
+                                        }
+                                    }
+                                ]
+                            }).show();
+                            break;
+                    }
+                }
+                xhr.open('POST', '/order/movie');
+                xhr.send(formData);
+
+            } else if (orderMethod.querySelector('input').classList.contains('mobile')){
+                if (!orderMethod.querySelector('input.mobile').checked === true){
+                    return;
+                }
+                alertCover.show();
+                new MessageObj({
+                    title: '알림',
+                    content: '영화 결제는 현재 신용/체크카드만 구현되어 있습니다.',
+                    buttons: [
+                        {
+                            text: '확인', onclick: instance => {
+                                instance.hide();
+                                alertCover.hide();
+                            }
+                        }
+                    ]
+                }).show();
+
+            } else if (orderMethod.querySelector('input').classList.contains('easypay')){
+                if (!orderMethod.querySelector('input.easypay').checked === true){
+                    return;
+                }
+// 간편결제일 때
+                // 페이 아무것도 안골랐을 때
+                const payMethodsIsChecked = [];
+
+                const payMethods = orderThreeContainer.querySelectorAll('.select-payment-easypay > input');
+
+                payMethods.forEach(payMethod => {
+                    payMethodsIsChecked.push(payMethod.checked);
+                })
+
+                if (payMethodsIsChecked.every(payMethod => payMethod === false)) {
+                    showAlertCheckTerms(`결제 하지 않은 금액이 있습니다. <br>
+                        결제 수단을 선택해주세요.`);
+                    return;
+                }
+
+                // 결제대행 서비스 약관 동의 안한 경우
+                if (!orderThreeContainer.querySelector('.term-list > dt > .bg-chk > input').checked) {
+                    showAlertCheckTerms(`결제대행 서비스 약관에 동의하시겠습니까?`, () => {
+                        orderThreeContainer.querySelector('.term-list > dt > .bg-chk > input').checked = true;
+                    });
+                    return;
+                }
+
+                alertCover.show();
+                new MessageObj({
+                    title: '알림',
+                    content: '영화 결제는 현재 신용/체크카드만 구현되어 있습니다.',
+                    buttons: [
+                        {
+                            text: '확인', onclick: instance => {
+                                instance.hide();
+                                alertCover.hide();
+                            }
+                        }
+                    ]
+                }).show();
+            } else if (orderMethod.querySelector('input').classList.contains('settlebank')){
+                if (!orderMethod.querySelector('input.settlebank').checked === true){
+                    return;
+                }
+                alertCover.show();
+                new MessageObj({
+                    title: '알림',
+                    content: '영화 결제는 현재 신용/체크카드만 구현되어 있습니다.',
+                    buttons: [
+                        {
+                            text: '확인', onclick: instance => {
+                                instance.hide();
+                                alertCover.hide();
+                            }
+                        }
+                    ]
+                }).show();
+            }
+        })
+    }
 }
+
 
 

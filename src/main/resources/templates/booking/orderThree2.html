@@ -14,6 +14,9 @@
 <th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
 <!--temp는 임시로 만들어놨습니다. 이게 빠른 예매 글씨 적힌 부분은 1페이지랑 똑같아가지고 제가 직접 뭐 안해도 될 것 같아서-->
 <div class="temp">
+    <div class="tit-box">
+        <h2 class="tit">빠른예매</h2>
+    </div>
     <div class="order-three-container">
         <div class="seat-section h-auto">
             <div class="tit-util">
@@ -278,19 +281,19 @@
             <div class="select-payment ty2">
                 <div class="radio-group">
                     <span class="bg-chk small">
-                        <input type="radio" name="radio_payment" id="rdo_pay_credit" value="credit" checked>
+                        <input type="radio" name="radio_payment"  class="credit" id="rdo_pay_credit" value="credit" checked>
                         <label class="credit" for="rdo_pay_credit">신용/체크카드</label>
                     </span>
                     <span class="bg-chk small">
-                        <input type="radio" name="radio_payment" id="rdo_pay_mobile" value="mobile">
+                        <input type="radio" name="radio_payment"  class="mobile" id="rdo_pay_mobile" value="mobile">
                         <label class="mobile" for="rdo_pay_mobile">휴대폰 결제</label>
                     </span>
                     <span class="bg-chk small">
-                        <input type="radio" name="radio_payment" id="rdo_pay_easypay" value="easypay">
+                        <input type="radio" name="radio_payment"  class="easypay" id="rdo_pay_easypay" value="easypay">
                         <label class="easypay" for="rdo_pay_easypay">간편결제</label>
                     </span>
                     <span class="bg-chk small">
-                        <input type="radio" name="radio_payment" id="rdo_pay_settlebank" value="settlebank">
+                        <input type="radio" name="radio_payment"  class="settlebank" id="rdo_pay_settlebank" value="settlebank">
                         <label class="settlebank" for="rdo_pay_settlebank">내통장결제</label>
                     </span>
                 </div>
