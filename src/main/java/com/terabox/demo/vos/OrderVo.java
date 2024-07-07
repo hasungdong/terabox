@@ -10,6 +10,7 @@ import lombok.Setter;
 @EqualsAndHashCode(callSuper = true)
 public class OrderVo extends OrderEntity {
     private String productName;
+    private String movieTitle;
     private int productQuantity;
 
 }
