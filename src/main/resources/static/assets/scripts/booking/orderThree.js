@@ -84,8 +84,6 @@ if (document.querySelector('.order-three-container') !== null) {
             orderThreeContainer.querySelector('.select-payment-card').style.display = 'flex';
             orderThreeContainer.querySelector('.payment-thing > .thing').innerText = orderThreeContainer.querySelector('label.credit').innerText;
             orderThreeContainer.querySelector('.term-list').style.display = 'none';
-
-
         }
         // 휴대폰결제
         if (selectPaymentLabel.classList.contains('mobile')) {

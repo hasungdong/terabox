@@ -2,6 +2,7 @@ package com.terabox.demo.controllers;
 
 import com.terabox.demo.entities.EmailAuthEntity;
 import com.terabox.demo.entities.UserEntity;
+import com.terabox.demo.exceptions.TransactionalException;
 import com.terabox.demo.results.CommonResult;
 import com.terabox.demo.results.Result;
 import com.terabox.demo.services.UserService;
@@ -51,7 +52,21 @@ public class UserController {
         Result result = this.userService.register(emailAuth, user);
         JSONObject responseObject = new JSONObject();
         responseObject.put("result", result.name().toLowerCase());
+        return responseObject.toString();
+    }
 
+    // 카드 삽입
+    @PostMapping(value = "/createCard", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public String postCreateCard(@RequestParam("email") String email) {
+        Result result;
+        try {
+            result = this.userService.postCreateCard(email);
+        } catch (TransactionalException exception) {
+            result = CommonResult.FAILURE;
+        }
+        JSONObject responseObject = new JSONObject();
+        responseObject.put("result", result.name().toLowerCase());
         return responseObject.toString();
     }
 

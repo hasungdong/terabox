@@ -203,7 +203,25 @@ registerForm.onsubmit = e => {
                 registerForm['nickname'].focus()
             }],
             success: ['알림', '회원가입해주셔서 감사드립니다. 확인 버튼을 클릭하면 다음 페이지로 이동합니다.', () => {
-                location.href = `/register/registerFour?nickname=${document.getElementById('userNickname').value}`;
+                const xhr = new XMLHttpRequest();
+                const formData = new FormData();
+                formData.append('email', registerForm['email'].value);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState !== XMLHttpRequest.DONE) {
+                        return;
+                    }
+                    if (xhr.status < 200 || xhr.status >= 300) {
+
+                        return;
+                    }
+                    const response = JSON.parse(xhr.responseText);
+                    if (response['result'] === 'success') {
+                        location.href = `/register/registerFour?nickname=${document.getElementById('userNickname').value}`;
+                    }
+                }
+                xhr.open('POST', '/user/createCard');
+                xhr.send(formData);
+
                 //                      location.href는 링크가 get방식으로 전달됨 ^ 위에처럼 링크를주고 elementid를 같이 전달한다, 이렇게 전달 후 컨트롤러에 addAtrribute나 mav추가를 해서 이동한 링크에서 이 값을 사용한다. (여기서는 registerController에서 이동하는 registerFour.html이라 컨트롤러도 registerFour에 model.addAtrribute를 함)
             }]
 
