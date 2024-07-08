@@ -1,136 +1,5 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
-#footer {
-  min-width: 1100px;
-  width: 100%;
-  height: 200px;
-  margin: 0;
-  padding: 0;
-  background-color: #f8f8fa;
-  position: relative;
-  top: 36rem;
-  font-family: sans-serif, NanumBarunGothic, Dotum, "돋움";
-}
-#footer > .footer-top {
-  overflow: hidden;
-  width: 1100px;
-  margin: 0 auto;
-  padding: 30px 0;
-}
-#footer > .footer-top > .inner-wrap {
-  width: 1100px;
-  margin: 0 auto;
-}
-#footer > .footer-top > .inner-wrap > .fnb {
-  float: left;
-}
-#footer > .footer-top > .inner-wrap > .fnb > li:first-child {
-  margin-left: 0;
-}
-#footer > .footer-top > .inner-wrap > .fnb > li {
-  float: left;
-  margin-left: 14px;
-}
-#footer > .footer-top > .inner-wrap > .fnb > li > .foot-link {
-  background-color: #f8f8fa;
-  display: block;
-  color: #666;
-  line-height: 30px;
-  font-size: 0.8667em;
-}
-#footer > .footer-top > .inner-wrap > .fnb > .privacy > .foot-link {
-  color: #222;
-  font-weight: 700;
-}
-#footer > .footer-top > .inner-wrap > .btn-looking-theater {
-  overflow: hidden;
-  float: right;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  width: 106px;
-  height: 30px;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  line-height: 28px;
-  color: #666;
-  font-size: 0.8667em;
-  border: 1px solid #d8d9db;
-  border-radius: 30px;
-  text-decoration: none;
-}
-#footer > .footer-bottom {
-  overflow: hidden;
-  width: 1100px;
-  margin: 0 auto;
-  padding: 0;
-}
-#footer > .footer-bottom > .inner-wrap {
-  width: 1100px;
-  margin: 0 auto;
-}
-#footer > .footer-bottom > .inner-wrap > .ci {
-  overflow: hidden;
-  display: block;
-  float: left;
-  width: 150px;
-  height: 50px;
-  margin: 0 20px 0 0;
-  padding: 0;
-}
-#footer > .footer-bottom > .inner-wrap > .footer-info {
-  float: left;
-  font-size: 0.8667em;
-  letter-spacing: 0;
-}
-#footer > .footer-bottom > .inner-wrap > .footer-info > div > address {
-  display: inline-block;
-  vertical-align: top;
-  margin: 0;
-  padding: 0;
-  font-style: normal;
-}
-#footer > .footer-bottom > .inner-wrap > .footer-info > div > p {
-  display: inline-block;
-  vertical-align: top;
-  margin: 0;
-  padding: 0;
-}
-#footer > .footer-bottom > .inner-wrap > .footer-info > p {
-  display: inline-block;
-  vertical-align: top;
-  margin: 0;
-  padding: 0;
-}
-#footer > .footer-bottom > .inner-wrap > .footer-info > .copy {
-  display: block;
-}
-#footer > .footer-bottom > .inner-wrap > .footer-sns {
-  float: right;
-}
-#footer > .footer-bottom > .inner-wrap > .footer-sns > a {
-  display: block;
-  float: left;
-  width: 32px;
-  height: 30px;
-  margin-left: 5px;
-  font-size: 0;
-  line-height: 0;
-}
-
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.footer-logo-img {
-  width: 9rem;
-}
-
 body {
   font-weight: 400;
   letter-spacing: 0;
@@ -234,27 +103,37 @@ body {
   gap: 0.5rem;
 }
 #main > .main-container > .list-form {
-  background-color: #151218;
   position: relative;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
-  width: 60%;
+  width: 100%;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
 }
-#main > .main-container > .list-form > .search-label {
+#main > .main-container > .list-form > .list-form-container {
+  background-color: #151218;
   position: relative;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  right: 7rem;
+  align-items: center;
+  width: 1150px;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+#main > .main-container > .list-form > .list-form-container > .search-label {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  right: 9rem;
   padding-right: 4.5rem;
   border-right: 1px solid #888888;
 }
-#main > .main-container > .list-form > .search-label > .search-input {
+#main > .main-container > .list-form > .list-form-container > .search-label > .search-input {
   border: 0;
   background-color: #151218;
   border-bottom: 1px solid #888888;
@@ -262,7 +141,7 @@ body {
   font-size: 1rem;
   outline: none;
 }
-#main > .main-container > .list-form > .search-label > .search-button {
+#main > .main-container > .list-form > .list-form-container > .search-label > .search-button {
   border: 0;
   bottom: 1.3rem;
   left: 9rem;
@@ -272,28 +151,27 @@ body {
   top: 0.1rem;
   right: 5rem;
 }
-#main > .main-container > .list-form > .list-time {
+#main > .main-container > .list-form > .list-form-container > .list-time {
   position: relative;
   display: flex;
   flex-direction: row;
   justify-content: center;
   color: white;
   right: 3rem;
-  width: 15%;
   font-size: 1rem;
   gap: 0.5rem;
-  padding-right: 4rem;
+  padding-right: 7.8rem;
   border-right: 1px solid #888888;
 }
-#main > .main-container > .list-form > .list-time > a {
+#main > .main-container > .list-form > .list-form-container > .list-time > a {
   text-decoration-line: none;
   color: white;
 }
-#main > .main-container > .list-form > .list-time > a:hover {
+#main > .main-container > .list-form > .list-form-container > .list-time > a:hover {
   text-decoration-line: underline;
   color: white;
 }
-#main > .main-container > .list-form > .list-boxo {
+#main > .main-container > .list-form > .list-form-container > .list-boxo {
   position: relative;
   color: white;
   left: 4rem;
@@ -303,15 +181,15 @@ body {
   padding-right: 1rem;
   border-right: 1px solid #888888;
 }
-#main > .main-container > .list-form > .list-boxo > a {
+#main > .main-container > .list-form > .list-form-container > .list-boxo > a {
   text-decoration-line: none;
   color: #fff;
 }
-#main > .main-container > .list-form > .list-boxo > a:hover {
+#main > .main-container > .list-form > .list-form-container > .list-boxo > a:hover {
   text-decoration-line: underline;
   color: #fff;
 }
-#main > .main-container > .list-form > .list-fast-buy {
+#main > .main-container > .list-form > .list-form-container > .list-fast-buy {
   position: relative;
   color: #fff;
   left: 10rem;
@@ -319,11 +197,11 @@ body {
   font-size: 1rem;
   gap: 0.5rem;
 }
-#main > .main-container > .list-form > .list-fast-buy > a {
+#main > .main-container > .list-form > .list-form-container > .list-fast-buy > a {
   text-decoration-line: none;
   color: #fff;
 }
-#main > .main-container > .list-form > .list-fast-buy > a:hover {
+#main > .main-container > .list-form > .list-form-container > .list-fast-buy > a:hover {
   text-decoration-line: underline;
   color: #fff;
 }

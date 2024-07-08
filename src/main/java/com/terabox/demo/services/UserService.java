@@ -1,7 +1,12 @@
 package com.terabox.demo.services;
 
+import com.terabox.demo.entities.CardEntity;
 import com.terabox.demo.entities.EmailAuthEntity;
+import com.terabox.demo.entities.UserCardEntity;
 import com.terabox.demo.entities.UserEntity;
+import com.terabox.demo.exceptions.TransactionalException;
+import com.terabox.demo.mappers.CardMapper;
+import com.terabox.demo.mappers.UserCardMapper;
 import com.terabox.demo.mappers.UserMapper;
 import com.terabox.demo.misc.MailSender;
 import com.terabox.demo.regexes.EmailAuthRegex;
@@ -13,6 +18,7 @@ import com.terabox.demo.results.user.SendRegisterEmailResult;
 import com.terabox.demo.results.user.VerifyEmailAuthResult;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.User;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.core.token.Sha512DigestUtils;
@@ -31,6 +37,8 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 public class UserService {
     private final UserMapper userMapper;
+    private final UserCardMapper userCardMapper;
+    private final CardMapper cardMapper;
     private final JavaMailSender mailSender;
     private final SpringTemplateEngine springTemplateEngine;
 
@@ -160,6 +168,24 @@ public class UserService {
                 : CommonResult.FAILURE;
     }
 
+    public Result postCreateCard(String email) {
+        if (email == null || !UserRegex.email.tests(email)) {
+            return null;
+        }
+        CardEntity[] dbCard = this.cardMapper.selectCards();
+        UserCardEntity userCard = new UserCardEntity();
+        userCard.setUserEmail(email);
+        for (CardEntity cardEntity : dbCard) {
+            userCard.setMoney(100000);
+            userCard.setCardName(cardEntity.getName());
+            if (this.userCardMapper.insertUserCard(userCard) != 1) {
+                throw new TransactionalException();
+            }
+        }
+        return CommonResult.SUCCESS;
+
+    }
+
     public String getEmailByNickname(String nickname) {
         if (nickname == null || !UserRegex.nickname.tests(nickname)) {
             return null;
@@ -244,6 +270,7 @@ public class UserService {
         user.setPassword(dbUser.getPassword());
         user.setNickname(dbUser.getNickname());
         user.setCreatedAt(dbUser.getCreatedAt());
+        user.setBirth(dbUser.getBirth());
         user.setAdmin(dbUser.isAdmin());
         user.setMembershipCode(dbUser.getMembershipCode());
         user.setPoint(dbUser.getPoint());

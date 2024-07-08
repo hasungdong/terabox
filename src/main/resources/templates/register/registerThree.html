@@ -16,7 +16,7 @@
     <div class="member-wrap">
         <h1 class="h1">
             <a href="/home">
-                <img th:src="@{/assets/images/register/main-logo.png}" alt="메인 페이지로 이동">
+                <img class="register-logo-img" th:src="@{/assets/images/register/main-logo.png}" alt="메인 페이지로 이동">
             </a>
         </h1>
         <div class="col-wrap">
@@ -150,30 +150,6 @@
                                     <span class="tooltiptext">비밀번호 설정 시 사용가능한 특수문자는 ~ ! @ # $ % ^ &amp; * + = - ? _  입니다.
                                     </span>
                                 </label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">무인발권기<br>기능 설정<!--무인발권기<br />기능 설정-->
-                            </th>
-                            <td>
-                                <input checked type="radio" id="kioskByymmddLoginSetY" name="kioskByymmddLoginSetAt">
-                                <label for="kioskByymmddLoginSetY">사용<!--사용--></label>
-
-                                <input type="radio" id="kioskByymmddLoginSetN" name="kioskByymmddLoginSetAt"
-                                       class="ml10">
-                                <label for="kioskByymmddLoginSetN">사용안함<!--사용안함--></label>
-
-                                <span class="font-size-14 ml15">※ '생년월일 + 휴대폰번호로' 티켓출력
-                                    <!--※ '생년월일 + 휴대폰번호로' 티켓출력--></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">나만의 메가박스<!--나만의 메가박스--></th>
-                            <td id="favorBrchRedTd">
-                                자주 방문하는 메가박스를 등록해 주세요!<!--자주 방문하는 메가박스를 등록해 주세요!-->
-
-                                <a href="javaScript:fn_favorBrchReg()" title="자주 방문하는 메가박스 설정 선택"
-                                   class="button gray-line small w75px ml08" w-data="500" h-data="360">설정<!--설정--></a>
                             </td>
                         </tr>
                         </tbody>
