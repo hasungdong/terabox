@@ -9,6 +9,7 @@
     <th:block th:replace="~{fragments/common/common.html :: commonHead}"></th:block>
     <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/home/index.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/common/footer.css}">
+    <script defer th:src="@{/assets/scripts/home.js}"></script>
 </head>
 <body style="overflow-x: hidden">
 <th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
@@ -18,7 +19,7 @@
             <button class="button-buxo" type="button">박스오피스</button>
         </div>
         <div class="main-other-movie">
-            <a class="other-movie" href="#">더 많은 영화보기
+            <a class="other-movie" >더 많은 영화보기
                 <i class="fa-solid fa-plus"></i>
             </a>
         </div>
@@ -32,7 +33,7 @@
                         <i class="fa-regular fa-heart"></i>
                         2.3k
                     </button>
-                    <a class="main-buy-ticket" href="#">
+                    <a class="main-buy-ticket" >
                         <button class="list-button">
                             예매
                         </button>
@@ -48,7 +49,7 @@
                         <i class="fa-regular fa-heart"></i>
                         2.3k
                     </button>
-                    <a class="main-buy-ticket" href="#">
+                    <a class="main-buy-ticket" >
                         <button class="list-button">
                             예매
                         </button>
@@ -64,7 +65,7 @@
                         <i class="fa-regular fa-heart"></i>
                         543
                     </button>
-                    <a class="main-buy-ticket" href="#">
+                    <a class="main-buy-ticket" >
                         <button class="list-button">
                             예매
                         </button>
@@ -80,7 +81,7 @@
                         <i class="fa-regular fa-heart"></i>
                         319
                     </button>
-                    <a class="main-buy-ticket" href="#">
+                    <a class="main-buy-ticket" >
                         <button class="list-button">
                             예매
                         </button>
@@ -89,29 +90,31 @@
             </div>
         </div>
         <form class="list-form">
-            <label class="search-label">
-                <input class="search-input" type="text" placeholder="영화명을 입력해주세요">
-                <button class="search-button">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-            </label>
-            <div class="list-time">
-                <a href="">
-                    <i class="fa-solid fa-calendar-days"></i>
-                    상영시간표
-                </a>
-            </div>
-            <div class="list-boxo">
-                <a href="">
-                    <i class="fa-solid fa-film"></i>
-                    박스오피스
-                </a>
-            </div>
-            <div class="list-fast-buy">
-                <a href="">
-                    <i class="fa-solid fa-ticket"></i>
-                    빠른예매
-                </a>
+            <div class="list-form-container">
+                <label class="search-label">
+                    <input class="search-input" type="text" placeholder="영화명을 입력해주세요">
+                    <button class="search-button">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </label>
+                <div class="list-time">
+                    <a href="">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        상영시간표
+                    </a>
+                </div>
+                <div class="list-boxo">
+                    <a href="">
+                        <i class="fa-solid fa-film"></i>
+                        박스오피스
+                    </a>
+                </div>
+                <div class="list-fast-buy">
+                    <a href="">
+                        <i class="fa-solid fa-ticket"></i>
+                        빠른예매
+                    </a>
+                </div>
             </div>
         </form>
         <div class="moving-mouse">
@@ -123,7 +126,7 @@
                 <div class="wrap-color2"></div>
                 <div class="wrap-benefit">
                     <h2>혜택</h2>
-                    <a class="event-button-link" href="#">
+                    <a class="event-button-link" >
                         <img th:src="@{/assets/images/home/plusButton.png}" alt="">
                     </a>
                 </div>
@@ -169,7 +172,7 @@
                 <div class="wrap-banner">
                     <div class="warp-banner-container">
                         <div class="ad-first">
-                            <a class="link" href="#">
+                            <a class="link" >
                                 <img class="img" th:src="@{/assets/images/home/ad1.png}" alt="">
                             </a>
                         </div>
