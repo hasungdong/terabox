@@ -11,4 +11,9 @@ public class HomeController {
     public String getIndex(){
         return "home";
     }
+
+    @GetMapping(value = "/home2", produces = MediaType.TEXT_HTML_VALUE)
+    public String getIndex2(){
+        return "home2";
+    }
 }
