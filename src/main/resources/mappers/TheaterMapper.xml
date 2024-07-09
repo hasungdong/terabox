@@ -28,6 +28,14 @@
                    END AS 'regionCodeTwo',
                `name` AS `name`
         FROM `terabox`.`theaters`
-        ORDER BY theaters.`name`
+        ORDER BY `theaters`.`name`
+    </select>
+
+    <select id="selectTheaterByIndex" resultType="com.terabox.demo.entities.TheaterEntity">
+        SELECT `index`       AS 'index',
+               `region_code` AS 'regionCode',
+               `name`        AS 'name'
+        FROM `terabox`.`theaters`
+        WHERE `index` = #{index}
     </select>
 </mapper>

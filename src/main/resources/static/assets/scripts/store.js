@@ -62,7 +62,12 @@ if (price !== null){
     plus.onclick = () => {
         if (inputText.value < 8) {
             //db에 있는 수량보다 더 플러스 못하게
-            if (inputText.value === DetailQuantity.value ){
+            console.log(inputText.value)
+            console.log(DetailQuantity.value);
+            console.log(typeof inputText.value)
+            console.log(typeof DetailQuantity.value)
+            console.log(inputText.value > DetailQuantity.value)
+            if (parseInt(inputText.value) === parseInt(DetailQuantity.value)){
                 new MessageObj({
                     title: '알림',
                     content: '수량이 부족합니다.',
@@ -76,7 +81,7 @@ if (price !== null){
                 }).show();
                 return;
             }
-            if (inputText.value > DetailQuantity.value ){
+            if (parseInt(inputText.value) > parseInt(DetailQuantity.value)){
                 new MessageObj({
                     title: '알림',
                     content: '상품이 품절되어서 구매가 불가능합니다.',
@@ -134,7 +139,7 @@ if (DetailBuyButton !== null){
     }
 }
 
-/* --------------------- order.js ------------------ */
+/* --------------------- orderThree.js ------------------ */
 
 if (totalSale !== null) { // storeDetail 에서 order 로 넘어왔을때 order 에만 있는 함수를 적어준다.
     // 최종 결제금액(totalSale) = 총 상품금액(orderTotalPrice) - 할인금액(totalSale)
@@ -165,7 +170,7 @@ if (totalSale !== null) { // storeDetail 에서 order 로 넘어왔을때 order 
 
 
         }
-         xhr.open(`GET`,`/store/card?selectedValue=${selectedValue}&rOrderTotalPrice=${rOrderTotalPrice}`);
+         xhr.open(`GET`,`/store/card?cardName=${selectedValue}&rOrderTotalPrice=${rOrderTotalPrice}`);
         /*store/order 라고 썼어서 안됐음 -> card 로 바꿔줬음*/
         // /슬래시가 꼭 있어야함. 슬래쉬가 있으면 절대경로 없으면 상대경로인데 절대경로로 주는것이 좋다.
          xhr.send();
@@ -210,7 +215,7 @@ if (totalSale !== null) { // storeDetail 에서 order 로 넘어왔을때 order 
             formData.append('totalSale',totalSale.innerText.replace(/,/g, ""));
             formData.append('quantity',orderQuantity.innerText);
             formData.append('price',orderPrice.innerText.replace(/,/g, ""));
-            formData.append('selectedValue', selectedOption);
+            formData.append('cardName', selectedOption);
             console.log(selectedOption.value);
             console.log(selectedOption);
             formData.append('totalPrice',totalPrice.innerText.replace(/,/g, ""));
@@ -311,16 +316,10 @@ if (totalSale !== null) { // storeDetail 에서 order 로 넘어왔을때 order 
                             ]
                         }).show();
                         break;
-
                 }
-
-
             }
-
-            xhr.open(`POST`,`./order`);
+            xhr.open(`POST`,`/order/product`);
             xhr.send(formData);
-
-
         }
 
         /* 스토어 오더에서 결제버튼 눌렀을때 */

@@ -11,13 +11,17 @@ import org.springframework.stereotype.Service;
 public class TheaterService {
     private final TheaterMapper theaterMapper;
 
+    public TheaterEntity getTheater(int index){
+        if (index < 1){
+            return null;
+        }
+        return this.theaterMapper.selectTheaterByIndex(index);
+    }
+
     public TheaterEntity[] getTheatersByRegionCode(String regionCode) {
         return this.theaterMapper.selectTheatersByRegionCode(regionCode);
     }
 
-    public TheaterEntity[] getTheaters(){
-        return this.theaterMapper.selectTheaters();
-    }
 
     public TheaterVo[] getTheatersOnTheaterList(){
         return this.theaterMapper.selectTheatersOnTheaterList();

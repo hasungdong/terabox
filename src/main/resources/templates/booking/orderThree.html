@@ -7,14 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <th:block th:replace="~{fragments/common/common.html :: commonHead}"></th:block>
     <link rel="stylesheet" th:href="@{/assets/styles/booking/order_three.css}">
-    <script defer th:src="@{/assets/scripts/booking/order.js}"></script>
+    <script defer th:src="@{/assets/scripts/booking/orderThree.js}"></script>
     <title>Document</title>
 </head>
 <body>
 <th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
-<!--이거 seat-select-section의 내용물을 바꾸는 식이 아니라
-seat-select-section을 없애고 order-container를 보여주는 식으로 합시다잇
-안그러면 화면 바뀌기 전 후에 class들 이름이 똑같아서 상당히 곤란-->
+<!--temp는 임시로 만들어놨습니다. 이게 빠른 예매 글씨 적힌 부분은 1페이지랑 똑같아가지고 제가 직접 뭐 안해도 될 것 같아서-->
 <div class="temp">
     <div class="order-three-container">
         <div class="seat-section h-auto">
@@ -297,34 +295,12 @@ seat-select-section을 없애고 order-container를 보여주는 식으로 합�
                     </span>
                 </div>
                 <div class="select-payment-card" style="display:flex;">
-                    <label for="card_select">카드사 선택 <!-- 카드사 선택 --></label>
+                    <label for="card_select">카드 선택 <!-- 카드사 선택 --></label>
                     <div class="dropdown bootstrap-select v1 small bs3">
                         <select id="card_select" title="카드사 선택" class="selectpicker v1 small" tabindex="-98">
                             <option class="bs-title-option" value=""></option>
                             <option value="00" selected="">카드선택</option><!-- 전체카드   -->
-                            <option value="01">비씨카드</option><!-- 비씨카드   -->
-                            <option value="07">국민카드</option><!-- 국민카드   -->
-                            <option value="02">신한카드</option><!-- 신한카드   -->
-                            <option value="03">삼성카드</option><!-- 삼성카드   -->
-                            <option value="05">롯데카드</option><!-- 롯데카드   -->
-                            <option value="12">농협카드</option><!-- 농협카드   -->
-                            <option value="27">하나카드</option><!-- 하나카드   -->
-                            <option value="04">현대카드</option><!-- 현대카드   -->
-                            <option value="13">씨티카드</option><!-- 씨티카드   -->
-                            <option value="22">제주카드</option><!-- 제주카드   -->
-                            <option value="14">우리카드</option><!-- 우리카드   -->
-                            <option value="11">수협카드</option><!-- 수협카드   -->
-                            <option value="24">전북카드</option><!-- 전북카드   -->
-                            <option value="23">광주카드</option><!-- 광주카드   -->
-                            <option value="17">신협카드</option><!-- 신협카드   -->
-                            <option value="90">카카오뱅크</option><!-- 카카오뱅크 -->
-                            <option value="91">케이뱅크</option><!-- 케이뱅크   -->
-
-                            <option value="B0">우체국카드</option><!-- 우체국 카드   -->
-                            <option value="B1">토스 카드</option><!-- 토스  카드  -->
-                            <option value="B2">SC제일은행 비씨카드</option><!-- SC제일은행 비씨카드   -->
-                            <option value="S0">SC제일은행 삼성카드</option><!-- SC제일은행 삼성카드   -->
-                            <option value="B3">IBK기업은행 카드</option><!-- IBK기업은행 카드  -->
+                            <option th:each="card : ${cards}" th:value="${card.getName()}" th:text="${card.getName()}"></option>
                         </select>
                         <button type="button" class="btn dropdown-toggle btn-default" role="button" title="카드선택">
                             <div class="filter-option-inner-inner">카드선택</div>
@@ -338,119 +314,15 @@ seat-select-section을 없애고 order-container를 보여주는 식으로 합�
                             <div class="inner open" role="listbox">
                                 <ul class="dropdown-menu inner">
                                     <li class="">
-                                        <a role="option" aria-disabled="false" tabindex="0" class=""
-                                           aria-selected="false">
+                                        <a>
                                             <span class="text">카드선택</span>
+                                            <input type="hidden" name="discountRate" th:value="${0}">
                                         </a>
                                     </li>
-                                    <li class="">
-                                        <a role="option" aria-disabled="false" tabindex="0" aria-selected="false"
-                                           class="">
-                                            <span class="text">비씨카드</span>
-                                        </a>
-                                    </li>
-                                    <li class="">
-                                        <a role="option" aria-disabled="false" tabindex="0" aria-selected="false"
-                                           class="">
-                                            <span class="text">국민카드</span>
-                                        </a>
-                                    </li>
-                                    <li class="">
-                                        <a role="option" aria-disabled="false" tabindex="0" aria-selected="false"
-                                           class=""><span class="text">신한카드</span></a>
-                                    </li>
-                                    <li class="">
-                                        <a role="option" aria-disabled="false" tabindex="0" aria-selected="false"
-                                           class=""><span class="text">삼성카드</span></a>
-                                    </li>
-                                    <li>
-                                        <a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span
-                                                class="text">롯데카드</span></a>
-                                    </li>
-                                    <li class="">
-                                        <a role="option" aria-disabled="false" tabindex="0" aria-selected="false"
-                                           class=""><span class="text">농협카드</span></a>
-                                    </li>
-                                    <li class="selected active">
-                                        <a role="option" aria-disabled="false" tabindex="0" aria-selected="true"
-                                           class="selected active">
-                                            <span class="text">하나카드</span></a>
-                                    </li>
-                                    <li class="">
-                                        <a role="option" aria-disabled="false" tabindex="0" aria-selected="false"
-                                           class="">
-                                            <span class="text">현대카드</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a role="option" aria-disabled="false" tabindex="0" aria-selected="false">
-                                            <span class="text">씨티카드</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span
-                                                class="text">제주카드</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span
-                                                class="text">우리카드</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span
-                                                class="text">수협카드</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span
-                                                class="text">전북카드</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span
-                                                class="text">광주카드</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a role="option" aria-disabled="false" tabindex="0" aria-selected="false">
-                                            <span class="text">신협카드</span>
-                                        </a>
-                                    </li>
-                                    <li class="">
-                                        <a role="option" aria-disabled="false" tabindex="0" aria-selected="false"
-                                           class="">
-                                            <span class="text">카카오뱅크</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span
-                                                class="text">케이뱅크</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span
-                                                class="text">우체국카드</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span
-                                                class="text">토스  카드</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span
-                                                class="text">SC제일은행 비씨카드</span>
-                                        </a>
-                                    </li>
-                                    <li class="">
-                                        <a role="option" aria-disabled="false" tabindex="0"
-                                           aria-selected="false" class=""><span class="text">SC제일은행 삼성카드</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a role="option" aria-disabled="false" tabindex="0" aria-selected="false"><span
-                                                class="text">IBK기업은행 카드</span>
+                                    <li class="" th:each="card : ${cards}">
+                                        <a>
+                                            <span class="text" th:text="${card.getName()}"></span>
+                                            <input type="hidden" name="discountRate" th:value="${card.getDiscountRate()}">
                                         </a>
                                     </li>
                                 </ul>
@@ -462,9 +334,6 @@ seat-select-section을 없애고 order-container를 보여주는 식으로 합�
                     <label for="app_card" id="lab_app_card">앱카드 <!-- ISP, APP --></label>
                     <input type="radio" name="rdo_card_select" id="general_card" class="ml20" value="00">
                     <label for="general_card" id="lab_general_card">일반결제 <!-- 일반결제 --></label>
-                    <input type="radio" name="rdo_card_select" id="sepecial_card" value="02">
-                    <label for="sepecial_card" id="lab_sepecial_card">포인트사용
-                        <!-- 삼성카드 포인트 사용 --></label>
                 </div>
                 <div class="select-payment-easypay" style="display:none;">
                     <input class="toss" type="radio" name="radio_paymentTwo" id="rdo_pay_tosspay" value="tosspay">
@@ -566,23 +435,38 @@ seat-select-section을 없애고 order-container를 보여주는 식으로 합�
                         -->
                         <span class="movie-grade small age-all" id="admisClassNm">전체관람가</span>
 
-                        <p class="tit" id="movieNm">인사이드 아웃 2</p>
-                        <p class="cate" id="playKindNm">2D(자막)</p>
-                        <p class="theater" id="brchNm">검단/리클라이너 4관</p>
+                        <p class="tit" id="movieNm" th:text="${screeningInfoVo?.getMovieTitle()}?:'인사이드 아웃 2'">인사이드 아웃 2</p>
+                        <p class="cate" id="playKindNm" th:text="${screeningInfoVo?.getMovieDimensionType()}?:'2D(자막)'">2D(자막)</p>
+                        <p class="theater" id="brchNm" th:text="${screeningInfoVo?.getTheaterName() + '/' + screeningInfoVo?.getCinemaNumber()}?:'검단/리클라이너 4관'">검단/리클라이너 4관</p>
                         <p class="date">
-                            <span id="playDe">2024.06.14</span>
-                            <em id="dowNm">(금)</em>
+                            <span id="playDe" th:text="${screeningInfoVo?.getScreeningDate()}?:'2024.06.14'">2024.06.14</span>
+<!--                            <em id="dowNm" th:text="${'(' + screeningInfoVo?.getScreeningDate().getDayOfWeek() + ')'}?:'(금)'">(금)</em>-->
+                            <em id="dowNm" >(금)</em>
                             <span class="time" id="playTime">
                                 <i class="iconset ico-clock-white"></i>
+<!--                                <th:block th:text="${screeningInfoVo?.getScreeningTime() + '~' + (screeningInfoVo?.getScreeningTime() + screeningInfoVo?.getMoviePlayingTime())}?:'11:35~13:21'"></th:block>-->
                                 11:35~13:21
                             </span>
                         </p>
                     </div>
                     <div class="price-process">
-                        <div class="box">
+                        <div class="box total">
                             <div class="data">
-                                <span class="tit">성인 <em>1</em></span>
-                                <span class="price">15,000</span>
+                                <span class="tit">성인 <em th:text="${movieOrderDto.getAdultCount()}">1</em></span>
+                                <span class="price" th:text="${movieOrderDto.getAdultCount() * adultPrice}">14,000</span>
+                            </div>
+                            <div class="data">
+                                <span class="tit">청소년
+                                    <em th:text="${movieOrderDto.getTeenagerCount()}">1</em></span>
+                                <span class="price" th:text="${movieOrderDto.getTeenagerCount() * teenagerPrice}">12,000</span>
+                            </div>
+                            <div class="data">
+                                <span class="tit">경로 <em th:text="${movieOrderDto.getOldCount()}">1</em></span>
+                                <span class="price" th:text="${movieOrderDto.getOldCount() * oldPrice}">7,000</span>
+                            </div>
+                            <div class="data">
+                                <span class="tit">우대 <em th:text="${movieOrderDto.getDisabledCount()}">1</em></span>
+                                <span class="price" th:text="${movieOrderDto.getDisabledCount() * disabledPrice}">6,000</span>
                             </div>
                             <!--
                             <div class="data">
@@ -625,7 +509,7 @@ seat-select-section을 없애고 order-container를 보여주는 식으로 합�
                         </div>
                     </div>
                     <div class="btn-group">
-                        <a href="#" class="button" id="btn_booking_back" title="이전">이전 <!-- 이전 --></a>
+                        <a  class="button" id="btn_booking_back" title="이전">이전 <!-- 이전 --></a>
                         <a class="button active btn-modal-open" id="btn_booking_pay" title="결제" rel="checkAgreeTerms">결제</a>
                     </div>
                 </div>
@@ -696,6 +580,14 @@ seat-select-section을 없애고 order-container를 보여주는 식으로 합�
         </div>
     </div>
 </div>
-
+<div>
+    <h2>Received Movie Order Data</h2>
+    <p>성인 수: <span th:text="${movieOrderDto.adultCount}"></span></p>
+    <p>청소년 수: <span th:text="${movieOrderDto.teenagerCount}"></span></p>
+    <p>경로 수: <span th:text="${movieOrderDto.oldCount}"></span></p>
+    <p>우대 수: <span th:text="${movieOrderDto.disabledCount}"></span></p>
+    <p>선택된 좌석 인덱스: <span th:text="${seatIndexes}"></span></p> <!-- 수정된 부분 -->
+    <p>상영 정보 인덱스: <span th:text="${movieOrderDto.screeningInfoIndex}"></span></p>
+</div>
 </body>
 </html>

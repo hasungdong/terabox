@@ -5,17 +5,17 @@ screeningInfoSearchBar.querySelector('[name="screeningDate"]').oninput = () => {
     todayAfterOneMonth.setMonth(todayAfterOneMonth.getMonth() + 1);
     if (new Date(screeningInfoSearchBar['screeningDate'].value) > todayAfterOneMonth){
         MessageObj.createSimpleOk('알림', '검색일로부터 1달 이후까지의 상영정보만 검색할 수 있습니다.').show();
-        if (document.querySelector('[rel="regionCodeLabel"]') !== null){
-            document.querySelector('[rel="regionCodeLabel"]').remove();
+        if (screeningInfoSearchBar.querySelector('[rel="regionCodeLabel"]') !== null){
+            screeningInfoSearchBar.querySelector('[rel="regionCodeLabel"]').remove();
         }
-        if (document.querySelector('[rel="theaterSearchNameLabel"]') !== null){
-            document.querySelector('[rel="theaterSearchNameLabel"]').remove();
+        if (screeningInfoSearchBar.querySelector('[rel="theaterSearchNameLabel"]') !== null){
+            screeningInfoSearchBar.querySelector('[rel="theaterSearchNameLabel"]').remove();
         }
-        if (document.querySelector('[rel="cinemaNumberLabel"]') !== null){
-            document.querySelector('[rel="cinemaNumberLabel"]').remove();
+        if (screeningInfoSearchBar.querySelector('[rel="cinemaNumberLabel"]') !== null){
+            screeningInfoSearchBar.querySelector('[rel="cinemaNumberLabel"]').remove();
         }
-        if (document.querySelector('button[type="submit"]') !== null){
-            document.querySelector('button[type="submit"]').remove()
+        if (screeningInfoSearchBar.querySelector('button[type="submit"]') !== null){
+            screeningInfoSearchBar.querySelector('button[type="submit"]').remove()
         }
         return;
     }
@@ -29,17 +29,17 @@ screeningInfoSearchBar.querySelector('[name="screeningDate"]').oninput = () => {
             MessageObj.createSimpleOk('알림', '요청을 전송하는 도중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.').show();
             return;
         }
-        if (document.querySelector('[rel="regionCodeLabel"]') !== null){
-            document.querySelector('[rel="regionCodeLabel"]').remove();
+        if (screeningInfoSearchBar.querySelector('[rel="regionCodeLabel"]') !== null){
+            screeningInfoSearchBar.querySelector('[rel="regionCodeLabel"]').remove();
         }
-        if (document.querySelector('[rel="theaterSearchNameLabel"]') !== null){
-            document.querySelector('[rel="theaterSearchNameLabel"]').remove();
+        if (screeningInfoSearchBar.querySelector('[rel="theaterSearchNameLabel"]') !== null){
+            screeningInfoSearchBar.querySelector('[rel="theaterSearchNameLabel"]').remove();
         }
-        if (document.querySelector('[rel="cinemaNumberLabel"]') !== null){
-            document.querySelector('[rel="cinemaNumberLabel"]').remove();
+        if (screeningInfoSearchBar.querySelector('[rel="cinemaNumberLabel"]') !== null){
+            screeningInfoSearchBar.querySelector('[rel="cinemaNumberLabel"]').remove();
         }
-        if (document.querySelector('button[type="submit"]') !== null){
-            document.querySelector('button[type="submit"]').remove()
+        if (screeningInfoSearchBar.querySelector('button[type="submit"]') !== null){
+            screeningInfoSearchBar.querySelector('button[type="submit"]').remove()
         }
         const responseObject = JSON.parse(xhr.responseText);
         const regions = responseObject['regions'];
@@ -71,14 +71,14 @@ screeningInfoSearchBar.querySelector('[name="screeningDate"]').oninput = () => {
                     return;
                 }
                 // 선택이 새로 되면 기존 값을 지워야 하니까 없애줌
-                if (document.querySelector('[rel="theaterSearchNameLabel"]') !== null){
-                    document.querySelector('[rel="theaterSearchNameLabel"]').remove();
+                if (screeningInfoSearchBar.querySelector('[rel="theaterSearchNameLabel"]') !== null){
+                    screeningInfoSearchBar.querySelector('[rel="theaterSearchNameLabel"]').remove();
                 }
-                if (document.querySelector('[rel="cinemaNumberLabel"]') !== null){
-                    document.querySelector('[rel="cinemaNumberLabel"]').remove();
+                if (screeningInfoSearchBar.querySelector('[rel="cinemaNumberLabel"]') !== null){
+                    screeningInfoSearchBar.querySelector('[rel="cinemaNumberLabel"]').remove();
                 }
-                if (document.querySelector('button[type="submit"]') !== null){
-                    document.querySelector('button[type="submit"]').remove()
+                if (screeningInfoSearchBar.querySelector('button[type="submit"]') !== null){
+                    screeningInfoSearchBar.querySelector('button[type="submit"]').remove()
                 }
                 const responseObject = JSON.parse(xhr.responseText);
                 const theaters = responseObject['theaters'];
@@ -109,11 +109,11 @@ screeningInfoSearchBar.querySelector('[name="screeningDate"]').oninput = () => {
                             MessageObj.createSimpleOk('알림', '요청을 전송하는 도중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.').show();
                             return;
                         }
-                        if (document.querySelector('[rel="cinemaNumberLabel"]') !== null){
-                            document.querySelector('[rel="cinemaNumberLabel"]').remove();
+                        if (screeningInfoSearchBar.querySelector('[rel="cinemaNumberLabel"]') !== null){
+                            screeningInfoSearchBar.querySelector('[rel="cinemaNumberLabel"]').remove();
                         }
-                        if (document.querySelector('button[type="submit"]') !== null){
-                            document.querySelector('button[type="submit"]').remove()
+                        if (screeningInfoSearchBar.querySelector('button[type="submit"]') !== null){
+                            screeningInfoSearchBar.querySelector('button[type="submit"]').remove()
                         }
                         const responseObject = JSON.parse(xhr.responseText);
                         const cinemas = responseObject['cinemas'];
@@ -292,6 +292,7 @@ screeningInfoSearchBar.onsubmit = e => {
             })
         }
         modifyScreeningInfoForm.querySelector('div.content').querySelector('.result-box').append(ul);
+
         // 영화 검색하기
         const contentLis = modifyScreeningInfoForm.divContent.querySelectorAll('li');
         contentLis.forEach(contentLi => contentLi.querySelector('[rel="showSearchMovie"]').onclick = () => {

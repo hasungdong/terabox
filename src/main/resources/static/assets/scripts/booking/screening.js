@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
     return button;
   }
 
-  // 시간 버튼을 wrap에 추가
+  // 시간 버튼 추가 함수
   function populateHours() {
     timeScheduleWrap.innerHTML = '';
     hours.forEach(hour => {
@@ -33,9 +33,9 @@ document.addEventListener('DOMContentLoaded', function () {
     updateButtonState();
   }
 
-  // 슬라이드 애니메이션 함수
+  // 시간 버튼 슬라이드 함수
   function slideTimes(direction) {
-    if (isAnimating) return; // 애니메이션 중이면 실행 중지
+    if (isAnimating) return;
     isAnimating = true;
 
     const maxLocation = -(btnWidth * (hours.length - 10));
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 300);
   }
 
-  // 버튼 상태 업데이트 함수
+  // 이전, 다음 버튼 상태 업데이트 함수
   function updateButtonState() {
     btnPrev.disabled = currentLocation >= 0;
     btnNext.disabled = currentLocation <= -(btnWidth * (hours.length - 10));
@@ -66,7 +66,9 @@ document.addEventListener('DOMContentLoaded', function () {
   // 선택 상태 업데이트 함수
   function updateSelectionState() {
     const theaterButtons = document.querySelectorAll('.theater-choice .choice-list .wrap');
+    const movieButtons = document.querySelectorAll('.all-list .btn');
     const theaterSelected = theaterButtons.length > 0;
+    const movieSelected = movieButtons.length > 0;
     if (theaterSelected) {
       choiceAll.style.display = 'none';
       choiceList.style.removeProperty('display');
@@ -76,84 +78,96 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     if (movieSelected && theaterSelected) {
       noResult.style.display = 'none';
-      result.style.removeProperty('display');
     } else {
       noResult.style.removeProperty('display');
       result.style.display = 'none';
+      document.querySelectorAll('.hour-area .hour-btn').forEach(button => {
+        button.classList.remove('selected');
+      });
     }
   }
 
-  // 이벤트 위임을 사용하여 영화 버튼 이벤트 리스너 추가
-  document.querySelector('.movie-choice').addEventListener('click', function (event) {
-    if (event.target.closest('.btn[data-group="btn1"]')) {
-      movieSelected = !movieSelected;
-      updateSelectionState();
-      // Trigger screening info fetch based on selected date, movie, and theater
-      const selectedDate = getSelectedDate();
-      const selectedMovieIndex = event.target.closest('.btn').dataset.index;
-      const selectedCinemaIndex = document.querySelector('.theater-choice .btn.selected')?.dataset.index;
-      console.log('영화 선택:', selectedMovieIndex, '극장 선택:', selectedCinemaIndex, '날짜 선택:', selectedDate); // 디버그
-      if (selectedDate && selectedMovieIndex && selectedCinemaIndex) {
-        fetchScreeningInfo(selectedDate, selectedMovieIndex, selectedCinemaIndex);
-      }
+  // 선택 변경 처리 함수
+  function handleSelectionChange() {
+    updateSelectionState();
+    const selectedDate = getSelectedDate();
+    const selectedMovieIndexes = Array.from(document.querySelectorAll('.movie-choice .btn.selected'))
+      .map(btn => Number(btn.dataset.index))
+      .filter(index => !isNaN(index));
+    const selectedTheaterIndexes = Array.from(document.querySelectorAll('.theater-choice .btn.selected'))
+      .map(btn => Number(btn.dataset.index))
+      .filter(index => !isNaN(index));
+    if (selectedDate && selectedMovieIndexes.length > 0 && selectedTheaterIndexes.length > 0) {
+      fetchScreeningInfo(selectedDate, selectedMovieIndexes, selectedTheaterIndexes);
+    } else {
+      result.style.display = 'none';
+      noResult.style.removeProperty('display');
     }
-  });
+  }
 
-  // 이벤트 위임을 사용하여 극장 버튼 이벤트 리스너 추가
-  document.querySelector('.theater-choice .detail-list').addEventListener('click', function (event) {
-    if (event.target.closest('.btn')) {
-      updateSelectionState();
-      // Trigger screening info fetch based on selected date, movie, and theater
-      const selectedDate = getSelectedDate();
-      const selectedMovieIndex = document.querySelector('.movie-choice .btn.selected')?.dataset.index;
-      const selectedCinemaIndex = event.target.closest('.btn').dataset.index;
-      console.log('극장 선택:', selectedCinemaIndex, '영화 선택:', selectedMovieIndex, '날짜 선택:', selectedDate); // 디버그
-      if (selectedDate && selectedMovieIndex && selectedCinemaIndex) {
-        fetchScreeningInfo(selectedDate, selectedMovieIndex, selectedCinemaIndex);
-      }
-    }
-  });
-
-  // 이전/다음 버튼에 클릭 이벤트 추가
+  // 이전, 다음 버튼 클릭 이벤트 리스너 추가
   btnPrev.addEventListener('click', () => slideTimes(1));
   btnNext.addEventListener('click', () => slideTimes(-1));
 
-  // 초기화
   populateHours();
-  updateSelectionState();
 
-  function fetchScreeningInfo(date, movieIndex, cinemaIndex) {
-    const xhr = new XMLHttpRequest();
-    const formData = new FormData();
-    formData.append('date', date);
-    formData.append('movieIndex', movieIndex);
-    formData.append('cinemaIndex', cinemaIndex);
+  // 영화 선택 버튼 클릭 이벤트 리스너
+  document.querySelector('.movie-choice').addEventListener('click', function (event) {
+    if (event.target.closest('.btn[data-group="btn1"]')) {
+      movieSelected = !movieSelected;
+      handleSelectionChange();
+    }
+  });
 
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState !== XMLHttpRequest.DONE) {
-        return;
-      }
-      if (xhr.status < 200 || xhr.status >= 300) {
-        console.error('Failed to fetch screening info', xhr.status, xhr.statusText);
-        return;
-      }
+  // 극장 선택 버튼 클릭 이벤트 리스너
+  document.querySelector('.theater-choice .detail-list').addEventListener('click', function (event) {
+    if (event.target.closest('.btn')) {
+      handleSelectionChange();
+    }
+  });
 
-      const data = JSON.parse(xhr.responseText);
-      console.log('서버 응답:', data); // 디버그
-      if (data.length === 0) {
-        alert('상영정보가 없습니다.');
-      } else {
-        updateScreeningInfo(data);
-      }
-    };
+  // 날짜 선택 버튼 클릭 이벤트 리스너
+  document.querySelector('#dates').addEventListener('click', function (event) {
+    if (event.target.closest('.date')) {
+      document.querySelectorAll('.date').forEach(item => item.classList.remove('selected'));
+      event.target.closest('.date').classList.add('selected');
+      handleSelectionChange();
+    }
+  });
 
-    xhr.open('POST', '/booking/screening-info');
-    xhr.send(formData);
+  // 선택된 날짜 가져오는 함수
+  function getSelectedDate() {
+    const selectedDateElement = document.querySelector('.date.selected');
+    return selectedDateElement ? selectedDateElement.dataset.date : null;
   }
 
+  // 상영 정보 업데이트 함수
   function updateScreeningInfo(screeningInfoList) {
     const resultList = document.querySelector('.movie-schedule-area .result ul');
     resultList.innerHTML = '';
+
+    if (screeningInfoList.length > 0) {
+      const firstScreeningTime = screeningInfoList[0].screeningTime.split(':')[0];
+      const hourButtons = document.querySelectorAll('.hour-area .hour-btn');
+      const targetIndex = hours.findIndex(hour => hour === firstScreeningTime);
+      const offset = 4;
+
+      if (targetIndex !== -1) {
+        const newLocation = -(targetIndex - offset) * btnWidth;
+        currentLocation = Math.min(0, Math.max(newLocation, -(hours.length - 10) * btnWidth));
+        timeScheduleWrap.style.transition = 'none';
+        timeScheduleWrap.style.transform = `translateX(${currentLocation}px)`;
+
+        setTimeout(() => {
+          hourButtons.forEach((button, index) => {
+            button.classList.remove('selected');
+            if (index === targetIndex) {
+              button.classList.add('selected');
+            }
+          });
+        }, 0);
+      }
+    }
 
     screeningInfoList.forEach(screeningInfo => {
       const li = document.createElement('li');
@@ -162,88 +176,94 @@ document.addEventListener('DOMContentLoaded', function () {
       button.type = 'button';
 
       const screeningTime = screeningInfo.screeningTime;
-      const playingTime = screeningInfo.playingTime; // 영화 상영 시간
-
-      // 상영 시작 시간을 Date 객체로 변환
-      // JavaScript에서 시간 계산을 할 때 Date 객체를 사용할 수 있지만, playingTime이 시간 형식이 아닌 문자열로 전달되면 Date 객체를 직접 사용할 수 없다 따라서 playingTime을 시간 단위와 분 단위로 나누어 계산하는 방법이 필요합니다.
-      const [screeningHours, screeningMinutes] = screeningTime.split(':').map(Number);
-      const screeningDate = new Date();
-      screeningDate.setHours(screeningHours, screeningMinutes, 0, 0);
-
-      // 상영 시간을 분 단위로 변환
-      const [playingHours, playingMinutes] = playingTime.split(':').map(Number);
-      const totalPlayingMinutes = (playingHours * 60) + playingMinutes;
-
-      // 종료 시간 계산
-      const endDate = new Date(screeningDate.getTime() + totalPlayingMinutes * 60000);
-      const endTime = endDate.toTimeString().split(' ')[0].substring(0, 5); // HH:mm 형식으로 포맷
+      const endTime = screeningInfo.endTime.substring(0, 5); // 초 제거
 
       button.innerHTML = `
-            <i class="time-icon">
-              <img src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-greeting-option-sun.png" alt="">
+          <i class="time-icon"></i>
+          <span class="time">
+            <strong title="상영 시작">${screeningTime.substring(0, 5)}</strong>
+            <em title="상영 종료">~${endTime}</em>
+          </span>
+          <span class="title">
+            <strong>${screeningInfo.movieTitle}</strong>
+            <em>${screeningInfo.dimensionType}</em>
+          </span>
+          <span class="info">
+            <i class="theater">
+              ${screeningInfo.theaterName}<br>
+              ${screeningInfo.cinemaNumber}관
             </i>
-            <span class="time">
-              <strong title="상영 시작">${screeningTime.substring(0, 5)}</strong>
-              <em title="상영 종료">~${endTime}</em>
-            </span>
-            <span class="title">
-              <strong>${screeningInfo.movieTitle}</strong>
-              <em>${screeningInfo.dimensionType}</em>
-            </span>
-            <span class="info">
-              <i class="theater">
-                ${screeningInfo.theaterName}<br>
-                ${screeningInfo.cinemaNumber}관
-              </i>
-            </span>
+          </span>
         `;
+
+      button.addEventListener('click', function () {
+        const xhr = new XMLHttpRequest();
+        const formData = new FormData();
+        formData.append('index', screeningInfo.index);
+        formData.append('screeningTime', screeningInfo.screeningTime);
+        formData.append('endTime', screeningInfo.endTime);
+        formData.append('movieTitle', screeningInfo.movieTitle);
+        formData.append('dimensionType', screeningInfo.dimensionType);
+        formData.append('theaterName', screeningInfo.theaterName);
+        formData.append('cinemaNumber', screeningInfo.cinemaNumber);
+        formData.append('ageLimit', screeningInfo.ageLimit);
+        formData.append('screeningDate', screeningInfo.screeningDate);
+        formData.append('thumbnail', screeningInfo.thumbnail);
+
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState !== XMLHttpRequest.DONE) return;
+          if (xhr.status < 200 || xhr.status >= 300) {
+            MessageObj.createSimpleOk('오류', '알 수 없는 이유로 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.').show();
+            return;
+          }
+
+          // 상영 정보를 세션 스토리지에 저장
+          sessionStorage.setItem('screeningInfo', JSON.stringify(screeningInfo));
+
+          window.location.href = '/booking/orderTwo';
+        };
+
+        xhr.open('POST', '/booking/orderTwo');
+        xhr.send(formData);
+      });
+
       li.appendChild(button);
       resultList.appendChild(li);
     });
-
-    noResult.style.display = 'none';
-    result.style.removeProperty('display');
   }
 
+  // 상영 정보 가져오는 함수
+  function fetchScreeningInfo(date, movieIndexes, theaterIndexes) {
+    const xhr = new XMLHttpRequest();
+    const formData = new FormData();
+    formData.append('screeningDate', date);
+    movieIndexes.forEach(index => formData.append('movieIndexes', index));
+    theaterIndexes.forEach(index => formData.append('theaterIndexes', index));
 
-  // 날짜 선택 시 이벤트 리스너
-  function handleDateClick(event, button) {
-    event.preventDefault(); // 기본 동작 방지
-
-    if (previousSelectedButton) {
-      previousSelectedButton.classList.remove('selected');
-    }
-    button.classList.add('selected');
-    previousSelectedButton = button;
-
-    const selectedDate = button.dataset.date;
-    const selectedMovieIndex = document.querySelector('.movie-choice .btn.selected')?.dataset.index;
-    const selectedCinemaIndex = document.querySelector('.theater-choice .btn.selected')?.dataset.index;
-    console.log('날짜 선택:', selectedDate, '영화 선택:', selectedMovieIndex, '극장 선택:', selectedCinemaIndex); // 디버그
-    if (selectedDate && selectedMovieIndex && selectedCinemaIndex) {
-      fetchScreeningInfo(selectedDate, selectedMovieIndex, selectedCinemaIndex);
-    }
-  }
-
-  function updateDateButtons(availableDates) {
-    const dateButtons = document.querySelectorAll('.date-area .wrap .date');
-    dateButtons.forEach(button => {
-      const date = button.dataset.date;
-      if (availableDates.includes(date)) {
-        button.disabled = false;
-        button.classList.remove('disabled');
-      } else {
-        button.disabled = true;
-        button.classList.add('disabled');
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState !== XMLHttpRequest.DONE) {
+        return;
       }
-    });
-  }
+      loading.hide();
 
-  function enableAllDateButtons() {
-    const dateButtons = document.querySelectorAll('.date-area .wrap .date');
-    dateButtons.forEach(button => {
-      button.disabled = false;
-      button.classList.remove('disabled');
-    });
+      if (xhr.status < 200 || xhr.status >= 300) {
+        MessageObj.createSimpleOk('오류', '알 수 없는 이유로 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.').show();
+        return;
+      }
+
+      const data = JSON.parse(xhr.responseText);
+      if (data.length === 0) {
+        result.style.display = 'none';
+        noResult.style.removeProperty('display');
+      } else {
+        updateScreeningInfo(data);
+        result.style.removeProperty('display');
+        noResult.style.display = 'none';
+      }
+    };
+
+    xhr.open('POST', '/booking/screening-info-by-theater-and-movie');
+    xhr.send(formData);
+    loading.show();
   }
 });

@@ -10,7 +10,7 @@ body {
   overflow-y: scroll;
   font-size: 13px;
   color: #666666;
-  font-family: NanumBarunGothic, Dotum, "돋움", sans-serif;
+  font-family: sans-serif, NanumBarunGothic, Dotum, "돋움";
 }
 
 #header {
@@ -66,7 +66,19 @@ body {
   margin-right: 20px;
   text-decoration-line: none;
 }
+#header > .link-box > .right-link > .header-user {
+  color: #888888;
+  font-size: 13px;
+  margin-right: 20px;
+  text-decoration-line: none;
+}
 #header > .link-box > .right-link > .header-register {
+  color: #888888;
+  font-size: 13px;
+  margin-right: 20px;
+  text-decoration-line: none;
+}
+#header > .link-box > .right-link > .header-logout {
   color: #888888;
   font-size: 13px;
   margin-right: 20px;
@@ -84,11 +96,14 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 15px;
+  width: 100%;
 }
 #header > .link-area > .header-main-page {
   height: 47px;
   display: flex;
-  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+}
+#header > .link-area > .header-main-page > h1 > .main-logo-img {
+  width: 10rem;
 }
 #header > .link-area > .header-site-map {
   color: white;
@@ -179,137 +194,167 @@ body {
   display: none;
   position: absolute;
   width: 100%;
-  top: 79px;
-  height: 44px;
-  z-index: 1;
   background-color: #444444;
+  flex-direction: row;
+  justify-content: center;
+  top: 85px;
+  z-index: 1;
+  left: 0;
 }
 #header > .link-area > .movieLink-mini.on {
-  display: block;
+  display: flex;
 }
-#header > .link-area > .movieLink-mini > ul {
+#header > .link-area > .movieLink-mini > .movie-link-box-1100px {
+  width: 1100px;
+  height: 44px;
+}
+#header > .link-area > .movieLink-mini > .movie-link-box-1100px > ul {
   display: flex;
   flex-direction: row;
   gap: 10px;
   line-height: 44px;
-  padding-left: 436px;
+  padding-left: 50px;
 }
-#header > .link-area > .movieLink-mini > ul > li > a {
+#header > .link-area > .movieLink-mini > .movie-link-box-1100px > ul > li > a {
   color: #fff;
   font-size: 1rem;
 }
-#header > .link-area > .movieLink-mini > ul > li > a:hover {
+#header > .link-area > .movieLink-mini > .movie-link-box-1100px > ul > li > a:hover {
   text-decoration: underline;
 }
 #header > .link-area > .reserveLink-mini {
   display: none;
   position: absolute;
   width: 100%;
-  top: 79px;
-  height: 44px;
-  z-index: 1;
   background-color: #444444;
+  flex-direction: row;
+  justify-content: center;
+  top: 85px;
+  z-index: 1;
+  left: 0;
 }
 #header > .link-area > .reserveLink-mini.on {
-  display: block;
+  display: flex;
 }
-#header > .link-area > .reserveLink-mini > ul {
+#header > .link-area > .reserveLink-mini > .reserve-link-box-1100px {
+  width: 1100px;
+  height: 44px;
+}
+#header > .link-area > .reserveLink-mini > .reserve-link-box-1100px > ul {
   display: flex;
   flex-direction: row;
   gap: 10px;
   line-height: 44px;
-  padding-left: 596px;
+  padding-left: 166px;
 }
-#header > .link-area > .reserveLink-mini > ul > li > a {
+#header > .link-area > .reserveLink-mini > .reserve-link-box-1100px > ul > li > a {
   color: #fff;
   font-size: 1rem;
 }
-#header > .link-area > .reserveLink-mini > ul > li > a:hover {
+#header > .link-area > .reserveLink-mini > .reserve-link-box-1100px > ul > li > a:hover {
   text-decoration: underline;
 }
 #header > .link-area > .theaterLink-mini {
   display: none;
   position: absolute;
   width: 100%;
-  top: 79px;
-  height: 44px;
-  z-index: 1;
   background-color: #444444;
+  flex-direction: row;
+  justify-content: center;
+  top: 85px;
+  z-index: 1;
+  left: 0;
 }
 #header > .link-area > .theaterLink-mini.on {
-  display: block;
+  display: flex;
 }
-#header > .link-area > .theaterLink-mini > ul {
+#header > .link-area > .theaterLink-mini > .theater-link-box-1100px {
+  width: 1100px;
+  height: 44px;
+}
+#header > .link-area > .theaterLink-mini > .theater-link-box-1100px > ul {
   display: flex;
   flex-direction: row;
   gap: 10px;
   line-height: 44px;
-  padding-left: 726px;
+  padding-left: 300px;
 }
-#header > .link-area > .theaterLink-mini > ul > li > a {
+#header > .link-area > .theaterLink-mini > .theater-link-box-1100px > ul > li > a {
   color: #fff;
   font-size: 1rem;
 }
-#header > .link-area > .theaterLink-mini > ul > li > a:hover {
+#header > .link-area > .theaterLink-mini > .theater-link-box-1100px > ul > li > a:hover {
   text-decoration: underline;
 }
 #header > .link-area > .eventLink-mini {
   display: none;
   position: absolute;
   width: 100%;
-  top: 79px;
-  height: 44px;
-  z-index: 1;
   background-color: #444444;
+  flex-direction: row;
+  justify-content: center;
+  top: 85px;
+  z-index: 1;
+  left: 0;
 }
 #header > .link-area > .eventLink-mini.on {
-  display: block;
+  display: flex;
 }
-#header > .link-area > .eventLink-mini > ul {
+#header > .link-area > .eventLink-mini > .event-link-box-1100px {
+  width: 1100px;
+  height: 44px;
+}
+#header > .link-area > .eventLink-mini > .event-link-box-1100px > ul {
   display: flex;
   flex-direction: row;
   gap: 10px;
   line-height: 44px;
-  padding-left: 1026px;
+  padding-left: 598px;
 }
-#header > .link-area > .eventLink-mini > ul > li > a {
+#header > .link-area > .eventLink-mini > .event-link-box-1100px > ul > li > a {
   color: #fff;
   font-size: 1rem;
 }
-#header > .link-area > .eventLink-mini > ul > li > a:hover {
+#header > .link-area > .eventLink-mini > .event-link-box-1100px > ul > li > a:hover {
   text-decoration: underline;
 }
 #header > .link-area > .membershipLink-mini {
   display: none;
   position: absolute;
   width: 100%;
-  top: 79px;
-  height: 44px;
-  z-index: 1;
   background-color: #444444;
+  flex-direction: row;
+  justify-content: center;
+  top: 85px;
+  z-index: 1;
+  left: 0;
 }
 #header > .link-area > .membershipLink-mini.on {
-  display: block;
+  display: flex;
 }
-#header > .link-area > .membershipLink-mini > ul {
+#header > .link-area > .membershipLink-mini > .membership-link-box-1100px {
+  width: 1100px;
+  height: 44px;
+}
+#header > .link-area > .membershipLink-mini > .membership-link-box-1100px > ul {
   display: flex;
   flex-direction: row;
   gap: 10px;
   line-height: 44px;
-  padding-left: 1246px;
+  padding-left: 834px;
 }
-#header > .link-area > .membershipLink-mini > ul > li > a {
+#header > .link-area > .membershipLink-mini > .membership-link-box-1100px > ul > li > a {
   color: #fff;
   font-size: 1rem;
 }
-#header > .link-area > .membershipLink-mini > ul > li > a:hover {
+#header > .link-area > .membershipLink-mini > .membership-link-box-1100px > ul > li > a:hover {
   text-decoration: underline;
 }
 #header > .layer-sitemap {
   display: none;
   position: absolute;
   left: 0;
-  top: 75px;
+  top: 86px;
   z-index: 101;
   width: 100%;
   min-width: 1100px;
@@ -808,6 +853,7 @@ li {
   position: relative;
   left: 2rem;
   top: -1rem;
+  filter: none;
 }
 #header > .link-area > .header-event {
   text-decoration-line: none;

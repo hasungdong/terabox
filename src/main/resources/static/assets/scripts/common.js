@@ -3,48 +3,12 @@ const alertCover = document.getElementById('alertCover');
 const cover = document.getElementById('cover');
 const loading = document.getElementById('loading');
 
-if (document.querySelector('[rel="showLoginAlert"]') !== null) {
-    // 로그인이 안되어있다면 << 나중에 이 조건도 코딩해야됨
-    const loginAlertButtons = document.querySelectorAll('[rel="showLoginAlert"]');
-    loginAlertButtons.forEach(loginAlertButton => loginAlertButton.onclick = () => {
-        new MessageObj({
-            title: '알림',
-            content: '로그인 후 이용가능한 서비스입니다 <br> 로그인하시겠습니까?',
-            buttons: [
-                {
-                    text: '취소', onclick: instance => {
-                        instance.hide();
-                        alertCover.hide();
-                    }
-                },
-                {
-                    text: '확인', onclick: instance => {
-                        instance.hide();
-                        showLogin();
-                        alertCover.hide();
-                    }
-                }
-            ]
-        }).show();
-        // document.querySelector('._obj-message.-visible') 이건 왜 안되징
-        document.querySelector('._obj-message').querySelector('.title-bar').style.boxSizing = 'border-box';
-        document.querySelector('._obj-message').querySelector('.title-bar').style.width = '300px';
-        document.querySelector('._obj-message').querySelector('.__content').style.boxSizing = 'border-box';
-        document.querySelector('._obj-message').querySelector('.__content').style.width = '300px';
-        document.querySelector('._obj-message').querySelector('.__button:first-child').style.backgroundColor = '#ffffff';
-        document.querySelector('._obj-message').querySelector('.__button:first-child').style.color = '#503396';
-        alertCover.show(() => {
-            console.log(document.querySelector('._obj-message.-visible').style.width);
-            document.querySelector('._obj-message.-visible').hide();
-            alertCover.hide();
-        });
-        const alertCancelButton = document.querySelector('[rel="alertCancel"]');
-        alertCancelButton.onclick = () => {
-            alertCover.hide();
-            document.querySelector('._obj-message').hide();
-        }
-    });
-//     로그인이 되어있다면 관리자 페이지로 이동
+// 로그인 취소 버튼 작동
+if (loginCancelButton !== null){
+    loginCancelButton.onclick = () => {
+        loginForm.hide();
+        cover.hide();
+    }
 }
 
 // 스와이퍼 기능, 홈일 때랑 아닐 때 구분돼있음
@@ -222,189 +186,189 @@ if (document.querySelector('span.swiper-bar') !== null) {
             }
         }
     } else {
-        // 여기부터 홈에 있는 스와이퍼
-        let i = 0;
-        let currentPage = 1;
-        swiperBars[0].classList.add('point');
-        // events가 .event임
-        const imgs = events[0].querySelectorAll(':scope > img.img');
-        const imgTwos = events[0].querySelectorAll(':scope > img.img2');
-
-        page.innerText = `${currentPage} / ${imgs.length}`;
-        for (const img of imgs) {
-            img.style.top = `calc((25%) * ${i})`;
-            if (i === imgs.length - 1) {
-                img.style.top = 'calc(-25%)';
-            }
-            if (img.style.top === 'calc(0%)') {
-                img.style.opacity = '1';
-            } else if (img.style.top === 'calc(25%)') {
-                img.style.display = 'none';
-                img.style.opacity = '0';
-                setTimeout(function () {
-                    img.style.display = 'block';
-                }, 300);
-            } else if (img.style.top === 'calc(-25%)') {
-                img.style.display = 'none';
-                img.style.opacity = '0';
-                setTimeout(function () {
-                    img.style.display = 'block';
-                }, 300);
-            } else {
-                img.style.display = 'none';
-                img.style.opacity = '0';
-            }
-            i++;
-        }
-        i = 0;
-
-        for (const imgTwo of imgTwos) {
-            // 300px은 왼쪽 사진 크기다.
-            imgTwo.style.left = `calc(300px + (25% * ${i}))`
-            if (i === imgTwos.length - 1) {
-                imgTwo.style.left = 'calc(300px - 25%)';
-            }
-            if (imgTwo.style.left === 'calc(0% + 300px)') {
-                imgTwo.style.opacity = '1';
-            } else if (imgTwo.style.left === 'calc(25% + 300px)') {
-                imgTwo.style.display = 'none';
-                imgTwo.style.opacity = '0';
-                setTimeout(function () {
-                    imgTwo.style.display = 'block';
-                }, 300);
-            } else if (imgTwo.style.left === 'calc(-25% + 300px)') {
-                imgTwo.style.display = 'none';
-                imgTwo.style.opacity = '0';
-                setTimeout(function () {
-                    imgTwo.style.display = 'block';
-                }, 300);
-            } else {
-                imgTwo.style.display = 'none';
-                imgTwo.style.opacity = '0';
-            }
-            i++;
-        }
-        lessButton.onclick = () => {
-            swiperBars[currentPage - 1].classList.remove('point');
-            imgs.forEach(img => {
-                img.style.top = `calc(${img.style.top} + 25%)`;
-                let topEventValue = 25 * (imgs.length - 1) + '%'
-                if (img.style.top === `calc(${topEventValue})`) {
-                    img.style.top = 'calc(-25%)';
-                }
-                if (img.style.top === 'calc(0%)') {
-                    img.style.opacity = '1';
-                } else if (img.style.top === 'calc(25%)') {
-                    img.style.display = 'block';
-                    img.style.opacity = '0';
-                } else if (img.style.top === 'calc(-25%)') {
-                    img.style.display = 'block';
-                    img.style.opacity = '0';
-                } else {
-                    img.style.display = 'none';
-                    img.style.opacity = '0';
-                }
-            });
-            imgTwos.forEach(imgTwo => {
-                imgTwo.style.left = `calc(${imgTwo.style.left} + 25%)`
-                let leftEventValue = 25 * (imgTwos.length - 1) + '%';
-                if (imgTwo.style.left === `calc(${leftEventValue} + 300px)`) {
-                    imgTwo.style.left = 'calc(300px - 25%)';
-                }
-                if (imgTwo.style.left === 'calc(0% + 300px)') {
-                    imgTwo.style.opacity = '1';
-                } else if (imgTwo.style.left === 'calc(25% + 300px)') {
-                    imgTwo.style.opacity = '0';
-                    imgTwo.style.display = 'block';
-                } else if (imgTwo.style.left === 'calc(-25% + 300px)') {
-                    imgTwo.style.opacity = '0';
-                    imgTwo.style.display = 'block';
-                } else {
-                    imgTwo.style.display = 'none';
-                    imgTwo.style.opacity = '0';
-                }
-            });
-            currentPage--;
-            if (currentPage < 1) {
-                currentPage = imgs.length;
-            }
-            page.innerText = `${currentPage} / ${imgs.length}`;
-            if (currentPage - 1 < 0) {
-                swiperBars[events.length - 1].classList.add('point');
-            } else {
-                swiperBars[currentPage - 1].classList.add('point');
-            }
-            i = 0;
-        }
-
-        const rightMovie = () => {
-            swiperBars[currentPage - 1].classList.remove('point');
-            imgs.forEach(img => {
-                img.style.top = `calc(${img.style.top} - (25%)`;
-                if (img.style.top === 'calc(-50%)') {
-                    img.style.top = `calc(25% * ${imgs.length - 2})`;
-                }
-                if (img.style.top === 'calc(0%)') {
-                    img.style.opacity = '1';
-                } else if (img.style.top === 'calc(25%)') {
-                    img.style.display = 'block';
-                    img.style.opacity = '0';
-                } else if (img.style.top === 'calc(-25%)') {
-                    img.style.display = 'block';
-                    img.style.opacity = '0';
-                } else {
-                    img.style.display = 'none';
-                    img.style.opacity = '0';
-                }
-            });
-            imgTwos.forEach(imgTwo => {
-                imgTwo.style.left = `calc(${imgTwo.style.left} - 25%)`;
-                // if (imgTwo.style.left === `calc((-25% * ${imgTwos.length - 1}) + 300px)`) {
-                // 여기 -100% 적으면 먹는데 이렇게 적으면 안먹음 ㅠㅠ...
-                if (imgTwo.style.left === `calc(-50% + 300px)`) {
-                    imgTwo.style.left = `calc(300px + 25% * ${imgTwos.length - 2})`;
-                }
-                if (imgTwo.style.left === 'calc(0% + 300px)') {
-                    imgTwo.style.opacity = '1';
-                } else if (imgTwo.style.left === 'calc(25% + 300px)') {
-                    imgTwo.style.opacity = '0';
-                    imgTwo.style.display = 'block';
-                } else if (imgTwo.style.left === 'calc(-25% + 300px)') {
-                    imgTwo.style.opacity = '0';
-                    imgTwo.style.display = 'block';
-                } else {
-                    imgTwo.style.display = 'none';
-                    imgTwo.style.opacity = '0';
-                }
-                i++;
-            })
-            currentPage++;
-            if (currentPage > 5) {
-                currentPage = 1;
-            }
-            page.innerText = `${currentPage} / ${imgs.length}`;
-            if (currentPage + 1 > 6) {
-                swiperBars[0].classList.add('point');
-            } else {
-                swiperBars[currentPage - 1].classList.add('point');
-            }
-            i = 0;
-        }
-
-        moreButton.onclick = () => {
-            rightMovie();
-        }
-
-        playButton.onclick = () => {
-            playButton.style.display = 'none';
-            pauseButton.style.display = 'block';
-            const play = setInterval(rightMovie, 5400);
-            pauseButton.onclick = () => {
-                playButton.style.display = 'block';
-                pauseButton.style.display = 'none';
-                clearInterval(play);
-            }
-        }
+        // // 여기부터 홈에 있는 스와이퍼
+        // let i = 0;
+        // let currentPage = 1;
+        // swiperBars[0].classList.add('point');
+        // // events가 .event임
+        // const imgs = events[0].querySelectorAll(':scope > img.img');
+        // const imgTwos = events[0].querySelectorAll(':scope > img.img2');
+        //
+        // page.innerText = `${currentPage} / ${imgs.length}`;
+        // for (const img of imgs) {
+        //     img.style.top = `calc((25%) * ${i})`;
+        //     if (i === imgs.length - 1) {
+        //         img.style.top = 'calc(-25%)';
+        //     }
+        //     if (img.style.top === 'calc(0%)') {
+        //         img.style.opacity = '1';
+        //     } else if (img.style.top === 'calc(25%)') {
+        //         img.style.display = 'none';
+        //         img.style.opacity = '0';
+        //         setTimeout(function () {
+        //             img.style.display = 'block';
+        //         }, 300);
+        //     } else if (img.style.top === 'calc(-25%)') {
+        //         img.style.display = 'none';
+        //         img.style.opacity = '0';
+        //         setTimeout(function () {
+        //             img.style.display = 'block';
+        //         }, 300);
+        //     } else {
+        //         img.style.display = 'none';
+        //         img.style.opacity = '0';
+        //     }
+        //     i++;
+        // }
+        // i = 0;
+        //
+        // for (const imgTwo of imgTwos) {
+        //     // 300px은 왼쪽 사진 크기다.
+        //     imgTwo.style.left = `calc(300px + (25% * ${i}))`
+        //     if (i === imgTwos.length - 1) {
+        //         imgTwo.style.left = 'calc(300px - 25%)';
+        //     }
+        //     if (imgTwo.style.left === 'calc(0% + 300px)') {
+        //         imgTwo.style.opacity = '1';
+        //     } else if (imgTwo.style.left === 'calc(25% + 300px)') {
+        //         imgTwo.style.display = 'none';
+        //         imgTwo.style.opacity = '0';
+        //         setTimeout(function () {
+        //             imgTwo.style.display = 'block';
+        //         }, 300);
+        //     } else if (imgTwo.style.left === 'calc(-25% + 300px)') {
+        //         imgTwo.style.display = 'none';
+        //         imgTwo.style.opacity = '0';
+        //         setTimeout(function () {
+        //             imgTwo.style.display = 'block';
+        //         }, 300);
+        //     } else {
+        //         imgTwo.style.display = 'none';
+        //         imgTwo.style.opacity = '0';
+        //     }
+        //     i++;
+        // }
+        // lessButton.onclick = () => {
+        //     swiperBars[currentPage - 1].classList.remove('point');
+        //     imgs.forEach(img => {
+        //         img.style.top = `calc(${img.style.top} + 25%)`;
+        //         let topEventValue = 25 * (imgs.length - 1) + '%'
+        //         if (img.style.top === `calc(${topEventValue})`) {
+        //             img.style.top = 'calc(-25%)';
+        //         }
+        //         if (img.style.top === 'calc(0%)') {
+        //             img.style.opacity = '1';
+        //         } else if (img.style.top === 'calc(25%)') {
+        //             img.style.display = 'block';
+        //             img.style.opacity = '0';
+        //         } else if (img.style.top === 'calc(-25%)') {
+        //             img.style.display = 'block';
+        //             img.style.opacity = '0';
+        //         } else {
+        //             img.style.display = 'none';
+        //             img.style.opacity = '0';
+        //         }
+        //     });
+        //     imgTwos.forEach(imgTwo => {
+        //         imgTwo.style.left = `calc(${imgTwo.style.left} + 25%)`
+        //         let leftEventValue = 25 * (imgTwos.length - 1) + '%';
+        //         if (imgTwo.style.left === `calc(${leftEventValue} + 300px)`) {
+        //             imgTwo.style.left = 'calc(300px - 25%)';
+        //         }
+        //         if (imgTwo.style.left === 'calc(0% + 300px)') {
+        //             imgTwo.style.opacity = '1';
+        //         } else if (imgTwo.style.left === 'calc(25% + 300px)') {
+        //             imgTwo.style.opacity = '0';
+        //             imgTwo.style.display = 'block';
+        //         } else if (imgTwo.style.left === 'calc(-25% + 300px)') {
+        //             imgTwo.style.opacity = '0';
+        //             imgTwo.style.display = 'block';
+        //         } else {
+        //             imgTwo.style.display = 'none';
+        //             imgTwo.style.opacity = '0';
+        //         }
+        //     });
+        //     currentPage--;
+        //     if (currentPage < 1) {
+        //         currentPage = imgs.length;
+        //     }
+        //     page.innerText = `${currentPage} / ${imgs.length}`;
+        //     if (currentPage - 1 < 0) {
+        //         swiperBars[events.length - 1].classList.add('point');
+        //     } else {
+        //         swiperBars[currentPage - 1].classList.add('point');
+        //     }
+        //     i = 0;
+        // }
+        //
+        // const rightMovie = () => {
+        //     swiperBars[currentPage - 1].classList.remove('point');
+        //     imgs.forEach(img => {
+        //         img.style.top = `calc(${img.style.top} - (25%)`;
+        //         if (img.style.top === 'calc(-50%)') {
+        //             img.style.top = `calc(25% * ${imgs.length - 2})`;
+        //         }
+        //         if (img.style.top === 'calc(0%)') {
+        //             img.style.opacity = '1';
+        //         } else if (img.style.top === 'calc(25%)') {
+        //             img.style.display = 'block';
+        //             img.style.opacity = '0';
+        //         } else if (img.style.top === 'calc(-25%)') {
+        //             img.style.display = 'block';
+        //             img.style.opacity = '0';
+        //         } else {
+        //             img.style.display = 'none';
+        //             img.style.opacity = '0';
+        //         }
+        //     });
+        //     imgTwos.forEach(imgTwo => {
+        //         imgTwo.style.left = `calc(${imgTwo.style.left} - 25%)`;
+        //         // if (imgTwo.style.left === `calc((-25% * ${imgTwos.length - 1}) + 300px)`) {
+        //         // 여기 -100% 적으면 먹는데 이렇게 적으면 안먹음 ㅠㅠ...
+        //         if (imgTwo.style.left === `calc(-50% + 300px)`) {
+        //             imgTwo.style.left = `calc(300px + 25% * ${imgTwos.length - 2})`;
+        //         }
+        //         if (imgTwo.style.left === 'calc(0% + 300px)') {
+        //             imgTwo.style.opacity = '1';
+        //         } else if (imgTwo.style.left === 'calc(25% + 300px)') {
+        //             imgTwo.style.opacity = '0';
+        //             imgTwo.style.display = 'block';
+        //         } else if (imgTwo.style.left === 'calc(-25% + 300px)') {
+        //             imgTwo.style.opacity = '0';
+        //             imgTwo.style.display = 'block';
+        //         } else {
+        //             imgTwo.style.display = 'none';
+        //             imgTwo.style.opacity = '0';
+        //         }
+        //         i++;
+        //     })
+        //     currentPage++;
+        //     if (currentPage > 5) {
+        //         currentPage = 1;
+        //     }
+        //     page.innerText = `${currentPage} / ${imgs.length}`;
+        //     if (currentPage + 1 > 6) {
+        //         swiperBars[0].classList.add('point');
+        //     } else {
+        //         swiperBars[currentPage - 1].classList.add('point');
+        //     }
+        //     i = 0;
+        // }
+        //
+        // moreButton.onclick = () => {
+        //     rightMovie();
+        // }
+        //
+        // playButton.onclick = () => {
+        //     playButton.style.display = 'none';
+        //     pauseButton.style.display = 'block';
+        //     const play = setInterval(rightMovie, 5400);
+        //     pauseButton.onclick = () => {
+        //         playButton.style.display = 'block';
+        //         pauseButton.style.display = 'none';
+        //         clearInterval(play);
+        //     }
+        // }
     }
 }
 
@@ -474,6 +438,17 @@ class MessageObj {
         }
         document.body.prepend(element);
         this.element = element;
+        // 닫기버튼 누르면 없어지는 거 구현
+        element.querySelector('[rel=alertCancel]').onclick = () => {
+            this.element.hide();
+            setTimeout(() => this.element.remove(), 1000);
+            if (alertCover !== null){
+                alertCover.hide();
+            }
+            if (cover !== null){
+                cover.hide();
+            }
+        }
     }
 
     hide() {
@@ -569,51 +544,7 @@ HTMLElement.prototype.isEnabled = function () {
     return !this.hasAttribute('disabled');
 }
 
-if (document.getElementById('loginForm') !== null){
-    // 로그인 취소 버튼 작동
-    loginCancelButton.onclick = () => {
-        loginForm.hide();
-        cover.hide();
-    }
-    // 로그인 시도
-    loginForm.onsubmit = e => {
-        e.preventDefault();
-        // 관리자용 아이디 검사용 로직, 나중에 서비스에서 할 수 있게 바꿔야댐
-        if (loginForm.email.value === 'a@aaa' &&
-            loginForm.password.value === 'aaaaa') {
-            alertCover.show(() => {
-                alertCover.hide();
-                document.querySelector('._obj-message').hide();
-            });
-            MessageObj.createSimpleOk('알림', '아이디 또는 비밀번호가 맞지 않습니다. <br>로그인 정보를 다시 확인바랍니다.', () => {
-                alertCover.hide();
-            }).show();
-            if (document.querySelector('._obj-message') !== null) {
-                document.querySelector('._obj-message').style.width = '400px';
-            }
-            return;
-        }
-    }
 
-// 로그인 화면에서 이메일이나 비밀번호 값에 변경이 있을 때, 둘 중 하나라도 비어있으면 제출 버튼이 비활성화된다.
-    loginForm.email.oninput = () => {
-        if (loginForm.email.value === '' ||
-            loginForm.password.value === '') {
-            loginForm.querySelector('[type="submit"]').disable();
-            return;
-        }
-        loginForm.querySelector('[type="submit"]').enable();
-    }
-
-    loginForm.password.oninput = () => {
-        if (loginForm.email.value === '' ||
-            loginForm.password.value === '') {
-            loginForm.querySelector('[type="submit"]').disable();
-            return;
-        }
-        loginForm.querySelector('[type="submit"]').enable();
-    }
-}
 
 
 cover.show = (onclick) => {

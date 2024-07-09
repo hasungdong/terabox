@@ -1,13 +1,15 @@
 @charset "UTF-8";
-
+@import "../common/header";
 @import "../common/common.notHome";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
 
 
 html {
   width: 100%;
   height: 100%;
   margin: 0;
-  padding: 0;
+  padding: 0;;
 }
 
 body {
@@ -109,6 +111,8 @@ body {
             }
           }
 
+          > .form {
+
           > .table-wrap {
             position: relative;
             border-top: 1px solid #555;
@@ -165,6 +169,7 @@ body {
                     text-align: left;
                     border-bottom: 1px solid #d1d5dd;
 
+
                     .button {
                       display: inline-block;
                       height: 36px;
@@ -181,6 +186,11 @@ body {
                       vertical-align: middle;
                       background-color: #fff;
                       cursor: pointer;
+
+                      &:hover {
+                        background-color: #503396;
+                        color: #fff;
+                      }
                     }
 
                     > .gray-line {
@@ -191,7 +201,8 @@ body {
                       line-height: 32px;
                     }
 
-                    > .disabled {
+                    // []대괄호가 속성잡는거임
+                    > [disabled] {
                       color: #777 !important;
                       background-color: #e0e0e0 !important;
                       border-color: #e0e0e0 !important;
@@ -378,6 +389,7 @@ body {
           }
         }
        }
+        }
       }
     }
   }
@@ -430,4 +442,55 @@ input {
 dl {
   margin: 0;
   padding: 0;
+}
+
+#userBirthDay { // 나중에 변경될수도
+  width: 260px;
+}
+
+#userPhone { // 나중에 변경될수도 있음
+  width: 260px;
+}
+
+#userNickName {
+  width: 260px;
+}
+
+#userEmailCode {
+  width: 260px;
+}
+
+#userEmail {
+  width: 260px;
+}
+
+.emailButton {
+  display: inline-block;
+  height: 36px;
+  margin: 0;
+  padding: 0 15px;
+  text-align: center;
+  line-height: 34px;
+  color: #503396;
+  font-weight: 400;
+  border-radius: 4px;
+  font-family: sans-serif, NanumBarunGothic, Dotum, '돋움';
+  text-decoration: none;
+  border: 1px solid #503396;
+  vertical-align: middle;
+  background-color: #fff;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #500396;
+    color: white;
+  }
+}
+
+.w260px {
+  width: 260px;
+}
+
+.register-logo-img {
+  width: 9rem;
 }

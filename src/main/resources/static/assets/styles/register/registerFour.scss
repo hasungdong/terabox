@@ -1,6 +1,8 @@
 @charset "UTF-8";
-
+@import "../common/header";
 @import "../common/common.notHome";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
 
 
 html {
@@ -174,4 +176,8 @@ p {
   margin-inline-start: 0;
   margin-inline-end: 0;
   unicode-bidi: isolate;
+}
+
+.register-logo-img {
+  width: 9rem;
 }

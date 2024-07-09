@@ -1,5 +1,8 @@
 @charset "UTF-8";
+@import "../common/header";
 @import "../common/common.notHome";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
 
 
 html {
@@ -279,6 +282,10 @@ body {
             padding: 40px 0 0 0;
             text-align: center;
 
+            > .three-link {
+
+
+
             > .large {
               line-height: 46px;
             }
@@ -303,6 +310,7 @@ body {
               padding: 0;
               font-size: 20px;
               cursor: pointer;
+              }
             }
           }
         }
@@ -372,5 +380,9 @@ dd {
     border: 1px solid #d8d9db;
     font-size: 14px !important;
   }
+}
+
+.register-logo-img {
+  width: 9rem;
 }
 

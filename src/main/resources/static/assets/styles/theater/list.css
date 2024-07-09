@@ -50,6 +50,7 @@
   position: relative;
   left: 2rem;
   top: -1rem;
+  filter: none;
 }
 #header > .link-area > .header-event {
   text-decoration-line: none;
@@ -210,6 +211,10 @@
   font-size: 0.9333em;
   color: #503396;
   margin-left: 10px;
+}
+#main > .theater-box > .user-theater > div > .link:hover {
+  background-color: #503396;
+  color: #ffffff;
 }
 #main > .event-container {
   display: flex;

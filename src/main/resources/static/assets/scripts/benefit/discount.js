@@ -23,9 +23,6 @@ if (document.querySelector('button.select') !== null){
     }
 //     셀렉트 옵션들 보일 때 누르면 실행되는 코드
     newsAgencyButton.querySelectorAll(':scope > ul > li').forEach(newsAgency => newsAgency.onclick = () => {
-        location.href = './creditcard';
-    })
-    cardButton.querySelectorAll(':scope > ul > li').forEach(card => card.onclick = () => {
         location.href = './telecomcard';
     })
     pointButton.querySelectorAll(':scope > ul > li').forEach(point => point.onclick = () => {

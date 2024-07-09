@@ -9,9 +9,14 @@
                `card_name` AS `cardName`,
                `money` AS `money`
         FROM `terabox`.`user_card_mapping`
-        WHERE user_email = #{userEmail} AND `card_name` = #{selectedValue}
+        WHERE user_email = #{userEmail} AND `card_name` = #{cardName}
         LIMIT 1
     </select>
+
+    <insert id="insertUserCard" parameterType="com.terabox.demo.entities.UserCardEntity">
+        INSERT INTO terabox.user_card_mapping (user_email, card_name, money)
+        VALUES (#{userEmail}, #{cardName}, #{money})
+    </insert>
 
     <update id="updateMoney" parameterType="com.terabox.demo.entities.UserCardEntity">
     UPDATE `terabox`.user_card_mapping

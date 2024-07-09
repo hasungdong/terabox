@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 public interface TheaterMapper {
     TheaterEntity[] selectTheatersByRegionCode(String regionCode);
 
-    TheaterEntity[] selectTheaters();
-
     TheaterVo[] selectTheatersOnTheaterList();
+
+    TheaterEntity selectTheaterByIndex(int index);
 }

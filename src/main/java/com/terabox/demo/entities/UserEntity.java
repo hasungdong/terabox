@@ -22,4 +22,18 @@ public class UserEntity {
 //    마일리지를 포인트로 바꿨음
     private int point;
     private boolean isAdmin;
+
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", birth=" + birth +
+                ", membershipCode='" + membershipCode + '\'' +
+                ", createdAt=" + createdAt +
+                ", point=" + point +
+                ", isAdmin=" + isAdmin +
+                '}';
+    }
 }

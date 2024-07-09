@@ -18,7 +18,6 @@ window.onload = () => {
     // 밑에서 사용될 극장지점명들
     let liList = document.querySelector('.theater-list').querySelectorAll(':scope > ul > li');
     liList.forEach(li => {
-        console.log(li.className);
         if (li.classList[0] !== li.classList[1]){
             // li.remove();
         }

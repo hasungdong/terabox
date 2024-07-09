@@ -28,8 +28,8 @@ public class RegisterController {
     }
 
     @GetMapping(value = "/registerFour", produces = MediaType.TEXT_HTML_VALUE)
-    public String getRegister4(Model model) {
+    public String getRegister4(String nickname, Model model) {
+        model.addAttribute("nickname", nickname);
         return "register/registerFour";
     }
-
 }

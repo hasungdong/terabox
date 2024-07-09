@@ -124,8 +124,8 @@
   bottom: 0.25rem;
   border: #666666 solid 1px;
   border-radius: 0 0.25rem 0.25rem 0;
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -134,8 +134,8 @@
 .form > .content > .title > button[type=submit] > img {
   background-color: #ffffff;
   border-radius: 0 0.25rem 0.25rem 0;
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   cursor: pointer;
 }
 .form > .content > .thumbnail > .image-wrapper {
@@ -188,10 +188,12 @@
   flex-direction: row;
   align-items: stretch;
   border-bottom: #666666 solid 1px;
+  cursor: pointer;
 }
 .form > .content > .result-box > ul > li > .img {
   width: 30%;
   object-fit: cover;
+  border-right: #666666 solid 1px;
 }
 .form > .content > .result-box > ul > li > .text-box {
   flex-grow: 1;

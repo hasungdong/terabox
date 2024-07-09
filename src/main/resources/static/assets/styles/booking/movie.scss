@@ -32,8 +32,8 @@
       }
 
       &.disabled {
-        opacity: 0.5;
-        pointer-events: none;
+        background-color: #d3d3d3;
+        cursor: not-allowed;
       }
 
       > img {

@@ -5,7 +5,8 @@
 <mapper namespace="com.terabox.demo.mappers.CardMapper">
     <select id="selectCardByName" resultType="com.terabox.demo.entities.CardEntity">
         SELECT  `name` AS name,
-                `discount_rate` AS discountRate
+                `discount_rate` AS discountRate,
+                `eng_name` AS `engName`
         FROM `terabox`.`cards`
         WHERE `name` = #{name}
         LIMIT 1
@@ -13,7 +14,8 @@
 
     <select id="selectCards" resultType="com.terabox.demo.entities.CardEntity">
         SELECT  `name` AS name,
-                `discount_rate` AS discountRate
+                `discount_rate` AS discountRate,
+                `eng_name` AS `engName`
         FROM `terabox`.`cards`
     </select>
 

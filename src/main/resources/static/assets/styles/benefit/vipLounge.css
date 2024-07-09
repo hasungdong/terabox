@@ -51,6 +51,7 @@
   position: relative;
   left: 2rem;
   top: -1rem;
+  filter: none;
 }
 #header > .link-area > .header-event {
   text-decoration-line: none;
@@ -169,6 +170,213 @@
   font-size: 1.25rem;
   font-weight: 400;
   text-align: center;
+}
+#main > .benefit-vip-lounge2 {
+  position: relative;
+  padding-left: 442px;
+  height: 280px;
+  border-radius: 10px;
+  background: url(../../images/benefit/viplounge_bg.png) no-repeat;
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+#main > .benefit-vip-lounge2 p {
+  padding: 0;
+  margin: 0;
+}
+#main > .benefit-vip-lounge2 > .lt {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 400px;
+}
+#main > .benefit-vip-lounge2 > .lt .mbimg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 90px;
+  height: 90px;
+}
+#main > .benefit-vip-lounge2 > .lt .mbimg img {
+  width: 100%;
+}
+#main > .benefit-vip-lounge2 > .lt .mb_name {
+  position: absolute;
+  top: 0;
+  left: 110px;
+  font-size: 38px;
+  line-height: 44px;
+  color: #fff;
+  font-weight: 300;
+}
+#main > .benefit-vip-lounge2 > .lt .mb_name p {
+  padding-top: 5px;
+  font-size: 38px;
+  line-height: 44px;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+#main > .benefit-vip-lounge2 > .lt .mb_name p span {
+  font-weight: 600;
+}
+#main > .benefit-vip-lounge2 .rt {
+  display: flex;
+  flex-wrap: nowrap;
+  padding-top: 53px;
+  padding-right: 69px;
+  justify-content: space-between;
+}
+#main > .benefit-vip-lounge2 .rt .sect {
+  color: #fff;
+}
+#main > .benefit-vip-lounge2 .rt .sect.n1 {
+  width: 186px;
+}
+#main > .benefit-vip-lounge2 .rt .sect .tit {
+  font-size: 15px;
+  line-height: 17px;
+  font-weight: 600;
+  padding-bottom: 5px;
+}
+#main > .benefit-vip-lounge2 .rt .sect .point {
+  font-size: 36px;
+  line-height: 41px;
+  font-weight: 300;
+}
+#main > .benefit-vip-lounge2 .rt .sect.n3 {
+  width: 183px;
+}
+#main > .benefit-vip-lounge2 .rt .sect ul li {
+  position: relative;
+  margin-top: 8px;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 17px;
+}
+#main > .benefit-vip-lounge2 .rt .sect ul li:first-child {
+  margin-top: 0;
+}
+#main > .benefit-vip-lounge2 .rt .sect ul li span {
+  position: absolute;
+  top: 0;
+  right: 0;
+  line-height: initial;
+}
+#main > .benefit-vip-lounge2 > .graphBox {
+  position: absolute;
+  bottom: 43px;
+  right: 61px;
+  width: 614px;
+}
+#main > .benefit-vip-lounge2 > .graphBox .inner {
+  position: relative;
+  padding: 39px 19px 0 23px;
+}
+#main > .benefit-vip-lounge2 > .graphBox .inner .bar {
+  height: 2px;
+  background-color: #666;
+}
+#main > .benefit-vip-lounge2 > .graphBox .list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+#main > .benefit-vip-lounge2 > .graphBox .list li {
+  position: relative;
+  width: 20%;
+  color: #666;
+  font-size: 13px;
+  line-height: 15px;
+  font-weight: 400;
+  text-align: left;
+  padding-top: 19px;
+}
+#main > .benefit-vip-lounge2 > .graphBox .list li:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -6px;
+  margin-left: -5px;
+  width: 10px;
+  height: 10px;
+  border: 4px solid #666;
+  border-radius: 14px;
+  background-color: #666;
+  box-sizing: border-box;
+}
+#main > .benefit-vip-lounge2 > .graphBox .list li:nth-child(1) {
+  z-index: 5;
+}
+#main > .benefit-vip-lounge2 > .graphBox .list li:nth-child(1):after {
+  left: 23px;
+}
+#main > .benefit-vip-lounge2 > .graphBox .list li:nth-child(2) {
+  z-index: 4;
+  text-indent: 23px;
+}
+#main > .benefit-vip-lounge2 > .graphBox .list li:nth-child(2):after {
+  margin-left: -24px;
+}
+#main > .benefit-vip-lounge2 > .graphBox .list li:nth-child(3) {
+  z-index: 3;
+  text-align: center;
+}
+#main > .benefit-vip-lounge2 > .graphBox .list li:nth-child(3):after {
+  margin-left: -4px;
+}
+#main > .benefit-vip-lounge2 > .graphBox .list li:nth-child(4) {
+  z-index: 2;
+  text-indent: 69px;
+}
+#main > .benefit-vip-lounge2 > .graphBox .list li:nth-child(4):after {
+  margin-left: 15px;
+}
+#main > .benefit-vip-lounge2 > .graphBox .list li:nth-child(5) {
+  z-index: 1;
+  text-align: right;
+}
+#main > .benefit-vip-lounge2 > .graphBox .list li:nth-child(5):after {
+  right: 11px;
+  left: auto;
+}
+#main > .benefit-vip-lounge2 > .graphBox .list li.on {
+  color: #fff;
+}
+#main > .benefit-vip-lounge2 > .graphBox .list li.on:after {
+  top: -8px;
+  margin-left: -7px;
+  width: 14px;
+  height: 14px;
+}
+#main > .benefit-vip-lounge2 > .graphBox .list li.on:nth-child(1):after {
+  left: 23px;
+  background-color: #fff;
+  border-color: #04c9df;
+}
+#main > .benefit-vip-lounge2 > .graphBox .list li .pointFlag {
+  display: none;
+}
+#main > .benefit-vip-lounge2 > .graphBox .list li.act .pointFlag {
+  display: block;
+  position: absolute;
+  top: -42px;
+  left: 8px;
+  padding: 5px 10px;
+  border-radius: 2px;
+}
+#main > .benefit-vip-lounge2 > .graphBox .list li.act .pointFlag span {
+  position: relative;
+  text-indent: 0;
+  display: block;
+  white-space: nowrap;
+  font-size: 12px;
+  line-height: 14px;
+  color: #fff;
+  font-weight: 400;
+  z-index: 2;
+}
+#main > .benefit-vip-lounge2 > .graphBox .list li.act:nth-child(1) .pointFlag {
+  background-color: #04c9df;
 }
 #main > .lounge-benefit-box {
   width: 100%;

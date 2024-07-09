@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 
 
 body {
@@ -11,10 +12,11 @@ body {
   font-size: 15px;
   color: #444;
   font-family: sans-serif, NanumBarunGothic, Dotum, '돋움';
+  width: 100vw;
 }
 
 #main {
-  width: 100vw;
+  //width: 100vw;
 
   > .main-container {
     display: flex;
@@ -127,23 +129,35 @@ body {
     }
 
     > .list-form {
-      background-color: #151218;
       position: relative;
       display: flex;
       flex-direction: row;
       justify-content: center;
       align-items: center;
       margin-top: 2rem;
-      width: 60%;
+      width: 100%;
       padding-top: 1.5rem;
-      padding-bottom: 1.5rem;
+      padding-bottom:  1.5rem;
+
+      > .list-form-container {
+        background-color: #151218;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 1150px;
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+
+
 
       > .search-label {
         position: relative;
         display: flex;
         flex-direction: row;
         justify-content: center;
-        right: 7rem;
+        right: 9rem;
         padding-right: 4.5rem;
         border-right: 1px solid #888888;
 
@@ -181,10 +195,10 @@ body {
         justify-content: center;
         color: white;
         right: 3rem;
-        width: 15%;
+        //width: 15%;
         font-size: 1rem;
         gap: 0.5rem;
-        padding-right: 4rem;
+        padding-right: 7.8rem;
         border-right: 1px solid #888888;
 
         > a {
@@ -236,6 +250,7 @@ body {
           text-decoration-line: underline;
           color: #fff;
         }
+      }
       }
     }
 

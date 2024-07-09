@@ -63,8 +63,8 @@
         bottom: 0.25rem;
         border: #666666 solid 1px;
         border-radius: 0 0.25rem 0.25rem 0;
-        width: 34px;
-        height: 34px;
+        width: 32px;
+        height: 32px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -74,8 +74,8 @@
           background-color: #ffffff;
           // input 태그 radius랑 값을 맞춘다
           border-radius: 0 0.25rem 0.25rem 0;
-          width: 32px;
-          height: 32px;
+          width: 30px;
+          height: 30px;
           cursor: pointer;
         }
       }
@@ -139,10 +139,12 @@
           flex-direction: row;
           align-items: stretch;
           border-bottom: #666666 solid 1px;
+          cursor: pointer;
 
           > .img{
             width: 30%;
             object-fit: cover;
+            border-right: #666666 solid 1px;
           }
 
           > .text-box{

@@ -2,12 +2,9 @@ package com.terabox.demo.controllers;
 
 import com.terabox.demo.dtos.ProductDto;
 import com.terabox.demo.dtos.StoreOrderDto;
-import com.terabox.demo.entities.OrderEntity;
 import com.terabox.demo.entities.ProductEntity;
-import com.terabox.demo.services.OrderService;
 import com.terabox.demo.services.ProductService;
 import lombok.RequiredArgsConstructor;
-import org.json.JSONObject;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class StoreController {
     private final ProductService productService;
-    private final OrderService orderService;
 
     @GetMapping(value = "store", produces = MediaType.TEXT_HTML_VALUE)
     public String getStore(Model model){
@@ -55,11 +51,11 @@ public class StoreController {
     /* 카드 선택하면 할인되는 */
     @GetMapping(value = "card",produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public StoreOrderDto getCard(@RequestParam("selectedValue")String selectedValue, @RequestParam("rOrderTotalPrice")int rOrderTotalPrice){
+    public StoreOrderDto getCard(@RequestParam("cardName")String cardName, @RequestParam("rOrderTotalPrice")int rOrderTotalPrice){
 //        JSONObject responseObject = new JSONObject();
 //        responseObject.put("result", this.productService.getStoreSale(selectedValue, rOrderTotalPrice));
 //        System.out.println(selectedValue);
-        return this.productService.getStoreSale(selectedValue, rOrderTotalPrice);
+        return this.productService.getStoreSale(cardName, rOrderTotalPrice);
     }
 
     @GetMapping(value = "terms",produces = MediaType.TEXT_HTML_VALUE)
@@ -68,12 +64,12 @@ public class StoreController {
     }
 
 
-    @GetMapping(value = "/payment",produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public String getPayment(OrderEntity order){
-        JSONObject responseObject = new JSONObject();
-        responseObject.put("userEmail", this.orderService.selectEmail(order));
-        return responseObject.toString();
-    }
+//    @GetMapping(value = "/payment",produces = MediaType.APPLICATION_JSON_VALUE)
+//    @ResponseBody
+//    public String getPayment(OrderEntity order){
+//        JSONObject responseObject = new JSONObject();
+//        responseObject.put("userEmail", this.orderService.selectEmail(order));
+//        return responseObject.toString();
+//    }
 
 }

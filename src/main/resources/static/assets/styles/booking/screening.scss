@@ -73,9 +73,14 @@
             font-weight: 400;
             cursor: pointer;
             color: #444;
+
+            &.selected {
+              background-color: #555;
+              color: #fff;
+            }
           }
 
-          button:focus {
+          &.selected {
             background-color: #555;
             color: #fff;
           }
@@ -90,7 +95,7 @@
     align-items: center;
     justify-content: flex-start;
 
-    height: calc(100% - 50px);
+    height: calc(100% - 60px);
 
     .no-r:first-child {
       margin-top: 30px;

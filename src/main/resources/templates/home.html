@@ -6,10 +6,32 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MEET PLAY SHARE, 메가박스</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/home/index.css}">
     <th:block th:replace="~{fragments/common/common.html :: commonHead}"></th:block>
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/home/index.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/common/footer.css}">
+    <script defer th:src="@{/assets/scripts/home.js}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const alertMessageDiv = document.getElementById('alertMessage');
+            if (alertMessageDiv && alertMessageDiv.textContent.trim() !== "") {
+                new MessageObj({
+                    title: '알림',
+                    content: alertMessageDiv.textContent,
+                    buttons: [
+                        {
+                            text: '로그인', onclick: instance => {
+                                instance.hide();
+                                loginForm.show();
+                            }
+                        }
+                    ]
+                }).show();
+            }
+        });
+    </script>
 </head>
 <body style="overflow-x: hidden">
+
 <th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
 <main id="main">
     <div class="main-container">
@@ -17,7 +39,7 @@
             <button class="button-buxo" type="button">박스오피스</button>
         </div>
         <div class="main-other-movie">
-            <a class="other-movie" href="#">더 많은 영화보기
+            <a class="other-movie">더 많은 영화보기
                 <i class="fa-solid fa-plus"></i>
             </a>
         </div>
@@ -31,7 +53,7 @@
                         <i class="fa-regular fa-heart"></i>
                         2.3k
                     </button>
-                    <a class="main-buy-ticket" href="#">
+                    <a class="main-buy-ticket">
                         <button class="list-button">
                             예매
                         </button>
@@ -47,7 +69,7 @@
                         <i class="fa-regular fa-heart"></i>
                         2.3k
                     </button>
-                    <a class="main-buy-ticket" href="#">
+                    <a class="main-buy-ticket">
                         <button class="list-button">
                             예매
                         </button>
@@ -63,7 +85,7 @@
                         <i class="fa-regular fa-heart"></i>
                         543
                     </button>
-                    <a class="main-buy-ticket" href="#">
+                    <a class="main-buy-ticket">
                         <button class="list-button">
                             예매
                         </button>
@@ -79,7 +101,7 @@
                         <i class="fa-regular fa-heart"></i>
                         319
                     </button>
-                    <a class="main-buy-ticket" href="#">
+                    <a class="main-buy-ticket">
                         <button class="list-button">
                             예매
                         </button>
@@ -122,7 +144,7 @@
                 <div class="wrap-color2"></div>
                 <div class="wrap-benefit">
                     <h2>혜택</h2>
-                    <a class="event-button-link" href="#">
+                    <a class="event-button-link">
                         <img th:src="@{/assets/images/home/plusButton.png}" alt="">
                     </a>
                 </div>
@@ -168,7 +190,7 @@
                 <div class="wrap-banner">
                     <div class="warp-banner-container">
                         <div class="ad-first">
-                            <a class="link" href="#">
+                            <a class="link">
                                 <img class="img" th:src="@{/assets/images/home/ad1.png}" alt="">
                             </a>
                         </div>
@@ -332,5 +354,6 @@
         </div>
     </div>
 </main>
+<div id="alertMessage" th:if="${alertMessage}" th:text="${alertMessage}" style="display: none;"></div>
 </body>
 </html>

@@ -159,6 +159,11 @@
           font-size: .9333em;
           color: #503396;
           margin-left: 10px;
+
+          &:hover{
+            background-color: #503396;
+            color: #ffffff;
+          }
         }
       }
     }

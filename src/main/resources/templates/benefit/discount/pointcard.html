@@ -5,16 +5,16 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>제목 미정</title>
+    <title>MEET PLAY SHARE, 테라박스</title>
     <th:block th:replace="~{fragments/common/common.html :: commonHead}"></th:block>
     <link rel="stylesheet" th:href="@{/assets/styles/benefit/discount/pointcard.css}">
     <script defer th:src="@{/assets/scripts/benefit/discount.js}"></script>
     <script defer>
         window.onload = () => {
             window.scroll({
-                top:document.querySelector('nav#nav').offsetTop,
-                left:0,
-                behavior:"smooth"
+                top: document.querySelector('nav#nav').offsetTop,
+                left: 0,
+                behavior: "smooth"
             });
         };
     </script>
@@ -22,14 +22,17 @@
 <body>
 <th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
 <main id="main">
-    <th:block th:replace="~{fragments/discount/discount.html :: discount}"></th:block>
+    <h2 class="title2">제휴할인</h2>
+    <div class="AffiliateEvent">
+        <th:block th:replace="~{fragments/discount/discount.html :: discount('제휴 이벤트')}"></th:block>
+    </div>
     <nav id="nav">
         <ul class="tab">
             <li class="item">
                 <a class="link" th:href="@{./guide}">할인안내</a>
             </li>
             <li class="item">
-                <a class="link" th:href="@{./creditcard}" th:text="${'신용카드(' + (cardsCount - 1) + ')'}">신용카드(4)</a>
+                <a class="link" th:href="@{./creditcard}" th:text="${'신용카드(' + (cardsCount) + ')'}">신용카드(4)</a>
             </li>
             <li class="item">
                 <a class="link" th:href="@{./telecomcard}">통신사(3)</a>
@@ -57,8 +60,8 @@
                 <ul>
                     <li>
                         <div class="img">
-                            <img src="https://img.megabox.co.kr/SharedImg/card/2020/01/28/rnsHsbeu5HqsKWoSDIqDLwI1U7gXKc97.png "
-                                alt="블루멤버스 포인트"></div>
+                            <img src="/assets/images/discount/point1.png"
+                                 alt="블루멤버스 포인트"></div>
                         <div class="cont">
                             <div class="top">
                                 <div class="name">블루멤버스 포인트</div>
@@ -85,8 +88,8 @@
                     </li>
                     <li>
                         <div class="img">
-                            <img src="https://img.megabox.co.kr/SharedImg/card/2023/12/18/yweFFam6vA0BG9pN1XNXUmZEuKDHHI7d.png "
-                                alt="null"></div>
+                            <img src="/assets/images/discount/point2.png"
+                                 alt="null"></div>
                         <div class="cont">
                             <div class="top">
                                 <div class="name">기아멤버스</div>
@@ -109,8 +112,8 @@
                     </li>
                     <li>
                         <div class="img">
-                            <img src="https://img.megabox.co.kr/SharedImg/card/2019/12/19/NcS6J177UXwgd43kRg8Y7ZgK11t4fACK.png "
-                                alt="null"></div>
+                            <img src="/assets/images/discount/point3.png"
+                                 alt="null"></div>
                         <div class="cont">
                             <div class="top">
                                 <div class="name">OK캐쉬백(사용)</div>
@@ -136,8 +139,8 @@
                     </li>
                     <li>
                         <div class="img">
-                            <img src="https://img.megabox.co.kr/SharedImg/card/2019/12/19/18D8m9aCcMOzXmgjFbCj71NvHbua7aSz.png "
-                                alt="GS&amp;amp;Point 카드"></div>
+                            <img src="/assets/images/discount/point4.png"
+                                 alt="GS&amp;amp;Point 카드"></div>
                         <div class="cont">
                             <div class="top">
                                 <div class="name">GS&amp;Point 카드</div>
@@ -165,8 +168,8 @@
                     </li>
                     <li>
                         <div class="img">
-                            <img src="https://img.megabox.co.kr/SharedImg/card/2020/12/14/wWPlFXdNbe6Fkt3Vj08nmrn5BQTdpNwG.jpg "
-                                alt="해피포인트 카드"></div>
+                            <img src="/assets/images/discount/point5.jpg"
+                                 alt="해피포인트 카드"></div>
                         <div class="cont">
                             <div class="top">
                                 <div class="name">해피포인트 카드</div>
@@ -193,8 +196,8 @@
                     </li>
                     <li>
                         <div class="img">
-                            <img src="https://img.megabox.co.kr/SharedImg/card/2019/12/19/U13iGZLH0yufgiZxXMuNpDVHmGRr5Ou7.png "
-                                alt="하나포인트"></div>
+                            <img src="/assets/images/discount/point6.png"
+                                 alt="하나포인트"></div>
                         <div class="cont">
                             <div class="top">
                                 <div class="name">하나포인트</div>
@@ -213,273 +216,6 @@
                                 <p>유의 사항 : 하나포인트 사용 대상카드에 한하여 사용 가능(BC 제외)<br>
                                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;보유 포인트 1P 이상 시 사용 가능</p>
                             </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="img">
-                            <img src="https://img.megabox.co.kr/SharedImg/card/2020/01/06/iTJIKfrZm1SBrqsTAdUk3eBtbRgOq2gN.png "
-                                alt="현대카드 M포인트"></div>
-                        <div class="cont">
-                            <div class="top">
-                                <div class="name">현대카드 M포인트</div>
-                                <div class="spring"></div>
-                                <div class="sale">
-                                    <span class="online">인터넷할인</span>
-                                </div>
-                                <div class="sale">
-                                    <span class="offline">현장할인</span>
-                                </div>
-                            </div>
-                            <ul class="dot-list">
-                                <p>할인 유형 : 포인트 차감</p>
-                                <p>제공 혜택 : 상시 장당 6,000P 사용</p>
-                                <p>사&nbsp; 용&nbsp; 처 : 온/오프라인</p>
-                                <p>유의 사항 : 우대/문화의날 이용불가<br>
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;일부 특별관(돌비시네마, 더부티크 프라이빗)&nbsp;할인
-                                    불가<br>
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                    <span style="color:#e74c3c">중복할인 적용 불가</span><br>
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;포인트 차감한 현대카드로 결제 필수</p>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="img">
-                            <img src="https://img.megabox.co.kr/SharedImg/card/2019/12/19/IY01N4K2G8cgqUrGp8zWZGyQhh0UnNhJ.png "
-                                alt="중앙멤버십"></div>
-                        <div class="cont">
-                            <div class="top">
-                                <div class="name">중앙멤버십</div>
-                                <div class="spring"></div>
-                                <div class="sale">
-                                    <span class="online">인터넷할인</span>
-                                </div>
-                                <div class="sale">
-                                    <span class="offline">현장할인</span>
-                                </div>
-                            </div>
-                            <ul class="dot-list">
-                                <p>할인 유형 : 횟수 차감</p>
-                                <p>제공 혜택 : 티켓 1매당 1천원 할인(1일 최대 4매)<br>
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;매점 콤보 2천원 할인(콤보 주문당 2천원
-                                    할인)<br>
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*. 연 24회 사용 가능</p>
-                                <p>사&nbsp; 용&nbsp; 처 : 온/오프라인</p>
-                                <p>유의 사항 : 우대/문화의날 이용불가<br>
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;돌비시네마 할인 불가<br>
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;타사 제휴포인트 중복할인(최대 2개까지)
-                                    적용가능<br>
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                    <span style="color:#c0392b;">(단, 현대M포인트, 문화누리카드 중복적용 불가)</span><br>
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;공주, 세종, 순천, 제천, 충주, 첨단점
-                                    할인 불가<br>
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;이벤트/프로모션 콤보 적용 불가<br>
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;중앙멤버십
-                                    서비스(http://www.jmembership.co.kr)에서 멤버십 가입&nbsp;후 적용가능</p>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="img">
-                            <img src="https://img.megabox.co.kr/SharedImg/card/2019/12/19/pC2fxGafE99x018nDGGGQaoGILRodULX.png "
-                                alt="블루멤버스 현대카드">
-                        </div>
-                        <div class="cont">
-                            <div class="top">
-                                <div class="name">블루멤버스 현대카드</div>
-                                <div class="spring"></div>
-                                <div class="sale">
-                                    <span class="online">인터넷할인</span>
-                                </div>
-                                <div class="sale">
-                                    <span class="offline">현장할인</span>
-                                </div>
-                            </div>
-                            <ul class="dot-list">
-                                <p>할인 유형 : 포인트 차감</p>
-                                <p>제공 혜택 : 티켓 1매당 4천원 할인(1일 최대 8매)</p>
-                                <p>사&nbsp; 용&nbsp; 처 : 온/오프라인</p>
-                                <p>유의 사항 : 우대/문화의날 이용불가<br>
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;돌비시네마 할인 불가<br>
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;중복할인(최대 2개까지) 적용가능<br>
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                    <span style="color:#c0392b;">(단,&nbsp;현대M포인트, 문화누리카드 중복적용 불가)</span><br>
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;M포인트 사용 시 블루멤버스 포인트 사용 불가
-                                </p>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="img">
-                            <img src="https://img.megabox.co.kr/SharedImg/card/2023/04/10/tXyhnQb9LOZGNTIkXHKnqQyIgymZnneW.png "
-                                alt="현대오일뱅크 보너스카드">
-                        </div>
-                        <div class="cont">
-                            <div class="top">
-                                <div class="name">HD현대오일뱅크 보너스카드</div>
-                                <div class="spring"></div>
-                                <div class="sale">
-                                    <span class="online">인터넷할인</span>
-                                </div>
-                                <div class="sale">
-                                    <span class="offline">현장할인</span>
-                                </div>
-                            </div>
-                            <ul class="dot-list"><p>할인 유형 : 포인트 차감/무료관람</p>
-
-                                <p>제공 혜택 : 티켓 1매당 3천p,5천p,7천p 중 선택하여 할인&nbsp;(1일 최대 4매)<br>
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;1만1천p 사용시
-                                    무료관람 (1일 최대 4매)</p>
-
-                                <p>사&nbsp; 용&nbsp; 처 : 온/오프라인</p>
-
-                                <p>유의 사항 : 우대/문화의날 이용불가<br>
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;돌비시네마 할인&amp;무료관람
-                                    불가<br>
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;타 제휴사 포인트
-                                    중복할인(최대 2개까지) 적용가능<br>
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                    <span
-                                            style="color:#c0392b">(단,&nbsp;현대M포인트, 문화누리카드 중복적용 불가)</span>
-                                </p>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="img">
-                            <img src="https://img.megabox.co.kr/SharedImg/card/2020/02/06/zcmi10MSteMWFBvWtp0nB0p5e9gWuszS.png "
-                                alt="OK캐쉬백">
-                        </div>
-                        <div class="cont">
-                            <div class="top">
-                                <div class="name">OK캐쉬백(적립)</div>
-                                <div class="spring"></div>
-                                <div class="sale">
-                                    <span class="online">인터넷할인</span>
-                                </div>
-                                <div class="sale">
-                                    <span class="offline">현장할인</span>
-                                </div>
-                            </div>
-                            <ul class="dot-list">
-                                <p>혜택 유형 : OK캐쉬백 포인트 적립</p>
-                                <p>적립 기준&nbsp;: 결제 금액의 2% OK캐쉬백 적립<br>
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* OK캐쉬백 서비스 이용료 적립 금액의
-                                    10% 차감 후 적립</p>
-                                <p>유의 사항 :&nbsp;위탁예매처(예스24, 인터파크)를 통한 예매 건은 포인트 적립 불가<br>
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;온라인 예매 건 현장 추후 적립 불가<br>
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(온라인 예매건은 온라인에서만, 현장예매 건은
-                                    현장에서만 적립 가능)<br>
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;메가박스 포인트 차감 예매/관람권/온라인
-                                    스토어/모바일 쿠폰 사용 시 적립 불가<br>
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;매표 결제 금액에 한해 적립 가능 (매점 결제
-                                    금액은 적립 불가)<br>
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                    <span style="color:#e74c3c;">&nbsp; &nbsp; &nbsp;상영 당일까지만 추후 적립 가능 (상영일 이후 적립 불가)<br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;L포인트 적립과 중복 적용 불가</span><br>
-                                    <br>
-                                    # 상세문의: OK Cashbag 고객센터 1599-0512</p>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="img">
-                            <img src="https://img.megabox.co.kr/SharedImg/card/2020/12/14/W8GAbcDGVr6aEyrxBtyfJiBKV2Q22yLC.jpg "
-                                alt="문화누리카드"></div>
-                        <div class="cont">
-                            <div class="top">
-                                <div class="name">문화누리카드</div>
-                                <div class="spring"></div>
-                                <div class="sale">
-                                    <span class="online">인터넷할인</span>
-                                </div>
-                                <div class="sale">
-                                    <span class="offline">현장할인</span>
-                                </div>
-                            </div>
-                            <ul class="dot-list">
-                                <p>할인방식 : 현장할인(즉시할인)</p>
-                                <p>제공혜택 : 2,500원 할인(1일 2매)</p>
-                                <p>사용조건 : 현장결제, 온라인</p>
-                                <p>서비스 제공조건<br>
-                                    - 성인/청소년 정가에서만 할인 적용 가능<br>
-                                    (조조/심야/우대/마티네/어린이 등 기타 중복할인 불가)<br>
-                                    - 문화의 날 적용 불가<br>
-                                    - 2D/ 3D 일반, 컴포트관에서만 할인 가능<br>
-                                    (돌비시네마, 더 부티크, 특별관 및 특별콘텐트, 기타 콘텐트 할인 불가)<br>
-                                    - 문화누리카드 할인 이용 시 문화누리카드로만 결제 가능하며, 잔여 금액 부족 시 결제 불가<br>
-                                    - 할인제외지점: 센트럴, 삼천포, 속초, 아트나인, 제주서귀포</p>
-                            </ul>
-                            <div class="btn">
-                                <a href="http://www.mnuri.kr/main/main.do" target="_blank"
-                                   title="문화누리카드" class="button purple">자세히 보기</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="img">
-                            <img src="https://img.megabox.co.kr/SharedImg/card/2020/12/17/pGH1YO4zq5eWuvhLc30V4V8H0LC5Q6DD.png "
-                                alt="null"></div>
-                        <div class="cont">
-                            <div class="top">
-                                <div class="name">L.POINT(사용)</div>
-                                <div class="spring"></div>
-                                <div class="sale">
-                                    <span class="online">인터넷할인</span>
-                                </div>
-                                <div class="sale">
-                                    <span class="offline">현장할인</span>
-                                </div>
-                            </div>
-                            <ul class="dot-list"><p>할인 유형 : 포인트 차감</p>
-                                <p>제공 혜택 : 결제금액의 일부 혹은 전체 포인트 차감사용 가능</p>
-                                <p>사&nbsp; 용&nbsp; 처 : 온/오프라인</p>
-                                <p>유의 사항 : 100&nbsp;포인트 이상 보유 시 사용 가능 (사용제한 없음)<br>
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; * 포인트 차감금액 메가박스 멤버십 및
-                                    L.POINT&nbsp;적립 불가</p>
-                            </ul>
-                            <div class="btn">
-                                <a href="https://www.lpoint.com/app/useplace/LHUI100100.do" target="_blank" title="카드사 홈페이지 이동" class="button purple">자세히 보기</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="img"><img
-                                src="https://img.megabox.co.kr/SharedImg/card/2020/12/17/NlQ6uDQSmX63e9KyT5ckcMxhnVtjK3PT.png "
-                                alt="null"></div>
-                        <div class="cont">
-                            <div class="top">
-                                <div class="name">L.POINT(적립)</div>
-                                <div class="spring"></div>
-                                <div class="sale">
-                                    <span class="online">인터넷할인</span>
-                                </div>
-                                <div class="sale">
-                                    <span class="offline">현장할인</span>
-                                </div>
-                            </div>
-                            <ul class="dot-list">
-                                <p>혜택 유형 : L.POINT&nbsp;적립</p>
-                                <p>적립 기준&nbsp;: 결제 금액의 2% L포인트&nbsp;적립</p>
-                                <p>유의 사항 :&nbsp;위탁예매처(예스24, 인터파크)를 통한 예매 건은 포인트 적립 불가<br>
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;온라인 예매 건 현장 추후 적립 불가<br>
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(온라인 예매건은 온라인에서만, 현장 예매
-                                    건은 현장에서만 적립 가능)<br>
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;메가박스 포인트 차감 예매/관람권/온라인
-                                    스토어/모바일 쿠폰 사용 시 적립 불가<br>
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;매표 결제 금액에 한해 적립 가능 (매점 결제
-                                    금액은 적립 불가)<br>
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                    <span style="color:#e74c3c">&nbsp; &nbsp; &nbsp;상영 당일까지만 추후 적립 가능 (상영일 이후 적립 불가)<br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;L.POINT 사용 금액 제외 후 적립<br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;OK캐쉬백 적립과 중복 적용 불가</span>
-                                </p>
-                            </ul>
-                            <div class="btn">
-                                <a href="https://www.lpoint.com/app/useplace/LHUI100100.do"
-                                   target="_blank" title="카드사 홈페이지 이동" class="button purple">자세히 보기</a>
-                            </div>
                         </div>
                     </li>
                 </ul>

@@ -105,38 +105,6 @@
                        title="스토어 교환권 등록">스토어 교환권 등록</a>
                 </div>
             </div>
-            <!--      <section id="layer_coupon_regi" class="modal-layer">-->
-            <!--        <a href="" class="focus">레이어로 포커스 이동 됨</a>-->
-            <!--        <div class="wrap">-->
-            <!--          <header class="layer-header">-->
-            <!--            <h3 class="tit">스토어 교환권 등록</h3>-->
-            <!--          </header>-->
-            <!--          <div class="layer-con">-->
-            <!--            <p class="reset">보유하신 스토어 교환권 16자리를 입력해주세요.</p>-->
-
-            <!--            <div class="pop-gray mt10 mb30">-->
-            <!--              <label for="couponnum01" class="mr10">스토어 교환권</label>-->
-            <!--              <input type="text" id="couponnum01" class="input-text w250px" placeholder="숫자만 입력해 주세요" title="할인쿠폰번호 입력" maxlength="16">-->
-            <!--              <button class="button gray ml05">등록</button>-->
-            <!--            </div>-->
-
-            <!--            <div class="box-border v1 mt30">-->
-            <!--              <p class="tit-box">이용안내</p>-->
-
-            <!--              <ul class="dot-list">-->
-            <!--                <li>메가박스 스토어에서 구매 또는 선물받은 스토어교환권을 등록하실 수 있습니다.</li>-->
-            <!--                <li>선물받은 교환권은 등록 후 결제가 취소될 경우 자동 회수처리 되어 사용하실 수 없습니다.</li>-->
-            <!--              </ul>-->
-            <!--            </div>-->
-            <!--          </div>-->
-
-            <!--          <div class="btn-group-fixed">-->
-            <!--            <button type="button" class="button purple close-layer">닫기</button>-->
-            <!--          </div>-->
-
-            <!--          <button type="button" class="btn-modal-close">레이어 닫기</button>-->
-            <!--        </div>-->
-            <!--      </section>-->
             <div class="board-list-util mb10">
                 <p class="result-count">
                     <strong>
@@ -202,8 +170,6 @@
                         <td th:text="${lists.getQuantity()}"></td>
                         <td th:text="|${#numbers.formatInteger(lists.getTotalSale(), 0, 'COMMA')}원|"></td>
                         <td th:text="|${#numbers.formatInteger(lists.getTotalPrice(), 0, 'COMMA')}원|"></td>
-
-
                     </tr>
                     </tbody>
                 </table>

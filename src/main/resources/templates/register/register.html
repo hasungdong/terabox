@@ -6,15 +6,16 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/register/register.css}">
-    <title>MEET PLAY SHARE, 메가박스</title>
+    <title>MEET PLAY SHARE, 테라박스</title>
     <th:block th:replace="~{fragments/common/common.html :: commonHeadNoHeader}"></th:block>
 </head>
 <body>
+<th:block th:replace="~{fragments/common/common.html :: commonRegister}"></th:block>
 <div class="body-wrap">
     <div class="member-wrap">
         <h1 class="h1">
-            <a href="/megabox/">
-                <img th:src="@{/assets/images/register/main-logo.png}" alt="메인 페이지로 이동">
+            <a href="/home">
+                <img class="register-logo-img" th:src="@{/assets/images/register/main-logo.png}" alt="메인 페이지로 이동">
             </a>
         </h1>
         <div class="col-wrap">
@@ -71,6 +72,13 @@
                     <a class="i-pin" href="">
                         <img th:src="@{/assets/images/register/i-pin.png}" alt="">
                         <span>아이핀 인증</span>
+                    </a>
+                </div>
+                <div class="join3">
+                    <a class="terabox-register" target="_self" href="/register/registerTwo">
+                        <div class="register-text">
+                            <h2>TeraBox 회원가입</h2>
+                        </div>
                     </a>
                 </div>
                 <div class="foot-txt-container">

@@ -8,8 +8,8 @@
             keyColumn="index"
             keyProperty="index"
             parameterType="com.terabox.demo.entities.MovieEntity">
-        INSERT INTO `terabox`.`movies` (`title`, `release_date`, `playing_time`, `grade`, `view`, `is_single`, `thumbnail`, `thumbnail_file_name`, `thumbnail_content_type`, `age_limit`, `dimension_type`, `price`)
-        VALUES (#{title}, #{releaseDate}, #{playingTime}, #{grade}, #{view}, #{isSingle}, #{thumbnail}, #{thumbnailFileName}, #{thumbnailContentType}, #{ageLimit}, #{dimensionType}, #{price})
+        INSERT INTO `terabox`.`movies` (`title`, `release_date`, `playing_time`, `grade`, `view`, `is_single`, `thumbnail`, `thumbnail_file_name`, `thumbnail_content_type`, `age_limit_type`, `dimension_type`, `explanation`, `sub_explanation`)
+        VALUES (#{title}, #{releaseDate}, #{playingTime}, #{grade}, #{view}, #{isSingle}, #{thumbnail}, #{thumbnailFileName}, #{thumbnailContentType}, #{ageLimit}, #{dimensionType}, #{explanation}, #{subExplanation})
     </insert>
     <insert id="insertProduct"
             useGeneratedKeys="true"
@@ -39,8 +39,10 @@
             `thumbnail`              = #{thumbnail},
             `thumbnail_file_name`    = #{thumbnailFileName},
             `thumbnail_content_type` = #{thumbnailContentType},
-            `age_limit`              = #{ageLimit},
-            `dimension_type`         = #{dimensionType}
+            `age_limit_type`         = #{ageLimit},
+            `dimension_type`         = #{dimensionType},
+            `explanation`            = #{explanation},
+            `sub_explanation`        = #{subExplanation}
         WHERE `index` = #{index}
     </update>
     <update id="updateProduct" parameterType="com.terabox.demo.entities.ProductEntity">

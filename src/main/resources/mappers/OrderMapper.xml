@@ -13,8 +13,13 @@
                 #{totalSale})
     </insert>
 
-    <select id="selectEmailByList" resultType="com.terabox.demo.vos.OrderVo">
+    <insert id="insertMovieReservation" parameterType="com.terabox.demo.entities.MovieReservationEntity">
+        INSERT INTO `terabox`.`movie_reservations`
+            (`screening_info_index`, `seat_index`)
+        VALUES (#{screeningInfoIndex}, #{seatIndex})
+    </insert>
 
+    <select id="selectEmailByList" resultType="com.terabox.demo.vos.OrderVo">
     SELECT  `orders`.`index` AS `index`,
             `orders`.`user_email` AS userEmail,
             `orders`.`movie_reservation_index` AS movieReservationIndex,
@@ -30,7 +35,15 @@
     FROM `terabox`.`orders`
     LEFT JOIN `terabox`.`products` AS `product` ON `orders`.`product_index` = `product`.`index`
     WHERE BINARY `user_email` = #{userEmail}
+    </select>
 
+    <select id="selectMovieReservationBySeatScreeningInfo" resultType="com.terabox.demo.entities.MovieReservationEntity">
+        SELECT `index`                AS `index`,
+               `seat_index`           AS `seatIndex`,
+               `screening_info_index` AS `screeningInfoIndex`
+        FROM `terabox`.`movie_reservations`
+        WHERE `screening_info_index` = #{screeningInfoIndex}
+          AND `seat_index` = #{seatIndex}
     </select>
 
 

@@ -26,10 +26,8 @@ addMovieForm.playingTimeLabel = new LabelObj(addMovieForm.querySelector('[rel="p
 addMovieForm.isSingleLabel = new LabelObj(addMovieForm.querySelector('[rel="isSingleLabel"]'));
 addMovieForm.ageLimitLabel = new LabelObj(addMovieForm.querySelector('[rel="ageLimitLabel"]'));
 addMovieForm.dimensionTypeLabel = new LabelObj(addMovieForm.querySelector('[rel="dimensionTypeLabel"]'));
-addMovieForm.priceLabel = new LabelObj(addMovieForm.querySelector('[rel="priceLabel"]'));
-
-
-
+addMovieForm.explanationLabel = new LabelObj(addMovieForm.querySelector('[rel="explanationLabel"]'));
+addMovieForm.subExplanationLabel = new LabelObj(addMovieForm.querySelector('[rel="subExplanationLabel"]'));
 
 // addMovieForm 제출
 addMovieForm.onsubmit = e => {
@@ -42,7 +40,7 @@ addMovieForm.onsubmit = e => {
     addMovieForm.thumbnailLabel.setValid(addMovieForm['thumbnail'].files.length > 0);
     const regex = RegExp(/^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/);
     addMovieForm.releaseDateLabel.setValid(regex.test(addMovieForm['releaseDate'].value))
-    addMovieForm.playingTimeLabel.setValid((parseInt(addMovieForm['hour'].value) <= 2 &&
+    addMovieForm.playingTimeLabel.setValid((parseInt(addMovieForm['hour'].value) <= 3 &&
         parseInt(addMovieForm['hour'].value) >= 1) &&
         (parseInt(addMovieForm['minute'].value) < 60 &&
         parseInt(addMovieForm['minute'].value) >= 0) &&
@@ -56,8 +54,8 @@ addMovieForm.onsubmit = e => {
     addMovieForm.dimensionTypeLabel.setValid(addMovieForm['dimensionType'].value === '2D' ||
         addMovieForm['dimensionType'].value === '3D' ||
         addMovieForm['dimensionType'].value === '4D');
-    addMovieForm.priceLabel.setValid(addMovieForm['price'].value > 0);
-    // 가격은 딱히 검사할게 없어서 0보다 큰지만 검사한다
+    addMovieForm.explanationLabel.setValid(addMovieForm['explanation'].tests());
+    addMovieForm.subExplanationLabel.setValid(addMovieForm['subExplanation'].tests());
 
     if (addMovieForm['thumbnail'].files.length === 0){
         MessageObj.createSimpleOk('경고', '대표 이미지를 선택해주세요.').show();
@@ -71,7 +69,8 @@ addMovieForm.onsubmit = e => {
     !addMovieForm.isSingleLabel.isValid() ||
     !addMovieForm.ageLimitLabel.isValid() ||
     !addMovieForm.dimensionTypeLabel.isValid() ||
-    !addMovieForm.priceLabel.isValid()){
+    !addMovieForm.explanationLabel.isValid() ||
+    !addMovieForm.subExplanationLabel.isValid()){
         return;
     }
 
@@ -91,7 +90,8 @@ addMovieForm.onsubmit = e => {
     formData.append('single', addMovieForm['isSingle'].checked);
     formData.append('ageLimit', addMovieForm['ageLimit'].value);
     formData.append('dimensionType', addMovieForm['dimensionType'].value);
-    formData.append('price', addMovieForm['price'].value);
+    formData.append('explanation', addMovieForm['explanation'].value);
+    formData.append('subExplanation', addMovieForm['subExplanation'].value);
     xhr.onreadystatechange = function(){
         if (xhr.readyState !== XMLHttpRequest.DONE){
             return;

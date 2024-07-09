@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>footer</title>
+</head>
+<body>
+    <footer id="footer" th:fragment="footer">
+        <div class="footer-top">
+            <div class="inner-wrap">
+                <ul class="fnb">
+                    <li>
+                        <a class="foot-link" href="" title="회사소개 페이지로 이동">회사소개</a>
+                    </li>
+                    <li>
+                        <a class="foot-link" href="" title="인재채용 페이지로 이동">인재채용</a>
+                    </li>
+                    <li>
+                        <a class="foot-link" href="" title="사회공헌 페이지로 이동">사회공헌</a>
+                    </li>
+                    <li>
+                        <a class="foot-link" href="" title="제휴/광고/부대사업문의 페이지로 이동">제휴/광고/부대사업문의</a>
+                    </li>
+                    <li>
+                        <a class="foot-link" href="" title="이용약관 페이지로 이동">이용약관</a>
+                    </li>
+                    <li>
+                        <a class="foot-link" href="" title="위치기반서비스 이용약관 페이지로 이동">위치기반서비스 이용약관</a>
+                    </li>
+                    <li class="privacy">
+                        <a class="foot-link" href="" title="개인정보처리방침 페이지로 이동">개인정보처리방침</a>
+                    </li>
+                    <li>
+                        <a class="foot-link" href="" target="_blank" title="윤리경영 페이지로 이동">윤리경영</a>
+                    </li>
+                </ul>
+                <a class="btn-looking-theater" title="극장찾기">
+                    <img class="looking-theater-img" th:src="@{assets/images/common/ico-footer-search.png}" alt="">
+                    극장찾기
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="inner-wrap">
+                <div class="ci">
+                    <img class="footer-logo-img" th:src="@{assets/images/common/footer-logo.png}" alt="">
+                </div>
+
+                <div class="footer-info">
+                    <div>
+                        <address>서울특별시 성동구 왕십리로 50, 6층 (성수동1가, 메가박스 스퀘어)</address>
+                        <p>ARS 1544-0070 대표이메일 m.dreamcenter@partner.megabox.co.kr</p>
+                    </div>
+                    <p>팀장 하성동</p>
+                    <p>· 개인정보보호책임자 김성민</p>
+                    <p>· 사업자등록번호 211-86-59478</p>
+                    <p>· 통신판매업신고번호 2023-대구중구-0177</p>
+                    <p class="copy">COPYRIGHT © TeraBoxTeam, Inc. All rights reserved</p>
+                </div>
+
+                <div class="footer-sns">
+                    <a href="" target="_blank" title="TERABOX 유튜브 페이지로 이동">
+                        <img th:src="@{assets/images/common/youtube-button.png}" alt="">
+                    </a>
+                    <a href="" target="_blank" title="TERABOX 인스타그램 페이지로 이동">
+                        <img th:src="@{assets/images/common/instargram-button.png}" alt="">
+                    </a>
+                    <a href="" target="_blank" title="TERABOX 페이스북 페이지로 이동">
+                        <img th:src="@{assets/images/common/facebook-button.png}" alt="">
+                    </a>
+                    <a href="" target="_blank" title="TERABOX 트위터 페이지로 이동">
+                        <img th:src="@{assets/images/common/twitter-button.png}" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

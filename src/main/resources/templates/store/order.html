@@ -59,7 +59,7 @@
                                 <td class="a-c">
                                     <div class="goods-info">
                                         <p class="img">
-                                            <a href="" title="Dolby Cinema 전용관람권">
+                                            <a  title="Dolby Cinema 전용관람권">
                                                 <img th:src="@{/product/image(index=${order.getIndex()})}" alt="Image" ></a>
                                         </p>
                                     </div>
@@ -67,7 +67,7 @@
                                 <th scope="row">
                                     <div class="goods-info">
                                         <p class="name">
-                                            <a href="" title="Dolby Cinema 전용관람권" th:text="${order.getName()}"></a>
+                                            <a  title="Dolby Cinema 전용관람권" th:text="${order.getName()}"></a>
                                         </p>
                                         <p class="bundle subTitle" th:text="${order.getSubTitle()}"></p>
                                     </div>
@@ -77,7 +77,7 @@
                                     </div>
                                 </th>
                                 <td>
-                                    <a href="#" class="a-link" title="사용가능극장 확인">사용가능극장 확인</a>
+                                    <a class="a-link" title="사용가능극장 확인">사용가능극장 확인</a>
                                 </td>
                                 <td>
                                     <em id="orderQuantity" th:text="${inputText}">1</em>
@@ -232,7 +232,7 @@
                     </div>
                     <div class="btn-group">
                         <a href="/store/storeDetail" id="btnGift" class="button large" title="취소">취소</a>
-                        <a href="#" id="btnPurc" class="orderBuyButton button purple large" title="구매">결제</a>
+                        <a  id="btnPurc" class="orderBuyButton button purple large" title="구매">결제</a>
                     </div>
                 </div>
             </div>

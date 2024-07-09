@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
 body {
   font-weight: 400;
   letter-spacing: 0;
@@ -9,11 +10,9 @@ body {
   font-size: 15px;
   color: #444;
   font-family: sans-serif, NanumBarunGothic, Dotum, "돋움";
-}
-
-#main {
   width: 100vw;
 }
+
 #main > .main-container {
   display: flex;
   flex-direction: column;
@@ -104,27 +103,37 @@ body {
   gap: 0.5rem;
 }
 #main > .main-container > .list-form {
-  background-color: #151218;
   position: relative;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
-  width: 60%;
+  width: 100%;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
 }
-#main > .main-container > .list-form > .search-label {
+#main > .main-container > .list-form > .list-form-container {
+  background-color: #151218;
   position: relative;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  right: 7rem;
+  align-items: center;
+  width: 1150px;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+#main > .main-container > .list-form > .list-form-container > .search-label {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  right: 9rem;
   padding-right: 4.5rem;
   border-right: 1px solid #888888;
 }
-#main > .main-container > .list-form > .search-label > .search-input {
+#main > .main-container > .list-form > .list-form-container > .search-label > .search-input {
   border: 0;
   background-color: #151218;
   border-bottom: 1px solid #888888;
@@ -132,7 +141,7 @@ body {
   font-size: 1rem;
   outline: none;
 }
-#main > .main-container > .list-form > .search-label > .search-button {
+#main > .main-container > .list-form > .list-form-container > .search-label > .search-button {
   border: 0;
   bottom: 1.3rem;
   left: 9rem;
@@ -142,28 +151,27 @@ body {
   top: 0.1rem;
   right: 5rem;
 }
-#main > .main-container > .list-form > .list-time {
+#main > .main-container > .list-form > .list-form-container > .list-time {
   position: relative;
   display: flex;
   flex-direction: row;
   justify-content: center;
   color: white;
   right: 3rem;
-  width: 15%;
   font-size: 1rem;
   gap: 0.5rem;
-  padding-right: 4rem;
+  padding-right: 7.8rem;
   border-right: 1px solid #888888;
 }
-#main > .main-container > .list-form > .list-time > a {
+#main > .main-container > .list-form > .list-form-container > .list-time > a {
   text-decoration-line: none;
   color: white;
 }
-#main > .main-container > .list-form > .list-time > a:hover {
+#main > .main-container > .list-form > .list-form-container > .list-time > a:hover {
   text-decoration-line: underline;
   color: white;
 }
-#main > .main-container > .list-form > .list-boxo {
+#main > .main-container > .list-form > .list-form-container > .list-boxo {
   position: relative;
   color: white;
   left: 4rem;
@@ -173,15 +181,15 @@ body {
   padding-right: 1rem;
   border-right: 1px solid #888888;
 }
-#main > .main-container > .list-form > .list-boxo > a {
+#main > .main-container > .list-form > .list-form-container > .list-boxo > a {
   text-decoration-line: none;
   color: #fff;
 }
-#main > .main-container > .list-form > .list-boxo > a:hover {
+#main > .main-container > .list-form > .list-form-container > .list-boxo > a:hover {
   text-decoration-line: underline;
   color: #fff;
 }
-#main > .main-container > .list-form > .list-fast-buy {
+#main > .main-container > .list-form > .list-form-container > .list-fast-buy {
   position: relative;
   color: #fff;
   left: 10rem;
@@ -189,11 +197,11 @@ body {
   font-size: 1rem;
   gap: 0.5rem;
 }
-#main > .main-container > .list-form > .list-fast-buy > a {
+#main > .main-container > .list-form > .list-form-container > .list-fast-buy > a {
   text-decoration-line: none;
   color: #fff;
 }
-#main > .main-container > .list-form > .list-fast-buy > a:hover {
+#main > .main-container > .list-form > .list-form-container > .list-fast-buy > a:hover {
   text-decoration-line: underline;
   color: #fff;
 }

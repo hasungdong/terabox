@@ -1,246 +1,199 @@
-document.addEventListener('DOMContentLoaded', function () {
-  const theaterChoice = document.querySelector('.theater-choice');
-  const theaterChoiceAll = theaterChoice.querySelector('.choice-all');
-  const theaterChoiceList = theaterChoice.querySelector('.choice-list');
-  const regionButtons = document.querySelectorAll('.region-list .btn');
-  const detailList = document.querySelector('.detail-list');
+const regionButtons = document.querySelectorAll('.region-list .btn');
+const lastSelectedRegion = localStorage.getItem('lastSelectedRegion');
+let selectedTheaters = [];
 
-  // 배열로 선택된 값을 저장
-  let selectedChoices = [];
-  let lastSelectedRegion = localStorage.getItem('lastSelectedRegion');
+// 선택된 지역 버튼 설정 함수
+function setSelectedRegionButton(button) {
+  regionButtons.forEach(btn => btn.classList.remove('selected'));
+  button.classList.add('selected');
+}
 
-  regionButtons.forEach(button => {
-    button.addEventListener('click', function () {
-      const region = this.getAttribute('data-region');
-      fetchTheatersByRegion(region);
-      setSelectedRegionButton(this);
-      localStorage.setItem('lastSelectedRegion', region);
-    });
-
-    // 페이지 로드 시 마지막으로 클릭한 버튼을 선택된 상태로 설정
-    if (lastSelectedRegion && button.getAttribute('data-region') === lastSelectedRegion) {
-      setSelectedRegionButton(button);
-      fetchTheatersByRegion(lastSelectedRegion);
-    }
+// 지역 버튼 클릭 이벤트 설정
+regionButtons.forEach(button => {
+  button.addEventListener('click', function () {
+    handleRegionButtonClick(this);
   });
 
-  function setSelectedRegionButton(button) {
-    regionButtons.forEach(btn => btn.classList.remove('selected'));
-    button.classList.add('selected');
+  // 마지막으로 선택한 지역이 로컬 스토리지에 저장되어 있으면 해당 버튼을 클릭한 것처럼 처리
+  if (lastSelectedRegion && button.getAttribute('data-region') === lastSelectedRegion) {
+    handleRegionButtonClick(button);
   }
+});
 
-  function updateRegionCounts() {
-    const xhr = new XMLHttpRequest();
+// 지역 버튼 클릭 시 극장 정보 호출
+function handleRegionButtonClick(button) {
+  const region = button.getAttribute('data-region');
+  fetchTheatersByRegion(region);
+  setSelectedRegionButton(button);
+  localStorage.setItem('lastSelectedRegion', region);
+}
 
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState !== XMLHttpRequest.DONE) {
-        return;
-      }
-      if (xhr.status < 200 || xhr.status >= 300) {
-        console.error('Failed to fetch data', xhr.status, xhr.statusText);
-        return;
-      }
+// 지역별 극장 수 업데이트 함수
+function updateRegionCounts(regionCounts) {
+  regionCounts.forEach(regionCount => {
+    const button = document.querySelector(`.region-list .btn[data-region='${regionCount.region}']`);
+    if (button) {
+      button.textContent = `${button.textContent.split('(')[0]}(${regionCount.count})`;
+    }
+  });
+}
 
-      const data = JSON.parse(xhr.responseText);
-      data.forEach(regionCount => {
-        const button = document.getElementById(`${regionCount.region}-count`);
-        if (button) {
-          button.textContent = `${button.textContent.split('(')[0]}(${regionCount.count})`;
-        }
-      });
-    };
+// 지역별 극장 수 가져오는 함수
+function fetchRegionCounts() {
+  const xhr = new XMLHttpRequest();
 
-    xhr.open('POST', '/booking/theaters/count-by-region');
-    xhr.send();
-  }
-
-  function fetchTheatersByRegion(region) {
-    const xhr = new XMLHttpRequest();
-    const formData = new FormData();
-    formData.append('region', region);
-
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState !== XMLHttpRequest.DONE) {
-        return;
-      }
-      if (xhr.status < 200 || xhr.status >= 300) {
-        console.error('Failed to fetch data', xhr.status, xhr.statusText);
-        return;
-      }
-
-      const data = JSON.parse(xhr.responseText);
-      updateDetailList(region, data);
-    };
-
-    xhr.open('POST', '/booking/theaters/by-region');
-    xhr.send(formData);
-  }
-
-  function updateDetailList(region, theaters) {
-    const detailList = document.querySelector('.detail-list');
-    detailList.innerHTML = '';
-    const regionDiv = document.createElement('div');
-    regionDiv.className = 'region ' + region.toLowerCase();
-
-    const ul = document.createElement('ul');
-    theaters.forEach(theater => {
-      const li = document.createElement('li');
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.className = 'btn';
-      button.textContent = theater.name;
-      button.dataset.index = theater.index; // 극장 index를 데이터 속성으로 추가
-      li.appendChild(button);
-      ul.appendChild(li);
-    });
-
-    regionDiv.appendChild(ul);
-    detailList.appendChild(regionDiv);
-
-    // Attach event listeners to the new buttons
-    const theaterButtons = regionDiv.querySelectorAll('.btn');
-    theaterButtons.forEach(button => {
-      button.addEventListener('click', function () {
-        handleTheaterButtonClick(this);
-      });
-    });
-
-    // 선택된 값을 업데이트
-    selectedChoices.forEach(choice => {
-      const button = Array.from(detailList.querySelectorAll('.btn')).find(btn => btn.textContent === choice);
-      if (button) {
-        button.classList.add('selected');
-      }
-    });
-  }
-
-  function handleTheaterButtonClick(button) {
-    const selectedButtons = detailList.querySelectorAll('.btn.selected');
-    const totalSelected = selectedChoices.length;
-
-    if (totalSelected >= 3 && !button.classList.contains('selected')) {
-      alert('최대 3개까지만 선택할 수 있습니다.');
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState !== XMLHttpRequest.DONE) return;
+    if (xhr.status < 200 || xhr.status >= 300) {
+      MessageObj.createSimpleOk('오류', '알 수 없는 이유로 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.').show();
       return;
     }
 
-    button.classList.toggle('selected');
+    const data = JSON.parse(xhr.responseText);
+    updateRegionCounts(data);
+  };
 
-    // 선택된 값 배열을 업데이트
-    if (button.classList.contains('selected')) {
-      selectedChoices.push(button.textContent);
-    } else {
-      selectedChoices = selectedChoices.filter(choice => choice !== button.textContent);
-    }
+  xhr.open('POST', '/booking/theaters/count-by-region');
+  xhr.send();
+}
 
-    updateChoiceList();
-  }
+fetchRegionCounts();
 
-  function updateChoiceList() {
-    const bgElements = theaterChoiceList.querySelectorAll('.bg');
-    bgElements.forEach(bg => {
-      bg.innerHTML = ''; // 기존 wrap 태그 제거
-    });
+// 극장 버튼 클릭 시 처리 함수
+function handleTheaterButtonClick(button) {
+  const theaterIndex = parseInt(button.dataset.index, 10);
+  const theaterName = button.textContent;
 
-    selectedChoices.forEach((choice, index) => {
-      const wrap = document.createElement('div');
-      wrap.className = 'wrap';
-
-      const txt = document.createElement('div');
-      txt.className = 'txt';
-      txt.textContent = choice;
-
-      const del = document.createElement('button');
-      del.className = 'del';
-      del.innerHTML = '<i class="fa-solid fa-x"></i>';
-      del.addEventListener('click', function () {
-        const button = Array.from(detailList.querySelectorAll('.btn')).find(btn => btn.textContent === choice);
-        if (button) {
-          button.classList.remove('selected');
-        }
-        selectedChoices = selectedChoices.filter(c => c !== choice);
-        wrap.remove();
-        updateChoiceList();
-      });
-
-      wrap.appendChild(txt);
-      wrap.appendChild(del);
-
-      // .bg 요소 중 하나에 wrap 요소 추가
-      if (bgElements[index]) {
-        bgElements[index].appendChild(wrap);
-      } else {
-        const newBg = document.createElement('div');
-        newBg.className = 'bg';
-        newBg.appendChild(wrap);
-        theaterChoiceList.appendChild(newBg);
-      }
-    });
-
-    if (selectedChoices.length > 0) {
-      theaterChoiceAll.style.display = 'none';
-      theaterChoiceList.style.removeProperty('display');
-    } else {
-      theaterChoiceAll.style.removeProperty('display');
-      theaterChoiceList.style.display = 'none';
-    }
-  }
-
-  // 날짜 선택 시 극장 버튼을 업데이트하는 함수
-  function handleDateClick(event, button) {
-    event.preventDefault(); // 기본 동작 방지
-
-    if (previousSelectedButton) {
-      previousSelectedButton.classList.remove('selected');
+  if (button.classList.contains('selected')) {
+    button.classList.remove('selected');
+    selectedTheaters = selectedTheaters.filter(theater => theater.index !== theaterIndex);
+  } else {
+    if (selectedTheaters.length >= 3) {
+      alertCover.show();
+      new MessageObj({
+        title: '알림',
+        content: `극장은 최대 3개까지 선택이 가능합니다`,
+        buttons: [
+          {
+            text: '확인', onclick: instance => {
+              instance.hide();
+              alertCover.hide();
+            }
+          }
+        ]
+      }).show();
+      return;
     }
     button.classList.add('selected');
-    previousSelectedButton = button;
-
-    const selectedDate = button.dataset.date;
-    const xhr = new XMLHttpRequest();
-    const formData = new FormData();
-    formData.append('date', selectedDate);
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState !== XMLHttpRequest.DONE) {
-        return;
-      }
-      if (xhr.status < 200 || xhr.status >= 300) {
-        console.error('Error fetching theaters for date:', xhr.status, xhr.statusText);
-        return;
-      }
-      const theaters = JSON.parse(xhr.responseText);
-      updateTheaterButtons(theaters);
-    };
-    xhr.open('POST', '/booking/theaters-by-date');
-    xhr.send(formData);
+    selectedTheaters.push({index: theaterIndex, name: theaterName});
   }
 
-  function updateTheaterButtons(theaters) {
-    const theaterButtons = document.querySelectorAll('.region-list .btn');
-    let regionCounts = {};
+  updateChoiceList();
+}
 
-    theaterButtons.forEach(button => {
-      const region = button.dataset.region;
-      const theaterCount = theaters.filter(theater => theater.regionCode === region).length;
+// 선택된 극장 목록 업데이트 함수
+function updateChoiceList() {
+  const theaterChoiceList = document.querySelector('.theater-choice .choice-list');
+  const bgs = theaterChoiceList.querySelectorAll('.bg');
 
-      if (theaterCount > 0) {
-        button.disabled = false;
-        button.classList.remove('disabled');
-      } else {
-        button.disabled = true;
-        button.classList.add('disabled');
-      }
+  // 모든 bg의 내용을 비웁니다.
+  bgs.forEach(bg => {
+    bg.innerHTML = '';
+  });
 
-      regionCounts[region] = theaterCount;
-    });
+  selectedTheaters.forEach((theater, index) => {
+    const wrap = document.createElement('div');
+    wrap.className = 'wrap';
+    wrap.dataset.index = theater.index;
 
-    // Update region counts
-    Object.keys(regionCounts).forEach(region => {
-      const button = document.getElementById(`${region}-count`);
+    const txt = document.createElement('div');
+    txt.className = 'txt';
+    txt.textContent = theater.name;
+
+    // 삭제 버튼 생성
+    const del = document.createElement('button');
+    del.className = 'del';
+    del.innerHTML = '<i class="fa-solid fa-x"></i>';
+    del.addEventListener('click', function () {
+      const button = Array.from(document.querySelectorAll('.detail-list .btn')).find(btn => btn.textContent === theater.name);
       if (button) {
-        button.textContent = `${button.textContent.split('(')[0]}(${regionCounts[region]})`;
+        button.classList.remove('selected');
       }
+      selectedTheaters = selectedTheaters.filter(t => t.index !== theater.index);
+      updateChoiceList();
     });
-  }
 
-  updateRegionCounts();
-});
+    wrap.appendChild(txt);
+    wrap.appendChild(del);
+
+    if (bgs[index]) {
+      bgs[index].appendChild(wrap);
+    }
+  });
+
+  // 선택된 극장이 없는 경우 처리
+  const choiceAll = document.querySelector('.theater-choice .choice-all');
+  if (selectedTheaters.length > 0) {
+    choiceAll.style.display = 'none';
+    theaterChoiceList.style.removeProperty('display');
+  } else {
+    choiceAll.style.removeProperty('display');
+    theaterChoiceList.style.display = 'none';
+  }
+}
+
+// 상세 목록 업데이트 함수
+function updateDetailList(region, theaters) {
+  const detailList = document.querySelector('.detail-list');
+  detailList.innerHTML = '';
+  const regionDiv = document.createElement('div');
+  regionDiv.className = 'region ' + region.toLowerCase();
+
+  const ul = document.createElement('ul');
+  theaters.forEach(theater => {
+    const li = document.createElement('li');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'btn';
+    button.textContent = theater.name;
+    button.dataset.index = theater.index;
+
+    // 이미 선택된 극장이면 selected 클래스 추가
+    if (selectedTheaters.some(selected => selected.index === theater.index)) {
+      button.classList.add('selected');
+    }
+
+    li.appendChild(button);
+    ul.appendChild(li);
+  });
+
+  regionDiv.appendChild(ul);
+  detailList.appendChild(regionDiv);
+
+  const theaterButtons = regionDiv.querySelectorAll('.btn');
+  theaterButtons.forEach(button => {
+    button.addEventListener('click', function () {
+      handleTheaterButtonClick(this);
+    });
+  });
+}
+
+// 지역별 극장 정보 가져오는 함수
+function fetchTheatersByRegion(region) {
+  const xhr = new XMLHttpRequest();
+  const formData = new FormData();
+  formData.append('region', region);
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState !== XMLHttpRequest.DONE) return;
+    if (xhr.status < 200 || xhr.status >= 300) {
+      MessageObj.createSimpleOk('오류', '알 수 없는 이유로 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.').show();
+    }
+
+    const data = JSON.parse(xhr.responseText);
+    updateDetailList(region, data);
+  };
+
+  xhr.open('POST', '/booking/theaters/by-region');
+  xhr.send(formData);
+}

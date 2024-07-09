@@ -1,61 +1,27 @@
-function loadAllMovies() {
-  const xhr = new XMLHttpRequest();
-  const formData = new FormData();
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState !== XMLHttpRequest.DONE) {
-      return;
-    }
-    if (xhr.status < 200 || xhr.status >= 300) {
-      console.error('Error fetching all movies:', xhr.status, xhr.statusText);
-      return;
-    }
-    const movies = JSON.parse(xhr.responseText);
-    const movieList = document.querySelector('.all-list ul');
-    movieList.innerHTML = '';
-    movies.forEach(movie => {
-      const li = document.createElement('li');
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.className = 'btn';
-      button.dataset.group = 'btn1';
-      button.dataset.selected = 'false';
-      button.dataset.index = movie.index;  // 영화 index를 데이터 속성으로 추가
+// 영화 선택 버튼 클릭 이벤트 리스너 추가
+document.querySelector('.movie-choice').addEventListener('click', function (event) {
+  const button = event.target.closest('.btn[data-group="btn1"]');
+  if (button) {
+    handleMovieButtonClick(button);
+  }
+});
 
-      let imgSrc = '';
-      switch (movie.grade) {
-        case 12:
-          imgSrc = '/assets/images/booking/KMRB_12.jpeg';
-          break;
-        case 15:
-          imgSrc = '/assets/images/booking/KMRB_15.jpeg';
-          break;
-        case 19:
-          imgSrc = '/assets/images/booking/KMRB_19.jpeg';
-          break;
-        case 0:
-          imgSrc = '/assets/images/booking/KMRB_All.jpeg';
-          break;
-        default:
-          imgSrc = '/assets/images/booking/default.jpeg';
-          break;
-      }
-
-      button.innerHTML = `
-        <img src="${imgSrc}" alt="${movie.title}" height="20" width="20"/>
-        <span class="txt">${movie.title}</span>
-        <i class="fa-regular fa-heart"></i>
-      `;
-      button.addEventListener('click', () => handleMovieButtonClick(button, movie));
-      li.appendChild(button);
-      movieList.appendChild(li);
-    });
-  };
-  xhr.open('POST', '/booking/all-movies');
-  xhr.send(formData);
+// 영화 연령 제한 이미지 경로를 반환하는 함수
+function getMovieAgeLimitImageSrc(ageLimit) {
+  switch (ageLimit) {
+    case '12':
+      return '/assets/images/booking/KMRB_12.jpeg';
+    case '15':
+      return '/assets/images/booking/KMRB_15.jpeg';
+    case '19':
+      return '/assets/images/booking/KMRB_19.jpeg';
+    case 'all':
+      return '/assets/images/booking/KMRB_ALL.jpeg';
+  }
 }
 
-
-function handleMovieButtonClick(button, movie) {
+// 영화 버튼 클릭 이벤트 처리 함수
+function handleMovieButtonClick(button) {
   const isSelected = button.dataset.selected === 'true';
   const choiceAll = document.querySelector('.choice-all');
   const choiceList = document.querySelector('.choice-list');
@@ -63,14 +29,27 @@ function handleMovieButtonClick(button, movie) {
   if (isSelected) {
     button.dataset.selected = 'false';
     button.classList.remove('selected');
-    removeMovieFromChoiceList(movie.index);
+    removeMovieFromChoiceList(button.dataset.index);
+
     if (choiceList.querySelectorAll('.wrap').length === 0) {
       choiceAll.style.removeProperty('display');
       choiceList.style.display = 'none';
     }
   } else {
     if (choiceList.querySelectorAll('.wrap').length >= 3) {
-      alert('최대 3개의 영화를 선택할 수 있습니다.');
+      alertCover.show();
+      new MessageObj({
+        title: '알림',
+        content: `영화는 최대 3개까지 선택이 가능합니다`,
+        buttons: [
+          {
+            text: '확인', onclick: instance => {
+              instance.hide();
+              alertCover.hide();
+            }
+          }
+        ]
+      }).show();
       return;
     }
 
@@ -79,15 +58,14 @@ function handleMovieButtonClick(button, movie) {
     choiceAll.style.display = 'none';
     choiceList.style.removeProperty('display');
 
-    // 선택된 영화의 정보를 choice-list에 추가
     const choiceListBg = choiceList.querySelectorAll('.bg');
     const wrap = document.createElement('div');
     wrap.className = 'wrap';
-    wrap.dataset.index = movie.index;
+    wrap.dataset.index = button.dataset.index;
 
     const img = document.createElement('img');
-    img.src = `data:image/jpeg;base64,${movie.thumbnail}`;
-    img.alt = movie.title;
+    img.src = `data:image/jpeg;base64,${button.dataset.thumbnail}`;
+    img.alt = button.querySelector('.txt').textContent;
 
     const del = document.createElement('button');
     del.className = 'del';
@@ -105,7 +83,6 @@ function handleMovieButtonClick(button, movie) {
     wrap.appendChild(img);
     wrap.appendChild(del);
 
-    // 순서대로 bg 요소에 추가
     for (const bg of choiceListBg) {
       if (!bg.querySelector('.wrap')) {
         bg.appendChild(wrap);
@@ -115,6 +92,7 @@ function handleMovieButtonClick(button, movie) {
   }
 }
 
+// 선택된 영화 목록에서 영화를 제거하는 함수
 function removeMovieFromChoiceList(movieIndex) {
   const choiceList = document.querySelector('.choice-list');
   const wrap = choiceList.querySelector(`.wrap[data-index='${movieIndex}']`);
@@ -123,6 +101,51 @@ function removeMovieFromChoiceList(movieIndex) {
   }
 }
 
+// 모든 영화를 로드하는 함수
+function loadAllMovies() {
+  const xhr = new XMLHttpRequest();
+  const formData = new FormData();
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState !== XMLHttpRequest.DONE) {
+      return;
+    }
+    if (xhr.status < 200 || xhr.status >= 300) {
+      MessageObj.createSimpleOk('오류', '알 수 없는 이유로 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.').show();
+      return;
+    }
+
+    const movies = JSON.parse(xhr.responseText);
+    const movieList = document.querySelector('.all-list ul');
+    movieList.innerHTML = '';
+
+    movies.forEach(movie => {
+      const li = document.createElement('li');
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'btn';
+      button.dataset.group = 'btn1';
+      button.dataset.selected = 'false';
+      button.dataset.index = movie.index;
+      button.dataset.thumbnail = movie.thumbnail;
+
+      // 사용자의 나이가 정의되어 있고 영화의 연령 제한이 사용자 나이보다 높은 경우 버튼 비활성화
+      if (typeof userAge !== 'undefined' && movie.ageLimit > userAge) {
+        button.disabled = true;
+      }
+      loading.hide();
+      let imgSrc = getMovieAgeLimitImageSrc(movie.ageLimit);
+      button.innerHTML = `
+        <img src="${imgSrc}" alt="${movie.title}" height="20" width="20"/>
+        <span class="txt">${movie.title}</span>
+      `;
+
+      li.appendChild(button);
+      movieList.appendChild(li);
+    });
+  };
+
+  xhr.open('POST', '/booking/all-movies');
+  xhr.send(formData);
+}
 loadAllMovies();
-
-

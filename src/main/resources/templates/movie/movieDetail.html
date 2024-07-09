@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>영화 상세</title>
+    <th:block th:replace="~{fragments/common/common.html :: commonHead}"></th:block>
+    <link rel="stylesheet" th:href="@{/assets/styles/movie/movieDetail.css}">
+    <script defer type="text/javascript" th:src="@{/assets/scripts/movie/movie.js}"></script>
+</head>
+<body>
+<th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
+
+<div id="contents" class="no-padding">
+    <!-- movie-detail -->
+    <div class="movie-detail-page">
+        <img th:src="@{/movie/image(index=${movieIndex.getIndex()})}" class="bg-img" alt="Image">
+        <div class="bg-pattern"></div>
+        <div class="bg-mask"></div>
+        <div class="movie-detail-cont">
+            개봉 예매가능
+            <p class="title" th:text="${movieIndex.getTitle()}"></p>
+            <p class="title-eng">Following</p>
+            <div class="btn-util">
+                <button type="button" title="보고싶어 안함" class="btn btn-like" rpst-movie-no="24026400">
+                    <i class="fa-regular fa-heart ico-sns-line" style="color: #ffffff;"></i>
+                    <img src="/assets/images/movie/blue-heart-on.png" alt="" class="blue-heart">
+                    <span title="보고싶어 한 명수" id="intrstCnt" th:text="${movieLikeCount}">
+				</span>
+                </button>
+                <div class="sns-share">
+                    <a  class="btn btn-common-share" title="공유하기">
+                        <i class="fa-solid fa-share-nodes" style="color: #fcfcfc;"></i> 공유하기 <!-- 공유하기 -->
+                    </a>
+                    <!--                    <div class="btn-sns-share-wrap">-->
+                    <!--                        <div class="cont-area">-->
+                    <!--                            <div class="btn-sns-share-group">-->
+                    <!--                                &lt;!&ndash; <button type="button" title="카카오톡 공유하기" class="btn btnSns kakao">카카오톡 </button> 카카오톡 &ndash;&gt;-->
+                    <!--                                <button type="button" title="페이스북 공유하기" class="btn btnSns face">페이스북 &lt;!&ndash; 페이스북 &ndash;&gt;</button>-->
+                    <!--                                <button type="button" title="밴드 공유하기" class="btn btnSns band">밴드 &lt;!&ndash; 밴드 &ndash;&gt;</button>-->
+                    <!--                                <button type="button" title="트위터 공유하기" class="btn btnSns twitter">트위터 &lt;!&ndash; 트위터 &ndash;&gt;</button>-->
+                    <!--                                <button type="button" title="링크 공유하기" class="btn btnSns link">링크공유 &lt;!&ndash; 링크공유 &ndash;&gt;</button>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                </div>
+            </div>
+            <div class="screen-type2">
+            </div>
+            <!-- info -->
+            <div class="info">
+                <div class="score">
+                    <p class="tit">실관람 평점</p>
+                    <div class="number gt" id="mainMegaScore">
+                        <!--  <div class="number lt" id="mainMegaScore">
+                            <p title="관람 전 점수" class="before"><em>0</em><span class="ir">점</span></p>
+                            <p title="관람 후 점수" class="after"><em>8.6</em><span class="ir">점</span></p> -->
+                        <p title="실관람 평점" class="before">
+                            <em th:text="${MovieGrade}" >8.6</em>
+                            <span class="ir">점</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="rate">
+                    <p class="tit">예매율</p>
+                    <p class="cont"><em>16</em>위 (0.4%)</p>
+                </div>
+                <div class="audience">
+                    <div class="tit ">
+                        <span class="m-tooltip-wrap" > 누적관객수
+                            <!-- 2019-09-11 툴팁 보기 수정 -->
+						<em class="m-tooltip ml05">
+							<i class="iconset ico-tooltip-gray">툴팁보기</i>
+							<div class="m-detail-tooltip">
+								<div class="bg-arr bottom"></div>
+								<div class="cont-area">
+									<p class="reset a-c">
+										누적관객 및 전일관객은 영화진흥 위원회<br>
+										영화관 입장권 통합전산망제공 기준입니다.<br>
+									(2024.06.17기준)
+									</p>
+								</div>
+							</div>
+						</em>
+						</span>
+                    </div>
+                    <p class="cont"><em th:text="${movieView.getView()}">1,202,116</em> 명</p>
+                </div>
+            </div>
+            <!--// info -->
+            <div class="poster">
+                <div class="wrap">
+                    <p class="movie-grade big age-15">15세 이상 관람가</p>
+                    <img th:src="@{/movie/image(index=${movieIndex.getIndex()})}" alt="">
+                </div>
+            </div>
+            <div class="reserve screen-type col-1">
+                <div class="reserve">
+                    <a href="" class="btn reserve" title="영화 예매하기">예매</a>
+                </div>
+            </div>
+        </div>
+        <!--// movie-detail-cont -->
+    </div>
+</div>
+</div>
+<!--// movie-detail -->
+<div id="contentData">
+    <div class="inner-wrap">
+        <div class="tab-list fixed">
+            <ul class="topMenu">
+                <li class="on">
+                    <a class="a" th:href="@{/movie/movieDetail(index=${movieIndex.getIndex()})}">주요정보</a>
+                </li>
+                <li class="on">
+                    <a class="a" th:href="@{/movie/movieDetailReview(index=${movieIndex.getIndex()})}">실관람평</a>
+                </li>
+            </ul>
+        </div>
+        <div class="movie-summary infoContent" id="info">
+            <div class="txt">
+                <span class="see">“나쁜 짓은 절대 안 해요. 그냥 보기만 하는 거예요.”</span>
+                <br><br>고객이 맡긴 열쇠로 그 집에 들어가 <br>남의 삶을 훔쳐보는 취미를 지닌 공인중개사 ‘구정태’.<br>편의점 소시지를 먹으며 비건 샐러드 사진을 포스팅하는 <br>SNS
+                인플루언서 ‘한소라’에게 흥미를 느끼고 관찰하기 시작한다.<br><br>“관찰 152일째, 그녀가… 죽었습니다.”<br><br>급기야 ‘한소라’의 집까지 드나들던 ‘구정태’는<br>어느
+                날, 그녀가 소파에 죽은 채 늘어져 있는 모습을 발견하게 된다.<br><br>그 후 그가 ‘한소라’ 집에 들어간 것을 알고 있는 누군가가 협박을 시작하고,<br>사건을 맡은 강력반 형사
+                ‘오영주’의 수사망이 그를 향해 좁혀온다.<br>스스로 범인을 찾아야 하는 ‘구정태’는 ‘한소라’의 SNS를 통해<br>주변 인물들을 뒤지며 진범을 찾아 나서는데…
+            </div>
+            <div class="btn-more toggle">
+                <button type="button" class="btn more">
+                    <span class="moreButton">더보기</span>
+                    <i class="fa-solid fa-chevron-down" style="color: #666;"></i>
+                </button>
+                <button type="button" class="btn close">
+                    <span class="closeMoreButton">닫기</span>
+                    <i class="fa-solid fa-chevron-up" style="color: #666;"></i>
+                </button>
+            </div>
+        </div>
+        <div class="movie-info infoContent">
+            <p th:text="'상영타입 :'+ ${movieIndex.getDimensionType()}"> 상영타입 : 2D </p>
+            <div class="line">
+                <!--                    <p>감독&nbsp;: 김세휘</p>-->
+                <p>장르&nbsp;: 미스터리, 스릴러 / 102 분</p>
+                <p th:text="'등급: ' + ${movieIndex.getAgeLimit()} +'세이상관람가'">등급&nbsp;: 15세이상관람가</p>
+                <p th:text="'개봉일: '+${movieIndex.getReleaseDate()}">개봉일&nbsp;: 2024.05.15</p>
+                <!--           -->
+            </div>
+            <!--                <p>출연진&nbsp;: 변요한, 신혜선, 이엘</p>-->
+        </div>
+        <!-- 영화관 선택후 -->
+        <!--// movie-greeting  -->
+        <!-- 한줄평 있을 때 -->
+        <div class="tit-util mt70 mb15 oneContent">
+            <h2 class="tit small" >
+                <th:block th:text="${movieIndex.getTitle()}+'에 대한'"></th:block>
+
+                <span class="font-gblue" th:text="${commentCount}">6,364</span>
+                <th:block th:text="${'개의 이야기가 있어요!'}"></th:block>
+            </h2>
+        </div>
+        <!--            &lt;!&ndash; 레이어  : 본 영화 등록 &ndash;&gt;-->
+        <!--            <section id="saw_movie_regi" class="modal-layer">-->
+        <!--                <div class="wrap">-->
+        <!--                    <header class="layer-header">-->
+        <!--                        <h3 class="tit">본 영화 등록</h3>-->
+        <!--                    </header>-->
+
+        <!--                    <div class="layer-con">-->
+        <!--                        <p class="reset">발권하신 티켓 하단의 거래번호 또는 예매번호를 입력해주세요.</p>-->
+        <!--                        <div class="pop-gray mt10 mb30">-->
+        <!--                            <label for="movie_regi" class="mr10">거래번호 또는 예매번호</label>-->
+        <!--                            <input type="text" id="movie_regi" class="input-text w280px" maxlength="20" placeholder="숫자만 입력해 주세요" title="티켓 거래번호 입력">-->
+        <!--                            <button class="button gray ml05">등록</button>-->
+        <!--                        </div>-->
+        <!--                        <div class="box-border v1 mt30">-->
+        <!--                            <p class="tit-box">이용안내</p>-->
+
+        <!--                            <ul class="dot-list">-->
+        <!--                                <li>극장에서 예매하신 내역을 본 영화(관람이력)로 등록하실 수 있습니다.</li>-->
+        <!--                                <li>예매처를 통해 예매하신 고객님은 극장에서 발권하신 티켓 하단의 온라인 예매번호 <br>12자리를 입력해주세요.(Yes24, 네이버, 인터파크, SKT, KT, 다음)</li>-->
+        <!--                                <li>본 영화 등록은 관람인원수 만큼 등록가능하며, 동일 계정에 중복등록은 불가합니다.</li>-->
+        <!--                                <li>상영시간 종료 이후 등록 가능합니다.</li>-->
+        <!--                                <li>본 영화로 수동 등록한 내역은 이벤트 참여 및 포인트 추후 적립이 불가합니다.</li>-->
+        <!--                            </ul>-->
+        <!--                        </div>-->
+
+        <!--                    <div class="btn-group-fixed">-->
+        <!--                        <button type="button" class="button purple close-layer">닫기</button>-->
+        <!--                    </div>-->
+
+        <!--                    <button type="button" class="btn-modal-close">레이어 닫기</button>-->
+
+        <!--            </section>-->
+        <!--// 레이어  : 본 영화 등록 -->
+        <div class="movie-idv-story oneContent">
+            <!-- 본 영화가 아닌경우 -->
+            <form id="movieForm">
+                <!--MovieDetail 에서 댓글 달때 필요한 movieIndex 넣어주기 위한 로직-->
+                <input type="hidden" class="index" th:value="${movieIndex.getIndex()}">
+                <ul>
+                    <!-- 로그인이 안되있을시 -->
+                    <li class="type03">
+                        <div class="story-area">
+                            <!-- 프로필영역 -->
+                            <div class="user-prof">
+                                <div class="prof-img">
+                                    <img src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-mega-profile.png"
+                                         alt="MEGABOX">
+                                </div>
+                                <p class="user-id">MEGABOX</p>
+                            </div>
+                            <!-- // 프로필영역 -->
+
+                            <!-- 내용 영역 -->
+                            <div class="story-box">
+                                <div class="story-wrap">
+                                    <div class="story-cont">
+                                        <span class="font-gblue" th:text="${movieIndex.getTitle()}">그녀가 죽었다</span> 재미있게 보셨나요? 영화의 어떤 점이 좋았는지
+ 이야기해주세요.
+                                    </div>
+                                    <!-- 로그인 안되있을떄 떠야하는 창 일단 주석 -->
+                                    <!--                                        <div class="story-write">-->
+                                    <div class="tooltip-click oneWrtNonMbBtn">
+                                        <i class="fa-solid fa-pencil" style="color: #c0c1c4;"></i>
+                                        관람평쓰기
+                                    </div>
+                                    <!--                                            <div id="tooltip-layer01" class="tooltip-cont" style="width: 225px; height: 80px;">-->
+                                    <!--                                                <div class="wrap loginTagClick">-->
+                                    <!--                                                    로그인이 필요한 서비스 입니다.<br>-->
+                                    <!--                                                    <a href="" class="font-green" title="로그인 바로가기">로그인 바로가기-->
+                                    <!--                                                        <i class="iconset ico-arr-right-green"></i>-->
+                                    <!--                                                    </a>-->
+                                    <!--                                                    <button type="button" class="btn-close-tooltip">툴팁 닫기</button>-->
+                                    <!--                                                </div>-->
+                                    <!--                                            </div>-->
+                                    <!--                                        </div>-->
+                                </div>
+                            </div>
+                            <!-- // 내용 영역 -->
+                        </div>
+                    </li>
+                    <li class="type03 comments">
+                        <div class="story-area">
+                            <!-- 프로필영역 -->
+                            <!-- 내용 영역 -->
+                            <div class="story-box">
+                                <div class="story-wrap">
+                                    <div class="story-cont">
+                                        <label class="_obj-label">
+                                            <select class="_obj-input" id="rating">
+                                                <option selected value="10">10</option>
+                                                <option selected value="9">9</option>
+                                                <option selected value="8">8</option>
+                                                <option selected value="7">7</option>
+                                                <option selected value="6">6</option>
+                                                <option selected value="5">5</option>
+                                                <option selected value="4">4</option>
+                                                <option selected value="3">3</option>
+                                                <option selected value="2">2</option>
+                                                <option selected value="1">1</option>
+                                            </select>
+                                        </label>
+                                        <label class="_obj-label">
+                                            <select class="_obj-input" id="movieKeyword">
+                                                <option selected value="연출">연출</option>
+                                                <option selected value="스토리">스토리</option>
+                                                <option selected value="배우">배우</option>
+                                            </select>
+                                        </label>
+                                        <label class="_obj-label" rel="reviewLabel">
+                                            <input class="_obj-input __field review" placeholder=" 재미있게 보셨나요? 영화의 어떤 점이 좋았는지 이야기해주세요." name="review">
+                                                                                                                              <span class="__warning">리뷰를 작성해주세요.</span>
+                                        </label>
+                                    </div>
+                                    <div class="spring" style="flex-grow: 1"></div>
+                                    <!-- 로그인 안되있을떄 떠야하는 창 일단 주석 -->
+                                    <!--                                    <div class="story-write">-->
+                                    <button type="submit" class="write">작성하기</button>
+                                    <!--                                        <div id="tooltip-layer01" class="tooltip-cont" style="width: 225px; height: 80px;">-->
+                                    <!--                                            <div class="wrap loginTagClick">-->
+                                    <!--                                                로그인이 필요한 서비스 입니다.<br>-->
+                                    <!--                                                <a href="" class="font-green" title="로그인 바로가기">로그인 바로가기-->
+                                    <!--                                                    <i class="iconset ico-arr-right-green"></i>-->
+                                    <!--                                                </a>-->
+                                    <!--                                                <button type="button" class="btn-close-tooltip">툴팁 닫기</button>-->
+                                    <!--                                            </div>-->
+                                    <!--                                        </div>-->
+                                    <!--                                    </div>-->
+                                </div>
+                            </div>
+                            <!-- // 내용 영역 -->
+                        </div>
+                    </li>
+                    <li class="type01 oneContentTag" th:each="allComments : ${allComment}">
+                        <div class="story-area">
+                            <div class="user-prof">
+                                <div class="prof-img">
+                                    <img src="https://www.megabox.co.kr/static/pc/images/mypage/bg-photo.png" alt="프로필 사진" title="프로필 사진">
+                                </div>
+                                <p class="user-id" th:text="${allComments.getUserEmail()}">sdiman**</p>
+                            </div>
+                            <div class="story-box">
+                                <div class="story-wrap review">
+                                    <div class="tit">관람평</div>
+                                    <div class="story-cont">
+                                        <div class="story-point">
+                                            <span th:text="${allComments.getGrade()}">7</span>
+                                        </div>
+                                        <div class="story-recommend">
+                                            <em th:text="${allComments.getFavorite()}">스토리</em>
+                                        </div>
+                                        <div class="story-txt" th:text="${allComments.getContent()}">조금 스트레스 해소 재미있게 보았어요.
+                                        </div>
+                                        <div class="spring" style="flex-grow: 1"></div>
+                                        <div class="story-like">
+                                            <button type="button" class="oneLikeBtn" title="댓글 추천" data-no="2933061"
+                                                    data-is="N">
+                                                <i class="iconset ico-like-gray" ></i>
+                                                <i class="iconset ico-like-purple" style="display: none"></i>
+                                                <span th:text="${allComments.getCommentLikeCount()}">0</span>
+                                            </button>
+                                        </div>
+                                        <div class="story-util">
+                                            <label>
+                                                <input hidden="hidden" class="commentIndex" th:value="${allComments.getIndex()}">
+                                            </label>
+                                            <div class="post-funtion">
+                                                <div class="wrap">
+                                                    <button type="button" class="btn-alert">
+                                                        <i class="fa-solid fa-ellipsis-vertical"
+                                                           style="color: #9e9e9e;"></i>
+                                                    </button>
+                                                    <div class="balloon-space user">
+                                                        <div class="balloon-cont">
+                                                            <div class="user">
+                                                                <p class="reset a-c">스포일러 및 욕설/비방하는
+                                                                    <br>
+                                                                    내용이 있습니까?
+                                                                </p>
+                                                                <button type="button" class="maskOne" data-no="2933061">
+                                                                    댓글 신고
+                                                                    <i class="iconset ico-arr-right-green"></i>
+                                                                </button>
+                                                            </div>
+                                                            <div class="btn-close">
+                                                                <a title="닫기">
+                                                                    <i class="fa-solid fa-x fa-xs"
+                                                                       style="color: #919191;"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="story-date">
+                            <div class="review on">
+                                <span>16 분전</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </form>
+        </div>
+        <!--// movie-detail-poster -->
+        <div class="event-container">
+            <div class="title-bar">
+                <h3 class="title3">이벤트</h3>
+                <div class="spring"></div>
+                <a href="#" class="link">
+                    <span>더보기</span>
+                    <i class="fa-solid fa-chevron-right" style="color: #606162;">
+                    </i>
+                </a>
+            </div>
+            <div class="event-box">
+                <a href="#" title="[2024 시네도슨트 시즌 2 in 대전신세계] 서양미술로 보는 그리스 신화 상세보기" class="eventBtn" data-no="15646"
+                   data-netfunnel="N"><img
+                        src="https://img.megabox.co.kr/SharedImg/event/2024/06/18/uCkhEkzMi9YkBk38zhOz3zu17O6jRm5D.jpg"
+                        alt="[2024 시네도슨트 시즌 2 in 대전신세계] 서양미술로 보는 그리스 신화"></a>
+
+                <a href="#" title="메가박스 아트그라피 <피아니스트> 상세보기" class="eventBtn" data-no="15644" data-netfunnel="N"><img
+                        src="https://img.megabox.co.kr/SharedImg/event/2024/06/18/7eMmzVLNs1KDEWJx87tnqd4bPmr9mYc6.jpg"
+                        alt="메가박스 아트그라피 <피아니스트>">
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--
+    <div class="add-area big infoContent">
+        <script data-id="QZQTH4gyTeSwib9iz79Vig" name="megabox_p/sub/sub@sub_bottom_1100x80?mlink=431" src="//cast.imp.joins.com/persona.js" async></script>
+    </div>
+     -->
+    <!--관람평 등록 창-->
+    <!--        &lt;!&ndash; 레이어 : 관람평 등록 &ndash;&gt;-->
+    <!--        <section id="layer_regi_reply_review" class="modal-layer">-->
+    <!--            <div class="wrap">-->
+    <!--                <header class="layer-header">-->
+    <!--                    <h3 class="tit"><span class="oneTitle"></span> 작성하기</h3>-->
+    <!--                </header>-->
+    <!--                <div class="layer-con">-->
+    <!--                    &lt;!&ndash; regi-reply-score review &ndash;&gt;-->
+    <!--                    <div class="regi-reply-score review">-->
+    <!--                        &lt;!&ndash; score &ndash;&gt;-->
+    <!--                        <div class="score">-->
+    <!--                            <p class="tit">"그녀가 죽었다"<br>영화 어떠셨나요?</p>-->
+    <!--                            <div class="box">-->
+    <!--                                <div class="box-star-score">-->
+    <!--                                    <div class="star">-->
+    <!--                                        <div class="group">-->
+    <!--                                            <button type="button" class="btn left score-1">1</button>-->
+    <!--                                            <button type="button" class="btn right score-2">2</button>-->
+    <!--                                        </div>-->
+    <!--                                        <div class="group">-->
+    <!--                                            <button type="button" class="btn left score-3">3</button>-->
+    <!--                                            <button type="button" class="btn right score-4">4</button>-->
+    <!--                                        </div>-->
+    <!--                                        <div class="group">-->
+    <!--                                            <button type="button" class="btn left score-5">5</button>-->
+    <!--                                            <button type="button" class="btn right score-6">6</button>-->
+    <!--                                        </div>-->
+    <!--                                        <div class="group">-->
+    <!--                                            <button type="button" class="btn left score-7">7</button>-->
+    <!--                                            <button type="button" class="btn right score-8">8</button>-->
+    <!--                                        </div>-->
+    <!--                                        <div class="group">-->
+    <!--                                            <button type="button" class="btn left score-9">9</button>-->
+    <!--                                            <button type="button" class="btn right score-10">10</button>-->
+    <!--                                        </div>-->
+    <!--                                    </div>-->
+    <!--                                    <div class="num">-->
+    <!--                                        <em>0</em>-->
+    <!--                                        <span>점</span>-->
+    <!--                                    </div>-->
+    <!--                                </div>-->
+
+    <!--                                <div class="textarea">-->
+    <!--                                    <textarea id="textarea" rows="5" cols="30" title="한줄평 입력" placeholder="실관람평을 남겨주세요." class="input-textarea"></textarea>-->
+    <!--                                    <div class="util">-->
+    <!--                                        <p class="count"><span>0</span> / 100</p>-->
+    <!--                                    </div>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                        &lt;!&ndash;// score &ndash;&gt;-->
+
+    <!--                        &lt;!&ndash; point &ndash;&gt;-->
+    <!--                        <div class="point">-->
+    <!--                            <p class="tit"><span class="oneText"></span>포인트는 무엇인가요?</p>-->
+    <!--                            <p class="txt">(최대 5개 선택가능)</p>-->
+
+    <!--                            <div class="box">-->
+    <!--                                <button type="button" class="btn">연출</button>-->
+    <!--                                <button type="button" class="btn">스토리</button>-->
+    <!--                                <button type="button" class="btn">영상미</button>-->
+    <!--                                <button type="button" class="btn">배우</button>-->
+    <!--                                <button type="button" class="btn">OST</button>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                        &lt;!&ndash;// point &ndash;&gt;-->
+
+    <!--                        <div class="txt-alert errText" style="display: none;">한줄평 내용을 입력해 주세요.</div>-->
+    <!--                    </div>-->
+    <!--                    &lt;!&ndash;// regi-reply-score preview &ndash;&gt;-->
+    <!--                </div>-->
+
+    <!--                <div class="btn-group-fixed">-->
+    <!--                    <button type="button" class="button close-layer">취소</button>-->
+    <!--                    <button type="button" class="button purple" id="regOneBtn" data-no="" data-cd="" data-mno="24026400">등록</button>-->
+    <!--                </div>-->
+
+    <!--                <button type="button" class="btn-modal-close">레이어 닫기</button>-->
+    <!--            </div>-->
+    <!--        </section>-->
+    <div class="add-area infoContent" id="boxoInfoContent" style="">
+        <!--   <script data-id="rCtUfvdfQ9GXwkbPpeGpWg" name="megabox_p/sub/sub@sub_bottom_1100x227?mlink=345" src="//cast.imp.joins.com/persona.js" async></script>-->
+        <div id="QZQTH4gyTeSwib9iz79Vig">
+            <iframe src="//ad.imp.joins.com/html/megabox_p/sub/sub@sub_bottom_1100x80?_cid=QZQTH4gyTeSwib9iz79Vig&amp;_uid=pVtDJumS_-2-FQ35tlwzklhNgZhpZ9v-kiC4_iu65lKEAM4qWzAZAbZVSXNtV1l1OFNEU3h0cGpKT3BlNXp3AstB2ZkJp4y7XgPLQdmZCaeMu14&amp;_ref=https%3A%2F%2Fwww.megabox.co.kr%2Fmovie-detail%3FrpstMovieNo%3D24026400"
+                    title="영화상세 하단 배너영역" height="80px" width="100%" name="mliframe" scrolling="no" frameborder="0"
+                    topmargin="0" leftmargin="0" marginwidth="0" marginheight="0"></iframe>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

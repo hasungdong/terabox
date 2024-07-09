@@ -1,15 +1,22 @@
 package com.terabox.demo.mappers;
 
+import com.terabox.demo.entities.MovieReservationEntity;
 import com.terabox.demo.entities.OrderEntity;
 import com.terabox.demo.vos.OrderVo;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface OrderMapper {
     int insertOrder(OrderEntity order);
 
-    OrderVo[] selectEmailByList(@RequestParam("email")String email);
+    int insertMovieReservation(MovieReservationEntity movieReservation);
+
+    OrderVo[] selectEmailByList(@Param("userEmail") String userEmail);
+
+    MovieReservationEntity selectMovieReservationBySeatScreeningInfo(
+            @Param("screeningInfoIndex") int screeningInfoIndex,
+            @Param("seatIndex") int seatIndex);
 
 
 

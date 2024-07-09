@@ -15,4 +15,18 @@ public class MovieCommentEntity {
     private String userEmail;
     private String content;
     private LocalDateTime createdAt;
+    private int grade;
+    private String favorite;
+
+    @Override
+    public String toString() {
+        return "\"index\":" + index + "," +
+                "\"movieIndex\":" + movieIndex + "," +
+                "\"userEmail\":\"" + userEmail + "\"," +
+                "\"content\":\"" + content + "\"," +
+                "\"createdAt\":\"" + createdAt + "\"," +
+                "\"grade\":" + grade + "," +
+                "\"favorite\":\"" + favorite + "\"";
+    }
+
 }
