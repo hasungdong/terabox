@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 @import "../common/header";
 @import "../common/common.notHome";
 
@@ -64,7 +65,7 @@ body {
   font-size: 15px;
   color: #444;
   font-weight: 400;
-  font-family: NanumBarunGothic, Dotum, '돋움', sans-serif;
+  font-family: "Nanum Gothic", Dotum, '돋움', sans-serif;
 
   > .container {
     width: 100%;
@@ -389,7 +390,7 @@ body > .container > {
 
                       > em {
                         float: left;
-                        font-family: Roboto;
+                        font-family: "Roboto";
                         font-weight: 500;
                         font-size: 2em;
                       }
