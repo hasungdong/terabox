@@ -178,15 +178,6 @@ div {
   height: 100%;
   background: linear-gradient(to right, #0f0f0f 20%, rgba(15, 15, 15, 0) 50%, #0f0f0f 80%);
 }
-.movie-detail-page > .bg-pattern {
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 3;
-  width: 100%;
-  height: 100%;
-  background: url(https://img.megabox.co.kr/static/pc/images/movie/bg-movie-detail-pattern.png) repeat-x 0 0;
-}
 .movie-detail-page > .bg-img:after {
   content: "";
   display: block;
@@ -269,6 +260,14 @@ div {
   height: 12px;
   display: inline-block;
 }
+.movie-detail-page > .movie-detail-cont > .btn-util .btn > i {
+  display: none;
+}
+.movie-detail-page > .movie-detail-cont > .btn-util .btn > i.-visible {
+  width: 15px;
+  height: 12px;
+  display: inline-block;
+}
 .movie-detail-page > .movie-detail-cont > .btn-util .btn:hover {
   color: #222;
   background-color: #fff;
@@ -280,13 +279,6 @@ div {
   width: 15px;
   height: 12px;
   display: inline-block;
-}
-.movie-detail-page > .movie-detail-cont > .btn-util .btn .ico-sns-line {
-  width: 17px;
-  height: 17px;
-}
-.movie-detail-page > .movie-detail-cont > .btn-util .btn .ico-sns-line.-visible {
-  display: none;
 }
 .movie-detail-page > .movie-detail-cont > .sns-share {
   position: relative;
@@ -315,7 +307,7 @@ div {
 }
 .movie-detail-page > .movie-detail-cont > .info > .score > .number.gt {
   padding: 0 0 0 30px;
-  background: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-megabox.png) no-repeat 0 center;
+  background: url("../../images/movie/ico-megabox.png") no-repeat 0 center;
   font-family: Roboto, Dotum, "돋움", sans-serif;
   font-weight: 400;
 }
@@ -348,7 +340,7 @@ div {
   padding: 0 0 0 30px;
   vertical-align: middle;
   line-height: 1.1;
-  background: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-ticket-gray.png) no-repeat 0 center;
+  background: url("../../images/movie/ico-ticket-gray.png") no-repeat 0 center;
 }
 .movie-detail-page > .movie-detail-cont > .info > .rate > .cont > em {
   margin: 0 4px 0 0;
@@ -368,50 +360,13 @@ div {
   line-height: 1.1;
   font-size: 0.9333em;
 }
-.movie-detail-page > .movie-detail-cont > .info > .audience > .tit > .m-tooltip-wrap > .m-tooltip {
-  position: relative;
-  margin-left: 5px !important;
-}
-.movie-detail-page > .movie-detail-cont > .info > .audience > .tit > .m-tooltip-wrap > .m-tooltip > .ico-tooltip-gray {
-  overflow: hidden;
-  width: 16px;
-  height: 16px;
-  background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-tooltip-gray.png);
-}
-.movie-detail-page > .movie-detail-cont > .info > .audience > .tit > .m-tooltip-wrap > .m-tooltip > .m-detail-tooltip {
-  display: none;
-  position: absolute;
-  width: 320px;
-  left: -105px;
-  top: -90px;
-  margin: 0;
-  padding: 15px 20px;
-  border: 1px solid #d8d9db;
-  text-align: center;
-  border-radius: 5px;
-  background-color: #fff;
-  z-index: 55;
-}
-.movie-detail-page > .movie-detail-cont > .info > .audience > .tit > .m-tooltip-wrap > .m-tooltip > .m-detail-tooltip > .bg-arr.bottom {
-  left: 100px;
-  bottom: -11px;
-  width: 22px;
-  height: 11px;
-  background-image: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-tooltip-arr-bottom.png);
-}
-.movie-detail-page > .movie-detail-cont > .info > .audience > .tit > .m-tooltip-wrap > .m-tooltip > .m-detail-tooltip > .cont-area {
-  background-color: red;
-}
-.movie-detail-page > .movie-detail-cont > .info > .audience > .tit > .m-tooltip-wrap > .m-tooltip > .m-detail-tooltip > .cont-area > .reset {
-  color: #666;
-}
 .movie-detail-page > .movie-detail-cont > .info > .audience > .cont {
   display: inline-block;
   min-height: 35px;
   padding: 0 0 0 30px;
   vertical-align: middle;
   line-height: 1.1;
-  background: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-ticket-gray.png) no-repeat 0 center;
+  background: url("../../images/movie/ico-ticket-gray.png") no-repeat 0 center;
 }
 .movie-detail-page > .movie-detail-cont > .info > .audience > .cont > em {
   margin: 0 4px 0 0;
@@ -581,13 +536,6 @@ div {
   border-bottom: 1px solid #eaeaea;
   background-color: transparent;
   color: #666;
-}
-#contentData > .inner-wrap > .movie-summary > .btn-more.toggle > .btn > .ico-btn-more-arr {
-  transform: translateY(20%);
-  width: 13px;
-  height: 13px;
-  background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-btn-more-arr.png);
-  background-repeat: no-repeat;
 }
 #contentData > .inner-wrap > .movie-summary > .btn-more.toggle > .btn.more {
   display: flex;
@@ -784,17 +732,17 @@ div {
 #contentData > .inner-wrap .movie-idv-story #movieForm > ul > .type03 > .story-area > .story-box > .story-wrap > .story-cont > .font-gblue {
   color: #01738b !important;
 }
-#contentData > .inner-wrap .movie-idv-story #movieForm > ul > .type03 > .story-area > .story-box > .story-wrap > .tooltip-click {
+#contentData > .inner-wrap .movie-idv-story #movieForm > ul > .type03 > .story-area > .story-box > .story-wrap > .click {
   display: table-cell;
   vertical-align: middle;
   text-align: center;
   color: #666;
   text-decoration: none;
 }
-#contentData > .inner-wrap .movie-idv-story #movieForm > ul > .type03 > .story-area > .story-box > .story-wrap > .tooltip-click > i {
+#contentData > .inner-wrap .movie-idv-story #movieForm > ul > .type03 > .story-area > .story-box > .story-wrap > .click > i {
   margin-right: 5px;
 }
-#contentData > .inner-wrap .movie-idv-story #movieForm > ul > .type03 > .story-area > .story-box > .story-wrap > .tooltip-click > .fa-pencil {
+#contentData > .inner-wrap .movie-idv-story #movieForm > ul > .type03 > .story-area > .story-box > .story-wrap > .click > .fa-pencil {
   transform: translateY(20%);
   width: 18px;
   height: 18px;
@@ -943,12 +891,10 @@ div {
 #contentData > .inner-wrap .movie-idv-story #movieForm > ul > .type01 > .story-area > .story-box > .story-wrap > .story-cont > .story-like > .oneLikeBtn > .ico-like-gray {
   width: 16px;
   height: 17px;
-  background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-like-g.png);
 }
 #contentData > .inner-wrap .movie-idv-story #movieForm > ul > .type01 > .story-area > .story-box > .story-wrap > .story-cont > .story-like > .oneLikeBtn > .ico-like-purple {
   width: 16px;
   height: 17px;
-  background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-like-p.png);
 }
 #contentData > .inner-wrap .movie-idv-story #movieForm > ul > .type01 > .story-area > .story-box > .story-wrap > .story-cont > .story-like > .oneLikeBtn > .ico-like-purple.-visible {
   display: block;
@@ -1014,17 +960,6 @@ div {
   position: relative;
   padding: 10px 25px 10px 20px;
 }
-#contentData > .inner-wrap .movie-idv-story #movieForm > ul > .type01 > .story-area > .story-box > .story-wrap > .story-cont > .story-util > .post-funtion > .wrap > .balloon-space.user > .balloon-cont::after {
-  content: " ";
-  width: 11px;
-  height: 20px;
-  display: inline-block;
-  background: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-bloon.png) right center no-repeat;
-  position: absolute;
-  top: 50%;
-  right: -11px;
-  margin-top: -10px;
-}
 #contentData > .inner-wrap .movie-idv-story #movieForm > ul > .type01 > .story-area > .story-box > .story-wrap > .story-cont > .story-util > .post-funtion > .wrap > .balloon-space.user > .balloon-cont > .user {
   display: block;
   padding: 0 5px;
@@ -1050,7 +985,6 @@ div {
   overflow: hidden;
   width: 6px;
   height: 10px;
-  background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-arr-right-green.png);
   margin-left: 4px;
 }
 #contentData > .inner-wrap .movie-idv-story #movieForm > ul > .type01 > .story-area > .story-box > .story-wrap > .story-cont > .story-util > .post-funtion > .wrap > .balloon-space.user > .balloon-cont > .user > .maskOne > .iconset {

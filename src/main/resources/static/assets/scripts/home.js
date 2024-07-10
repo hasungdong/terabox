@@ -2,7 +2,9 @@ const swiperBars = document.querySelectorAll('span.swiper-bar');
 const page = document.querySelector('.current-page');
 const playButton = document.querySelector('img.play');
 const pauseButton = document.querySelector('img.pause');
-const events = document.querySelectorAll('.event-box > .event');
+// const events = document.querySelectorAll('.event-box > .event');
+const sliderCells = document.querySelectorAll('.slider-view > .cell');
+
 const lessButton = document.querySelector('img.less');
 const moreButton = document.querySelector('img.more');
 
@@ -11,8 +13,11 @@ let i = 0;
 let currentPage = 1;
 swiperBars[0].classList.add('point');
 // events가 .event임
-const imgs = events[0].querySelectorAll(':scope > img.img');
-const imgTwos = events[0].querySelectorAll(':scope > img.img2');
+// const imgs = events[0].querySelectorAll(':scope > img.img');
+const imgs = [];
+sliderCells.forEach(sliderCell => imgs.push(sliderCell.querySelector('.img-one')));
+const imgTwos = [];
+sliderCells.forEach(sliderCell => imgTwos.push(sliderCell.querySelector('.img-two')));
 
 page.innerText = `${currentPage} / ${imgs.length}`;
 for (const img of imgs) {
@@ -115,7 +120,7 @@ lessButton.onclick = () => {
     }
     page.innerText = `${currentPage} / ${imgs.length}`;
     if (currentPage - 1 < 0) {
-        swiperBars[events.length - 1].classList.add('point');
+        swiperBars[sliderCells.length - 1].classList.add('point');
     } else {
         swiperBars[currentPage - 1].classList.add('point');
     }

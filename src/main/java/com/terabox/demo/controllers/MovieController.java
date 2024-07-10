@@ -4,6 +4,7 @@ import com.terabox.demo.dtos.MovieCommentDto;
 import com.terabox.demo.dtos.SearchDto;
 import com.terabox.demo.entities.MovieCommentEntity;
 import com.terabox.demo.entities.MovieEntity;
+import com.terabox.demo.entities.UserEntity;
 import com.terabox.demo.results.CommonResult;
 import com.terabox.demo.services.MovieService;
 import lombok.RequiredArgsConstructor;
@@ -24,8 +25,9 @@ public class MovieController extends AbstractGeneralController {
     private final MovieService movieService;
 
     @GetMapping(value = "allMovie", produces = MediaType.TEXT_HTML_VALUE)
-    public String getAllMovie(Model model){
-        MovieEntity[] allMovie = this.movieService.getAllMovies();
+    public String getAllMovie(Model model,
+                              @RequestParam( value = "keyword" ,required = false) String keyword){
+        MovieEntity[] allMovie = this.movieService.getAllMovies(keyword);
         model.addAttribute("allMovie",allMovie);
         return "movie/allMovie";
     }
@@ -78,24 +80,30 @@ public class MovieController extends AbstractGeneralController {
     }
 
     @GetMapping(value = "movieDetail", produces = MediaType.TEXT_HTML_VALUE)
-    public String getMovieDetail(@RequestParam("index")int index, Model model){
+    public String getMovieDetail(@RequestParam("index")int index,
+                                 Model model,
+                                 @SessionAttribute(value = "user",required = false) UserEntity user){
         MovieEntity movieIndex = this.movieService.getMovie(index);
         MovieCommentEntity[] allComment = this.movieService.getComment(index);
         model.addAttribute("movieIndex",movieIndex);
         model.addAttribute("allComment",allComment);
         model.addAttribute("commentCount", this.movieService.getCommentCount(index));
-        model.addAttribute("movieLikeCount",this.movieService.getMovieLike(index));
+        model.addAttribute("movieLikeCount",this.movieService.getMovieCommentLike(index));
         model.addAttribute("movieView",this.movieService.getUpdate(index));
         model.addAttribute("MovieGrade",this.movieService.getMovieGrade(index) == null ? 0.0 : this.movieService.getMovieGrade(index));
+        if (user == null) {
+            model.addAttribute("saved",null);
+        }else {
+            model.addAttribute("saved", this.movieService.getMovieLike(index, user.getEmail()));
+        }
         return "movie/movieDetail";
     }
 
 
     @PostMapping(value = "movieComment", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String postMovieDetail(MovieCommentEntity comment, @RequestParam(value = "userEmail", required = false) String userEmail){
-        userEmail = "eletoa123";
-        comment.setUserEmail(userEmail);
+    public String postMovieDetail(MovieCommentEntity comment, @SessionAttribute(value = "user",required = false) UserEntity user){
+        comment.setUserEmail(user.getEmail());
         comment.setCreatedAt(LocalDateTime.now());
         CommonResult result = this.movieService.postMovieComment(comment);
         JSONObject responseObject = new JSONObject();
@@ -106,11 +114,13 @@ public class MovieController extends AbstractGeneralController {
     /*영화 좋아요 */
     @PostMapping(value = "movieLike", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String postMovieLike(@RequestParam("movieIndex") int movieIndex,@RequestParam(value = "userEmail", required = false) String userEmail){
-        userEmail = "gktjdehd3333@gmail.com";
+    public String postMovieLike(@RequestParam("movieIndex") int movieIndex,@SessionAttribute(value = "user") UserEntity user){
         JSONObject responseObject = new JSONObject();
-        CommonResult movieLikeToggle = this.movieService.MovieLikeToggle(movieIndex,userEmail);
+        CommonResult movieLikeToggle = this.movieService.MovieLikeToggle(movieIndex, user.getEmail());
         responseObject.put("movieLikeToggle",movieLikeToggle.name().toLowerCase());
+        if (movieLikeToggle == CommonResult.SUCCESS) {
+            responseObject.put("saved", this.movieService.getMovieLike(movieIndex, user.getEmail()));
+        }
 
         return responseObject.toString();
     }
@@ -118,38 +128,48 @@ public class MovieController extends AbstractGeneralController {
 
     @PostMapping(value = "movieCommentLike", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String postMovieCommentLike( @RequestParam("movieCommentIndex")int movieCommentIndex, @RequestParam(value = "userEmail", required = false) String userEmail){
-        userEmail = "gktjdehd3333@gmail.com";
-        System.out.println(userEmail);
+    public String postMovieCommentLike( @RequestParam("movieCommentIndex")int movieCommentIndex, @SessionAttribute(value = "user") UserEntity user){
+        System.out.println(user);
         System.out.println(movieCommentIndex);
         JSONObject responseObject = new JSONObject();
-        CommonResult likeResult = this.movieService.toggle(movieCommentIndex,userEmail);
+        CommonResult likeResult = this.movieService.toggle(movieCommentIndex,user.getEmail());
         responseObject.put("likeResult",likeResult.name().toLowerCase());
         return responseObject.toString();
     }
 
     @GetMapping(value = "movieDetailReview", produces = MediaType.TEXT_HTML_VALUE)
-    public String getAllMovieReview(@RequestParam("index")int index,Model model){
+    public String getAllMovieReview(@RequestParam("index")int index,
+                                    Model model,
+                                    @SessionAttribute(value = "user",required = false) UserEntity user){
         MovieEntity movieIndex = this.movieService.getMovie(index);
         MovieCommentEntity[] allComment = this.movieService.getComment(index); //영화 댓글 전체 다 가져오기
         model.addAttribute("movieIndex",movieIndex);
         model.addAttribute("allComment",allComment);
         model.addAttribute("commentCount", this.movieService.getCommentCount(index)); //영화 댓글 전체 수 가져오기
-        model.addAttribute("movieLikeCount",this.movieService.getMovieLike(index));//댓글 좋아요
+        model.addAttribute("movieLikeCount",this.movieService.getMovieCommentLike(index));//댓글 좋아요
         model.addAttribute("movieView",this.movieService.getUpdate(index)); //조회수 올리는 로직
         model.addAttribute("MovieGrade",this.movieService.getMovieGrade(index) == null ? 0.0 : this.movieService.getMovieGrade(index)); //영화 평점
+        if (user == null) {
+            model.addAttribute("saved",null);
+        }else {
+            model.addAttribute("saved", this.movieService.getMovieLike(index, user.getEmail()));
+        }
         return "movie/movieDetailReview";
     }
 
     @GetMapping(value = "movieReviews", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public String  getAllMovieReviews(@RequestParam("index")int index,
-                                      @RequestParam("by")String  by, SearchDto searchDto,@RequestParam(value = "page",required = false,defaultValue = "1" )int page) {
+                                      @RequestParam("by")String  by,
+                                      SearchDto searchDto,
+                                      @RequestParam(value = "page",required = false,defaultValue = "1" )int page,
+                                      @SessionAttribute(value = "user", required = false) UserEntity user) {
         searchDto.setRequestPage(page);
-        MovieCommentDto[] movieCommentDtos = this.movieService.getMovieCommentNewest(index, by, searchDto);
+        MovieCommentDto[] movieCommentDtos = this.movieService.getMovieCommentNewest(index, by, searchDto, user);
         JSONObject responseObject = new JSONObject();
         responseObject.put("movieCommentDtos", movieCommentDtos);
         responseObject.put("searchDto", searchDto);
+        responseObject.put("signed", user != null);
         return responseObject.toString();
     }
 }

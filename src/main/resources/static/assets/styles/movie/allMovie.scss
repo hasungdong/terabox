@@ -40,6 +40,7 @@ body{
 
   form {
 
+
     #container {
       width: 1100px;
       margin: 0 auto;
@@ -83,9 +84,18 @@ body{
               text-decoration: none;
               border: 0.04rem solid #dedede;
               font-weight: 500;
+
             }
+
+
+
           }
+
+
+
+
         }
+
       }
       >.movie-list-util{ /*영화관 검색 있는곳 묶음*/
         display: flex;
@@ -103,7 +113,7 @@ body{
           >.onairBtn {
             display: block;
             padding: 0 0 0 30px;
-            background: url(https://img.megabox.co.kr/static/pc/images/common/btn/btn-on-air.png) no-repeat 0 2px;
+            background: url("../../images/movie/allmovie-btn-on-air.png") no-repeat 0 center;
             border: 0;
             font-size: 1em;
 
@@ -142,7 +152,7 @@ body{
             padding: 0;
             border: 0;
             text-indent: -9999px;
-            background: #fff url(https://img.megabox.co.kr/static/pc/images/common/btn/btn-search-input.png) no-repeat center;
+            background: url("../../images/movie/allmovie-btn-search-input.png") no-repeat 0 center;
             font-size: 0;
             line-height: 0;
             overflow: hidden;
@@ -150,45 +160,12 @@ body{
             height: 32px;
           }
         }
+
+
+
       }
 
       >.movie-list{ /*영화 리스트 묶음*/
-
-        >.board-move {
-          //position: relative;
-          padding: 40px 0 0 0;
-
-          > .btn {
-            display: block;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            height: 40px;
-            border: 1px solid #eaeaea;
-            background-color: transparent;
-            color: #666;
-
-            &:hover {
-              border: 1px solid #000000;
-            }
-
-            > i {
-              margin-left: 6px;
-              width: 12px;
-              height: 7px;
-              background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-btn-more-arr.png);
-              overflow: hidden;
-              display: inline-block;
-              padding: 0;
-              font-size: 0;
-              line-height: 0;
-              vertical-align: middle;
-              background-position: 0 0;
-              background-repeat: no-repeat;
-            }
-          }
-        }
-
 
         >.list{ /*그 밑에 ol 태그*/
           margin-left: -60px;
@@ -204,8 +181,10 @@ body{
             margin: 0 0 60px 60px;
             background-color: #fff;
 
+
             >.movie-list-info{
               position: relative;
+              display: inline-block;
 
               >.rank{
                 z-index: 2;
@@ -222,7 +201,8 @@ body{
                 font-weight: 300;
                 color: #fff;
                 text-shadow: 2px 2px 2px rgba(0, 0, 0, .8);
-                background: url(https://img.megabox.co.kr/static/pc/images/movie/bg-movie-list-rank.png) no-repeat 0 0;
+                background: url("../../images/movie/allmovie-bg-movie-list-rank.png") no-repeat 0 center;
+
               }
 
               >.poster{ /*영화 사진*/
@@ -235,6 +215,7 @@ body{
                 padding: 0;
                 background-color: #fff;
                 border-radius: 0.5rem;
+
               }
 
               >.movie-score{
@@ -246,6 +227,7 @@ body{
                   display: block;
                   padding: 25px;
 
+
                   &:hover{
                     background-color: rgba(0, 0, 0, .8);
                     border-radius: 0.5rem;
@@ -254,18 +236,29 @@ body{
                       overflow: hidden;
                       display: block;
                       color: white;
-                    }
-                  }
 
+                    }
+
+
+                  }
                   >.summary{
                     position: absolute; //absolute 줄려면 조상중에 있어야함 position: relative;
                     overflow: hidden;
                     width: 180px;
                     height: 163px;
                     display: none;
+
+
+
                   }
+
+
+
                 }
+
+
               }
+
             }
 
             >.tit-area{ /*묶음자리*/
@@ -275,7 +268,9 @@ body{
               padding: 0 0 0 30px;
               line-height: 25px;
 
-              >.movie-grad-all{
+
+
+              >.movie-grad-all{ //몇세 이용가인지 아직 구현중
                 height: 100%;
                 background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/ALL_46x46.png);
                 background-size: 23px 23px;
@@ -297,6 +292,8 @@ body{
                 font-size: 1.7em;
                 font-weight: 400;
                 margin : 0;
+
+
               }
             }
 
@@ -325,7 +322,10 @@ body{
                 position: relative;
                 float: left;
                 font-weight: 600;
+
+
               }
+
             }
 
             >.btn-util{
@@ -394,12 +394,32 @@ body{
                     padding-top: 7px;
                     border: 0;
                   }
+
                 }
+
+
               }
+
+
             }
+
+
           }
+
+
+
+
         }
+
+
       }
+
     }
+
+
+
+
+
+
   }
 }

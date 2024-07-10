@@ -73,7 +73,7 @@ public class UserService {
         context.setVariable("code", emailAuth.getCode());
 
         new MailSender(this.mailSender)
-                .setFrom("naakoko47@gmail.com")
+                .setFrom("terabox.with@gmail.com")
                 .setSubject("[TeraBox] 회원가입 인증번호")
                 .setTo(emailAuth.getEmail())
                 .setText(this.springTemplateEngine.process("user/resetPasswordEmail", context), true)
@@ -212,7 +212,7 @@ public class UserService {
         Context context = new Context();
         context.setVariable("code", emailAuth.getCode());
         new MailSender(this.mailSender)
-                .setFrom("naakoko47@gmail.com")
+                .setFrom("terabox.with@gmail.com")
                 .setSubject("[TeraBox] 비밀번호 재설정 인증번호")
                 .setTo(emailAuth.getEmail())
                 .setText(this.springTemplateEngine.process("user/resetPasswordEmail", context), true)

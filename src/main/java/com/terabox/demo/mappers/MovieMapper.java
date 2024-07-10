@@ -22,7 +22,7 @@ public interface MovieMapper {
 
     MovieEntity[] selectMoviesBySearch(SearchDto searchDto);
 
-    MovieEntity[] selectMovieAll();
+    MovieEntity[] selectMovieAll(@Param("keyword")String keyword);
 
     int insertMovieComment(MovieCommentEntity movieComment);
 
@@ -32,4 +32,7 @@ public interface MovieMapper {
     int selectCountComments(@Param("movieIndex")int movieIndex);
 
     int upDateMovie(MovieEntity movie);
+
+    /*로그인시 좋아요 저장하기*/
+
 }
