@@ -124,8 +124,8 @@
   bottom: 0.25rem;
   border: #666666 solid 1px;
   border-radius: 0 0.25rem 0.25rem 0;
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -134,8 +134,8 @@
 .form > .content > .title > button[type=submit] > img {
   background-color: #ffffff;
   border-radius: 0 0.25rem 0.25rem 0;
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   cursor: pointer;
 }
 .form > .content > .thumbnail > .image-wrapper {
@@ -170,10 +170,12 @@
 }
 .form > .content > .result-box {
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 .form > .content > .result-box > ul {
   min-height: 131px;
-  max-height: 521px;
+  max-height: 533px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -181,15 +183,17 @@
   border-bottom: none;
 }
 .form > .content > .result-box > ul > li {
-  height: 130px;
+  height: 133px;
   display: flex;
   flex-direction: row;
   align-items: stretch;
   border-bottom: #666666 solid 1px;
+  cursor: pointer;
 }
 .form > .content > .result-box > ul > li > .img {
   width: 30%;
   object-fit: cover;
+  border-right: #666666 solid 1px;
 }
 .form > .content > .result-box > ul > li > .text-box {
   flex-grow: 1;
@@ -237,6 +241,40 @@
 }
 .form > .content > .result-box > ul > li > .text-box > .info > .quantity {
   flex-grow: 1;
+}
+.form > .content > .result-box .page-container {
+  padding-bottom: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 0.6rem;
+  flex-grow: 1;
+}
+.form > .content > .result-box .page-container > [type=button] {
+  background-color: #ffffff;
+  border: none;
+  outline: none;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
+}
+.form > .content > .result-box .page-container > .page-box {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 1rem;
+}
+.form > .content > .result-box .page-container > .page-box > .page {
+  color: #444444;
+  cursor: pointer;
+}
+.form > .content > .result-box .page-container > .page-box > .page:hover {
+  color: #989898;
 }
 .form > .content > button {
   background-color: #545454;
@@ -327,10 +365,13 @@
   width: 2rem;
   height: 2rem;
 }
-.form#modifyScreeningInfoForm > .content > ul {
+.form#modifyScreeningInfoForm > .content .result-box {
+  flex-grow: 1;
+}
+.form#modifyScreeningInfoForm > .content .result-box > ul {
   border: 1px solid #444444;
 }
-.form#modifyScreeningInfoForm > .content > ul > li {
+.form#modifyScreeningInfoForm > .content .result-box > ul > li {
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -338,21 +379,35 @@
   position: relative;
   border-radius: 0;
 }
-.form#modifyScreeningInfoForm > .content > ul > li:last-child {
+.form#modifyScreeningInfoForm > .content .result-box > ul > li:last-child {
   border-bottom: none;
 }
-.form#modifyScreeningInfoForm > .content > ul > li > label {
-  width: 18.4%;
+.form#modifyScreeningInfoForm > .content .result-box > ul > li > label {
+  width: 15.5%;
   gap: 0;
   position: relative;
 }
-.form#modifyScreeningInfoForm > .content > ul > li > label > ._obj-input {
-  height: 38px;
+.form#modifyScreeningInfoForm > .content .result-box > ul > li > label[rel=titleLabel] {
+  flex-grow: 1;
+}
+.form#modifyScreeningInfoForm > .content .result-box > ul > li > label > ._obj-input {
+  height: 100%;
   border-radius: 0;
   background-color: #ffffff;
   color: #444444;
 }
-.form#modifyScreeningInfoForm > .content > ul > li > label > [type=button][rel=showSearchMovie] {
+.form#modifyScreeningInfoForm > .content .result-box > ul > li > label > [type=button].vacateMovieButton {
+  border: none;
+  outline: none;
+  padding: 0;
+  background-color: #ffffff;
+  position: absolute;
+  top: 50%;
+  right: 3.01rem;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+.form#modifyScreeningInfoForm > .content .result-box > ul > li > label > [type=button][rel=showSearchMovie] {
   background-color: #ffffff;
   padding: 0;
   border: 1px #666666 solid;
@@ -364,15 +419,15 @@
   transform: translate(-50%, -50%);
   cursor: pointer;
 }
-.form#modifyScreeningInfoForm > .content > ul > li > label > [type=button][rel=showSearchMovie] > img {
+.form#modifyScreeningInfoForm > .content .result-box > ul > li > label > [type=button][rel=showSearchMovie] > img {
   width: 2rem;
   height: 2rem;
 }
-.form#modifyScreeningInfoForm > .content > ul > li > label > .__text {
+.form#modifyScreeningInfoForm > .content .result-box > ul > li > label > .__text {
   padding-top: 1rem;
 }
-.form#modifyScreeningInfoForm > .content > ul > li > [type=button] {
-  flex-grow: 1;
+.form#modifyScreeningInfoForm > .content .result-box > ul > li > [type=button] {
+  width: 13%;
   cursor: pointer;
 }
 

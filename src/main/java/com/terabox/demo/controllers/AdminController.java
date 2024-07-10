@@ -18,7 +18,6 @@ import java.io.IOException;
 @RequestMapping(value = "/admin")
 @RequiredArgsConstructor
 public class AdminController {
-    // zzzz
     private final AdminService adminService;
 
     @PostMapping(value = "/movie", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -39,7 +38,7 @@ public class AdminController {
     public String postProduct(@RequestParam("_thumbnail") MultipartFile thumbnail,
                                  ProductEntity product) throws IOException {
         product.setThumbnail(thumbnail.getBytes());
-        product.setThumbnailFileName(thumbnail.getName());
+        product.setThumbnailFileName(thumbnail.getOriginalFilename());
         product.setThumbnailContentType(thumbnail.getContentType());
         Result result = this.adminService.addProduct(product);
         JSONObject responseObject = new JSONObject();
@@ -52,7 +51,7 @@ public class AdminController {
     public String postEvent(@RequestParam("_thumbnail") MultipartFile thumbnail,
                                  EventEntity event) throws IOException {
         event.setThumbnail(thumbnail.getBytes());
-        event.setThumbnailFileName(thumbnail.getName());
+        event.setThumbnailFileName(thumbnail.getOriginalFilename());
         event.setThumbnailContentType(thumbnail.getContentType());
         Result result = this.adminService.addEvent(event);
         JSONObject responseObject = new JSONObject();

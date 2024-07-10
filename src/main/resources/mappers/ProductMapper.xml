@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.terabox.demo.mappers.ProductMapper">
+    <select id="selectProductByNamePrice" resultType="com.terabox.demo.entities.ProductEntity">
+        SELECT `index`                  AS `index`,
+               `name`                   AS `name`,
+               `price`                  AS `price`,
+               `quantity`               AS `quantity`,
+               `thumbnail`              AS `thumbnail`,
+               `thumbnail_file_name`    AS `thumbnailFileName`,
+               `thumbnail_content_type` AS `thumbnailContentType`,
+               `type`                   AS `type`,
+               `sub_title`              AS `subTitle`
+        FROM `terabox`.`products`
+        WHERE `name` = #{name}
+          AND `price` = #{price}
+        LIMIT 1
+    </select>
+
+    <select id="selectProductsByName" resultType="com.terabox.demo.entities.ProductEntity">
+        SELECT `index`                  AS `index`,
+               `name`                   AS `name`,
+               `price`                  AS `price`,
+               `quantity`               AS `quantity`,
+               `thumbnail`              AS `thumbnail`,
+               `thumbnail_file_name`    AS `thumbnailFileName`,
+               `thumbnail_content_type` AS `thumbnailContentType`,
+               `type`                   AS `type`,
+               `sub_title`              AS `subTitle`
+        FROM `terabox`.`products`
+        WHERE `name` = #{name}
+    </select>
+    <select id="selectProductByIndex" resultType="com.terabox.demo.entities.ProductEntity">
+        SELECT `index`                  AS `index`,
+               `name`                   AS `name`,
+               `price`                  AS `price`,
+               `quantity`               AS `quantity`,
+               `thumbnail`              AS `thumbnail`,
+               `thumbnail_file_name`    AS `thumbnailFileName`,
+               `thumbnail_content_type` AS `thumbnailContentType`,
+               `type`                   AS `type`,
+               `sub_title`              AS `subTitle`
+        FROM `terabox`.`products`
+        WHERE `index` = #{index}
+        LIMIT 1
+    </select>
+    <select id="selectProductsCountBySearch" parameterType="com.terabox.demo.dtos.SearchDto" resultType="_int">
+        SELECT COUNT(0) AS `count`
+        FROM `terabox`.`products` AS `product`
+        WHERE (REPLACE(`name`, ' ', '') LIKE CONCAT('%', REPLACE(#{keyword}, ' ', ''), '%'))
+        ORDER BY product.`index` DESC
+    </select>
+    <select id="selectProductsBySearch" parameterType="com.terabox.demo.dtos.SearchDto" resultType="com.terabox.demo.entities.ProductEntity">
+        SELECT `index`                  AS `index`,
+               `name`                   AS `name`,
+               `price`                  AS `price`,
+               `quantity`               AS `quantity`,
+               `thumbnail`              AS `thumbnail`,
+               `thumbnail_file_name`    AS `thumbnailFileName`,
+               `thumbnail_content_type` AS `thumbnailContentType`,
+               `type`                   AS `type`,
+               `sub_title`              AS `subTitle`
+        FROM `terabox`.`products` AS `product`
+        WHERE (REPLACE(`name`, ' ', '') LIKE CONCAT('%', REPLACE(#{keyword}, ' ', ''), '%'))
+        ORDER BY product.`index` DESC
+        LIMIT #{countPerPage} OFFSET #{offset}
+    </select>
+
+    <select id="selectProductsFourByTypeTicket" resultType="com.terabox.demo.entities.ProductEntity">
+        SELECT `index`                  AS `index`,
+               `name`                   AS `name`,
+               `price`                  AS `price`,
+               `quantity`               AS `quantity`,
+               `thumbnail`              AS `thumbnail`,
+               `thumbnail_file_name`    AS `thumbnailFileName`,
+               `thumbnail_content_type` AS `thumbnailContentType`,
+               `type`                   AS `type`,
+               `sub_title`              AS `subTitle`
+        FROM `terabox`.`products`
+        WHERE `type` = 'ticket'
+        LIMIT 4
+    </select>
+
+    <select id="selectProductsFourByTypeDfg" resultType="com.terabox.demo.entities.ProductEntity">
+        SELECT `index`                  AS `index`,
+               `name`                   AS `name`,
+               `price`                  AS `price`,
+               `quantity`               AS `quantity`,
+               `thumbnail`              AS `thumbnail`,
+               `thumbnail_file_name`    AS `thumbnailFileName`,
+               `thumbnail_content_type` AS `thumbnailContentType`,
+               `type`                   AS `type`,
+               `sub_title`               AS `subTitle`
+        FROM `terabox`.`products`
+        WHERE `type` = 'fdg'
+        LIMIT 4
+    </select>
+
+    <select id="selectProductsFourByTypePoint" resultType="com.terabox.demo.entities.ProductEntity">
+        SELECT `index`                  AS `index`,
+               `name`                   AS `name`,
+               `price`                  AS `price`,
+               `quantity`               AS `quantity`,
+               `thumbnail`              AS `thumbnail`,
+               `thumbnail_file_name`    AS `thumbnailFileName`,
+               `thumbnail_content_type` AS `thumbnailContentType`,
+               `type`                   AS `type`,
+               `sub_title`              AS `subTitle`
+        FROM `terabox`.`products`
+        WHERE `type` = 'point'
+        LIMIT 4
+    </select>
+
+    <!--     where `type` = 'ticket' type 이 ticket 인걸 가져오고 싶을때 #{} 이 아니라 'ticket 이라고 적어야함 '-->
+    <update id="updateProduct" parameterType="com.terabox.demo.entities.ProductEntity">
+        UPDATE `terabox`.products
+        SET `index`                  = #{index},
+            `name`                   = #{name},
+            `price`                  = #{price},
+            `quantity`               = #{quantity},
+            `thumbnail`              = #{thumbnail},
+            `thumbnail_file_name`    = #{thumbnailFileName},
+            `thumbnail_content_type` = #{thumbnailContentType},
+            `type`                   = #{type},
+            `sub_title`              = #{subTitle}
+        WHERE BINARY `index` = #{index}
+    </update>
+</mapper>

@@ -1,0 +1,1 @@
+document.querySelector('#header .main-logo-img').src = '/assets/images/common/Terabox-purple.png'

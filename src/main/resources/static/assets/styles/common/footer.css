@@ -1,0 +1,133 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
+#footer {
+  min-width: 1100px;
+  width: 100%;
+  height: 200px;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8fa;
+  position: relative;
+  font-family: sans-serif, "Nanum Gothic", Dotum, "돋움";
+}
+#footer > .footer-top {
+  overflow: hidden;
+  width: 1100px;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+#footer > .footer-top > .inner-wrap {
+  width: 1100px;
+  margin: 0 auto;
+}
+#footer > .footer-top > .inner-wrap > .fnb {
+  float: left;
+}
+#footer > .footer-top > .inner-wrap > .fnb > li:first-child {
+  margin-left: 0;
+}
+#footer > .footer-top > .inner-wrap > .fnb > li {
+  float: left;
+  margin-left: 14px;
+}
+#footer > .footer-top > .inner-wrap > .fnb > li > .foot-link {
+  background-color: #f8f8fa;
+  display: block;
+  color: #666;
+  line-height: 30px;
+  font-size: 0.8667em;
+}
+#footer > .footer-top > .inner-wrap > .fnb > .privacy > .foot-link {
+  color: #222;
+  font-weight: 700;
+}
+#footer > .footer-top > .inner-wrap > .btn-looking-theater {
+  overflow: hidden;
+  float: right;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 106px;
+  height: 30px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  line-height: 28px;
+  color: #666;
+  font-size: 0.8667em;
+  border: 1px solid #d8d9db;
+  border-radius: 30px;
+  text-decoration: none;
+}
+#footer > .footer-bottom {
+  overflow: hidden;
+  width: 1100px;
+  margin: 0 auto;
+  padding: 0;
+}
+#footer > .footer-bottom > .inner-wrap {
+  width: 1100px;
+  margin: 0 auto;
+}
+#footer > .footer-bottom > .inner-wrap > .ci {
+  overflow: hidden;
+  display: block;
+  float: left;
+  width: 150px;
+  height: 50px;
+  margin: 0 20px 0 0;
+  padding: 0;
+}
+#footer > .footer-bottom > .inner-wrap > .footer-info {
+  float: left;
+  font-size: 0.8667em;
+  letter-spacing: 0;
+}
+#footer > .footer-bottom > .inner-wrap > .footer-info > div > address {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  font-style: normal;
+}
+#footer > .footer-bottom > .inner-wrap > .footer-info > div > p {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+}
+#footer > .footer-bottom > .inner-wrap > .footer-info > p {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+}
+#footer > .footer-bottom > .inner-wrap > .footer-info > .copy {
+  display: block;
+}
+#footer > .footer-bottom > .inner-wrap > .footer-sns {
+  float: right;
+}
+#footer > .footer-bottom > .inner-wrap > .footer-sns > a {
+  display: block;
+  float: left;
+  width: 32px;
+  height: 30px;
+  margin-left: 5px;
+  font-size: 0;
+  line-height: 0;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-logo-img {
+  width: 9rem;
+}
+
+/*# sourceMappingURL=footer.css.map */

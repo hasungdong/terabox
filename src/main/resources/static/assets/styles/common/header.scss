@@ -11,7 +11,7 @@ body {
   overflow-y: scroll;
   font-size: 13px;
   color: #666666;
-  font-family: sans-serif, NanumBarunGothic, Dotum, '돋움';
+  font-family: sans-serif, "Nanum Gothic", Dotum, '돋움';
 }
 
 #header {
@@ -234,7 +234,6 @@ body {
       }
     }
 
-    // hover시 display를 block으로 설정 하기
     > .movieLink-mini {
       display: none;
       position: absolute;
@@ -276,7 +275,6 @@ body {
       }
     }
 
-    // hover시 display를 block으로 설정 하기
     > .reserveLink-mini {
       display: none;
       position: absolute;
@@ -318,7 +316,6 @@ body {
       }
     }
 
-    // hover시 display를 block으로 설정 하기
     > .theaterLink-mini {
       display: none;
       position: absolute;
@@ -364,7 +361,6 @@ body {
       }
     }
 
-    // hover시 display를 block으로 설정 하기
     > .eventLink-mini {
       display: none;
       position: absolute;
@@ -410,7 +406,6 @@ body {
       }
     }
 
-    // hover시 display를 block으로 설정 하기
     > .membershipLink-mini {
       display: none;
       position: absolute;
@@ -473,8 +468,6 @@ body {
 
     &.on {
       display: block;
-
-      //display: block;
     }
 
 

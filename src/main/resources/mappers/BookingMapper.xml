@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.terabox.demo.mappers.BookingMapper">
+    <!-- 모든 영화와 극장 SELECT -->
+    <select id="selectAllMovies" resultType="com.terabox.demo.entities.MovieEntity">
+        SELECT
+            `index` AS `index`,
+            `title` AS `title`,
+            `release_date` AS `releaseDate`,
+            `playing_time` AS `playingTime`,
+            `thumbnail` AS `thumbnail`,
+            `thumbnail_file_name` AS `thumbnailFileName`,
+            `thumbnail_content_type` AS `thumbnailContentType`,
+            `grade` AS `grade`,
+            `view` AS `view`,
+            `is_single` AS `isSingle`,
+            `age_limit_type` AS `ageLimit`,
+            `dimension_type` AS `dimensionType`
+        FROM `terabox`.`movies`
+    </select>
+
+    <!-- 지역별 극장 수 SELECT -->
+    <select id="selectTheaterCountsByRegion" resultType="com.terabox.demo.dtos.RegionCountDto">
+        SELECT
+            CASE
+                WHEN region_code IN ('Chung', 'Daej', 'Sej') THEN 'ChungDaeSej'
+                WHEN region_code IN ('Bu', 'Dae', 'Gyeong') THEN 'BuDaeGyeong'
+                WHEN region_code IN ('Gwang', 'Jeon') THEN 'GwangJeon'
+                ELSE region_code
+                END AS region,
+            COUNT(*) AS count
+        FROM `terabox`.`theaters`
+        GROUP BY region
+    </select>
+
+    <!-- 특정 지역의 모든 극장 SELECT -->
+    <select id="selectTheatersByRegion" resultType="com.terabox.demo.entities.TheaterEntity">
+        SELECT
+        `theater`.`index` AS `index`,
+        `theater`.`region_code` AS `regionCode`,
+        `theater`.`name` AS `name`
+        FROM `terabox`.`theaters` AS `theater`
+        WHERE `theater`.`region_code` IN
+        <if test="region == 'ChungDaeSej'">
+            ('Chung', 'Daej', 'Sej')
+        </if>
+        <if test="region == 'BuDaeGyeong'">
+            ('Bu', 'Dae', 'Gyeong')
+        </if>
+        <if test="region == 'GwangJeon'">
+            ('Gwang', 'Jeon')
+        </if>
+        <if test="region != 'ChungDaeSej' and region != 'BuDaeGyeong' and region != 'GwangJeon'">
+            (#{region})
+        </if>
+    </select>
+
+    <select id="selectScreeningInfoByDateMoviesTheaters" resultType="com.terabox.demo.dtos.ScreeningInfoDto">
+        SELECT
+        `screen`.`index` AS `index`,
+        screen.screening_time AS screeningTime,
+        ADDTIME(screen.screening_time, movie.playing_time) AS endTime,
+        movie.playing_time AS playingTime,
+        movie.title AS movieTitle,
+        movie.dimension_type AS dimensionType,
+        theater.name AS theaterName,
+        cinema.number AS cinemaNumber,
+        movie.thumbnail AS thumbnail,
+        movie.age_limit_type AS ageLimit,
+        screen.screening_date AS screeningDate
+        FROM
+        terabox.screening_info AS screen
+        JOIN terabox.movies AS movie ON screen.movie_index = movie.index
+        JOIN terabox.cinemas AS cinema ON screen.cinema_index = cinema.index
+        JOIN terabox.theaters AS theater ON cinema.theater_index = theater.index
+        WHERE
+        screen.screening_date = #{screeningDate}
+        AND screen.movie_index IN
+        <foreach item="movieIndex" collection="movieIndexes" open="(" separator="," close=")">
+            #{movieIndex}
+        </foreach>
+        AND cinema.theater_index IN
+        <foreach item="theaterIndex" collection="theaterIndexes" open="(" separator="," close=")">
+            #{theaterIndex}
+        </foreach>
+    </select>
+
+    <select id="selectSeatsByScreeningInfo" resultType="com.terabox.demo.entities.SeatEntity">
+        SELECT
+            `seat`.`index` AS `index`,
+            `seat`.`row` AS `row`,
+            `seat`.`column` AS `column`,
+            `seat`.`seat_status_type` AS `seatStatus`,
+            `seat`.`cinema_index` AS `cinemaIndex`
+        FROM `terabox`.`seats` AS `seat`
+                 JOIN `terabox`.`screening_info` AS `screening`
+                      ON `seat`.`cinema_index` = `screening`.`cinema_index`
+        WHERE screening.index = #{screeningInfoIndex}
+    </select>
+
+    <select id="selectSeatPrices" resultType="com.terabox.demo.entities.SeatPriceEntity">
+        SELECT
+            `type` AS `type`,
+            `price` AS `price`
+        FROM
+            `terabox`.`seat_prices`
+    </select>
+</mapper>
+

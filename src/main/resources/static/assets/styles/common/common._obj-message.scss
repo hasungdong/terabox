@@ -10,7 +10,8 @@
   pointer-events: none;
   position: fixed;
   transition: opacity 250ms;
-  z-index: 10;
+  //알림창은 항상 보여야 하니까
+  z-index: 999;
 
   &.-visible {
     opacity: 1;
@@ -33,7 +34,7 @@
   transform: translate(-50%, -50%);
   transition-duration: 250ms;
   transition-property: top, opacity;
-  z-index: 11;
+  z-index: 999;
 
   &.-visible {
     top: 50%;

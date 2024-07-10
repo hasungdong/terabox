@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
-@import "../../common/header";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 @import "../../common/common.notHome";
 @import "discountCommon";
 
@@ -139,10 +139,10 @@
               color: #000;
 
               > img{
-                width: 0.7rem;
-                height: 0.8rem;
+                width: 0.375rem;
+                height: 0.5625rem;
 
-                margin-left: 0.25rem;
+                margin-left: 0.5rem;
               }
             }
           }
@@ -290,10 +290,10 @@
             color: #000;
 
             > img {
-              width: 0.7rem;
-              height: 0.8rem;
+              width: 0.375rem;
+              height: 0.5625rem;
 
-              margin-left: 0.25rem;
+              margin-left: 0.5rem;
             }
           }
         }

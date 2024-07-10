@@ -18,34 +18,7 @@
         </label>
     </form>
     <div class="content">
-        <ul>
-            <li>
-                <input type="hidden" name="screeningDate">
-                <input type="hidden" name="screeningTime">
-                <input type="hidden" name="cinemaIndex">
-                <input type="hidden" name="movieIndex">
-                <label class="_obj-label" rel="releaseDateLabel">
-                    <input class="_obj-input __field" type="text" name="releaseDate" spellcheck="false" value="2024-06-06" disabled>
-                </label>
-                <label class="_obj-label" rel="theaterNameLabel">
-                    <input class="_obj-input __field" type="text" name="theaterName" spellcheck="false" disabled value="대구 동대구역">
-                </label>
-                <label class="_obj-label" rel="cinemaLabel">
-                    <input class="_obj-input __field" type="text" name="cinema" spellcheck="false" disabled value="1관">
-                </label>
-                <label class="_obj-label" rel="playingTimeLabel">
-                    <input class="_obj-input __field" type="text" name="cinema" spellcheck="false" disabled value="00:00:00">
-                </label>
-                <label class="_obj-label" rel="titleLabel">
-                    <input class="_obj-input __field" type="text" name="title" spellcheck="false" disabled value="범죄도시4">
-                    <button type="button" class="search-button" rel="showSearchMovie">
-                        <img th:src="@{/assets/images/common/search.png}" alt="">
-                    </button>
-                </label>
-                <button type="button">수정하기</button>
-            </li>
-        </ul>
-        <div class="spring"></div>
+        <div class="result-box"></div>
         <button type="button" rel="hideModifyScreeningInfoForm">취소</button>
     </div>
 </div>

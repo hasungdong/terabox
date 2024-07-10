@@ -23,8 +23,18 @@ public class EventService {
         searchDto.setMinPage(1);
 
         searchDto.setOffset(searchDto.getCountPerPage() * (searchDto.getRequestPage() - 1));
-
-
         return this.eventMapper.selectEventsBySearch(searchDto);
+    }
+
+    public EventEntity[] getEventsAll(){
+        return this.eventMapper.selectEventsAll();
+    }
+
+    public int getEventsAllCount(){
+        return this.eventMapper.selectEventsAllCount();
+    }
+
+    public EventEntity[] getEventsTwoStartDate(){
+        return this.eventMapper.selectEventsTwoStartDate();
     }
 }

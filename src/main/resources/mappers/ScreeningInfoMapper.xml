@@ -3,5 +3,104 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.terabox.demo.mappers.ScreeningInfoMapper">
+    <insert id="insertScreeningInfo"
+            useGeneratedKeys="true"
+            keyColumn="index"
+            keyProperty="index"
+            parameterType="com.terabox.demo.entities.ScreeningInfoEntity">
+        INSERT INTO `terabox`.`screening_info` (`movie_index`, `cinema_index`, `screening_date`, `screening_time`)
+        VALUES (#{movieIndex}, #{cinemaIndex}, #{screeningDate}, #{screeningTime})
+    </insert>
 
+    <select id="selectScreeningInfoByIndex" resultType="com.terabox.demo.entities.ScreeningInfoEntity">
+        SELECT `index`          AS `index`,
+               `movie_index`    AS `movieIndex`,
+               `cinema_index`   AS `cinemaIndex`,
+               `screening_date` AS `screeningDate`,
+               `screening_time` AS `screeningTime`
+        FROM `terabox`.`screening_info`
+        WHERE `index` = #{index}
+        LIMIT 1
+    </select>
+
+    <select id="selectScreeningInfosByCinemaAndDate" resultType="com.terabox.demo.entities.ScreeningInfoEntity">
+        SELECT `index`          AS 'index',
+               `movie_index`    AS 'movie_index',
+               `cinema_index`   AS 'cinema_index',
+               `screening_date` AS 'screening_date',
+               `screening_time` AS 'screening_time'
+        FROM `terabox`.`screening_info`
+        WHERE `screening_date` = #{screeningDate}
+          AND `cinema_index` = #{cinemaIndex}
+    </select>
+
+    <select id="selectScreeningInfoVoByCinemaAndDate" resultType="com.terabox.demo.vos.ScreeningInfoVo">
+        SELECT `screeningInfo`.`index`          AS 'index',
+               `screeningInfo`.`movie_index`    AS 'movieIndex',
+               `screeningInfo`.`cinema_index`   AS 'cinemaIndex',
+               `screeningInfo`.`screening_date` AS 'screeningDate',
+               `screeningInfo`.`screening_time` AS 'screeningTime',
+               `cinema`.`index`                 AS `cinemaIndex`,
+               `cinema`.`theater_index`         AS `theaterIndex`,
+               `cinema`.`number`                AS `cinemaNumber`,
+               `theater`.`index`                AS `theaterIndex`,
+               `theater`.`region_code`          AS `regionCode`,
+               `theater`.`name`                 AS `theaterName`,
+               `region`.`text`                  AS `regionText`,
+               `movie`.`title`                  AS `movieTitle`,
+               `movie`.`age_limit_type`         AS `ageLimit`
+        FROM `terabox`.`screening_info` AS `screeningInfo`
+                 JOIN
+             `terabox`.`cinemas` AS `cinema` ON `screeningInfo`.`cinema_index` = `cinema`.`index`
+                 JOIN
+             `terabox`.`theaters` AS `theater` ON `cinema`.`theater_index` = `theater`.`index`
+                 JOIN
+             `terabox`.`regions` AS `region` ON `theater`.`region_code` = `region`.`code`
+                 #             LEFT JOIN을 하면 불러오는 값이 null일 때 따로 컬럼을 생성해서 null 값을 입력한 후 가져온다.
+#             그냥 JOIN하면 null일 때 아무것도 안가져와짐
+                 LEFT JOIN
+             `terabox`.`movies` AS `movie` ON `screeningInfo`.`movie_index` = `movie`.`index`
+        WHERE `screening_date` = #{screeningDate}
+          AND `cinema_index` = #{cinemaIndex}
+    </select>
+
+    <select id="selectScreeningInfoVoByIndex" resultType="com.terabox.demo.vos.ScreeningInfoVo">
+        SELECT `screeningInfo`.`index`          AS 'index',
+               `screeningInfo`.`movie_index`    AS 'movieIndex',
+               `screeningInfo`.`cinema_index`   AS 'cinemaIndex',
+               `screeningInfo`.`screening_date` AS 'screeningDate',
+               `screeningInfo`.`screening_time` AS 'screeningTime',
+               `cinema`.`index`                 AS `cinemaIndex`,
+               `cinema`.`theater_index`         AS `theaterIndex`,
+               `cinema`.`number`                AS `cinemaNumber`,
+               `theater`.`index`                AS `theaterIndex`,
+               `theater`.`region_code`          AS `regionCode`,
+               `theater`.`name`                 AS `theaterName`,
+               `region`.`text`                  AS `regionText`,
+               `movie`.`title`                  AS `movieTitle`,
+               `movie`.`dimension_type`         AS `movieDimensionType`,
+               `movie`.`playing_time`           AS `moviePlayingTime`,
+               `movie`.`age_limit_type`         AS `ageLimit`
+        FROM `terabox`.`screening_info` AS `screeningInfo`
+                 JOIN
+             `terabox`.`cinemas` AS `cinema` ON `screeningInfo`.`cinema_index` = `cinema`.`index`
+                 JOIN
+             `terabox`.`theaters` AS `theater` ON `cinema`.`theater_index` = `theater`.`index`
+                 JOIN
+             `terabox`.`regions` AS `region` ON `theater`.`region_code` = `region`.`code`
+                 #             LEFT JOIN을 하면 불러오는 값이 null일 때 따로 컬럼을 생성해서 null 값을 입력한 후 가져온다.
+#             그냥 JOIN하면 null일 때 아무것도 안가져와짐
+                 LEFT JOIN
+             `terabox`.`movies` AS `movie` ON `screeningInfo`.`movie_index` = `movie`.`index`
+        WHERE screeningInfo.`index` = #{index}
+    </select>
+
+    <update id="updateScreeningInfoByIndex" parameterType="com.terabox.demo.entities.ScreeningInfoEntity">
+        UPDATE `terabox`.`screening_info`
+        SET `movie_index`    = #{movieIndex},
+            `cinema_index`   = #{cinemaIndex},
+            `screening_date` = #{screeningDate},
+            `screening_time` = #{screeningTime}
+        WHERE `index` = #{index}
+    </update>
 </mapper>

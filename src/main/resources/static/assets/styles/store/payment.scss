@@ -1,0 +1,206 @@
+@charset "UTF-8";
+section {
+  box-sizing: border-box;
+  display: block;
+}
+div{
+  display: block;
+  unicode-bidi: isolate;
+}
+
+header{
+  display: block;
+}
+
+
+
+p{
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  unicode-bidi: isolate;
+}
+
+
+  ////overflow: auto;
+  ////overflow-y: scroll;
+  //letter-spacing: 0;
+  //line-height: 1.5;
+  //font-size: 15px;
+  //color: #444;
+  //font-weight: 400;
+  //font-family: NanumBarunGothic, Dotum, '돋움', sans-serif;
+
+    .alert-popup{
+    display: none;
+    position: fixed;
+    padding-top: 45px;
+    background: rgb(255, 255, 255);
+    z-index: 5006;
+    top: 220px;
+    left: 250px;
+    width: 500px;
+    opacity: 1;
+    > .wrap{
+      text-align: center;
+
+      > .layer-header{
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 45px;
+        background: #503396;
+
+        > .tit{
+          text-align: left;
+          color: #fff;
+          padding: 15px 20px 0 20px;
+          font-size: 1.2em;
+          line-height: 1.1;
+          margin: 0;
+        }
+
+      }
+
+      .layer-con{
+        overflow-y: auto;
+        background-color: #fff;
+        padding: 10px 20px 0 20px;
+        height: auto !important;
+
+        .strn {
+
+          > .colorbox {
+            padding: 20px 15px;
+            border-radius: 5px;
+            background-color: #f2f4f5;
+            color: #444;
+            font-size: 17px;
+            line-height: 26px;
+            text-align: center;
+            letter-spacing: -.05em;
+
+            > span{
+              color: #503396;
+            }
+          }
+
+
+          > .text2{
+            padding: 18px 0 5px;
+            font-size: 14px;
+            line-height: 26px;
+            color: #e81003;
+            text-align: center;
+
+          }
+
+          > .text {
+            padding: 18px 0 20px;
+            font-size: 15px;
+            line-height: 15px;
+            text-align: center;
+            color: #444;
+          }
+
+          > .line{
+            height: 8px;
+            background: url(https://img.megabox.co.kr/static/pc/images/common/bul/strn_line.png) repeat-x;
+          }
+
+
+
+
+        }
+
+
+
+        > .txt-common{
+          margin: 0;
+          padding: 0;
+          text-align: left;
+        }
+
+        > .btn-group{
+          padding: 15px 0 20px 0;
+          margin: 0;
+          text-align: center;
+
+          button{
+            font-size: 1em;
+            display: inline-block;
+            height: 36px;
+            margin: 0;
+            padding: 0 15px;
+            text-align: center;
+            line-height: 34px;
+            color: #503396;
+            font-weight: 400;
+            border-radius: 4px;
+            font-family: NanumBarunGothic, Dotum, '돋움', sans-serif;
+            text-decoration: none;
+            border: 1px solid #503396;
+            vertical-align: middle;
+            background-color: #fff;
+            cursor: pointer;
+            letter-spacing: -.5px;
+            text-transform: none;
+          }
+
+
+          > .button {
+            margin: 0 3px;
+          }
+
+          > .button.lyclose{
+             &:hover{
+              color: #351f67;
+              text-decoration: none;
+              background-color: #f2f4f8;
+            }
+          }
+
+          > .button.purple{
+            color: #fff;
+            line-height: 36px;
+            border: 0;
+            background: #503396;
+            &:hover{
+              background-color: #351f67;
+              text-decoration: none;
+            }
+          }
+        }
+      }
+      > .btn-layer-close{
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        width: 16px;
+        height: 15px;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        text-indent: -9999px;
+        background: url(https://img.megabox.co.kr/static/pc/images/common/btn/btn-layer-close.png) no-repeat center;
+      }
+
+
+    }
+
+      &.-visible{
+        display: block;
+
+      }
+
+
+  }
+
+
+
+

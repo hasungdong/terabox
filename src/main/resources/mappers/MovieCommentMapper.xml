@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.terabox.demo.mappers.MovieCommentMapper">
+
+    <select id="selectMovieGrade" resultType="double">
+        SELECT ROUND(AVG(`grade`), 1) AS `average`
+        FROM `terabox`.`movie_comments`
+        WHERE  `movie_index` = #{movieIndex}
+    </select>
+
+
+    <select id="selectMovieNewest" resultType="com.terabox.demo.dtos.MovieCommentDto" parameterType="com.terabox.demo.dtos.SearchDto">
+        SELECT `comment`.`index` AS `index`,
+        `comment`.`movie_index` AS `movieIndex`,
+        `comment`.`created_at`  AS `createdAt` ,
+        `comment`.`user_email`  AS `userEmail`,
+        `comment`.`content` AS `content`,
+        `comment`.`grade` AS `grade`,
+        `comment`.`favorite` AS `favorite`,
+        COUNT(`comment_like`.`index`)  AS commentLikeCount
+        FROM `terabox`.`movie_comments` AS `comment`
+        LEFT JOIN `terabox`.`movie_comment_likes` AS `comment_like`
+        ON `comment`.`index` = `comment_like`.`movie_comment_index`
+        WHERE BINARY `movie_index` = #{movieIndex}
+        GROUP BY `comment`.`index`, `comment`.`movie_index`, `comment`.`created_at`, `comment`.`user_email`, `comment`.`content`, `comment`.`grade`, `comment`.`favorite`
+        <choose>
+            <when test="by != null and by.equals('newest')">
+                ORDER BY `comment`.`index` DESC
+            </when>
+            <when test="by != null and by.equals('sympathy')">
+                ORDER BY commentLikeCount DESC
+            </when>
+            <when test="by != null and by.equals('grade')">
+                ORDER BY `comment`.`grade` DESC
+            </when>
+            <otherwise>
+                ORDER BY `comment`.`index` DESC
+            </otherwise>
+        </choose>
+        LIMIT  #{countPerPage}
+        OFFSET #{offset}
+    </select>
+
+    <select id="selectCommentCount" resultType="_int" >
+    SELECT COUNT(0)
+    FROM terabox.movie_comments
+    WHERE BINARY `movie_index` = #{movieIndex}
+    </select>
+
+
+
+</mapper>

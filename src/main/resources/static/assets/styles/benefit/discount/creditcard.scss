@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
-@import "../../common/header";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 @import "../../common/common.notHome";
 @import "discountCommon";
 
@@ -57,108 +57,159 @@
       }
     }
 
-    > .card-list-block{
-      display: flex;
-      flex-direction: column;
+    > .search-card-button-bar{
+      margin-top: 30px;
+      text-align: center;
 
-      > .tit{
-        padding-top: 70px;
-        padding-bottom: 16px;
-        font-size: 24px;
-        color: #503396;
+      > button{
+        position: relative;
+        display: inline-block;
+        margin: 10px 12px 0 12px;
+        padding: 0 0 5px 0;
+        border: none;
+        outline: none;
+        color: #555;
+        font-size: 1.0667em;
+        font-weight: 400;
+        border-bottom: 2px solid #fff;
+        background-color: #fff;
+        cursor: pointer;
+
+        &:not(:last-of-type)::after{
+          content: '';
+          display: block;
+          position: absolute;
+          right: -14px;
+          top: 2px;
+          width: 1px;
+          height: 14px;
+          background-color: #d8d9db;
+        }
+
+        &.on{
+          color: #351f66;
+          border-bottom: 2px solid #503396;
+          font-weight: 400;
+        }
       }
+    }
 
-      > .list{
-        > ul {
-          border-top: 1px solid #555;
-          display: flex;
-          flex-direction: column;
+    > .card-list-block{
+      > ul {
+        display: flex;
+        flex-direction: column;
 
-          > li{
-            padding: 30px 0;
-            border-bottom: 1px solid #eaeaea;
-            display: flex;
-            flex-direction: row;
+        > li{
+          display: none;
 
-            > .img{
-              width: 230px;
+          &.on{
+            display: block;
+          }
+
+          > .tit{
+            padding-top: 70px;
+            padding-bottom: 16px;
+            font-size: 24px;
+            color: #503396;
+          }
+
+          > .list{
+            > ul {
+              border-top: 1px solid #555;
               display: flex;
-              justify-content: center;
-              align-items: center;
-            }
+              flex-direction: column;
 
-            > .cont{
-              flex-grow: 1;
-              padding-left: 40px;
-
-              > .top{
+              > li{
+                padding: 30px 0;
+                border-bottom: 1px solid #eaeaea;
                 display: flex;
                 flex-direction: row;
-                align-items: center;
-                padding: 0 0 15px 0;
 
-                > .name{
-                  font-size: 1.2rem;
-                  color: #222;
-                  line-height: 1.1;
+                > .img{
+                  width: 230px;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+
+                  img{
+                    object-fit: contain;
+                  }
                 }
 
-                > .spring{
+                > .cont{
                   flex-grow: 1;
-                }
+                  padding-left: 40px;
 
-                >.sale{
-                  > .online{
-                    overflow: hidden;
-                    display: block;
-                    float: left;
-                    height: 22px;
-                    margin: 0 0 0 5px;
-                    padding: 0 10px;
-                    line-height: 22px;
-                    border: 1px solid #503396;
-                    border-radius: 11px;
-                    color: #503396;
+                  > .top{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    padding: 0 0 15px 0;
+
+                    > .name{
+                      font-size: 1.2rem;
+                      color: #222;
+                      line-height: 1.1;
+                    }
+
+                    > .spring{
+                      flex-grow: 1;
+                    }
+
+                    >.sale{
+                      > .online{
+                        overflow: hidden;
+                        display: block;
+                        float: left;
+                        height: 22px;
+                        margin: 0 0 0 5px;
+                        padding: 0 10px;
+                        line-height: 22px;
+                        border: 1px solid #503396;
+                        border-radius: 11px;
+                        color: #503396;
+                      }
+
+                      > .offline{
+                        overflow: hidden;
+                        display: block;
+                        float: left;
+                        height: 22px;
+                        margin: 0 0 0 5px;
+                        padding: 0 10px;
+                        line-height: 22px;
+                        border: 1px solid #037b94;
+                        border-radius: 11px;
+                        color: #037b94;
+                      }
+                    }
                   }
 
-                  > .offline{
-                    overflow: hidden;
-                    display: block;
-                    float: left;
-                    height: 22px;
-                    margin: 0 0 0 5px;
-                    padding: 0 10px;
-                    line-height: 22px;
-                    border: 1px solid #037b94;
-                    border-radius: 11px;
-                    color: #037b94;
+                  > .dot-list{
+                    font-size: 0.9375rem;
+                    line-height: 1.5;
+                    color: #222222;
                   }
-                }
-              }
 
-              > .dot-list{
-                font-size: 0.9375rem;
-                line-height: 1.5;
-                color: #222222;
-              }
+                  > .btn{
+                    padding-top: 19px;
 
-              > .btn{
-                padding-top: 19px;
-
-                > .button{
-                  display: inline-block;
-                  height: 36px;
-                  margin: 0;
-                  padding: 0 15px;
-                  text-align: center;
-                  border-radius: 4px;
-                  vertical-align: middle;
-                  cursor: pointer;
-                  line-height: 36px;
-                  border: 0;
-                  background: #503396;
-                  color: #fff;
-                  font-size: 0.9375rem;
+                    > .button{
+                      display: inline-block;
+                      height: 36px;
+                      margin: 0;
+                      padding: 0 15px;
+                      text-align: center;
+                      border-radius: 4px;
+                      vertical-align: middle;
+                      cursor: pointer;
+                      line-height: 36px;
+                      border: 0;
+                      background: #503396;
+                      color: #fff;
+                      font-size: 0.9375rem;
+                    }
+                  }
                 }
               }
             }

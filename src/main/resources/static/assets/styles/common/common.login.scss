@@ -7,7 +7,8 @@
   height: 100%;
   background-color: #212121a0;
   position: fixed;
-  z-index: 10;
+  //로딩은 항상 보여야 하니까
+  z-index: 999;
 
   opacity: 0;
   pointer-events: none;
@@ -76,8 +77,6 @@
   }
 }
 
-@charset "UTF-8";
-
 .login {
   top: 50%;
   left: 50%;
@@ -92,7 +91,7 @@
   position: fixed;
   transform: translate(-50%, -50%);
   transition: top, opacity 250ms ease;
-  z-index: 9;
+  z-index: 100;
 
   &.-visible {
     top: 50%;

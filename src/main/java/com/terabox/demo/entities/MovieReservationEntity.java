@@ -11,5 +11,4 @@ public class MovieReservationEntity {
     private int index;
     private int seatIndex;
     private int screeningInfoIndex;
-    private int price;
 }

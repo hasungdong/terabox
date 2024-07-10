@@ -1,7 +1,6 @@
 @charset "UTF-8";
 
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
-@import "../common/header";
 @import "../common/common.notHome";
 
 #main {
@@ -52,6 +51,8 @@
           text-align: center;
           box-sizing: border-box;
 
+
+
           &:first-child {
             width: 140px;
           }
@@ -85,6 +86,9 @@
             height: 48px;
             background: 0 0;
             border: none;
+            outline: none;
+
+            cursor: pointer;
           }
 
           > .theater-list {
@@ -93,7 +97,7 @@
             left: 0;
             top: 48px;
             width: 100%;
-            min-height: 85px;
+            //min-height: 85px;
             padding: 30px 0;
 
             > ul {
@@ -139,6 +143,10 @@
       background-color: #ecf0f4;
 
       > div{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
         > .icon{
           width: 10px;
           height: 12px;
@@ -151,6 +159,11 @@
           font-size: .9333em;
           color: #503396;
           margin-left: 10px;
+
+          &:hover{
+            background-color: #503396;
+            color: #ffffff;
+          }
         }
       }
     }
@@ -183,11 +196,11 @@
         flex-direction: row;
         align-items: center;
         color: #666666;
-        
+
         > .icon{
-          width: 18.5px;
-          height: 18.5px;
-          margin-left: 2px;
+          width: 7px;
+          height: 12px;
+          margin-left: 5px;
         }
       }
     }
@@ -201,6 +214,7 @@
         width: calc(50% - 0.95rem);
         border-radius: 10px;
         height: 250px;
+        cursor: pointer;
       }
     }
   }
@@ -234,9 +248,9 @@
         color: #666666;
 
         > .icon{
-          width: 18.5px;
-          height: 18.5px;
-          margin-left: 2px;
+          width: 7px;
+          height: 12px;
+          margin-left: 5px;
         }
       }
     }

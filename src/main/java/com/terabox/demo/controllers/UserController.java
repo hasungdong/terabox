@@ -1,8 +1,6 @@
 package com.terabox.demo.controllers;
 
-import com.terabox.demo.entities.CardEntity;
 import com.terabox.demo.entities.EmailAuthEntity;
-import com.terabox.demo.entities.UserCardEntity;
 import com.terabox.demo.entities.UserEntity;
 import com.terabox.demo.exceptions.TransactionalException;
 import com.terabox.demo.results.CommonResult;

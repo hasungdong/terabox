@@ -1,0 +1,213 @@
+@charset "UTF-8";
+
+.time-choice {
+  width: 478px;
+  height: 530px;
+  padding: 0;
+
+  .title-area {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    margin-left: 20px;
+
+    .right-item {
+      margin-right: 20px;
+      font-size: 12px;
+
+      img {
+        margin-bottom: -2px;
+        margin-right: -3px;
+      }
+    }
+  }
+
+  .hour-schedule {
+    height: 30px;
+    border-top: 1px solid #d8d9db;
+    border-bottom: 1px solid #d8d9db;
+
+    .btn-gr {
+      display: flex;
+      flex-direction: row;
+
+
+      .btn-pre {
+        margin: 0 15px 0 25px;
+        width: 30px;
+        border: 0;
+        background-color: transparent;
+        cursor: pointer;
+        height: inherit;
+        color: #444;
+      }
+
+      .btn-next {
+        margin: 0 25px 0 15px;
+        width: 30px;
+        border: 0;
+        background-color: transparent;
+        cursor: pointer;
+        height: inherit;
+        color: #444;
+      }
+
+      .hour-area {
+        height: 30px;
+        overflow: hidden;
+
+
+        > .wrap {
+          height: inherit;
+          width: 1015px;
+
+          button {
+            width: 35px;
+            padding: 0 5px 0 5px;
+            border: 0;
+            background-color: transparent;
+            height: inherit;
+            font-size: 1.1333em;
+            font-weight: 400;
+            cursor: pointer;
+            color: #444;
+
+            &.selected {
+              background-color: #555;
+              color: #fff;
+            }
+          }
+
+          &.selected {
+            background-color: #555;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  .movie-schedule-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    height: calc(100% - 50px);
+
+    .no-r:first-child {
+      margin-top: 30px;
+    }
+
+    .no-result {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      height: inherit;
+
+      > img {
+        width: 46px;
+        height: 46px;
+      }
+    }
+
+    .result {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow-y: scroll;
+
+      .btn {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        width: 100%;
+        height: 70px;
+        padding: 0;
+        background-color: transparent;
+        border: 0;
+        border-bottom: 1px solid #ebebeb;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #ebebeb;
+        }
+
+        &:focus {
+          background-color: #ebebeb;
+        }
+
+        > .time-icon {
+          width: 40px;
+          margin-top: 20px;
+          margin-bottom: auto;
+        }
+
+        > .time {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+
+          > strong {
+            font-size: 20px;
+            margin-bottom: 3px;
+          }
+        }
+
+        > .title {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+
+          height: 100%;
+          margin-right: auto;
+          margin-left: 20px;
+
+          > strong {
+            font-weight: 400;
+            font-size: 15px;
+          }
+
+          > em {
+            margin-top: 10px;
+          }
+        }
+
+        > .info {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          justify-content: center;
+          text-align: right;
+
+          height: 100%;
+          padding: 0 5px 0 5px;
+
+          > .seat {
+            border: 1px solid #ebebeb;
+            padding: 3px;
+            margin-top: 2px;
+            width: 100%;
+            text-align: center;
+
+            > .now {
+              color: #01738b;
+            }
+
+            > .all {
+              color: #666;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

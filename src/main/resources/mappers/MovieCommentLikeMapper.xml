@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.terabox.demo.mappers.MovieCommentLikeMapper">
+
+    <insert id="insertMovieCommentLike" parameterType="com.terabox.demo.entities.MovieCommentLikesEntity">
+        INSERT INTO `terabox`.`movie_comment_likes`
+            ( `movie_comment_index`, `user_email`, `created_at`)
+        VALUES (#{movieCommentIndex},#{userEmail},#{createdAt})
+
+    </insert>
+
+    <delete id="deleteMovieCommentLikeByEmail">
+    DELETE
+    FROM `terabox`.`movie_comment_likes`
+    WHERE `movie_comment_index` = #{movieCommentIndex}
+    AND BINARY `user_email` =#{userEmail}
+    LIMIT 1
+    </delete>
+
+    <select id="selectCommentLikeByIndex" resultType="com.terabox.demo.entities.MovieCommentLikesEntity">
+        SELECT `index` AS `index`,
+               movie_comment_index AS movieCommentIndex,
+               user_email AS userEmail,
+               created_at AS createdAt
+        FROM `terabox`.movie_comment_likes
+        WHERE `movie_comment_index` = #{movieCommentIndex}
+          AND BINARY `user_email` = #{userEmail}
+        LIMIT 1
+    </select>
+
+<!--    <select id="selectCountCommentLikeBy" resultType="com.terabox.demo.entities.MovieCommentLikesEntity">-->
+<!--    SELECT COUNT(0) AS`count`-->
+<!--    FROM terabox.movie_comment_likes-->
+<!--    WHERE BINARY `movie_comment_index`=#{movieCommentIndex}-->
+<!--    </select>-->
+
+
+</mapper>

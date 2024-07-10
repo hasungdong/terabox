@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-@import "../common/header";
 @import "../common/common.notHome";
 
 *{
@@ -15,7 +14,7 @@ body{
   font-size: 15px;
   color: #444;
   font-weight: 400;
-  font-family: sans-serif, NanumBarunGothic, Dotum, '돋움';
+  font-family: NanumBarunGothic, Dotum, '돋움', sans-serif;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -114,7 +113,7 @@ body{
           >.onairBtn {
             display: block;
             padding: 0 0 0 30px;
-            background: url(https://img.megabox.co.kr/static/pc/images/common/btn/btn-on-air.png) no-repeat 0 2px;
+            background: url("../../images/movie/allmovie-btn-on-air.png") no-repeat 0 center;
             border: 0;
             font-size: 1em;
 
@@ -153,7 +152,7 @@ body{
             padding: 0;
             border: 0;
             text-indent: -9999px;
-            background: #fff url(https://img.megabox.co.kr/static/pc/images/common/btn/btn-search-input.png) no-repeat center;
+            background: url("../../images/movie/allmovie-btn-search-input.png") no-repeat 0 center;
             font-size: 0;
             line-height: 0;
             overflow: hidden;
@@ -167,44 +166,6 @@ body{
       }
 
       >.movie-list{ /*영화 리스트 묶음*/
-
-        >.board-move {
-          //position: relative;
-          padding: 40px 0 0 0;
-
-          > .btn {
-            display: block;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            height: 40px;
-            border: 1px solid #eaeaea;
-            background-color: transparent;
-            color: #666;
-
-            &:hover {
-              border: 1px solid #000000;
-            }
-
-            > i {
-              margin-left: 6px;
-              width: 12px;
-              height: 7px;
-              background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-btn-more-arr.png);
-              overflow: hidden;
-              display: inline-block;
-              padding: 0;
-              font-size: 0;
-              line-height: 0;
-              vertical-align: middle;
-              background-position: 0 0;
-              background-repeat: no-repeat;
-            }
-          }
-        }
-
-
-
 
         >.list{ /*그 밑에 ol 태그*/
           margin-left: -60px;
@@ -223,6 +184,7 @@ body{
 
             >.movie-list-info{
               position: relative;
+              display: inline-block;
 
               >.rank{
                 z-index: 2;
@@ -239,7 +201,7 @@ body{
                 font-weight: 300;
                 color: #fff;
                 text-shadow: 2px 2px 2px rgba(0, 0, 0, .8);
-                background: url(https://img.megabox.co.kr/static/pc/images/movie/bg-movie-list-rank.png) no-repeat 0 0;
+                background: url("../../images/movie/allmovie-bg-movie-list-rank.png") no-repeat 0 center;
 
               }
 
@@ -249,7 +211,7 @@ body{
                 overflow: hidden;
                 position: relative;
                 float: left;
-                margin: 0 0 0 0px;
+                margin: 0;
                 padding: 0;
                 background-color: #fff;
                 border-radius: 0.5rem;
@@ -271,10 +233,9 @@ body{
                     border-radius: 0.5rem;
 
                     >.summary{
+                      overflow: hidden;
                       display: block;
                       color: white;
-
-
 
                     }
 
@@ -284,7 +245,7 @@ body{
                     position: absolute; //absolute 줄려면 조상중에 있어야함 position: relative;
                     overflow: hidden;
                     width: 180px;
-                    height: 400px;
+                    height: 163px;
                     display: none;
 
 
@@ -309,7 +270,7 @@ body{
 
 
 
-              >.movie-grad-all{
+              >.movie-grad-all{ //몇세 이용가인지 아직 구현중
                 height: 100%;
                 background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/ALL_46x46.png);
                 background-size: 23px 23px;

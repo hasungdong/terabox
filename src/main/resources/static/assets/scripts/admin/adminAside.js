@@ -344,9 +344,11 @@ searchMovieShowButtons.forEach(searchMovieShowButton => searchMovieShowButton.on
         alertCover2.classList.add(HTMLElement.VISIBLE_CLASS_NAME);
     }
     alertCover2.show(() => {
-        alertCover2.hide();
+        alertCover2.remove();
         searchMovie.hide();
     });
+
+
 });
 
 searchMovieHideButtons.forEach(searchMovieHideButton => searchMovieHideButton.onclick = () => {

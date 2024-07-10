@@ -1,0 +1,174 @@
+@charset "UTF-8";
+
+.time-schedule {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+
+  height: 40px;
+  border: 1px solid #d8d9db;
+  border-top: 1px solid #555;
+
+  > .wrap {
+    display: flex;
+    height: 40px;
+
+
+    .btn-prev {
+      width: 30px;
+      border: 0 !important;
+      background-color: transparent !important;
+      cursor: pointer;
+      height: inherit;
+    }
+
+    .btn-next {
+      width: 30px;
+      border: 0 !important;
+      background-color: transparent !important;
+      cursor: pointer;
+      height: inherit;
+    }
+
+    .date-list {
+
+      > .year-area {
+
+        .year {
+          position: absolute;
+          z-index: 1;
+          opacity: 1;
+          left: 30px;
+
+          border: 1px solid #d8d9db;
+          border-radius: 15px;
+          background-color: #fff;
+          margin-top: -10px;
+
+          top: 0;
+          height: 20px;
+          width: 70px;
+          text-align: center;
+          line-height: 18px;
+          font-weight: 300;
+          font-size: .8667rem;
+        }
+
+        .year:nth-child(2) {
+          position: absolute;
+          z-index: 1;
+          opacity: 1;
+
+          border: 1px solid #d8d9db;
+          border-radius: 15px;
+          background-color: #fff;
+          margin-top: -10px;
+          top: 0;
+          left: 940px;
+          height: 20px;
+          width: 70px;
+          text-align: center;
+          line-height: 18px;
+          font-weight: 300;
+          font-size: .8667rem;
+        }
+      }
+
+      .date-area {
+        height: inherit;
+        overflow: hidden;
+        width: 980px;
+
+        .wrap {
+          float: left;
+          display: flex;
+          flex-direction: row;
+          position: relative;
+          transition: 0.5s;
+        }
+
+        button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          width: 70px;
+          padding: 0;
+          border: 0;
+          border-bottom: 2px solid transparent;
+          background-color: transparent;
+          height: 39px;
+          font-size: .8667em;
+          font-weight: 400;
+          cursor: pointer;
+
+          &.selected {
+            border-bottom-color: #503396;
+            background-color: lighten(#444, 70%);
+          }
+
+          &.disabled {
+            opacity: 0.5;
+            pointer-events: none;
+          }
+
+          &:hover {
+            border-bottom-color: #503396;
+          }
+
+          //&:focus {
+          //  border-bottom-color: #503396;
+          //  background-color: lighten(#444, 70%);
+          //}
+        }
+
+        em {
+          position: relative;
+          padding: 0 9px 0 0;
+          font-style: normal;
+        }
+
+        em::after {
+          content: '';
+          position: absolute;
+          right: 3px;
+          top: 8px;
+          display: block;
+          width: 3px;
+          height: 3px;
+          background-color: #888;
+        }
+
+        .week {
+          vertical-align: bottom;
+        }
+
+        .sat {
+          color: #3b5fcb;
+        }
+
+        .holi {
+          color: #e81002;
+        }
+      }
+    }
+  }
+
+  .cal-line {
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+
+    border-left: 1px solid #d8d9db;
+    height: inherit;
+
+    .btn-calendar-large {
+      cursor: pointer;
+      border: 0;
+      background-color: transparent;
+      width: 45px;
+    }
+  }
+}
+
+

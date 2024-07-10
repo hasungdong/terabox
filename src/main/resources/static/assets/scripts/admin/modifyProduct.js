@@ -8,6 +8,10 @@ modifyProductForm.onsubmit = e => {
     if (!modifyProductForm.nameLabel.isValid()) {
         return;
     }
+    showProducts(1);
+}
+
+const showProducts = (page) => {
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
         if (xhr.readyState !== XMLHttpRequest.DONE) {
@@ -27,6 +31,7 @@ modifyProductForm.onsubmit = e => {
                 const responseArray = responseObject['products'];
                 modifyProductForm.divResult.innerHTML = '';
                 if (responseArray.length === 0) {
+                    MessageObj.createSimpleOk('알림', '수정할 상품이 없습니다.').show();
                     return;
                 }
                 const ul = new DOMParser().parseFromString(`
@@ -49,11 +54,53 @@ modifyProductForm.onsubmit = e => {
             </li>
         </ul>
             `, 'text/html').querySelector('li');
-                    li.querySelector('.img').setAttribute('src', `/store/image?index=${responseArrayElement['index']}`);
+                    li.querySelector('.img').setAttribute('src', `/product/image?index=${responseArrayElement['index']}`);
                     ul.append(li);
                 }
                 modifyProductForm.divResult.append(ul);
+
+                // 검색하고 밑에 페이지 나오게
+                // pageContainer 만들기
+                const pageContainer = new DOMParser().parseFromString(`
+                 <div class="page-container"></div>
+                `, 'text/html').querySelector('div');
+                modifyProductForm.divResult.append(pageContainer);
+                // pageContainer 내용물 만들기
+                const maxPage = responseObject['search']['maxPage'];
+                if (maxPage > 10) {
+                    const preButton = new DOMParser().parseFromString(`
+                <button type="button">
+                    <img src="/assets/images/common/left.png" height="16" width="16"/>
+                    <span>이전</span>
+                </button>
+                    `, 'text/html').querySelector('button');
+                    pageContainer.append(preButton);
+                }
+                // 페이지 숫자들 들어갈 박스
+                const pageBox = new DOMParser().parseFromString(`
+                <div class="page-box"></div>
+                `, 'text/html').querySelector('div');
+                pageContainer.append(pageBox);
+                // 페이지 숫자
+                for (let i = 1; i <= maxPage; i++) {
+                    const page = new DOMParser().parseFromString(`
+                    <span class="page">${i}</span>
+                    `, 'text/html').querySelector('.page');
+                    pageBox.append(page);
+                }
+                // 다음 버튼
+                if (maxPage > 10) {
+                    const nextButton = new DOMParser().parseFromString(`
+                    <button type="button">
+                    <span>다음</span>
+                    <img src="/assets/images/common/right.png" height="16" width="16"/>
+                </button>
+                    `, 'text/html').querySelector('button');
+                    pageContainer.append(nextButton);
+                }
+
                 const lis = modifyProductForm.divResult.querySelectorAll('li');
+                // 불러온 상품들 선택했을 때
                 lis.forEach(li => li.onclick = () => {
                     new MessageObj({
                         title: '경고',
@@ -69,11 +116,11 @@ modifyProductForm.onsubmit = e => {
                                     instance.hide();
                                     modifyProductFormTwo.show();
                                     const xhr = new XMLHttpRequest();
-                                    xhr.onreadystatechange = function(){
-                                        if (xhr.readyState !== XMLHttpRequest.DONE){
+                                    xhr.onreadystatechange = function () {
+                                        if (xhr.readyState !== XMLHttpRequest.DONE) {
                                             return;
                                         }
-                                        if(xhr.status < 200 || xhr.status >= 300){
+                                        if (xhr.status < 200 || xhr.status >= 300) {
                                             MessageObj.createSimpleOk('오류', '요청을 전송하는 도중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.').show();
                                             return;
                                         }
@@ -91,7 +138,7 @@ modifyProductForm.onsubmit = e => {
             <span class="__text">상품 이미지</span>
             <span class="image-wrapper">
                 <span class="empty" style="display:none;">상품 이미지를 선택해 주세요.</span>
-                <img alt="" class="image" src="/store/image?index=${responseObject['index']}" style="display:block;">
+                <img alt="" class="image" src="/product/image?index=${responseObject['index']}" style="display:block;">
             </span>
         </label>
         <label class="_obj-label" rel="priceLabel">
@@ -109,10 +156,15 @@ modifyProductForm.onsubmit = e => {
             <select class="_obj-input __field" name="type">
                 <option disabled hidden selected value="-1">종류 선택</option>
                 <option value="ticket">티켓(기본)</option>
-                <option value="food">음식</option>
-                <option value="coupon">쿠폰</option>
+                <option value="fdg">음식</option>
+                <option value="point">포인트 상품</option>
             </select>
             <span class="__warning">종류를 선택해 주세요.</span>
+        </label>
+        <label class="_obj-label" rel="subTitleLabel">
+            <span class="__text">상품 설명</span>
+            <input class="_obj-input __field" type="text" name="subTitle" maxlength="30" minlength="1" placeholder="상품 설명(숫자, 영어 대소문자, 완성 한글, 공백 1자 이상 30자 이하)" value="${responseObject['subTitle']}">
+            <span class="__warning">올바른 문자를 입력해 주세요.</span>
         </label>
         <div class="spring"></div>
         <button type="submit">수정하기</button>
@@ -128,7 +180,7 @@ modifyProductForm.onsubmit = e => {
                                             const image = imageWrapper.querySelector(':scope > .image');
 
                                             // 이미지 선택할 때 취소 누르면 아래 if문으로 빠짐
-                                            if (modifyProductFormTwo['thumbnail'].files.length === 0){
+                                            if (modifyProductFormTwo['thumbnail'].files.length === 0) {
                                                 empty.style.display = 'block';
                                                 image.style.display = 'none';
                                                 return;
@@ -155,6 +207,7 @@ modifyProductForm.onsubmit = e => {
                                         modifyProductFormTwo.priceLabel = new LabelObj(modifyProductFormTwo.querySelector('[rel="priceLabel"]'));
                                         modifyProductFormTwo.quantityLabel = new LabelObj(modifyProductFormTwo.querySelector('[rel="quantityLabel"]'));
                                         modifyProductFormTwo.typeLabel = new LabelObj(modifyProductFormTwo.querySelector('[rel="typeLabel"]'));
+                                        modifyProductFormTwo.subTitleLabel = new LabelObj(modifyProductFormTwo.querySelector('[rel="subTitleLabel"]'));
 
                                         modifyProductFormTwo.onsubmit = e => {
                                             e.preventDefault();
@@ -171,15 +224,19 @@ modifyProductForm.onsubmit = e => {
                                             modifyProductFormTwo.quantityLabel.setValid(modifyProductFormTwo['quantity'].value > 0 &&
                                                 modifyProductFormTwo['quantity'].value < 10000);
                                             modifyProductFormTwo.typeLabel.setValid(modifyProductFormTwo['type'].value === 'ticket' ||
-                                                modifyProductFormTwo['type'].value === 'food' ||
-                                                modifyProductFormTwo['type'].value === 'coupon');
+                                                modifyProductFormTwo['type'].value === 'fdg' ||
+                                                modifyProductFormTwo['type'].value === 'point');
+                                            const subTitleRegex = RegExp(/^([\da-zA-Z가-힣().\- !]{1,30})$/);
+                                            addProductForm.subTitleLabel.setValid(subTitleRegex.test(addProductForm['subTitle'].value));
+
 
                                             // 양식 안맞을시 제출 막는 로직, 이것도 add에서 해줬었음
                                             if (!modifyProductFormTwo.nameLabel.isValid() ||
                                                 !modifyProductFormTwo.thumbnailLabel.isValid() ||
                                                 !modifyProductFormTwo.priceLabel.isValid() ||
                                                 !modifyProductFormTwo.quantityLabel.isValid() ||
-                                                !modifyProductFormTwo.typeLabel.isValid()){
+                                                !modifyProductFormTwo.typeLabel.isValid() ||
+                                                !modifyProductFormTwo.subTitleLabel.isValid()) {
                                                 return;
                                             }
 
@@ -191,6 +248,7 @@ modifyProductForm.onsubmit = e => {
                                             formData.append('quantity', modifyProductFormTwo['quantity'].value);
                                             formData.append('_thumbnail', modifyProductFormTwo['thumbnail'].files[0]);
                                             formData.append('type', modifyProductFormTwo['type'].value);
+                                            formData.append('subTitle', modifyProductFormTwo['subTitle'].value);
                                             xhr.onreadystatechange = function () {
                                                 if (xhr.readyState !== XMLHttpRequest.DONE) {
                                                     return;
@@ -203,13 +261,16 @@ modifyProductForm.onsubmit = e => {
                                                 const responseObject = JSON.parse(xhr.responseText);
                                                 const [dTitle, dContent, dOnclick] = {
                                                     failure: ['경고', '알 수 없는 이유로 상품을 수정하지 못하였습니다. 잠시 후 다시 시도해 주세요.'],
+                                                    failure_duplicate: ['경고', '이미 존재하는 상품 입니다. 이름이나 가격을 변경 후 시도해 주세요.'],
                                                     success: ['알림', '상품을 성공적으로 수정하였습니다.', () => {
                                                         modifyProductFormTwo.hide();
                                                         // modifyProductFormTwo가 생길때 div.content가 생성되서 지워져야될 때 지워져야 된다.
                                                         // 안그러면 div.content가 계속해서 생겨남
-                                                        // 지금은 modifyProductFormTwo가 생기고, 수정하기 누르지 않고 alertCover 눌러서 빠져나올 때의 상황
+                                                        // 지금은 modifyProductFormTwo가 생기고, 수정하기를 눌러서 성공한 상황
                                                         modifyProductFormTwo.querySelector('div.content').remove();
-                                                        modifyProductForm.divResult.innerHTML = '';
+                                                        // modifyProductForm.divResult.innerHTML = '';
+                                                        // 성공했으면 1page로 검색
+                                                        showProducts(1);
                                                     }]
                                                 }[responseObject.result] || ['경고', '서버가 알 수 없는 응답을 반환하였습니다. 잠시 후 다시 시도해 주세요.'];
                                                 MessageObj.createSimpleOk(dTitle, dContent, dOnclick).show();
@@ -219,7 +280,7 @@ modifyProductForm.onsubmit = e => {
                                             loading.show();
                                         }
                                     }
-                                    xhr.open('GET', `/store/product?index=${li.querySelector('[name="index"]').value}`);
+                                    xhr.open('GET', `/product/product?index=${li.querySelector('[name="index"]').value}`);
                                     xhr.send();
                                 }
                             }
@@ -231,8 +292,13 @@ modifyProductForm.onsubmit = e => {
                 MessageObj.createSimpleOk('경고', '서버가 알 수 없는 응답을 반환하였습니다. 잠시 후 다시 시도해주세요.').show();
                 return;
         }
+        // 페이지가 불러져와있을 때 다른 페이지를 눌렀을 때 이동하는 로직
+        const pages = modifyProductForm.divResult.querySelectorAll('.page');
+        pages.forEach(page => page.onclick = () => {
+            showProducts(page.innerText);
+        });
     }
-    xhr.open('GET', `/store/search?keyword=${modifyProductForm['name'].value}`);
+    xhr.open('GET', `/product/search?keyword=${modifyProductForm['name'].value}&page=${page}`);
     xhr.send();
     loading.show();
 }

@@ -5,22 +5,26 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>제목 미정</title>
-    <link rel="stylesheet" th:href="@{/assets/styles/benefit/discount/guide.css}">
+    <title>MEET PLAY SHARE, 테라박스</title>
     <th:block th:replace="~{fragments/common/common.html :: commonHead}"></th:block>
-    <script defer th:src="@{/assets/scripts/discount.js}"></script>
+    <link rel="stylesheet" th:href="@{/assets/styles/benefit/discount/guide.css}">
+    <script defer th:src="@{/assets/scripts/benefit/discount.js}"></script>
+    <script defer src="/assets/scripts/common.notHome.js"></script>
 </head>
 <body>
 <th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
 <main id="main">
-    <th:block th:replace="~{fragments/discount/discount.html :: discount}"></th:block>
+    <h2 class="title2">제휴할인</h2>
+    <div class="AffiliateEvent">
+        <th:block th:replace="~{fragments/discount/discount.html :: discount('제휴 이벤트')}"></th:block>
+    </div>
     <nav>
         <ul class="tab">
             <li class="item on">
                 <a class="link" th:href="@{./guide}">할인안내</a>
             </li>
             <li class="item">
-                <a class="link" th:href="@{./creditcard}">신용카드(284)</a>
+                <a class="link" th:href="@{./creditcard}" th:text="${'신용카드(' + (cardsCount) + ')'}">신용카드(4)</a>
             </li>
             <li class="item">
                 <a class="link" th:href="@{./telecomcard}">통신사(3)</a>
@@ -57,7 +61,7 @@
                         <span class="title">통신사</span>
                         <div class="spring"></div>
                         <a class="link" href="./telecomcard" title="통신사 전체보기">
-                            전체보기 <img th:src="@{/assets/images/common/more.png}" alt="">
+                            전체보기 <img th:src="@{/assets/images/common/moreGray.png}" alt="">
                         </a>
                     </div>
                     <div class="number" id="ckc01cnt">3</div>
@@ -84,19 +88,19 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
+                                    <a th:href="@{./telecomcard (telecom=lgu)}" class="link" role="option" aria-disabled="false" tabindex="0"
                                        aria-selected="false">
                                         <span class="text">LGU＋</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
+                                    <a th:href="@{./telecomcard (telecom=skt)}" class="link" role="option" aria-disabled="false" tabindex="0"
                                        aria-selected="false">
                                         <span class="text">SKT</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
+                                    <a th:href="@{./telecomcard (telecom=kt)}" class="link" role="option" aria-disabled="false" tabindex="0"
                                        aria-selected="false">
                                         <span class="text">KT</span>
                                     </a>
@@ -110,27 +114,15 @@
                         <span class="title">신용카드</span>
                         <div class="spring"></div>
                         <a class="link" href="./creditcard" title="신용카드 전체보기">
-                            전체보기 <img th:src="@{/assets/images/common/more.png}" alt="">
+                            전체보기 <img th:src="@{/assets/images/common/moreGray.png}" alt="">
                         </a>
                     </div>
-                    <div class="number" id="ckc02cnt">284</div>
+                    <div class="number" id="ckc02cnt" th:text="${cardsCount}"></div>
                     <div class="select-box">
                         <select title="카드 선택" id="sbxCredit" name="sbxCredit" class="selectpicker" tabindex="-98">
                             <option class="bs-title-option" value=""></option>
                             <option>카드 선택</option>
-                            <option value="CPCT00">메가박스카드</option>
-                            <option value="CPCT01">삼성카드</option>
-                            <option value="CPCT02">현대카드</option>
-                            <option value="CPCT03">신한카드</option>
-                            <option value="CPCT04">비씨카드</option>
-                            <option value="CPCT05">KB국민카드</option>
-                            <option value="CPCT06">우리카드</option>
-                            <option value="CPCT07">하나카드</option>
-                            <option value="CPCT09">NH농협카드</option>
-                            <option value="CPCT10">씨티카드</option>
-                            <option value="CPCT11">IBK기업은행</option>
-                            <option value="CPCT15">SC제일은행</option>
-                            <option value="CPCT99">기타</option>
+                            <option th:value="${card.getName()}" th:each="card : ${cards}"></option>
                         </select>
                         <button type="button" class="button select" title="카드 선택" rel="showCard">
                             <div class="select-fake">카드 선택</div>
@@ -146,81 +138,10 @@
                                         <span class="text">카드 선택</span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
+                                <li th:each="card : ${cards}">
+                                    <a th:href="@{./creditcard (cardName= ${card.getEngName()})}" class="link" role="option" aria-disabled="false" tabindex="0"
                                        aria-selected="false">
-                                        <span class="text">메가박스카드</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
-                                       aria-selected="false">
-                                        <span class="text">삼성카드</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
-                                       aria-selected="false">
-                                        <span class="text">현대카드</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
-                                       aria-selected="false">
-                                        <span class="text">신한카드</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
-                                       aria-selected="false">
-                                        <span class="text">비씨카드</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
-                                       aria-selected="false">
-                                        <span class="text">KB국민카드</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
-                                       aria-selected="false"><span class="text">우리카드</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
-                                       aria-selected="false">
-                                        <span class="text">하나카드</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
-                                       aria-selected="false">
-                                        <span class="text">NH농협카드</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
-                                       aria-selected="false">
-                                        <span class="text">씨티카드</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
-                                       aria-selected="false">
-                                        <span class="text">IBK기업은행</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
-                                       aria-selected="false">
-                                        <span class="text">SC제일은행</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="link" role="option" aria-disabled="false" tabindex="0"
-                                       aria-selected="false">
-                                        <span class="text">기타</span>
+                                        <span class="text" th:text="${card.getName()}"></span>
                                     </a>
                                 </li>
                             </ul>
@@ -232,7 +153,7 @@
                         <span class="title">포인트/기타제휴</span>
                         <div class="spring"></div>
                         <a class="link" href="./pointcard" title="포인트 기타제휴 전체보기">
-                            전체보기 <img th:src="@{/assets/images/common/more.png}" alt="">
+                            전체보기 <img th:src="@{/assets/images/common/moreGray.png}" alt="">
                         </a>
                     </div>
                     <div class="number" id="ckc03cnt">14</div>
@@ -272,7 +193,7 @@
                     <div class="spring"></div>
                     <a class="link" href="./giftcard" title="상품권 관람권 전체보기">
                         전체보기
-                        <img th:src="@{/assets/images/common/more.png}" alt="">
+                        <img th:src="@{/assets/images/common/moreGray.png}" alt="">
                     </a>
                 </div>
             </div>

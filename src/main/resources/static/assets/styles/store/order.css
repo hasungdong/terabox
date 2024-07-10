@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
 body {
   font-weight: 400;
   letter-spacing: 0;
@@ -9,7 +10,7 @@ body {
   overflow-y: scroll;
   font-size: 13px;
   color: #666666;
-  font-family: sans-serif, NanumBarunGothic, Dotum, "돋움";
+  font-family: sans-serif, "Nanum Gothic", Dotum, "돋움";
 }
 
 #header {
@@ -852,6 +853,7 @@ li {
   position: relative;
   left: 2rem;
   top: -1rem;
+  filter: none;
 }
 #header > .link-area > .header-event {
   text-decoration-line: none;
@@ -936,7 +938,7 @@ p.price {
 
 select {
   height: 36px;
-  padding-left: 4px;
+  padding-right: 60px;
   border-color: #ccc;
   border-radius: 4px;
   font-family: NanumBarunGothic, Dotum, "돋움", sans-serif;
@@ -976,6 +978,7 @@ table {
   table-layout: fixed;
   border-collapse: collapse;
   empty-cells: show;
+  border-top: 1px solid #555;
 }
 
 tbody {
@@ -983,15 +986,6 @@ tbody {
   vertical-align: middle;
   unicode-bidi: isolate;
   border-color: inherit;
-}
-
-h3 {
-  margin: 0;
-  padding: 30px 0 15px 0;
-  font-size: 1.6em;
-  font-weight: 480;
-  color: #503396;
-  line-height: 1.1;
 }
 
 strong {
@@ -1058,6 +1052,14 @@ body > .container > .page-util {
   width: 1100px;
   margin: 0 auto;
 }
+.inner h3 {
+  margin: 0;
+  padding: 30px 0 15px 0;
+  font-size: 1.6em;
+  font-weight: 480;
+  color: #503396;
+  line-height: 1.1;
+}
 .inner > .btn-group {
   overflow: hidden;
   margin: 20px 0 0 25rem;
@@ -1103,7 +1105,7 @@ body > .container > .page-util > .inner > .location {
   height: 42px;
 }
 body > .container > .page-util > .inner > .location > span {
-  background: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-location-home.png) no-repeat center;
+  background: url("../../images/store/bg-location-home.png") no-repeat 0 center;
   overflow: hidden;
   display: block;
   float: left;
@@ -1128,7 +1130,7 @@ body > .container > .page-util > .inner > .location > .icon {
   top: 0;
   width: 5px;
   height: 42px;
-  background: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-location-arr.png) no-repeat left center;
+  background: url("../../images/store/bg-location-arr.png") no-repeat left center;
 }
 body > .container > .content {
   padding: 40px 0 0 0;
@@ -1179,12 +1181,12 @@ body > .container > .content > .inner > .event-list > .inner > .payment-final > 
 body > .container > .content > .inner > .event-list > .inner > .payment-final > .calc > .ico-circle-minus {
   width: 24px;
   height: 24px;
-  background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-circle-minus.png);
+  background: url("../../images/store/order-ico-circle-minus.png") no-repeat 0 center;
 }
 body > .container > .content > .inner > .event-list > .inner > .payment-final > .calc > .ico-circle-equal {
   width: 24px;
   height: 24px;
-  background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-circle-equal.png);
+  background: url("../../images/store/order-ico-circle-equal.png") no-repeat 0 center;
 }
 body > .container > .content > .inner > .event-list > .inner > .payment-final > .calc > .cell.all {
   display: inline-block;
@@ -1230,9 +1232,8 @@ body > .container > .content > .inner > .event-list > .inner > .payment-final > 
 body > .container > .content > .inner > .event-list > .inner > .payment-final > .select-card.-visible {
   display: block;
 }
-body > .container > .content > .inner > .event-list > .inner > .table-wrap { /* 주문 상품 정보*/
+body > .container > .content > .inner > .event-list > .inner > .table-wrap { /* 주문 상품 정보 */
   position: relative;
-  border-top: 1px solid #555;
 }
 body > .container > .content > .inner > .event-list > .inner > .table-wrap > .board-list > tbody > tr > th {
   text-align: left;
@@ -1281,13 +1282,12 @@ body > .container > .content > .inner > .event-list > .inner > .table-wrap > .bo
   font-size: 0;
   line-height: 0;
 }
-body > .container > .content > .inner > .event-list > .inner > .table-wrap > .board-list > tbody > tr > td > .goods-info > .img > a:link {
+body > .container > .content > .inner > .event-list > .inner > .table-wrap > .board-list > tbody > tr > td > .goods-info > .img > a {
   color: #444;
   text-decoration: none;
 }
-body > .container > .content > .inner > .event-list > .inner > .table-wrap > .board-list > tbody > tr > td > .goods-info > .img > a:link > img {
-  width: 100%;
-  height: 100%;
+body > .container > .content > .inner > .event-list > .inner > .table-wrap > .board-list > tbody > tr > td > .goods-info > .img > a > img {
+  width: 100px;
 }
 body > .container > .content > .inner > .event-list > .inner > .table-wrap > .board-list > thead > tr > th {
   height: 45px;

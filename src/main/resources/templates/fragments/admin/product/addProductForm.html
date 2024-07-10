@@ -13,7 +13,7 @@
     <div class="content">
         <label class="_obj-label" rel="nameLabel">
             <span class="__text">상품 이름</span>
-            <input autofocus required class="_obj-input __field" type="text" name="name" maxlength="100" minlength="1" th:attrappend="data-regex=${productRegex.proName.expression}">
+            <input autofocus required class="_obj-input __field" type="text" name="name" maxlength="100" minlength="1" th:attrappend="data-regex=${productRegex.proName.expression}" placeholder="상품 이름(숫자, 영어 대소문자, 완성 한글, 공백 1자 이상 100자 이하)">
             <span class="__warning">올바른 이름을 입력해 주세요.</span>
         </label>
         <label class="_obj-label thumbnail" rel="thumbnailLabel">
@@ -39,10 +39,15 @@
             <select class="_obj-input __field" name="type">
                 <option disabled hidden selected value="-1">종류 선택</option>
                 <option value="ticket" selected>티켓(기본)</option>
-                <option value="food">음식</option>
-                <option value="coupon">쿠폰</option>
+                <option value="fdg">음식</option>
+                <option value="point">쿠폰</option>
             </select>
             <span class="__warning">종류를 선택해 주세요.</span>
+        </label>
+        <label class="_obj-label" rel="subTitleLabel">
+            <span class="__text">상품 설명</span>
+            <input class="_obj-input __field" type="text" name="subTitle" maxlength="30" minlength="1" placeholder="상품 설명(숫자, 영어 대소문자, 완성 한글, 공백 1자 이상 30자 이하)" th:attrappend="data-regex=${productRegex.subTitle.expression}">
+            <span class="__warning">올바른 문자를 입력해 주세요.</span>
         </label>
         <div class="spring"></div>
         <button type="submit">추가하기</button>

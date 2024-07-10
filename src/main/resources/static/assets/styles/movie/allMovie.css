@@ -8,7 +8,7 @@ body {
   overflow-y: scroll;
   font-size: 13px;
   color: #666666;
-  font-family: sans-serif, NanumBarunGothic, Dotum, "돋움";
+  font-family: NanumBarunGothic, Dotum, "돋움", sans-serif;
 }
 
 #header {
@@ -907,7 +907,7 @@ body form #container > .tab-list > .topMenu > .on { /*li 태그들*/
 body form #container > .tab-list > .topMenu > .on > .a { /*링크 태그들*/
   position: relative;
   display: block;
-  width: 100%;
+  width: 1100px;
   padding: 8px 0;
   text-align: center;
   color: #222;
@@ -932,7 +932,7 @@ body form #container > .movie-list-util > .onairBtnContainer {
 body form #container > .movie-list-util > .onairBtnContainer > .onairBtn {
   display: block;
   padding: 0 0 0 30px;
-  background: url(https://img.megabox.co.kr/static/pc/images/common/btn/btn-on-air.png) no-repeat 0 2px;
+  background: url("../../images/movie/allmovie-btn-on-air.png") no-repeat 0 2px;
   border: 0;
   font-size: 1em;
 }
@@ -967,7 +967,7 @@ body form #container > .movie-list-util > .movie-search > .btn-search-input {
   padding: 0;
   border: 0;
   text-indent: -9999px;
-  background: #fff url(https://img.megabox.co.kr/static/pc/images/common/btn/btn-search-input.png) no-repeat center;
+  background: url("../../images/movie/allmovie-btn-search-input.png") no-repeat 0 center;
   font-size: 0;
   line-height: 0;
   overflow: hidden;
@@ -1027,8 +1027,6 @@ body form #container > .movie-list > .list > .img > .movie-list-info > .rank {
   position: absolute;
   left: 0;
   top: -30px;
-  width: 230px;
-  height: 150px;
   padding: 8px 0 0 10px;
   line-height: 1.1;
   font-size: 2em;
@@ -1037,7 +1035,7 @@ body form #container > .movie-list > .list > .img > .movie-list-info > .rank {
   font-weight: 300;
   color: #fff;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
-  background: url(https://img.megabox.co.kr/static/pc/images/movie/bg-movie-list-rank.png) no-repeat 0 0;
+
 }
 body form #container > .movie-list > .list > .img > .movie-list-info > .poster { /*영화 사진*/
   width: 230px;
@@ -1057,11 +1055,11 @@ body form #container > .movie-list > .list > .img > .movie-list-info > .movie-sc
   display: block;
   padding: 25px;
 }
-body form #container > .movie-list > .list > .img > .movie-list-info > .movie-score > .wrap:hover {
+body form #container > .movie-list > .list > .img > .movie-list-info:hover > .movie-score > .wrap {
   background-color: rgba(0, 0, 0, 0.8);
   border-radius: 0.5rem;
 }
-body form #container > .movie-list > .list > .img > .movie-list-info > .movie-score > .wrap:hover > .summary {
+body form #container > .movie-list > .list > .img > .movie-list-info:hover  > .movie-score > .wrap> .summary {
   display: block;
   color: white;
 }
@@ -1069,7 +1067,7 @@ body form #container > .movie-list > .list > .img > .movie-list-info > .movie-sc
   position: absolute;
   overflow: hidden;
   width: 180px;
-  height: 400px;
+  height: 163px;
   display: none;
 }
 body form #container > .movie-list > .list > .img > .tit-area { /*묶음자리*/
@@ -1159,7 +1157,7 @@ body form #container > .movie-list > .list > .img > .btn-util > .Ticketing-conta
 }
 body form #container > .movie-list > .list > .img > .btn-util > .Ticketing-container > .button.purple.ticketing {
   margin-left: 0;
-  width: 74px;
+  width: 150px;
 }
 body form #container > .movie-list > .list > .img > .btn-util > .Ticketing-container > .button.purple.img {
   display: inline-block;

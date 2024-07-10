@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 public abstract class AbstractGeneralController {
     protected <T> JSONObject parseResponse(SearchDto searchDto, T[] ts, String key) {
         JSONObject responseObject = new JSONObject();
-        responseObject.put("search", searchDto);
+        responseObject.put("search", new JSONObject(searchDto.toString()));
         responseObject.put(key, ts);
         if (ts == null) {
             responseObject.put("result", CommonResult.FAILURE.name().toLowerCase());

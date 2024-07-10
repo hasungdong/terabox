@@ -8,15 +8,14 @@
 @import "common._obj-input";
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 
-
-
 body {
   cursor: default;
-  font-family: sans-serif, NanumBarunGothic, Dotum, "돋움" ;
-  font-size: 0.96rem;
+  font-family: "Nanum Gothic", Dotum, "돋움", sans-serif ;
+  font-size: 0.9375rem;
   font-weight: 400;
   line-height: 1;
   margin: 0;
+  color: #444444;
 }
 
 a:link, a:visited{
@@ -25,6 +24,10 @@ a:link, a:visited{
   &:hover{
     text-decoration: none;
   }
+}
+
+a{
+  cursor: pointer;
 }
 
 h1, h2, h3, h4, h5, h6 {

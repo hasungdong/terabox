@@ -1,7 +1,5 @@
-const cover = document.getElementById('cover');
 const loginForm = document.getElementById('loginForm');
 const recoverDialog = document.getElementById('recoverDialog');
-const loading = document.getElementById('loading');
 const linksitemap = document.getElementById('header-site-map');
 const sitemap = document.getElementById('layer_sitemap');
 
@@ -19,7 +17,6 @@ const eventLink = document.getElementById('eventLink-mini-container');
 
 const headerBenefits = document.getElementById('header-benefits');
 const membershipLink = document.getElementById('membershipLink-mini-container');
-
 
 // 6/9 작성함 (김성민)
 
@@ -146,12 +143,6 @@ document.body.querySelectorAll('[rel="showRecoverCaller"]').forEach(el => el.add
 
 loginForm.emailLabel = new LabelObj(loginForm.querySelector('[rel="emailLabel"]'));
 loginForm.passwordLabel = new LabelObj(loginForm.querySelector('[rel="passwordLabel"]'));
-
-// 로그인 취소 버튼 작동
-loginCancelButton.onclick = () => {
-    loginForm.hide();
-    cover.hide();
-}
 
 
 // 로그인 화면에서 이메일이나 비밀번호 값에 변경이 있을 때, 둘 중 하나라도 비어있으면 제출 버튼이 비활성화된다.

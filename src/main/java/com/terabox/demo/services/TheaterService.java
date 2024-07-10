@@ -2,6 +2,7 @@ package com.terabox.demo.services;
 
 import com.terabox.demo.entities.TheaterEntity;
 import com.terabox.demo.mappers.TheaterMapper;
+import com.terabox.demo.vos.TheaterVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +11,19 @@ import org.springframework.stereotype.Service;
 public class TheaterService {
     private final TheaterMapper theaterMapper;
 
-    public TheaterEntity[] getTheaters(String regionCode) {
+    public TheaterEntity getTheater(int index){
+        if (index < 1){
+            return null;
+        }
+        return this.theaterMapper.selectTheaterByIndex(index);
+    }
+
+    public TheaterEntity[] getTheatersByRegionCode(String regionCode) {
         return this.theaterMapper.selectTheatersByRegionCode(regionCode);
+    }
+
+
+    public TheaterVo[] getTheatersOnTheaterList(){
+        return this.theaterMapper.selectTheatersOnTheaterList();
     }
 }

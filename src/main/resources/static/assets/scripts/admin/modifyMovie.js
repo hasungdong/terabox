@@ -8,6 +8,14 @@ modifyMovieForm.onsubmit = e => {
     if (!modifyMovieForm.titleLabel.isValid()) {
         return;
     }
+    // 처음 제출했을 땐 당연히 1페이지 보여주기
+    showMovies(1);
+    // 페이지들 눌렸을 때 이동되는거, a태그에 href로 주면 받아온 JSON 데이터를 활용할 수가 없어서, JSON 데이터가 펼쳐진 화면이 보여지게됨,
+    // modifyMovieForm에 예시용 태그들 만들어놨으니까 궁금하면 해보셈
+}
+
+
+const showMovies = (page) => {
     // 제목에 맞는 영화 검색하는 xhr 요청
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
@@ -28,6 +36,7 @@ modifyMovieForm.onsubmit = e => {
                 const responseArray = responseObject['movies'];
                 modifyMovieForm.divResult.innerHTML = '';
                 if (responseArray.length === 0) {
+                    MessageObj.createSimpleOk('알림', '수정할 영화가 없습니다.').show();
                     return;
                 }
                 const ul = new DOMParser().parseFromString(`
@@ -54,9 +63,49 @@ modifyMovieForm.onsubmit = e => {
                     li.querySelector('.img').setAttribute('src', `/movie/image?index=${responseArrayElement['index']}`);
                     ul.append(li);
                 }
-
                 modifyMovieForm.divResult.append(ul);
+
+                // 검색하고 밑에 페이지 나오게
+                // pageContainer 만들기
+                const pageContainer = new DOMParser().parseFromString(`
+                 <div class="page-container"></div>
+                `, 'text/html').querySelector('div');
+                modifyMovieForm.divResult.append(pageContainer);
+                // pageContainer 내용물 만들기
+                const maxPage = responseObject['search']['maxPage'];
+                if (maxPage > 10) {
+                    const preButton = new DOMParser().parseFromString(`
+                <button type="button">
+                    <img src="/assets/images/common/left.png" height="16" width="16"/>
+                    <span>이전</span>
+                </button>
+                    `, 'text/html').querySelector('button');
+                    pageContainer.append(preButton);
+                }
+                // 페이지 숫자들 들어갈 박스
+                const pageBox = new DOMParser().parseFromString(`
+                <div class="page-box"></div>
+                `, 'text/html').querySelector('div');
+                pageContainer.append(pageBox);
+                // 페이지 숫자
+                for (let i = 1; i <= maxPage; i++) {
+                    const page = new DOMParser().parseFromString(`
+                    <span class="page">${i}</span>
+                    `, 'text/html').querySelector('.page');
+                    pageBox.append(page);
+                }
+                // 다음 버튼
+                if (maxPage > 10) {
+                    const nextButton = new DOMParser().parseFromString(`
+                    <button type="button">
+                    <span>다음</span>
+                    <img src="/assets/images/common/right.png" height="16" width="16"/>
+                </button>
+                    `, 'text/html').querySelector('button');
+                    pageContainer.append(nextButton);
+                }
                 const lis = modifyMovieForm.divResult.querySelectorAll('li');
+                // 불러온 영화들을 선택했을 때
                 lis.forEach(li => li.onclick = () => {
                     new MessageObj({
                         title: '경고',
@@ -71,19 +120,17 @@ modifyMovieForm.onsubmit = e => {
                                 text: '확인', onclick: instance => {
                                     instance.hide();
                                     modifyMovieFormTwo.show();
-                                    alert(1);
                                     // 선택한 영화에 대한 수정 화면으로 이동하고,
                                     // 이미 들어가있는 값들 불러오는 xhr 요청
                                     const xhr = new XMLHttpRequest();
-                                    xhr.onreadystatechange = function(){
-                                        if (xhr.readyState !== XMLHttpRequest.DONE){
+                                    xhr.onreadystatechange = function () {
+                                        if (xhr.readyState !== XMLHttpRequest.DONE) {
                                             return;
                                         }
-                                        if(xhr.status < 200 || xhr.status >= 300){
+                                        if (xhr.status < 200 || xhr.status >= 300) {
                                             MessageObj.createSimpleOk('오류', '요청을 전송하는 도중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.').show();
                                             return;
                                         }
-                                        alert(2);
                                         const responseObject = JSON.parse(xhr.responseText);
                                         const modifyMovieFormInner = new DOMParser().parseFromString(`
     <div class="content">
@@ -111,7 +158,7 @@ modifyMovieForm.onsubmit = e => {
                 <input class="_obj-input __field" type="number" name="hour" placeholder="시간" spellcheck="false" value="${responseObject['playingTime'].toString().substring(0, 2)}">
                 <input class="_obj-input __field" type="number" name="minute" placeholder="분" spellcheck="false" value="${responseObject['playingTime'].toString().substring(3, 5)}">
                 <input class="_obj-input __field" type="number" name="second" placeholder="초" spellcheck="false" value="${responseObject['playingTime'].toString().substring(6, 8)}">
-                <span class="text">영화 길이는 1 ~ 2시간 사이입니다.</span>
+                <span class="text">영화 길이는 1 ~ 4시간 사이입니다.</span>
             </span>
             <span class="__warning">올바른 시간을 입력해 주세요.</span>
         </label>
@@ -127,7 +174,7 @@ modifyMovieForm.onsubmit = e => {
                 <option value="all">전체 이용가(기본)</option>
                 <option value="12">12세 이용가</option>
                 <option value="15">15세 이용가</option>
-                <option value="18">18세 이용가</option>
+                <option value="19">19세 이용가</option>
             </select>
             <span class="__warning">연령제한을 선택해 주세요.</span>
         </label>
@@ -141,24 +188,27 @@ modifyMovieForm.onsubmit = e => {
             </select>
             <span class="__warning">효과를 선택해 주세요.</span>
         </label>
-        <label class="_obj-label" rel="priceLabel">
-            <span class="__text">영화 가격</span>
-            <input class="_obj-input __field" type="number" name="price" value="${responseObject['price']}">
+        <label class="_obj-label" rel="explanationLabel">
+            <span class="__text">영화 설명 핵심</span>
+            <textarea class="_obj-input __field" type="text" name="explanation">${responseObject['explanation']}</textarea>
+            <span class="__warning">올바른 값을 입력해 주세요.</span>
+        </label>
+        <label class="_obj-label" rel="subExplanationLabel">
+            <span class="__text">영화 설명</span>
+            <textarea class="_obj-input __field" type="text" name="subExplanation">${responseObject['subExplanation']}</textarea>
             <span class="__warning">올바른 값을 입력해 주세요.</span>
         </label>
         <div class="spring"></div>
         <button type="submit">수정하기</button>
         <button type="button" rel="hideModifyMovieFormTwo">취소</button>
     </div>`, 'text/html').querySelector('div.content');
-                                        console.log(modifyMovieFormInner)
 
                                         // 이거 boolean들 is 떼야됨
-                                        if (responseObject['single'] === true){
+                                        if (responseObject['single'] === true) {
                                             modifyMovieFormInner.querySelector('[name="isSingle"]').checked = true;
                                         }
                                         modifyMovieFormInner.querySelector(`option[value="${responseObject['ageLimit']}"]`).selected = true;
                                         modifyMovieFormInner.querySelector(`option[value="${responseObject['dimensionType']}"]`).selected = true;
-                                        console.log(modifyMovieFormInner)
                                         modifyMovieFormTwo.append(modifyMovieFormInner);
                                         modifyMovieFormTwo['thumbnail'].onchange = () => {
                                             const thumbnailLabel = modifyMovieFormTwo.querySelector('label.thumbnail');
@@ -167,7 +217,7 @@ modifyMovieForm.onsubmit = e => {
                                             const image = imageWrapper.querySelector(':scope > .image');
 
                                             // 이미지 선택할 때 취소 누르면 아래 if문으로 빠짐
-                                            if (modifyMovieFormTwo['thumbnail'].files.length === 0){
+                                            if (modifyMovieFormTwo['thumbnail'].files.length === 0) {
                                                 empty.style.display = 'block';
                                                 image.style.display = 'none';
                                                 return;
@@ -197,8 +247,8 @@ modifyMovieForm.onsubmit = e => {
                                         modifyMovieFormTwo.isSingleLabel = new LabelObj(modifyMovieFormTwo.querySelector('[rel="isSingleLabel"]'));
                                         modifyMovieFormTwo.ageLimitLabel = new LabelObj(modifyMovieFormTwo.querySelector('[rel="ageLimitLabel"]'));
                                         modifyMovieFormTwo.dimensionTypeLabel = new LabelObj(modifyMovieFormTwo.querySelector('[rel="dimensionTypeLabel"]'));
-                                        modifyMovieFormTwo.priceLabel = new LabelObj(modifyMovieFormTwo.querySelector('[rel="priceLabel"]'));
-
+                                        modifyMovieFormTwo.explanationLabel = new LabelObj(modifyMovieFormTwo.querySelector('[rel="explanationLabel"]'));
+                                        modifyMovieFormTwo.subExplanationLabel = new LabelObj(modifyMovieFormTwo.querySelector('[rel="subExplanationLabel"]'));
 
                                         modifyMovieFormTwo.onsubmit = e => {
                                             e.preventDefault();
@@ -210,7 +260,7 @@ modifyMovieForm.onsubmit = e => {
                                             modifyMovieFormTwo.titleLabel.setValid(movieRegex.test(modifyMovieFormTwo['title'].value));
                                             const regex = RegExp(/^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/);
                                             modifyMovieFormTwo.releaseDateLabel.setValid(regex.test(modifyMovieFormTwo['releaseDate'].value))
-                                            modifyMovieFormTwo.playingTimeLabel.setValid((parseInt(modifyMovieFormTwo['hour'].value) <= 2 &&
+                                            modifyMovieFormTwo.playingTimeLabel.setValid((parseInt(modifyMovieFormTwo['hour'].value) <= 3 &&
                                                     parseInt(modifyMovieFormTwo['hour'].value) >= 1) &&
                                                 (parseInt(modifyMovieFormTwo['minute'].value) < 60 &&
                                                     parseInt(modifyMovieFormTwo['minute'].value) >= 0) &&
@@ -221,11 +271,14 @@ modifyMovieForm.onsubmit = e => {
                                             modifyMovieFormTwo.ageLimitLabel.setValid(modifyMovieFormTwo['ageLimit'].value === 'all' ||
                                                 modifyMovieFormTwo['ageLimit'].value === '12' ||
                                                 modifyMovieFormTwo['ageLimit'].value === '15' ||
-                                                modifyMovieFormTwo['ageLimit'].value === '18');
+                                                modifyMovieFormTwo['ageLimit'].value === '19');
                                             modifyMovieFormTwo.dimensionTypeLabel.setValid(modifyMovieFormTwo['dimensionType'].value === '2D' ||
                                                 modifyMovieFormTwo['dimensionType'].value === '3D' ||
                                                 modifyMovieFormTwo['dimensionType'].value === '4D');
-                                            modifyMovieFormTwo.priceLabel.setValid(modifyMovieFormTwo['price'].value > 0);
+                                            const explanationRegex = new RegExp("^([\\da-zA-Z가-힣()\\-.,!·<>\\s\"']{1,50})$");
+                                            modifyMovieFormTwo.explanationLabel.setValid(explanationRegex.test(modifyMovieFormTwo['explanation'].value));
+                                            const subExplanationRegex = new RegExp("^([\\da-zA-Z가-힣()\\-.,!·<>\\s\"']{1,800})$");
+                                            modifyMovieFormTwo.subExplanationLabel.setValid(subExplanationRegex.test(modifyMovieFormTwo['subExplanation'].value));
                                             // 양식 안맞을시 제출 막는 로직, 이것도 add에서 해줬었음
                                             if (!modifyMovieFormTwo.titleLabel.isValid() ||
                                                 !modifyMovieFormTwo.releaseDateLabel.isValid() ||
@@ -233,7 +286,8 @@ modifyMovieForm.onsubmit = e => {
                                                 !modifyMovieFormTwo.isSingleLabel.isValid() ||
                                                 !modifyMovieFormTwo.ageLimitLabel.isValid() ||
                                                 !modifyMovieFormTwo.dimensionTypeLabel.isValid() ||
-                                                !modifyMovieFormTwo.priceLabel.isValid()){
+                                                !modifyMovieFormTwo.explanationLabel.isValid() ||
+                                                !modifyMovieFormTwo.subExplanationLabel.isValid()) {
                                                 return;
                                             }
                                             // 수정할 값들을 받아서 실제로 수정하는 xhr 요청
@@ -250,7 +304,8 @@ modifyMovieForm.onsubmit = e => {
                                             formData.append('isSingle', modifyMovieFormTwo['isSingle'].value);
                                             formData.append('ageLimit', modifyMovieFormTwo['ageLimit'].value);
                                             formData.append('dimensionType', modifyMovieFormTwo['dimensionType'].value);
-                                            formData.append('price', modifyMovieFormTwo['price'].value);
+                                            formData.append('explanation', modifyMovieFormTwo['explanation'].value);
+                                            formData.append('subExplanation', modifyMovieFormTwo['subExplanation'].value);
                                             xhr.onreadystatechange = function () {
                                                 if (xhr.readyState !== XMLHttpRequest.DONE) {
                                                     return;
@@ -263,13 +318,16 @@ modifyMovieForm.onsubmit = e => {
                                                 const responseObject = JSON.parse(xhr.responseText);
                                                 const [dTitle, dContent, dOnclick] = {
                                                     failure: ['경고', '알 수 없는 이유로 영화를 수정하지 못하였습니다. 잠시 후 다시 시도해 주세요.'],
+                                                    failure_duplicate: ['경고', '이미 존재하는 영화 입니다. 제목이나 개봉일을 변경 후 시도해 주세요.'],
                                                     success: ['알림', '영화를 성공적으로 수정하였습니다.', () => {
                                                         modifyMovieFormTwo.hide();
                                                         // modifyMovieFormTwo가 생길때 div.content가 생성되서 지워져야될 때 지워져야 된다.
                                                         // 안그러면 div.content가 계속해서 생겨남
                                                         // 지금은 modifyMovieFormTwo가 생기고, 수정하기를 눌러서 성공한 상황
                                                         modifyMovieFormTwo.querySelector('div.content').remove();
-                                                        modifyMovieForm.divResult.innerHTML = '';
+                                                        // modifyMovieForm.divResult.innerHTML = '';
+                                                        // 성공했으면 1page로 검색
+                                                        showMovies(1);
                                                     }]
                                                 }[responseObject.result] || ['경고', '서버가 알 수 없는 응답을 반환하였습니다. 잠시 후 다시 시도해 주세요.'];
                                                 MessageObj.createSimpleOk(dTitle, dContent, dOnclick).show();
@@ -291,8 +349,13 @@ modifyMovieForm.onsubmit = e => {
                 MessageObj.createSimpleOk('경고', '서버가 알 수 없는 응답을 반환하였습니다. 잠시 후 다시 시도해주세요.').show();
                 return;
         }
+        // 페이지가 불러져와있을 때 다른 페이지를 눌렀을 때 이동하는 로직
+        const pages = modifyMovieForm.divResult.querySelectorAll('.page');
+        pages.forEach(page => page.onclick = () => {
+            showMovies(page.innerText);
+        });
     }
-    xhr.open('GET', `/movie/search?keyword=${modifyMovieForm['title'].value}`);
+    xhr.open('GET', `/movie/search?keyword=${modifyMovieForm['title'].value}&page=${page}`);
     xhr.send();
     loading.show();
 }

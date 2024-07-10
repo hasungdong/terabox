@@ -10,331 +10,629 @@
     <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/home/index.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/common/footer.css}">
     <script defer th:src="@{/assets/scripts/home.js}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const alertMessageDiv = document.getElementById('alertMessage');
+            if (alertMessageDiv && alertMessageDiv.textContent.trim() !== "") {
+                new MessageObj({
+                    title: '알림',
+                    content: alertMessageDiv.textContent,
+                    buttons: [
+                        {
+                            text: '로그인', onclick: instance => {
+                                instance.hide();
+                                loginForm.show();
+                            }
+                        }
+                    ]
+                }).show();
+            }
+        });
+    </script>
 </head>
-<body style="overflow-x: hidden">
+<body>
+<div id="alertMessage" th:if="${alertMessage}" th:text="${alertMessage}" style="display: none;"></div>
 <th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
-<main id="main">
-    <div class="main-container">
-        <div class="main-boxOffice">
-            <button class="button-buxo" type="button">박스오피스</button>
+<main class="main-page" id="main">
+    <!-- section main-movie : 영화 -->
+    <div id="main_section01" class="section main-movie">
+        <div class="bg">
+            <div class="bg-pattern"></div>
+            <img src="https://img.megabox.co.kr/SharedImg/2024/06/25/Z1v3tau3ZPPTNldluUue2UTVOR3xOdr9_380.jpg"
+                 alt="탈주_2차 포스터.jpg">
         </div>
-        <div class="main-other-movie">
-            <a class="other-movie" >더 많은 영화보기
-                <i class="fa-solid fa-plus"></i>
+
+        <!-- cont-area  -->
+        <div class="cont-area">
+
+            <!-- tab-sorting -->
+            <div class="tab-sorting">
+                <button type="button" class="on" sort="boxoRankList" name="btnSort">박스오피스</button>
+                <!-- 2020.03.16. 김민영K 삭제요청.
+                <button type="button" sort="accmAdncList" name="btnSort">누적관객순</button>
+                <button type="button" sort="megaScoreList" name="btnSort">메가스코어순</button>
+                -->
+            </div>
+            <!-- tab-sorting -->
+
+            <a href="/movie" class="more-movie" title="더 많은 영화보기">
+                <span>더 많은 영화보기 </span>
+                <img src="/assets/images/home/plus-gray.png" alt="" style="width: 16px; height: 16px;">
             </a>
-        </div>
-        <div class="main-movie-list">
-            <div class="first-list">
-                <img class="poster"
-                     src="https://img.megabox.co.kr/SharedImg/2024/04/24/4Kukr9DeYIjfEzRWDvCNU82dwZA8XpEM_420.jpg"
-                     alt="">
-                <div class="first-list-ba">
-                    <button class="like">
-                        <i class="fa-regular fa-heart"></i>
-                        2.3k
-                    </button>
-                    <a class="main-buy-ticket" >
-                        <button class="list-button">
-                            예매
+
+            <!-- main-movie-list -->
+            <div class="main-movie-list">
+                <ol class="list">
+                    <!-- 3개의 list를  loop 한다-->
+                    <!-- 박스오피스 시작 -->
+                    <!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
+
+                    <!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
+                    <li name="li_boxoRankList" class="first">
+                        <a class="movie-list-info" title="영화상세 보기">
+                            <div class="movie-grade_box">
+                                <div class="movie-grade big age-12">
+                                </div>
+                            </div>
+                            <p class="rank">1</p>
+                            <!-- to 개발 : alt 값에 영화 제목 출력 -->
+                            <img src="https://img.megabox.co.kr/SharedImg/2024/06/25/COGR3h5aH0NDkkBkPqYbTbI1nouC3nAG_420.jpg"
+                                 alt="탈주" class="poster">
+                            <div class="wrap">
+                                <div class="summary">
+                                    “내 앞 길 내가 정했습니다”<br>휴전선 인근 북한 최전방 군부대.<br>10년 만기 제대를 앞둔 중사 ‘규남’(이제훈)은 미래를 선택할 수 없는
+                                    북을 벗어나<br>원하는 것을 해 볼 수 있는 철책 너머로의 탈주를 준비한다.<br>그러나, ‘규남’의 계획을 알아챈 하급 병사 ‘동혁’(홍사빈)이
+                                    먼저 탈주를 시도하고,<br>말리려던 ‘규남’까지 졸지에 탈주병으로 체포된다.<br><br>“허튼 생각 말고 받아들여. 이것이 니 운명이야”<br>탈주병
+                                    조사를 위해 부대로 온 보위부 소좌 ‘현상’(구교환)은<br>어린 시절 알고 지내던 ‘규남’을 탈주병을 체포한 노력 영웅으로 둔갑시키고<br>사단장
+                                    직속보좌 자리까지 마련해주며 실적을 올리려 한다.<br><br>하지만 ‘규남’이 본격적인 탈출을 감행하자 ‘현상’은 물러설 길 없는 추격을 시작한다.
+                                </div>
+                                <!--
+                                    관람 전이 더 높을 때
+                                    <div class="my-score small">
+
+                                    관람 후가 더 높을 때
+                                    <div class="my-score big">
+
+                                    관람 후가 더 같을 때
+                                    <div class="my-score equal">
+                                 -->
+                                <div class="score">
+                                    <div class="preview">
+                                        <p class="tit">관람평</p>
+                                        <p class="number">8.6</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="btn-util">
+                            <button type="button" class="button btn-like">
+                                <i class="fa-regular fa-heart"></i>
+                                1.4k
+                            </button>
+                            <div class="case">
+                                <!-- 개봉 예매가능 기본-->
+                                <a class="button gblue" title="영화 예매하기">예매</a>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
+
+                    <!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
+                    <li name="li_boxoRankList" class="">
+                        <a class="movie-list-info" title="영화상세 보기">
+                            <div class="movie-grade_box">
+                                <div class="movie-grade big age-all">
+                                </div>
+                            </div>
+                            <p class="rank">2</p>
+                            <!-- to 개발 : alt 값에 영화 제목 출력 -->
+                            <img src="https://img.megabox.co.kr/SharedImg/2024/06/17/bAW9rJyLUHvBLY6x9MNMbU19K2B565sy_420.jpg"
+                                 alt="인사이드 아웃 2" class="poster">
+                            <div class="wrap">
+                                <div class="summary">
+                                    디즈니·픽사의 대표작 &lt;인사이드 아웃&gt;<br>새로운 감정과 함께 돌아오다!<br><br>13살이 된 라일리의 행복을 위해 매일 바쁘게 머릿속
+                                    감정 컨트롤 본부를 운영하는 <br>‘기쁨’, ‘슬픔’, ‘버럭’, ‘까칠’, ‘소심’.<br><br>그러던 어느 날,<br>낯선 감정인 ‘불안’,
+                                    ‘당황’, ‘따분’, ‘부럽’이가 본부에 등장하고,<br>언제나 최악의 상황을 대비하며 제멋대로인 ‘불안’이와 기존 감정들은 계속
+                                    충돌한다.<br><br>결국 새로운 감정들에 의해 본부에서 쫓겨나게 된 기존 감정들은 <br>다시 본부로 돌아가기 위해 위험천만한 모험을
+                                    시작하는데…<br><br>2024년, 전 세계를 공감으로 물들인 유쾌한 상상이 다시 시작된다!
+                                </div>
+                                <!--
+                                    관람 전이 더 높을 때
+                                    <div class="my-score small">
+
+                                    관람 후가 더 높을 때
+                                    <div class="my-score big">
+
+                                    관람 후가 더 같을 때
+                                    <div class="my-score equal">
+                                 -->
+                                <div class="score">
+                                    <div class="preview">
+                                        <p class="tit">관람평</p>
+                                        <p class="number">9.4</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="btn-util">
+                            <button type="button" class="button btn-like">
+                                <i class="fa-regular fa-heart"></i>
+                                5.1k
+                            </button>
+                            <div class="case">
+                                <!-- 개봉 예매가능 기본-->
+                                <a class="button gblue"
+                                   title="영화 예매하기">예매</a>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
+
+                    <!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
+                    <li name="li_boxoRankList" class="">
+                        <a class="movie-list-info" title="영화상세 보기">
+                            <div class="movie-grade_box">
+                                <div class="movie-grade big age-12">
+                                </div>
+                            </div>
+                            <p class="rank">3</p>
+                            <!-- to 개발 : alt 값에 영화 제목 출력 -->
+                            <img src="https://img.megabox.co.kr/SharedImg/2024/07/08/HAHzCSec2Il5sMd4kcfMonbhCiHbEu2f_420.jpg"
+                                 alt="파일럿" class="poster">
+                            <div class="wrap">
+                                <div class="summary">
+                                    하루 아침에 인생 추락한 스타 파일럿<br>제 2의 인생 이륙 준비 중!<br><br>최고의 비행 실력을 갖춘 스타 파일럿이자<br>뜨거운 인기로 유명
+                                    TV쇼에도 출연할 만큼 고공행진 하던 한정우(조정석)는<br>순간의 잘못으로 하루아침에 모든 것을 잃고 실직까지 하게 된다.<br><br>블랙 리스트에
+                                    오른 그를 다시 받아줄 항공사는 어느 곳도 없었고<br>궁지에 몰린 한정우는 여동생의 신분으로 완벽히 변신, 마침내 재취업에 성공한다.<br><br>그러나
+                                    기쁨도 잠시! 또다시 예상치 못한 난관에 부딪히게 되는데…<br>인생 순항을 꿈꾸던 그의 삶은 무사히 이륙할 수 있을까?
+                                </div>
+                                <!--
+                                    관람 전이 더 높을 때
+                                    <div class="my-score small">
+
+                                    관람 후가 더 높을 때
+                                    <div class="my-score big">
+
+                                    관람 후가 더 같을 때
+                                    <div class="my-score equal">
+                                 -->
+                                <div class="score">
+                                    <div class="preview">
+                                        <p class="tit">관람평</p>
+                                        <p class="number">0</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="btn-util">
+                            <button type="button" class="button btn-like" rpst-movie-no="24041800">
+                                <i class="fa-regular fa-heart"></i>
+                                308
+                            </button>
+                            <div class="case">
+                                <!-- 개봉 예매가능 기본-->
+                                <a class="button gblue"
+                                   title="영화 예매하기">예매</a>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
+
+                    <!-- 각 map 별 첫번째 li 에 first클래스 추가 -->
+                    <li name="li_boxoRankList" class="">
+                        <a class="movie-list-info" title="영화상세 보기">
+                            <div class="movie-grade_box">
+                                <div class="movie-grade big age-15">
+                                </div>
+                            </div>
+                            <p class="rank">4</p>
+                            <!-- to 개발 : alt 값에 영화 제목 출력 -->
+                            <img src="https://img.megabox.co.kr/SharedImg/2024/07/08/e0oHm7aPEoT65vDMygGH8496N1gwbgEC_420.jpg"
+                                 alt="탈출: 프로젝트 사일런스" class="poster">
+                            <div class="wrap">
+                                <div class="summary">
+                                    붕괴 위기의 공항대교,<br>생존자 전원이 타겟이 되었다.<br><br>기상 악화로 한치 앞도 구분할 수 없는 공항대교.<br>연쇄 추돌 사고와 폭발로
+                                    붕괴 위기에 놓인 다리 위에 사람들이 고립된다.<br>이 때 극비리에 이송 중이던 '프로젝트 사일런스'의 군사용 실험견들이 풀려나고<br>모든 생존자가
+                                    그들의 타겟이 되어 무차별 공격당하는 통제불능의 상황이 벌어진다.<br><br>공항으로 향하던 안보실 행정관(이선균)부터<br>사고를 수습하려고 현장을
+                                    찾은 렉카 기사(주지훈),<br>그리고 실험견들을 극비리에 이송 중이던 '프로젝트 사일런스'의 책임연구원(김희원)까지.<br><br>사상 최악의 연쇄
+                                    재난 발생,<br>살아남기 위한 극한의 사투가 시작된다!
+                                </div>
+                                <!--
+                                    관람 전이 더 높을 때
+                                    <div class="my-score small">
+
+                                    관람 후가 더 높을 때
+                                    <div class="my-score big">
+
+                                    관람 후가 더 같을 때
+                                    <div class="my-score equal">
+                                 -->
+                                <div class="score">
+                                    <div class="preview">
+                                        <p class="tit">관람평</p>
+                                        <p class="number">0</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="btn-util">
+                            <button type="button" class="button btn-like">
+                                <i class="fa-regular fa-heart"></i>
+                                511
+                            </button>
+                            <div class="case">
+                                <!-- 개봉 예매가능 기본-->
+                                <a class="button gblue"
+                                   title="영화 예매하기">예매</a>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- 박스오피스 종료 -->
+                </ol>
+            </div>
+            <!--// main-movie-list -->
+
+            <div class="search-link">
+                <div class="cell">
+                    <div class="search">
+                        <input type="text" placeholder="영화명을 입력해 주세요" title="영화 검색" class="input-text" id="movieName">
+                        <button type="button" class="btn" id="btnSearch">
+                            <img src="/assets/images/common/search-white.png" alt="">
                         </button>
+                    </div>
+                </div>
+
+                <div class="cell">
+                    <a href="/booking/timetable" title="상영시간표 보기">
+                        <img src="/assets/images/home/calendar.png" alt="">
+                        <span>상영시간표</span>
+                    </a>
+                </div>
+                <div class="cell">
+                    <a href="/movie" title="박스오피스 보기">
+                        <img src="/assets/images/home/panorama.png" alt="">
+                        <span>박스오피스</span>
+                    </a>
+                </div>
+                <div class="cell">
+                    <a href="/booking" title="빠른예매 보기">
+                        <img src="/assets/images/home/ticket.png" alt="">
+                        <span>빠른예매</span>
                     </a>
                 </div>
             </div>
-            <div class="two-list">
-                <img class="poster"
-                     src="https://img.megabox.co.kr/SharedImg/2024/04/19/YnEMLm0u5cpeQchnehHVsmuTxYGpiO2g_420.jpg"
-                     alt="">
-                <div class="two-list-ba">
-                    <button class="like">
-                        <i class="fa-regular fa-heart"></i>
-                        2.3k
-                    </button>
-                    <a class="main-buy-ticket" >
-                        <button class="list-button">
-                            예매
-                        </button>
-                    </a>
+            <!-- 2019-02-22 추가 : 마우스 아이콘 영역 추가 -->
+            <div class="moving-mouse">
+                <!--  <i class="iconset ico-mouse"></i> -->
+                <!--                <img class="iconset" alt="" src="../../../static/pc/images/common/ico/ico-mouse.png" style="top: 10px;">-->
+                <img src="https://www.megabox.co.kr/static/pc/images/common/ico/ico-mouse.png" alt="">
+
+            </div>
+            <!--// 2019-02-22 추가 : 마우스 아이콘 영역 추가 -->
+        </div>
+        <!--// cont-area  -->
+    </div>
+    <!--// section main-movie : 영화 -->
+
+    <!-- section main-benefit : 혜택 -->
+    <div id="main_section02" class="section main-benefit">
+        <!-- wrap -->
+        <div class="wrap">
+            <!-- 혜택 시작 -->
+            <div class="tit-util">
+                <h2 class="tit">혜택</h2>
+                <div class="spring" style="flex-grow: 1;"></div>
+                <a href="/event" class="btn-more-cross purple" title="혜택 더보기">
+                    <img src="/assets/images/home/plus-purple.png" alt="" style="width: 20px; height: 20px;">
+                </a>
+
+            </div>
+            <!--
+                왼쪽 글씨 이미지 사이즈 300 * 230, 오른쪽 이미지 635 * 325
+             -->
+            <!--            더 만들어야함-->
+            <div class="slider main-condition">
+                <div class="slider-view" style="width: 1100px;">
+                    <div class="cell" style=" float: none;">
+                        <div class="position">
+                            <div class="txt img-one" style="top: 100px; opacity: 0;">
+                                <a href="https://www.megabox.co.kr/event/detail?eventNo=15767" target="_self" title="">
+                                    <img src="https://img.megabox.co.kr/SharedImg/BnftMng/2024/07/09/bhgggw0bRcNMwjR6mJ4x6EZXGFOoKWJT.jpg"
+                                    alt="">
+                                </a>
+                            </div>
+                            <div class="bg img-two" style="left: 450px; opacity: 0;">
+                                <a href="https://www.megabox.co.kr/event/detail?eventNo=15767" target="_self" title="">
+                                    <img src="https://img.megabox.co.kr/SharedImg/BnftMng/2024/07/09/7iV4nTp9kgrsCnaLRLMUV40oaAwF3YEU.jpg"
+                                    alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cell" style=" float: none;">
+                        <div class="position">
+                            <div class="txt img-one" style="top: 100px; opacity: 0;">
+                                <a href="https://www.megabox.co.kr/event/detail?eventNo=15726" target="_self" title="">
+                                    <img src="https://img.megabox.co.kr/SharedImg/BnftMng/2024/07/01/YujSSxW1jNo6G9CTYFOJTwC3dV24yXZM.png"
+                                    alt="">
+                                </a>
+                            </div>
+                            <div class="bg img-two" style="left: 450px; opacity: 0;">
+                                <a href="https://www.megabox.co.kr/event/detail?eventNo=15726" target="_self" title="">
+                                    <img src="https://img.megabox.co.kr/SharedImg/BnftMng/2024/07/01/nKBA9issS1hLsqylqPOkX8fRLxvKjQML.png"
+                                    alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cell" style=" float: none;">
+                        <div class="position">
+                            <div class="txt img-one" style="top: 100px; opacity: 0;">
+                                <a href="https://www.megabox.co.kr/event/detail?eventNo=15705" target="_self" title="">
+                                    <img src="https://img.megabox.co.kr/SharedImg/BnftMng/2024/06/28/twzo6BoVQ8c0jAaz6SBOzWXoPWRZLACl.png"
+                                    alt="">
+                                </a>
+                            </div>
+                            <div class="bg img-two" style="left: 450px; opacity: 0;">
+                                <a href="https://www.megabox.co.kr/event/detail?eventNo=15705" target="_self" title="">
+                                    <img src="https://img.megabox.co.kr/SharedImg/BnftMng/2024/06/28/DWEWOfUydY80qyfV4tgeRQFckHNOWt5W.png"
+                                    alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cell" style=" float: none;">
+                        <div class="position">
+                            <div class="txt img-one" style="top: 100px; opacity: 0;">
+                                <a href="https://www.megabox.co.kr/event/detail?eventNo=15485" target="_self" title="">
+                                    <img src="https://img.megabox.co.kr/SharedImg/BnftMng/2024/06/24/OyZGjzfRfmLrDnjI7LR4G0oxp2xZLsS5.jpg"
+                                    alt="">
+                                </a>
+                            </div>
+                            <div class="bg img-two" style="left: 450px; opacity: 0;">
+                                <a href="https://www.megabox.co.kr/event/detail?eventNo=15485" target="_self" title="">
+                                    <img src="https://img.megabox.co.kr/SharedImg/BnftMng/2024/06/24/4LDtfbPO5xuxd0TTUWGrX30rTejL35Qa.jpg"
+                                    alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cell" style=" float: none;">
+                        <div class="position">
+                            <div class="txt img-one" style="top: 100px; opacity: 0;">
+                                <a href="https://www.megabox.co.kr/event/detail?eventNo=15682" target="_self" title="">
+                                    <img src="https://img.megabox.co.kr/SharedImg/BnftMng/2024/06/24/jyEnQhsIIKZYM7FMoqnQqnY69PWXhUt3.png"
+                                    alt="">
+                                </a>
+                            </div>
+                            <div class="bg img-two" style="left: 450px; opacity: 0;">
+                                <a href="https://www.megabox.co.kr/event/detail?eventNo=15682" target="_self" title="">
+                                    <img src="https://img.megabox.co.kr/SharedImg/BnftMng/2024/06/24/GKcl0idCFEEEUzEEU2dFf3lnjsThnh4M.png"
+                                    alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-bar-container"> <!-- 넘김 바-->
+                    <div class="swiper-bar-box">
+                        <span class="swiper-bar point"></span>
+                        <span class="swiper-bar"></span>
+                        <span class="swiper-bar"></span>
+                        <span class="swiper-bar"></span>
+                        <span class="swiper-bar"></span>
+                    </div>
+                    <img class="less" th:src="@{/assets/images/common/less.png}" alt="">
+                    <img class="more" th:src="@{/assets/images/common/more.png}" alt="">
+                    <img class="play" th:src="@{/assets/images/home/auto-play.png}" alt="">
+                    <img class="pause" th:src="@{/assets/images/common/pause.png}" alt="">
+                    <span class="current-page text">1 / 5</span>
+                    <!--                현재 페이지 / 전체 페이지-->
                 </div>
             </div>
-            <div class="three-list">
-                <img class="poster"
-                     src="https://img.megabox.co.kr/SharedImg/2024/05/08/cX8phxKCguMyNw84pHjLVxlc1Kn8p9mE_420.jpg"
-                     alt="">
-                <div class="three-list-ba">
-                    <button class="like">
-                        <i class="fa-regular fa-heart"></i>
-                        543
-                    </button>
-                    <a class="main-buy-ticket" >
-                        <button class="list-button">
-                            예매
-                        </button>
-                    </a>
+
+
+            <div class="brn-ad" style="height:204px;">
+                <div class="banner">
+                    <div class="size">
+                        <img src="https://img.megabox.co.kr/SharedImg/event/2024/04/12/qfioOXyBqkT6vw3KervMYAgsb7zOzeOu.jpg"
+                             alt="[신한카드] 신한 Deep Dream카드 이용하고 혜택 받자!">
+                    </div>
+                    <div class="size small">
+                        <img src="https://img.megabox.co.kr/SharedImg/event/2023/08/30/Avdrqmhajw5TnlAbpKU01amFbVuVx7gc.jpg"
+                             alt="[톡학생증x메가박스] 톡학생증 발급하고 톡똑한 영화관람">
+                    </div>
+                </div>
+                <!-- 광고영역 -->
+                <div class="ad-img">
+                    <!-- <img src="../../../static/pc/images/main/@img-main-ad.png" alt="블루멤버스 포인트로" /> -->
+                    <div id="M_rwl-o8QV2xFMa0Oy93qQ">
+                        <iframe src="//ad.imp.joins.com/html/megabox_p/main/main@main_middle_event_415x530?_cid=M_rwl-o8QV2xFMa0Oy93qQ&amp;_uid=qhQ2zKbQmUOGbbuN6S2eZE1frSWaSFq4c4B_DxT6e1WEAM4qWzAZAbZrQnJEd2JXV1N6eVRVT21HYk9HMzZ3AstB2aKrNluVtQPLQdmiqzZblbU&amp;_ref=https%3A%2F%2Fwww.megabox.co.kr%2F"
+                                title="메인 혜택 우측배너영역" height="530px" width="415px" name="mliframe" scrolling="no"
+                                frameborder="0" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0"></iframe>
+                    </div>
+                </div>
+                <!-- 광고영역 -->
+            </div>
+            <!-- 혜택 종료 -->
+
+            <div class="menu-link">
+                <div class="cell vip">
+                    <div class="img-box">
+                        <img class="img" th:src="@{/assets/images/home/cell-vip.png}" alt="">
+                    </div>
+                    <a href="/benefit/viplounge" title="VIP LOUNGE 페이지로 이동">VIP LOUNGE</a>
+                </div>
+                <div class="cell membership">
+                    <div class="img-box">
+                        <img class="img" th:src="@{/assets/images/home/cell-membership.png}" alt="">
+                    </div>
+                    <a href="/benefit/membership" title="멤버십 페이지로 이동">멤버십</a>
+                </div>
+                <div class="cell card">
+                    <div class="img-box">
+                        <img class="img" th:src="@{/assets/images/home/cell-card.png}" alt="">
+                    </div>
+                    <a href="/benefit/discount/guide" title="할인카드안내 페이지로 이동">할인카드안내</a>
+                </div>
+                <div class="cell event">
+                    <div class="img-box">
+                        <img class="img" th:src="@{/assets/images/home/cell-event.png}" alt="">
+                    </div>
+                    <a href="/event" title="이벤트 페이지로 이동">이벤트</a>
+                </div>
+                <div class="cell store">
+                    <div class="img-box">
+                        <img class="img" th:src="@{/assets/images/home/cell-store.png}" alt="">
+                    </div>
+                    <a href="/store" title="스토어 페이지로 이동">스토어</a>
                 </div>
             </div>
-            <div class="four-list">
-                <img class="poster"
-                     src="https://img.megabox.co.kr/SharedImg/2024/04/24/iO4PyZtOtzlUlQWH0XYiauBPO1lnY5c7_420.jpg"
-                     alt="">
-                <div class="four-list-ba">
-                    <button class="like">
-                        <i class="fa-regular fa-heart"></i>
-                        319
-                    </button>
-                    <a class="main-buy-ticket" >
-                        <button class="list-button">
-                            예매
-                        </button>
+
+            <!-- grand-open -->
+            <!--// grand-open -->
+        </div>
+        <!--// wrap -->
+    </div>
+    <!--// section main-benefit : 혜택 -->
+
+    <!-- section main-info : 메가박스 안내 -->
+    <div id="main_section04" class="section main-info">
+        <div class="wrap">
+            <div class="information-title"> <!-- 메가박스 안내 제목-->
+                <h2>메가박스 안내</h2>
+            </div>
+            <div class="information-link-button">
+                <div class="information-box1">
+                    <a>
+                        <img class="gray" th:src="@{/assets/images/home/box1gray.png}" alt="">
+                        <img class="color" th:src="@{/assets/images/home/box1color.png}" alt="">
                     </a>
+                </div>
+                <div class="information-box2">
+                    <a>
+                        <img class="gray" th:src="@{/assets/images/home/box2gray.png}" alt="">
+                        <img class="color" th:src="@{/assets/images/home/box2color.png}" alt="">
+                    </a>
+                </div>
+                <div class="information-box3">
+                    <a>
+                        <img class="gray" th:src="@{/assets/images/home/box3gray.png}" alt="">
+                        <img class="color" th:src="@{/assets/images/home/box3color.png}" alt="">
+                    </a>
+                </div>
+                <div class="information-box4">
+                    <a>
+                        <img class="gray" th:src="@{/assets/images/home/box4gray.png}" alt="">
+                        <img class="color" th:src="@{/assets/images/home/box4color.png}" alt="">
+                    </a>
+                </div>
+                <div class="information-box5">
+                    <a>
+                        <img class="gray" th:src="@{/assets/images/home/box5gray.png}" alt="">
+                        <img class="color" th:src="@{/assets/images/home/box5color.png}" alt="">
+                    </a>
+                </div>
+                <div class="information-box6">
+                    <a>
+                        <img class="gray" th:src="@{/assets/images/home/box6gray.png}" alt="">
+                        <img class="color" th:src="@{/assets/images/home/box6color.png}" alt="">
+                    </a>
+                </div>
+
+            </div>
+            <div class="special-control">
+                <img class="special-prev" th:src="@{/assets/images/home/left-button.png}" alt="">
+                <img class="special-next" th:src="@{/assets/images/home/right-button.png}" alt="">
+            </div>
+
+            <!-- info-notice -->
+            <div class="info-notice">
+                <div class="wrap">
+                    <p class="tit">지점</p>
+                    <p class="link">
+                        <a href="/support/notice/detail?artiNo=11122&amp;bbsNo=9" title="공지사항 상세보기">
+                            <strong>
+                                [상봉]
+                            </strong>
+                            [상봉]주차장 시설 점검 진행 안내 (7/8~9)</a>
+                    </p>
+
+                    <p class="date">2024.07.02</p>
+
+                    <p class="more">
+                        <a href="/support/notice" title="전체공지 더보기">
+                            더보기
+                            <img src="/assets/images/common/moreGray.png" alt="">
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <!--// info-notice -->
+
+            <!-- info-link -->
+            <div class="info-link">
+                <div class="table">
+                    <div class="cell">
+                        <a href="/support" title="고객센터 페이지로 이동">
+                            <img src="/assets/images/home/clinic.png" alt="">
+                            <span>고객센터</span>
+                        </a>
+                    </div>
+
+                    <div class="cell">
+                        <a href="/support/faq" title="자주 묻는 질문 페이지로 이동">
+                            <img src="/assets/images/home/commonQuestion.png" alt="">
+                            <span>자주 묻는 질문</span>
+                        </a>
+                    </div>
+
+                    <div class="cell">
+                        <a href="/support/inquiry" title="1:1 문의 페이지로 이동">
+                            <img src="/assets/images/home/one-to-one.png" alt="">
+                            <span>1:1 문의</span>
+                        </a>
+                    </div>
+
+                    <div class="cell">
+                        <a href="/support/rent" title="단체/대관문의 페이지로 이동">
+                            <img src="/assets/images/home/reservation.png" alt="">
+                            <span>단체/대관문의</span>
+                        </a>
+                    </div>
+
+                    <div class="cell">
+                        <a href="/support/lost" title="분실물 문의/접수 페이지로 이동">
+                            <img src="/assets/images/home/lostItem.png" alt="">
+                            <span>분실물 문의/접수</span>
+                        </a>
+                    </div>
+
+                    <div class="cell">
+                        <a href="/booking/privatebooking" title="더 부티크 프라이빗 대관예매 페이지로 이동">
+                            <img src="/assets/images/home/boutique.png" alt="">
+                            <span>더 부티크 프라이빗<br>대관예매</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-        <form class="list-form">
-            <div class="list-form-container">
-                <label class="search-label">
-                    <input class="search-input" type="text" placeholder="영화명을 입력해주세요">
-                    <button class="search-button">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                </label>
-                <div class="list-time">
-                    <a href="">
-                        <i class="fa-solid fa-calendar-days"></i>
-                        상영시간표
-                    </a>
-                </div>
-                <div class="list-boxo">
-                    <a href="">
-                        <i class="fa-solid fa-film"></i>
-                        박스오피스
-                    </a>
-                </div>
-                <div class="list-fast-buy">
-                    <a href="">
-                        <i class="fa-solid fa-ticket"></i>
-                        빠른예매
-                    </a>
-                </div>
-            </div>
-        </form>
-        <div class="moving-mouse">
-            <img src="https://www.megabox.co.kr/static/pc/images/common/ico/ico-mouse.png" alt="">
-        </div>
-        <div class="main-benefit-container">
-            <div class="wrap">
-                <div class="wrap-color"></div>
-                <div class="wrap-color2"></div>
-                <div class="wrap-benefit">
-                    <h2>혜택</h2>
-                    <a class="event-button-link" >
-                        <img th:src="@{/assets/images/home/plusButton.png}" alt="">
-                    </a>
-                </div>
-                <div class="event-box wrap-benefit-condition">
-                    <a class="event wrap-benefit-condition-link-container">
-                        <img class="img"
-                             src="https://img.megabox.co.kr/SharedImg/BnftMng/2024/04/09/1dNBy6KM5IXppDafoWm7tsgwFrC1lcBC.jpg"
-                             alt="">
-                        <img class="img"
-                             src="https://img.megabox.co.kr/SharedImg/BnftMng/2024/04/09/1dNBy6KM5IXppDafoWm7tsgwFrC1lcBC.jpg"
-                             alt="">
-                        <img class="img"
-                             src="https://img.megabox.co.kr/SharedImg/BnftMng/2024/04/09/1dNBy6KM5IXppDafoWm7tsgwFrC1lcBC.jpg"
-                             alt="">
-                        <img class="img"
-                             src="https://img.megabox.co.kr/SharedImg/BnftMng/2024/04/09/1dNBy6KM5IXppDafoWm7tsgwFrC1lcBC.jpg"
-                             alt="">
-                        <img class="img"
-                             src="https://img.megabox.co.kr/SharedImg/BnftMng/2024/04/09/1dNBy6KM5IXppDafoWm7tsgwFrC1lcBC.jpg"
-                             alt="">
-                        <img class="img2" th:src="@{/assets/images/home/gold.jpg}" alt="">
-                        <img class="img2" th:src="@{/assets/images/home/gold.jpg}" alt="">
-                        <img class="img2" th:src="@{/assets/images/home/gold.jpg}" alt="">
-                        <img class="img2" th:src="@{/assets/images/home/gold.jpg}" alt="">
-                        <img class="img2" th:src="@{/assets/images/home/gold.jpg}" alt="">
-                    </a>
-                    <div class="swiper-bar-container"> <!-- 넘김 바-->
-                        <div class="swiper-bar-box">
-                            <span class="swiper-bar point"></span>
-                            <span class="swiper-bar"></span>
-                            <span class="swiper-bar"></span>
-                            <span class="swiper-bar"></span>
-                            <span class="swiper-bar"></span>
-                        </div>
-                        <img class="less" th:src="@{/assets/images/common/less.png}" alt="">
-                        <img class="more" th:src="@{/assets/images/common/more.png}" alt="">
-                        <img class="play" th:src="@{/assets/images/home/auto-play.png}" alt="">
-                        <img class="pause" th:src="@{/assets/images/common/pause.png}" alt="">
-                        <span class="current-page text">1 / 8</span>
-                        <!--                현재 페이지 / 전체 페이지-->
-                    </div>
-                </div>
-                <div class="wrap-banner">
-                    <div class="warp-banner-container">
-                        <div class="ad-first">
-                            <a class="link" >
-                                <img class="img" th:src="@{/assets/images/home/ad1.png}" alt="">
-                            </a>
-                        </div>
-                        <div class="ad-two">
-                            <a class="link" href="">
-                                <img class="img" th:src="@{/assets/images/home/ad2.jpg}" alt="">
-                            </a>
-                        </div>
-                        <div class="ad-three">
-                            <a class="link" href="">
-                                <img class="img" th:src="@{/assets/images/home/ad3.png}" alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="menu-link">
-                    <div class="cell-vip">
-                        <a class="link" href="/benefit/vipLounge">
-                            <img class="img" th:src="@{/assets/images/home/cell-vip.png}" alt="">
-                        </a>
-                    </div>
-                    <div class="cell-membership">
-                        <a class="link" href="/benefit/membership">
-                            <img class="img" th:src="@{/assets/images/home/cell-membership.png}" alt="">
-                        </a>
-                    </div>
-                    <div class="cell-card">
-                        <a class="link" href="/benefit/discount/guide">
-                            <img class="img" th:src="@{/assets/images/home/cell-card.png}" alt="">
-                        </a>
-                    </div>
-                    <div class="cell-event">
-                        <a class="link" href="/event/proceedingEvent">
-                            <img class="img" th:src="@{/assets/images/home/cell-event.png}" alt="">
-                        </a>
-                    </div>
-                    <div class="cell-store">
-                        <a class="link" href="/store/store">
-                            <img class="img" th:src="@{/assets/images/home/cell-store.png}" alt="">
-                        </a>
-                    </div>
-                </div>
-                <div class="menu-link-name">
-                    <span class="span1"><a class="a1" href="">VIP LOUNGE</a></span>
-                    <span class="span2"><a class="a2" href="">멤버십</a></span>
-                    <span class="span3"><a class="a3" href="">할인카드안내</a></span>
-                    <span class="span4"><a class="a4" href="">이벤트</a></span>
-                    <span class="span5"><a class="a5" href="">스토어</a></span>
-                </div>
-            </div>
-            <!--            <div>큐레이션 여기다할까?</div>-->
-        </div>
-        <div class="information-container"> <!-- 메가박스 안내 컨테이너 -->
-            <div class="information-wrap">
-                <div class="information-title"> <!-- 메가박스 안내 제목-->
-                    <h2>메가박스 안내</h2>
-                </div>
-                <div class="information-link-button">
-                    <div class="information-box1">
-                        <a href="">
-                            <img class="gray" th:src="@{/assets/images/home/box1gray.png}" alt="">
-                            <img class="color" th:src="@{/assets/images/home/box1color.png}" alt="">
-                        </a>
-                    </div>
-                    <div class="information-box2">
-                        <a href="">
-                            <img class="gray" th:src="@{/assets/images/home/box2gray.png}" alt="">
-                            <img class="color" th:src="@{/assets/images/home/box2color.png}" alt="">
-                        </a>
-                    </div>
-                    <div class="information-box3">
-                        <a href="">
-                            <img class="gray" th:src="@{/assets/images/home/box3gray.png}" alt="">
-                            <img class="color" th:src="@{/assets/images/home/box3color.png}" alt="">
-                        </a>
-                    </div>
-                    <div class="information-box4">
-                        <a href="">
-                            <img class="gray" th:src="@{/assets/images/home/box4gray.png}" alt="">
-                            <img class="color" th:src="@{/assets/images/home/box4color.png}" alt="">
-                        </a>
-                    </div>
-                    <div class="information-box5">
-                        <a href="">
-                            <img class="gray" th:src="@{/assets/images/home/box5gray.png}" alt="">
-                            <img class="color" th:src="@{/assets/images/home/box5color.png}" alt="">
-                        </a>
-                    </div>
-                    <div class="information-box6">
-                        <a href="">
-                            <img class="gray" th:src="@{/assets/images/home/box6gray.png}" alt="">
-                            <img class="color" th:src="@{/assets/images/home/box6color.png}" alt="">
-                        </a>
-                    </div>
-                    <button class="button-left" type="button">
-                        <img th:src="@{/assets/images/home/left-button.png}" alt="">
-                    </button>
-                    <button class="button-right" type="button">
-                        <img th:src="@{/assets/images/home/right-button.png}" alt="">
-                    </button>
-                </div>
-                <div class="text-container">
-                    <div class="text">
-                        <span class="span1">지점</span>
-                        <a class="a1" href="">[김포한강신도시]</a>
-                        <a class="span3" href="">[김포한강신도시] 지하주차장 공사 안내 (5월 13일 ~ 30일, 11일간)</a>
-                        <span class="span4">2024.05.10</span>
-                        <a class="a2" href="">더보기
-                            <img th:src="@{/assets/images/home/miniplus.png}" alt="">
-                        </a>
-                    </div>
-                </div>
-                <div class="user-help-container">
-                    <div class="user-help">
-                        <div class="service">
-                            <a href="">
-                                <i class="fa-solid fa-headset"></i>
-                                <span>고객센터</span>
-                            </a>
-                        </div>
-                        <div class="question">
-                            <a href="">
-                                <i class="fa-solid fa-circle-question"></i>
-                                <span>자주 묻는 질문</span>
-                            </a>
-                        </div>
-                        <div class="one-question">
-                            <a href="">
-                                <i class="fa-solid fa-comments"></i>
-                                <span>1:1 문의</span>
-                            </a>
-                        </div>
-                        <div class="together">
-                            <a href="">
-                                <i class="fa-solid fa-people-group"></i>
-                                <span>단체/대관문</span>
-                            </a>
-                        </div>
-                        <div class="forget-item">
-                            <a href="">
-                                <i class="fa-solid fa-box-open"></i>
-                                <span>분실문 문의/접수</span>
-                            </a>
-                        </div>
-                        <div class="the-beauty">
-                            <a href="">
-                                <i class="fa-solid fa-couch"></i>
-                                <span>더 부티크 프라이빗 대관예매</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="foot-ad-container">
-                    <div class="foot-ad">
-                        <a href="">
-                            <img th:src="@{/assets/images/home/footAd.jpeg}" alt="">
-                        </a>
-                    </div>
-                </div>
-            </div>
+        <!--// info-link -->
+    </div>
+    <!--// section main-info : 메가박스 안내 -->
+
+    <!-- main-bottom-ad : 메인 하단 광고 영역 -->
+    <div class="main-bottom-ad">
+        <script data-id="K3I6ffWoQiqG93YqqRV0LA" name="megabox_p/main/main@main_bottom_1100x227?mlink=342"
+                src="//cast.imp.joins.com/persona.js" async=""></script>
+        <script src="//cast.imp.joins.com/body/K3I6ffWoQiqG93YqqRV0LA/qhQ2zKbQmUOGbbuN6S2eZE1frSWaSFq4c4B_DxT6e1WEAM4qWzAZAbZrQnJEd2JXV1N6eVRVT21HYk9HMzZ3AstB2aKrNluVtQPLQdmiqzZblbU.js"></script>
+        <div id="K3I6ffWoQiqG93YqqRV0LA">
+            <iframe src="//ad.imp.joins.com/html/megabox_p/main/main@main_bottom_1100x227?_cid=K3I6ffWoQiqG93YqqRV0LA&amp;_uid=qhQ2zKbQmUOGbbuN6S2eZE1frSWaSFq4c4B_DxT6e1WEAM4qWzAZAbZrQnJEd2JXV1N6eVRVT21HYk9HMzZ3AstB2aKrNluVtQPLQdmiqzZblbU&amp;_ref=https%3A%2F%2Fwww.megabox.co.kr%2F"
+                    title="메인 하단 배너영역" height="227px" width="100%" name="mliframe" scrolling="no" frameborder="0"
+                    topmargin="0" leftmargin="0" marginwidth="0" marginheight="0"></iframe>
         </div>
     </div>
+    <!--// main-bottom-ad : 메인 하단 광고 영역 -->
 </main>
 <th:block th:replace="~{fragments/footer.html :: footer}"></th:block>
 </body>

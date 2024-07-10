@@ -9,6 +9,15 @@ import lombok.Setter;
 @EqualsAndHashCode(of = "index")
 public class TheaterEntity {
     private int index;
-    private String  name;
-    private String  regionCode;
+    private String name;
+    private String regionCode;
+
+    @Override
+    public String toString() {
+        return "TheaterEntity{" +
+                "index=" + index +
+                ", name='" + name + '\'' +
+                ", regionCode='" + regionCode + '\'' +
+                '}';
+    }
 }

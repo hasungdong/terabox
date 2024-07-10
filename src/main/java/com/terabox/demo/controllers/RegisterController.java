@@ -32,5 +32,4 @@ public class RegisterController {
         model.addAttribute("nickname", nickname);
         return "register/registerFour";
     }
-
 }
