@@ -18,42 +18,41 @@ import java.util.stream.Collectors;
 public class BookingService {
   private final BookingMapper bookingMapper;
 
+/*  등록된 모든영화를 부르는 창 */
   public List<MovieEntity> getAllMovies(Integer userAge) {
     List<MovieEntity> allMovies = bookingMapper.selectAllMovies();
-    System.out.println("Total movies fetched: " + allMovies.size()); // 콘솔 로그 추가
-
+//유저의 나이에 따라 영화 분류
     if (userAge != null) {
-      List<MovieEntity> filteredMovies = allMovies.stream()
-              .filter(movie -> {
-                int ageLimit = getAgeLimit(movie.getAgeLimit());
-                System.out.println("Movie: " + movie.getTitle() + ", Age Limit: " + ageLimit); // 콘솔 로그 추가
-                return userAge >= ageLimit;
-              })
-              .collect(Collectors.toList());
-      System.out.println("Filtered movies based on age: " + filteredMovies.size()); // 콘솔 로그 추가
-      return filteredMovies;
+      return allMovies.stream()
+        .filter(movie -> {
+          int ageLimit;
+          switch (movie.getAgeLimit()) {
+            case "12":
+              ageLimit = 12;
+              break;
+            case "15":
+              ageLimit = 15;
+              break;
+            case "19":
+              ageLimit = 19;
+              break;
+            case "all":
+            default:
+              ageLimit = 0;
+          }
+          return userAge >= ageLimit;
+        })
+        .collect(Collectors.toList());
     }
 
     return allMovies;
   }
 
-  private int getAgeLimit(String ageLimit) {
-    switch (ageLimit) {
-      case "12":
-        return 12;
-      case "15":
-        return 15;
-      case "19":
-        return 19;
-      case "all":
-      default:
-        return 0;
-    }
-  }
-
+/*  지역별 영화 분류하여 카운트*/
   public List<RegionCountDto> getTheaterCountsByRegion() {
     return bookingMapper.selectTheaterCountsByRegion();
   }
+
 
   public List<TheaterEntity> getTheatersByRegion(String region) {
     return bookingMapper.selectTheatersByRegion(region);
