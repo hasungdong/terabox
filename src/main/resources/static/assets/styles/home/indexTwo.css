@@ -578,7 +578,7 @@ h2.tit {
   font-size: 0;
   line-height: 0;
   border-radius: 5px;
-  box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.2);
 }
 #main .main-benefit .brn-ad .banner .size img {
   display: block;
