@@ -217,7 +217,7 @@ body form #container {
   margin: 0 auto;
 }
 body form #container > .tit {
-  padding: 0 0 0 0;
+  padding: 40px 0 26px 0;
   font-size: 1.8666em;
   font-weight: 500;
   letter-spacing: -1px;

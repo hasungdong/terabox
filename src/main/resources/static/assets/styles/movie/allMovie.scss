@@ -47,7 +47,9 @@ body{
       width: 1100px;
       margin: 0 auto;
       > .tit {
-        padding: 0 0 0 0;
+
+        padding: 40px 0 26px 0;
+
         font-size: 1.8666em;
         font-weight: 500;
         letter-spacing: -1px;
@@ -199,10 +201,10 @@ body{
                 line-height: 1.1;
                 font-size: 2em;
                 font-style: italic;
-                font-family: "Roboto", sans-serif, Dotum, '돋움';
+                font-family: "Roboto", sans-serif, Dotum, "돋움";
                 font-weight: 300;
                 color: #fff;
-                text-shadow: 2px 2px 2px rgba(0, 0, 0, .8);
+                text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
 
               }
 
