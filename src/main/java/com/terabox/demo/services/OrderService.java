@@ -10,8 +10,6 @@ import com.terabox.demo.vos.OrderVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDateTime;
 
@@ -35,44 +33,66 @@ public class OrderService {
 
     /* 결제하기 누르면 결제되는 창 */
     public CommonResult postProductOrder(OrderEntity order,
-                                         @RequestParam("productIndex") int productIndex,
-                                         String cardName) {
+                                         ProductPaymentTargetEntity productPaymentTarget,
+                                         String cardName,
+                                         UserEntity user) {
+        if (user == null){
+            System.out.println(1);
+            return CommonResult.FAILURE;
+        }
+        order.setUserEmail(user.getEmail());
+        if (productPaymentTarget == null){
+            System.out.println(2);
+            return CommonResult.FAILURE;
+        }
+        if (this.orderMapper.insertProductPayment(productPaymentTarget) != 1){
+            System.out.println(3);
+            return CommonResult.FAILURE;
+        }
+//        인서트 되자마자 바로 다시 select 해오기
+        ProductPaymentTargetEntity dbProductPayment = this.orderMapper.selectProductPaymentByProductIndexQuantity(productPaymentTarget.getProductIndex(), productPaymentTarget.getQuantity());
+
+//        금방 인서트된 데이터의 index를 order의 멤버변수로 지정
+        order.setProductPaymentTargetIndex(dbProductPayment.getIndex());
+
 
 //        여기 바꿔야댐
 //        이메일은 어차피 로그인 세션에서 가져오면 됨
-        order.setUserEmail("gktjdehd3333@gmail.com");
         order.setMovieReservationIndex(null);
         order.setCreatedAt(LocalDateTime.now());
 
 
         UserCardEntity cardDb = this.userCardMapper.selectUserCard(order.getUserEmail(), cardName);
-        ProductEntity product = this.productMapper.selectProductByIndex(productIndex);
+//        ProductEntity product = this.productMapper.selectProductByIndex(productIndex);
+        ProductEntity product = this.productMapper.selectProductByIndex(productPaymentTarget.getProductIndex());
 
         if (cardDb == null) {
-            System.out.println(1);
+            System.out.println(4);
             return CommonResult.FAILURE;
         }
         if (cardDb.getMoney() < order.getTotalPrice()) {
             return CommonResult.FAILURE_NOT_POINT;
         }
-        if (product.getQuantity() < order.getQuantity()) {
+//        if (product.getQuantity() < order.getQuantity()) {
+        if (product.getQuantity() < productPaymentTarget.getQuantity()) {
             return CommonResult.FAILURE_QUANTITY;
         }
 
         //결제 금액만큼 포인트 차감되는 쿼리
         order.setUserCardMappingIndex(cardDb.getIndex());
         cardDb.setMoney(cardDb.getMoney() - order.getTotalPrice());
-        product.setQuantity(product.getQuantity() - order.getQuantity());
+//        product.setQuantity(product.getQuantity() - order.getQuantity());
+        product.setQuantity(product.getQuantity() - productPaymentTarget.getQuantity());
 
         if (this.productMapper.updateProduct(product) < 1) {
-            System.out.println(2);
+            System.out.println(5);
             return CommonResult.FAILURE;
         }
         if (this.userCardMapper.updateMoney(cardDb) < 1) {
-            System.out.println(3);
+            System.out.println(6);
             return CommonResult.FAILURE;
         }
-        System.out.println(4);
+        System.out.println(7);
         return this.orderMapper.insertOrder(order) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 
@@ -80,10 +100,11 @@ public class OrderService {
 //        return this.userCardMapper.selectUserCard(order);
 //    }
 
-    public OrderVo[] selectOrderList(String userEmail) {
-        ModelAndView model = new ModelAndView();
-        OrderVo[] dbOrder = this.orderMapper.selectEmailByList(userEmail);
-        model.addObject("list", dbOrder);
+    public OrderVo[] selectOrderList(UserEntity user) {
+        if (user == null) {
+            return null;
+        }
+        OrderVo[] dbOrder = this.orderMapper.selectEmailByList(user.getEmail());
         return dbOrder;
     }
 
@@ -101,9 +122,8 @@ public class OrderService {
         }
 //                보안 취약점 방지
         order.setUserEmail(user.getEmail());
-        order.setProductIndex(null);
+        order.setProductPaymentTargetIndex(null);
         order.setCreatedAt(LocalDateTime.now());
-        order.setQuantity(1);
 
 //        유효성 검사
 //        이메일이랑 카드 이름으로 카드 가져왔을 때,

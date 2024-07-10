@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @import "../common/common.notHome";
 
-body{
+body {
   letter-spacing: 0;
   line-height: 1.5;
   font-size: 15px;
@@ -10,13 +10,15 @@ body{
   font-family: NanumBarunGothic, Dotum, '돋움', sans-serif;
 }
 
-*{
+* {
   box-sizing: border-box;
 }
-[type = button] button{
+
+[type = button] button {
   -webkit-appearance: button;
 }
-button{
+
+button {
   cursor: pointer;
   letter-spacing: -.5px;
   font-weight: 400;
@@ -27,16 +29,16 @@ button{
   line-height: 1.15;
 }
 
-em{
+em {
   font-style: italic;
 }
-em{
+
+em {
   font-style: normal;
 }
 
 
-
-ul{
+ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -49,14 +51,14 @@ ul{
   unicode-bidi: isolate;
 }
 
-li{
+li {
   display: list-item;
   text-align: -webkit-match-parent;
   unicode-bidi: isolate;
 }
 
 
-p{
+p {
   display: block;
   margin-block-start: 1em;
   margin-block-end: 1em;
@@ -65,7 +67,7 @@ p{
   unicode-bidi: isolate;
 }
 
-div{
+div {
   display: block;
   unicode-bidi: isolate;
 
@@ -105,16 +107,6 @@ div{
     width: 100%;
     height: 100%;
     background: linear-gradient(to right, #0f0f0f 20%, rgba(15, 15, 15, 0) 50%, #0f0f0f 80%);
-  }
-
-  > .bg-pattern {
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 3;
-    width: 100%;
-    height: 100%;
-    background: url(https://img.megabox.co.kr/static/pc/images/movie/bg-movie-detail-pattern.png) repeat-x 0 0;
   }
 
   > .bg-img:after {
@@ -181,6 +173,7 @@ div{
 
 
       .btn {
+
         display: inline-block;
         min-width: 100px;
         height: 36px;
@@ -195,10 +188,49 @@ div{
         border-radius: 4px;
         background-color: transparent;
 
-        .ico-sns-line {
-          width: 17px;
-          height: 17px;
+        > img{
+          display: none;
+
+          &.-visible{
+            width: 15px;
+            height: 12px;
+            display: inline-block;
+          }
         }
+
+        > i{
+          display: none;
+
+          &.-visible{
+            width: 15px;
+            height: 12px;
+            display: inline-block;
+          }
+        }
+
+        &:hover{ // 마우스 갖다댔을때
+          color: #222;
+          background-color: #fff;
+
+          > i{
+            display: none;
+          }
+          > img{
+            width: 15px;
+            height: 12px;
+            display: inline-block; //block 은 한줄 전체를 차지 ,그래서 inline-block 을 해주면 사진 크기만큼만 차지함
+          }
+        }
+
+        //.ico-sns-line {
+        //  width: 17px;
+        //  height: 17px;
+        //
+        //  &.-visible{
+        //    display: none;
+        //  }
+        //}
+
       }
     }
 
@@ -241,7 +273,7 @@ div{
 
         > .number.gt {
           padding: 0 0 0 30px;
-          background: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-megabox.png) no-repeat 0 center;
+          background: url("../../images/movie/ico-megabox.png") no-repeat 0 center;
           font-family: Roboto, Dotum, '돋움', sans-serif;
           font-weight: 400;
 
@@ -279,7 +311,7 @@ div{
           padding: 0 0 0 30px;
           vertical-align: middle;
           line-height: 1.1;
-          background: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-ticket-gray.png) no-repeat 0 center;
+          background: url("../../images/movie/ico-ticket-gray.png") no-repeat 0 center;
 
           > em {
             margin: 0 4px 0 0;
@@ -303,57 +335,8 @@ div{
           padding: 0 0 15px 0;
           line-height: 1.1;
           font-size: 0.9333em;
-
-          > .m-tooltip-wrap {
-
-            > .m-tooltip {
-              position: relative;
-              margin-left: 5px !important;
-
-              > .ico-tooltip-gray {
-                overflow: hidden;
-                width: 16px;
-                height: 16px;
-                background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-tooltip-gray.png);
-              }
-
-              > .m-detail-tooltip {
-                display: none;
-                position: absolute;
-                width: 320px;
-                left: -105px;
-                top: -90px;
-                margin: 0;
-                padding: 15px 20px;
-                border: 1px solid #d8d9db;
-                text-align: center;
-                border-radius: 5px;
-                background-color: #fff;
-                z-index: 55;
-
-                > .bg-arr.bottom {
-                  left: 100px;
-                  bottom: -11px;
-                  width: 22px;
-                  height: 11px;
-                  background-image: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-tooltip-arr-bottom.png);
-                }
-
-                > .cont-area {
-                  background-color: red;
-
-                  > .reset {
-                    color: #666;
-
-                  }
-                }
-              }
-
-            }
-
-          }
-
         }
+
 
         > .cont {
           display: inline-block;
@@ -361,7 +344,7 @@ div{
           padding: 0 0 0 30px;
           vertical-align: middle;
           line-height: 1.1;
-          background: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-ticket-gray.png) no-repeat 0 center;
+          background: url("../../images/movie/ico-ticket-gray.png") no-repeat 0 center;
 
           > em {
             margin: 0 4px 0 0;
@@ -396,7 +379,7 @@ div{
         font-size: 0;
         line-height: 0;
 
-        > .movie-grade {
+        > .movie-grade { // 영화 몇세 이용가인지 아직 구현 중
           overflow: hidden;
           position: absolute;
           height: 30px;
@@ -412,6 +395,7 @@ div{
       }
 
     }
+
     > .screen-type {
       overflow: hidden;
       display: block;
@@ -420,8 +404,8 @@ div{
       bottom: 45px;
       width: 260px;
 
-      > .reserve{
-        > .btn{
+      > .reserve {
+        > .btn {
           width: 100%;
           margin: 0;
           background-color: #329eb1;
@@ -456,88 +440,90 @@ div{
       display: table;
     }
 
-> .movie-list-util{
-  overflow: hidden;
-  margin-bottom: 15px;
-  margin-top: 30px !important;
+    > .movie-list-util {
+      overflow: hidden;
+      margin-bottom: 15px;
+      margin-top: 30px !important;
 
-  > .movie-sorting{
-    float: left;
-    padding: 10px 0 0 0;
+      > .movie-sorting {
+        float: left;
+        padding: 10px 0 0 0;
 
-    > span{
-      display: block;
-      position: relative;
-      float: left;
-      margin: 0 10px;
-      > .btn{
-        color: #222;
-        font-weight: 700;
-        display: block;
-        margin: 0;
-        padding: 0;
-        border: 0;
-        background-color: transparent;
+        > span {
+          display: block;
+          position: relative;
+          float: left;
+          margin: 0 10px;
 
-        > .font-gblue{
-          color: #01738b !important;
+          > .btn {
+            color: #222;
+            font-weight: 700;
+            display: block;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            background-color: transparent;
+
+            > .font-gblue {
+              color: #01738b !important;
+            }
+
+          }
+
+          &:first-child {
+            margin-left: 0;
+          }
         }
 
-      }
-      &:first-child {
-        margin-left: 0;
-      }
-    }
 
-
-  }
-  > .movie-sorting-right{
-    float: right;
-    padding: 10px 0 0 0;
-
-    > span{
-      display: block;
-      position: relative;
-      float: left;
-      margin: 0 10px;
-
-      &::before{
-        content: '';
-        position: absolute;
-        left: -10px;
-        top: 50%;
-        display: block;
-        width: 1px;
-        height: 12px;
-        margin: -6px 0 0 0;
-        background-color: #d8d9db;
       }
 
-      > button{
-        margin: 0;
-        padding: 0;
-        border: 0;
-        background-color: transparent;
-      }
+      > .movie-sorting-right {
+        float: right;
+        padding: 10px 0 0 0;
 
-      > .btn{
-        color: #666;
+        > span {
+          display: block;
+          position: relative;
+          float: left;
+          margin: 0 10px;
 
+          &::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 50%;
+            display: block;
+            width: 1px;
+            height: 12px;
+            margin: -6px 0 0 0;
+            background-color: #d8d9db;
+          }
+
+          > button {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            background-color: transparent;
+          }
+
+          > .btn {
+            color: #666;
+
+          }
+        }
       }
     }
-  }
-}
 
 
-
-    >.tab-list{
+    > .tab-list {
       //padding-bottom: 2.2rem;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: row;
 
-      >.topMenu{ /* 위에 메뉴들 ul 태그*/
+      > .topMenu { /* 위에 메뉴들 ul 태그*/
         list-style: none;
         //position: fixed;
         width: 100%;
@@ -547,10 +533,10 @@ div{
         //flex-direction: row;
         padding: 0;
 
-        >.on{ /*li 태그들*/
+        > .on { /*li 태그들*/
           width: 60%;
 
-          >.a{ /*링크 태그들*/
+          > .a { /*링크 태그들*/
             position: relative;
             display: block;
             width: 100%;
@@ -600,552 +586,527 @@ div{
     }
 
 
+    .movie-idv-story {
+      display: block;
+      position: relative;
+      //min-height: 500px;
 
 
-  .movie-idv-story {
-    display: block;
-    position: relative;
-    //min-height: 500px;
+      #movieForm {
+
+        > ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
 
 
-    #movieForm {
-
-      > ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-
-
-        > li {
-          position: relative;
-          width: 100%;
-          padding-bottom: 1rem;
-
-        }
-
-        > .type03 {
-
-          > .story-area {
-            display: block;
+          > li {
+            position: relative;
             width: 100%;
+            padding-bottom: 1rem;
 
-            &::after {
-              clear: both;
+          }
+
+          > .type03 {
+
+            > .story-area {
               display: block;
-              content: '';
-            }
+              width: 100%;
 
-            > .user-prof {
-              position: relative;
-              float: left;
-              width: 105px;
-              text-align: center;
-
-              > .prof-img {
-                width: 50px;
-                height: 50px;
-                border-radius: 50%;
-                margin: 0 auto 10px;
-                overflow: hidden;
-
-                > img {
-                  width: 100%;
-                  border: 0;
-
-                }
-
-              }
-
-              > .user-id {
-                margin: 0;
-                width: 105px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                font-size: .9333em;
-                line-height: 1.1;
-              }
-            }
-
-            > .story-box {
-              border-radius: 0 10px 10px 10px;
-              border: 1px solid #eaeaea;
-              background-color: #fff;
-              float: right;
-              position: relative;
-              width: calc(100% - 105px);
-              height: 84px;
-              padding: 0;
-
-
-              > .story-wrap {
-                display: flex;
-                align-items: center;
-                width: 100%;
-                height: 84px;
-
-                > .write {
-                  margin-right: 20px;
-                  background-color: #545454;
-                  border: none;
-                  border-radius: 0.25rem;
-                  box-sizing: border-box;
-                  color: #f5f5f5;
-                  cursor: pointer;
-                  padding: 0.625rem;
-                  transition: background-color 125ms ease;
-                  user-select: none;
-                  white-space: nowrap;
-                  align-items: center;
-                  display: flex;
-                  flex-direction: row;
-                  gap: 0.5rem;
-                  justify-content: center;
-
-
-                  &:hover {
-                    background-color: #3b3b3b;
-                  }
-                }
-
-                > .story-cont {
-                  display: flex;
-                  gap: 10px;
-                  float: none;
-                  width: 850px;
-                  vertical-align: middle;
-                  padding-left: 30px;
-                  text-align: left;
-                  color: #666;
-
-                  > ._obj-label {
-                    width: 12%;
-
-                    &:last-of-type{
-                      flex-grow: 1;
-                    }
-
-
-                    > .review {
-                      background-color: #ffffff;
-                      border: 0.0625rem solid #d7d7d7;
-                      border-radius: 0.25rem;
-                      box-sizing: border-box;
-                      color: #3b3b3b;
-                      font: inherit;
-                      outline: none;
-                      padding: 0.5rem 0.75rem;
-                      transition-duration: 125ms;
-                      transition-property: border-color, color;
-                      transition-timing-function: ease;
-
-                      &:focus {
-                        border: 0.008rem solid #44bdea;
-                      }
-                    }
-
-                    > ._obj-input {
-                      width: 100%;
-                      background-color: #ffffff;
-                      border: 0.0625rem solid #d7d7d7;
-                      border-radius: 0.25rem;
-                      box-sizing: border-box;
-                      color: #3b3b3b;
-                      font: inherit;
-                      outline: none;
-                      padding: 0.5rem 0.75rem;
-                      transition-duration: 125ms;
-                      transition-property: border-color, color;
-                      transition-timing-function: ease;
-
-
-                      &:hover {
-                        border: 0.008rem solid #44bdea;
-                      }
-
-
-                    }
-
-
-                  }
-
-
-                  > .font-gblue {
-                    color: #01738b !important;
-                  }
-
-                }
-
-                > .tooltip-click {
-                  display: table-cell;
-                  vertical-align: middle;
-                  text-align: center;
-                  color: #666;
-                  text-decoration: none;
-
-                  > i {
-                    margin-right: 5px;
-                  }
-
-                  > .fa-pencil {
-                    transform: translateY(20%);
-                    width: 18px;
-                    height: 18px;
-                    //background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-story-write.png);
-
-                  }
-                }
-              }
-            }
-          }
-
-        }
-
-        .type03.comments {
-          display: none;
-
-          &.-visible {
-            display: block;
-          }
-        }
-
-        > .type01 {
-          margin-top: 20px;
-          display: flex;
-          flex-direction: column;
-
-          > .story-area {
-            display: block;
-            width: 100%;
-
-            > .user-prof {
-              position: relative;
-              float: left;
-              width: 105px;
-              text-align: center;
-
-              > .prof-img {
-                width: 50px;
-                height: 50px;
-                border-radius: 50%;
-                margin: 0 auto 10px;
-                overflow: hidden;
-
-                > img {
-                  width: 40px;
-                  height: 40px;
-                }
-              }
-
-              > .user-id {
-                margin: 0;
-                width: 105px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                font-size: .9333em;
-                line-height: 1.1;
-              }
-            }
-
-            > .story-box {
-              float: right;
-              position: relative;
-              width: calc(100% - 105px);
-              height: 84px;
-              padding: 0;
-
-              > .story-wrap {
+              &::after {
+                clear: both;
                 display: block;
-                width: 100%;
-                height: 84px;
+                content: '';
+              }
 
-                > .tit {
-                  float: left;
-                  height: 84px;
-                  width: 105px;
-                  line-height: 82px;
-                  text-align: center;
-                  vertical-align: middle;
-                  border-radius: 0 0 0 10px;
-                  color: #503396;
-                  background-color: #f8f8fa;
-                  font-weight: 400;
-                  //background-color: #fff;
-                  border: 1px solid #f2f4f5;
-                  //border-width: 1px 0 1px 1px;
+              > .user-prof {
+                position: relative;
+                float: left;
+                width: 105px;
+                text-align: center;
+
+                > .prof-img {
+                  width: 50px;
+                  height: 50px;
+                  border-radius: 50%;
+                  margin: 0 auto 10px;
+                  overflow: hidden;
+
+                  > img {
+                    width: 100%;
+                    border: 0;
+
+                  }
 
                 }
 
-                > .story-cont {
-                  height: 100%;
-                  background-color: #f8f8fa;
-                  color: #503396;
-                  border-radius: 0 10px 10px 0;
+                > .user-id {
+                  margin: 0;
+                  width: 105px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  font-size: .9333em;
+                  line-height: 1.1;
+                }
+              }
+
+              > .story-box {
+                border-radius: 0 10px 10px 10px;
+                border: 1px solid #eaeaea;
+                background-color: #fff;
+                float: right;
+                position: relative;
+                width: calc(100% - 105px);
+                height: 84px;
+                padding: 0;
+
+
+                > .story-wrap {
                   display: flex;
                   align-items: center;
+                  width: 100%;
+                  height: 84px;
 
-                  > .story-point {
-                    display: table-cell;
-                    width: 90px;
-                    height: 50px;
-                    padding: 0;
-                    text-align: center;
-                    vertical-align: middle;
-
-                    > span {
-                      display: inline-block;
-                      vertical-align: top;
-                      font-size: 2.4em;
-                      font-family: Roboto;
-                      font-weight: 300;
-
-                    }
-
-                  }
-
-                  > .story-recommend {
-                    display: table-cell;
-                    width: 85px;
-                    //height: 50px;
-                    padding: 0 20px 0 0;
-                    vertical-align: middle;
-
-                    > em {
-                      display: inline-block;
-                      width: 100%;
-                      padding: 0;
-                      text-align: center;
-
-                    }
-                  }
-
-                  > .story-txt {
-                    width: 634px;
-                    display: table-cell;
-                    position: relative;
-                    padding: 0 20px 0 30px;
-                    text-align: left;
-                    color: #666;
-                    vertical-align: middle;
-                    font-size: .9333em;
-                    line-height: 1.4;
-
-                    &::before {
-                      content: '';
-                      display: block;
-                      position: absolute;
-                      left: 0;
-                      top: 50%;
-                      width: 1px;
-                      height: 50px;
-                      margin-top: -25px;
-                      background-color: rgba(0, 0, 0, .1);
-                    }
-
-                  }
-
-                  > .story-like {
-                    transform: translateY(15%);
-                    display: table-cell;
-                    width: 40px;
-                    text-align: center;
-                    vertical-align: middle;
-
-                    > .oneLikeBtn {
-                      background-color: #f8f8fa;
-                      border: none;
-                      height: 30px;
-                      padding-top: 5px;
-
-                      > i {
-                        display: block;
-                        margin: 0 auto;
-                        vertical-align: top;
-
-                      }
-
-                      > .ico-like-gray {
-                        width: 16px;
-                        height: 17px;
-                        background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-like-g.png);
-                      }
-
-                      > .ico-like-purple{
-                        width: 16px;
-                        height: 17px;
-                        background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-like-p.png);
-
-                        &.-visible{
-                          display: block;
-                        }
-                      }
-
-                      > span {
-                        display: block;
-                        padding: 5px 0 0 0;
-                        color: #666;
-                        font-size: .8667em;
-                      }
-
-                    }
-
-                  }
-
-                  /* 신고하기 누르면 뜨는 창 */
-                  > .story-util {
-                    //height: 100%;
+                  > .write {
+                    margin-right: 20px;
+                    background-color: #545454;
+                    border: none;
+                    border-radius: 0.25rem;
+                    box-sizing: border-box;
+                    color: #f5f5f5;
+                    cursor: pointer;
+                    padding: 0.625rem;
+                    transition: background-color 125ms ease;
+                    user-select: none;
+                    white-space: nowrap;
                     align-items: center;
+                    display: flex;
+                    flex-direction: row;
+                    gap: 0.5rem;
                     justify-content: center;
 
-                    > .post-funtion {
-                      position: static;
 
-                      > .wrap {
-                        position: relative;
-                        /* height: 100%; */
-                        align-items: center;
-                        display: flex;
-                        justify-content: center;
-                        position: relative;
+                    &:hover {
+                      background-color: #3b3b3b;
+                    }
+                  }
 
-                        > .btn-alert {
-                          background-color: #f8f8fa;
-                          border: none;
-                          height: 23px;
-                          padding: 0;
-                          margin: 0;
-                          vertical-align: bottom;
-                          width: 40px;
-                          background-position: 10px center;
-                          display: flex;
-                          align-items: center;
-                          justify-content: center;
+                  > .story-cont {
+                    display: flex;
+                    gap: 10px;
+                    float: none;
+                    width: 850px;
+                    vertical-align: middle;
+                    padding-left: 30px;
+                    text-align: left;
+                    color: #666;
 
-                          > .fa-solid {
-                            color: #616161;
+                    > ._obj-label {
+                      width: 12%;
 
-                          }
+                      &:last-of-type {
+                        flex-grow: 1;
+                      }
+
+
+                      > .review {
+                        background-color: #ffffff;
+                        border: 0.0625rem solid #d7d7d7;
+                        border-radius: 0.25rem;
+                        box-sizing: border-box;
+                        color: #3b3b3b;
+                        font: inherit;
+                        outline: none;
+                        padding: 0.5rem 0.75rem;
+                        transition-duration: 125ms;
+                        transition-property: border-color, color;
+                        transition-timing-function: ease;
+
+                        &:focus {
+                          border: 0.008rem solid #44bdea;
+                        }
+                      }
+
+                      > ._obj-input {
+                        width: 100%;
+                        background-color: #ffffff;
+                        border: 0.0625rem solid #d7d7d7;
+                        border-radius: 0.25rem;
+                        box-sizing: border-box;
+                        color: #3b3b3b;
+                        font: inherit;
+                        outline: none;
+                        padding: 0.5rem 0.75rem;
+                        transition-duration: 125ms;
+                        transition-property: border-color, color;
+                        transition-timing-function: ease;
+
+
+                        &:hover {
+                          border: 0.008rem solid #44bdea;
                         }
 
-                        > .balloon-space {
-                          color: #444;
-                          position: absolute;
-                          top: 50%;
-                          right: 50px;
-                          z-index: 11;
-                          width: 260px;
-                          border: 1px solid #d8d9db;
-                          background-color: #fff;
-                          border-radius: 5px;
-                          text-align: left;
+
+                      }
+
+
+                    }
+
+
+                    > .font-gblue {
+                      color: #01738b !important;
+                    }
+
+                  }
+
+                  > .click {
+                    display: table-cell;
+                    vertical-align: middle;
+                    text-align: center;
+                    color: #666;
+                    text-decoration: none;
+
+                    > i {
+                      margin-right: 5px;
+                    }
+
+                    > .fa-pencil {
+                      transform: translateY(20%);
+                      width: 18px;
+                      height: 18px;
+
+
+                    }
+                  }
+                }
+              }
+            }
+
+          }
+
+          .type03.comments {
+            display: none;
+
+            &.-visible {
+              display: block;
+            }
+          }
+
+          > .type01 {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+
+            > .story-area {
+              display: block;
+              width: 100%;
+
+              > .user-prof {
+                position: relative;
+                float: left;
+                width: 105px;
+                text-align: center;
+
+                > .prof-img {
+                  width: 50px;
+                  height: 50px;
+                  border-radius: 50%;
+                  margin: 0 auto 10px;
+                  overflow: hidden;
+
+                  > img {
+                    width: 40px;
+                    height: 40px;
+                  }
+                }
+
+                > .user-id {
+                  margin: 0;
+                  width: 105px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  font-size: .9333em;
+                  line-height: 1.1;
+                }
+              }
+
+              > .story-box {
+                float: right;
+                position: relative;
+                width: calc(100% - 105px);
+                height: 84px;
+                padding: 0;
+
+                > .story-wrap {
+                  display: block;
+                  width: 100%;
+                  height: 84px;
+
+                  > .tit {
+                    float: left;
+                    height: 84px;
+                    width: 105px;
+                    line-height: 82px;
+                    text-align: center;
+                    vertical-align: middle;
+                    border-radius: 0 0 0 10px;
+                    color: #503396;
+                    background-color: #f8f8fa;
+                    font-weight: 400;
+                    //background-color: #fff;
+                    border: 1px solid #f2f4f5;
+                    //border-width: 1px 0 1px 1px;
+
+                  }
+
+                  > .story-cont {
+                    height: 100%;
+                    background-color: #f8f8fa;
+                    color: #503396;
+                    border-radius: 0 10px 10px 0;
+                    display: flex;
+                    align-items: center;
+
+                    > .story-point {
+                      display: table-cell;
+                      width: 90px;
+                      height: 50px;
+                      padding: 0;
+                      text-align: center;
+                      vertical-align: middle;
+
+                      > span {
+                        display: inline-block;
+                        vertical-align: top;
+                        font-size: 2.4em;
+                        font-family: Roboto;
+                        font-weight: 300;
+
+                      }
+
+                    }
+
+                    > .story-recommend {
+                      display: table-cell;
+                      width: 85px;
+                      //height: 50px;
+                      padding: 0 20px 0 0;
+                      vertical-align: middle;
+
+                      > em {
+                        display: inline-block;
+                        width: 100%;
+                        padding: 0;
+                        text-align: center;
+
+                      }
+                    }
+
+                    > .story-txt {
+                      width: 634px;
+                      display: table-cell;
+                      position: relative;
+                      padding: 0 20px 0 30px;
+                      text-align: left;
+                      color: #666;
+                      vertical-align: middle;
+                      font-size: .9333em;
+                      line-height: 1.4;
+
+                      &::before {
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        left: 0;
+                        top: 50%;
+                        width: 1px;
+                        height: 50px;
+                        margin-top: -25px;
+                        background-color: rgba(0, 0, 0, .1);
+                      }
+
+                    }
+
+                    > .story-like {
+                      transform: translateY(15%);
+                      display: table-cell;
+                      width: 40px;
+                      text-align: center;
+                      vertical-align: middle;
+
+                      > .good2 {
+                        background-color: #f8f8fa;
+                        border: none;
+                        height: 30px;
+                        padding-top: 5px;
+
+                        > i {
+                          display: block;
+                          margin: 0 auto;
+                          vertical-align: top;
+
                         }
 
-                        > .balloon-space.user {
-                          display: none;
-                          height: 90px;
-                          margin-top: -45px;
+                        > .ico-like-gray {
+                          width: 16px;
+                          height: 17px;
+                        }
+
+                        > .ico-like-purple {
+                          width: 16px;
+                          height: 17px;
 
                           &.-visible {
                             display: block;
                           }
+                        }
 
-                          > .balloon-cont {
-                            position: relative;
-                            padding: 10px 25px 10px 20px;
+                        > span {
+                          display: block;
+                          padding: 5px 0 0 0;
+                          color: #666;
+                          font-size: .8667em;
+                        }
 
-                            &::after {
-                              content: ' ';
-                              width: 11px;
-                              height: 20px;
-                              display: inline-block;
-                              background: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-bloon.png) right center no-repeat;
-                              position: absolute;
-                              top: 50%;
-                              right: -11px;
-                              margin-top: -10px;
-                            }
+                      }
 
-                            > .user {
-                              display: block;
-                              padding: 0 5px;
-                              text-align: center;
+                    }
 
-                              > .reset {
-                                padding: 0;
-                                margin: 0;
+                    /* 신고하기 누르면 뜨는 창 */
+                    > .story-util {
+                      //height: 100%;
+                      align-items: center;
+                      justify-content: center;
 
-                              }
+                      > .post-funtion {
+                        position: static;
 
-                              > .a-c {
-                                text-align: center !important;
-                              }
+                        > .wrap {
+                          position: relative;
+                          /* height: 100%; */
+                          align-items: center;
+                          display: flex;
+                          justify-content: center;
+                          position: relative;
 
-                              > .maskOne {
-                                margin: 0;
-                                padding: 5px;
-                                border: 0;
-                                background-color: transparent;
-                                color: #037b94;
-                                font-size: .9333em;
-                                background: 0 0;
+                          > .btn-alert {
+                            background-color: #f8f8fa;
+                            border: none;
+                            height: 23px;
+                            padding: 0;
+                            margin: 0;
+                            vertical-align: bottom;
+                            width: 40px;
+                            background-position: 10px center;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
 
-                                > .ico-arr-right-green {
-                                  overflow: hidden;
-                                  width: 6px;
-                                  height: 10px;
-                                  background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-arr-right-green.png);
-                                  margin-left: 4px;
+                            > .fa-solid {
+                              color: #616161;
 
-
-                                }
-
-                                > .iconset {
-                                  display: inline-block;
-                                  margin: -1px 0 0 0;
-                                  padding: 0;
-                                  font-size: 0;
-                                  line-height: 0;
-                                  vertical-align: middle;
-                                  background-position: 0 0;
-                                  background-repeat: no-repeat;
-
-                                }
-
-                              }
-
-
-                            }
-
-                            > .btn-close {
-                              position: absolute;
-                              top: 10px;
-                              right: 10px;
-
-                              > a {
-                                display: block;
-                                margin: 0;
-                                padding: 5px;
-                                border: 0;
-                                background-color: transparent;
-                                color: #037b94;
-                                font-size: .9333em;
-
-                                > .fa-solid {
-                                  font-size: 15px;
-                                }
-
-
-                                //> img{
-                                //  border: 0;
-                                //  background-image: url("https://www.megabox.co.kr/static/pc/images/common/btn/btn-balloon-close.png");
-                                //  background-repeat: no-repeat;
-                                //  width: 15px;
-                                //  height: 15px;
-                                //
-                                //}
-                              }
                             }
                           }
 
+                          > .balloon-space {
+                            color: #444;
+                            position: absolute;
+                            top: 50%;
+                            right: 50px;
+                            z-index: 11;
+                            width: 260px;
+                            border: 1px solid #d8d9db;
+                            background-color: #fff;
+                            border-radius: 5px;
+                            text-align: left;
+                          }
+
+                          > .balloon-space.user {
+                            display: none;
+                            height: 90px;
+                            margin-top: -45px;
+
+                            &.-visible {
+                              display: block;
+                            }
+
+                            > .balloon-cont {
+                              position: relative;
+                              padding: 10px 25px 10px 20px;
+
+                              > .user {
+                                display: block;
+                                padding: 0 5px;
+                                text-align: center;
+
+                                > .reset {
+                                  padding: 0;
+                                  margin: 0;
+
+                                }
+
+                                > .a-c {
+                                  text-align: center !important;
+                                }
+
+                                > .maskOne {
+                                  margin: 0;
+                                  padding: 5px;
+                                  border: 0;
+                                  background-color: transparent;
+                                  color: #037b94;
+                                  font-size: .9333em;
+                                  background: 0 0;
+
+                                  > .ico-arr-right-green {
+                                    overflow: hidden;
+                                    width: 6px;
+                                    height: 10px;
+                                    margin-left: 4px;
+
+
+                                  }
+
+                                  > .iconset {
+                                    display: inline-block;
+                                    margin: -1px 0 0 0;
+                                    padding: 0;
+                                    font-size: 0;
+                                    line-height: 0;
+                                    vertical-align: middle;
+                                    background-position: 0 0;
+                                    background-repeat: no-repeat;
+
+                                  }
+
+                                }
+
+
+                              }
+
+                              > .btn-close {
+                                position: absolute;
+                                top: 10px;
+                                right: 10px;
+
+                                > a {
+                                  display: block;
+                                  margin: 0;
+                                  padding: 5px;
+                                  border: 0;
+                                  background-color: transparent;
+                                  color: #037b94;
+                                  font-size: .9333em;
+
+                                  > .fa-solid {
+                                    font-size: 15px;
+                                  }
+
+                                }
+                              }
+                            }
+
+                          }
                         }
                       }
                     }
@@ -1153,27 +1114,26 @@ div{
                 }
               }
             }
-          }
 
-          > .story-date {
-            text-align: right;
-            font-size: 0.9333em;
-            line-height: 1.1;
-            color: #666;
+            > .story-date {
+              text-align: right;
+              font-size: 0.9333em;
+              line-height: 1.1;
+              color: #666;
 
-            > .review {
-              display: block;
-              padding-top: 10px;
+              > .review {
+                display: block;
+                padding-top: 10px;
+              }
             }
           }
         }
+
       }
 
     }
 
-  }
-
-    > .pagination{
+    > .pagination {
       clear: both;
       position: relative;
       margin: 0 auto;
@@ -1199,24 +1159,24 @@ div{
 
       }
 
-        > a{
-          display: inline-block;
-          position: relative;
-          min-width: 32px;
-          height: 32px;
-          margin: 0;
-          padding: 0 8px;
-          border: 1px solid #ebebeb;
-          text-decoration: none;
-          line-height: 30px;
-          color: #333;
-          font-weight: 400;
-          vertical-align: middle;
-          border-radius: 4px;
+      > a {
+        display: inline-block;
+        position: relative;
+        min-width: 32px;
+        height: 32px;
+        margin: 0;
+        padding: 0 8px;
+        border: 1px solid #ebebeb;
+        text-decoration: none;
+        line-height: 30px;
+        color: #333;
+        font-weight: 400;
+        vertical-align: middle;
+        border-radius: 4px;
 
       }
 
-      > .control{
+      > .control {
         overflow: hidden;
         width: 32px;
         height: 32px;
@@ -1226,15 +1186,15 @@ div{
         font-size: 0;
         line-height: 0;
         text-indent: -9999px;
-        background: url(https://img.megabox.co.kr/static/pc/images/common/btn/btn-paging.png) no-repeat 0 0;
+        //background: url(https://img.megabox.co.kr/static/pc/images/common/btn/btn-paging.png) no-repeat 0 0;
       }
 
-      > .control.next{
+      > .control.next {
         margin-left: 5px;
         background-position: -64px 0;
       }
 
-      > .control.last{
+      > .control.last {
         background-position: right 0;
       }
     }

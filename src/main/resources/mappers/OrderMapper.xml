@@ -6,11 +6,16 @@
 
     <insert id="insertOrder" parameterType="com.terabox.demo.entities.OrderEntity">
         INSERT INTO `terabox`.`orders`
-        (user_email, movie_reservation_index, product_index, price, user_card_mapping_index, quantity, created_at,
+        (user_email, movie_reservation_index, product_payment_target_index, price, user_card_mapping_index, created_at,
          total_price, total_sale)
         VALUES (#{userEmail}, #{movieReservationIndex},
-                #{productIndex}, #{price}, #{userCardMappingIndex}, #{quantity}, #{createdAt}, #{totalPrice},
+                #{productPaymentTargetIndex}, #{price}, #{userCardMappingIndex}, #{createdAt}, #{totalPrice},
                 #{totalSale})
+    </insert>
+
+    <insert id="insertProductPayment" parameterType="com.terabox.demo.entities.ProductPaymentTargetEntity">
+        INSERT INTO `terabox`.`product_payment_target` (`product_index`, `quantity`)
+        VALUES (#{productIndex}, #{quantity})
     </insert>
 
     <insert id="insertMovieReservation" parameterType="com.terabox.demo.entities.MovieReservationEntity">
@@ -23,17 +28,22 @@
     SELECT  `orders`.`index` AS `index`,
             `orders`.`user_email` AS userEmail,
             `orders`.`movie_reservation_index` AS movieReservationIndex,
-            `orders`.`product_index` AS productIndex,
+            `orders`.`product_payment_target_index` AS productPaymentTargetIndex,
             `orders`.`price` AS price,
             `orders`.`user_card_mapping_index` AS userCardMappingIndex,
-            `orders`. `quantity` AS quantity,
             `orders`. `created_at` AS createdAt,
             `orders`.`total_price` AS totalPrice,
             `orders`.`total_sale` AS totalSale,
             `product`.`name` AS  productName,
             `product`.`quantity` AS  productQuantity
     FROM `terabox`.`orders`
-    LEFT JOIN `terabox`.`products` AS `product` ON `orders`.`product_index` = `product`.`index`
+#     LEFT JOIN `terabox`.`products` AS `product` ON `orders`.`product_index` = `product`.`index`
+             LEFT JOIN
+         `terabox`.`product_payment_target` AS `payment_target`
+         ON `orders`.`product_payment_target_index` = `payment_target`.`index`
+             LEFT JOIN
+         `terabox`.`products` AS `product`
+         ON `payment_target`.`product_index` = `product`.`index`
     WHERE BINARY `user_email` = #{userEmail}
     </select>
 
@@ -44,6 +54,15 @@
         FROM `terabox`.`movie_reservations`
         WHERE `screening_info_index` = #{screeningInfoIndex}
           AND `seat_index` = #{seatIndex}
+    </select>
+
+    <select id="selectProductPaymentByProductIndexQuantity" resultType="com.terabox.demo.entities.ProductPaymentTargetEntity">
+        SELECT `index`         AS `index`,
+               `product_index` AS `product_index`,
+               `quantity`      AS `quantity`
+        FROM `terabox`.`product_payment_target`
+        WHERE `product_index` = #{productIndex}
+          AND `quantity` = #{quantity}
     </select>
 
 

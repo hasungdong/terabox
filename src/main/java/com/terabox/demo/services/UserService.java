@@ -73,7 +73,7 @@ public class UserService {
         context.setVariable("code", emailAuth.getCode());
 
         new MailSender(this.mailSender)
-                .setFrom("naakoko47@gmail.com")
+                .setFrom("terabox.with@gmail.com")
                 .setSubject("[TeraBox] 회원가입 인증번호")
                 .setTo(emailAuth.getEmail())
                 .setText(this.springTemplateEngine.process("user/resetPasswordEmail", context), true)
@@ -169,6 +169,7 @@ public class UserService {
 
     public Result postCreateCard(String email) {
         if (email == null || !UserRegex.email.tests(email)) {
+            System.out.println("카드 만들기 실패");
             return null;
         }
         CardEntity[] dbCard = this.cardMapper.selectCards();
@@ -178,9 +179,11 @@ public class UserService {
             userCard.setMoney(100000);
             userCard.setCardName(cardEntity.getName());
             if (this.userCardMapper.insertUserCard(userCard) != 1) {
+                System.out.println("카드 넣다가 실패");
                 throw new TransactionalException();
             }
         }
+        System.out.println("카드 만들기 성공");
         return CommonResult.SUCCESS;
 
     }
@@ -209,7 +212,7 @@ public class UserService {
         Context context = new Context();
         context.setVariable("code", emailAuth.getCode());
         new MailSender(this.mailSender)
-                .setFrom("naakoko47@gmail.com")
+                .setFrom("terabox.with@gmail.com")
                 .setSubject("[TeraBox] 비밀번호 재설정 인증번호")
                 .setTo(emailAuth.getEmail())
                 .setText(this.springTemplateEngine.process("user/resetPasswordEmail", context), true)

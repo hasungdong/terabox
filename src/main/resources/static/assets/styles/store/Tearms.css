@@ -10,7 +10,7 @@ body {
   overflow-y: scroll;
   font-size: 13px;
   color: #666666;
-  font-family: sans-serif, NanumBarunGothic, Dotum, "돋움";
+  font-family: sans-serif, "Nanum Gothic", Dotum, "돋움";
 }
 
 #header {

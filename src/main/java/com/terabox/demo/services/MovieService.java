@@ -2,10 +2,7 @@ package com.terabox.demo.services;
 
 import com.terabox.demo.dtos.MovieCommentDto;
 import com.terabox.demo.dtos.SearchDto;
-import com.terabox.demo.entities.MovieCommentEntity;
-import com.terabox.demo.entities.MovieCommentLikesEntity;
-import com.terabox.demo.entities.MovieEntity;
-import com.terabox.demo.entities.MovieLikeEntity;
+import com.terabox.demo.entities.*;
 import com.terabox.demo.mappers.MovieCommentLikeMapper;
 import com.terabox.demo.mappers.MovieCommentMapper;
 import com.terabox.demo.mappers.MovieLikeMapper;
@@ -38,8 +35,8 @@ public class MovieService {
         return this.movieMapper.selectMoviesBySearch(searchDto);
     }
 
-    public MovieEntity[] getAllMovies() {
-        return movieMapper.selectMovieAll();
+    public MovieEntity[] getAllMovies(String keyword) {
+        return movieMapper.selectMovieAll(keyword);
     }
 
     public CommonResult postMovieComment(MovieCommentEntity comment){
@@ -105,7 +102,12 @@ public class MovieService {
 
     }
 
-    public int getMovieLike(int movieIndex){
+    public MovieLikeEntity getMovieLike(int movieIndex, String userEmail ){
+        return this.movieLikeMapper.selectMovieLikeByIndex(movieIndex, userEmail);
+    }
+
+
+    public int getMovieCommentLike(int movieIndex){
         return this.movieLikeMapper.selectMovieCountByIndex(movieIndex);
     }
 
@@ -123,7 +125,7 @@ public class MovieService {
     }
 
     //댓글 최신순 가져오기
-    public MovieCommentDto[] getMovieCommentNewest(int movieIndex, String by,SearchDto searchDto){
+    public MovieCommentDto[] getMovieCommentNewest(int movieIndex, String by, SearchDto searchDto , UserEntity user){
         searchDto.setTotalCount(this.movieCommentMapper.selectCommentCount(movieIndex));
         searchDto.setCountPerPage(10);
         searchDto.setMaxPage(searchDto.getTotalCount() / searchDto.getCountPerPage() + (searchDto.getTotalCount() % searchDto.getCountPerPage() == 0 ? 0 : 1));
@@ -133,6 +135,21 @@ public class MovieService {
         searchDto.setMinPage(1);
         searchDto.setOffset(searchDto.getCountPerPage() * (searchDto.getRequestPage() - 1));
         System.out.println(searchDto);
-        return this.movieCommentMapper.selectMovieNewest(movieIndex,by,searchDto.getCountPerPage(),searchDto.getOffset());
+        MovieCommentDto[] movieCommentDtos = this.movieCommentMapper.selectMovieNewest(movieIndex, by, searchDto.getCountPerPage(), searchDto.getOffset());
+
+        /*댓글 좋아요 눌렀을때  파란색 아이콘 들어가게 하는 로직*/
+        for (MovieCommentDto movieCommentDto : movieCommentDtos) {
+            if (user == null){ // 로그인 안되있을떄
+                movieCommentDto.setSaved(false);
+
+            } else {
+                // Saved 에 내 계정으로 좋아요 누른게 있다면 true 없다면 false
+                movieCommentDto.setSaved(this.movieCommentLikeMapper.selectCommentLikeByIndex(movieCommentDto.getIndex(),user.getEmail()) != null); // 아이디랑 movieIndex 넣어주고 useEmail 이 없을시
+                System.out.println(movieCommentDto.isSaved());
+            }
+
+        }
+
+        return movieCommentDtos;
     }
 }

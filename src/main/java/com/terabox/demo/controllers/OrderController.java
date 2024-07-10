@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.terabox.demo.dtos.MovieOrderDto;
 import com.terabox.demo.entities.OrderEntity;
+import com.terabox.demo.entities.ProductPaymentTargetEntity;
 import com.terabox.demo.entities.UserEntity;
 import com.terabox.demo.exceptions.TransactionalException;
 import com.terabox.demo.results.CommonResult;
@@ -32,9 +33,10 @@ public class OrderController {
     @PostMapping(value = "product", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody /*이거 안적어줘서 계속 템플릿 없다고 뜬거였음 */
     public String postProduct(OrderEntity order,
-                              @RequestParam("productIndex") int productIndex,
-                              @RequestParam("cardName") String cardName) {
-        CommonResult result = this.orderService.postProductOrder(order, productIndex, cardName);
+                              ProductPaymentTargetEntity productPaymentTarget,
+                              @RequestParam("cardName") String cardName,
+                              @SessionAttribute(value = "user",required = false)UserEntity user) {
+        CommonResult result = this.orderService.postProductOrder(order, productPaymentTarget, cardName, user);
         JSONObject responseObject = new JSONObject();
         responseObject.put("result", result.name().toLowerCase());
         return responseObject.toString();
@@ -70,11 +72,11 @@ public class OrderController {
     }
 
 
-    @GetMapping(value = "myMegaBox", produces = MediaType.TEXT_HTML_VALUE)
-    public ModelAndView getMyMegaBox(@RequestParam(value = "user_email", required = false) String userEmail) {
+    @GetMapping(value = "myMegaBox",produces = MediaType.TEXT_HTML_VALUE)
+    public ModelAndView getMyMegaBox(@SessionAttribute(value = "user",required = false)UserEntity user){
         ModelAndView model = new ModelAndView();
-        userEmail = "gktjdehd3333@gmail.com";
-        model.addObject("list", this.orderService.selectOrderList(userEmail));
+
+        model.addObject("list",this.orderService.selectOrderList(user));
         model.setViewName("store/myMegabox");
         return model;
     }

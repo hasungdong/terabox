@@ -13,14 +13,16 @@ public class OrderEntity {
     private int index;
     private String userEmail;
     private Integer movieReservationIndex;
-    private Integer productIndex;
-    private int price;
+//    private Integer productIndex; // 1
+//    private int quantity; // 1
+    private Integer productPaymentTargetIndex;
+
+    private int price; // 1
     private int userCardMappingIndex;
-    private int quantity;
     private LocalDateTime createdAt;
 
-    private int totalSale; // 할인금액
-    private int totalPrice; // 상품 총 금액
+    private int totalSale; // 할인금액 1
+    private int totalPrice; // 상품 총 금액 1
 
     @Override
     public String toString() {
@@ -28,10 +30,9 @@ public class OrderEntity {
                 "index=" + index +
                 ", userEmail='" + userEmail + '\'' +
                 ", movieReservationIndex=" + movieReservationIndex +
-                ", productIndex=" + productIndex +
+                ", productPaymentTargetIndex=" + productPaymentTargetIndex +
                 ", price=" + price +
                 ", userCardMappingIndex=" + userCardMappingIndex +
-                ", quantity=" + quantity +
                 ", createdAt=" + createdAt +
                 ", totalSale=" + totalSale +
                 ", totalPrice=" + totalPrice +

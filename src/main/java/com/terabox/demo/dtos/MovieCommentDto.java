@@ -16,12 +16,14 @@ public class MovieCommentDto extends MovieCommentEntity {
     public String toString() {
         return "{" +
                 "\"commentLikeCount\":" + "\"" + commentLikeCount + "\"" +
+                ", \"isSaved\":" + "\"" + isSaved + "\"" +
                 ", " + super.toString() +
                 '}';
     }
 
     // 댓글 좋아요 수 , 신고수
     private int commentLikeCount;
+    private boolean isSaved;
 
 
 }

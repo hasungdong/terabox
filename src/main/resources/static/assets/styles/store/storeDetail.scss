@@ -94,7 +94,7 @@ body > .container > {
     height: 42px;
 
     span {
-      background: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-location-home.png) no-repeat center;
+      background: url("../../images/store/bg-location-home.png") no-repeat 0 center;
       overflow: hidden;
       display: block;
       float: left;
@@ -124,7 +124,7 @@ body > .container > {
         top: 0;
         width: 5px;
         height: 42px;
-        background: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-location-arr.png) no-repeat left center;
+        background: url("../../images/store/bg-location-arr.png") no-repeat left center;
       }
     }
   }
@@ -339,7 +339,7 @@ body > .container > {
                       > .ico-minus {
                         width: 13px;
                         height: 13px;
-                        background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-minus.png);
+                        background: url("../../images/storeDetail/ico-minus.png");
                       }
 
                     }
@@ -361,7 +361,7 @@ body > .container > {
                       > .fa-plus {
                         width: 13px;
                         height: 13px;
-                        background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-plus.png);
+                        background: url("../../images/storeDetail/ico-plus.png");
                       }
                     }
 
@@ -420,8 +420,7 @@ body > .container > {
                 padding: 5px 0 0 0;
               }
 
-              > .button.purple{
-
+              > .button.purple.large{
                 &.-visible{
                   display: none;
                 }
@@ -492,7 +491,7 @@ body > .container > {
               margin-left: 6px;
               width: 12px;
               height: 7px;
-              background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-btn-more-arr.png);
+              background:url("../../images/storeDetail/storeDetail-more-arr.png");
               overflow: hidden;
               display: inline-block;
               padding: 0;
@@ -519,7 +518,7 @@ body > .container > {
               margin-left: 6px;
               width: 12px;
               height: 7px;
-              background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-btn-more-arr.png);
+              background:url("../../images/storeDetail/storeDetail-more-arr.png");
               overflow: hidden;
               display: inline-block;
               padding: 0;

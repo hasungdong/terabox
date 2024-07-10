@@ -59,15 +59,41 @@ if (price !== null){
     };
 
 
+    const log = document.querySelector('.log');
+
+    if (log !== null) {
+
+        log.onclick = () =>{
+            alertCover.show();
+            new MessageObj({
+                title: '알림',
+                content: '로그인 후 이용가능한 서비스입니다 <br> 로그인하시겠습니까?',
+                buttons: [
+                    {
+                        text: '취소', onclick: instance => {
+                            instance.hide();
+                            alertCover.hide();
+                        }
+                    },
+                    {
+                        text: '확인', onclick: instance => {
+                            instance.hide();
+                            showLogin();
+                            alertCover.hide();
+                        }
+                    }
+                ]
+            }).show();
+        };
+
+    }
+
+
+
     plus.onclick = () => {
         if (inputText.value < 8) {
             //db에 있는 수량보다 더 플러스 못하게
-            console.log(inputText.value)
-            console.log(DetailQuantity.value);
-            console.log(typeof inputText.value)
-            console.log(typeof DetailQuantity.value)
-            console.log(inputText.value > DetailQuantity.value)
-            if (parseInt(inputText.value) === parseInt(DetailQuantity.value)){
+            if (inputText.value === DetailQuantity.value ){
                 new MessageObj({
                     title: '알림',
                     content: '수량이 부족합니다.',
@@ -81,7 +107,9 @@ if (price !== null){
                 }).show();
                 return;
             }
-            if (parseInt(inputText.value) > parseInt(DetailQuantity.value)){
+            if (parseInt(inputText.value ) > parseInt(DetailQuantity.value)){
+                console.log(typeof inputText.value);
+                console.log(typeof DetailQuantity.value);
                 new MessageObj({
                     title: '알림',
                     content: '상품이 품절되어서 구매가 불가능합니다.',
@@ -332,9 +360,6 @@ if (totalSale !== null) { // storeDetail 에서 order 로 넘어왔을때 order 
         orderBuyButton.onclick=() =>{
             if (checkCard.checked ){
                 if ( orderCardSelect.value !== '00'){
-                    const email = document.querySelector('.email');
-                    email.innerText =
-
                     alertPopup.show();
                     cover.show(()=>{
                         cover.hide();

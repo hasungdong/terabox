@@ -87,7 +87,7 @@ body{
             height: 42px;
 
             span {
-              background: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-location-home.png) no-repeat center;
+              background: url("../../images/store/bg-location-home.png") no-repeat 0 center;
               overflow: hidden;
               display: block;
               float: left;
@@ -113,7 +113,7 @@ body{
               top: 0;
               width: 5px;
               height: 42px;
-              background: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-location-arr.png) no-repeat left center;
+              background: url("../../images/store/bg-location-arr.png") no-repeat left center;
             }
           }
         }
