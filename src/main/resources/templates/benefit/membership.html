@@ -9,6 +9,7 @@
     <th:block th:replace="~{fragments/common/common.html :: commonHead}"></th:block>
     <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/benefit/membership.css}">
     <script defer src="/assets/scripts/common.notHome.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/common/footer.css}">
 </head>
 <body>
 <th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
@@ -217,7 +218,7 @@
         <dt>또한, 홈페이지 및 모바일 웹/앱 로그인 시 소멸 예정 포인트를 확인하실 수 있습니다.</dt>
     </dl>
 </main>
-
+<th:block th:replace="~{fragments/footer.html :: footer}"></th:block>
 
 </body>
 </html>

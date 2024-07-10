@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>전체영화</title>
-        <th:block th:replace="~{fragments/common/common.html :: commonHead}"></th:block>
-        <link rel="stylesheet" th:href="@{/assets/styles/movie/allMovie.css}">
+    <th:block th:replace="~{fragments/common/common.html :: commonHead}"></th:block>
+    <link rel="stylesheet" th:href="@{/assets/styles/movie/allMovie.css}">
+    <script defer src="/assets/scripts/common.notHome.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/common/footer.css}">
 </head>
 <body>
 <th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
@@ -22,7 +24,7 @@
             <div class="onairBtnContainer">
                 <button type="button" title="개봉작만 보기" class="onairBtn">개봉작만</button>
             </div>
-            <div class="movie-search" >
+            <div class="movie-search">
                 <input type="text" title="영화명을 입력하세요" placeholder="영화명 검색" class="input-text" name="keyword">
                 <button type="submit" class="btn-search-input">검색</button>
             </div>
@@ -38,12 +40,14 @@
                         <!--                        마우스 갖다댔을때 나오는 텍스트-->
                         <div class="movie-score">
                             <a href="#" class="wrap movieBtn"
-                               title="극장판 하이큐 g vg!! 쓰레기장의 결전 상세보기" th:href="@{/movie/movieDetail (index=${allMovies.getIndex()})}">
+                               title="극장판 하이큐 g vg!! 쓰레기장의 결전 상세보기"
+                               th:href="@{/movie/movieDetail (index=${allMovies.getIndex()})}">
                                 <div class="summary" th:text="${allMovies.getExplanation()}">봄철 고교 배구대회 미야기현 대표 결정전.
                                     1회전과 2회전에서 우승 후보를 차례로 꺾은 카라스노 고등학교는 마침내 3회전에서 인연의 라이벌 네코마 고등학교와 맞붙게 된다.
                                     공식 경기에서 처음으로 대결하는 두 고등학교,
                                     통칭 까마귀 VS 고양이 ‘쓰레기장의 결전’.
-                                    약속의 땅에서 ‘한 번 더’가 없는 싸움이 드디어 시작된다!</div>
+                                    약속의 땅에서 ‘한 번 더’가 없는 싸움이 드디어 시작된다!
+                                </div>
                                 <!--                                <div class="my-score big">-->
                                 <!--                                <div class="preview">-->
                                 <!--                                    <p class="tit">관람평</p>-->
@@ -86,6 +90,7 @@
         </div>
     </div>
 </form>
+<th:block th:replace="~{fragments/footer.html :: footer}"></th:block>
 
 </body>
 </html>

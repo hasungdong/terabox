@@ -8,7 +8,7 @@
   padding: 0;
   background-color: #f8f8fa;
   position: relative;
-  font-family: sans-serif, "Nanum Gothic", Dotum, "돋움";
+  font-family: "Nanum Gothic", sans-serif, Dotum, "돋움";
 }
 #footer > .footer-top {
   overflow: hidden;

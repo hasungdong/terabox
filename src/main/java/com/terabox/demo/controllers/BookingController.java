@@ -44,22 +44,35 @@ public class BookingController {
         return "booking/booking";
     }
 
+    @GetMapping(value = "orderTwo", produces = MediaType.TEXT_HTML_VALUE)
+    public String getOrderTwo(){
+        return "booking/orderTwo";
+    }
+
+    @GetMapping(value = "orderThree", produces = MediaType.TEXT_HTML_VALUE)
+    public String getOrderThree(@ModelAttribute("movieOrder") MovieOrderDto movieOrderDto, Model model) {
+        model.addAttribute("movieOrder", movieOrderDto);
+        return "booking/orderThree";
+    }
+
+    @GetMapping(value = "/seats", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public List<SeatEntity> getSeatsByScreeningInfo(@RequestParam("screeningInfoIndex") int screeningInfoIndex) {
+        return bookingService.getSeatsByScreeningInfo(screeningInfoIndex);
+    }
+
+    @GetMapping(value = "/seat-prices", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public List<SeatPriceEntity> getSeatPrices() {
+        return bookingService.getSeatPrices();
+    }
 
     @PostMapping(value = "/all-movies", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public List<MovieEntity> getAllMovies(@SessionAttribute(value = "user", required = false) UserEntity user) {
-        if (user != null) {
-            System.out.println("User found in session: " + user);
-            System.out.println(user);// 콘솔 로그 추가
-            if (user.getBirth() != null) {
-                int userAge = Period.between(user.getBirth(), LocalDate.now()).getYears();
-                System.out.println("User age: " + userAge); // 콘솔 로그 추가
-                return bookingService.getAllMovies(userAge);
-            } else {
-                System.out.println("User birth date is null: " + user.getBirth()); // 콘솔 로그 추가
-            }
-        } else {
-            System.out.println("User is not logged in"); // 콘솔 로그 추가
+        if (user != null && user.getBirth() != null) {
+            int userAge = Period.between(user.getBirth(), LocalDate.now()).getYears();
+            return bookingService.getAllMovies(userAge);
         }
         return bookingService.getAllMovies(null);
     }
@@ -95,17 +108,7 @@ public class BookingController {
         return "redirect:/booking/orderTwo";
     }
 
-    @GetMapping(value = "/seats", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public List<SeatEntity> getSeatsByScreeningInfo(@RequestParam("screeningInfoIndex") int screeningInfoIndex) {
-        return bookingService.getSeatsByScreeningInfo(screeningInfoIndex);
-    }
 
-    @GetMapping(value = "/seat-prices", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public List<SeatPriceEntity> getSeatPrices() {
-        return bookingService.getSeatPrices();
-    }
 
     @PostMapping(value = "/orderThree", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE, produces = MediaType.TEXT_HTML_VALUE)
     public String postOrderThree(@RequestParam("movieOrderDto") String movieOrderDtoJson, Model model) {
@@ -148,90 +151,12 @@ public class BookingController {
             model.addAttribute("cards", cards);
 
             // 배열을 문자열로 변환하여 추가
-            return "booking/orderThree2";
+            return "booking/orderThree";
         } catch (JsonProcessingException e) {
             e.printStackTrace();
             return "redirect:/booking/orderTwo"; // 에러 발생 시 orderTwo로 리디렉션
         }
     }
 
-//    여기 어차피 없애고 나중에 xhr로 만들게 해야됨
-//    @GetMapping(value = "orderThree", produces = MediaType.TEXT_HTML_VALUE)
-//    public String getOrderThree(
-//            @RequestParam("movieOrderDto") String movieOrderDtoJson,
-//            Model model){
-//        SeatPriceEntity[] seatPrices = this.seatPriceService.getSeatPrices();
-//        for (SeatPriceEntity seatPrice : seatPrices) {
-//            switch (seatPrice.getType()) {
-//                case "adult":
-//                    model.addAttribute("adultPrice", Math.max(seatPrice.getPrice(), 0));
-//                    break;
-//                case "teenager":
-//                    model.addAttribute("teenagerPrice", Math.max(seatPrice.getPrice(), 0));
-//                    break;
-//                case "old":
-//                    model.addAttribute("oldPrice", Math.max(seatPrice.getPrice(), 0));
-//                    break;
-//                case "disabled":
-//                    model.addAttribute("disabledPrice", Math.max(seatPrice.getPrice(), 0));
-//                    break;
-//                default:
-//            }
-//        }
-//        model.addAttribute("movieOrderDto", movieOrderDto);
-//        ScreeningInfoVo screeningInfoVo = this.screeningInfoService.getScreeningInfoVos(movieOrderDto.getScreeningInfoIndex());
-//        model.addAttribute("screeningInfoVo", screeningInfoVo);
-//        CardEntity[] cards = this.cardService.getCards();
-//        model.addAttribute("cards", cards);
-//        return "booking/orderThree";
-//    }
 
-//    @GetMapping(value = "/orderThree", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE, produces = MediaType.TEXT_HTML_VALUE)
-//    public String postOrderThree(@RequestParam("movieOrderDto") String movieOrderDtoJson, Model model) {
-//        ObjectMapper objectMapper = new ObjectMapper();
-//        try {
-//            MovieOrderDto movieOrderDto = objectMapper.readValue(movieOrderDtoJson, MovieOrderDto.class);
-//
-//            // 디버깅 로그 추가
-//            System.out.println("Received MovieOrderDto: " + movieOrderDto);
-//
-//            model.addAttribute("movieOrderDto", movieOrderDto);
-//            model.addAttribute("seatIndexes", Arrays.toString(movieOrderDto.getSeatIndexes()));
-//            SeatPriceEntity[] seatPrices = this.seatPriceService.getSeatPrices();
-//            for (SeatPriceEntity seatPrice : seatPrices) {
-//                switch (seatPrice.getType()) {
-//                    case "adult":
-//                        model.addAttribute("adultPrice", Math.max(seatPrice.getPrice(), 0));
-//                        break;
-//                    case "teenager":
-//                        model.addAttribute("teenagerPrice", Math.max(seatPrice.getPrice(), 0));
-//                        break;
-//                    case "old":
-//                        model.addAttribute("oldPrice", Math.max(seatPrice.getPrice(), 0));
-//                        break;
-//                    case "disabled":
-//                        model.addAttribute("disabledPrice", Math.max(seatPrice.getPrice(), 0));
-//                        break;
-//                    default:
-//                }
-//            }
-//
-//            ScreeningInfoVo screeningInfoVo = this.screeningInfoService.getScreeningInfoVos(movieOrderDto.getScreeningInfoIndex());
-//            model.addAttribute("screeningInfoVo", screeningInfoVo);
-//
-//            CardEntity[] cards = this.cardService.getCards();
-//            model.addAttribute("cards", cards);
-//
-//            // 배열을 문자열로 변환하여 추가
-//            return "booking/orderThree";
-//        } catch (JsonProcessingException e) {
-//            e.printStackTrace();
-//            return "redirect:/booking/orderTwo"; // 에러 발생 시 orderTwo로 리디렉션
-//        }
-//    }
-
-    @GetMapping(value = "orderTwo", produces = MediaType.TEXT_HTML_VALUE)
-    public String getOrderTwo(){
-        return "booking/orderTwo";
-    }
 }

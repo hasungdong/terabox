@@ -10,6 +10,8 @@
     <script defer type="text/javascript" th:src="@{/assets/scripts/store.js}"></script>
     <link rel="stylesheet" th:href="@{/assets/styles/store/payment.css}">
     <link rel="stylesheet" th:href="@{/assets/styles/store/order.css}">
+    <script defer src="/assets/scripts/common.notHome.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/common/footer.css}">
 </head>
 <body>
 <th:block th:replace="~{/store/payment.html::payment}"></th:block>
@@ -239,5 +241,7 @@
         </div>
     </div>
 </div>
+<th:block th:replace="~{fragments/footer.html :: footer}"></th:block>
+
 </body>
 </html>

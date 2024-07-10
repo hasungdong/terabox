@@ -1,4 +1,6 @@
 @charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
 #header {
   background-color: #ffffff;
@@ -93,7 +95,7 @@ body {
   font-size: 15px;
   color: #444;
   font-weight: 400;
-  font-family: NanumBarunGothic, Dotum, "돋움", sans-serif;
+  font-family: "Nanum Gothic", Dotum, "돋움", sans-serif;
 }
 
 * {
@@ -108,7 +110,7 @@ button {
   cursor: pointer;
   letter-spacing: -0.5px;
   font-weight: 400;
-  font-family: NanumBarunGothic, Dotum, "돋움", sans-serif;
+  font-family: "Nanum Gothic", Dotum, "돋움", sans-serif;
   text-transform: none;
   overflow: visible;
   font-size: 1em;
@@ -236,7 +238,7 @@ div {
   width: 800px;
   padding: 10px 0 0 0;
   font-size: 1.3333em;
-  font-family: Roboto;
+  font-family: "Roboto";
   color: #fff;
   line-height: 1.1;
   overflow: hidden;
@@ -319,7 +321,7 @@ div {
 .movie-detail-page > .movie-detail-cont > .info > .score > .number.gt {
   padding: 0 0 0 30px;
   background: url("../../images/movie/ico-megabox.png") no-repeat 0 center;
-  font-family: Roboto, Dotum, "돋움", sans-serif;
+  font-family: "Roboto", Dotum, "돋움", sans-serif;
   font-weight: 400;
 }
 .movie-detail-page > .movie-detail-cont > .info > .score > .number.gt > .before {
@@ -357,7 +359,7 @@ div {
   margin: 0 4px 0 0;
   color: #fff;
   font-size: 2.1333em;
-  font-family: Roboto, Dotum, "돋움", sans-serif;
+  font-family: "Roboto", Dotum, "돋움", sans-serif;
   font-weight: 400;
 }
 .movie-detail-page > .movie-detail-cont > .info > .audience {
@@ -383,7 +385,7 @@ div {
   margin: 0 4px 0 0;
   color: #fff;
   font-size: 2.1333em;
-  font-family: Roboto, Dotum, "돋움", sans-serif;
+  font-family: "Roboto", Dotum, "돋움", sans-serif;
   font-weight: 400;
 }
 .movie-detail-page > .movie-detail-cont > .poster {
@@ -801,7 +803,7 @@ div {
   display: inline-block;
   vertical-align: top;
   font-size: 2.4em;
-  font-family: Roboto;
+  font-family: "Roboto";
   font-weight: 300;
 }
 #contentData > .inner-wrap .movie-idv-story #movieForm > ul > .type01 > .story-area > .story-box > .story-wrap > .story-cont > .story-recommend {

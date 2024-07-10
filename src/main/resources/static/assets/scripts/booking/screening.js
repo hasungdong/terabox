@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', function () {
   let currentLocation = 0; // 현재 위치를 추적
   let isAnimating = false; // 애니메이션 진행 중 여부
   let movieSelected = false;
-  let selectedTheaterIndex = null;
 
+  // 시간 버튼 생성 함수
   function createHourButton(hour) {
     const button = document.createElement('button');
     button.type = 'button';
@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
     return button;
   }
 
+  // 시간 버튼 추가 함수
   function populateHours() {
     timeScheduleWrap.innerHTML = '';
     hours.forEach(hour => {
@@ -32,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
     updateButtonState();
   }
 
+  // 시간 버튼 슬라이드 함수
   function slideTimes(direction) {
     if (isAnimating) return;
     isAnimating = true;
@@ -55,11 +57,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 300);
   }
 
+  // 이전, 다음 버튼 상태 업데이트 함수
   function updateButtonState() {
     btnPrev.disabled = currentLocation >= 0;
     btnNext.disabled = currentLocation <= -(btnWidth * (hours.length - 10));
   }
 
+  // 선택 상태 업데이트 함수
   function updateSelectionState() {
     const theaterButtons = document.querySelectorAll('.theater-choice .choice-list .wrap');
     const movieButtons = document.querySelectorAll('.all-list .btn');
@@ -74,7 +78,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     if (movieSelected && theaterSelected) {
       noResult.style.display = 'none';
-      result.style.removeProperty('display');
     } else {
       noResult.style.removeProperty('display');
       result.style.display = 'none';
@@ -84,84 +87,67 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+  // 선택 변경 처리 함수
+  function handleSelectionChange() {
+    updateSelectionState();
+    const selectedDate = getSelectedDate();
+    const selectedMovieIndexes = Array.from(document.querySelectorAll('.movie-choice .btn.selected'))
+      .map(btn => Number(btn.dataset.index))
+      .filter(index => !isNaN(index));
+    const selectedTheaterIndexes = Array.from(document.querySelectorAll('.theater-choice .btn.selected'))
+      .map(btn => Number(btn.dataset.index))
+      .filter(index => !isNaN(index));
+    if (selectedDate && selectedMovieIndexes.length > 0 && selectedTheaterIndexes.length > 0) {
+      fetchScreeningInfo(selectedDate, selectedMovieIndexes, selectedTheaterIndexes);
+    } else {
+      result.style.display = 'none';
+      noResult.style.removeProperty('display');
+    }
+  }
+
+  // 이전, 다음 버튼 클릭 이벤트 리스너 추가
   btnPrev.addEventListener('click', () => slideTimes(1));
   btnNext.addEventListener('click', () => slideTimes(-1));
 
   populateHours();
 
-  // 영화와 극장을 선택했을 때 호출
+  // 영화 선택 버튼 클릭 이벤트 리스너
   document.querySelector('.movie-choice').addEventListener('click', function (event) {
     if (event.target.closest('.btn[data-group="btn1"]')) {
       movieSelected = !movieSelected;
-      updateSelectionState();
-      // 선택한 날짜, 영화, 극장 정보를 기반으로 상영 정보를 가져옴
-      const selectedDate = getSelectedDate();
-      const selectedMovieIndexes = Array.from(document.querySelectorAll('.movie-choice .btn.selected'))
-          .map(btn => Number(btn.dataset.index))
-          .filter(index => !isNaN(index));
-      const selectedTheaterIndexes = Array.from(document.querySelectorAll('.theater-choice .btn.selected'))
-          .map(btn => Number(btn.dataset.index))
-          .filter(index => !isNaN(index));
-      console.log('영화 선택:', selectedMovieIndexes, '극장 선택:', selectedTheaterIndexes, '날짜 선택:', selectedDate); // 디버그
-      if (selectedDate && selectedMovieIndexes.length > 0 && selectedTheaterIndexes.length > 0) {
-        fetchScreeningInfo(selectedDate, selectedMovieIndexes, selectedTheaterIndexes);
-      }
+      handleSelectionChange();
     }
   });
 
+  // 극장 선택 버튼 클릭 이벤트 리스너
   document.querySelector('.theater-choice .detail-list').addEventListener('click', function (event) {
     if (event.target.closest('.btn')) {
-      updateSelectionState();
-      const selectedDate = getSelectedDate();
-      const selectedMovieIndexes = Array.from(document.querySelectorAll('.movie-choice .btn.selected'))
-          .map(btn => Number(btn.dataset.index))
-          .filter(index => !isNaN(index));
-      const selectedTheaterIndexes = Array.from(document.querySelectorAll('.theater-choice .btn.selected'))
-          .map(btn => Number(btn.dataset.index))
-          .filter(index => !isNaN(index));
-      if (selectedDate && selectedMovieIndexes.length > 0 && selectedTheaterIndexes.length > 0) {
-        fetchScreeningInfo(selectedDate, selectedMovieIndexes, selectedTheaterIndexes);
-      }
+      handleSelectionChange();
     }
   });
 
+  // 날짜 선택 버튼 클릭 이벤트 리스너
+  document.querySelector('#dates').addEventListener('click', function (event) {
+    if (event.target.closest('.date')) {
+      document.querySelectorAll('.date').forEach(item => item.classList.remove('selected'));
+      event.target.closest('.date').classList.add('selected');
+      handleSelectionChange();
+    }
+  });
+
+  // 선택된 날짜 가져오는 함수
   function getSelectedDate() {
-    return '2024-05-01';
+    const selectedDateElement = document.querySelector('.date.selected');
+    return selectedDateElement ? selectedDateElement.dataset.date : null;
   }
 
-  function fetchScreeningInfo(date, movieIndexes, theaterIndexes) {
-    const xhr = new XMLHttpRequest();
-    const formData = new FormData();
-    formData.append('screeningDate', date);
-    movieIndexes.forEach(index => formData.append('movieIndexes', index));
-    theaterIndexes.forEach(index => formData.append('theaterIndexes', index));
-
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState !== XMLHttpRequest.DONE) return;
-      if (xhr.status < 200 || xhr.status >= 300) {
-        console.error('Failed to fetch screening info', xhr.status, xhr.statusText);
-        return;
-      }
-
-      const data = JSON.parse(xhr.responseText);
-      if (data.length === 0) {
-        alert('상영정보가 없습니다.');
-      } else {
-        updateScreeningInfo(data);
-      }
-    };
-
-    xhr.open('POST', '/booking/screening-info-by-theater-and-movie');
-    xhr.send(formData);
-  }
-
+  // 상영 정보 업데이트 함수
   function updateScreeningInfo(screeningInfoList) {
     const resultList = document.querySelector('.movie-schedule-area .result ul');
     resultList.innerHTML = '';
 
     if (screeningInfoList.length > 0) {
       const firstScreeningTime = screeningInfoList[0].screeningTime.split(':')[0];
-
       const hourButtons = document.querySelectorAll('.hour-area .hour-btn');
       const targetIndex = hours.findIndex(hour => hour === firstScreeningTime);
       const offset = 4;
@@ -190,28 +176,27 @@ document.addEventListener('DOMContentLoaded', function () {
       button.type = 'button';
 
       const screeningTime = screeningInfo.screeningTime;
+      const endTime = screeningInfo.endTime.substring(0, 5); // 초 제거
 
       button.innerHTML = `
-                <i class="time-icon">
-                    <img src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-greeting-option-sun.png" alt="">
-                </i>
-                <span class="time">
-                    <strong title="상영 시작">${screeningTime.substring(0, 5)}</strong>
-                    <em title="상영 종료">~${screeningInfo.endTime}</em>
-                </span>
-                <span class="title">
-                    <strong>${screeningInfo.movieTitle}</strong>
-                    <em>${screeningInfo.dimensionType}</em>
-                </span>
-                <span class="info">
-                    <i class="theater">
-                        ${screeningInfo.theaterName}<br>
-                        ${screeningInfo.cinemaNumber}관
-                    </i>
-                </span>
-            `;
+          <i class="time-icon"></i>
+          <span class="time">
+            <strong title="상영 시작">${screeningTime.substring(0, 5)}</strong>
+            <em title="상영 종료">~${endTime}</em>
+          </span>
+          <span class="title">
+            <strong>${screeningInfo.movieTitle}</strong>
+            <em>${screeningInfo.dimensionType}</em>
+          </span>
+          <span class="info">
+            <i class="theater">
+              ${screeningInfo.theaterName}<br>
+              ${screeningInfo.cinemaNumber}관
+            </i>
+          </span>
+        `;
 
-      button.addEventListener('click', function() {
+      button.addEventListener('click', function () {
         const xhr = new XMLHttpRequest();
         const formData = new FormData();
         formData.append('index', screeningInfo.index);
@@ -228,11 +213,11 @@ document.addEventListener('DOMContentLoaded', function () {
         xhr.onreadystatechange = function () {
           if (xhr.readyState !== XMLHttpRequest.DONE) return;
           if (xhr.status < 200 || xhr.status >= 300) {
-            console.error('Failed to post screening info', xhr.status, xhr.statusText);
+            MessageObj.createSimpleOk('오류', '알 수 없는 이유로 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.').show();
             return;
           }
 
-          // Save the screening info in session storage
+          // 상영 정보를 세션 스토리지에 저장
           sessionStorage.setItem('screeningInfo', JSON.stringify(screeningInfo));
 
           window.location.href = '/booking/orderTwo';
@@ -246,5 +231,39 @@ document.addEventListener('DOMContentLoaded', function () {
       resultList.appendChild(li);
     });
   }
-});
 
+  // 상영 정보 가져오는 함수
+  function fetchScreeningInfo(date, movieIndexes, theaterIndexes) {
+    const xhr = new XMLHttpRequest();
+    const formData = new FormData();
+    formData.append('screeningDate', date);
+    movieIndexes.forEach(index => formData.append('movieIndexes', index));
+    theaterIndexes.forEach(index => formData.append('theaterIndexes', index));
+
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState !== XMLHttpRequest.DONE) {
+        return;
+      }
+      loading.hide();
+
+      if (xhr.status < 200 || xhr.status >= 300) {
+        MessageObj.createSimpleOk('오류', '알 수 없는 이유로 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.').show();
+        return;
+      }
+
+      const data = JSON.parse(xhr.responseText);
+      if (data.length === 0) {
+        result.style.display = 'none';
+        noResult.style.removeProperty('display');
+      } else {
+        updateScreeningInfo(data);
+        result.style.removeProperty('display');
+        noResult.style.display = 'none';
+      }
+    };
+
+    xhr.open('POST', '/booking/screening-info-by-theater-and-movie');
+    xhr.send(formData);
+    loading.show();
+  }
+});

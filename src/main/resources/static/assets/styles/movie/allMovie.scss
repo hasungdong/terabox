@@ -1,4 +1,6 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 
 @import "../common/common.notHome";
 
@@ -14,7 +16,7 @@ body{
   font-size: 15px;
   color: #444;
   font-weight: 400;
-  font-family: NanumBarunGothic, Dotum, '돋움', sans-serif;
+  font-family: "Nanum Gothic", Dotum, '돋움', sans-serif;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -30,7 +32,7 @@ body{
     color: #503396;
     font-weight: 400;
     border-radius: 4px;
-    font-family: sans-serif, NanumBarunGothic, Dotum, '돋움';
+    font-family: "Nanum Gothic", sans-serif, Dotum, '돋움';
     text-decoration: none;
     border: 1px solid #503396;
     vertical-align: middle;
@@ -197,7 +199,7 @@ body{
                 line-height: 1.1;
                 font-size: 2em;
                 font-style: italic;
-                font-family: sans-serif, Roboto, Dotum, '돋움';
+                font-family: "Roboto", sans-serif, Dotum, '돋움';
                 font-weight: 300;
                 color: #fff;
                 text-shadow: 2px 2px 2px rgba(0, 0, 0, .8);
@@ -382,7 +384,7 @@ body{
                   color: #ffffff;
                   font-weight: 400;
                   border-radius: 4px;
-                  font-family: sans-serif, NanumBarunGothic, Dotum, '돋움';
+                  font-family: "Nanum Gothic", sans-serif, Dotum, '돋움';
                   text-decoration: none;
                   border: 1px solid #503396;
                   vertical-align: middle;
@@ -394,32 +396,12 @@ body{
                     padding-top: 7px;
                     border: 0;
                   }
-
                 }
-
-
               }
-
-
             }
-
-
           }
-
-
-
-
         }
-
-
       }
-
     }
-
-
-
-
-
-
   }
 }

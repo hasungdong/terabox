@@ -10,6 +10,7 @@
     <link rel="stylesheet" th:href="@{/assets/styles/benefit/discount/creditcard.css}">
     <script defer th:src="@{/assets/scripts/benefit/discount.js}"></script>
     <script defer src="/assets/scripts/common.notHome.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/common/footer.css}">
     <script>
         window.onload = () => {
             const currentParameter = window.location.search;
@@ -190,3 +191,6 @@
         </script>
     </div>
 </main>
+<th:block th:replace="~{fragments/footer.html :: footer}"></th:block>
+</body>
+</html>

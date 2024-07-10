@@ -117,7 +117,7 @@ body {
   font-size: 15px;
   color: #444;
   font-weight: 400;
-  font-family: sans-serif, "Nanum Gothic", Dotum, "돋움";
+  font-family: "Nanum Gothic", sans-serif, Dotum, "돋움";
   width: 100%;
   height: 100%;
   margin: 0;
@@ -133,7 +133,7 @@ body .button {
   color: #503396;
   font-weight: 400;
   border-radius: 4px;
-  font-family: sans-serif, "Nanum Gothic", Dotum, "돋움";
+  font-family: "Nanum Gothic", sans-serif, Dotum, "돋움";
   text-decoration: none;
   border: 1px solid #503396;
   vertical-align: middle;
@@ -479,7 +479,7 @@ body form #container > .movie-list > .list > .img > .btn-util > .Ticketing-conta
   color: #ffffff;
   font-weight: 400;
   border-radius: 4px;
-  font-family: sans-serif, "Nanum Gothic", Dotum, "돋움";
+  font-family: "Nanum Gothic", sans-serif, Dotum, "돋움";
   text-decoration: none;
   border: 1px solid #503396;
   vertical-align: middle;

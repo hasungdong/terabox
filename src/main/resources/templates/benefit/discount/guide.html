@@ -10,6 +10,7 @@
     <link rel="stylesheet" th:href="@{/assets/styles/benefit/discount/guide.css}">
     <script defer th:src="@{/assets/scripts/benefit/discount.js}"></script>
     <script defer src="/assets/scripts/common.notHome.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/common/footer.css}">
 </head>
 <body>
 <th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
@@ -201,5 +202,6 @@
         <!--// select-group -->
     </div>
 </main>
+<th:block th:replace="~{fragments/footer.html :: footer}"></th:block>
 </body>
 </html>

@@ -8,6 +8,8 @@
     <th:block th:replace="~{fragments/common/common.html :: commonHead}"></th:block>
     <link rel="stylesheet" th:href="@{/assets/styles/booking/order_two.css}">
     <script defer th:src="@{/assets/scripts/booking/orderTwo.js}"></script>
+    <script defer src="/assets/scripts/common.notHome.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/common/footer.css}">
     <title>Document</title>
 </head>
 <body>
@@ -365,33 +367,23 @@ seat-select-section을 없애고 order-container를 보여주는 식으로 합�
         <div class="seat-result">
             <div class="wrap">
                 <div class="tit-area">
-                    <span class="movie-grade small age-all">전체관람가</span>
-                    <p class="tit">인사이드 아웃 2</p>
-                    <p class="cate">2D(자막)</p>
+                    <span class="movie-grade small age-all">
+                    </span>
+                    <p class="tit"></p>
+                    <p class="cate"></p>
                 </div>
                 <div class="info-area">
-                    <p class="theater">강남</p>
-                    <p class="special">4관</p>
-                    <p class="date"><span>2024.06.21</span><em>(금)</em></p>
+                    <p class="theater"></p>
+                    <p class="special"></p>
+                    <p class="date"><span></span><em>(금)</em></p>
                     <div class="other-time">
-                        <button type="button" class="now">22:30~24:16
+                        <button type="button" class="now">
                             <img src="/assets/images/booking/bottomButton.png" class="arr">
                         </button>
                         <ul class="other">
-                            <li>
-                                <button type="button" class="btn ">
-                                    22:00~23:46
-                                </button>
-                            </li>
-                            <li>
-                                <button type="button" class="btn on ">
-                                    22:30~24:16
-                                </button>
-                            </li>
                         </ul>
                     </div>
                     <p class="poster">
-                        <img src="/assets/images/booking/insideout2.jpg" alt="인사이드 아웃 2">
                     </p>
                 </div>
                 <div class="choice-seat-area">
@@ -401,13 +393,13 @@ seat-select-section을 없애고 order-container를 보여주는 식으로 합�
                                 <div class="seat-condition choice" title="선택한 좌석"></div>
                                 <em>선택</em></li>
                             <li>
-                                <div class="seat-condition finish" title="예매 완료"></div>
+                                <div class="seat-condition reserved" title="예매 완료"></div>
                                 <em>예매완료</em></li>
                             <li>
-                                <div class="seat-condition impossible" title="선택 불가"></div>
+                                <div class="seat-condition selectImpossible" title="선택 불가"></div>
                                 <em>선택불가</em></li>
                             <li>
-                                <div class="seat-condition common" title="일반"></div>
+                                <div class="seat-condition normal" title="일반"></div>
                                 <em> 일반</em></li>
                             <li>
                                 <div class="seat-condition disabled" title="장애인석"></div>
@@ -458,6 +450,7 @@ seat-select-section을 없애고 order-container를 보여주는 식으로 합�
         </div>
     </div>
 </div>
+<th:block th:replace="~{fragments/footer.html :: footer}"></th:block>
 
 </body>
 </html>

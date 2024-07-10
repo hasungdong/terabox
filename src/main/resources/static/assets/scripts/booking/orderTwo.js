@@ -6,11 +6,15 @@ const oldCell = orderTwoContainer.querySelector('.cell.old');
 const disabledCell = orderTwoContainer.querySelector('.cell.disabled');
 const seats = orderTwoContainer.querySelectorAll('.my-seat > .seat');
 const selectSeatButtons = orderTwoContainer.querySelectorAll('.seat-condition.standard');
+const pageNextButton = document.getElementById('pageNext');
 const seatTypeCounts = orderTwoContainer.querySelectorAll('.pay-area > .count > span');
+const pagePreviousButton = document.getElementById('pagePrevious');
 let adultCount;
 let teenagerCount;
 let oldCount;
 let disabledCount;
+
+// 좌석 가격 정보
 let seatPrices = {
   adult: 0,
   teenager: 0,
@@ -18,13 +22,11 @@ let seatPrices = {
   disabled: 0
 };
 
-const otherTime = orderTwoContainer.querySelector('.other-time');
-
-// 다른 관람시간대 보였다 안보였다 하기
+// 다른 시간 선택 기능 - 현재 사용하지 않음
+/*const otherTime = orderTwoContainer.querySelector('.other-time');
 otherTime.querySelector('.now').onclick = () => {
   if (!otherTime.classList.contains('on')) {
     otherTime.classList.add('on');
-
     const otherLis = otherTime.querySelectorAll('.other > li');
     otherLis.forEach(otherLi => otherLi.onclick = () => {
       otherTime.querySelector('.now').innerText = otherLi.querySelector('.btn').innerText;
@@ -33,8 +35,14 @@ otherTime.querySelector('.now').onclick = () => {
   } else {
     otherTime.classList.remove('on');
   }
-};
+};*/
 
+// 페이지 이전 버튼 클릭 이벤트
+pagePreviousButton.addEventListener('click', function() {
+  window.history.back();
+});
+
+// 좌석 타입별 카운트 요소 설정
 seatTypeCounts.forEach(seatTypeCount => {
   if (seatTypeCount.classList.contains('adult')) {
     adultCount = seatTypeCount.querySelector('em');
@@ -50,6 +58,7 @@ seatTypeCounts.forEach(seatTypeCount => {
   }
 });
 
+// 결제 금액 업데이트 함수
 function updateOrderPrice() {
   const orderPriceComma = orderTwoContainer.querySelector('.pay-area > .pay > .money > em');
   let orderPrice;
@@ -60,27 +69,8 @@ function updateOrderPrice() {
   orderPriceComma.innerText = orderPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-// 인원수 증가 감소 버튼 구현
+// 인원수 증가 감소 버튼 기능 구현
 selectPeopleCells.forEach(selectPeopleCell => {
-  const sortingSeats = () => {
-    // 좌석이 선택된 경우
-    let seatsIncludingValue = [];
-    // 좌석을 고를 수 있는 상태
-    let seatsCanIncludeValue = [];
-    // 좌석을 고를 수 없는 상태
-    let seatsNotIncludingValue = [];
-    // 좌석을 경우에 따라 배열에 담기
-    seats.forEach(seat => {
-      if (seat.classList.contains('choice')) {
-        seatsIncludingValue.push(seat);
-      } else if (seat.classList.contains('possible')) {
-        seatsCanIncludeValue.push(seat);
-      } else {
-        seatsNotIncludingValue.push(seat);
-      }
-    });
-  };
-
   let seatsIncludingValue = [];
   let seatsCanIncludeValue = [];
   let seatsNotIncludingValue = [];
@@ -94,14 +84,14 @@ selectPeopleCells.forEach(selectPeopleCell => {
     }
   });
 
-  // 인원수 증가
+  // 인원수 증가 버튼 클릭 이벤트
   selectPeopleCell.querySelector('.up').onclick = () => {
     let SumCellsCount = 0;
     selectPeopleCells.forEach(selectPeopleCell => {
       SumCellsCount += parseInt(selectPeopleCell.querySelector('.now').innerText);
     });
 
-    // 8명보다 많이 선택하는 거 방지
+    // 최대 인원수 제한
     if (SumCellsCount >= 8) {
       alertCover.show();
       new MessageObj({
@@ -133,7 +123,7 @@ selectPeopleCells.forEach(selectPeopleCell => {
     });
 
     seatsNotIncludingValue[0].classList.add('possible');
-    // 변화를 줬으면 다시 나눠담기
+    // 좌석 상태 재설정
     seatsIncludingValue = [];
     seatsCanIncludeValue = [];
     seatsNotIncludingValue = [];
@@ -148,9 +138,9 @@ selectPeopleCells.forEach(selectPeopleCell => {
     });
 
     selectPeopleCell.querySelector('.now').innerText = parseInt(selectPeopleCell.querySelector('.now').innerText) + 1;
-    // 경로석
+
+    // 경로석 알림
     if (selectPeopleCell.classList.contains('old')) {
-      // 0에서 1로 갈때만 알림창이 떠야되니까
       if (parseInt(selectPeopleCell.querySelector('.now').innerText) === 1) {
         alertCover.show();
         new MessageObj({
@@ -168,7 +158,8 @@ selectPeopleCells.forEach(selectPeopleCell => {
         document.querySelector('._obj-message').style.width = '400px';
       }
     }
-    // 우대석, 장애인
+
+    // 우대석 알림
     if (selectPeopleCell.classList.contains('disabled')) {
       if (parseInt((selectPeopleCell.querySelector('.now').innerText)) === 1) {
         alertCover.show();
@@ -188,13 +179,13 @@ selectPeopleCells.forEach(selectPeopleCell => {
       }
     }
 
-    // 버튼 활성, 비활성화
+    // 버튼 활성화/비활성화 설정
     if (seatsCanIncludeValue.length !== 0) {
       document.getElementById('pageNext').classList.remove('active');
       document.getElementById('pageNext').classList.add('disabled');
     }
 
-    // 변경이 있을 때 값이 1 오르고 내리는 식이 아니라 그냥 전체 값을 다시 설정하는 거
+    // 좌석 카운트 및 상태 업데이트
     if (seatsIncludingValue.length >= parseInt(adultCell.querySelector('.now').innerText)) {
       adultCount.innerText = parseInt(adultCell.querySelector('.now').innerText);
 
@@ -231,14 +222,70 @@ selectPeopleCells.forEach(selectPeopleCell => {
       }
     }
 
-    // 각 타입의 개수가 0이면 그 타입은 안보이게 한다.
-    // 예: 노인 티켓이 현재 0개면 노인 글씨는 안보인다
     seatTypeCounts.forEach(seatTypeCount => seatTypeCount.querySelector('em').innerText === '0' ? seatTypeCount.style.display = 'none' : seatTypeCount.style.display = 'block');
 
     updateOrderPrice();
   };
 
-//     감소 버튼 눌렀을 때
+  // 초기화 버튼 클릭 이벤트
+  document.getElementById('btn_booking_init').onclick = () => {
+    alertCover.show();
+    new MessageObj({
+      title: '알림',
+      content: `선택하신 좌석을 모두 취소하고 다시 선택하시겠습니까?`,
+      buttons: [
+        {
+          text: '취소', onclick: instance => {
+            instance.hide();
+            alertCover.hide();
+          }
+        },
+        {
+          text: '확인', onclick: instance => {
+            instance.hide();
+            alertCover.hide();
+            location.reload();
+
+            // 초기화 작업 수행
+            selectPeopleCells.forEach(selectPeopleCell => {
+              const nowElement = selectPeopleCell.querySelector('.now');
+              nowElement.innerText = '0';
+            });
+
+            seats.forEach(seat => {
+              seat.classList.remove('choice');
+              seat.classList.remove('possible');
+              seat.classList.add('all');
+              seat.innerText = '-';
+            });
+
+            seatTypeCounts.forEach(seatTypeCount => {
+              seatTypeCount.querySelector('em').innerText = '0';
+              seatTypeCount.style.display = 'none';
+            });
+
+            adultCount.innerText = '0';
+            teenagerCount.innerText = '0';
+            oldCount.innerText = '0';
+            disabledCount.innerText = '0';
+
+            document.getElementById('pageNext').classList.remove('active');
+            document.getElementById('pageNext').classList.add('disabled');
+
+            // 모든 jq-tooltip 클래스를 가진 버튼에서 choice 클래스 제거
+            const jqTooltipButtons = document.querySelectorAll('.jq-tooltip');
+            jqTooltipButtons.forEach(button => {
+              button.classList.remove('choice');
+            });
+
+            updateOrderPrice();
+          }
+        }
+      ]
+    }).show();
+  };
+
+  // 인원수 감소 버튼 클릭 이벤트
   selectPeopleCell.querySelector('.down').onclick = () => {
     if (parseInt(selectPeopleCell.querySelector('.now').innerText) === 0) {
       return;
@@ -256,12 +303,12 @@ selectPeopleCells.forEach(selectPeopleCell => {
         seatsNotIncludingValue.push(seat);
       }
     });
-    // 고른 좌석에 회색없이 보라색만 있는 경우
-    // 기본 상태의 좌석이 8개보다 적으면서(전체 좌석수가 8개임)
+
     if (seatsNotIncludingValue.length < 8) {
       if (seatsCanIncludeValue.length > 0) {
         selectPeopleCell.querySelector('.now').innerText = parseInt(selectPeopleCell.querySelector('.now').innerText) - 1;
 
+        // 좌석 상태 및 카운트 업데이트
         if (seatsIncludingValue.length >= parseInt(adultCell.querySelector('.now').innerText)) {
           adultCount.innerText = parseInt(adultCell.querySelector('.now').innerText);
 
@@ -300,8 +347,6 @@ selectPeopleCells.forEach(selectPeopleCell => {
 
         seatTypeCounts.forEach(seatTypeCount => seatTypeCount.querySelector('em').innerText === '0' ? seatTypeCount.style.display = 'none' : seatTypeCount.style.display = 'block');
 
-        // 값을 고를 수 있는 좌석의 맨 뒤값에 possible을 지운다.
-        // == 기본 상태 좌석으로 변경
         seatsCanIncludeValue[seatsCanIncludeValue.length - 1].classList.remove('possible');
 
         seatsIncludingValue = [];
@@ -316,8 +361,7 @@ selectPeopleCells.forEach(selectPeopleCell => {
             seatsNotIncludingValue.push(seat);
           }
         });
-        // 이거는 빼고 난 후에 값을 고를 수 있는 좌석이 없는 거고,
-        // 밑에 else 문은 아직 빼기 전인데 값을 고를 수 있는 좌석이 없는 거임
+
         if (seatsCanIncludeValue.length === 0) {
           document.getElementById('pageNext').classList.remove('disabled');
           document.getElementById('pageNext').classList.add('active');
@@ -351,6 +395,7 @@ selectPeopleCells.forEach(selectPeopleCell => {
   };
 });
 
+// 좌석 선택 로직
 orderTwoContainer.querySelector('#seatLayout').addEventListener('click', function (event) {
   const selectSeatButton = event.target.closest('.seat-condition.standard');
   if (!selectSeatButton) return;
@@ -359,7 +404,6 @@ orderTwoContainer.querySelector('#seatLayout').addEventListener('click', functio
     selectSeatButton.classList.contains('selectImpossible')) {
     return;
   }
-  // 관람 인원 없이 좌석 선택 하려고 할 때
   let SumCellsCount = 0;
   selectPeopleCells.forEach(selectPeopleCell => {
     SumCellsCount += parseInt(selectPeopleCell.querySelector('.now').innerText);
@@ -381,9 +425,6 @@ orderTwoContainer.querySelector('#seatLayout').addEventListener('click', functio
     }).show();
     return;
   }
-  // 자바스크립트의 함수는 페이지 로드와 동시에 위에서부터 전부 다 실행된다.
-  // 그래서 up 버튼 누르기 전에 지금 함수가 먼저 실행됐기 때문에 위에서 배열 값을 바꾼게 여기서 적용된 상태가 아니다.
-  // 그래서 배열을 사용하고 싶으면 분류를 새로 해줘야됨
   let seatsIncludingValue = [];
   let seatsCanIncludeValue = [];
   let seatsNotIncludingValue = [];
@@ -397,7 +438,6 @@ orderTwoContainer.querySelector('#seatLayout').addEventListener('click', functio
     }
   });
 
-  // 관람인원 수보다 좌석을 더 많이 고르려고 할 때
   if (seatsCanIncludeValue.length === 0) {
     if (!selectSeatButton.classList.contains('choice')) {
       alertCover.show();
@@ -417,7 +457,6 @@ orderTwoContainer.querySelector('#seatLayout').addEventListener('click', functio
     }
   }
 
-  // 선택되지 않았으면서 장애인석인 좌석 눌렀을 때
   if (selectSeatButton.classList.contains('disabled') &&
     !selectSeatButton.classList.contains('choice')) {
     alertCover.show();
@@ -436,14 +475,11 @@ orderTwoContainer.querySelector('#seatLayout').addEventListener('click', functio
     document.querySelector('._obj-message').style.width = '300px';
   }
 
-  // 값을 고를 수 있는 좌석에 값 채우기
   if (selectSeatButton.classList.contains('normal') ||
     selectSeatButton.classList.contains('disabled')) {
 
-    // 누른 버튼 보라색 > 회색, 회색이면 보라색으로
     selectSeatButton.classList.toggle('choice');
 
-    // 바꾸고 난 후에 선택되었으면
     if (selectSeatButton.classList.contains('choice')) {
       seatsCanIncludeValue[0].classList.add('choice');
       seatsCanIncludeValue[0].classList.remove('possible');
@@ -459,10 +495,14 @@ orderTwoContainer.querySelector('#seatLayout').addEventListener('click', functio
           seatsNotIncludingValue.push(seat);
         }
       });
-      // 좌석에 값도 저장
-      seatsIncludingValue[seatsIncludingValue.length - 1].innerText = selectSeatButton.querySelector('.num').innerText;
 
-      // 좌석 골랐을 때 값을 고를 수 있는 좌석을 전부 사용했으면
+      // 행의 알파벳과 열의 숫자를 좌석에 표시
+      const row = selectSeatButton.title.charAt(0);
+      // 행의 알파벳
+      const col = selectSeatButton.title.match(/\d+/)[0];
+      // 열의 숫자
+      seatsIncludingValue[seatsIncludingValue.length - 1].innerText = `${row}${col}`;
+
       if (seatsCanIncludeValue.length === 0) {
         document.getElementById('pageNext').classList.remove('disabled');
         document.getElementById('pageNext').classList.add('active');
@@ -528,14 +568,11 @@ orderTwoContainer.querySelector('#seatLayout').addEventListener('click', functio
           seatsNotIncludingValue.push(seat);
         }
       });
-      // 좌석 이름을 -로 변경
       seatsCanIncludeValue[0].innerText = '-';
-      // 선택할 수 있는 좌석이 다시 생겼으니 다음 버튼 비활성화
       if (seatsCanIncludeValue.length !== 0) {
         document.getElementById('pageNext').classList.remove('active');
         document.getElementById('pageNext').classList.add('disabled');
       }
-      // 선택된 좌석의 수가 성인 + 청소년 + 경로의 숫자값보다 크거나 같으면
       if (seatsIncludingValue.length >= parseInt(adultCell.querySelector('.now').innerText) + parseInt(teenagerCell.querySelector('.now').innerText) + parseInt(oldCell.querySelector('.now').innerText)) {
         seatTypeCounts.forEach(seatTypeCount => {
           if (seatTypeCount.classList.contains('disabled')) {
@@ -547,7 +584,6 @@ orderTwoContainer.querySelector('#seatLayout').addEventListener('click', functio
             }
           }
         });
-        //     선택된 좌석이 성인 + 청소년 수보다 크거나 같은 경우
       } else if (seatsIncludingValue.length >= parseInt(adultCell.querySelector('.now').innerText) + parseInt(teenagerCell.querySelector('.now').innerText)) {
         seatTypeCounts.forEach(seatTypeCount => {
           if (seatTypeCount.classList.contains('old')) {
@@ -557,7 +593,6 @@ orderTwoContainer.querySelector('#seatLayout').addEventListener('click', functio
             }
           }
         });
-        //     선택된 좌석이 성인보다 크거나 같은 경우
       } else if (seatsIncludingValue.length >= parseInt(adultCell.querySelector('.now').innerText)) {
         seatTypeCounts.forEach(seatTypeCount => {
           if (seatTypeCount.classList.contains('teenager')) {
@@ -567,7 +602,6 @@ orderTwoContainer.querySelector('#seatLayout').addEventListener('click', functio
             }
           }
         });
-        //     선택된 좌석이 0보다 크거나 같은 경우
       } else if (seatsIncludingValue.length >= 0) {
         seatTypeCounts.forEach(seatTypeCount => {
           if (seatTypeCount.classList.contains('adult')) {
@@ -584,6 +618,7 @@ orderTwoContainer.querySelector('#seatLayout').addEventListener('click', functio
   }
 });
 
+// 좌석 마우스 오버 이벤트
 orderTwoContainer.querySelector('#seatLayout').addEventListener('mouseover', function (event) {
   const selectSeatButton = event.target.closest('.seat-condition.standard');
   if (!selectSeatButton) return;
@@ -615,6 +650,7 @@ orderTwoContainer.querySelector('#seatLayout').addEventListener('mouseover', fun
   }
 });
 
+// 좌석 레이아웃 생성 함수
 function createSeatLayout(seats) {
   const seatLayout = orderTwoContainer.querySelector('#seatLayout');
   const existingRow = seatLayout.querySelector('.row');
@@ -664,71 +700,9 @@ function createSeatLayout(seats) {
   });
 }
 
-
-function fetchSeats() {
-  const screeningInfo = JSON.parse(sessionStorage.getItem('screeningInfo'));
-  if (!screeningInfo || !screeningInfo.index) return;
-
-  const xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState !== XMLHttpRequest.DONE) {
-      return;
-    }
-    if (xhr.status >= 200 && xhr.status < 300) {
-      const seats = JSON.parse(xhr.responseText);
-      if (seats.length) {
-        createSeatLayout(seats);
-      }
-    } else {
-      console.error('Error fetching seats:', xhr.statusText);
-    }
-  };
-
-  xhr.open('GET', `/booking/seats?screeningInfoIndex=${screeningInfo.index}`);
-  xhr.send();
-}
-
-function fetchSeatPrices() {
-  const xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState !== XMLHttpRequest.DONE) {
-      return;
-    }
-    if (xhr.status >= 200 && xhr.status < 300) {
-      const prices = JSON.parse(xhr.responseText);
-      prices.forEach(price => {
-        switch (price.type) {
-          case 'adult':
-            seatPrices.adult = price.price;
-            break;
-          case 'teenager':
-            seatPrices.teenager = price.price;
-            break;
-          case 'old':
-            seatPrices.old = price.price;
-            break;
-          case 'disabled':
-            seatPrices.disabled = price.price;
-            break;
-        }
-      });
-    } else {
-      console.error('Error fetching seat prices:', xhr.statusText);
-    }
-  };
-
-  xhr.open('GET', `/booking/seat-prices`);
-  xhr.send();
-}
-
-fetchSeatPrices();
-fetchSeats();
-
-// sessionStorage 는 웹브로우저에서 세션 당 데이터 저장을 제공한다
-// 그렇기 때문에 현재 브라우저 탭에서만 유효하며 탭이 닫히면 데이터가 삭제된다
+// 상영 정보 가져오기 및 설정
 const screeningInfo = JSON.parse(sessionStorage.getItem('screeningInfo'));
 
-// 상영정보표시
 if (screeningInfo) {
   const movieGradeElement = document.querySelector('.movie-grade');
   const titElement = document.querySelector('.tit-area .tit');
@@ -740,7 +714,6 @@ if (screeningInfo) {
   const posterElementContainer = document.querySelector('.poster');
 
   if (movieGradeElement && titElement && cateElement && theaterElement && specialElement && dateElement && otherTimeElement && posterElementContainer) {
-    // 상영 등급 이미지 분류
     const ageLimitImages = {
       '12': '/assets/images/booking/KMRB_12.jpeg',
       '15': '/assets/images/booking/KMRB_15.jpeg',
@@ -758,7 +731,6 @@ if (screeningInfo) {
     theaterElement.innerText = screeningInfo.theaterName;
     specialElement.innerText = `${screeningInfo.cinemaNumber}관`;
 
-    // 상영시간
     const screeningDate = new Date(screeningInfo.screeningDate);
     const days = ['일', '월', '화', '수', '목', '금', '토'];
     const dayName = days[screeningDate.getUTCDay()];
@@ -768,7 +740,6 @@ if (screeningInfo) {
     const endTime = screeningInfo.endTime.slice(0, 5);
     otherTimeElement.innerHTML = `${screeningTime} ~ ${endTime} <img src="/assets/images/booking/bottomButton.png" class="arr">`;
 
-    // 이미지 삽입
     const posterImg = document.createElement('img');
     posterImg.src = `data:image/jpeg;base64,${screeningInfo.thumbnail}`;
     posterImg.alt = screeningInfo.movieTitle;
@@ -776,47 +747,7 @@ if (screeningInfo) {
     posterElementContainer.appendChild(posterImg);
   }
 
-  // 다음 버튼 클릭 이벤트
-  document.getElementById('pageNext').addEventListener('click', function () {
-    if (this.classList.contains('disabled')) return;
-
-    const movieOrderDto = {
-      adultCount: parseInt(document.querySelector('.cell.adult .now').innerText),
-      teenagerCount: parseInt(document.querySelector('.cell.teenager .now').innerText),
-      oldCount: parseInt(document.querySelector('.cell.old .now').innerText),
-      disabledCount: parseInt(document.querySelector('.cell.disabled .now').innerText),
-      seatIndexes: Array.from(document.querySelectorAll('.seat.choice')).map(seat => parseInt(seat.dataset.index)),
-      screeningInfoIndex: parseInt(sessionStorage.getItem('screeningInfo').index)
-    };
-
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = '/booking/orderTwo';
-
-    for (const [key, value] of Object.entries(movieOrderDto)) {
-      if (Array.isArray(value)) {
-        value.forEach((val, index) => {
-          const input = document.createElement('input');
-          input.type = 'hidden';
-          input.name = `${key}[${index}]`;
-          input.value = val;
-          form.appendChild(input);
-        });
-      } else {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = key;
-        input.value = value;
-        form.appendChild(input);
-      }
-    }
-
-    document.body.appendChild(form);
-    form.submit();
-  });
-
-  const pageNextButton = document.getElementById('pageNext');
-
+  // 페이지 다음 버튼 클릭 이벤트
   pageNextButton.addEventListener('click', function() {
     if (this.classList.contains('disabled')) {
       return;
@@ -826,14 +757,14 @@ if (screeningInfo) {
     const teenagerCount = parseInt(document.querySelector('.cell.teenager .now').innerText);
     const oldCount = parseInt(document.querySelector('.cell.old .now').innerText);
     const disabledCount = parseInt(document.querySelector('.cell.disabled .now').innerText);
-
     const selectedSeats = document.querySelectorAll('.seat-condition.choice');
     const seatIndexes = Array.from(selectedSeats).map(seat => {
       const index = seat.getAttribute('data-index');
       return index ? parseInt(index) : -1;
     }).filter(index => index !== -1);
 
-    const screeningInfoIndex = JSON.parse(sessionStorage.getItem('screeningInfo')).index;
+    const screeningInfo = JSON.parse(sessionStorage.getItem('screeningInfo'));
+    const screeningInfoIndex = screeningInfo ? screeningInfo.index : null;
 
     const movieOrderDto = {
       adultCount,
@@ -843,11 +774,73 @@ if (screeningInfo) {
       seatIndexes,
       screeningInfoIndex
     };
-    console.log("Sending DTO:", movieOrderDto); // 디버깅용 로그 추가
 
     postOrderThree(movieOrderDto);
   });
 
+  // 좌석 가격 가져오기
+  function fetchSeatPrices() {
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState !== XMLHttpRequest.DONE) {
+        return;
+      }
+      if (xhr.status >= 200 && xhr.status < 300) {
+        const prices = JSON.parse(xhr.responseText);
+        prices.forEach(price => {
+          switch (price.type) {
+            case 'adult':
+              seatPrices.adult = price.price;
+              break;
+            case 'teenager':
+              seatPrices.teenager = price.price;
+              break;
+            case 'old':
+              seatPrices.old = price.price;
+              break;
+            case 'disabled':
+              seatPrices.disabled = price.price;
+              break;
+          }
+        });
+      } else {
+        MessageObj.createSimpleOk('오류', '알 수 없는 이유로 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.').show();
+      }
+    };
+
+    xhr.open('GET', `/booking/seat-prices`);
+    xhr.send();
+  }
+  fetchSeatPrices();
+
+  // 좌석 정보 가져오기
+  function fetchSeats() {
+    const screeningInfo = JSON.parse(sessionStorage.getItem('screeningInfo'));
+    if (!screeningInfo || !screeningInfo.index) return;
+
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState !== XMLHttpRequest.DONE) {
+        return;
+      }
+      loading.hide();
+      if (xhr.status >= 200 && xhr.status < 300) {
+        const seats = JSON.parse(xhr.responseText);
+        if (seats.length) {
+          createSeatLayout(seats);
+        }
+      } else {
+        MessageObj.createSimpleOk('오류', '알 수 없는 이유로 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.').show();
+      }
+    };
+
+    xhr.open('GET', `/booking/seats?screeningInfoIndex=${screeningInfo.index}`);
+    xhr.send();
+    loading.show();
+  }
+  fetchSeats();
+
+  // 주문 정보 전송 함수
   function postOrderThree(movieOrderDto) {
     const form = document.createElement('form');
     form.method = 'POST';
