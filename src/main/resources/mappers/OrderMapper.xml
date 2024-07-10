@@ -63,6 +63,7 @@
         FROM `terabox`.`product_payment_target`
         WHERE `product_index` = #{productIndex}
           AND `quantity` = #{quantity}
+        LIMIT 1
     </select>
 
 
