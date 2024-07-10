@@ -169,6 +169,7 @@ public class UserService {
 
     public Result postCreateCard(String email) {
         if (email == null || !UserRegex.email.tests(email)) {
+            System.out.println("카드 만들기 실패");
             return null;
         }
         CardEntity[] dbCard = this.cardMapper.selectCards();
@@ -178,9 +179,11 @@ public class UserService {
             userCard.setMoney(100000);
             userCard.setCardName(cardEntity.getName());
             if (this.userCardMapper.insertUserCard(userCard) != 1) {
+                System.out.println("카드 넣다가 실패");
                 throw new TransactionalException();
             }
         }
+        System.out.println("카드 만들기 성공");
         return CommonResult.SUCCESS;
 
     }

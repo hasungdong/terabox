@@ -13,18 +13,20 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const alertMessageDiv = document.getElementById('alertMessage');
-            new MessageObj({
-                title: '알림',
-                content: alertMessageDiv.textContent,
-                buttons: [
-                    {
-                        text: '로그인', onclick: instance => {
-                            instance.hide();
-                            loginForm.show();
+            if (alertMessageDiv && alertMessageDiv.textContent.trim() !== "") {
+                new MessageObj({
+                    title: '알림',
+                    content: alertMessageDiv.textContent,
+                    buttons: [
+                        {
+                            text: '로그인', onclick: instance => {
+                                instance.hide();
+                                loginForm.show();
+                            }
                         }
-                    }
-                ]
-            }).show();
+                    ]
+                }).show();
+            }
         });
     </script>
 </head>

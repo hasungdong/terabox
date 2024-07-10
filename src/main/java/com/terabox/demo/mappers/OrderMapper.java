@@ -21,5 +21,9 @@ public interface OrderMapper {
 
     int insertProductPayment(ProductPaymentTargetEntity productPaymentTarget);
 
+    ProductPaymentTargetEntity selectProductPaymentByProductIndexQuantity(@Param("productIndex") int productIndex,
+                                                                          @Param("quantity") int quantity);
+
+
 
 }

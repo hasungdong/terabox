@@ -56,6 +56,15 @@
           AND `seat_index` = #{seatIndex}
     </select>
 
+    <select id="selectProductPaymentByProductIndexQuantity" resultType="com.terabox.demo.entities.ProductPaymentTargetEntity">
+        SELECT `index`         AS `index`,
+               `product_index` AS `product_index`,
+               `quantity`      AS `quantity`
+        FROM `terabox`.`product_payment_target`
+        WHERE `product_index` = #{productIndex}
+          AND `quantity` = #{quantity}
+    </select>
+
 
 
 </mapper>

@@ -6,13 +6,15 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <script src="https://kit.fontawesome.com/dc541573c0.js" crossorigin="anonymous"></script>
+    <th:block th:replace="~{fragments/common/common.html :: commonHead}"></th:block>
+    <script src="https://kit.fontawesodme.com/dc541573c0.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" th:href="@{/assets/styles/store/MyMegabox.css}">
     <script defer type="text/javascript"
             th:src="@{/assets/scripts/store.js}"></script>
     <script defer type="text/javascript" th:src="@{/assets/scripts/common.js}"></script>
 </head>
 <body>
+<th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
 <div class="container">
     <div class="page-util">
         <div class="inner">
@@ -167,9 +169,11 @@
                         <td th:text="${#temporals.format(lists.getCreatedAt(), 'yyyy-MM-dd HH:mm')}"></td>  <!--temporals 를 써주면 날짜가 정상적으로 나온다-->
                         <td th:text="${lists.getProductName()}"></td>
                         <td th:text="|${#numbers.formatInteger(lists.getPrice(), 0, 'COMMA')}원|"></td>
-                        <td th:text="${lists.getQuantity()}"></td>
+                        <td th:text="${lists.getProductQuantity()}"></td>
                         <td th:text="|${#numbers.formatInteger(lists.getTotalSale(), 0, 'COMMA')}원|"></td>
                         <td th:text="|${#numbers.formatInteger(lists.getTotalPrice(), 0, 'COMMA')}원|"></td>
+
+
                     </tr>
                     </tbody>
                 </table>

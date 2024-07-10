@@ -115,9 +115,9 @@
                 </div>
               </div>
               <!--// type -->
-              <div class="btn-group">
-                <a class="button purple large DetailBuyButton" title="구매" rel="showLoginAlert">구매</a>
-
+              <div class="btn-group" >
+                <a class="button purple large DetailBuyButton" th:if="${session.user != null }" title="구매" rel="showLoginAlert">구매</a>
+                <a class="button purple large log" title="구매" rel="showLoginAlert" th:if="${session.user == null }" >구매</a>
                 <button type="button" class="button gray large" disabled="disabled">판매종료</button>
               </div>
               <p class="origin"></p>

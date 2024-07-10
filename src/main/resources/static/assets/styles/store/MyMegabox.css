@@ -100,7 +100,7 @@ button {
   cursor: pointer;
   letter-spacing: -0.5px;
   font-weight: 450;
-  font-family: "Nanum Gothic", Dotum, "돋움", sans-serif;
+  font-family: NanumBarunGothic, Dotum, "돋움", sans-serif;
   font-size: 1em;
   line-height: 1.15;
 }
@@ -468,7 +468,7 @@ body > .container #contents > .mypage-infomation > .btn-group.right > .button {
   color: #503396;
   font-weight: 400;
   border-radius: 4px;
-  font-family: "Nanum Gothic", Dotum, "돋움", sans-serif;
+  font-family: NanumBarunGothic, Dotum, "돋움", sans-serif;
   text-decoration: none;
   border: 1px solid #503396;
   vertical-align: middle;
