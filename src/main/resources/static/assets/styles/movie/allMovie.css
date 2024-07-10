@@ -1,0 +1,408 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+#header {
+    background-color: #ffffff;
+    color: #666666;
+}
+#header > .link-area {
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+}
+#header > .link-area > .header-site-map {
+    color: black;
+    font-size: 1.5rem;
+    position: relative;
+    right: 20rem;
+}
+#header > .link-area > .header-search {
+    color: black;
+    font-size: 1.2rem;
+    margin-top: 0.2rem;
+    position: relative;
+    right: 18.7rem;
+}
+#header > .link-area > .header-movie {
+    text-decoration-line: none;
+    color: black;
+    position: relative;
+    right: 12.5rem;
+}
+#header > .link-area > .header-buy-ticket {
+    text-decoration-line: none;
+    color: black;
+    position: relative;
+    right: 8.5rem;
+}
+#header > .link-area > .header-cinema {
+    text-decoration-line: none;
+    color: black;
+    position: relative;
+    right: 4.7rem;
+}
+#header > .link-area > .header-main-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    left: 2rem;
+    top: -1rem;
+    filter: none;
+}
+#header > .link-area > .header-event {
+    text-decoration-line: none;
+    color: black;
+    position: relative;
+    left: 7.5rem;
+}
+#header > .link-area > .header-store {
+    text-decoration-line: none;
+    color: black;
+    position: relative;
+    left: 11.7rem;
+}
+#header > .link-area > .header-benefits {
+    text-decoration-line: none;
+    color: black;
+    position: relative;
+    left: 15.7rem;
+}
+#header > .link-area > .header-timetable > .header-timetable-img {
+    width: 2.2rem;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+    position: relative;
+    left: 20.25rem;
+}
+#header > .link-area > .header-my-megabox {
+    margin-left: 1rem;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+    position: relative;
+    left: 20.2rem;
+}
+#header > .link-area > .header-my-megabox > .header-my-megabox-img {
+    width: 1.1rem;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(100%) contrast(100%);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    overflow: auto;
+    overflow-y: scroll;
+    letter-spacing: 0;
+    line-height: 1;
+    font-size: 15px;
+    color: #444;
+    font-weight: 400;
+    font-family: "Nanum Gothic", Dotum, "돋움", sans-serif;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body .button {
+    display: inline-block;
+    height: 36px;
+    margin: 0;
+    padding: 0 15px;
+    text-align: center;
+    line-height: 34px;
+    color: #503396;
+    font-weight: 400;
+    border-radius: 4px;
+    font-family: "Nanum Gothic", sans-serif, Dotum, "돋움";
+    text-decoration: none;
+    border: 1px solid #503396;
+    vertical-align: middle;
+    background-color: #fff;
+    cursor: pointer;
+}
+body form #container {
+    width: 1100px;
+    margin: 0 auto;
+}
+body form #container > .tit {
+    padding: 0 0 0 0;
+    font-size: 1.8666em;
+    font-weight: 500;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    color: #222;
+}
+body form #container > .tab-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+body form #container > .tab-list > .topMenu { /* 위에 메뉴들 ul 태그*/
+    list-style: none;
+    width: 100%;
+    display: flex;
+    padding: 0;
+}
+body form #container > .tab-list > .topMenu > .on { /*li 태그들*/
+    width: 20%;
+}
+body form #container > .tab-list > .topMenu > .on > .a { /*링크 태그들*/
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 8px 0;
+    text-align: center;
+    color: #222;
+    font-size: 1.1em;
+    text-decoration: none;
+    border: 0.04rem solid #dedede;
+    font-weight: 500;
+}
+body form #container > .movie-list-util { /*영화관 검색 있는곳 묶음*/
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    overflow: hidden;
+    margin-bottom: 15px;
+    margin-top: 40px !important;
+}
+body form #container > .movie-list-util > .onairBtnContainer {
+    float: left;
+    margin-left: 10px;
+    padding: 10px 0 0 0;
+}
+body form #container > .movie-list-util > .onairBtnContainer > .onairBtn {
+    display: block;
+    padding: 0 0 0 30px;
+    background: url("../../images/movie/allmovie-btn-on-air.png") no-repeat 0 2px;
+    border: 0;
+    font-size: 1em;
+}
+body form #container > .movie-list-util > .movie-search {
+    position: relative;
+    float: right;
+    width: 230px;
+    height: 36px;
+    margin: 0;
+    padding: 0 31px 0 0;
+    border: 1px solid #d8d9db;
+    border-radius: 3px;
+}
+body form #container > .movie-list-util > .movie-search > .input-text {
+    display: block;
+    width: 100%;
+    height: 34px;
+    border: 0;
+    vertical-align: middle;
+    padding: 0 10px;
+    line-height: 30px;
+    color: #444;
+    overflow: visible;
+    margin: 0;
+    font-size: 1rem;
+}
+body form #container > .movie-list-util > .movie-search > .btn-search-input {
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    text-indent: -9999px;
+    background: url("../../images/movie/allmovie-btn-search-input.png") no-repeat 0 center;
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+    width: 30px;
+    height: 32px;
+}
+body form #container > .movie-list { /*영화 리스트 묶음*/ }
+body form #container > .movie-list > .list { /*그 밑에 ol 태그*/
+    margin-left: -60px;
+    padding: 0;
+}
+body form #container > .movie-list > .list > .img {
+    overflow: hidden;
+    position: relative;
+    float: left;
+    width: 230px;
+    height: 450px;
+    padding: 0;
+    margin: 0 0 60px 60px;
+    background-color: #fff;
+}
+body form #container > .movie-list > .list > .img > .movie-list-info {
+    position: relative;
+    display: inline-block;
+}
+body form #container > .movie-list > .list > .img > .movie-list-info > .rank {
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    top: -30px;
+    width: 30px;
+    height: 50px;
+    padding: 8px 0 0 10px;
+    line-height: 1.1;
+    font-size: 2em;
+    font-style: italic;
+    font-family: "Roboto", sans-serif, Dotum, "돋움";
+    font-weight: 300;
+    color: #fff;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
+}
+body form #container > .movie-list > .list > .img > .movie-list-info > .poster { /*영화 사진*/
+    width: 230px;
+    height: 331px;
+    overflow: hidden;
+    position: relative;
+    float: left;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    border-radius: 0.5rem;
+}
+body form #container > .movie-list > .list > .img > .movie-list-info > .movie-score > .wrap {
+    width: 230px;
+    height: 331px;
+    position: relative;
+    display: block;
+    padding: 25px;
+}
+body form #container > .movie-list > .list > .img > .movie-list-info > .movie-score > .wrap:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 0.5rem;
+}
+body form #container > .movie-list > .list > .img > .movie-list-info > .movie-score > .wrap:hover > .summary {
+    overflow: hidden;
+    display: block;
+    color: white;
+}
+body form #container > .movie-list > .list > .img > .movie-list-info > .movie-score > .wrap > .summary {
+    position: absolute;
+    overflow: hidden;
+    width: 180px;
+    height: 163px;
+    display: none;
+}
+body form #container > .movie-list > .list > .img > .tit-area { /*묶음자리*/
+    position: relative;
+    width: 100%;
+    margin: 15px 0 0 0;
+    padding: 0 0 0 30px;
+    line-height: 25px;
+}
+body form #container > .movie-list > .list > .img > .tit-area > .movie-grad-all {
+    height: 100%;
+    background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/ALL_46x46.png);
+    background-size: 23px 23px;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: -65%;
+}
+body form #container > .movie-list > .list > .img > .tit-area > .title {
+    overflow: hidden;
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 0 0 0 1px;
+    font-size: 1.7em;
+    font-weight: 400;
+    margin: 0;
+}
+body form #container > .movie-list > .list > .img > .rate-date {
+    overflow: hidden;
+    padding: 10px 0 0 0;
+    font-size: 0.9rem;
+    font-family: sans-serif;
+}
+body form #container > .movie-list > .list > .img > .rate-date > .rate {
+    padding: 0 8px 0 0;
+    display: block;
+    position: relative;
+    float: left;
+    font-weight: 600;
+}
+body form #container > .movie-list > .list > .img > .rate-date > .rate::after {
+    padding-left: 5px;
+    content: "|";
+    color: #c9c9c9;
+}
+body form #container > .movie-list > .list > .img > .rate-date > .date {
+    display: block;
+    position: relative;
+    float: left;
+    font-weight: 600;
+}
+body form #container > .movie-list > .list > .img > .btn-util {
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 36px;
+}
+body form #container > .movie-list > .list > .img > .btn-util > .button.btn-like {
+    float: left;
+    width: 72px;
+    padding: 0 5px;
+    font-size: 0.8667em;
+    border-color: #ebebeb;
+    margin-right: 5px;
+}
+body form #container > .movie-list > .list > .img > .btn-util > .button.btn-like > .fa-regular {
+    font-size: 1rem;
+}
+body form #container > .movie-list > .list > .img > .btn-util > .button.btn-like > span {
+    font-size: 1.2em;
+}
+body form #container > .movie-list > .list > .img > .btn-util > .Ticketing-container { /*예매하기 버튼*/ }
+body form #container > .movie-list > .list > .img > .btn-util > .Ticketing-container > .button {
+    width: 74px;
+    margin-left: 5px;
+}
+body form #container > .movie-list > .list > .img > .btn-util > .Ticketing-container > .button.purple {
+    color: #fff;
+    line-height: 36px;
+    border: 0;
+    background: #503396;
+}
+body form #container > .movie-list > .list > .img > .btn-util > .Ticketing-container > .button.purple.ticketing {
+    margin-left: 0;
+    width: 74px;
+}
+body form #container > .movie-list > .list > .img > .btn-util > .Ticketing-container > .button.purple.img {
+    display: inline-block;
+    height: 36px;
+    margin: 0;
+    padding: 0 15px;
+    text-align: center;
+    line-height: 34px;
+    color: #ffffff;
+    font-weight: 400;
+    border-radius: 4px;
+    font-family: "Nanum Gothic", sans-serif, Dotum, "돋움";
+    text-decoration: none;
+    border: 1px solid #503396;
+    vertical-align: middle;
+    background-color: #503396;
+    cursor: pointer;
+}
+body form #container > .movie-list > .list > .img > .btn-util > .Ticketing-container > .button.purple.img > .img {
+    display: inline-block;
+    padding-top: 7px;
+    border: 0;
+}
+
+/*# sourceMappingURL=allMovie.css.map */
+
+
+/*# sourceMappingURL=allMovie.css.map */

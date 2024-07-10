@@ -115,7 +115,7 @@ body{
           >.onairBtn {
             display: block;
             padding: 0 0 0 30px;
-            background: url("../../images/movie/allmovie-btn-on-air.png") no-repeat 0 center;
+            background: url("../../images/movie/allmovie-btn-on-air.png") no-repeat 0 2px;
             border: 0;
             font-size: 1em;
 
@@ -193,8 +193,8 @@ body{
                 position: absolute;
                 left: 0;
                 top: -30px;
-                width: 230px;
-                height: 150px;
+                width: 30px;
+                height: 50px;
                 padding: 8px 0 0 10px;
                 line-height: 1.1;
                 font-size: 2em;
@@ -203,7 +203,6 @@ body{
                 font-weight: 300;
                 color: #fff;
                 text-shadow: 2px 2px 2px rgba(0, 0, 0, .8);
-                background: url("../../images/movie/allmovie-bg-movie-list-rank.png") no-repeat 0 center;
 
               }
 
@@ -390,6 +389,7 @@ body{
                   vertical-align: middle;
                   background-color: #503396;
                   cursor: pointer;
+
 
                   > .img {
                     display: inline-block;
