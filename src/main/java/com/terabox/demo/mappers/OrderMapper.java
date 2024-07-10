@@ -2,6 +2,7 @@ package com.terabox.demo.mappers;
 
 import com.terabox.demo.entities.MovieReservationEntity;
 import com.terabox.demo.entities.OrderEntity;
+import com.terabox.demo.entities.ProductPaymentTargetEntity;
 import com.terabox.demo.vos.OrderVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -18,9 +19,7 @@ public interface OrderMapper {
             @Param("screeningInfoIndex") int screeningInfoIndex,
             @Param("seatIndex") int seatIndex);
 
-
-
-
+    int insertProductPayment(ProductPaymentTargetEntity productPaymentTarget);
 
 
 }

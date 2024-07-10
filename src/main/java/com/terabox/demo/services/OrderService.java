@@ -10,7 +10,6 @@ import com.terabox.demo.vos.OrderVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDateTime;
@@ -35,8 +34,14 @@ public class OrderService {
 
     /* 결제하기 누르면 결제되는 창 */
     public CommonResult postProductOrder(OrderEntity order,
-                                         @RequestParam("productIndex") int productIndex,
+                                         ProductPaymentTargetEntity productPaymentTarget,
                                          String cardName) {
+        if (productPaymentTarget == null){
+            return CommonResult.FAILURE;
+        }
+        if (this.orderMapper.insertProductPayment(productPaymentTarget) != 1){
+            return CommonResult.FAILURE;
+        }
 
 //        여기 바꿔야댐
 //        이메일은 어차피 로그인 세션에서 가져오면 됨
@@ -46,7 +51,8 @@ public class OrderService {
 
 
         UserCardEntity cardDb = this.userCardMapper.selectUserCard(order.getUserEmail(), cardName);
-        ProductEntity product = this.productMapper.selectProductByIndex(productIndex);
+//        ProductEntity product = this.productMapper.selectProductByIndex(productIndex);
+        ProductEntity product = this.productMapper.selectProductByIndex(productPaymentTarget.getProductIndex());
 
         if (cardDb == null) {
             System.out.println(1);
@@ -55,14 +61,16 @@ public class OrderService {
         if (cardDb.getMoney() < order.getTotalPrice()) {
             return CommonResult.FAILURE_NOT_POINT;
         }
-        if (product.getQuantity() < order.getQuantity()) {
+//        if (product.getQuantity() < order.getQuantity()) {
+        if (product.getQuantity() < productPaymentTarget.getQuantity()) {
             return CommonResult.FAILURE_QUANTITY;
         }
 
         //결제 금액만큼 포인트 차감되는 쿼리
         order.setUserCardMappingIndex(cardDb.getIndex());
         cardDb.setMoney(cardDb.getMoney() - order.getTotalPrice());
-        product.setQuantity(product.getQuantity() - order.getQuantity());
+//        product.setQuantity(product.getQuantity() - order.getQuantity());
+        product.setQuantity(product.getQuantity() - productPaymentTarget.getQuantity());
 
         if (this.productMapper.updateProduct(product) < 1) {
             System.out.println(2);
@@ -101,9 +109,8 @@ public class OrderService {
         }
 //                보안 취약점 방지
         order.setUserEmail(user.getEmail());
-        order.setProductIndex(null);
+        order.setProductPaymentTargetIndex(null);
         order.setCreatedAt(LocalDateTime.now());
-        order.setQuantity(1);
 
 //        유효성 검사
 //        이메일이랑 카드 이름으로 카드 가져왔을 때,

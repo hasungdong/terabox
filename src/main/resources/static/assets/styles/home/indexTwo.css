@@ -485,7 +485,7 @@ h2.tit {
   line-height: 0;
 }
 #main .main-benefit .slider .slider-view .cell {
-  position: relative;
+  position: absolute;
   float: left;
   width: 934px;
   height: 325px;
