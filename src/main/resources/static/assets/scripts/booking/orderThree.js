@@ -394,7 +394,7 @@ if (document.querySelector('.order-three-container') !== null) {
                                         text: '취소', onclick: instance => {
                                             instance.hide();
                                             alertCover.hide();
-                                            location.href = '/home';
+                                            location.href = '/';
                                         }
                                     },
                                     {

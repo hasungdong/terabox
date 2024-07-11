@@ -39,7 +39,7 @@ public class BookingController {
     public String getBooking(HttpSession session, HttpServletRequest request, RedirectAttributes redirectAttributes) {
         if (session.getAttribute("user") == null) {
             redirectAttributes.addFlashAttribute("alertMessage", "예매를 진행하기 위해서는 로그인이 필요합니다.");
-            return "redirect:/home";
+            return "redirect:/";
         }
         return "booking/booking";
     }

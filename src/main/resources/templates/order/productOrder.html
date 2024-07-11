@@ -22,11 +22,11 @@
             <div class="location">
                 <span>home</span>
                 <a class="icon"></a>
-                <a href="/" class="event">나의 메가박스</a>
+                <a href="/static" class="event">나의 메가박스</a>
                 <a class="icon"></a>
-                <a href="/" class="last-event">영화/스토어 관람권</a>
+                <a href="/static" class="last-event">영화/스토어 관람권</a>
                 <a class="icon"></a>
-                <a href="/" class="last-event">스토어 교환권</a>
+                <a href="/static" class="last-event">스토어 교환권</a>
             </div>
         </div>
     </div>
@@ -37,17 +37,14 @@
                     <a href="/mypage" title="나의 메가박스">나의 메가박스</a>
                 </p>
                 <ul>
-                    <li class="">
-                        <a href="/mypage/bookinglist" title="예매/구매내역">예매/구매내역</a>
-                    </li>
                     <li>
-                        <a href="/mypage/movie-coupon" title="영화/스토어 관람권">영화/스토어 관람권</a>
+                        <a href="/mypage/movie-coupon" title="">예매/구매내역</a>
                         <ul class="depth3">
                             <li>
-                                <a href="/mypage/movie-coupon" title="영화관람권">영화관람권</a>
+                                <a href="/order/movieOrder" title="예매 내역">예매 내역</a>
                             </li>
                             <li class="on">
-                                <a href="/mypage/store-coupon" title="스토어 교환권">스토어 교환권</a>
+                                <a href="/order/productOrder" title="구매 내역">구매 내역</a>
                             </li>
                         </ul>
                     </li>
@@ -166,7 +163,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="lists : ${list}">
+                    <tr th:each="lists : ${list}" th:if="${lists.getProductName() != null}">
                         <td th:text="${#temporals.format(lists.getCreatedAt(), 'yyyy-MM-dd HH:mm')}"></td>  <!--temporals 를 써주면 날짜가 정상적으로 나온다-->
                         <td th:text="${lists.getProductName()}"></td>
                         <td th:text="|${#numbers.formatInteger(lists.getPrice(), 0, 'COMMA')}원|"></td>
