@@ -14,6 +14,8 @@ public interface ProductMapper {
     ProductEntity selectProductByNamePrice(@Param("name") String name,
                                            @Param("price") int price);
 
+    ProductEntity selectProductMaxSale();
+
     int selectProductsCountBySearch(SearchDto searchDto);
 
     ProductEntity[] selectProductsBySearch(SearchDto searchDto);

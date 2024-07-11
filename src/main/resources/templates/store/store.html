@@ -50,25 +50,25 @@
               <p class="font-purple">즐거운 관람되세요~</p>
             </div>
             <div class="goods">
-              <p class="name">러브콤보패키지</p>
-              <p class="txt">2인관람권 + 러브콤보 [팝콘(L)1 + 탄산음료(R)2]</p>
+              <p class="name" th:text="${productMax.getName()}">러브콤보패키지</p>
+              <p class="txt" th:text="${productMax.getSubTitle()}">2인관람권 + 러브콤보 [팝콘(L)1 + 탄산음료(R)2]</p>
             </div>
             <div class="price">
               <p class="sale">
-                <em>32,000</em>
+                <em th:text="${productMax.getPrice()}">32,000</em>
                 <span>원</span>
               </p>
-              <p class="original">
-                <em>36,000</em>
-                <span>원</span>
-              </p>
+<!--              <p class="original">-->
+<!--                <em>36,000</em>-->
+<!--                <span>원</span>-->
+<!--              </p>-->
             </div>
           </a>
         </div>
       </div>
       <div class="event-box">
-        <a th:href="@{/store/storeDetail}" class="event">
-          <img src="https://img.megabox.co.kr/SharedImg/store/2020/12/29/ZVX4FRDP8NLYto5HL0gAtxr6u4ZCmwOP_280.png" alt="">
+        <a th:href="@{/store/storeDetail (index=${productMax.getIndex()})}" class="event">
+          <img th:src="@{/product/image (index=${productMax.getIndex()})}" alt="">
         </a>
       </div>
     </div>

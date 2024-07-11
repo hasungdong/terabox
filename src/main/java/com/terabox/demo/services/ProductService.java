@@ -38,6 +38,10 @@ public class ProductService {
         return this.productMapper.selectProductsFourByTypePoint();
     }
 
+    public ProductEntity getProductMaxSale(){
+        return this.productMapper.selectProductMaxSale();
+    }
+
     // 인덱스 번호 눌렀을때 페이지 나오게 하기
     public ProductEntity getStoreIndex(@RequestParam("index")int index) {
         return this.productMapper.selectProductByIndex(index);
