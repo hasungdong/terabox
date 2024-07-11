@@ -76,13 +76,12 @@ headerMovie.addEventListener('mouseover', function () {
     hideAllSubmenus()
     movieLink.classList.toggle('on');
     document.onmouseleave = () => {
-        // movieLink.classList.remove('on');
         hideAllSubmenus()
     }
 });
 
 // 그 링크에 있던 마우스가 떠낫을때 on을 삭제
-movieLink.addEventListener('mouseout', function () {
+movieLink.addEventListener('mouseleave', function () { // mouse
     // movieLink.classList.remove('on');
     hideAllSubmenus()
 })
