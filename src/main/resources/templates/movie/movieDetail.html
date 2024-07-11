@@ -116,11 +116,10 @@
         </div>
         <div class="movie-summary infoContent" id="info">
             <div class="txt">
-                <span class="see">“나쁜 짓은 절대 안 해요. 그냥 보기만 하는 거예요.”</span>
-                <br><br>고객이 맡긴 열쇠로 그 집에 들어가 <br>남의 삶을 훔쳐보는 취미를 지닌 공인중개사 ‘구정태’.<br>편의점 소시지를 먹으며 비건 샐러드 사진을 포스팅하는 <br>SNS
-                인플루언서 ‘한소라’에게 흥미를 느끼고 관찰하기 시작한다.<br><br>“관찰 152일째, 그녀가… 죽었습니다.”<br><br>급기야 ‘한소라’의 집까지 드나들던 ‘구정태’는<br>어느
-                날, 그녀가 소파에 죽은 채 늘어져 있는 모습을 발견하게 된다.<br><br>그 후 그가 ‘한소라’ 집에 들어간 것을 알고 있는 누군가가 협박을 시작하고,<br>사건을 맡은 강력반 형사
-                ‘오영주’의 수사망이 그를 향해 좁혀온다.<br>스스로 범인을 찾아야 하는 ‘구정태’는 ‘한소라’의 SNS를 통해<br>주변 인물들을 뒤지며 진범을 찾아 나서는데…
+                <span class="see" th:text="${movieIndex.explanation}">“나쁜 짓은 절대 안 해요. 그냥 보기만 하는 거예요.”</span>
+                <br>
+                <br>
+                <span th:text="${movieIndex.subExplanation}"></span>
             </div>
             <div class="btn-more toggle">
                 <button type="button" class="btn more">
