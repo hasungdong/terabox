@@ -641,14 +641,7 @@ h2.tit {
   flex-direction: column;
   align-items: center;
 }
-#main .main-info .wrap {
-  width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-#main .main-info .wrap > .information-title {
+#main .main-info > .information-title {
   position: relative;
   width: 1100px;
   display: flex;
@@ -656,128 +649,128 @@ h2.tit {
   justify-content: flex-start;
   padding: 50px 0 38px 0;
 }
-#main .main-info .wrap > .information-title > h2 {
+#main .main-info > .information-title > h2 {
   display: block;
   font-size: 1.8666rem;
   color: #351f66;
   font-weight: normal;
   unicode-bidi: isolate;
 }
-#main .main-info .wrap .information-link-button {
+#main .main-info .information-link-button {
   position: relative;
   display: flex;
   flex-direction: row;
   width: 1100px;
 }
-#main .main-info .wrap .information-link-button > .information-box1 {
+#main .main-info .information-link-button > .information-box1 {
   margin-right: 16px;
 }
-#main .main-info .wrap .information-link-button > .information-box1 > a > .gray {
+#main .main-info .information-link-button > .information-box1 > a > .gray {
   width: 170px;
   border-radius: 5px;
 }
-#main .main-info .wrap .information-link-button > .information-box1 > a > .color {
+#main .main-info .information-link-button > .information-box1 > a > .color {
   display: none;
   width: 170px;
   border-radius: 5px;
 }
-#main .main-info .wrap .information-link-button > .information-box1 > a:hover > .gray {
+#main .main-info .information-link-button > .information-box1 > a:hover > .gray {
   display: none;
 }
-#main .main-info .wrap .information-link-button > .information-box1 > a:hover > .color {
+#main .main-info .information-link-button > .information-box1 > a:hover > .color {
   display: block;
 }
-#main .main-info .wrap .information-link-button > .information-box2 {
+#main .main-info .information-link-button > .information-box2 {
   margin-right: 16px;
 }
-#main .main-info .wrap .information-link-button > .information-box2 > a > .gray {
+#main .main-info .information-link-button > .information-box2 > a > .gray {
   width: 170px;
   border-radius: 5px;
 }
-#main .main-info .wrap .information-link-button > .information-box2 > a > .color {
+#main .main-info .information-link-button > .information-box2 > a > .color {
   display: none;
   width: 170px;
   border-radius: 5px;
 }
-#main .main-info .wrap .information-link-button > .information-box2 > a:hover > .gray {
+#main .main-info .information-link-button > .information-box2 > a:hover > .gray {
   display: none;
 }
-#main .main-info .wrap .information-link-button > .information-box2 > a:hover > .color {
+#main .main-info .information-link-button > .information-box2 > a:hover > .color {
   display: block;
 }
-#main .main-info .wrap .information-link-button > .information-box3 {
+#main .main-info .information-link-button > .information-box3 {
   margin-right: 16px;
 }
-#main .main-info .wrap .information-link-button > .information-box3 > a > .gray {
+#main .main-info .information-link-button > .information-box3 > a > .gray {
   width: 170px;
   border-radius: 5px;
 }
-#main .main-info .wrap .information-link-button > .information-box3 > a > .color {
+#main .main-info .information-link-button > .information-box3 > a > .color {
   display: none;
   width: 170px;
   border-radius: 5px;
 }
-#main .main-info .wrap .information-link-button > .information-box3 > a:hover > .gray {
+#main .main-info .information-link-button > .information-box3 > a:hover > .gray {
   display: none;
 }
-#main .main-info .wrap .information-link-button > .information-box3 > a:hover > .color {
+#main .main-info .information-link-button > .information-box3 > a:hover > .color {
   display: block;
 }
-#main .main-info .wrap .information-link-button > .information-box4 {
+#main .main-info .information-link-button > .information-box4 {
   margin-right: 16px;
 }
-#main .main-info .wrap .information-link-button > .information-box4 > a > .gray {
+#main .main-info .information-link-button > .information-box4 > a > .gray {
   width: 170px;
   border-radius: 5px;
 }
-#main .main-info .wrap .information-link-button > .information-box4 > a > .color {
+#main .main-info .information-link-button > .information-box4 > a > .color {
   display: none;
   width: 170px;
   border-radius: 5px;
 }
-#main .main-info .wrap .information-link-button > .information-box4 > a:hover > .gray {
+#main .main-info .information-link-button > .information-box4 > a:hover > .gray {
   display: none;
 }
-#main .main-info .wrap .information-link-button > .information-box4 > a:hover > .color {
+#main .main-info .information-link-button > .information-box4 > a:hover > .color {
   display: block;
 }
-#main .main-info .wrap .information-link-button > .information-box5 {
+#main .main-info .information-link-button > .information-box5 {
   margin-right: 16px;
 }
-#main .main-info .wrap .information-link-button > .information-box5 > a > .gray {
+#main .main-info .information-link-button > .information-box5 > a > .gray {
   width: 170px;
   border-radius: 5px;
 }
-#main .main-info .wrap .information-link-button > .information-box5 > a > .color {
+#main .main-info .information-link-button > .information-box5 > a > .color {
   display: none;
   width: 170px;
   border-radius: 5px;
 }
-#main .main-info .wrap .information-link-button > .information-box5 > a:hover > .gray {
+#main .main-info .information-link-button > .information-box5 > a:hover > .gray {
   display: none;
 }
-#main .main-info .wrap .information-link-button > .information-box5 > a:hover > .color {
+#main .main-info .information-link-button > .information-box5 > a:hover > .color {
   display: block;
 }
-#main .main-info .wrap .information-link-button > .information-box6 {
+#main .main-info .information-link-button > .information-box6 {
   margin-right: 16px;
 }
-#main .main-info .wrap .information-link-button > .information-box6 > a > .gray {
+#main .main-info .information-link-button > .information-box6 > a > .gray {
   width: 170px;
   border-radius: 5px;
 }
-#main .main-info .wrap .information-link-button > .information-box6 > a > .color {
+#main .main-info .information-link-button > .information-box6 > a > .color {
   display: none;
   width: 170px;
   border-radius: 5px;
 }
-#main .main-info .wrap .information-link-button > .information-box6 > a:hover > .gray {
+#main .main-info .information-link-button > .information-box6 > a:hover > .gray {
   display: none;
 }
-#main .main-info .wrap .information-link-button > .information-box6 > a:hover > .color {
+#main .main-info .information-link-button > .information-box6 > a:hover > .color {
   display: block;
 }
-#main .main-info .wrap .special-control {
+#main .main-info .special-control {
   width: 1100px;
   height: 30px;
   position: absolute;
@@ -785,7 +778,7 @@ h2.tit {
   margin-left: -550px;
   top: 183px;
 }
-#main .main-info .wrap .special-control img {
+#main .main-info .special-control img {
   display: block;
   position: relative;
   bottom: 100px;
@@ -798,7 +791,7 @@ h2.tit {
   font-size: 0;
   line-height: 0;
 }
-#main .main-info .wrap .special-control .special-prev {
+#main .main-info .special-control .special-prev {
   position: absolute;
   top: 50%;
   left: -45px;
@@ -808,7 +801,7 @@ h2.tit {
   overflow: hidden;
   text-indent: -999px;
 }
-#main .main-info .wrap .special-control .special-next {
+#main .main-info .special-control .special-next {
   position: absolute;
   top: 50%;
   right: -45px;
@@ -818,13 +811,20 @@ h2.tit {
   overflow: hidden;
   text-indent: -999px;
 }
-#main .main-info .wrap .info-notice {
+#main .main-info .wrap {
   margin-top: 50px;
   border: 1px solid #e2e2e2;
   border-width: 1px 0;
-  width: 100vw;
   max-width: 1903px;
   min-width: 1100px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#main .main-info .wrap .info-notice {
+  width: 1100px;
+  margin: 0 auto;
 }
 #main .main-info .wrap .info-notice .wrap {
   display: block;
@@ -914,46 +914,46 @@ h2.tit {
   margin-top: -3px;
   margin-left: 5px;
 }
-#main .main-info .wrap .info-link {
+#main .main-info .info-link {
   display: block;
   width: 1100px;
   margin: 0 auto;
   padding: 50px 0;
 }
-#main .main-info .wrap .info-link:before {
+#main .main-info .info-link:before {
   content: "";
   display: table;
 }
-#main .main-info .wrap .info-link:after {
+#main .main-info .info-link:after {
   content: "";
   display: table;
   clear: both;
 }
-#main .main-info .wrap .info-link .table {
+#main .main-info .info-link .table {
   display: table;
   width: 100%;
   table-layout: fixed;
 }
-#main .main-info .wrap .info-link .table .cell {
+#main .main-info .info-link .table .cell {
   display: table-cell;
   width: 16.6%;
   text-align: center;
   vertical-align: middle;
 }
-#main .main-info .wrap .info-link .table .cell:first-child {
+#main .main-info .info-link .table .cell:first-child {
   width: 16.7%;
 }
-#main .main-info .wrap .info-link .table .cell a {
+#main .main-info .info-link .table .cell a {
   color: #222;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-#main .main-info .wrap .info-link .table .cell a img {
+#main .main-info .info-link .table .cell a img {
   width: 46px;
   height: 46px;
 }
-#main .main-info .wrap .info-link .table .cell a span {
+#main .main-info .info-link .table .cell a span {
   display: block;
   margin: 0 auto;
   padding: 10px 0 0 0;
