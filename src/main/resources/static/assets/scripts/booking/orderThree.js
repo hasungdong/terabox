@@ -553,5 +553,10 @@ if (document.querySelector('.order-three-container') !== null) {
     }
 }
 
+// 이전 버튼 누르면 이전 페이지로
+document.getElementById('btn_booking_back').onclick = () => {
+    window.history.back();
+}
+
 
 

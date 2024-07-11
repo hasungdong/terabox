@@ -705,13 +705,14 @@
   width: 100%;
 }
 #main > .benefit-vip-selection > .section-box {
-  padding: 0 25.1rem;
   background-color: #f9fafc;
 }
 #main > .benefit-vip-selection > .section-box:nth-child(even) {
   background-color: #ffffff;
 }
 #main > .benefit-vip-selection > .section-box > .section {
+  width: 1100px;
+  margin: 0 auto;
   padding: 2.75rem 0 3.75rem;
   min-height: 14.6875rem;
   display: flex;
