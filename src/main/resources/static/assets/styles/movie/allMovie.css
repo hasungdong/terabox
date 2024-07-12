@@ -301,13 +301,26 @@ body form #container > .movie-list > .list > .img > .tit-area { /*묶음자리*/
 }
 body form #container > .movie-list > .list > .img > .tit-area > .movie-grad-all {
     height: 100%;
-    background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/ALL_46x46.png);
     background-size: 23px 23px;
     background-repeat: no-repeat;
     position: absolute;
     left: 0;
     width: 100%;
     top: -65%;
+}
+
+body form #container > .movie-list > .list > .img > .tit-area > .movie-grad-all.twelve {
+    background-image: url(../../images/booking/KMRB_12.jpeg);
+}
+
+body form #container > .movie-list > .list > .img > .tit-area > .movie-grad-all.fifteen {                  background-image: url(../../images/booking/KMRB_15.jpeg);
+}
+
+body form #container > .movie-list > .list > .img > .tit-area > .movie-grad-all.nineteen {                  background-image: url(../../images/booking/KMRB_19.jpeg);
+}
+
+body form #container > .movie-list > .list > .img > .tit-area > .movie-grad-all.all {
+    background-image: url(../../images/booking/KMRB_All.jpeg);
 }
 body form #container > .movie-list > .list > .img > .tit-area > .title {
     overflow: hidden;

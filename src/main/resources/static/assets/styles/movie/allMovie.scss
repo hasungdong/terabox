@@ -277,13 +277,29 @@ body{
 
               >.movie-grad-all{ //몇세 이용가인지 아직 구현중
                 height: 100%;
-                background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/ALL_46x46.png);
+
                 background-size: 23px 23px;
                 background-repeat: no-repeat;
                 position: absolute;
                 left: 0;
                 width: 100%;
                 top: -65%;
+
+                &.twelve{
+                  background-image: url(../../images/booking/KMRB_12.jpeg);
+                }
+
+                &.fifteen{
+                  background-image: url(../../images/booking/KMRB_15.jpeg);
+                }
+
+                &.nineteen{
+                  background-image: url(../../images/booking/KMRB_19.jpeg);
+                }
+
+                &.all{
+                  background-image: url(../../images/booking/KMRB_All.jpeg);
+                }
               }
 
 

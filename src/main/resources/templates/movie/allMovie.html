@@ -60,7 +60,13 @@
                     </div>
                     <!--제목 -->
                     <div class="tit-area">
-                        <p class="movie-grad-all"></p>
+                        <th:block th:switch="${allMovies.getAgeLimit()}">
+                            <p class="movie-grad-all twelve" th:case="'12'"></p>
+                            <p class="movie-grad-all fifteen" th:case="'15'"></p>
+                            <p class="movie-grad-all nineteen" th:case="'19'"></p>
+                            <p class="movie-grad-all all" th:case="'all'"></p>
+                        </th:block>
+
                         <p title="극장판 하이큐!! 쓰레기장의 결전" class="title" th:text="${allMovies.getTitle()}">
                             극장판 하이큐!! 쓰레기장의 결전
                         </p>
