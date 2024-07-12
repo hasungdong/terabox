@@ -13,8 +13,8 @@
         SELECT `index`            AS `index`,
                `row`              AS `row`,
                `column`           AS `column`,
-               `cinema_index`     AS `cinema_index`,
-               `seat_status_type` AS `seat_status_type`
+               `cinema_index`     AS `cinemaIndex`,
+               `seat_status_type` AS `seatStatusType`
         FROM `terabox`.`seats`
         WHERE `index` = #{index}
     </select>

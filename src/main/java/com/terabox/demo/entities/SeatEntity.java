@@ -13,4 +13,15 @@ public class SeatEntity {
     private int column;
     private int cinemaIndex;
     private String seatStatusType;
+
+    @Override
+    public String toString() {
+        return "SeatEntity{" +
+                "index=" + index +
+                ", row=" + row +
+                ", column=" + column +
+                ", cinemaIndex=" + cinemaIndex +
+                ", seatStatusType='" + seatStatusType + '\'' +
+                '}';
+    }
 }

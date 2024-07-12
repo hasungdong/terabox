@@ -237,6 +237,7 @@ public class OrderService {
             int seatIndex = movieOrderDto.getSeatIndexes()[i];
             SeatEntity dbSeat = this.seatPriceMapper.selectSeatsByIndex(seatIndex);
             dbSeat.setSeatStatusType("reserved");
+            System.out.println(dbSeat);
             int updateResult = this.seatPriceMapper.updateSeat(dbSeat);
             if (updateResult != 1){
                 throw new TransactionalException();

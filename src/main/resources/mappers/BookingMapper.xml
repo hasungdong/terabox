@@ -92,7 +92,7 @@
             `seat`.`index` AS `index`,
             `seat`.`row` AS `row`,
             `seat`.`column` AS `column`,
-            `seat`.`seat_status_type` AS `seatStatus`,
+            `seat`.`seat_status_type` AS `seatStatusType`,
             `seat`.`cinema_index` AS `cinemaIndex`
         FROM `terabox`.`seats` AS `seat`
                  JOIN `terabox`.`screening_info` AS `screening`

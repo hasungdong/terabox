@@ -685,7 +685,7 @@ function createSeatLayout(seats) {
   seats.forEach(seat => {
     const seatElement = document.createElement('button');
     seatElement.type = 'button';
-    seatElement.className = `jq-tooltip seat-condition standard ${seat.seatStatus}`;
+    seatElement.className = `jq-tooltip seat-condition standard ${seat.seatStatusType}`;
     seatElement.title = `${String.fromCharCode(64 + seat.row)}${seat.column}`;
     seatElement.style.position = 'absolute';
     seatElement.style.left = `${startX + (colWidth * (seat.column - 1))}px`;
