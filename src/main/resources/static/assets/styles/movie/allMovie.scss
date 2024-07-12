@@ -175,10 +175,12 @@ body{
           margin-left: -60px;
           padding: 0;
 
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+
           >.img{
             overflow: hidden;
             position: relative;
-            float: left;
             width: 230px;
             height: 450px;
             padding: 0;

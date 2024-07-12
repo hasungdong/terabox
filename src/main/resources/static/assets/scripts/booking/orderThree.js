@@ -401,7 +401,7 @@ if (document.querySelector('.order-three-container') !== null) {
                                         text: '확인', onclick: instance => {
                                             instance.hide();
                                             alertCover.hide();
-                                            location.href = '/order/myMegaBox';
+                                            location.href = '/order/movieOrder';
                                         }
                                     }
                                 ]

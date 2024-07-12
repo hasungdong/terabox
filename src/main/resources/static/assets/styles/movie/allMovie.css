@@ -226,11 +226,12 @@ body form #container > .movie-list { /*영화 리스트 묶음*/ }
 body form #container > .movie-list > .list { /*그 밑에 ol 태그*/
     margin-left: -60px;
     padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
 }
 body form #container > .movie-list > .list > .img {
     overflow: hidden;
     position: relative;
-    float: left;
     width: 230px;
     height: 450px;
     padding: 0;

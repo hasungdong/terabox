@@ -17,8 +17,8 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping(value = "order")
@@ -74,25 +74,19 @@ public class OrderController {
 
 
     @GetMapping(value = "productOrder",produces = MediaType.TEXT_HTML_VALUE)
-    public ModelAndView getProductOrder(@SessionAttribute(value = "user",required = false)UserEntity user){
-        ModelAndView model = new ModelAndView();
-
-        model.addObject("list",this.orderService.selectOrderList(user));
-        model.setViewName("order/productOrder");
-        return model;
+    public String  getProductOrder(@SessionAttribute(value = "user",required = false)UserEntity user,
+                                        Model model){
+        OrderVo[] list = this.orderService.selectOrderList(user);
+        model.addAttribute("list", list);
+        return "order/productOrder";
     }
 
     @GetMapping(value = "movieOrder",produces = MediaType.TEXT_HTML_VALUE)
-    public ModelAndView getMovieOrder(@SessionAttribute(value = "user",required = false)UserEntity user){
-        ModelAndView model = new ModelAndView();
+    public String  getMovieOrder(@SessionAttribute(value = "user",required = false)UserEntity user,
+                                 Model model){
 
         OrderVo[] list = this.orderService.selectOrderList(user);
-        model.addObject("list", list);
-        for (OrderVo orderVo : list) {
-            System.out.println(orderVo.getProductName());
-            System.out.println(orderVo.getMovieTitle());
-        }
-        model.setViewName("order/movieOrder");
-        return model;
+        model.addAttribute("list", list);
+        return "order/movieOrder";
     }
 }
