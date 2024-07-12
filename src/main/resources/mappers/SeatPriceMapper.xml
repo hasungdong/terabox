@@ -9,4 +9,24 @@
         FROM `terabox`.`seat_prices`
     </select>
 
+    <select id="selectSeatsByIndex">
+        SELECT `index`            AS `index`,
+               `row`              AS `row`,
+               `column`           AS `column`,
+               `cinema_index`     AS `cinema_index`,
+               `seat_status_type` AS `seat_status_type`
+        FROM `terabox`.`seats`
+        WHERE `index` = #{index}
+    </select>
+
+    <update id="updateSeat" parameterType="com.terabox.demo.entities.SeatEntity">
+        UPDATE `terabox`.`seats`
+        SET `row` = #{row},
+            `column` = #{column},
+            `cinema_index` = #{cinemaIndex},
+            `seat_status_type` = #{seatStatusType}
+        WHERE `index` = #{index}
+
+    </update>
+
 </mapper>

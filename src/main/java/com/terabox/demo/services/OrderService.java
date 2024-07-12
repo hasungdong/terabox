@@ -233,8 +233,13 @@ public class OrderService {
             //                        결제 성공하면 통장에서 돈 차감
             dbUserCard.setMoney(dbUserCard.getMoney() - order.getTotalPrice());
 
-            if (this.userCardMapper.updateMoney(dbUserCard) != 1){
-                return CommonResult.FAILURE_NOT_POINT;
+//            결제 성공했으면 구매한 좌석 예매완료 상태로
+            int seatIndex = movieOrderDto.getSeatIndexes()[i];
+            SeatEntity dbSeat = this.seatPriceMapper.selectSeatsByIndex(seatIndex);
+            dbSeat.setSeatStatusType("reserved");
+            int updateResult = this.seatPriceMapper.updateSeat(dbSeat);
+            if (updateResult != 1){
+                throw new TransactionalException();
             }
         }
 

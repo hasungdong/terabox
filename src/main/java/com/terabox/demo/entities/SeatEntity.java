@@ -12,5 +12,5 @@ public class SeatEntity {
     private int row;
     private int column;
     private int cinemaIndex;
-    private String seatStatus;
+    private String seatStatusType;
 }
