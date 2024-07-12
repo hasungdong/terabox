@@ -361,6 +361,8 @@ body form #container > .movie-list { /*영화 리스트 묶음*/
 body form #container > .movie-list > .list { /*그 밑에 ol 태그*/
   padding: 0;
   margin: 0 0 0 -40px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 }
 body form #container > .movie-list > .list > .img {
   overflow: hidden;
