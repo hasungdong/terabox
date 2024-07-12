@@ -88,7 +88,12 @@
             <!--// info -->
             <div class="poster">
                 <div class="wrap">
-                    <p class="movie-grade big age-15">15세 이상 관람가</p>
+                    <th:block th:switch="${movieIndex.getAgeLimit()}">
+                        <p class="movie-grade big twelve" th:case="'12'">12세 이상 관람가</p>
+                        <p class="movie-grade big fifteen" th:case="'15'">15세 이상 관람가</p>
+                        <p class="movie-grade big nineteen" th:case="'19'">19세 이상 관람가</p>
+                        <p class="movie-grade big all" th:case="'all'">전체 관람가</p>
+                    </th:block>
                     <img th:src="@{/movie/image(index=${movieIndex.getIndex()})}" alt="">
                 </div>
             </div>
