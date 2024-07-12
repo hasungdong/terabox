@@ -22,9 +22,11 @@ public class StoreController {
         ProductEntity[] productsTicket = this.productService.getStoreTicket();
         ProductEntity[] productsDfg = this.productService.getStoreDfg();
         ProductEntity[] productsPointer = this.productService.getStorePoint();
+        ProductEntity productMax = this.productService.getProductMaxSale();
         model.addAttribute("productsTicket",productsTicket);
         model.addAttribute("productsDfg",productsDfg);
         model.addAttribute("productsPointer",productsPointer);
+        model.addAttribute("productMax", productMax);
 
         return "store/store";
     }

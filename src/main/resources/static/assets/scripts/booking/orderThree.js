@@ -394,14 +394,14 @@ if (document.querySelector('.order-three-container') !== null) {
                                         text: '취소', onclick: instance => {
                                             instance.hide();
                                             alertCover.hide();
-                                            location.href = '/home';
+                                            location.href = '/';
                                         }
                                     },
                                     {
                                         text: '확인', onclick: instance => {
                                             instance.hide();
                                             alertCover.hide();
-                                            location.href = '/order/myMegaBox';
+                                            location.href = '/order/movieOrder';
                                         }
                                     }
                                 ]
@@ -551,6 +551,11 @@ if (document.querySelector('.order-three-container') !== null) {
             }
         })
     }
+}
+
+// 이전 버튼 누르면 이전 페이지로
+document.getElementById('btn_booking_back').onclick = () => {
+    window.history.back();
 }
 
 

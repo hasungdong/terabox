@@ -16,7 +16,7 @@ function getMovieAgeLimitImageSrc(ageLimit) {
     case '19':
       return '/assets/images/booking/KMRB_19.jpeg';
     case 'all':
-      return '/assets/images/booking/KMRB_ALL.jpeg';
+      return '/assets/images/booking/KMRB_All.jpeg';
   }
 }
 

@@ -134,6 +134,6 @@ public class UserController {
     @GetMapping(value = "/logout", produces = MediaType.TEXT_HTML_VALUE)
     public String getLogout(HttpSession session) {
         session.setAttribute("user", null);
-        return "redirect:/home";
+        return "redirect:/";
     }
 }

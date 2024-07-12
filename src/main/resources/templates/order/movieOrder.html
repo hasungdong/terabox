@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MEET PLAY SHARE, 테라박스</title>
+
+    <th:block th:replace="~{fragments/common/common.html :: commonHead}"></th:block>
+    <link rel="stylesheet" th:href="@{/assets/styles/store/MyMegabox.css}">
+    <script defer type="text/javascript"
+            th:src="@{/assets/scripts/store.js}"></script>
+    <script defer src="/assets/scripts/common.notHome.js"></script>
+    <!--    <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/common/footer.css}">-->
+</head>
+<body>
+<th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
+<div class="container">
+    <div class="page-util">
+        <div class="inner">
+            <div class="location">
+                <span>home</span>
+                <a class="icon"></a>
+                <a href="/order/movieOrder" class="event">나의 메가박스</a>
+                <a class="icon"></a>
+                <a href="/order/movieOrder" class="last-event">예매/구매 내역</a>
+                <a class="icon"></a>
+                <a href="/order/productOrder" class="last-event">예매 내역</a>
+            </div>
+        </div>
+    </div>
+    <div class="inner-wrap">
+        <div class="lnb-area location-fixed">
+            <nav id="lnb">
+                <p class="tit">
+                    <a title="나의 메가박스">나의 메가박스</a>
+                </p>
+                <ul>
+                    <li>
+                        <a href="/order/movieOrder" title="">예매/구매내역</a>
+                        <ul class="depth3">
+                            <li>
+                                <a href="/order/movieOrder" title="예매 내역">예매 내역</a>
+                            </li>
+                            <li class="on">
+                                <a href="/order/productOrder" title="구매 내역">구매 내역</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a id="discountCoupon" title="메가박스/제휴쿠폰">메가박스/제휴쿠폰</a>
+                    </li>
+                    <!-- <li><a href="/on/oh/ohh/Mvtckt/GiftCardL.do">메가박스 기프트카드</a></li> -->
+                    <li>
+                        <a title="멤버십 포인트">멤버십 포인트</a>
+                        <ul class="depth3">
+                            <li>
+                                <a title="포인트 이용내역">포인트 이용내역</a>
+                            </li>
+                            <li>
+                                <a title="멤버십 카드관리">멤버십 카드관리</a>
+                            </li>
+                            <li>
+                                <a title="MiL.k 제휴서비스">MiL.k 포인트</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a  titel="나의 무비스토리">나의 무비스토리</a></li>
+                    <li><a  title="나의 이벤트 응모내역">나의 이벤트 응모내역</a></li>
+                    <li><a  title="나의 문의내역">나의 문의내역</a></li>
+                    <li><a  title="자주쓰는 할인카드">자주쓰는 카드 관리</a></li>
+                    <li>
+                        <a  title="회원정보">회원정보</a>
+                        <ul class="depth3">
+                            <li><a title="개인정보 수정">개인정보 수정</a></li>
+                            <li><a title="선택정보 수정">선택정보 수정</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- 오른쪽에 컨텐츠 부분 -->
+        <div id="contents" class="location-fixed">
+            <h2 class="tit">스토어 교환권</h2>
+
+            <!-- 가이드 수정 -->
+            <div class="mypage-infomation v1 mb20">
+                <ul class="dot-list">
+                    <li>보유하신 스토어교환권 내역입니다.</li>
+                    <li>소지하신 스토어교환권은 등록 후 이용하실 수 있습니다.</li>
+                </ul>
+
+                <div class="btn-group right">
+                    <a class="button btn-modal-open small"
+                       title="스토어 교환권 등록">스토어 교환권 등록</a>
+                </div>
+            </div>
+            <div class="board-list-util mb10">
+                <p class="result-count">
+                    <strong>
+                        전체<b class="font-gblue">0</b>건
+                    </strong>
+                </p>
+                <div class="spring"></div>
+                <div class="dropdown bootstrap-select bs3">
+                    <select title="관람권명 선택" class="selectpicker" tabindex="-98">
+                        <option class="bs-title-option" value=""></option>
+                        <option value="CSC03">사용가능</option>
+                        <option value="CSC04">사용완료</option>
+                        <option value="CSC06">기간만료</option>
+                        <option value="CSC05">취소환불</option>
+                    </select>
+                    <button type="button" class="btn dropdown-toggle btn-default" data-toggle="dropdown" role="button"
+                            title="사용가능">
+                        <div class="filter-option">
+                            <div class="filter-option-inner">
+                                <div class="filter-option-inner-inner">사용가능
+                                </div>
+                            </div>
+                        </div>
+                        <span class="bs-caret">
+              <span class="caret"></span>
+            </span>
+                    </button>
+                    <div class="dropdown-menu open" role="combobox">
+                        <div class="inner open" role="listbox" aria-expanded="false" tabindex="-1">
+                            <ul class="dropdown-menu inner "></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-wrap">
+                <table class="board-list">
+                    <caption>구분, 교환권명, 유효기간, 사용상태, 관람권정보, 삭제 항목을 가진 스토어 교환권 목록 표</caption>
+                    <colgroup>
+                        <col style="width:168px;">
+                        <col style="width:168px;">
+                        <col style="width:168px;">
+                        <col style="width:168px;">
+                        <col style="width:168px;">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th scope="col">결제일시</th>
+                        <th scope="col">영화제목</th>
+                        <th scope="col">상품가격</th>
+                        <th scope="col">할인가격</th>
+                        <th scope="col" >결제금액</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="lists : ${list}" th:if="${lists.getMovieTitle() != null}">
+                        <td th:text="${#temporals.format(lists.getCreatedAt(), 'yyyy-MM-dd HH:mm')}"></td>  <!--temporals 를 써주면 날짜가 정상적으로 나온다-->
+                        <td th:text="${lists.getMovieTitle()}"></td>
+                        <td th:text="|${#numbers.formatInteger(lists.getPrice(), 0, 'COMMA')}원|"></td>
+                        <td th:text="|${#numbers.formatInteger(lists.getTotalSale(), 0, 'COMMA')}원|"></td>
+                        <td th:text="|${#numbers.formatInteger(lists.getTotalPrice(), 0, 'COMMA')}원|"></td>
+
+
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <nav class="pagination"></nav>
+            <div class="box-pulldown mt30">
+                <div class="tit">
+                    <button type="button" rel="myMegaMore" class="btn-toggle">이용안내
+                        <i class="iconset ico-arr-toggle-down"></i>
+                    </button>
+                </div>
+                <div class="cont">
+                    <strong>이용안내</strong>
+                    <ul class="dot-list mb30">
+                        <li>스토어 교환권에 따라 사용방법이 다르니, 상세 쿠폰정보를 확인 후 이용바랍니다.</li>
+                        <li>선물받은 교환권은 등록 후 구매자가 결제를 취소할 경우 자동 회수처리 되어 사용하실 수 없습니다.</li>
+                        <li>2020년 2월 4일 이후 구매하신 스토어 교환권은 기준에 따라 유효기간 연장이 가능합니다.</li>
+                        <li>*단, 메가찬스용 스토어 교환권 및 이벤트/프로모션 상품의 경우 유효기간 연장이 불가할 수 있습니다.</li>
+                    </ul>
+                    <strong>유효기간 연장안내</strong>
+                    <ul class="dot-list mb30">
+                        <li>유효기간은 만료 30일 전 부터 기간연장이 가능하며, 유효기간이 만료된 경우 기간연장이 불가합니다.</li>
+                        <li>유효기간은 발급일로부터 5년 이내 횟수 제한없이 기간연장이 가능하며, 1회 연장 시 90일 단위로 유효기간이 연장됩니다.</li>
+                        <li>최초 유효기간 만료 시 결제금액의 90% 환불 가능합니다.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<th:block th:replace="~{fragments/footer.html :: footer}"></th:block>-->
+
+</body>
+</html>
