@@ -33,11 +33,7 @@ public class StoreController {
     }
 
     @GetMapping(value = "storeDetail", produces = MediaType.TEXT_HTML_VALUE)
-    public String getStoreDetail(@SessionAttribute(value = "user",required = false)UserEntity user,
-                                 @RequestParam(value = "index",required = false)int index,Model model){
-        if (user == null){
-            return "redirect:/";
-        }
+    public String getStoreDetail(@RequestParam(value = "index",required = false)int index,Model model){
         ProductEntity storeDetail = this.productService.getStoreIndex(index);
         model.addAttribute("storeDetail",storeDetail);
         return "store/storeDetail";

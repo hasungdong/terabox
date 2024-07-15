@@ -364,22 +364,12 @@ body form #container > .movie-list > .list > .img > .btn-util {
     bottom: 0;
     width: 100%;
     height: 36px;
+
+    display: flex;
 }
-body form #container > .movie-list > .list > .img > .btn-util > .button.btn-like {
-    float: left;
-    width: 72px;
-    padding: 0 5px;
-    font-size: 0.8667em;
-    border-color: #ebebeb;
-    margin-right: 5px;
+body form #container > .movie-list > .list > .img > .btn-util > .Ticketing-container { /*예매하기 버튼*/
+    flex-grow: 1;
 }
-body form #container > .movie-list > .list > .img > .btn-util > .button.btn-like > .fa-regular {
-    font-size: 1rem;
-}
-body form #container > .movie-list > .list > .img > .btn-util > .button.btn-like > span {
-    font-size: 1.2em;
-}
-body form #container > .movie-list > .list > .img > .btn-util > .Ticketing-container { /*예매하기 버튼*/ }
 body form #container > .movie-list > .list > .img > .btn-util > .Ticketing-container > .button {
     width: 74px;
     margin-left: 5px;
@@ -392,7 +382,7 @@ body form #container > .movie-list > .list > .img > .btn-util > .Ticketing-conta
 }
 body form #container > .movie-list > .list > .img > .btn-util > .Ticketing-container > .button.purple.ticketing {
     margin-left: 0;
-    width: 74px;
+    width: 100%;
 }
 body form #container > .movie-list > .list > .img > .btn-util > .Ticketing-container > .button.purple.img {
     display: inline-block;

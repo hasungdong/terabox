@@ -244,7 +244,6 @@ selectPeopleCells.forEach(selectPeopleCell => {
           text: '확인', onclick: instance => {
             instance.hide();
             alertCover.hide();
-            location.reload();
 
             // 초기화 작업 수행
             selectPeopleCells.forEach(selectPeopleCell => {
@@ -384,7 +383,40 @@ selectPeopleCells.forEach(selectPeopleCell => {
               text: '확인', onclick: instance => {
                 instance.hide();
                 alertCover.hide();
-                location.reload();
+
+                // 초기화 작업 수행
+                selectPeopleCells.forEach(selectPeopleCell => {
+                  const nowElement = selectPeopleCell.querySelector('.now');
+                  nowElement.innerText = '0';
+                });
+
+                seats.forEach(seat => {
+                  seat.classList.remove('choice');
+                  seat.classList.remove('possible');
+                  seat.classList.add('all');
+                  seat.innerText = '-';
+                });
+
+                seatTypeCounts.forEach(seatTypeCount => {
+                  seatTypeCount.querySelector('em').innerText = '0';
+                  seatTypeCount.style.display = 'none';
+                });
+
+                adultCount.innerText = '0';
+                teenagerCount.innerText = '0';
+                oldCount.innerText = '0';
+                disabledCount.innerText = '0';
+
+                document.getElementById('pageNext').classList.remove('active');
+                document.getElementById('pageNext').classList.add('disabled');
+
+                // 모든 jq-tooltip 클래스를 가진 버튼에서 choice 클래스 제거
+                const jqTooltipButtons = document.querySelectorAll('.jq-tooltip');
+                jqTooltipButtons.forEach(button => {
+                  button.classList.remove('choice');
+                });
+
+                updateOrderPrice();
               }
             }
           ]

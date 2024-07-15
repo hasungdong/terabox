@@ -37,16 +37,13 @@ public class OrderService {
                                          String cardName,
                                          UserEntity user) {
         if (user == null){
-            System.out.println(1);
             return CommonResult.FAILURE;
         }
         order.setUserEmail(user.getEmail());
         if (productPaymentTarget == null){
-            System.out.println(2);
             return CommonResult.FAILURE;
         }
         if (this.orderMapper.insertProductPayment(productPaymentTarget) != 1){
-            System.out.println(3);
             return CommonResult.FAILURE;
         }
 //        인서트 되자마자 바로 다시 select 해오기
@@ -67,7 +64,6 @@ public class OrderService {
         ProductEntity product = this.productMapper.selectProductByIndex(productPaymentTarget.getProductIndex());
 
         if (cardDb == null) {
-            System.out.println(4);
             return CommonResult.FAILURE;
         }
         if (cardDb.getMoney() < order.getTotalPrice()) {
@@ -85,14 +81,11 @@ public class OrderService {
         product.setQuantity(product.getQuantity() - productPaymentTarget.getQuantity());
 
         if (this.productMapper.updateProduct(product) < 1) {
-            System.out.println(5);
             return CommonResult.FAILURE;
         }
         if (this.userCardMapper.updateMoney(cardDb) < 1) {
-            System.out.println(6);
             return CommonResult.FAILURE;
         }
-        System.out.println(7);
         return this.orderMapper.insertOrder(order) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 

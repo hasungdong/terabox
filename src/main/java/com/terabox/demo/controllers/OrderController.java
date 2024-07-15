@@ -20,6 +20,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 @RequestMapping(value = "order")
 public class OrderController {
@@ -76,7 +79,13 @@ public class OrderController {
     @GetMapping(value = "productOrder",produces = MediaType.TEXT_HTML_VALUE)
     public String  getProductOrder(@SessionAttribute(value = "user",required = false)UserEntity user,
                                         Model model){
-        OrderVo[] list = this.orderService.selectOrderList(user);
+        OrderVo[] tempList = this.orderService.selectOrderList(user);
+        List<OrderVo> list = new ArrayList<>();
+        for (OrderVo orderVo : tempList) {
+            if (orderVo.getProductName() != null){
+                list.add(orderVo);
+            }
+        }
         model.addAttribute("list", list);
         return "order/productOrder";
     }
@@ -85,7 +94,13 @@ public class OrderController {
     public String  getMovieOrder(@SessionAttribute(value = "user",required = false)UserEntity user,
                                  Model model){
 
-        OrderVo[] list = this.orderService.selectOrderList(user);
+        OrderVo[] tempList = this.orderService.selectOrderList(user);
+        List<OrderVo> list = new ArrayList<>();
+        for (OrderVo orderVo : tempList) {
+            if (orderVo.getMovieTitle() != null){
+                list.add(orderVo);
+            }
+        }
         model.addAttribute("list", list);
         return "order/movieOrder";
     }

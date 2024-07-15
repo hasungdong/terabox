@@ -11,9 +11,6 @@ if (loginCancelButton !== null){
     }
 }
 
-console.log(document.querySelector('span.swiper-bar') !== null)
-console.log(document.querySelector('span.swiper-bar'))
-
 // 스와이퍼 기능, 홈일 때랑 아닐 때 구분돼있음
 if (document.querySelector('span.swiper-bar') !== null) {
     const leftSwiperButton = document.querySelector('button.left.swiper');

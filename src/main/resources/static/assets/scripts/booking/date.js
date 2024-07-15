@@ -4,9 +4,9 @@ const btnNext = document.querySelector('.btn-next');
 
 const btnWidth = 70; // 버튼의 너비를 설정
 let currentLocation = -70; // 현재 위치를 추적
-let currentDate = new Date('2024-05-01'); // 현재 날짜를 설정
+let currentDate = new Date(); // 현재 날짜를 설정
 let isAnimating = false; // 애니메이션 진행 중인지를 추적
-let selectedDate = new Date('2024-05-01'); // 선택된 날짜 저장
+let selectedDate = new Date(); // 선택된 날짜 저장
 let previousSelectedButton = null; // 이전에 선택된 버튼을 저장
 
 // 날짜를 포맷하는 함수

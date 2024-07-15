@@ -108,8 +108,6 @@ if (price !== null){
                 return;
             }
             if (parseInt(inputText.value ) > parseInt(DetailQuantity.value)){
-                console.log(typeof inputText.value);
-                console.log(typeof DetailQuantity.value);
                 new MessageObj({
                     title: '알림',
                     content: '상품이 품절되어서 구매가 불가능합니다.',
@@ -244,10 +242,7 @@ if (totalSale !== null) { // storeDetail 에서 order 로 넘어왔을때 order 
             formData.append('quantity',orderQuantity.innerText);
             formData.append('price',orderPrice.innerText.replace(/,/g, ""));
             formData.append('cardName', selectedOption);
-            console.log(selectedOption.value);
-            console.log(selectedOption);
             formData.append('totalPrice',totalPrice.innerText.replace(/,/g, ""));
-            console.log(totalPrice.innerText);
             formData.append('productIndex',orderIndex.value);
 
             xhr.onreadystatechange = function(){
@@ -271,7 +266,7 @@ if (totalSale !== null) { // storeDetail 에서 order 로 넘어왔을때 order 
                                 {text: '확인', onclick: instance => {
                                         instance.hide();
                                         alertCover.hide();
-                                        location.replace('/store/store');
+                                        location.replace('/order/productOrder');
                                     }
                                 }
                             ]
