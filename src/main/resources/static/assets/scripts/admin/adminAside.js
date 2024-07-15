@@ -73,30 +73,29 @@ const asideCloseButton = document.querySelector('[rel="hideAdminAside"]');
 const showDetailLists = document.querySelectorAll('[rel="showDetailList"]');
 
 
-// adminAside 보여주기
-asideOpenButton.onclick = () => {
-    alert(1);
-    console.log(1)
-    adminAside.show();
-    asideOpenButton.classList.toggle('on');
-    asideCloseButton.classList.toggle('on');
-    adminAsideButton.classList.toggle('on');
-    cover.show(() => {
-        adminAside.hide()
+adminAsideButton.onclick = () => {
+    if (asideOpenButton.classList.contains('on')){
+        // adminAside 보여주기
+        adminAside.show();
+        asideOpenButton.classList.toggle('on');
+        asideCloseButton.classList.toggle('on');
+        adminAsideButton.classList.toggle('on');
+        cover.show(() => {
+            adminAside.hide()
+            cover.hide();
+            asideOpenButton.classList.toggle('on');
+            asideCloseButton.classList.toggle('on');
+            adminAsideButton.classList.toggle('on');
+        });
+    } else {
+        // adminAside 숨기기
+        adminAside.hide();
         cover.hide();
         asideOpenButton.classList.toggle('on');
         asideCloseButton.classList.toggle('on');
         adminAsideButton.classList.toggle('on');
-    });
-}
+    }
 
-// adminAside 숨기기
-asideCloseButton.onclick = () => {
-    adminAside.hide();
-    cover.hide();
-    asideOpenButton.classList.toggle('on');
-    asideCloseButton.classList.toggle('on');
-    adminAsideButton.classList.toggle('on');
 }
 
 
