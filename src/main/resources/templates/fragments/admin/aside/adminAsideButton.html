@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-<button type="button" th:fragment="adminAsideButton" id="adminAsideButton">
+<button type="button" th:fragment="adminAsideButton" id="adminAsideButton" th:if="${session.user != null && session.user.isAdmin() == true}">
     <img class="more on" rel="showAdminAside" th:src="@{/assets/images/common/lessAside.png}" alt="">
     <img class="less" rel="hideAdminAside" th:src="@{/assets/images/common/lessAside.png}" alt="">
 </button>

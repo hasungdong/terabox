@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-<form class="form" id="modifyProductFormTwo" th:fragment="modifyProductFormTwo" th:with="productRegex = ${T(com.terabox.demo.regexes.ProductRegex)}">
+<form class="form" id="modifyProductFormTwo" th:fragment="modifyProductFormTwo" th:with="productRegex = ${T(com.terabox.demo.regexes.ProductRegex)}" th:if="${session.user != null && session.user.isAdmin() == true}">
     <h3 class="title">스토어 상품 수정</h3>
 </form>
 </body>

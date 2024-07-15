@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-<div class="form" id="modifyScreeningInfoForm" th:fragment="modifyScreeningInfoForm">
+<div class="form" id="modifyScreeningInfoForm" th:fragment="modifyScreeningInfoForm" th:if="${session.user != null && session.user.isAdmin() == true}">
     <h3 class="title">상영정보 수정</h3>
     <form class="search-bar">
         <label class="_obj-label" rel="screeningDateLabel">

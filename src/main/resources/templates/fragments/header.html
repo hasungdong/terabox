@@ -19,7 +19,6 @@
         <div class="right-link">
 <!--            로그인 되있는지 아닌지에 따라 showLoginAlert와 showAdminPage 중 보여줄 지 타임리프로 결정할 거 -->
 
-            <a th:if="${session.user != null && session.user.isAdmin() == true}" th:href="@{/movie/allMovie/admin}" class="header-admin" rel="seeByAdmin">관리자 페이지로 이동</a>
             <a th:if="${session.user == null}" class="header-login"  rel="showLogin">로그인</a>
             <a th:if="${session.user != null}" class="header-user" th:text="${session.user.getNickname()+'님'}"></a>
             <a th:if="${session.user == null}" class="header-register" th:href="@{/register/register}" rel="showRegister">회원가입</a>

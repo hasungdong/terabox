@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-<form class="form" id="searchMovie" th:fragment="searchMovie" th:with="movieRegex = ${T(com.terabox.demo.regexes.MovieRegex)}">
+<form class="form" id="searchMovie" th:fragment="searchMovie" th:with="movieRegex = ${T(com.terabox.demo.regexes.MovieRegex)}" th:if="${session.user != null && session.user.isAdmin() == true}">
     <h3 class="title">영화 검색</h3>
     <div class="content">
         <label class="_obj-label title" rel="titleLabel">

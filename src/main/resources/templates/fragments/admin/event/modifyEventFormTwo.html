@@ -9,7 +9,7 @@
 </head>
 <body>
 <form class="form" id="modifyEventFormTwo" th:fragment="modifyEventFormTwo"
-      th:with="eventRegex = ${T(com.terabox.demo.regexes.EventRegex)}">
+      th:with="eventRegex = ${T(com.terabox.demo.regexes.EventRegex)}" th:if="${session.user != null && session.user.isAdmin() == true}">
     <h3 class="title">이벤트 수정</h3>
 </form>
 </body>

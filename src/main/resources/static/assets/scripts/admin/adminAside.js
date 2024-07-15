@@ -75,6 +75,8 @@ const showDetailLists = document.querySelectorAll('[rel="showDetailList"]');
 
 // adminAside 보여주기
 asideOpenButton.onclick = () => {
+    alert(1);
+    console.log(1)
     adminAside.show();
     asideOpenButton.classList.toggle('on');
     asideCloseButton.classList.toggle('on');

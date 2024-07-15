@@ -7,18 +7,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <th:block th:fragment="adminCommonHead">
-        <link rel="stylesheet" th:href="@{/assets/styles/common/admin/adminCommon.css}">
-        <script defer type="text/javascript" th:src="@{/assets/scripts/admin/adminAside.js}"></script>
-        <script defer type="text/javascript" th:src="@{/assets/scripts/admin/addMovie.js}"></script>
-        <script defer type="text/javascript" th:src="@{/assets/scripts/admin/addProduct.js}"></script>
-        <script defer type="text/javascript" th:src="@{/assets/scripts/admin/addEvent.js}"></script>
-        <script defer type="text/javascript" th:src="@{/assets/scripts/admin/deleteMovie.js}"></script>
-        <script defer type="text/javascript" th:src="@{/assets/scripts/admin/deleteProduct.js}"></script>
-        <script defer type="text/javascript" th:src="@{/assets/scripts/admin/deleteEvent.js}"></script>
-        <script defer type="text/javascript" th:src="@{/assets/scripts/admin/modifyMovie.js}"></script>
-        <script defer type="text/javascript" th:src="@{/assets/scripts/admin/modifyProduct.js}"></script>
-        <script defer type="text/javascript" th:src="@{/assets/scripts/admin/modifyEvent.js}"></script>
-        <script defer type="text/javascript" th:src="@{/assets/scripts/admin/screeningInfo.js}"></script>
+        <link rel="stylesheet" th:href="@{/assets/styles/common/admin/adminCommon.css}" th:if="${session.user != null && session.user.isAdmin() == true}">
+        <script defer type="text/javascript" th:src="@{/assets/scripts/admin/adminAside.js}" th:if="${session.user != null && session.user.isAdmin() == true}"></script>
+        <script defer type="text/javascript" th:src="@{/assets/scripts/admin/addMovie.js}" th:if="${session.user != null && session.user.isAdmin() == true}"></script>
+        <script defer type="text/javascript" th:src="@{/assets/scripts/admin/addProduct.js}" th:if="${session.user != null && session.user.isAdmin() == true}"></script>
+        <script defer type="text/javascript" th:src="@{/assets/scripts/admin/addEvent.js}" th:if="${session.user != null && session.user.isAdmin() == true}"></script>
+        <script defer type="text/javascript" th:src="@{/assets/scripts/admin/deleteMovie.js}" th:if="${session.user != null && session.user.isAdmin() == true}"></script>
+        <script defer type="text/javascript" th:src="@{/assets/scripts/admin/deleteProduct.js}" th:if="${session.user != null && session.user.isAdmin() == true}"></script>
+        <script defer type="text/javascript" th:src="@{/assets/scripts/admin/deleteEvent.js}" th:if="${session.user != null && session.user.isAdmin() == true}"></script>
+        <script defer type="text/javascript" th:src="@{/assets/scripts/admin/modifyMovie.js}" th:if="${session.user != null && session.user.isAdmin() == true}"></script>
+        <script defer type="text/javascript" th:src="@{/assets/scripts/admin/modifyProduct.js}" th:if="${session.user != null && session.user.isAdmin() == true}"></script>
+        <script defer type="text/javascript" th:src="@{/assets/scripts/admin/modifyEvent.js}" th:if="${session.user != null && session.user.isAdmin() == true}"></script>
+        <script defer type="text/javascript" th:src="@{/assets/scripts/admin/screeningInfo.js}" th:if="${session.user != null && session.user.isAdmin() == true}"></script>
     </th:block>
     <th:block th:fragment="commonHead">
         <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/common/header.css}">

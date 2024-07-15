@@ -9,6 +9,8 @@
     <th:block th:replace="~{fragments/common/common.html :: commonHead}"></th:block>
     <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/home/index.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/common/footer.css}">
+    <th:block th:replace="~{fragments/common/common.html :: adminCommonHead}"></th:block>
+
     <script defer th:src="@{/assets/scripts/home.js}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -50,6 +52,8 @@
 <div id="loginAlertMessage" th:if="${loginAlertMessage}" th:text="${loginAlertMessage}" style="display: none;"></div>
 <div id="screeningInfoAlertMessage" th:if="${screeningInfoAlertMessage}" th:text="${screeningInfoAlertMessage}" style="display: none;"></div>
 <th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
+<th:block th:replace="~{fragments/common/common.html :: adminCommonBody}" ></th:block>
+
 <main class="main-page" id="main">
     <!-- section main-movie : 영화 -->
     <div id="main_section01" class="section main-movie">
