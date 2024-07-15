@@ -216,6 +216,7 @@ document.addEventListener('DOMContentLoaded', function () {
             MessageObj.createSimpleOk('오류', '알 수 없는 이유로 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.').show();
             return;
           }
+          loading.hide();
 
           // 상영 정보를 세션 스토리지에 저장
           sessionStorage.setItem('screeningInfo', JSON.stringify(screeningInfo));
@@ -225,6 +226,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         xhr.open('POST', '/booking/orderTwo');
         xhr.send(formData);
+        loading.show();
       });
 
       li.appendChild(button);

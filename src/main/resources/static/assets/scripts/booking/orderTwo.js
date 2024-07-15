@@ -38,7 +38,7 @@ otherTime.querySelector('.now').onclick = () => {
 };*/
 
 // 페이지 이전 버튼 클릭 이벤트
-pagePreviousButton.addEventListener('click', function() {
+pagePreviousButton.addEventListener('click', function () {
   window.history.back();
 });
 
@@ -748,7 +748,7 @@ if (screeningInfo) {
   }
 
   // 페이지 다음 버튼 클릭 이벤트
-  pageNextButton.addEventListener('click', function() {
+  pageNextButton.addEventListener('click', function () {
     if (this.classList.contains('disabled')) {
       return;
     }
@@ -778,7 +778,15 @@ if (screeningInfo) {
     postOrderThree(movieOrderDto);
   });
 
-  // 좌석 가격 가져오기
+  // 페이지를 벗어날 시 상영정보세션 삭제
+  window.addEventListener('beforeunload', function () {
+    fetch('/booking/clearScreeningInfo', {
+      method: 'POST',
+      credentials: 'same-origin'
+    });
+  });
+
+// 좌석 가격을 가져오는 함수
   function fetchSeatPrices() {
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
@@ -811,9 +819,10 @@ if (screeningInfo) {
     xhr.open('GET', `/booking/seat-prices`);
     xhr.send();
   }
+
   fetchSeatPrices();
 
-  // 좌석 정보 가져오기
+// 좌석을 가져오는 함수
   function fetchSeats() {
     const screeningInfo = JSON.parse(sessionStorage.getItem('screeningInfo'));
     if (!screeningInfo || !screeningInfo.index) return;

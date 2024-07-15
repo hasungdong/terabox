@@ -12,11 +12,13 @@
     <script defer th:src="@{/assets/scripts/home.js}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const alertMessageDiv = document.getElementById('alertMessage');
-            if (alertMessageDiv && alertMessageDiv.textContent.trim() !== "") {
+            const loginAlertMessageDiv = document.getElementById('loginAlertMessage');
+            const screeningInfoAlertMessageDiv = document.getElementById('screeningInfoAlertMessage');
+
+            if (loginAlertMessageDiv && loginAlertMessageDiv.textContent.trim() !== "") {
                 new MessageObj({
                     title: '알림',
-                    content: alertMessageDiv.textContent,
+                    content: loginAlertMessageDiv.textContent,
                     buttons: [
                         {
                             text: '로그인', onclick: instance => {
@@ -27,11 +29,26 @@
                     ]
                 }).show();
             }
+
+            if (screeningInfoAlertMessageDiv && screeningInfoAlertMessageDiv.textContent.trim() !== "") {
+                new MessageObj({
+                    title: '알림',
+                    content: screeningInfoAlertMessageDiv.textContent,
+                    buttons: [
+                        {
+                            text: '확인', onclick: instance => {
+                                instance.hide();
+                            }
+                        }
+                    ]
+                }).show();
+            }
         });
     </script>
 </head>
 <body>
-<div id="alertMessage" th:if="${alertMessage}" th:text="${alertMessage}" style="display: none;"></div>
+<div id="loginAlertMessage" th:if="${loginAlertMessage}" th:text="${loginAlertMessage}" style="display: none;"></div>
+<div id="screeningInfoAlertMessage" th:if="${screeningInfoAlertMessage}" th:text="${screeningInfoAlertMessage}" style="display: none;"></div>
 <th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
 <main class="main-page" id="main">
     <!-- section main-movie : 영화 -->
