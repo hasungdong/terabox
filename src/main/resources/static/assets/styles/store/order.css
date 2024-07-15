@@ -481,12 +481,10 @@ body > .container > .content > .inner > .event-list > .inner > .table-wrap > .bo
   font-size: 0;
   line-height: 0;
 }
-body > .container > .content > .inner > .event-list > .inner > .table-wrap > .board-list > tbody > tr > td > .goods-info > .img > a {
-  color: #444;
-  text-decoration: none;
-}
-body > .container > .content > .inner > .event-list > .inner > .table-wrap > .board-list > tbody > tr > td > .goods-info > .img > a > img {
+body > .container > .content > .inner > .event-list > .inner > .table-wrap > .board-list > tbody > tr > td > .goods-info > .img > img {
   width: 100px;
+  object-fit: cover;
+  height: 100px;
 }
 body > .container > .content > .inner > .event-list > .inner > .table-wrap > .board-list > thead > tr > th {
   height: 45px;

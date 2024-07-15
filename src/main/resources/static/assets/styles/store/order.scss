@@ -181,7 +181,7 @@ body {
   width: 1100px;
   margin: 0 auto;
 
-    h3{ // h3 가 .inner 의 자손이 되도록 넣어줌(자손은 꺽쇄 없이 )
+  h3{ // h3 가 .inner 의 자손이 되도록 넣어줌(자손은 꺽쇄 없이 )
     margin: 0;
     padding: 30px 0 15px 0;
     font-size: 1.6em;
@@ -307,7 +307,7 @@ body > .container > {
           background-color: #333;
 
           > .select-kakao-info {
-              display: none;
+            display: none;
             > .dash-list{
               list-style: none;
             }
@@ -488,6 +488,7 @@ body > .container > {
                       vertical-align: middle
                     }
                     > .img{
+
                       display: block;
                       width: 100px;
                       height: 100px;
@@ -495,15 +496,11 @@ body > .container > {
                       font-size: 0;
                       line-height: 0;
 
-                      > a{
-                        color: #444;
-                        text-decoration: none;
+                      >img{
+                        width: 100px;
+                        object-fit: cover;
+                        height: 100px;
 
-                        >img{
-                          width: 100px;
-                          //height: 100%;
-
-                        }
                       }
                     }
                   }
@@ -572,7 +569,7 @@ body > .container > {
                 background: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-checkbox.png) no-repeat 0 0
               }
 
-               input[type=checkbox]:hover+label:before {
+              input[type=checkbox]:hover+label:before {
                 background-position: -56px 0
               }//마우스 갖다댔을떄
 
@@ -623,9 +620,9 @@ body > .container > {
         }
 
         > .board-move.more{
-           display: none;
+          display: none;
 
-           &.-visible {
+          &.-visible {
             display: block;
           }
         }

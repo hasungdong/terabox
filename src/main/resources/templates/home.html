@@ -47,7 +47,8 @@
     </script>
 </head>
 <body>
-<div id="alertMessage" th:if="${alertMessage}" th:text="${alertMessage}" style="display: none;"></div>
+<div id="loginAlertMessage" th:if="${loginAlertMessage}" th:text="${loginAlertMessage}" style="display: none;"></div>
+<div id="screeningInfoAlertMessage" th:if="${screeningInfoAlertMessage}" th:text="${screeningInfoAlertMessage}" style="display: none;"></div>
 <th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
 <main class="main-page" id="main">
     <!-- section main-movie : 영화 -->

@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/common/footer.css}">
 </head>
 <body>
-<th:block th:replace="~{store/payment.html :: payment}"></th:block>
+<th:block th:replace="~{/store/payment.html::payment}"></th:block>
 <th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
 
 <div class="container">
@@ -62,15 +62,14 @@
                                 <td class="a-c">
                                     <div class="goods-info">
                                         <p class="img">
-                                            <a  title="Dolby Cinema 전용관람권">
-                                                <img th:src="@{/product/image(index=${order.getIndex()})}" alt="Image" ></a>
+                                            <img th:src="@{/product/image(index=${order.getIndex()})}" alt="Image" >
                                         </p>
                                     </div>
                                 </td>
                                 <th scope="row">
                                     <div class="goods-info">
                                         <p class="name">
-                                            <a  title="Dolby Cinema 전용관람권" th:text="${order.getName()}"></a>
+                                            <span title="Dolby Cinema 전용관람권" th:text="${order.getName()}"></span>
                                         </p>
                                         <p class="bundle subTitle" th:text="${order.getSubTitle()}"></p>
                                     </div>
