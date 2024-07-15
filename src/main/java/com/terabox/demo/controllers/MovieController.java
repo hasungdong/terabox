@@ -32,12 +32,6 @@ public class MovieController extends AbstractGeneralController {
         return "movie/allMovie";
     }
 
-    @GetMapping(value = "allMovie/admin", produces = MediaType.TEXT_HTML_VALUE)
-    public String getAllMovieAdmin(){
-//        나중에 관리자 로그인인지 확인하는 로직 추가
-        return "movie/allMovieAdmin";
-    }
-
     @GetMapping(value = "/search", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public String getSearch(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
