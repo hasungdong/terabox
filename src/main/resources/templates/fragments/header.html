@@ -24,7 +24,7 @@
             <a th:if="${session.user != null}" class="header-user" th:text="${session.user.getNickname()+'님'}"></a>
             <a th:if="${session.user == null}" class="header-register" th:href="@{/register/register}" rel="showRegister">회원가입</a>
             <a th:if="${session.user != null}" class="header-logout" th:href="@{/user/logout}">로그아웃</a>
-            <a class="header-fast-buy" th:href="@{/booking/}" rel="reserveLink">빠른예매</a>
+            <a class="header-fast-buy" th:href="@{/booking}" rel="reserveLink">빠른예매</a>
         </div>
     </div>
     <div class="link-area">
@@ -46,12 +46,12 @@
             </div>
         </div> <!-- 나중에 호버시 밑에 링크로 뜨게하기 -->
 
-        <a id="header-buy-ticket" class="header-buy-ticket" href="/booking/" rel="reserveLink">예매</a>
+        <a id="header-buy-ticket" class="header-buy-ticket" href="/booking" rel="reserveLink">예매</a>
         <div id="reserveLink-mini-container" class="reserveLink-mini">
             <div class="reserve-link-box-1100px">
                 <ul>
                     <li>
-                        <a href="/booking/" title="빠른예매">빠른예매</a>
+                        <a href="/booking" title="빠른예매">빠른예매</a>
                     </li>
                 </ul>
             </div>
@@ -132,7 +132,7 @@
                 <p class="tit-depth2">예매</p>
 
                 <ul class="list-depth">
-                    <li><a href="/booking/" title="빠른예매">빠른예매</a></li>
+                    <li><a href="/booking" title="빠른예매">빠른예매</a></li>
                 </ul>
             </div>
 
@@ -163,7 +163,7 @@
             <div class="list6 position-6">
                 <p class="tit-depth6">나의 메가박스</p>
                 <ul class="list-depth mymage">
-                    <li><a title="나의 메가박스 홈">나의 메가박스 홈</a></li>
+                    <li><a href="/order/movieOrder" title="나의 메가박스 홈">나의 메가박스 홈</a></li>
                     <li><a title="예매/구매내역">예매/구매내역</a></li>
                     <li><a title="영화관람권">영화관람권</a></li>
                     <li><a title="스토어교환권">스토어교환권</a></li>

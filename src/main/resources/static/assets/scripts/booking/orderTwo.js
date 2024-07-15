@@ -38,7 +38,7 @@ otherTime.querySelector('.now').onclick = () => {
 };*/
 
 // 페이지 이전 버튼 클릭 이벤트
-pagePreviousButton.addEventListener('click', function() {
+pagePreviousButton.addEventListener('click', function () {
   window.history.back();
 });
 
@@ -63,9 +63,9 @@ function updateOrderPrice() {
   const orderPriceComma = orderTwoContainer.querySelector('.pay-area > .pay > .money > em');
   let orderPrice;
   orderPrice = parseInt(adultCount.innerText) * seatPrices.adult +
-    parseInt(teenagerCount.innerText) * seatPrices.teenager +
-    parseInt(oldCount.innerText) * seatPrices.old +
-    parseInt(disabledCount.innerText) * seatPrices.disabled;
+      parseInt(teenagerCount.innerText) * seatPrices.teenager +
+      parseInt(oldCount.innerText) * seatPrices.old +
+      parseInt(disabledCount.innerText) * seatPrices.disabled;
   orderPriceComma.innerText = orderPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
@@ -190,32 +190,32 @@ selectPeopleCells.forEach(selectPeopleCell => {
       adultCount.innerText = parseInt(adultCell.querySelector('.now').innerText);
 
       if (seatsIncludingValue.length >=
-        parseInt(adultCell.querySelector('.now').innerText) +
-        parseInt(teenagerCell.querySelector('.now').innerText)) {
+          parseInt(adultCell.querySelector('.now').innerText) +
+          parseInt(teenagerCell.querySelector('.now').innerText)) {
         teenagerCount.innerText = parseInt(teenagerCell.querySelector('.now').innerText);
 
         if (seatsIncludingValue.length >=
-          parseInt(adultCell.querySelector('.now').innerText) +
-          parseInt(teenagerCell.querySelector('.now').innerText) +
-          parseInt(oldCell.querySelector('.now').innerText)) {
+            parseInt(adultCell.querySelector('.now').innerText) +
+            parseInt(teenagerCell.querySelector('.now').innerText) +
+            parseInt(oldCell.querySelector('.now').innerText)) {
           oldCount.innerText = parseInt(oldCell.querySelector('.now').innerText);
 
           if (seatsIncludingValue.length >=
-            parseInt(adultCell.querySelector('.now').innerText) +
-            parseInt(teenagerCell.querySelector('.now').innerText) +
-            parseInt(oldCell.querySelector('.now').innerText) +
-            parseInt(disabledCell.querySelector('.now').innerText)) {
+              parseInt(adultCell.querySelector('.now').innerText) +
+              parseInt(teenagerCell.querySelector('.now').innerText) +
+              parseInt(oldCell.querySelector('.now').innerText) +
+              parseInt(disabledCell.querySelector('.now').innerText)) {
             disabledCount.innerText = parseInt(disabledCell.querySelector('.now').innerText);
           } else {
             disabledCount.innerText = seatsIncludingValue.length
-              - parseInt(adultCell.querySelector('.now').innerText)
-              - parseInt(teenagerCell.querySelector('.now').innerText)
-              - parseInt(oldCell.querySelector('.now').innerText);
+                - parseInt(adultCell.querySelector('.now').innerText)
+                - parseInt(teenagerCell.querySelector('.now').innerText)
+                - parseInt(oldCell.querySelector('.now').innerText);
           }
         } else {
           oldCount.innerText = seatsIncludingValue.length
-            - parseInt(adultCell.querySelector('.now').innerText)
-            - parseInt(teenagerCell.querySelector('.now').innerText);
+              - parseInt(adultCell.querySelector('.now').innerText)
+              - parseInt(teenagerCell.querySelector('.now').innerText);
         }
       } else {
         teenagerCount.innerText = seatsIncludingValue.length - parseInt(adultCell.querySelector('.now').innerText);
@@ -313,32 +313,32 @@ selectPeopleCells.forEach(selectPeopleCell => {
           adultCount.innerText = parseInt(adultCell.querySelector('.now').innerText);
 
           if (seatsIncludingValue.length >=
-            parseInt(adultCell.querySelector('.now').innerText) +
-            parseInt(teenagerCell.querySelector('.now').innerText)) {
+              parseInt(adultCell.querySelector('.now').innerText) +
+              parseInt(teenagerCell.querySelector('.now').innerText)) {
             teenagerCount.innerText = parseInt(teenagerCell.querySelector('.now').innerText);
 
             if (seatsIncludingValue.length >=
-              parseInt(adultCell.querySelector('.now').innerText) +
-              parseInt(teenagerCell.querySelector('.now').innerText) +
-              parseInt(oldCell.querySelector('.now').innerText)) {
+                parseInt(adultCell.querySelector('.now').innerText) +
+                parseInt(teenagerCell.querySelector('.now').innerText) +
+                parseInt(oldCell.querySelector('.now').innerText)) {
               oldCount.innerText = parseInt(oldCell.querySelector('.now').innerText);
 
               if (seatsIncludingValue.length >=
-                parseInt(adultCell.querySelector('.now').innerText) +
-                parseInt(teenagerCell.querySelector('.now').innerText) +
-                parseInt(oldCell.querySelector('.now').innerText) +
-                parseInt(disabledCell.querySelector('.now').innerText)) {
+                  parseInt(adultCell.querySelector('.now').innerText) +
+                  parseInt(teenagerCell.querySelector('.now').innerText) +
+                  parseInt(oldCell.querySelector('.now').innerText) +
+                  parseInt(disabledCell.querySelector('.now').innerText)) {
                 disabledCount.innerText = parseInt(disabledCell.querySelector('.now').innerText);
               } else {
                 disabledCount.innerText = seatsIncludingValue.length
-                  - parseInt(adultCell.querySelector('.now').innerText)
-                  - parseInt(teenagerCell.querySelector('.now').innerText)
-                  - parseInt(oldCell.querySelector('.now').innerText);
+                    - parseInt(adultCell.querySelector('.now').innerText)
+                    - parseInt(teenagerCell.querySelector('.now').innerText)
+                    - parseInt(oldCell.querySelector('.now').innerText);
               }
             } else {
               oldCount.innerText = seatsIncludingValue.length
-                - parseInt(adultCell.querySelector('.now').innerText)
-                - parseInt(teenagerCell.querySelector('.now').innerText);
+                  - parseInt(adultCell.querySelector('.now').innerText)
+                  - parseInt(teenagerCell.querySelector('.now').innerText);
             }
           } else {
             teenagerCount.innerText = seatsIncludingValue.length - parseInt(adultCell.querySelector('.now').innerText);
@@ -401,7 +401,7 @@ orderTwoContainer.querySelector('#seatLayout').addEventListener('click', functio
   if (!selectSeatButton) return;
 
   if (selectSeatButton.classList.contains('reserved') ||
-    selectSeatButton.classList.contains('selectImpossible')) {
+      selectSeatButton.classList.contains('selectImpossible')) {
     return;
   }
   let SumCellsCount = 0;
@@ -458,7 +458,7 @@ orderTwoContainer.querySelector('#seatLayout').addEventListener('click', functio
   }
 
   if (selectSeatButton.classList.contains('disabled') &&
-    !selectSeatButton.classList.contains('choice')) {
+      !selectSeatButton.classList.contains('choice')) {
     alertCover.show();
     new MessageObj({
       title: '알림',
@@ -476,7 +476,7 @@ orderTwoContainer.querySelector('#seatLayout').addEventListener('click', functio
   }
 
   if (selectSeatButton.classList.contains('normal') ||
-    selectSeatButton.classList.contains('disabled')) {
+      selectSeatButton.classList.contains('disabled')) {
 
     selectSeatButton.classList.toggle('choice');
 
@@ -578,8 +578,8 @@ orderTwoContainer.querySelector('#seatLayout').addEventListener('click', functio
           if (seatTypeCount.classList.contains('disabled')) {
             seatTypeCount.querySelector('em').innerText = `${parseInt(seatTypeCount.querySelector('em').innerText) - 1}`;
             if (seatsIncludingValue.length === parseInt(adultCell.querySelector('.now').innerText) +
-              parseInt(teenagerCell.querySelector('.now').innerText) +
-              parseInt(oldCell.querySelector('.now').innerText)) {
+                parseInt(teenagerCell.querySelector('.now').innerText) +
+                parseInt(oldCell.querySelector('.now').innerText)) {
               seatTypeCount.style.display = 'none';
             }
           }
@@ -624,7 +624,7 @@ orderTwoContainer.querySelector('#seatLayout').addEventListener('mouseover', fun
   if (!selectSeatButton) return;
 
   if (selectSeatButton.classList.contains('reserved') ||
-    selectSeatButton.classList.contains('selectImpossible')) {
+      selectSeatButton.classList.contains('selectImpossible')) {
     return;
   }
 
@@ -748,7 +748,7 @@ if (screeningInfo) {
   }
 
   // 페이지 다음 버튼 클릭 이벤트
-  pageNextButton.addEventListener('click', function() {
+  pageNextButton.addEventListener('click', function () {
     if (this.classList.contains('disabled')) {
       return;
     }
@@ -778,7 +778,15 @@ if (screeningInfo) {
     postOrderThree(movieOrderDto);
   });
 
-  // 좌석 가격 가져오기
+  // 페이지를 벗어날 시 상영정보세션 삭제
+  window.addEventListener('beforeunload', function () {
+    fetch('/booking/clearScreeningInfo', {
+      method: 'POST',
+      credentials: 'same-origin'
+    });
+  });
+
+// 좌석 가격을 가져오는 함수
   function fetchSeatPrices() {
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
@@ -811,9 +819,10 @@ if (screeningInfo) {
     xhr.open('GET', `/booking/seat-prices`);
     xhr.send();
   }
+
   fetchSeatPrices();
 
-  // 좌석 정보 가져오기
+// 좌석을 가져오는 함수
   function fetchSeats() {
     const screeningInfo = JSON.parse(sessionStorage.getItem('screeningInfo'));
     if (!screeningInfo || !screeningInfo.index) return;

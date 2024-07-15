@@ -15,6 +15,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -35,24 +36,34 @@ public class BookingController {
     private final SeatPriceService seatPriceService;
     private final BookingService bookingService;
 
-    @GetMapping(value = "/", produces = MediaType.TEXT_HTML_VALUE)
-    public String getBooking(HttpSession session, HttpServletRequest request, RedirectAttributes redirectAttributes) {
+    @GetMapping(value = "", produces = MediaType.TEXT_HTML_VALUE)
+    public String getBooking(HttpSession session, RedirectAttributes redirectAttributes) {
         if (session.getAttribute("user") == null) {
-            redirectAttributes.addFlashAttribute("alertMessage", "예매를 진행하기 위해서는 로그인이 필요합니다.");
+            redirectAttributes.addFlashAttribute("loginAlertMessage", "예매를 진행하기 위해서는 로그인이 필요합니다.");
             return "redirect:/";
         }
         return "booking/booking";
     }
 
+
     @GetMapping(value = "orderTwo", produces = MediaType.TEXT_HTML_VALUE)
-    public String getOrderTwo(){
+    public String getOrderTwo(HttpSession session, RedirectAttributes redirectAttributes) {
+        Object user = session.getAttribute("user");
+        Object screeningInfo = session.getAttribute("screeningInfo");
+
+        if (user == null) {
+            redirectAttributes.addFlashAttribute("loginAlertMessage", "예매를 진행하기 위해서는 로그인이 필요합니다.");
+            return "redirect:/";
+        }
+        if (screeningInfo == null) {
+            redirectAttributes.addFlashAttribute("screeningInfoAlertMessage", "올바른 상영 정보가 필요합니다.<br>페이지를 벗어날 시 상영시간을 재선택하셔야 됩니다.");
+            return "redirect:/";
+        }
         return "booking/orderTwo";
     }
-
     @GetMapping(value = "orderThree", produces = MediaType.TEXT_HTML_VALUE)
-    public String getOrderThree(@ModelAttribute("movieOrder") MovieOrderDto movieOrderDto, Model model) {
-        model.addAttribute("movieOrder", movieOrderDto);
-        return "booking/orderThree";
+    public String getOrderThree(){
+        return "redirect:/";
     }
 
     @GetMapping(value = "/seats", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -103,11 +114,12 @@ public class BookingController {
     }
 
     @PostMapping(value = "/orderTwo", produces = MediaType.TEXT_HTML_VALUE)
-    public String postOrderTwo(@ModelAttribute ScreeningInfoDto screeningInfoDto, RedirectAttributes redirectAttributes) {
+    public String postOrderTwo(@ModelAttribute ScreeningInfoDto screeningInfoDto, HttpSession session, RedirectAttributes redirectAttributes) {
+        session.setAttribute("screeningInfo", screeningInfoDto);
         redirectAttributes.addFlashAttribute("screeningInfo", screeningInfoDto);
+
         return "redirect:/booking/orderTwo";
     }
-
 
 
     @PostMapping(value = "/orderThree", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE, produces = MediaType.TEXT_HTML_VALUE)
@@ -116,11 +128,7 @@ public class BookingController {
         try {
             MovieOrderDto movieOrderDto = objectMapper.readValue(movieOrderDtoJson, MovieOrderDto.class);
 
-            // 디버깅 로그 추가
-            System.out.println("Received MovieOrderDto: " + movieOrderDto);
-
             model.addAttribute("movieOrderDto", movieOrderDto);
-            System.out.println(movieOrderDto);
             model.addAttribute("seatIndexes", Arrays.toString(movieOrderDto.getSeatIndexes()));
 
             SeatPriceEntity[] seatPrices = this.seatPriceService.getSeatPrices();
@@ -142,11 +150,8 @@ public class BookingController {
                 }
             }
 
-
             ScreeningInfoVo screeningInfoVo = this.screeningInfoService.getScreeningInfoVos(movieOrderDto.getScreeningInfoIndex());
             model.addAttribute("screeningInfoVo", screeningInfoVo);
-            System.out.println(screeningInfoVo.getAgeLimit());
-            System.out.println(screeningInfoVo);
             CardEntity[] cards = this.cardService.getCards();
             model.addAttribute("cards", cards);
 
@@ -158,5 +163,10 @@ public class BookingController {
         }
     }
 
-
+    @PostMapping(value = "/clearScreeningInfo")
+    @ResponseBody
+    public ResponseEntity<Void> clearScreeningInfo(HttpSession session) {
+        session.removeAttribute("screeningInfo");
+        return ResponseEntity.ok().build();
+    }
 }

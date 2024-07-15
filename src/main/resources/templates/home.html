@@ -12,16 +12,32 @@
     <script defer th:src="@{/assets/scripts/home.js}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const alertMessageDiv = document.getElementById('alertMessage');
-            if (alertMessageDiv && alertMessageDiv.textContent.trim() !== "") {
+            const loginAlertMessageDiv = document.getElementById('loginAlertMessage');
+            const screeningInfoAlertMessageDiv = document.getElementById('screeningInfoAlertMessage');
+
+            if (loginAlertMessageDiv && loginAlertMessageDiv.textContent.trim() !== "") {
                 new MessageObj({
                     title: '알림',
-                    content: alertMessageDiv.textContent,
+                    content: loginAlertMessageDiv.textContent,
                     buttons: [
                         {
                             text: '로그인', onclick: instance => {
                                 instance.hide();
                                 loginForm.show();
+                            }
+                        }
+                    ]
+                }).show();
+            }
+
+            if (screeningInfoAlertMessageDiv && screeningInfoAlertMessageDiv.textContent.trim() !== "") {
+                new MessageObj({
+                    title: '알림',
+                    content: screeningInfoAlertMessageDiv.textContent,
+                    buttons: [
+                        {
+                            text: '확인', onclick: instance => {
+                                instance.hide();
                             }
                         }
                     ]

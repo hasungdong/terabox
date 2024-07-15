@@ -3,6 +3,7 @@ package com.terabox.demo.controllers;
 import com.terabox.demo.dtos.ProductDto;
 import com.terabox.demo.dtos.StoreOrderDto;
 import com.terabox.demo.entities.ProductEntity;
+import com.terabox.demo.entities.UserEntity;
 import com.terabox.demo.services.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
@@ -32,14 +33,22 @@ public class StoreController {
     }
 
     @GetMapping(value = "storeDetail", produces = MediaType.TEXT_HTML_VALUE)
-    public String getStoreDetail(@RequestParam(value = "index",required = false)int index,Model model){
+    public String getStoreDetail(@SessionAttribute(value = "user",required = false)UserEntity user,
+                                 @RequestParam(value = "index",required = false)int index,Model model){
+        if (user == null){
+            return "redirect:/";
+        }
         ProductEntity storeDetail = this.productService.getStoreIndex(index);
         model.addAttribute("storeDetail",storeDetail);
         return "store/storeDetail";
     }
 
     @GetMapping(value = "order", produces = MediaType.TEXT_HTML_VALUE)
-    public String getOrder(@RequestParam(value = "index",required = false)int index, ProductDto productDto, Model model ) {
+    public String getOrder(@SessionAttribute(value = "user",required = false) UserEntity user,
+                           @RequestParam(value = "index", required = false)int index, ProductDto productDto, Model model ) {
+        if (user == null){
+            return "redirect:/";
+        }
         ProductEntity order = this.productService.getStoreIndex(index);
         model.addAttribute("inputText",productDto.getInputText());
         model.addAttribute("price",productDto.getPrice());

@@ -92,11 +92,11 @@ document.addEventListener('DOMContentLoaded', function () {
     updateSelectionState();
     const selectedDate = getSelectedDate();
     const selectedMovieIndexes = Array.from(document.querySelectorAll('.movie-choice .btn.selected'))
-      .map(btn => Number(btn.dataset.index))
-      .filter(index => !isNaN(index));
+        .map(btn => Number(btn.dataset.index))
+        .filter(index => !isNaN(index));
     const selectedTheaterIndexes = Array.from(document.querySelectorAll('.theater-choice .btn.selected'))
-      .map(btn => Number(btn.dataset.index))
-      .filter(index => !isNaN(index));
+        .map(btn => Number(btn.dataset.index))
+        .filter(index => !isNaN(index));
     if (selectedDate && selectedMovieIndexes.length > 0 && selectedTheaterIndexes.length > 0) {
       fetchScreeningInfo(selectedDate, selectedMovieIndexes, selectedTheaterIndexes);
     } else {
@@ -216,6 +216,7 @@ document.addEventListener('DOMContentLoaded', function () {
             MessageObj.createSimpleOk('오류', '알 수 없는 이유로 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.').show();
             return;
           }
+          loading.hide();
 
           // 상영 정보를 세션 스토리지에 저장
           sessionStorage.setItem('screeningInfo', JSON.stringify(screeningInfo));
@@ -225,6 +226,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         xhr.open('POST', '/booking/orderTwo');
         xhr.send(formData);
+        loading.show();
       });
 
       li.appendChild(button);
