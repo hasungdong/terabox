@@ -476,7 +476,7 @@ body form #container > .movie-list > .list > .img > a > .rate-date > .rate {
 body form #container > .movie-list > .list > .img > a > .price {
   position: relative;
   line-height: 1.1;
-  padding: 0 0 0 20px;
+  padding: 18px 0 0 20px;
 }
 body form #container > .movie-list > .list > .img > a > .price > .sale {
   font-weight: 700;
