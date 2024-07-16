@@ -59,7 +59,7 @@
     <div id="main_section01" class="section main-movie">
         <div class="bg">
             <div class="bg-pattern"></div>
-            <img th:src="@{/assets/images/home/탈주홈.jpg}"
+            <img th:src="@{/assets/images/home/escape2.jpg}"
                  alt="탈주_2차 포스터.jpg">
         </div>
 
@@ -76,7 +76,7 @@
             </div>
             <!-- tab-sorting -->
 
-            <a href="/movie" class="more-movie" title="더 많은 영화보기">
+            <a href="/movie/allMovie" class="more-movie" title="더 많은 영화보기">
                 <span>더 많은 영화보기 </span>
                 <img src="/assets/images/home/plus-gray.png" alt="" style="width: 16px; height: 16px;">
             </a>
@@ -97,7 +97,7 @@
                             </div>
                             <p class="rank">1</p>
                             <!-- to 개발 : alt 값에 영화 제목 출력 -->
-                            <img th:src="@{/assets/images/home/탈주.jpg}"
+                            <img th:src="@{/assets/images/home/escape2.jpg}"
                                  alt="탈주" class="poster">
                             <div class="wrap">
                                 <div class="summary">
@@ -132,7 +132,7 @@
                             </button>
                             <div class="case">
                                 <!-- 개봉 예매가능 기본-->
-                                <a class="button gblue" title="영화 예매하기">예매</a>
+                                <a class="button gblue" href="/booking" title="영화 예매하기">예매</a>
                             </div>
                         </div>
                     </li>
@@ -147,7 +147,7 @@
                             </div>
                             <p class="rank">2</p>
                             <!-- to 개발 : alt 값에 영화 제목 출력 -->
-                            <img th:src="@{/assets/images/home/인사이드아웃2.jpg}"
+                            <img th:src="@{/assets/images/home/insideout2.jpg}"
                                  alt="인사이드 아웃 2" class="poster">
                             <div class="wrap">
                                 <div class="summary">
@@ -182,8 +182,8 @@
                             </button>
                             <div class="case">
                                 <!-- 개봉 예매가능 기본-->
-                                <a class="button gblue"
-                                   title="영화 예매하기">예매</a>
+                                <a class="button gblue" href="/booking" title="영화 예매하기">예매</a>
+
                             </div>
                         </div>
                     </li>
@@ -198,7 +198,7 @@
                             </div>
                             <p class="rank">3</p>
                             <!-- to 개발 : alt 값에 영화 제목 출력 -->
-                            <img th:src="@{/assets/images/home/파일럿.jpg}"
+                            <img th:src="@{/assets/images/home/pilot.jpg}"
                                  alt="파일럿" class="poster">
                             <div class="wrap">
                                 <div class="summary">
@@ -232,8 +232,8 @@
                             </button>
                             <div class="case">
                                 <!-- 개봉 예매가능 기본-->
-                                <a class="button gblue"
-                                   title="영화 예매하기">예매</a>
+                                <a class="button gblue" href="/booking" title="영화 예매하기">예매</a>
+
                             </div>
                         </div>
                     </li>
@@ -248,7 +248,7 @@
                             </div>
                             <p class="rank">4</p>
                             <!-- to 개발 : alt 값에 영화 제목 출력 -->
-                            <img th:src="@{/assets/images/home/탈출.jpg}"
+                            <img th:src="@{/assets/images/home/escape.jpg}"
                                  alt="탈출: 프로젝트 사일런스" class="poster">
                             <div class="wrap">
                                 <div class="summary">
@@ -283,8 +283,7 @@
                             </button>
                             <div class="case">
                                 <!-- 개봉 예매가능 기본-->
-                                <a class="button gblue"
-                                   title="영화 예매하기">예매</a>
+                                <a class="button gblue" href="/booking" title="영화 예매하기">예매</a>
                             </div>
                         </div>
                     </li>
@@ -304,7 +303,7 @@
                 </div>
 
                 <div class="cell">
-                    <a href="/booking/" title="상영시간표 보기">
+                    <a href="/booking" title="상영시간표 보기">
                         <img src="/assets/images/home/calendar.png" alt="">
                         <span>상영시간표</span>
                     </a>
@@ -316,18 +315,21 @@
                     </a>
                 </div>
                 <div class="cell">
-                    <a href="/booking/" title="빠른예매 보기">
+                    <a href="/booking" title="빠른예매 보기">
                         <img src="/assets/images/home/ticket.png" alt="">
                         <span>빠른예매</span>
                     </a>
                 </div>
             </div>
+            <!-- 2019-02-22 추가 : 마우스 아이콘 영역 추가 -->
             <div class="moving-mouse">
 <!--                움직이는 마우스 영역 ㅎㅎ -->
                 <img th:src="@{/assets/images/home/moving-mouse.png}" alt="">
 
             </div>
+            <!--// 2019-02-22 추가 : 마우스 아이콘 영역 추가 -->
         </div>
+        <!--// cont-area  -->
     </div>
     <!--// section main-movie : 영화 -->
 

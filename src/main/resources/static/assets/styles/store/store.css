@@ -280,6 +280,7 @@ body form #container > .AffiliateEvent > .event-box > .event > img { /*팝콘 �
   width: 300px;
   height: 300px;
   border-radius: 0.625rem;
+  object-fit: cover;
 }
 body form #container > .AffiliateEvent > .event-box > .event > .text-box {
   display: flex;
@@ -475,7 +476,7 @@ body form #container > .movie-list > .list > .img > a > .rate-date > .rate {
 body form #container > .movie-list > .list > .img > a > .price {
   position: relative;
   line-height: 1.1;
-  padding: 18px 0 0 20px;
+  padding: 0 0 0 20px;
 }
 body form #container > .movie-list > .list > .img > a > .price > .sale {
   font-weight: 700;

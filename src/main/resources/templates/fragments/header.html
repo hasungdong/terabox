@@ -29,7 +29,7 @@
     <div class="link-area">
         <a id="header-site-map" class="header-site-map"  title="사이트맵">
             <i class="fa-solid fa-bars on"></i>
-            <img class="cancel-button" th:src="@{/assets/images/home/cancel.png}" alt="">
+            <img class="cancel-button" th:src="@{/assets/images/common/cancel-header.png}" alt="">
         </a>
         <a class="header-search"  title="검색">
             <i class="fa-solid fa-magnifying-glass"></i>
@@ -102,7 +102,10 @@
         <a class="header-timetable"  title="상영시간표">
             <img class="header-timetable-img" src="/assets/images/common/header-calendar.png" alt="">
         </a>
-        <a class="header-my-megabox"  title="나의 메가박스">
+        <a href="/order/movieOrder" class="header-my-megabox"  title="나의 메가박스" th:if="${session.user != null}">
+            <img class="header-my-megabox-img" src="/assets/images/common/header-person.png" alt="">
+        </a>
+        <a class="header-my-megabox"  title="나의 메가박스" th:if="${session.user == null}">
             <img class="header-my-megabox-img" src="/assets/images/common/header-person.png" alt="">
         </a>
     </div>

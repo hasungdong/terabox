@@ -81,9 +81,13 @@ public class OrderController {
                                         Model model){
         OrderVo[] tempList = this.orderService.selectOrderList(user);
         List<OrderVo> list = new ArrayList<>();
-        for (OrderVo orderVo : tempList) {
-            if (orderVo.getProductName() != null){
-                list.add(orderVo);
+        if (list.size() == 0){
+
+        }  else {
+            for (OrderVo orderVo : tempList) {
+                if (orderVo.getMovieTitle() != null){
+                    list.add(orderVo);
+                }
             }
         }
         model.addAttribute("list", list);
@@ -96,9 +100,13 @@ public class OrderController {
 
         OrderVo[] tempList = this.orderService.selectOrderList(user);
         List<OrderVo> list = new ArrayList<>();
-        for (OrderVo orderVo : tempList) {
-            if (orderVo.getMovieTitle() != null){
-                list.add(orderVo);
+        if (list.size() == 0){
+
+        }  else {
+            for (OrderVo orderVo : tempList) {
+                if (orderVo.getMovieTitle() != null){
+                    list.add(orderVo);
+                }
             }
         }
         model.addAttribute("list", list);

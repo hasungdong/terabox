@@ -253,6 +253,7 @@ div{
       > .score {
         float: left;
         padding: 0;
+        height: 79px;
 
         > .tit {
           display: block;
@@ -284,40 +285,44 @@ div{
         }
       }
 
-      > .rate {
-        float: left;
-        padding: 0 0 0 35px;
-
-        > .tit {
-          display: block;
-          padding: 0 0 15px 0;
-          line-height: 1.1;
-          font-size: 0.9333rem;
-        }
-
-        > .cont {
-          display: inline-block;
-          min-height: 35px;
-          padding: 0 0 0 30px;
-          vertical-align: middle;
-          line-height: 1.1;
-          background: url("../../images/movie/ico-ticket-gray.png") no-repeat 0 center;
-
-          > em {
-            margin: 0 4px 0 0;
-            color: #fff;
-            font-size: 2.1333em;
-            font-family: "Roboto", Dotum, '돋움', sans-serif;
-            font-weight: 400;
-          }
-
-        }
-
-      }
+      //> .rate {
+      //  float: left;
+      //  padding: 0 0 0 35px;
+      //
+      //  > .tit {
+      //    display: block;
+      //    padding: 0 0 15px 0;
+      //    line-height: 1.1;
+      //    font-size: 0.9333rem;
+      //  }
+      //
+      //  > .cont {
+      //    display: inline-block;
+      //    min-height: 35px;
+      //    padding: 0 0 0 30px;
+      //    vertical-align: middle;
+      //    line-height: 1.1;
+      //    background: url("../../images/movie/ico-ticket-gray.png") no-repeat 0 center;
+      //
+      //    > em {
+      //      margin: 0 4px 0 0;
+      //      color: #fff;
+      //      font-size: 2.1333em;
+      //      font-family: "Roboto", Dotum, '돋움', sans-serif;
+      //      font-weight: 400;
+      //    }
+      //
+      //  }
+      //
+      //}
 
       > .audience {
         float: left;
         padding: 0 0 0 35px;
+        height: 79px;
+
+        display: flex;
+        flex-direction: column;
 
         > .tit {
           position: relative;
@@ -329,12 +334,16 @@ div{
         }
 
         > .cont {
-          display: inline-block;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
           min-height: 35px;
           padding: 0 0 0 30px;
           vertical-align: middle;
           line-height: 1.1;
-          background: url("../../images/movie/ico-ticket-gray.png") no-repeat 0 center;
+          background: url("../../images/movie/movieDetail-view.png") no-repeat 0 center;
+          flex-grow: 1;
 
           > em {
             margin: 0 4px 0 0;

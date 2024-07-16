@@ -593,8 +593,7 @@
     </div>
 </div>
 <th:block th:replace="~{fragments/footer.html :: footer}"></th:block>
-
-<div class="log-info">
+<div class="log-info" style="display: none">
     <h2>Received Movie Order Data</h2>
     <p>성인 수: <span class="adultCount" th:text="${movieOrderDto.adultCount}"></span></p>
     <p>청소년 수: <span class="teenagerCount" th:text="${movieOrderDto.teenagerCount}"></span></p>

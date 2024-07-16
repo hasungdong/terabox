@@ -80,7 +80,6 @@
                `sub_title`              AS `subTitle`
         FROM `terabox`.`products`
         WHERE `type` = 'ticket'
-        LIMIT 4
     </select>
 
     <select id="selectProductsFourByTypeDfg" resultType="com.terabox.demo.entities.ProductEntity">
@@ -95,7 +94,6 @@
                `sub_title`               AS `subTitle`
         FROM `terabox`.`products`
         WHERE `type` = 'fdg'
-        LIMIT 4
     </select>
 
     <select id="selectProductsFourByTypePoint" resultType="com.terabox.demo.entities.ProductEntity">
@@ -110,7 +108,6 @@
                `sub_title`              AS `subTitle`
         FROM `terabox`.`products`
         WHERE `type` = 'point'
-        LIMIT 4
     </select>
 
     <select id="selectProductMaxSale" resultType="com.terabox.demo.entities.ProductEntity">

@@ -78,6 +78,7 @@ button[type="submit"][disabled]{
   gap: 0.5rem;
   flex-direction: column;
   justify-content: flex-start;
+  z-index: 900;
 
   > .type-wrapper{
     display: grid;

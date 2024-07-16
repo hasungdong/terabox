@@ -84,7 +84,7 @@
   transform: translate(-50%, -50%);
   transition-duration: 250ms;
   transition-property: top, opacity;
-  z-index: 999;
+  z-index: 950;
 }
 ._obj-message.-visible {
   top: 50%;
@@ -536,6 +536,7 @@ button[type=submit][disabled] {
   gap: 0.5rem;
   flex-direction: column;
   justify-content: flex-start;
+  z-index: 900;
 }
 #recoverDialog > .type-wrapper {
   display: grid;

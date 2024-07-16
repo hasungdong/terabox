@@ -110,6 +110,7 @@ function loadAllMovies() {
     if (xhr.readyState !== XMLHttpRequest.DONE) {
       return;
     }
+    loading.hide();
     if (xhr.status < 200 || xhr.status >= 300) {
       MessageObj.createSimpleOk('오류', '알 수 없는 이유로 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.').show();
       return;
@@ -147,5 +148,6 @@ function loadAllMovies() {
 
   xhr.open('POST', '/booking/all-movies');
   xhr.send(formData);
+  loading.show();
 }
 loadAllMovies();
