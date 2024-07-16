@@ -34,7 +34,7 @@
   transform: translate(-50%, -50%);
   transition-duration: 250ms;
   transition-property: top, opacity;
-  z-index: 999;
+  z-index: 950;
 
   &.-visible {
     top: 50%;

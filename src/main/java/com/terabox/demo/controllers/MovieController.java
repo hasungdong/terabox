@@ -44,7 +44,6 @@ public class MovieController extends AbstractGeneralController {
                             SearchDto searchDto){
         searchDto.setRequestPage(page);
         MovieEntity[] movies = this.movieService.getMovies(searchDto);
-        System.out.println(searchDto);
         return this.parseResponse(searchDto, movies, "movies").toString();
 //        return responseObject.toString();
 

@@ -15,7 +15,8 @@
   <script defer type="text/javascript" th:src="@{/assets/scripts/booking/theater.js}"></script>
   <script defer src="/assets/scripts/common.notHome.js"></script>
   <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/common/footer.css}">
-  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<!--  localhost로 실행할 땐 주석처리해야 예매 가능-->
+<!--  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">-->
 </head>
 <body>
 <th:block th:replace="~{fragments/common/common.html :: common}"></th:block>

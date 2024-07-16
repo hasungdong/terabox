@@ -12,12 +12,16 @@ import com.terabox.demo.results.CommonResult;
 import com.terabox.demo.results.OrderResult;
 import com.terabox.demo.results.Result;
 import com.terabox.demo.services.OrderService;
+import com.terabox.demo.vos.OrderVo;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping(value = "order")
@@ -72,12 +76,32 @@ public class OrderController {
     }
 
 
-    @GetMapping(value = "myMegaBox",produces = MediaType.TEXT_HTML_VALUE)
-    public ModelAndView getMyMegaBox(@SessionAttribute(value = "user",required = false)UserEntity user){
-        ModelAndView model = new ModelAndView();
+    @GetMapping(value = "productOrder",produces = MediaType.TEXT_HTML_VALUE)
+    public String  getProductOrder(@SessionAttribute(value = "user",required = false)UserEntity user,
+                                        Model model){
+        OrderVo[] tempList = this.orderService.selectOrderList(user);
+        List<OrderVo> list = new ArrayList<>();
+        for (OrderVo orderVo : tempList) {
+            if (orderVo.getProductName() != null){
+                list.add(orderVo);
+            }
+        }
+        model.addAttribute("list", list);
+        return "order/productOrder";
+    }
 
-        model.addObject("list",this.orderService.selectOrderList(user));
-        model.setViewName("store/myMegabox");
-        return model;
+    @GetMapping(value = "movieOrder",produces = MediaType.TEXT_HTML_VALUE)
+    public String  getMovieOrder(@SessionAttribute(value = "user",required = false)UserEntity user,
+                                 Model model){
+
+        OrderVo[] tempList = this.orderService.selectOrderList(user);
+        List<OrderVo> list = new ArrayList<>();
+        for (OrderVo orderVo : tempList) {
+            if (orderVo.getMovieTitle() != null){
+                list.add(orderVo);
+            }
+        }
+        model.addAttribute("list", list);
+        return "order/movieOrder";
     }
 }

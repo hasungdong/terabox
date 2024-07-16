@@ -55,7 +55,7 @@
     <div id="main_section01" class="section main-movie">
         <div class="bg">
             <div class="bg-pattern"></div>
-            <img src="https://img.megabox.co.kr/SharedImg/2024/06/25/Z1v3tau3ZPPTNldluUue2UTVOR3xOdr9_380.jpg"
+            <img th:src="@{/assets/images/home/escape2.jpg}"
                  alt="탈주_2차 포스터.jpg">
         </div>
 
@@ -72,7 +72,7 @@
             </div>
             <!-- tab-sorting -->
 
-            <a href="/movie" class="more-movie" title="더 많은 영화보기">
+            <a href="/movie/allMovie" class="more-movie" title="더 많은 영화보기">
                 <span>더 많은 영화보기 </span>
                 <img src="/assets/images/home/plus-gray.png" alt="" style="width: 16px; height: 16px;">
             </a>
@@ -93,7 +93,7 @@
                             </div>
                             <p class="rank">1</p>
                             <!-- to 개발 : alt 값에 영화 제목 출력 -->
-                            <img src="https://img.megabox.co.kr/SharedImg/2024/06/25/COGR3h5aH0NDkkBkPqYbTbI1nouC3nAG_420.jpg"
+                            <img th:src="@{/assets/images/home/escape2.jpg}"
                                  alt="탈주" class="poster">
                             <div class="wrap">
                                 <div class="summary">
@@ -128,7 +128,7 @@
                             </button>
                             <div class="case">
                                 <!-- 개봉 예매가능 기본-->
-                                <a class="button gblue" title="영화 예매하기">예매</a>
+                                <a class="button gblue" href="/booking" title="영화 예매하기">예매</a>
                             </div>
                         </div>
                     </li>
@@ -143,7 +143,7 @@
                             </div>
                             <p class="rank">2</p>
                             <!-- to 개발 : alt 값에 영화 제목 출력 -->
-                            <img src="https://img.megabox.co.kr/SharedImg/2024/06/17/bAW9rJyLUHvBLY6x9MNMbU19K2B565sy_420.jpg"
+                            <img th:src="@{/assets/images/home/insideout2.jpg}"
                                  alt="인사이드 아웃 2" class="poster">
                             <div class="wrap">
                                 <div class="summary">
@@ -178,8 +178,8 @@
                             </button>
                             <div class="case">
                                 <!-- 개봉 예매가능 기본-->
-                                <a class="button gblue"
-                                   title="영화 예매하기">예매</a>
+                                <a class="button gblue" href="/booking" title="영화 예매하기">예매</a>
+
                             </div>
                         </div>
                     </li>
@@ -194,7 +194,7 @@
                             </div>
                             <p class="rank">3</p>
                             <!-- to 개발 : alt 값에 영화 제목 출력 -->
-                            <img src="https://img.megabox.co.kr/SharedImg/2024/07/08/HAHzCSec2Il5sMd4kcfMonbhCiHbEu2f_420.jpg"
+                            <img th:src="@{/assets/images/home/pilot.jpg}"
                                  alt="파일럿" class="poster">
                             <div class="wrap">
                                 <div class="summary">
@@ -228,8 +228,8 @@
                             </button>
                             <div class="case">
                                 <!-- 개봉 예매가능 기본-->
-                                <a class="button gblue"
-                                   title="영화 예매하기">예매</a>
+                                <a class="button gblue" href="/booking" title="영화 예매하기">예매</a>
+
                             </div>
                         </div>
                     </li>
@@ -244,7 +244,7 @@
                             </div>
                             <p class="rank">4</p>
                             <!-- to 개발 : alt 값에 영화 제목 출력 -->
-                            <img src="https://img.megabox.co.kr/SharedImg/2024/07/08/e0oHm7aPEoT65vDMygGH8496N1gwbgEC_420.jpg"
+                            <img th:src="@{/assets/images/home/escape.jpg}"
                                  alt="탈출: 프로젝트 사일런스" class="poster">
                             <div class="wrap">
                                 <div class="summary">
@@ -279,8 +279,7 @@
                             </button>
                             <div class="case">
                                 <!-- 개봉 예매가능 기본-->
-                                <a class="button gblue"
-                                   title="영화 예매하기">예매</a>
+                                <a class="button gblue" href="/booking" title="영화 예매하기">예매</a>
                             </div>
                         </div>
                     </li>
@@ -300,13 +299,13 @@
                 </div>
 
                 <div class="cell">
-                    <a href="/booking/timetable" title="상영시간표 보기">
+                    <a href="/booking" title="상영시간표 보기">
                         <img src="/assets/images/home/calendar.png" alt="">
                         <span>상영시간표</span>
                     </a>
                 </div>
                 <div class="cell">
-                    <a href="/movie" title="박스오피스 보기">
+                    <a href="/movie/allMovie" title="박스오피스 보기">
                         <img src="/assets/images/home/panorama.png" alt="">
                         <span>박스오피스</span>
                     </a>
@@ -320,9 +319,8 @@
             </div>
             <!-- 2019-02-22 추가 : 마우스 아이콘 영역 추가 -->
             <div class="moving-mouse">
-                <!--  <i class="iconset ico-mouse"></i> -->
-                <!--                <img class="iconset" alt="" src="../../../static/pc/images/common/ico/ico-mouse.png" style="top: 10px;">-->
-                <img src="https://www.megabox.co.kr/static/pc/images/common/ico/ico-mouse.png" alt="">
+<!--                움직이는 마우스 영역 ㅎㅎ -->
+                <img th:src="@{/assets/images/home/moving-mouse.png}" alt="">
 
             </div>
             <!--// 2019-02-22 추가 : 마우스 아이콘 영역 추가 -->
@@ -353,15 +351,15 @@
                     <div class="cell" style=" float: none;">
                         <div class="position">
                             <div class="txt img-one" style="top: 100px; opacity: 0;">
-                                <a href="https://www.megabox.co.kr/event/detail?eventNo=15767" target="_self" title="">
-                                    <img src="https://img.megabox.co.kr/SharedImg/BnftMng/2024/07/09/bhgggw0bRcNMwjR6mJ4x6EZXGFOoKWJT.jpg"
-                                    alt="">
+                                <a target="_self" title="">
+                                    <img th:src="@{/assets/images/home/benefitad1-1.jpg}"
+                                         alt="">
                                 </a>
                             </div>
                             <div class="bg img-two" style="left: 450px; opacity: 0;">
-                                <a href="https://www.megabox.co.kr/event/detail?eventNo=15767" target="_self" title="">
-                                    <img src="https://img.megabox.co.kr/SharedImg/BnftMng/2024/07/09/7iV4nTp9kgrsCnaLRLMUV40oaAwF3YEU.jpg"
-                                    alt="">
+                                <a target="_self" title="">
+                                    <img th:src="@{/assets/images/home/benefitad1-2.jpg}"
+                                         alt="">
                                 </a>
                             </div>
                         </div>
@@ -369,15 +367,15 @@
                     <div class="cell" style=" float: none;">
                         <div class="position">
                             <div class="txt img-one" style="top: 100px; opacity: 0;">
-                                <a href="https://www.megabox.co.kr/event/detail?eventNo=15726" target="_self" title="">
-                                    <img src="https://img.megabox.co.kr/SharedImg/BnftMng/2024/07/01/YujSSxW1jNo6G9CTYFOJTwC3dV24yXZM.png"
-                                    alt="">
+                                <a target="_self" title="">
+                                    <img th:src="@{/assets/images/home/benefitad2-1.png}"
+                                         alt="">
                                 </a>
                             </div>
                             <div class="bg img-two" style="left: 450px; opacity: 0;">
-                                <a href="https://www.megabox.co.kr/event/detail?eventNo=15726" target="_self" title="">
-                                    <img src="https://img.megabox.co.kr/SharedImg/BnftMng/2024/07/01/nKBA9issS1hLsqylqPOkX8fRLxvKjQML.png"
-                                    alt="">
+                                <a target="_self" title="">
+                                    <img th:src="@{/assets/images/home/benefitad2-2.png}"
+                                         alt="">
                                 </a>
                             </div>
                         </div>
@@ -385,15 +383,15 @@
                     <div class="cell" style=" float: none;">
                         <div class="position">
                             <div class="txt img-one" style="top: 100px; opacity: 0;">
-                                <a href="https://www.megabox.co.kr/event/detail?eventNo=15705" target="_self" title="">
-                                    <img src="https://img.megabox.co.kr/SharedImg/BnftMng/2024/06/28/twzo6BoVQ8c0jAaz6SBOzWXoPWRZLACl.png"
-                                    alt="">
+                                <a target="_self" title="">
+                                    <img th:src="@{/assets/images/home/benefitad3-1.png}"
+                                         alt="">
                                 </a>
                             </div>
                             <div class="bg img-two" style="left: 450px; opacity: 0;">
-                                <a href="https://www.megabox.co.kr/event/detail?eventNo=15705" target="_self" title="">
-                                    <img src="https://img.megabox.co.kr/SharedImg/BnftMng/2024/06/28/DWEWOfUydY80qyfV4tgeRQFckHNOWt5W.png"
-                                    alt="">
+                                <a target="_self" title="">
+                                    <img th:src="@{/assets/images/home/benefitad3-2.png}"
+                                         alt="">
                                 </a>
                             </div>
                         </div>
@@ -401,15 +399,15 @@
                     <div class="cell" style=" float: none;">
                         <div class="position">
                             <div class="txt img-one" style="top: 100px; opacity: 0;">
-                                <a href="https://www.megabox.co.kr/event/detail?eventNo=15485" target="_self" title="">
-                                    <img src="https://img.megabox.co.kr/SharedImg/BnftMng/2024/06/24/OyZGjzfRfmLrDnjI7LR4G0oxp2xZLsS5.jpg"
-                                    alt="">
+                                <a target="_self" title="">
+                                    <img th:src="@{/assets/images/home/benefitad4-1.jpg}"
+                                         alt="">
                                 </a>
                             </div>
                             <div class="bg img-two" style="left: 450px; opacity: 0;">
-                                <a href="https://www.megabox.co.kr/event/detail?eventNo=15485" target="_self" title="">
-                                    <img src="https://img.megabox.co.kr/SharedImg/BnftMng/2024/06/24/4LDtfbPO5xuxd0TTUWGrX30rTejL35Qa.jpg"
-                                    alt="">
+                                <a target="_self" title="">
+                                    <img th:src="@{/assets/images/home/benefitad4-2.jpg}"
+                                         alt="">
                                 </a>
                             </div>
                         </div>
@@ -417,15 +415,15 @@
                     <div class="cell" style=" float: none;">
                         <div class="position">
                             <div class="txt img-one" style="top: 100px; opacity: 0;">
-                                <a href="https://www.megabox.co.kr/event/detail?eventNo=15682" target="_self" title="">
-                                    <img src="https://img.megabox.co.kr/SharedImg/BnftMng/2024/06/24/jyEnQhsIIKZYM7FMoqnQqnY69PWXhUt3.png"
-                                    alt="">
+                                <a target="_self" title="">
+                                    <img th:src="@{/assets/images/home/benefitad5-1.png}"
+                                         alt="">
                                 </a>
                             </div>
                             <div class="bg img-two" style="left: 450px; opacity: 0;">
-                                <a href="https://www.megabox.co.kr/event/detail?eventNo=15682" target="_self" title="">
-                                    <img src="https://img.megabox.co.kr/SharedImg/BnftMng/2024/06/24/GKcl0idCFEEEUzEEU2dFf3lnjsThnh4M.png"
-                                    alt="">
+                                <a target="_self" title="">
+                                    <img th:src="@{/assets/images/home/benefitad5-2.png}"
+                                         alt="">
                                 </a>
                             </div>
                         </div>
@@ -452,11 +450,11 @@
             <div class="brn-ad" style="height:204px;">
                 <div class="banner">
                     <div class="size">
-                        <img src="https://img.megabox.co.kr/SharedImg/event/2024/04/12/qfioOXyBqkT6vw3KervMYAgsb7zOzeOu.jpg"
+                        <img th:src="@{/assets/images/home/adcard1.jpg}"
                              alt="[신한카드] 신한 Deep Dream카드 이용하고 혜택 받자!">
                     </div>
                     <div class="size small">
-                        <img src="https://img.megabox.co.kr/SharedImg/event/2023/08/30/Avdrqmhajw5TnlAbpKU01amFbVuVx7gc.jpg"
+                        <img th:src="@{/assets/images/home/adcard2.jpg}"
                              alt="[톡학생증x메가박스] 톡학생증 발급하고 톡똑한 영화관람">
                     </div>
                 </div>
@@ -464,9 +462,7 @@
                 <div class="ad-img">
                     <!-- <img src="../../../static/pc/images/main/@img-main-ad.png" alt="블루멤버스 포인트로" /> -->
                     <div id="M_rwl-o8QV2xFMa0Oy93qQ">
-                        <iframe src="//ad.imp.joins.com/html/megabox_p/main/main@main_middle_event_415x530?_cid=M_rwl-o8QV2xFMa0Oy93qQ&amp;_uid=qhQ2zKbQmUOGbbuN6S2eZE1frSWaSFq4c4B_DxT6e1WEAM4qWzAZAbZrQnJEd2JXV1N6eVRVT21HYk9HMzZ3AstB2aKrNluVtQPLQdmiqzZblbU&amp;_ref=https%3A%2F%2Fwww.megabox.co.kr%2F"
-                                title="메인 혜택 우측배너영역" height="530px" width="415px" name="mliframe" scrolling="no"
-                                frameborder="0" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0"></iframe>
+                        <img th:src="@{/assets/images/home/big-ad.jpg}" alt="">
                     </div>
                 </div>
                 <!-- 광고영역 -->
@@ -515,55 +511,56 @@
 
     <!-- section main-info : 메가박스 안내 -->
     <div id="main_section04" class="section main-info">
+
+        <div class="information-title"> <!-- 메가박스 안내 제목-->
+            <h2>메가박스 안내</h2>
+        </div>
+        <div class="information-link-button">
+            <div class="information-box1">
+                <a>
+                    <img class="gray" th:src="@{/assets/images/home/box1gray.png}" alt="">
+                    <img class="color" th:src="@{/assets/images/home/box1color.png}" alt="">
+                </a>
+            </div>
+            <div class="information-box2">
+                <a>
+                    <img class="gray" th:src="@{/assets/images/home/box2gray.png}" alt="">
+                    <img class="color" th:src="@{/assets/images/home/box2color.png}" alt="">
+                </a>
+            </div>
+            <div class="information-box3">
+                <a>
+                    <img class="gray" th:src="@{/assets/images/home/box3gray.png}" alt="">
+                    <img class="color" th:src="@{/assets/images/home/box3color.png}" alt="">
+                </a>
+            </div>
+            <div class="information-box4">
+                <a>
+                    <img class="gray" th:src="@{/assets/images/home/box4gray.png}" alt="">
+                    <img class="color" th:src="@{/assets/images/home/box4color.png}" alt="">
+                </a>
+            </div>
+            <div class="information-box5">
+                <a>
+                    <img class="gray" th:src="@{/assets/images/home/box5gray.png}" alt="">
+                    <img class="color" th:src="@{/assets/images/home/box5color.png}" alt="">
+                </a>
+            </div>
+            <div class="information-box6">
+                <a>
+                    <img class="gray" th:src="@{/assets/images/home/box6gray.png}" alt="">
+                    <img class="color" th:src="@{/assets/images/home/box6color.png}" alt="">
+                </a>
+            </div>
+
+        </div>
+        <div class="special-control">
+            <img class="special-prev" th:src="@{/assets/images/home/left-button.png}" alt="">
+            <img class="special-next" th:src="@{/assets/images/home/right-button.png}" alt="">
+        </div>
+
+        <!-- info-notice -->
         <div class="wrap">
-            <div class="information-title"> <!-- 메가박스 안내 제목-->
-                <h2>메가박스 안내</h2>
-            </div>
-            <div class="information-link-button">
-                <div class="information-box1">
-                    <a>
-                        <img class="gray" th:src="@{/assets/images/home/box1gray.png}" alt="">
-                        <img class="color" th:src="@{/assets/images/home/box1color.png}" alt="">
-                    </a>
-                </div>
-                <div class="information-box2">
-                    <a>
-                        <img class="gray" th:src="@{/assets/images/home/box2gray.png}" alt="">
-                        <img class="color" th:src="@{/assets/images/home/box2color.png}" alt="">
-                    </a>
-                </div>
-                <div class="information-box3">
-                    <a>
-                        <img class="gray" th:src="@{/assets/images/home/box3gray.png}" alt="">
-                        <img class="color" th:src="@{/assets/images/home/box3color.png}" alt="">
-                    </a>
-                </div>
-                <div class="information-box4">
-                    <a>
-                        <img class="gray" th:src="@{/assets/images/home/box4gray.png}" alt="">
-                        <img class="color" th:src="@{/assets/images/home/box4color.png}" alt="">
-                    </a>
-                </div>
-                <div class="information-box5">
-                    <a>
-                        <img class="gray" th:src="@{/assets/images/home/box5gray.png}" alt="">
-                        <img class="color" th:src="@{/assets/images/home/box5color.png}" alt="">
-                    </a>
-                </div>
-                <div class="information-box6">
-                    <a>
-                        <img class="gray" th:src="@{/assets/images/home/box6gray.png}" alt="">
-                        <img class="color" th:src="@{/assets/images/home/box6color.png}" alt="">
-                    </a>
-                </div>
-
-            </div>
-            <div class="special-control">
-                <img class="special-prev" th:src="@{/assets/images/home/left-button.png}" alt="">
-                <img class="special-next" th:src="@{/assets/images/home/right-button.png}" alt="">
-            </div>
-
-            <!-- info-notice -->
             <div class="info-notice">
                 <div class="wrap">
                     <p class="tit">지점</p>
@@ -586,6 +583,7 @@
                 </div>
             </div>
             <!--// info-notice -->
+        </div>
 
             <!-- info-link -->
             <div class="info-link">
@@ -640,13 +638,10 @@
 
     <!-- main-bottom-ad : 메인 하단 광고 영역 -->
     <div class="main-bottom-ad">
-        <script data-id="K3I6ffWoQiqG93YqqRV0LA" name="megabox_p/main/main@main_bottom_1100x227?mlink=342"
-                src="//cast.imp.joins.com/persona.js" async=""></script>
-        <script src="//cast.imp.joins.com/body/K3I6ffWoQiqG93YqqRV0LA/qhQ2zKbQmUOGbbuN6S2eZE1frSWaSFq4c4B_DxT6e1WEAM4qWzAZAbZrQnJEd2JXV1N6eVRVT21HYk9HMzZ3AstB2aKrNluVtQPLQdmiqzZblbU.js"></script>
-        <div id="K3I6ffWoQiqG93YqqRV0LA">
-            <iframe src="//ad.imp.joins.com/html/megabox_p/main/main@main_bottom_1100x227?_cid=K3I6ffWoQiqG93YqqRV0LA&amp;_uid=qhQ2zKbQmUOGbbuN6S2eZE1frSWaSFq4c4B_DxT6e1WEAM4qWzAZAbZrQnJEd2JXV1N6eVRVT21HYk9HMzZ3AstB2aKrNluVtQPLQdmiqzZblbU&amp;_ref=https%3A%2F%2Fwww.megabox.co.kr%2F"
-                    title="메인 하단 배너영역" height="227px" width="100%" name="mliframe" scrolling="no" frameborder="0"
-                    topmargin="0" leftmargin="0" marginwidth="0" marginheight="0"></iframe>
+        <div id="K3I6ffWoQiqG93YqqRV0LA" style="position: relative;">
+            <div class="footer-ad" style="  background-color: #15a7cc; z-index: 2; width: 100%; height: 227px; position: absolute">
+            </div>
+            <img th:src="@{/assets/images/home/big-ad2.jpg}" alt="" style="width: 1100px; z-index: 3; height: 227px; position: absolute; left: 50%; transform: translateX(-50%);">
         </div>
     </div>
     <!--// main-bottom-ad : 메인 하단 광고 영역 -->

@@ -23,7 +23,7 @@
         <div class="movie-detail-cont">
              개봉 예매가능
             <p class="title" th:text="${movieIndex.getTitle()}"></p>
-            <p class="title-eng">Following</p>
+<!--            <p class="title-eng">Following</p>-->
             <div class="btn-util">
                 <button type="button" th:if="${session.user != null}"
                         title="보고싶어 안함" class="btn btn-like" rpst-movie-no="24026400">
@@ -33,13 +33,13 @@
                     <span class="saved" th:if="${saved!= null}"></span>
                 </button>
                 <button type="button" th:if="${session.user == null }" title=좋아요 class="btn logAlert" rpst-movie-no="24026400">
-                    <i class="fa-regular -visible fa-heart ico-sns-line" style="color: #ffffff;"></i>
-                    <img src="/assets/images/movie/blue-heart-on.png" alt="" class="blue-heart">
+                    <i class="fa-regular -visible fa-heart ico-sns-line whiteHeart" style="color: #ffffff;"></i>
+                    <img src="/assets/images/movie/blue-heart-on.png" alt="" class="blue-heart blueHeart">
                     <span title="보고싶어 한 명수" th:text="${movieLikeCount}">
 				        </span>
                 </button>
                 <div class="sns-share">
-                    <a href="#" class="btn btn-common-share" title="공유하기">
+                    <a  class="btn btn-common-share" title="공유하기">
                         <i class="fa-solid fa-share-nodes" style="color: #fcfcfc;"></i> 공유하기 <!-- 공유하기 -->
                     </a>
 <!--                    <div class="btn-sns-share-wrap">-->
@@ -86,13 +86,20 @@
             <!--// info -->
             <div class="poster">
                 <div class="wrap">
-                    <p class="movie-grade big age-15">15세 이상 관람가</p>
-                    <img th:src="@{/movie/image(index=${movieIndex.getIndex()})}" alt="">
+                    <th:block th:switch="${movieIndex.getAgeLimit()}">
+                        <p class="movie-grade big twelve" th:case="'12'">12세 이상 관람가</p>
+                        <p class="movie-grade big fifteen" th:case="'15'">15세 이상 관람가</p>
+                        <p class="movie-grade big nineteen" th:case="'19'">19세 이상 관람가</p>
+                        <p class="movie-grade big all" th:case="'all'">전체 관람가</p>
+                    </th:block>
+                    <img th:src="@{/movie/image(index=${movieIndex.getIndex()})}" alt="" style="display: block;
+                          width: 100%;
+                          height: 100%;">
                 </div>
             </div>
             <div class="reserve screen-type col-1">
                 <div class="reserve">
-                    <a href="" class="btn reserve" title="영화 예매하기">예매</a>
+                    <a th:href="@{/booking}" class="btn reserve" title="영화 예매하기">예매</a>
                 </div>
             </div>
         </div>
@@ -193,8 +200,7 @@ sympathy" data-cd="one">공감순
                                 <!-- 프로필영역 -->
                                 <div class="user-prof">
                                     <div class="prof-img">
-                                        <img src="https://img.megabox.co.kr/static/pc/images/common/ico/ico-mega-profile.png"
-                                             alt="MEGABOX">
+                                        <img src="/assets/images/movie/ico-mega-profile.png">
                                     </div>
                                     <p class="user-id">MEGABOX</p>
                                 </div>
@@ -289,7 +295,8 @@ sympathy" data-cd="one">공감순
                             <div class="story-area">
                                 <div class="user-prof">
                                     <div class="prof-img">
-                                        <img src="https://www.megabox.co.kr/static/pc/images/mypage/bg-photo.png" alt="프로필 사진" title="프로필 사진">
+                                        <img src="/assets/images/movie/id-photo.png" alt="프로필 사진" title="프로필 사진">
+
                                     </div>
                                     <p class="user-id" >sdiman**</p>
                                 </div>

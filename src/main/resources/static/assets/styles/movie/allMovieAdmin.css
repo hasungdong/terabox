@@ -313,11 +313,12 @@ body form #container > .movie-list { /*영화 리스트 묶음*/ }
 body form #container > .movie-list > .list { /*그 밑에 ol 태그*/
   margin-left: -60px;
   padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 }
 body form #container > .movie-list > .list > .img {
   overflow: hidden;
   position: relative;
-  float: left;
   width: 230px;
   height: 450px;
   padding: 0;
@@ -387,13 +388,24 @@ body form #container > .movie-list > .list > .img > .tit-area { /*묶음자리*/
 }
 body form #container > .movie-list > .list > .img > .tit-area > .movie-grad-all {
   height: 100%;
-  background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/ALL_46x46.png);
   background-size: 23px 23px;
   background-repeat: no-repeat;
   position: absolute;
   left: 0;
   width: 100%;
   top: -65%;
+}
+body form #container > .movie-list > .list > .img > .tit-area > .movie-grad-all.twelve {
+  background-image: url(../../images/booking/KMRB_12.jpeg);
+}
+body form #container > .movie-list > .list > .img > .tit-area > .movie-grad-all.fifteen {
+  background-image: url(../../images/booking/KMRB_15.jpeg);
+}
+body form #container > .movie-list > .list > .img > .tit-area > .movie-grad-all.nineteen {
+  background-image: url(../../images/booking/KMRB_19.jpeg);
+}
+body form #container > .movie-list > .list > .img > .tit-area > .movie-grad-all.all {
+  background-image: url(../../images/booking/KMRB_All.jpeg);
 }
 body form #container > .movie-list > .list > .img > .tit-area > .title {
   overflow: hidden;
@@ -437,24 +449,16 @@ body form #container > .movie-list > .list > .img > .btn-util {
   bottom: 0;
   width: 100%;
   height: 36px;
-}
-body form #container > .movie-list > .list > .img > .btn-util > .button.btn-like {
-  float: left;
-  width: 72px;
-  padding: 0 5px;
-  font-size: 0.8667em;
-  border-color: #ebebeb;
-  margin-right: 5px;
-}
-body form #container > .movie-list > .list > .img > .btn-util > .button.btn-like > .fa-regular {
-  font-size: 1rem;
+  display: flex;
 }
 body form #container > .movie-list > .list > .img > .btn-util > .button.btn-like > span {
   font-size: 1.2em;
 }
-body form #container > .movie-list > .list > .img > .btn-util > .Ticketing-container { /*예매하기 버튼*/ }
+body form #container > .movie-list > .list > .img > .btn-util > .Ticketing-container { /*예매하기 버튼*/
+  flex-grow: 1;
+}
 body form #container > .movie-list > .list > .img > .btn-util > .Ticketing-container > .button {
-  width: 74px;
+  width: 100%;
   margin-left: 5px;
 }
 body form #container > .movie-list > .list > .img > .btn-util > .Ticketing-container > .button.purple {

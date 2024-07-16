@@ -113,6 +113,21 @@
         LIMIT 4
     </select>
 
+    <select id="selectProductMaxSale" resultType="com.terabox.demo.entities.ProductEntity">
+        SELECT `index`                  AS `index`,
+               `name`                   AS `name`,
+               `price`                  AS `price`,
+               `quantity`               AS `quantity`,
+               `thumbnail`              AS `thumbnail`,
+               `thumbnail_file_name`    AS `thumbnailFileName`,
+               `thumbnail_content_type` AS `thumbnailContentType`,
+               `type`                   AS `type`,
+               `sub_title`              AS `subTitle`
+        FROM `terabox`.`products`
+        ORDER BY products.`price`
+        LIMIT 1
+    </select>
+
     <!--     where `type` = 'ticket' type 이 ticket 인걸 가져오고 싶을때 #{} 이 아니라 'ticket 이라고 적어야함 '-->
     <update id="updateProduct" parameterType="com.terabox.demo.entities.ProductEntity">
         UPDATE `terabox`.products

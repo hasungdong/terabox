@@ -112,14 +112,12 @@ movieForm.onsubmit = e => {
     //리뷰 글자수가 1보다 크도록
 
     if (!movieForm.reviewLabel.isValid()) {
-        alert('실패!');
         return;
     }
 
-    if (content.value.length < 1) {
-        alert('리뷰를 작성해주세요.');
-        return;
-    }
+    // if (content.value.length < 1) {
+    //     return;
+    // }
 
     const xhr = new XMLHttpRequest();
     const formData = new FormData();
@@ -127,15 +125,12 @@ movieForm.onsubmit = e => {
     formData.append('grade', grade.value);
     formData.append('favorite', favorite.value);
     formData.append('content', content.value);
-    console.log(grade.value);
-    console.log(favorite.value);
-    console.log(content.value);
     xhr.onreadystatechange = function () {
         if (xhr.readyState !== XMLHttpRequest.DONE) {
             return;
         }
         if (xhr.status < 200 || xhr.status >= 300) {
-            alert('요청 자체가 실패');
+            alert('요청 실패');
 
             return;
         }
@@ -143,20 +138,21 @@ movieForm.onsubmit = e => {
         const responseObject = JSON.parse(xhr.responseText);
         switch (responseObject.result) {
             case 'success' :
-                alertCover.show()
-                new MessageObj({
-                    title: '알림',
-                    content: '리뷰작성이 성공하였습니다.',
-                    buttons: [
-                        {
-                            text: '확인', onclick: instance => {
-                                instance.hide();
-                                alertCover.hide();
-                                location.reload();
-                            }
-                        }
-                    ]
-                }).show();
+                location.reload();
+                // alertCover.show()
+                // new MessageObj({
+                //     title: '알림',
+                //     content: '리뷰작성이 성공하였습니다.',
+                //     buttons: [
+                //         {
+                //             text: '확인', onclick: instance => {
+                //                 instance.hide();
+                //                 alertCover.hide();
+                //                 location.reload();
+                //             }
+                //         }
+                //     ]
+                // }).show();
                 break;
 
             case 'failure':
@@ -255,7 +251,6 @@ const whiteHeat = document.querySelector('.fa-regular');
 
 MovieLIkeButton.forEach(MovieLIkeButtons => {
     MovieLIkeButtons.onclick = () => {
-        alert('영화 좋아요');
 
         const xhr = new XMLHttpRequest();
         const formData = new FormData();
@@ -275,25 +270,23 @@ MovieLIkeButton.forEach(MovieLIkeButtons => {
 
             switch (responseObject.movieLikeToggle) {
                 case 'success' :
-                    // blueHeart.show();
-                    // whiteHeat.show();
-                    // alertCover.show()
-
-                    /*로그인 성공 했을떄 영화 좋아요에 초록색 아이콘 뜬채로 저장될수 있게 */
-
-                    new MessageObj({
-                        title: '알림',
-                        content: '영화 좋아요 성공.',
-                        buttons: [
-                            {
-                                text: '확인', onclick: instance => {
-                                    instance.hide();
-                                    alertCover.hide();
-                                    location.reload(); //타임리프이기떄문에 새로고침을 해줘야 좋아요 숫자가 뜸
-                                }
-                            }
-                        ]
-                    }).show();
+                    location.reload();
+                    //
+                    // /*로그인 성공 했을떄 영화 좋아요에 초록색 아이콘 뜬채로 저장될수 있게 */
+                    //
+                    // new MessageObj({
+                    //     title: '알림',
+                    //     content: '영화 좋아요 성공.',
+                    //     buttons: [
+                    //         {
+                    //             text: '확인', onclick: instance => {
+                    //                 instance.hide();
+                    //                 alertCover.hide();
+                    //                 location.reload(); //타임리프이기떄문에 새로고침을 해줘야 좋아요 숫자가 뜸
+                    //             }
+                    //         }
+                    //     ]
+                    // }).show();
                     break;
 
                 case 'failure':
@@ -444,13 +437,10 @@ const showComments = (page, by) => {
 
 
             /*댓글 좋아요 눌렀을때  파란색 아이콘 들어가게 하는 로직*/
-            console.log(reviewEl.querySelector('input[type="hidden"]').value);
-            console.log(typeof reviewEl.querySelector('input[type="hidden"]').value);
 
 
             if (reviewEl.querySelector('input[type="hidden"]').value === 'true'){
                 //true 가 좋아요 눌러져있을때
-                console.log(reviewEl.querySelector('.iconset'));
                 reviewEl.querySelector('.iconset').setAttribute('src', '/assets/images/commtent/ico-like-blue.png')
             } else {
                 //좋아요 안눌러져 있을때
@@ -483,6 +473,30 @@ const showComments = (page, by) => {
                 }
             })
         }
+
+        setTimeout(() => {
+            document.querySelectorAll('.btn-alert').forEach(alertButton => {
+                let Visible = false;
+                alertButton.onclick = () => {
+                    if (Visible) {
+                        alertButton.nextElementSibling.hide();
+                        /*신고하기 버튼이 안떴던 이유는 querySelector 을 해서임. nextElementSibling 해주면 밑에 형제가 다 선택되기 때문에 되는것임 */
+                    } else {
+                        alertButton.nextElementSibling.show();
+                    }
+                    Visible = !Visible;
+                }
+            });
+        }, 600);
+
+        setTimeout(() => {
+            const balloonSpaces = document.querySelectorAll('.balloon-space')
+            balloonSpaces.forEach(balloonSpace => {
+                balloonSpace.querySelector('.btn-close').onclick = () => {
+                    balloonSpace.hide();
+                }
+            })
+        }, 600)
     }
     xhr.open(`GET`, `/movie/movieReviews?index=${document.querySelector('.index').value}&by=${by}&page=${page}`);
     xhr.send();
@@ -557,7 +571,7 @@ window.onload = () => {
                             return;
                         }
                         if (xhr.status < 200 || xhr.status >= 300) {
-                            alert('댓글 좋아요 전송하기 실패');
+                            alert('댓글 좋아요 실패');
                             return;
                         }
 
@@ -566,20 +580,21 @@ window.onload = () => {
 
                         switch (responseObject.likeResult) {
                             case 'success' :
-                                alertCover.show()
-                                new MessageObj({
-                                    title: '알림',
-                                    content: '좋아요 성공.',
-                                    buttons: [
-                                        {
-                                            text: '확인', onclick: instance => {
-                                                instance.hide();
-                                                alertCover.hide();
-                                                location.reload();
-                                            }
-                                        }
-                                    ]
-                                }).show();
+                                location.reload();
+                                // alertCover.show()
+                                // new MessageObj({
+                                //     title: '알림',
+                                //     content: '좋아요 성공.',
+                                //     buttons: [
+                                //         {
+                                //             text: '확인', onclick: instance => {
+                                //                 instance.hide();
+                                //                 alertCover.hide();
+                                //                 location.reload();
+                                //             }
+                                //         }
+                                //     ]
+                                // }).show();
                                 break;
 
                             case 'failure':
@@ -648,7 +663,6 @@ window.onload = () => {
         })
     }, 600)
 
-    console.log(document.querySelector('.saved') !== null)
     if (document.querySelector('.saved') !== null){
         document.querySelector('.blueHeart').classList.add('-visible');
         document.querySelector('.whiteHeart').classList.remove('-visible');

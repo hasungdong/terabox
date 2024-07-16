@@ -390,9 +390,24 @@ div {
           right: 9px;
           bottom: 9px;
           z-index: 10;
-          background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/15_56x56.png);
           background-size: 28px 28px;
           background-repeat: no-repeat;
+
+          &.twelve{
+            background-image: url(../../images/booking/KMRB_12.jpeg);
+          }
+
+          &.fifteen{
+            background-image: url(../../images/booking/KMRB_15.jpeg);
+          }
+
+          &.nineteen{
+            background-image: url(../../images/booking/KMRB_19.jpeg);
+          }
+
+          &.all{
+            background-image: url(../../images/booking/KMRB_All.jpeg);
+          }
 
         }
       }

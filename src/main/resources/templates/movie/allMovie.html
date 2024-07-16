@@ -7,7 +7,7 @@
     <th:block th:replace="~{fragments/common/common.html :: commonHead}"></th:block>
     <link rel="stylesheet" th:href="@{/assets/styles/movie/allMovie.css}">
     <script defer src="/assets/scripts/common.notHome.js"></script>
-<!--    <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/common/footer.css}">-->
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/styles/common/footer.css}">
 </head>
 <body>
 <th:block th:replace="~{fragments/common/common.html :: common}"></th:block>
@@ -60,7 +60,13 @@
                     </div>
                     <!--제목 -->
                     <div class="tit-area">
-                        <p class="movie-grad-all"></p>
+                        <th:block th:switch="${allMovies.getAgeLimit()}">
+                            <p class="movie-grad-all twelve" th:case="'12'"></p>
+                            <p class="movie-grad-all fifteen" th:case="'15'"></p>
+                            <p class="movie-grad-all nineteen" th:case="'19'"></p>
+                            <p class="movie-grad-all all" th:case="'all'"></p>
+                        </th:block>
+
                         <p title="극장판 하이큐!! 쓰레기장의 결전" class="title" th:text="${allMovies.getTitle()}">
                             극장판 하이큐!! 쓰레기장의 결전
                         </p>
@@ -72,12 +78,8 @@
 
                     <!--맨 밑에 버튼들-->
                     <div class="btn-util">
-                        <button type="button" class="button btn-like" data-no="24024700">
-                            <i class="fa-regular fa-heart" style="color: #b1afaf;"></i>   <!--하트모양 아이콘-->
-                            <span>2.3k</span>
-                        </button>
                         <div class="Ticketing-container">
-                            <a  class="button purple ticketing" data-no="24024700" title="영화 예매하기">
+                            <a th:href="@{/booking}"  class="button purple ticketing" data-no="24024700" title="영화 예매하기">
                                 예매
                             </a>
                             <!--                            <a href="#" class="button purple img" data-no="24024700">-->
@@ -91,7 +93,7 @@
         </div>
     </div>
 </form>
-<!--<th:block th:replace="~{fragments/footer.html :: footer}"></th:block>-->
+<th:block th:replace="~{fragments/footer.html :: footer}"></th:block>
 
 </body>
 </html>

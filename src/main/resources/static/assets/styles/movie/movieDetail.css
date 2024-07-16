@@ -403,9 +403,20 @@ div {
   right: 9px;
   bottom: 9px;
   z-index: 10;
-  background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/15_56x56.png);
   background-size: 28px 28px;
   background-repeat: no-repeat;
+}
+.movie-detail-page > .movie-detail-cont > .poster > .wrap > .movie-grade.twelve {
+  background-image: url(../../images/booking/KMRB_12.jpeg);
+}
+.movie-detail-page > .movie-detail-cont > .poster > .wrap > .movie-grade.fifteen {
+  background-image: url(../../images/booking/KMRB_15.jpeg);
+}
+.movie-detail-page > .movie-detail-cont > .poster > .wrap > .movie-grade.nineteen {
+  background-image: url(../../images/booking/KMRB_19.jpeg);
+}
+.movie-detail-page > .movie-detail-cont > .poster > .wrap > .movie-grade.all {
+  background-image: url(../../images/booking/KMRB_All.jpeg);
 }
 .movie-detail-page > .movie-detail-cont > .screen-type {
   overflow: hidden;

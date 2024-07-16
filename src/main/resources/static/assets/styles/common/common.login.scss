@@ -9,7 +9,6 @@
   position: fixed;
   //로딩은 항상 보여야 하니까
   z-index: 999;
-
   opacity: 0;
   pointer-events: none;
   transition: opacity 250ms;

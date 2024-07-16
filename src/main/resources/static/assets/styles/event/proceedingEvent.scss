@@ -59,17 +59,17 @@ body{
 
     #container {
       //margin: 0 auto;
-        padding-top: 2.5rem;
+      padding-top: 2.5rem;
 
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
 
-        > * {
-          width: calc(1100px + 19.8rem);
-          padding: 0 9.9rem;
-        }
+      > * {
+        width: calc(1100px + 19.8rem);
+        padding: 0 9.9rem;
+      }
 
 
 
@@ -331,13 +331,15 @@ body{
 
       }
       >.movie-list{ /*영화 리스트 묶음*/
-         display: flex;
-         flex-direction: column;
+        display: flex;
+        flex-direction: column;
 
 
         >.list{ /*그 밑에 ol 태그*/
           padding: 0;
           margin: 0 0 0 -40px;
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
 
 
 
@@ -391,8 +393,8 @@ body{
               //}
 
               >.poster{ /*영화 사진*/
-                width: 230px;
-                height: 331px;
+                width: 243px;
+                height: 250px;
                 overflow: hidden;
                 position: relative;
                 float: left;
@@ -469,9 +471,9 @@ body{
 
             >.rate-date{
               overflow: hidden;
-              padding: 10px 0 0 0;
+              padding: 10px 0 0 29px;
 
-              >.rate{ //예매율
+              >.rate >.rate1{
                 margin: 0 7px 0 0;
                 display: block;
                 position: relative;

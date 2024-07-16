@@ -175,10 +175,12 @@ body{
           margin-left: -60px;
           padding: 0;
 
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+
           >.img{
             overflow: hidden;
             position: relative;
-            float: left;
             width: 230px;
             height: 450px;
             padding: 0;
@@ -275,13 +277,29 @@ body{
 
               >.movie-grad-all{ //몇세 이용가인지 아직 구현중
                 height: 100%;
-                background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/ALL_46x46.png);
+
                 background-size: 23px 23px;
                 background-repeat: no-repeat;
                 position: absolute;
                 left: 0;
                 width: 100%;
                 top: -65%;
+
+                &.twelve{
+                  background-image: url(../../images/booking/KMRB_12.jpeg);
+                }
+
+                &.fifteen{
+                  background-image: url(../../images/booking/KMRB_15.jpeg);
+                }
+
+                &.nineteen{
+                  background-image: url(../../images/booking/KMRB_19.jpeg);
+                }
+
+                &.all{
+                  background-image: url(../../images/booking/KMRB_All.jpeg);
+                }
               }
 
 
@@ -339,27 +357,18 @@ body{
               width: 100%;
               height: 36px;
 
-              >.button.btn-like{ //좋아요 버튼
-                float: left;
-                width: 72px;
+              display: flex;
 
-                padding: 0 5px;
-                font-size: .8667em;
-                border-color: #ebebeb;
-                margin-right: 5px;
-
-                >.fa-regular{
-                  font-size: 1rem;
-                }
-              }
 
               >.button.btn-like > span { //좋아요 버튼
                 font-size: 1.2em;
               }
               >.Ticketing-container{ /*예매하기 버튼*/
 
+                flex-grow: 1;
+
                 >.button {
-                  width: 74px;
+                  width: 100%;
                   margin-left: 5px;
 
                 }

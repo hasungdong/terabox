@@ -63,9 +63,8 @@ public class BookingController {
   }
 
   @GetMapping(value = "orderThree", produces = MediaType.TEXT_HTML_VALUE)
-  public String getOrderThree(@ModelAttribute("movieOrder") MovieOrderDto movieOrderDto, Model model) {
-    model.addAttribute("movieOrder", movieOrderDto);
-    return "booking/orderThree";
+  public String getOrderThree(){
+    return "redirect:/";
   }
 
   @GetMapping(value = "/seats", produces = MediaType.APPLICATION_JSON_VALUE)

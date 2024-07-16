@@ -54,7 +54,7 @@
             `thumbnail_file_name`    = #{thumbnailFileName},
             `thumbnail_content_type` = #{thumbnailContentType},
             `type`                   = #{type},
-            `sub_title`              = #{sub_Title}
+            `sub_title`              = #{subTitle}
         WHERE `index` = #{index}
     </update>
     <update id="updateEvent" parameterType="com.terabox.demo.entities.EventEntity">
