@@ -229,6 +229,9 @@ public class OrderService {
 //            결제 성공했으면 구매한 좌석 예매완료 상태로
             int seatIndex = movieOrderDto.getSeatIndexes()[i];
             SeatEntity dbSeat = this.seatPriceMapper.selectSeatsByIndex(seatIndex);
+            if (dbSeat.getSeatStatusType().equals("reserved") || dbSeat.getSeatStatusType().equals("selectImpossible")){
+                throw new TransactionalException();
+            }
             dbSeat.setSeatStatusType("reserved");
             System.out.println(dbSeat);
             int updateResult = this.seatPriceMapper.updateSeat(dbSeat);
