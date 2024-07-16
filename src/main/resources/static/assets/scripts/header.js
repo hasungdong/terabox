@@ -212,6 +212,7 @@ recoverDialog.passwordForm.emailLabel = new LabelObj(recoverDialog.passwordForm.
 recoverDialog.passwordForm.passwordLabel = new LabelObj(recoverDialog.passwordForm.querySelector('[rel="passwordLabel"]'));
 
 recoverDialog.querySelector('[name="cancelButton"]').onclick = () => {
+    recoverDialog.hide();
     showLogin();
 }
 
