@@ -131,6 +131,9 @@ public class AdminService {
         dbMovie.setSingle(movie.isSingle());
         dbMovie.setAgeLimit(movie.getAgeLimit());
         dbMovie.setDimensionType(movie.getDimensionType());
+        dbMovie.setExplanation(movie.getExplanation());
+        dbMovie.setSubExplanation(movie.getSubExplanation());
+
         return this.adminMapper.updateMovie(dbMovie) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 
@@ -183,6 +186,7 @@ public class AdminService {
             dbProduct.setThumbnailContentType(product.getThumbnailContentType());
         }
         dbProduct.setType(product.getType());
+        dbProduct.setSubTitle(product.getSubTitle());
         return this.adminMapper.updateProduct(dbProduct) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 
