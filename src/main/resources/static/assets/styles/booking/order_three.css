@@ -366,7 +366,7 @@ em {
   height: 24px;
   margin: -12px 0 0 0;
   cursor: pointer;
-  background: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-radio-small.png) no-repeat -24px 0;
+  background: url(../../images/booking/order-radio.png) no-repeat -24px 0;
 }
 .temp .order-three-container > .seat-section > .select-payment > .radio-group > .bg-chk [type=radio]:checked + label::before {
   background-position: 0 0;
@@ -596,7 +596,7 @@ em {
   height: 28px;
   margin: -14px 0 0 0;
   cursor: pointer;
-  background: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-checkbox.png) no-repeat 0 0;
+  background: url(../../images/booking/order-check.png) no-repeat 0 0;
 }
 .temp .order-three-container > .seat-section > .term-list > .tit {
   position: relative;
@@ -711,7 +711,7 @@ em {
   overflow: hidden;
   width: 13px;
   height: 13px;
-  background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-clock-white.png);
+  background-image: url(../../images/booking/order-clock.png);
   margin: -1px 0 0 0;
   margin-top: -2px;
   margin-right: 3px;
@@ -755,7 +755,7 @@ em {
   margin-left: -12px;
   width: 24px;
   height: 24px;
-  background: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-circle-minus.png);
+  background: url(../../images/booking/order-discout.png);
 }
 .temp .order-three-container > .right > .seat-result > .wrap > .price-process > .box > .data {
   line-height: 1.1;

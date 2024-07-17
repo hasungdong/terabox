@@ -209,7 +209,7 @@ body > .container > .page-util > .inner > .location {
   height: 42px;
 }
 body > .container > .page-util > .inner > .location > span {
-  background: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-location-home.png) no-repeat center;
+  background: url(../../images/myMegabox/home.png) no-repeat center;
   overflow: hidden;
   display: block;
   float: left;
@@ -234,7 +234,7 @@ body > .container > .page-util > .inner > .location > .icon {
   top: 0;
   width: 5px;
   height: 42px;
-  background: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-location-arr.png) no-repeat left center;
+  background: url(../../images/myMegabox/arr-right.png) no-repeat left center;
 }
 
 body {
@@ -287,7 +287,7 @@ body > .container > .inner-wrap > .lnb-area.location-fixed #lnb > ul > li > .dep
 body > .container > .inner-wrap > .lnb-area.location-fixed #lnb > ul > li > .depth3 > li > a:hover {
   color: #01738b;
   font-weight: 400;
-  background: #fff url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-arr-lnb.png) no-repeat right center;
+  background: #fff url(../../images/myMegabox/arr-right-two.png) no-repeat right center;
 }
 body > .container > .inner-wrap > .lnb-area.location-fixed #lnb > ul > li > .depth3 > li > a::before {
   content: "";
@@ -385,7 +385,7 @@ body > .container #contents > .board-list-util > .bootstrap-select > .dropdown-t
   border-right: 0;
   border-left: 0;
   border-bottom: 0;
-  background: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-select-arr.png) no-repeat 0 0;
+  background: url(../../images/myMegabox/arr-down.png) no-repeat 0 0;
 }
 body > .container #contents > .board-list-util > .bootstrap-select > .dropdown-toggle.btn-default {
   width: 6rem;
@@ -483,7 +483,7 @@ body > .container #contents > .mt30 > .tit > .btn-toggle > .iconset.ico-arr-togg
   overflow: hidden;
   width: 12px;
   height: 7px;
-  background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-arr-toggle-down.png);
+  background-image: url(../../images/myMegabox/arr-down-two.png);
 }
 body > .container #contents > .mt30 > .cont {
   display: none;
@@ -603,7 +603,7 @@ body > .container #lnb > .tit {
   margin: 0;
   padding: 0;
   border-radius: 10px 10px 0 0;
-  background: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-lnb-tit.png) 0 0;
+  background: url(../../images/myMegabox/p-bg.png) 0 0;
 }
 body > .container #lnb > .tit a {
   display: block;

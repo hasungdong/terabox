@@ -88,7 +88,7 @@
             <!-- 가이드 수정 -->
             <div class="mypage-infomation v1 mb20">
                 <ul class="dot-list">
-                    <li>구매하신 싱픔 내역입니다.</li>
+                    <li>구매하신 상품 내역입니다.</li>
                 </ul>
             </div>
             <div class="board-list-util mb10">
@@ -149,7 +149,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="lists : ${list}" th:if="${lists.getProductName() != null}">
+                    <tr th:each="lists : ${list}" th:if="${lists.getProductPaymentTargetIndex() != null}">
                         <td th:text="${#temporals.format(lists.getCreatedAt(), 'yyyy-MM-dd HH:mm')}"></td>  <!--temporals 를 써주면 날짜가 정상적으로 나온다-->
                         <td th:text="${lists.getProductName()}"></td>
                         <td th:text="|${#numbers.formatInteger(lists.getPrice(), 0, 'COMMA')}원|"></td>

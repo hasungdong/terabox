@@ -81,12 +81,14 @@ public class OrderController {
                                         Model model){
         OrderVo[] tempList = this.orderService.selectOrderList(user);
         List<OrderVo> list = new ArrayList<>();
-        if (list.size() == 0){
-
+        if (tempList.length == 0){
+            System.out.println(1);
         }  else {
             for (OrderVo orderVo : tempList) {
-                if (orderVo.getMovieTitle() != null){
+                if (orderVo.getMovieTitle() == null){
                     list.add(orderVo);
+
+                    System.out.println(list);
                 }
             }
         }
@@ -100,8 +102,8 @@ public class OrderController {
 
         OrderVo[] tempList = this.orderService.selectOrderList(user);
         List<OrderVo> list = new ArrayList<>();
-        if (list.size() == 0){
-
+        if (tempList.length == 0){
+            System.out.println(2);
         }  else {
             for (OrderVo orderVo : tempList) {
                 if (orderVo.getMovieTitle() != null){

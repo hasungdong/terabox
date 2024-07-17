@@ -18,8 +18,8 @@
       <div class="inner">
         <div class="location">
           <span>home</span>
-          <a class="icon"></a>
-          <a th:href="@{/store/store}" class="event">스토어</a>
+          <a class="icon" ></a>
+          <a  class="event" th:href="@{/store/store}">스토어</a>
         </div>
       </div>
     </div>
@@ -58,10 +58,10 @@
                 <em th:text="${productMax.getPrice()}">32,000</em>
                 <span>원</span>
               </p>
-<!--              <p class="original">-->
-<!--                <em>36,000</em>-->
-<!--                <span>원</span>-->
-<!--              </p>-->
+              <!--              <p class="original">-->
+              <!--                <em>36,000</em>-->
+              <!--                <span>원</span>-->
+              <!--              </p>-->
             </div>
           </a>
         </div>
@@ -87,26 +87,26 @@
             <div class="movie-list-info">
               <img th:src="@{/product/image(index=${product.getIndex()}) }" alt="Image"><!--/store/image 는 컨트롤러에 맵핑 주소 적어준것 . 그래서 prductController 에 getImage 에있는 주소에 맵핑되서 메서드를 쓰는것-->
               <div class="sold" th:if="${product.getQuantity() < 1}">
-              <div class="soldout">SOLD OUT</div>
+                <div class="soldout">SOLD OUT</div>
               </div>
 
             </div>
-          <div class="tit-area">
-            <p class="title" th:text="${product.getName()}">
-              [프로모션]
-            </p>
-          </div>
-          <div class="rate-date">
-            <span class="rate" th:text="${product.getSubTitle()}"></span>
-          </div>
-          <div class="price">
-            <p class="sale">
-              <em class="storePrice" th:text="${product.getPrice()}"></em>
-              <span>원</span>
-            </p>
-            <p class="ea">
-            </p>
-          </div>
+            <div class="tit-area">
+              <p class="title" th:text="${product.getName()}">
+                [프로모션]
+              </p>
+            </div>
+            <div class="rate-date">
+              <span class="rate" th:text="${product.getSubTitle()}"></span>
+            </div>
+            <div class="price">
+              <p class="sale">
+                <em class="storePrice" th:text="${product.getPrice()}"></em>
+                <span>원</span>
+              </p>
+              <p class="ea">
+              </p>
+            </div>
           </a>
         </li>
       </ul>

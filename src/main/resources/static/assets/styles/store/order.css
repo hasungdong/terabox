@@ -534,7 +534,7 @@ body > .container > .content > .inner > .event-list > .inner .board-move > dt > 
   height: 28px;
   margin: -14px 0 0 0;
   cursor: pointer;
-  background: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-checkbox.png) no-repeat 0 0;
+  background: url(../../images/booking/order-check.png) no-repeat 0 0;
 }
 body > .container > .content > .inner > .event-list > .inner .board-move > dt > .bg-chk input[type=checkbox]:hover + label:before {
   background-position: -56px 0;

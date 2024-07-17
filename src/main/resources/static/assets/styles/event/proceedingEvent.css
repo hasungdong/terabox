@@ -397,16 +397,6 @@ body form #container > .movie-list > .list > .img > .tit-area { /*묶음자리*/
   line-height: 25px;
 }
 body form #container > .movie-list > .list > .img > .tit-area > .movie-grad-all { /*   전체 사용가 넣을 자리*/ }
-body form #container > .movie-list > .list > .img > .tit-area > .movie-grad-all {
-  height: 100%;
-  background-image: url(https://img.megabox.co.kr/static/pc/images/common/txt/ALL_46x46.png);
-  background-size: 23px 23px;
-  background-repeat: no-repeat;
-  position: absolute;
-  left: 0;
-  width: 100%;
-  top: 90%;
-}
 body form #container > .movie-list > .list > .img > .tit-area > .title {
   display: block;
   width: 100%;
