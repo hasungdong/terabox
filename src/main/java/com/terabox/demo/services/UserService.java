@@ -76,7 +76,7 @@ public class UserService {
                 .setFrom("terabox.with@gmail.com")
                 .setSubject("[TeraBox] 회원가입 인증번호")
                 .setTo(emailAuth.getEmail())
-                .setText(this.springTemplateEngine.process("user/resetPasswordEmail", context), true)
+                .setText(this.springTemplateEngine.process("user/registerEmail", context), true)
                 .send();
         return CommonResult.SUCCESS;
     }

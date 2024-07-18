@@ -412,7 +412,7 @@ screeningInfoSearchBar.onsubmit = e => {
                                 const lis = searchMovie.divResult.querySelectorAll('li');
                                 lis.forEach(li => li.onclick = () => {
                                     new MessageObj({
-                                        title: '취소',
+                                        title: '알림',
                                         content: '이 영화로 교체하시겠습니까?',
                                         buttons: [
                                             {

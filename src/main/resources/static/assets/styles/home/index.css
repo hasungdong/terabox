@@ -304,7 +304,7 @@ h2.tit {
 }
 #main .main-movie .main-movie-list > ol li .movie-list-info .wrap .summary {
   overflow: hidden;
-  height: 152px;
+  height: 151px;
   position: relative;
   z-index: 3000;
 }

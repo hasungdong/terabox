@@ -24,7 +24,6 @@
         <div class="movie-detail-cont">
             개봉 예매가능
             <p class="title" th:text="${movieIndex.getTitle()}"></p>
-            <p class="title-eng">Following</p>
             <div class="btn-util">
                 <button type="button" th:if="${session.user != null}"
                         title="보고싶어 안함" class="btn btn-like" rpst-movie-no="24026400">
