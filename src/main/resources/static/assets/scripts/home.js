@@ -5,8 +5,8 @@ const pauseButton = document.querySelector('img.pause');
 // const events = document.querySelectorAll('.event-box > .event');
 const sliderCells = document.querySelectorAll('.slider-view > .cell');
 
-const lessButton = document.querySelector('img.less');
-const moreButton = document.querySelector('img.more');
+const lessButton = document.querySelector('img.less.home');
+const moreButton = document.querySelector('img.more.home');
 
 // 여기부터 홈에 있는 스와이퍼
 let i = 0;
