@@ -81,7 +81,7 @@ public class OrderController {
                                         Model model){
         OrderVo[] tempList = this.orderService.selectOrderList(user);
         List<OrderVo> list = new ArrayList<>();
-        if (tempList.length == 0){
+        if (tempList == null ||tempList.length == 0){
             System.out.println(1);
         }  else {
             for (OrderVo orderVo : tempList) {
@@ -102,7 +102,7 @@ public class OrderController {
 
         OrderVo[] tempList = this.orderService.selectOrderList(user);
         List<OrderVo> list = new ArrayList<>();
-        if (tempList.length == 0){
+        if (tempList == null || tempList.length == 0){
             System.out.println(2);
         }  else {
             for (OrderVo orderVo : tempList) {

@@ -1,7 +1,9 @@
-const preferButton = document.querySelector('.btn.btn-like');
+console.log(document.querySelector('.btn.btn-like'))
 
-preferButton.onclick = () => {
-    if (!preferButton.classList.contains('login')){
+document.querySelector('.btn.btn-like').onclick = () => {
+    const preferButton = document.querySelector('.btn.btn-like');
+
+    if (!preferButton.classList.contains('log')){
         alertCover.show();
         new MessageObj({
             title: '알림',
