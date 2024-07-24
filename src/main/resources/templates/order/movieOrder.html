@@ -153,8 +153,9 @@
                         <td th:text="|${#numbers.formatInteger(lists.getPrice(), 0, 'COMMA')}원|"></td>
                         <td th:text="|${#numbers.formatInteger(lists.getTotalSale(), 0, 'COMMA')}원|"></td>
                         <td th:text="|${#numbers.formatInteger(lists.getTotalPrice(), 0, 'COMMA')}원|"></td>
-
-
+                    </tr>
+                    <tr th:if="${session.user == null}">
+                        <td colspan="5">로그인이 필요한 기능입니다.</td>
                     </tr>
                     </tbody>
                 </table>

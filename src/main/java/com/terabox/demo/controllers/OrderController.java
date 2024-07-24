@@ -82,7 +82,7 @@ public class OrderController {
         OrderVo[] tempList = this.orderService.selectOrderList(user);
         List<OrderVo> list = new ArrayList<>();
         if (tempList == null ||tempList.length == 0){
-            System.out.println(1);
+
         }  else {
             for (OrderVo orderVo : tempList) {
                 if (orderVo.getMovieTitle() == null){
@@ -103,7 +103,7 @@ public class OrderController {
         OrderVo[] tempList = this.orderService.selectOrderList(user);
         List<OrderVo> list = new ArrayList<>();
         if (tempList == null || tempList.length == 0){
-            System.out.println(2);
+
         }  else {
             for (OrderVo orderVo : tempList) {
                 if (orderVo.getMovieTitle() != null){
