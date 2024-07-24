@@ -199,7 +199,7 @@ const showEvents = (page) => {
                                         modifyEventFormTwo.onsubmit = e => {
                                             e.preventDefault();
                                             // EventRegex에 있는거 chatgpt로 자바스크립트에서 쓸 수 잇게 바꿈
-                                            const titleRegex = RegExp(/^([\da-zA-Z가-힣().\- !]{1,100})$/);
+                                            const titleRegex = RegExp(/^([\[\]\da-zA-Z가-힣().,…?!·<>"“”'’\s\n-]{1,100})$/);
 
                                             // add에서 해줬던 유효성 검사 다시
                                             // 사진은 검사 안한다. 불러올 때 사진은 불러와서 넣어주는게 힘듦

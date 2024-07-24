@@ -253,7 +253,7 @@ const showMovies = (page) => {
                                         modifyMovieFormTwo.onsubmit = e => {
                                             e.preventDefault();
                                             // MovieRegex에 있는거 chatgpt로 자바스크립트에서 쓸 수 잇게 바꿈
-                                            const movieRegex = RegExp(/^([\da-zA-Z가-힣().\- !]{1,100})$/);
+                                            const movieRegex = RegExp(/^([\[\]\da-zA-Z가-힣().,…?!·<>"“”'’\s\n-]{1,100})$/);
                                             // add에서 해줬던 유효성 검사 다시
                                             // 사진은 검사 안한다. 불러올 때 사진은 불러와서 넣어주는게 힘듦
                                             // 대신 아무 사진도 없으면 서비스에서 원래 있던 사진으로 냅두기로 함
@@ -275,9 +275,9 @@ const showMovies = (page) => {
                                             modifyMovieFormTwo.dimensionTypeLabel.setValid(modifyMovieFormTwo['dimensionType'].value === '2D' ||
                                                 modifyMovieFormTwo['dimensionType'].value === '3D' ||
                                                 modifyMovieFormTwo['dimensionType'].value === '4D');
-                                            const explanationRegex = new RegExp("^([\\da-zA-Z가-힣()\\-.,!·<>\\s\"']{1,50})$");
+                                            const explanationRegex = new RegExp(/^([\[\]\da-zA-Z가-힣().,…?!·<>"“”'’\s\n-]{1,50})$/);
                                             modifyMovieFormTwo.explanationLabel.setValid(explanationRegex.test(modifyMovieFormTwo['explanation'].value));
-                                            const subExplanationRegex = new RegExp("^([\\da-zA-Z가-힣()\\-.,!·<>\\s\"']{1,800})$");
+                                            const subExplanationRegex = new RegExp(/^([\[\]\da-zA-Z가-힣().,…?!·<>"“”'’\s\n-]{1,1000})$/);
                                             modifyMovieFormTwo.subExplanationLabel.setValid(subExplanationRegex.test(modifyMovieFormTwo['subExplanation'].value));
                                             // 양식 안맞을시 제출 막는 로직, 이것도 add에서 해줬었음
                                             if (!modifyMovieFormTwo.titleLabel.isValid() ||

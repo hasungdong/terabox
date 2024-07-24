@@ -177,7 +177,7 @@ screeningInfoSearchBar.onsubmit = e => {
     const dateRegex = RegExp(/^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/);
     screeningInfoSearchBar.screeningDateLabel.setValid(dateRegex.test(screeningInfoSearchBar['screeningDate'].value) && new Date(screeningInfoSearchBar['screeningDate'].value) < (new Date().setMonth(new Date().getMonth() + 1)));
     screeningInfoSearchBar.cinemaNumberLabel.setValid(screeningInfoSearchBar['cinemaNumber'].value > 0);
-    const regionCodeRegex = RegExp(/^([a-zA-Z가-힣().\- !]{1,100})$/);
+    const regionCodeRegex = RegExp(/^([\[\]\da-zA-Z가-힣().,…?!·<>"“”'’\s\n-]{1,100})$/);
     screeningInfoSearchBar.regionCodeLabel.setValid(regionCodeRegex.test(screeningInfoSearchBar['regionCode'].value))
     // const theaterNameRegex = RegExp(/^([a-zA-Z가-힣().\- !]{1,100})$/);
     // 숫자라 0 이상인지만 체크

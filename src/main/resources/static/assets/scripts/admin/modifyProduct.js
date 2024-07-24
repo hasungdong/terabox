@@ -212,7 +212,7 @@ const showProducts = (page) => {
                                         modifyProductFormTwo.onsubmit = e => {
                                             e.preventDefault();
                                             // ProductRegex에 있는거 chatgpt로 자바스크립트에서 쓸 수 잇게 바꿈
-                                            const nameRegex = RegExp(/^([\da-zA-Z가-힣().\- !]{1,100})$/);
+                                            const nameRegex = RegExp(/^([\[\]\da-zA-Z가-힣().,…?!·<>"“”'’\s\n-]{1,100})$/);
                                             // add에서 해줬던 유효성 검사 다시
                                             // 사진은 검사 안한다. 불러올 때 사진은 불러와서 넣어주는게 힘듦
                                             // 대신 아무 사진도 없으면 서비스에서 원래 있던 사진으로 냅두기로 함
@@ -226,7 +226,7 @@ const showProducts = (page) => {
                                             modifyProductFormTwo.typeLabel.setValid(modifyProductFormTwo['type'].value === 'ticket' ||
                                                 modifyProductFormTwo['type'].value === 'fdg' ||
                                                 modifyProductFormTwo['type'].value === 'point');
-                                            const subTitleRegex = RegExp(/^([\da-zA-Z가-힣().\- !]{1,30})$/);
+                                            const subTitleRegex = RegExp(/^([\[\]\da-zA-Z가-힣().,…?!·<>"“”'’\s\n-]{1,30})$/);
                                             addProductForm.subTitleLabel.setValid(subTitleRegex.test(addProductForm['subTitle'].value));
 
 
