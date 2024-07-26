@@ -14,7 +14,9 @@
                `row`              AS `row`,
                `column`           AS `column`,
                `cinema_index`     AS `cinemaIndex`,
-               `seat_status_type` AS `seatStatusType`
+               `seat_status_type` AS `seatStatusType`,
+               `screening_date`   AS `screeningDate`,
+               `screening_time`   AS `screnningTime`
         FROM `terabox`.`seats`
         WHERE `index` = #{index}
     </select>

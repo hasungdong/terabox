@@ -88,15 +88,18 @@
     </select>
 
     <select id="selectSeatsByScreeningInfo" resultType="com.terabox.demo.entities.SeatEntity">
-        SELECT
-            `seat`.`index` AS `index`,
-            `seat`.`row` AS `row`,
-            `seat`.`column` AS `column`,
-            `seat`.`seat_status_type` AS `seatStatusType`,
-            `seat`.`cinema_index` AS `cinemaIndex`
+        SELECT `seat`.`index`            AS `index`,
+               `seat`.`row`              AS `row`,
+               `seat`.`column`           AS `column`,
+               `seat`.`seat_status_type` AS `seatStatusType`,
+               `seat`.`cinema_index`     AS `cinemaIndex`,
+               `seat`.`screening_date`   AS `screeningDate`,
+               `seat`.`screening_time`   AS `screeningTime`
         FROM `terabox`.`seats` AS `seat`
                  JOIN `terabox`.`screening_info` AS `screening`
                       ON `seat`.`cinema_index` = `screening`.`cinema_index`
+                          AND `seat`.`screening_date` = `screening`.`screening_date`
+                          AND `seat`.`screening_time` = `screening`.`screening_time`
         WHERE screening.index = #{screeningInfoIndex}
     </select>
 
