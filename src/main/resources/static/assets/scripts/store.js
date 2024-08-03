@@ -424,6 +424,28 @@ if (totalSale !== null) { // storeDetail 에서 order 로 넘어왔을때 order 
                     mores.forEach(more=> {
                         more.show(); //more 은 함수가 아니라서 forEach 써줘야함
                     });
+                    const xhr = new XMLHttpRequest();
+
+                    xhr.onreadystatechange = function(){
+                        if (xhr.readyState !== XMLHttpRequest.DONE){
+                            return;
+                        }
+                        if(xhr.status < 200 || xhr.status >= 300){
+                            return;
+                        }
+                        const responseObject = JSON.parse(xhr.responseText);
+                        totalSale.innerText = responseObject['salePrice'].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                        totalPrice.innerText = responseObject['saleTotalPrice'].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+                        // console.log(responseObject['result']);
+                        // console.log(responseObject);``
+
+
+                    }
+                    xhr.open(`GET`,`/store/card?cardName=${kakaoPay.value}&rOrderTotalPrice=${rOrderTotalPrice}`);
+                    /*store/order 라고 썼어서 안됐음 -> card 로 바꿔줬음*/
+                    // /슬래시가 꼭 있어야함. 슬래쉬가 있으면 절대경로 없으면 상대경로인데 절대경로로 주는것이 좋다.
+                    xhr.send();
                 }else{
                     selectKakaoInfo.hide();
                 }
